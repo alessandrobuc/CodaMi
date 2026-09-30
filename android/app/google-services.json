@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "838596105438",
+    "project_id": "codami-cd91e",
+    "storage_bucket": "codami-cd91e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838596105438:android:9c64672b24d52ea00d5e4f",
+        "android_client_info": {
+          "package_name": "com.codami.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4YTtQAn5Y8ccDdTuk_w-52L-PuNWI7iA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
