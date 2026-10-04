@@ -1,1 +1,49 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"codami-cd91e","appId":"1:838596105438:android:9c64672b24d52ea00d5e4f","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"codami-cd91e","appId":"1:838596105438:ios:84514641c36897300d5e4f","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"codami-cd91e","configurations":{"android":"1:838596105438:android:9c64672b24d52ea00d5e4f","ios":"1:838596105438:ios:84514641c36897300d5e4f"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "codami-cd91e",
+          "appId": "1:838596105438:android:9c64672b24d52ea00d5e4f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "codami-cd91e",
+          "appId": "1:838596105438:ios:84514641c36897300d5e4f",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "codami-cd91e",
+          "configurations": {
+            "android": "1:838596105438:android:9c64672b24d52ea00d5e4f",
+            "ios": "1:838596105438:ios:84514641c36897300d5e4f"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local",
+        "src",
+        "lib/**/*.test.js",
+        "lib/**/*.map"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ]
+}

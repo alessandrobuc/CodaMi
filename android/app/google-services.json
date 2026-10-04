@@ -12,7 +12,20 @@
           "package_name": "com.codami.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "838596105438-t3884cs8iijcuhp0rousa73spbc08deb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codami.app",
+            "certificate_hash": "e8b1b099065f2f5dde1c889427579e8f86b3392f"
+          }
+        },
+        {
+          "client_id": "838596105438-2gqss9s7mi8df0vb0jkrk302kkqh2d0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA4YTtQAn5Y8ccDdTuk_w-52L-PuNWI7iA"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838596105438-2gqss9s7mi8df0vb0jkrk302kkqh2d0u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "838596105438-av2tip5n3mpsueo1bus1aqlapeag2gl1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codami.app"
+              }
+            }
+          ]
         }
       }
     }

@@ -93,26 +93,6 @@
           "location" : "https://github.com/google/GoogleAppMeasurement.git",
           "name" : "GoogleAppMeasurement"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurementIdentitySupport/GoogleAppMeasurementIdentitySupport.xcframework",
-        "source" : {
-          "checksum" : "600d586bf3fb35b69822487f3748691b241b6eba70e75cc344ed8dcd55da2626",
-          "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.2/GoogleAppMeasurementIdentitySupport.zip"
-        },
-        "targetName" : "GoogleAppMeasurementIdentitySupport"
-      },
-      {
-        "kind" : {
-          "xcframework" : {
-
-          }
-        },
-        "packageRef" : {
-          "identity" : "googleappmeasurement",
-          "kind" : "remoteSourceControl",
-          "location" : "https://github.com/google/GoogleAppMeasurement.git",
-          "name" : "GoogleAppMeasurement"
-        },
         "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurement/GoogleAppMeasurement.xcframework",
         "source" : {
           "checksum" : "b7d529c22a11411fb112772db2b80d134fc2b2e5d67899ab1f67a6b36ed23603",
@@ -128,18 +108,18 @@
           }
         },
         "packageRef" : {
-          "identity" : "grpc-binary",
+          "identity" : "googleappmeasurement",
           "kind" : "remoteSourceControl",
-          "location" : "https://github.com/google/grpc-binary.git",
-          "name" : "gRPC"
+          "location" : "https://github.com/google/GoogleAppMeasurement.git",
+          "name" : "GoogleAppMeasurement"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurementIdentitySupport/GoogleAppMeasurementIdentitySupport.xcframework",
         "source" : {
-          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
+          "checksum" : "600d586bf3fb35b69822487f3748691b241b6eba70e75cc344ed8dcd55da2626",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
+          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.2/GoogleAppMeasurementIdentitySupport.zip"
         },
-        "targetName" : "grpc"
+        "targetName" : "GoogleAppMeasurementIdentitySupport"
       },
       {
         "kind" : {
@@ -180,6 +160,26 @@
           "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpcpp.zip"
         },
         "targetName" : "grpcpp"
+      },
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "grpc-binary",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/google/grpc-binary.git",
+          "name" : "gRPC"
+        },
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
+        "source" : {
+          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
+          "type" : "remote",
+          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
+        },
+        "targetName" : "grpc"
       }
     ],
     "dependencies" : [
@@ -220,6 +220,23 @@
       {
         "basedOn" : null,
         "packageRef" : {
+          "identity" : "appauth-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/openid/AppAuth-iOS.git",
+          "name" : "AppAuth"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "a7caeda164dc5108bf4649472b28a5af65dc6f33",
+            "version" : "2.1.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "AppAuth-iOS"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
           "identity" : "cloud_firestore-6.10.0",
           "kind" : "fileSystem",
           "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/cloud_firestore-6.10.0",
@@ -230,6 +247,20 @@
           "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/cloud_firestore-6.10.0"
         },
         "subpath" : "cloud_firestore-6.10.0"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "cloud_functions-6.5.0",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/cloud_functions-6.5.0",
+          "name" : "cloud_functions"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/cloud_functions-6.5.0"
+        },
+        "subpath" : "cloud_functions-6.5.0"
       },
       {
         "basedOn" : null,
@@ -324,6 +355,20 @@
       {
         "basedOn" : null,
         "packageRef" : {
+          "identity" : "google_sign_in_ios-6.3.6",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/google_sign_in_ios-6.3.6",
+          "name" : "google_sign_in_ios"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/google_sign_in_ios-6.3.6"
+        },
+        "subpath" : "google_sign_in_ios-6.3.6"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
           "identity" : "googleappmeasurement",
           "kind" : "remoteSourceControl",
           "location" : "https://github.com/google/GoogleAppMeasurement.git",
@@ -354,6 +399,23 @@
           "name" : "sourceControlCheckout"
         },
         "subpath" : "GoogleDataTransport"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "googlesignin-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/google/GoogleSignIn-iOS.git",
+          "name" : "GoogleSignIn"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "08d8dcecafb575f98879ffdbb8302c1b9ad65d19",
+            "version" : "9.2.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "GoogleSignIn-iOS"
       },
       {
         "basedOn" : null,
@@ -399,8 +461,8 @@
         },
         "state" : {
           "checkoutState" : {
-            "revision" : "724a52eea6329b7e12d3ad8300d76ca9f3895fcc",
-            "version" : "5.3.1"
+            "revision" : "a2ab612cb980066ee56d90d60d8462992c07f24b",
+            "version" : "3.5.0"
           },
           "name" : "sourceControlCheckout"
         },
@@ -409,16 +471,33 @@
       {
         "basedOn" : null,
         "packageRef" : {
-          "identity" : "image_picker_ios-0.8.13+8",
+          "identity" : "gtmappauth",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/google/GTMAppAuth.git",
+          "name" : "GTMAppAuth"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "56e0ccf09a6dd29dc7e68bdf729598240ca8aa16",
+            "version" : "5.0.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "GTMAppAuth"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "image_picker_ios-0.8.13+9",
           "kind" : "fileSystem",
-          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/image_picker_ios-0.8.13+8",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/image_picker_ios-0.8.13+9",
           "name" : "image_picker_ios"
         },
         "state" : {
           "name" : "fileSystem",
-          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/image_picker_ios-0.8.13+8"
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/image_picker_ios-0.8.13+9"
         },
-        "subpath" : "image_picker_ios-0.8.13+8"
+        "subpath" : "image_picker_ios-0.8.13+9"
       },
       {
         "basedOn" : null,
@@ -501,6 +580,20 @@
           "name" : "sourceControlCheckout"
         },
         "subpath" : "promises"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "sign_in_with_apple-8.2.0",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/sign_in_with_apple-8.2.0",
+          "name" : "sign_in_with_apple"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/sign_in_with_apple-8.2.0"
+        },
+        "subpath" : "sign_in_with_apple-8.2.0"
       }
     ],
     "prebuilts" : [
