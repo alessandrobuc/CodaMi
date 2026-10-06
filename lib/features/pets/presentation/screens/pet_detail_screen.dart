@@ -7,6 +7,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../../domain/repositories/pets_repository.dart';
+import '../../../reports/presentation/screens/create_report_screen.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
 import 'pet_form_screen.dart';
@@ -292,6 +293,12 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                     const SizedBox(height: 24),
                     _ReportLostCard(
                       petName: pet.name,
+                      onReport: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          fullscreenDialog: true,
+                          builder: (_) => CreateReportScreen(pet: pet),
+                        ),
+                      ),
                     ).animate().fadeIn(delay: 300.ms, duration: 350.ms),
                     if (pet.createdAt != null) ...[
                       const SizedBox(height: 16),
@@ -507,8 +514,9 @@ class _FeaturesCard extends StatelessWidget {
 
 class _ReportLostCard extends StatelessWidget {
   final String petName;
+  final VoidCallback onReport;
 
-  const _ReportLostCard({required this.petName});
+  const _ReportLostCard({required this.petName, required this.onReport});
 
   @override
   Widget build(BuildContext context) {
@@ -545,10 +553,7 @@ class _ReportLostCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           ElevatedButton.icon(
-            onPressed: () => SnackbarUtils.showInfo(
-              context,
-              'Lost reports are coming soon.',
-            ),
+            onPressed: onReport,
             icon: const Icon(Icons.campaign_rounded),
             label: Text('Report $petName as lost'),
             style: ElevatedButton.styleFrom(

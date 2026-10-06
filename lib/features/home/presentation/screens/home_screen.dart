@@ -6,6 +6,9 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/empty_state.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../reports/domain/entities/reports_entity.dart';
+import '../../../reports/presentation/screens/create_report_screen.dart';
+import '../../../reports/presentation/screens/reports_screen.dart';
 
 enum _HomeSegment { map, lost, found }
 
@@ -36,9 +39,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         child:
             FloatingActionButton.extended(
-              onPressed: () => SnackbarUtils.showInfo(
-                context,
-                'Creating reports is coming soon.',
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  fullscreenDialog: true,
+                  builder: (_) => const CreateReportScreen(),
+                ),
               ),
               backgroundColor: AppColors.accent,
               foregroundColor: Colors.white,
@@ -111,16 +116,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onChanged: (segment) => setState(() => _segment = segment),
               ),
               Expanded(
-                child: Center(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.only(top: 16, bottom: 80),
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: KeyedSubtree(
-                        key: ValueKey(_segment),
-                        child: _buildEmptyState(),
-                      ),
-                    ),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  layoutBuilder: (current, previous) => Stack(
+                    fit: StackFit.expand,
+                    children: [...previous, ?current],
+                  ),
+                  child: KeyedSubtree(
+                    key: ValueKey(_segment),
+                    child: _buildSegment(),
                   ),
                 ),
               ),
@@ -131,26 +135,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildEmptyState() {
+  Widget _buildSegment() {
     return switch (_segment) {
-      _HomeSegment.map => const EmptyState(
-        icon: Icon(Icons.map_rounded),
-        title: 'Map is on its way',
-        message:
-            'Soon you\'ll see lost and found pets around you, pinned on a live map.',
+      _HomeSegment.map => const Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 16, bottom: 80),
+          child: EmptyState(
+            icon: Icon(Icons.map_rounded),
+            title: 'Map is on its way',
+            message:
+                'Soon you\'ll see lost and found pets around you, pinned on a live map.',
+          ),
+        ),
       ),
-      _HomeSegment.lost => const EmptyState(
-        icon: Icon(Icons.search_rounded),
-        color: AppColors.lostPin,
-        title: 'No lost pets nearby',
-        message: 'Good news! Nobody has reported a lost pet in your area yet.',
-      ),
-      _HomeSegment.found => const EmptyState(
-        icon: Icon(Icons.volunteer_activism_rounded),
-        color: AppColors.foundPin,
-        title: 'No found pets yet',
-        message: 'Pets found by your neighbours will show up here.',
-      ),
+      _HomeSegment.lost => const ReportsListView(type: ReportType.lost),
+      _HomeSegment.found => const ReportsListView(type: ReportType.found),
     };
   }
 }

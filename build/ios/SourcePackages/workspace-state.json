@@ -33,13 +33,13 @@
           "location" : "https://github.com/firebase/firebase-ios-sdk",
           "name" : "Firebase"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/firebase-ios-sdk/FirebaseFirestoreInternal/FirebaseFirestoreInternal.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/firebase-ios-sdk/FirebaseAnalytics/FirebaseAnalytics.xcframework",
         "source" : {
-          "checksum" : "d1591c51943b0d68be5ca17c96c39e80ecac170a5e803c1c9d46e2d945d004d7",
+          "checksum" : "3fcbbaff30b579e1ad374c2d4bddfe602f0e689cd54e768f19b125848a7b40d2",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/bin/firestore/12.19.0/rc0/FirebaseFirestoreInternal.zip"
+          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.0/FirebaseAnalytics.zip"
         },
-        "targetName" : "FirebaseFirestoreInternal"
+        "targetName" : "FirebaseAnalytics"
       },
       {
         "kind" : {
@@ -53,13 +53,13 @@
           "location" : "https://github.com/firebase/firebase-ios-sdk",
           "name" : "Firebase"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/firebase-ios-sdk/FirebaseAnalytics/FirebaseAnalytics.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/firebase-ios-sdk/FirebaseFirestoreInternal/FirebaseFirestoreInternal.xcframework",
         "source" : {
-          "checksum" : "3fcbbaff30b579e1ad374c2d4bddfe602f0e689cd54e768f19b125848a7b40d2",
+          "checksum" : "d1591c51943b0d68be5ca17c96c39e80ecac170a5e803c1c9d46e2d945d004d7",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.0/FirebaseAnalytics.zip"
+          "url" : "https://dl.google.com/firebase/ios/bin/firestore/12.19.0/rc0/FirebaseFirestoreInternal.zip"
         },
-        "targetName" : "FirebaseAnalytics"
+        "targetName" : "FirebaseFirestoreInternal"
       },
       {
         "kind" : {
@@ -133,13 +133,13 @@
           "location" : "https://github.com/google/grpc-binary.git",
           "name" : "gRPC"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/openssl_grpc/openssl_grpc.xcframework",
         "source" : {
-          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
+          "checksum" : "52494719d0dda77fa9a65c62207f22814c7799d522b4ae73d1244dbe61cf2b89",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
+          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/openssl_grpc.zip"
         },
-        "targetName" : "grpc"
+        "targetName" : "openssl_grpc"
       },
       {
         "kind" : {
@@ -173,13 +173,13 @@
           "location" : "https://github.com/google/grpc-binary.git",
           "name" : "gRPC"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/openssl_grpc/openssl_grpc.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
         "source" : {
-          "checksum" : "52494719d0dda77fa9a65c62207f22814c7799d522b4ae73d1244dbe61cf2b89",
+          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/openssl_grpc.zip"
+          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
         },
-        "targetName" : "openssl_grpc"
+        "targetName" : "grpc"
       }
     ],
     "dependencies" : [
@@ -598,6 +598,20 @@
       {
         "basedOn" : null,
         "packageRef" : {
+          "identity" : "share_plus-13.3.1",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/share_plus-13.3.1",
+          "name" : "share_plus"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/share_plus-13.3.1"
+        },
+        "subpath" : "share_plus-13.3.1"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
           "identity" : "sign_in_with_apple-8.2.0",
           "kind" : "fileSystem",
           "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/sign_in_with_apple-8.2.0",
@@ -622,6 +636,20 @@
           "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/sqflite_darwin-2.4.4"
         },
         "subpath" : "sqflite_darwin-2.4.4"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "url_launcher_ios-6.4.2",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/url_launcher_ios-6.4.2",
+          "name" : "url_launcher_ios"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/url_launcher_ios-6.4.2"
+        },
+        "subpath" : "url_launcher_ios-6.4.2"
       }
     ],
     "prebuilts" : [

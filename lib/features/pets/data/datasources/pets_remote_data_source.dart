@@ -1,20 +1,16 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 
+import '../../../../core/services/photo_uploader.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../models/pets_model.dart';
 
 class PetsRemoteDataSource {
   final FirebaseFirestore _firestore;
-  final FirebaseStorage _storage;
+  final PhotoUploader _photos;
 
-  PetsRemoteDataSource({FirebaseFirestore? firestore, FirebaseStorage? storage})
+  PetsRemoteDataSource({FirebaseFirestore? firestore, PhotoUploader? photos})
     : _firestore = firestore ?? FirebaseFirestore.instance,
-      _storage = storage ?? FirebaseStorage.instance;
+      _photos = photos ?? PhotoUploader();
 
   CollectionReference<Map<String, dynamic>> get _pets =>
       _firestore.collection('pets');
@@ -34,9 +30,8 @@ class PetsRemoteDataSource {
     void Function(double progress)? onUploadProgress,
   }) async {
     final doc = existing == null ? _pets.doc() : _pets.doc(existing.id);
-    final photoUrls = await _uploadPhotos(
-      ownerId: ownerId,
-      petId: doc.id,
+    final photoUrls = await _photos.upload(
+      folder: 'pets/$ownerId/${doc.id}',
       photos: draft.photos,
       onProgress: onUploadProgress,
     );
@@ -60,70 +55,13 @@ class PetsRemoteDataSource {
       for (final e in fields.entries) e.key: e.value ?? FieldValue.delete(),
       'updatedAt': FieldValue.serverTimestamp(),
     });
-    await _deletePhotos(
+    await _photos.delete(
       existing.photoUrls.where((url) => !photoUrls.contains(url)),
     );
   }
 
   Future<void> deletePet(Pet pet) async {
     await _pets.doc(pet.id).delete();
-    await _deletePhotos(pet.photoUrls);
-  }
-
-  Future<List<String>> _uploadPhotos({
-    required String ownerId,
-    required String petId,
-    required List<PetPhoto> photos,
-    void Function(double progress)? onProgress,
-  }) async {
-    final sizes = <String, int>{
-      for (final p in photos.where((p) => p.isLocal))
-        p.localPath!: await File(p.localPath!).length(),
-    };
-    final totalBytes = sizes.values.fold<int>(0, (total, size) => total + size);
-    var uploadedBytes = 0;
-    final urls = <String>[];
-
-    for (final (index, photo) in photos.indexed) {
-      if (!photo.isLocal) {
-        urls.add(photo.url!);
-        continue;
-      }
-      final path = photo.localPath!;
-      final isPng = path.toLowerCase().endsWith('.png');
-      final ref = _storage.ref(
-        'pets/$ownerId/$petId/${DateTime.now().millisecondsSinceEpoch}_$index'
-        '${isPng ? '.png' : '.jpg'}',
-      );
-      final task = ref.putFile(
-        File(path),
-        SettableMetadata(contentType: isPng ? 'image/png' : 'image/jpeg'),
-      );
-      final progress = task.snapshotEvents.listen((s) {
-        if (totalBytes > 0) {
-          onProgress?.call((uploadedBytes + s.bytesTransferred) / totalBytes);
-        }
-      });
-      try {
-        await task;
-      } finally {
-        await progress.cancel();
-      }
-      uploadedBytes += sizes[path]!;
-      urls.add(await ref.getDownloadURL());
-    }
-
-    onProgress?.call(1);
-    return urls;
-  }
-
-  Future<void> _deletePhotos(Iterable<String> urls) async {
-    for (final url in urls) {
-      try {
-        await _storage.refFromURL(url).delete();
-      } catch (e) {
-        debugPrint('Could not delete pet photo: $e');
-      }
-    }
+    await _photos.delete(pet.photoUrls);
   }
 }

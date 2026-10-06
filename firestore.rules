@@ -30,6 +30,30 @@ service cloud.firestore {
         && optionalString(data, 'features', 500);
     }
 
+    function validReport(data) {
+      return data.keys().hasOnly([
+          'ownerId', 'ownerName', 'ownerContact', 'type', 'petId', 'petName',
+          'species', 'description', 'photoUrls', 'country', 'city', 'cityKey',
+          'placeDetail', 'lat', 'lng', 'eventAt', 'status', 'contactPhone',
+          'contactEmail', 'whatsapp', 'createdAt', 'updatedAt', 'resolvedAt'
+        ])
+        && data.type in ['lost', 'found']
+        && data.status in ['open', 'resolved', 'closed']
+        && data.species in ['dog', 'cat', 'other']
+        && data.petName is string && data.petName.size() > 0 && data.petName.size() <= 60
+        && data.ownerName is string && data.ownerName.size() <= 80
+        && data.description is string && data.description.size() >= 10 && data.description.size() <= 1000
+        && data.photoUrls is list && data.photoUrls.size() > 0 && data.photoUrls.size() <= 4
+        && data.city is string && data.city.size() > 0
+        && data.cityKey is string && data.cityKey.size() > 0
+        && data.lat is number && data.lng is number
+        && data.eventAt is string
+        && (data.get('contactPhone', null) != null || data.get('contactEmail', null) != null)
+        && optionalString(data, 'contactPhone', 20)
+        && optionalString(data, 'contactEmail', 100)
+        && optionalString(data, 'placeDetail', 80);
+    }
+
     match /users/{uid} {
       allow read, write: if isUser(uid);
     }
@@ -41,6 +65,18 @@ service cloud.firestore {
       allow update: if isUser(resource.data.ownerId)
         && request.resource.data.ownerId == resource.data.ownerId
         && validPet(request.resource.data);
+      allow delete: if isUser(resource.data.ownerId);
+    }
+
+    match /reports/{reportId} {
+      allow read: if signedIn();
+      allow create: if isUser(request.resource.data.ownerId)
+        && request.resource.data.status == 'open'
+        && validReport(request.resource.data);
+      allow update: if isUser(resource.data.ownerId)
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['status', 'resolvedAt', 'updatedAt'])
+        && request.resource.data.status in ['open', 'resolved', 'closed'];
       allow delete: if isUser(resource.data.ownerId);
     }
   }

@@ -10,6 +10,7 @@ class UserModel {
   final String? country;
   final double? homeLat;
   final double? homeLng;
+  final String? phone;
 
   UserModel({
     required this.uid,
@@ -23,6 +24,7 @@ class UserModel {
     this.country,
     this.homeLat,
     this.homeLng,
+    this.phone,
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -51,6 +53,7 @@ class UserModel {
       country: map['country'],
       homeLat: (map['homeLat'] as num?)?.toDouble(),
       homeLng: (map['homeLng'] as num?)?.toDouble(),
+      phone: map['phone'] as String?,
     );
   }
 }
