@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isUser(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function optionalString(data, field, maxLength) {
+      return !(field in data)
+        || (data[field] is string && data[field].size() <= maxLength);
+    }
+
+    function validPet(data) {
+      return data.keys().hasOnly([
+          'ownerId', 'name', 'species', 'breed', 'color', 'sex', 'age',
+          'features', 'photoUrls', 'createdAt', 'updatedAt'
+        ])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 40
+        && data.species in ['dog', 'cat', 'other']
+        && data.photoUrls is list && data.photoUrls.size() > 0 && data.photoUrls.size() <= 4
+        && (!('sex' in data) || data.sex in ['M', 'F', 'unknown'])
+        && optionalString(data, 'breed', 60)
+        && optionalString(data, 'color', 60)
+        && optionalString(data, 'age', 30)
+        && optionalString(data, 'features', 500);
+    }
+
+    match /users/{uid} {
+      allow read, write: if isUser(uid);
+    }
+
+    match /pets/{petId} {
+      allow read: if isUser(resource.data.ownerId);
+      allow create: if isUser(request.resource.data.ownerId)
+        && validPet(request.resource.data);
+      allow update: if isUser(resource.data.ownerId)
+        && request.resource.data.ownerId == resource.data.ownerId
+        && validPet(request.resource.data);
+      allow delete: if isUser(resource.data.ownerId);
+    }
+  }
+}

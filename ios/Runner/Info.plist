@@ -79,5 +79,9 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>CodaMi uses the camera so you can take photos of your pets.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>CodaMi needs access to your photos so you can add pictures of your pets.</string>
 </dict>
 </plist>
