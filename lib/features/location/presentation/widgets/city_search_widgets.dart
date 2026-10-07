@@ -11,6 +11,9 @@ class CitySearchInput extends StatelessWidget {
   final bool confirmed;
   final ValueChanged<String> onChanged;
   final VoidCallback onClear;
+  final String hint;
+  final IconData icon;
+  final TextCapitalization textCapitalization;
 
   const CitySearchInput({
     super.key,
@@ -20,6 +23,9 @@ class CitySearchInput extends StatelessWidget {
     required this.confirmed,
     required this.onChanged,
     required this.onClear,
+    this.hint = 'Search your city, e.g. Milano',
+    this.icon = Icons.search_rounded,
+    this.textCapitalization = TextCapitalization.words,
   });
 
   OutlineInputBorder _border(Color color, [double width = 1]) =>
@@ -49,12 +55,12 @@ class CitySearchInput extends StatelessWidget {
         focusNode: focusNode,
         onChanged: onChanged,
         textInputAction: TextInputAction.search,
-        textCapitalization: TextCapitalization.words,
+        textCapitalization: textCapitalization,
         autocorrect: false,
         decoration: InputDecoration(
-          hintText: 'Search your city, e.g. Milano',
+          hintText: hint,
           prefixIcon: Icon(
-            confirmed ? Icons.location_on_rounded : Icons.search_rounded,
+            confirmed ? Icons.location_on_rounded : icon,
             color: confirmed ? AppColors.primary : AppColors.textMuted,
           ),
           suffixIcon: loading
@@ -94,12 +100,14 @@ class CitySuggestionList extends StatelessWidget {
   final List<PlaceSuggestion> suggestions;
   final String query;
   final ValueChanged<PlaceSuggestion> onSelect;
+  final IconData icon;
 
   const CitySuggestionList({
     super.key,
     required this.suggestions,
     required this.query,
     required this.onSelect,
+    this.icon = Icons.location_city_rounded,
   });
 
   @override
@@ -136,11 +144,7 @@ class CitySuggestionList extends StatelessWidget {
                           color: AppColors.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(
-                          Icons.location_city_rounded,
-                          size: 18,
-                          color: AppColors.primary,
-                        ),
+                        child: Icon(icon, size: 18, color: AppColors.primary),
                       ),
                       const SizedBox(width: 12),
                       Expanded(

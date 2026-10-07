@@ -34,7 +34,7 @@ service cloud.firestore {
       return data.keys().hasOnly([
           'ownerId', 'ownerName', 'ownerContact', 'type', 'petId', 'petName',
           'species', 'description', 'photoUrls', 'country', 'city', 'cityKey',
-          'placeDetail', 'lat', 'lng', 'eventAt', 'status', 'contactPhone',
+          'placeDetail', 'areaRadius', 'lat', 'lng', 'eventAt', 'status', 'contactPhone',
           'contactEmail', 'whatsapp', 'createdAt', 'updatedAt', 'resolvedAt'
         ])
         && data.type in ['lost', 'found']
@@ -51,7 +51,8 @@ service cloud.firestore {
         && (data.get('contactPhone', null) != null || data.get('contactEmail', null) != null)
         && optionalString(data, 'contactPhone', 20)
         && optionalString(data, 'contactEmail', 100)
-        && optionalString(data, 'placeDetail', 80);
+        && optionalString(data, 'placeDetail', 80)
+        && (!('areaRadius' in data) || (data.areaRadius is int && data.areaRadius >= 50 && data.areaRadius <= 500));
     }
 
     match /users/{uid} {

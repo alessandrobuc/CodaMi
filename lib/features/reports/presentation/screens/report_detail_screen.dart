@@ -100,8 +100,10 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
               ? 'Is ${r.petName} back home?'
               : 'Has the owner been found?',
         ),
-        content: const Text(
-          'The report will be marked as resolved and removed from the lists.',
+        content: Text(
+          r.type == ReportType.lost
+              ? 'The report will move to "Back home" in the Found tab, so neighbours know ${r.petName} is safe.'
+              : 'The report will move to "Reunited" in the Found tab.',
           textAlign: TextAlign.center,
         ),
         actionsAlignment: MainAxisAlignment.center,
@@ -250,18 +252,18 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                           color: AppColors.primary.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.check_circle_rounded,
                               size: 14,
                               color: AppColors.primary,
                             ),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Text(
-                              'Resolved',
-                              style: TextStyle(
+                              report.resolvedLabel,
+                              style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: AppColors.primary,
@@ -315,9 +317,9 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                 _InfoRow(
                   icon: Icons.location_on_rounded,
                   color: color,
-                  label: report.type == ReportType.lost
-                      ? 'Last seen'
-                      : 'Found at',
+                  label:
+                      '${report.type == ReportType.lost ? 'Last seen' : 'Found at'}'
+                      '${report.areaRadius == null ? '' : ' · area of about ${report.areaRadius} m'}',
                   value: report.placeLabel,
                 ),
                 const SizedBox(height: 10),

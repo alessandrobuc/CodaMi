@@ -19,6 +19,7 @@ class ReportModel {
       city: map['city'] as String? ?? '',
       cityKey: map['cityKey'] as String? ?? '',
       placeDetail: _optional(map['placeDetail']),
+      areaRadius: (map['areaRadius'] as num?)?.toInt(),
       lat: (map['lat'] as num?)?.toDouble() ?? 0,
       lng: (map['lng'] as num?)?.toDouble() ?? 0,
       eventAt: _date(map['eventAt']) ?? DateTime.now(),
@@ -51,9 +52,12 @@ class ReportModel {
       'country': draft.place.country,
       'city': draft.place.city,
       'cityKey': draft.place.cityKey,
-      'placeDetail': _optional(draft.placeDetail),
-      'lat': draft.place.lat,
-      'lng': draft.place.lng,
+      'placeDetail': _optional(
+        _clip(withoutHouseNumber(draft.placeDetail ?? ''), 80),
+      ),
+      'areaRadius': draft.areaLat == null ? null : draft.areaRadius,
+      'lat': draft.areaLat ?? draft.place.lat,
+      'lng': draft.areaLng ?? draft.place.lng,
       'eventAt': draft.eventAt.toUtc().toIso8601String(),
       'status': ReportStatus.open.name,
       'contactPhone': phone,
@@ -67,6 +71,14 @@ class ReportModel {
         if (e.value != null) e.key: e.value!,
     };
   }
+
+  static String withoutHouseNumber(String text) => text.trim().replaceFirst(
+    RegExp(r'[\s,]+(n\.?\s*)?\d+[a-zA-Z]?(/\w+)?$'),
+    '',
+  );
+
+  static String _clip(String text, int max) =>
+      text.length <= max ? text : text.substring(0, max).trim();
 
   static String? _optional(Object? value) {
     final text = (value as String?)?.trim() ?? '';

@@ -15,6 +15,9 @@ class ReportsRepositoryImpl implements ReportsRepository {
       _remote.watchOpenReports(type);
 
   @override
+  Stream<List<Report>> watchResolvedReports() => _remote.watchResolvedReports();
+
+  @override
   Stream<Report?> watchReport(String id) => _remote.watchReport(id);
 
   @override

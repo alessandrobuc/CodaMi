@@ -53,6 +53,7 @@ class Report {
   final String city;
   final String cityKey;
   final String? placeDetail;
+  final int? areaRadius;
   final double lat;
   final double lng;
   final DateTime eventAt;
@@ -81,6 +82,7 @@ class Report {
     required this.status,
     this.petId,
     this.placeDetail,
+    this.areaRadius,
     this.contactPhone,
     this.contactEmail,
     this.whatsapp = false,
@@ -94,7 +96,14 @@ class Report {
 
   String get ownerContact => contactPhone ?? contactEmail ?? '';
 
-  String get placeLabel => placeDetail == null ? city : '$placeDetail, $city';
+  String get placeLabel => placeDetail == null
+      ? city
+      : areaRadius == null
+      ? '$placeDetail, $city'
+      : 'Near $placeDetail, $city';
+
+  String get resolvedLabel =>
+      type == ReportType.lost ? 'Back home' : 'Reunited';
 }
 
 class ReportDraft {
@@ -107,6 +116,9 @@ class ReportDraft {
   final List<PetPhoto> photos;
   final ReportPlace place;
   final String? placeDetail;
+  final double? areaLat;
+  final double? areaLng;
+  final int? areaRadius;
   final DateTime eventAt;
   final String? contactPhone;
   final String? contactEmail;
@@ -123,6 +135,9 @@ class ReportDraft {
     required this.eventAt,
     this.petId,
     this.placeDetail,
+    this.areaLat,
+    this.areaLng,
+    this.areaRadius,
     this.contactPhone,
     this.contactEmail,
     this.whatsapp = false,

@@ -14,6 +14,10 @@ final openReportsProvider = StreamProvider.family<List<Report>, ReportType>(
   (ref, type) => GetReportsUseCase(ref.watch(reportsRepositoryProvider))(type),
 );
 
+final resolvedReportsProvider = StreamProvider<List<Report>>(
+  (ref) => ref.watch(reportsRepositoryProvider).watchResolvedReports(),
+);
+
 final reportProvider = StreamProvider.family<Report?, String>(
   (ref, id) => ref.watch(reportsRepositoryProvider).watchReport(id),
 );

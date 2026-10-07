@@ -60,6 +60,48 @@ class PlacesService {
     }
   }
 
+  Future<List<PlaceSuggestion>> searchStreets(
+    String input, {
+    required String city,
+    required String country,
+    required double lat,
+    required double lng,
+  }) async {
+    final query = input.trim();
+    if (query.length < 2) return const [];
+
+    final result = await _call('searchStreets', {
+      'input': query,
+      'sessionToken': _session,
+      'city': city,
+      'country': country,
+      'lat': lat,
+      'lng': lng,
+    });
+    return (result['suggestions'] as List? ?? [])
+        .map((s) => PlaceSuggestion.fromMap(s as Map<String, dynamic>))
+        .where((s) => s.placeId.isNotEmpty)
+        .toList();
+  }
+
+  Future<StreetPlace> streetDetails(
+    PlaceSuggestion suggestion, {
+    required String city,
+  }) async {
+    final result = await _call('getStreetDetails', {
+      'placeId': suggestion.placeId,
+      'sessionToken': _session,
+      'city': city,
+    });
+    _sessionToken = null;
+    try {
+      return StreetPlace.fromMap(result);
+    } catch (e) {
+      debugPrint('getStreetDetails returned unexpected data: $e');
+      throw const PlacesException('Place search failed. Please try again.');
+    }
+  }
+
   Future<Map<String, dynamic>> _call(
     String name,
     Map<String, dynamic> data,
@@ -70,8 +112,8 @@ class PlacesService {
       debugPrint('$name failed: ${e.code} ${e.message}');
       throw PlacesException(switch (e.code) {
         'unauthenticated' => 'Your session expired. Please sign in again.',
-        'not-found' =>
-          e.message ?? 'We couldn\'t find that city. Please pick another one.',
+        'not-found' || 'out-of-range' when e.message != null => e.message!,
+        'not-found' => 'We couldn\'t find that city. Please pick another one.',
         'unavailable' || 'deadline-exceeded' =>
           'Couldn\'t reach city search. Check your connection and try again.',
         _ => 'City search failed. Please try again.',

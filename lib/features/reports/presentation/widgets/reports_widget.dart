@@ -39,6 +39,39 @@ class ReportTypeBadge extends StatelessWidget {
   }
 }
 
+class ResolvedBadge extends StatelessWidget {
+  final String label;
+
+  const ResolvedBadge({super.key, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+      decoration: BoxDecoration(
+        color: AppColors.primary,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.home_rounded, size: 12, color: Colors.white),
+          const SizedBox(width: 4),
+          Text(
+            label.toUpperCase(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 10.5,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ReportCard extends StatefulWidget {
   final Report report;
   final VoidCallback onTap;
@@ -97,11 +130,17 @@ class _ReportCardState extends State<ReportCard> {
                   children: [
                     Row(
                       children: [
-                        ReportTypeBadge(type: report.type),
+                        report.isOpen
+                            ? ReportTypeBadge(type: report.type)
+                            : ResolvedBadge(label: report.resolvedLabel),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            timeAgo(report.createdAt ?? report.eventAt),
+                            timeAgo(
+                              report.resolvedAt ??
+                                  report.createdAt ??
+                                  report.eventAt,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(

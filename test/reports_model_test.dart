@@ -96,6 +96,50 @@ void main() {
     expect(report.ownerContact, 'me@mail.com');
   });
 
+  test('withoutHouseNumber keeps the street, drops the number', () {
+    expect(
+      ReportModel.withoutHouseNumber('Piazzale Enrico Fermi 12'),
+      'Piazzale Enrico Fermi',
+    );
+    expect(ReportModel.withoutHouseNumber('Via Dante, 7/B'), 'Via Dante');
+    expect(ReportModel.withoutHouseNumber('Via Roma, n. 3'), 'Via Roma');
+    expect(ReportModel.withoutHouseNumber('Via Verdi, 15a'), 'Via Verdi');
+    expect(
+      ReportModel.withoutHouseNumber('Via XX Settembre'),
+      'Via XX Settembre',
+    );
+  });
+
+  test('a picked street stores the blurred area, not the city centre', () {
+    final draft = _draft(phone: '333');
+    final map = ReportModel.toCreateMap(
+      ownerId: 'u1',
+      draft: ReportDraft(
+        type: draft.type,
+        ownerName: draft.ownerName,
+        petName: draft.petName,
+        species: draft.species,
+        description: draft.description,
+        photos: const [],
+        place: _place,
+        placeDetail: 'Piazzale Enrico Fermi',
+        areaLat: 41.7001,
+        areaLng: 15.2802,
+        areaRadius: 100,
+        eventAt: draft.eventAt,
+        contactPhone: '333',
+      ),
+      photoUrls: const ['https://a'],
+    );
+    expect(map['lat'], 41.7001);
+    expect(map['lng'], 15.2802);
+    expect(map['areaRadius'], 100);
+
+    final report = ReportModel.fromMap('r1', {...map, 'eventAt': 'x'});
+    expect(report.placeLabel, 'Near Piazzale Enrico Fermi, Milano');
+    expect(report.resolvedLabel, 'Back home');
+  });
+
   test('timeAgo reads naturally', () {
     final now = DateTime(2026, 10, 6, 12);
     expect(

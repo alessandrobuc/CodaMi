@@ -91,3 +91,115 @@ export function parseCityDetails(body: Json): CityDetails | null {
     lng: location.longitude,
   };
 }
+
+export interface StreetDetails {
+  placeId: string;
+  label: string;
+  lat: number;
+  lng: number;
+}
+
+const ADDRESS_TYPES = ["route", "street_address", "premise", "subpremise"];
+
+export function normalizePlaceName(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+export function mentionsCity(text: string, city: string): boolean {
+  const target = normalizePlaceName(city);
+  if (!target) return true;
+  return ` ${normalizePlaceName(text)} `.includes(` ${target} `);
+}
+
+export function cityQuery(input: string, city: string): string {
+  return mentionsCity(input, city) ? input : `${input}, ${city}`;
+}
+
+export function suggestionsInCity(
+  suggestions: CitySuggestion[],
+  city: string,
+): CitySuggestion[] {
+  return suggestions.filter(
+    (s) => mentionsCity(s.secondaryText, city) || mentionsCity(s.mainText, city),
+  );
+}
+
+export function placeLocality(body: Json): string | null {
+  const components = (
+    Array.isArray(body.addressComponents) ? body.addressComponents : []
+  ) as Json[];
+  const find = (type: string) =>
+    components.find((c) => Array.isArray(c.types) && c.types.includes(type));
+  const locality = find("locality") ?? find("administrative_area_level_3");
+  return typeof locality?.longText === "string" ? locality.longText : null;
+}
+
+export function readCoordinate(data: unknown, field: string, limit: number): number {
+  const value = (data as Json | null | undefined)?.[field];
+  if (typeof value !== "number" || !Number.isFinite(value) || Math.abs(value) > limit) {
+    throw new HttpsError("invalid-argument", `"${field}" is not valid.`);
+  }
+  return value;
+}
+
+export function blurLocation(
+  lat: number,
+  lng: number,
+  radiusMeters: number,
+  random: () => number = Math.random,
+): {lat: number; lng: number} {
+  const distance = radiusMeters * Math.sqrt(random());
+  const angle = 2 * Math.PI * random();
+  const metersPerDegree = 111_320;
+  const round = (v: number) => Math.round(v * 1e6) / 1e6;
+  return {
+    lat: round(lat + (distance * Math.cos(angle)) / metersPerDegree),
+    lng: round(
+      lng +
+        (distance * Math.sin(angle)) /
+          (metersPerDegree * Math.cos((lat * Math.PI) / 180)),
+    ),
+  };
+}
+
+export function parseStreetDetails(
+  body: Json,
+  radiusMeters: number,
+  random?: () => number,
+): StreetDetails | null {
+  const location = (body.location ?? {}) as Json;
+  if (
+    typeof location.latitude !== "number" ||
+    typeof location.longitude !== "number"
+  ) {
+    return null;
+  }
+
+  const components = (
+    Array.isArray(body.addressComponents) ? body.addressComponents : []
+  ) as Json[];
+  const route = components.find(
+    (c) => Array.isArray(c.types) && c.types.includes("route"),
+  );
+  const street = typeof route?.longText === "string" ? route.longText : "";
+  const name = textOf(body.displayName);
+  const types = Array.isArray(body.types) ? (body.types as string[]) : [];
+  const isAddress = types.some((t) => ADDRESS_TYPES.includes(t));
+
+  const label = (isAddress ? street || name : name || street)
+    .replace(/[\s,]+(n\.?\s*)?\d+[a-zA-Z]?(\/\w+)?$/, "")
+    .trim()
+    .slice(0, 80);
+  if (!label) return null;
+
+  return {
+    placeId: typeof body.id === "string" ? body.id : "",
+    label,
+    ...blurLocation(location.latitude, location.longitude, radiusMeters, random),
+  };
+}

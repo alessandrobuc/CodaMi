@@ -6,7 +6,13 @@ import {defineString} from "firebase-functions/params";
 import {
   SAFE_ID_PATTERN,
   parseCityDetails,
+  parseStreetDetails,
+  cityQuery,
+  mentionsCity,
   parseSuggestions,
+  placeLocality,
+  readCoordinate,
+  suggestionsInCity,
   readString,
 } from "./places";
 
@@ -20,6 +26,8 @@ const ITALY_BIAS = {
   },
 };
 const LANGUAGE = "it";
+const STREET_SEARCH_RADIUS = 15_000;
+const PUBLIC_AREA_RADIUS = 100;
 
 setGlobalOptions({region: "europe-west1", maxInstances: 10});
 
@@ -113,4 +121,77 @@ export const getCityDetails = onCall(async (request) => {
     );
   }
   return city;
+});
+
+export const searchStreets = onCall(async (request) => {
+  requireAuth(request);
+  const input = readString(request.data, "input", {min: 2, max: 100});
+  const sessionToken = readString(request.data, "sessionToken", {
+    min: 8,
+    max: 64,
+    pattern: SAFE_ID_PATTERN,
+  });
+  const lat = readCoordinate(request.data, "lat", 90);
+  const lng = readCoordinate(request.data, "lng", 180);
+  const city = readString(request.data, "city", {min: 1, max: 100});
+  const rawCountry = (request.data as {country?: unknown} | null)?.country;
+  const country =
+    typeof rawCountry === "string" && /^[A-Za-z]{2}$/.test(rawCountry)
+      ? rawCountry.toLowerCase()
+      : null;
+
+  const body = await callPlaces("/places:autocomplete", {
+    method: "POST",
+    body: JSON.stringify({
+      input: cityQuery(input, city),
+      sessionToken,
+      ...(country ? {includedRegionCodes: [country]} : {}),
+      locationRestriction: {
+        circle: {
+          center: {latitude: lat, longitude: lng},
+          radius: STREET_SEARCH_RADIUS,
+        },
+      },
+      languageCode: LANGUAGE,
+    }),
+  });
+  return {suggestions: suggestionsInCity(parseSuggestions(body), city)};
+});
+
+export const getStreetDetails = onCall(async (request) => {
+  requireAuth(request);
+  const placeId = readString(request.data, "placeId", {
+    min: 3,
+    max: 300,
+    pattern: SAFE_ID_PATTERN,
+  });
+  const sessionToken = readString(request.data, "sessionToken", {
+    min: 8,
+    max: 64,
+    pattern: SAFE_ID_PATTERN,
+  });
+  const city = readString(request.data, "city", {min: 1, max: 100});
+
+  const query = new URLSearchParams({sessionToken, languageCode: LANGUAGE});
+  const body = await callPlaces(`/places/${placeId}?${query}`, {
+    method: "GET",
+    headers: {"X-Goog-FieldMask": "id,location,addressComponents,displayName,types"},
+  });
+
+  const locality = placeLocality(body);
+  if (locality && !mentionsCity(locality, city)) {
+    throw new HttpsError(
+      "out-of-range",
+      `That place is not in ${city}. Please pick one in ${city}.`,
+    );
+  }
+
+  const street = parseStreetDetails(body, PUBLIC_AREA_RADIUS);
+  if (!street) {
+    throw new HttpsError(
+      "not-found",
+      "We couldn't find that place. Please pick another one.",
+    );
+  }
+  return {...street, radius: PUBLIC_AREA_RADIUS};
 });

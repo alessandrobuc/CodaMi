@@ -134,3 +134,26 @@ String slugify(String input) {
       .replaceAll(RegExp(r'[^a-z0-9]+'), '-')
       .replaceAll(RegExp(r'^-+|-+$'), '');
 }
+
+class StreetPlace {
+  final String label;
+  final double lat;
+  final double lng;
+  final int radius;
+
+  const StreetPlace({
+    required this.label,
+    required this.lat,
+    required this.lng,
+    required this.radius,
+  });
+
+  factory StreetPlace.fromMap(Map<String, dynamic> map) {
+    return StreetPlace(
+      label: map['label'] as String,
+      lat: (map['lat'] as num).toDouble(),
+      lng: (map['lng'] as num).toDouble(),
+      radius: (map['radius'] as num?)?.toInt() ?? 100,
+    );
+  }
+}

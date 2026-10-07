@@ -20,6 +20,7 @@ import '../../../pets/presentation/screens/pet_form_screen.dart';
 import '../../../pets/presentation/widgets/pet_form_widgets.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../data/models/reports_model.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
@@ -53,6 +54,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
 
   ReportPlace? _place;
   final _placeDetail = TextEditingController();
+  StreetPlace? _street;
 
   DateTime _eventAt = DateTime.now();
   String _timeChoice = 'now';
@@ -107,6 +109,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           ? 'Unknown ${(_foundSpecies ?? PetSpecies.other).label.toLowerCase()}'
           : _foundName.text.trim(),
   };
+
+  String get _publicPlaceDetail =>
+      ReportModel.withoutHouseNumber(_placeDetail.text);
 
   bool get _isDirty =>
       (_type != null && widget.pet == null) ||
@@ -233,6 +238,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           : _foundPhotos,
       place: _place!,
       placeDetail: _placeDetail.text,
+      areaLat: _street?.lat,
+      areaLng: _street?.lng,
+      areaRadius: _street?.radius,
       eventAt: _eventAt,
       contactPhone: _phone.text,
       contactEmail: _email.text,
@@ -282,11 +290,10 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           country: draft.place.country,
           city: draft.place.city,
           cityKey: draft.place.cityKey,
-          placeDetail: _placeDetail.text.trim().isEmpty
-              ? null
-              : _placeDetail.text.trim(),
-          lat: draft.place.lat,
-          lng: draft.place.lng,
+          placeDetail: _publicPlaceDetail.isEmpty ? null : _publicPlaceDetail,
+          areaRadius: draft.areaRadius,
+          lat: draft.areaLat ?? draft.place.lat,
+          lng: draft.areaLng ?? draft.place.lng,
           eventAt: draft.eventAt,
           status: ReportStatus.open,
         );
@@ -585,22 +592,25 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           ? 'Where did you find it?'
           : 'Where was $_petName last seen?',
       subtitle:
-          'Choose the city. You can add a street or landmark to help people look in the right place.',
+          'Choose the city, then a street or landmark nearby. People will only see an area of about 100 m, never the exact address.',
       children: [
         _CityPicker(
           selected: _place,
           showError: _showErrors.contains(_Step.where) && _place == null,
-          onChanged: (place) => setState(() => _place = place),
+          onChanged: (place) => setState(() {
+            _place = place;
+            _street = null;
+            _placeDetail.clear();
+          }),
         ),
         const SizedBox(height: 22),
         const SectionLabel('Street, area or landmark', optional: true),
         const SizedBox(height: 8),
-        AppFormField(
+        _StreetPicker(
           controller: _placeDetail,
-          hint: 'e.g. Near Parco Sempione, Via Dante',
-          icon: Icons.signpost_outlined,
-          textCapitalization: TextCapitalization.sentences,
-          maxLength: 80,
+          city: _place,
+          selected: _street,
+          onChanged: (street) => setState(() => _street = street),
         ),
       ],
     );
@@ -833,7 +843,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     final cover = lost
         ? (_pet!.coverUrl == null ? null : PetPhoto.remote(_pet!.coverUrl!))
         : _foundPhotos.first;
-    final placeDetail = _placeDetail.text.trim();
+    final placeDetail = _publicPlaceDetail;
     final contact = [
       _phone.text.trim(),
       _email.text.trim(),
@@ -1364,6 +1374,178 @@ class _CityPickerState extends ConsumerState<_CityPicker> {
           )
         else if (_error != null)
           CityMessageCard(message: _error!),
+      ],
+    );
+  }
+}
+
+class _StreetPicker extends ConsumerStatefulWidget {
+  final TextEditingController controller;
+  final ReportPlace? city;
+  final StreetPlace? selected;
+  final ValueChanged<StreetPlace?> onChanged;
+
+  const _StreetPicker({
+    required this.controller,
+    required this.city,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  @override
+  ConsumerState<_StreetPicker> createState() => _StreetPickerState();
+}
+
+class _StreetPickerState extends ConsumerState<_StreetPicker> {
+  final _focus = FocusNode();
+  Timer? _debounce;
+  int _requestId = 0;
+  List<PlaceSuggestion> _suggestions = const [];
+  String? _error;
+  bool _loading = false;
+
+  PlacesService get _places => ref.read(placesServiceProvider);
+
+  @override
+  void initState() {
+    super.initState();
+    _focus.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _focus.dispose();
+    super.dispose();
+  }
+
+  void _onChanged(String value) {
+    _debounce?.cancel();
+    if (widget.selected != null) widget.onChanged(null);
+    setState(() => _error = null);
+    final city = widget.city;
+    if (city == null || value.trim().length < 2) {
+      _requestId++;
+      setState(() {
+        _suggestions = const [];
+        _loading = false;
+      });
+      return;
+    }
+    _debounce = Timer(const Duration(milliseconds: 300), () async {
+      final id = ++_requestId;
+      setState(() => _loading = true);
+      try {
+        final results = await _places.searchStreets(
+          value,
+          city: city.city,
+          country: city.country,
+          lat: city.lat,
+          lng: city.lng,
+        );
+        if (!mounted || id != _requestId) return;
+        setState(() {
+          _suggestions = results;
+          _error = results.isEmpty
+              ? 'No places found in ${city.city} for "${value.trim()}".'
+              : null;
+        });
+      } on PlacesException catch (e) {
+        if (mounted && id == _requestId) setState(() => _error = e.message);
+      } finally {
+        if (mounted && id == _requestId) setState(() => _loading = false);
+      }
+    });
+  }
+
+  Future<void> _select(PlaceSuggestion suggestion) async {
+    _focus.unfocus();
+    final city = widget.city;
+    if (city == null) return;
+    final id = ++_requestId;
+    setState(() {
+      _loading = true;
+      _suggestions = const [];
+    });
+    try {
+      final street = await _places.streetDetails(suggestion, city: city.city);
+      if (!mounted || id != _requestId) return;
+      widget.controller.text = street.label;
+      widget.onChanged(street);
+    } on PlacesException catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } finally {
+      if (mounted && id == _requestId) setState(() => _loading = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selected = widget.selected;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        CitySearchInput(
+          controller: widget.controller,
+          focusNode: _focus,
+          loading: _loading,
+          confirmed: selected != null,
+          hint: widget.city == null
+              ? 'Choose a city first'
+              : 'Search in ${widget.city!.city}, e.g. Via Dante',
+          icon: Icons.signpost_outlined,
+          textCapitalization: TextCapitalization.sentences,
+          onChanged: _onChanged,
+          onClear: () {
+            widget.controller.clear();
+            _onChanged('');
+          },
+        ),
+        const SizedBox(height: 10),
+        if (_suggestions.isNotEmpty)
+          CitySuggestionList(
+            suggestions: _suggestions,
+            query: widget.controller.text,
+            onSelect: _select,
+            icon: Icons.signpost_rounded,
+          )
+        else if (_error != null)
+          CityMessageCard(message: _error!)
+        else
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 250),
+            child: Row(
+              key: ValueKey(selected != null),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  selected != null
+                      ? Icons.radar_rounded
+                      : Icons.lock_outline_rounded,
+                  size: 16,
+                  color: selected != null
+                      ? AppColors.primary
+                      : AppColors.textMuted,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    selected != null
+                        ? 'People will see an area of about ${selected.radius} m around ${selected.label}.'
+                        : 'House numbers are never shown. Pick a suggestion so people can see the right area.',
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      height: 1.4,
+                      color: selected != null
+                          ? AppColors.primary
+                          : AppColors.textMuted,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
       ],
     );
   }

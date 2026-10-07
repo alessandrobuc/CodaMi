@@ -31,6 +31,23 @@ class ReportsRemoteDataSource {
         });
   }
 
+  Stream<List<Report>> watchResolvedReports({int limit = 20}) {
+    return _reports
+        .where('status', isEqualTo: ReportStatus.resolved.name)
+        .snapshots()
+        .map((snap) {
+          final now = DateTime.now();
+          final reports =
+              snap.docs.map((d) => ReportModel.fromMap(d.id, d.data())).toList()
+                ..sort(
+                  (a, b) => (b.resolvedAt ?? b.createdAt ?? now).compareTo(
+                    a.resolvedAt ?? a.createdAt ?? now,
+                  ),
+                );
+          return reports.take(limit).toList();
+        });
+  }
+
   Stream<Report?> watchReport(String id) {
     return _reports
         .doc(id)

@@ -3,6 +3,8 @@ import '../entities/reports_entity.dart';
 abstract class ReportsRepository {
   Stream<List<Report>> watchOpenReports(ReportType type);
 
+  Stream<List<Report>> watchResolvedReports();
+
   Stream<Report?> watchReport(String id);
 
   Future<String> createReport({
