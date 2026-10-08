@@ -3,12 +3,12 @@ import {test} from "node:test";
 
 import {
   SAFE_ID_PATTERN,
-  blurLocation,
   cityQuery,
   mentionsCity,
   placeLocality,
   suggestionsInCity,
   parseCityDetails,
+  parseReverseGeocode,
   parseStreetDetails,
   parseSuggestions,
   readCoordinate,
@@ -82,17 +82,7 @@ test("readString validates type, length and pattern", () => {
   );
 });
 
-test("blurLocation stays within the radius", () => {
-  for (let i = 0; i < 200; i++) {
-    const {lat, lng} = blurLocation(41.7, 15.28, 100);
-    const dLat = (lat - 41.7) * 111_320;
-    const dLng = (lng - 15.28) * 111_320 * Math.cos((41.7 * Math.PI) / 180);
-    assert.ok(Math.hypot(dLat, dLng) <= 101);
-  }
-  assert.deepEqual(blurLocation(41.7, 15.28, 100, () => 0), {lat: 41.7, lng: 15.28});
-});
-
-test("parseStreetDetails drops the house number and blurs the point", () => {
+test("parseStreetDetails drops the house number and keeps the exact point", () => {
   const street = parseStreetDetails(
     {
       id: "abc",
@@ -104,8 +94,6 @@ test("parseStreetDetails drops the house number and blurs the point", () => {
         {longText: "Piazzale Enrico Fermi", types: ["route"]},
       ],
     },
-    100,
-    () => 0,
   );
   assert.deepEqual(street, {
     placeId: "abc",
@@ -123,11 +111,9 @@ test("parseStreetDetails uses the name for landmarks", () => {
       location: {latitude: 41.7, longitude: 15.28},
       addressComponents: [{longText: "Via Roma", types: ["route"]}],
     },
-    100,
-    () => 0,
   );
   assert.equal(park?.label, "Villa Comunale");
-  assert.equal(parseStreetDetails({types: ["route"]}, 100), null);
+  assert.equal(parseStreetDetails({types: ["route"]}), null);
 });
 
 test("readCoordinate rejects bad values", () => {
@@ -163,4 +149,19 @@ test("placeLocality reads the town of a place", () => {
     addressComponents: [{longText: "Torremaggiore", types: ["locality"]}],
   }), "Torremaggiore");
   assert.equal(placeLocality({}), null);
+});
+
+test("parseReverseGeocode reads the street and town without numbers", () => {
+  const result = parseReverseGeocode({
+    status: "OK",
+    results: [
+      {address_components: [
+        {long_name: "12", types: ["street_number"]},
+        {long_name: "Piazzale Enrico Fermi", types: ["route"]},
+        {long_name: "Torremaggiore", types: ["locality", "political"]},
+      ]},
+    ],
+  });
+  assert.deepEqual(result, {label: "Piazzale Enrico Fermi", city: "Torremaggiore"});
+  assert.deepEqual(parseReverseGeocode({results: []}), {label: null, city: null});
 });

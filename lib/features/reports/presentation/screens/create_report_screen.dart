@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/date_format.dart';
+import '../../../../core/utils/geo.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
@@ -20,12 +22,13 @@ import '../../../pets/presentation/screens/pet_form_screen.dart';
 import '../../../pets/presentation/widgets/pet_form_widgets.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../shell/presentation/providers/shell_provider.dart';
 import '../../data/models/reports_model.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
-import 'report_detail_screen.dart';
+import '../widgets/spot_picker.dart';
 
 enum _Step { type, pet, where, when, details, review }
 
@@ -54,7 +57,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
 
   ReportPlace? _place;
   final _placeDetail = TextEditingController();
-  StreetPlace? _street;
+  LatLng? _spot;
+  bool _labelAuto = true;
+  int _geocodeId = 0;
 
   DateTime _eventAt = DateTime.now();
   String _timeChoice = 'now';
@@ -67,7 +72,6 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
 
   bool _publishing = false;
   double? _progress;
-  Report? _published;
 
   @override
   void dispose() {
@@ -194,8 +198,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
 
   Future<void> _back() async {
     if (_publishing) return;
-    if (_published != null || _step <= _firstStep) {
-      if (_published == null && _isDirty && !await _confirmDiscard()) return;
+    if (_step <= _firstStep) {
+      if (_isDirty && !await _confirmDiscard()) return;
       if (mounted) Navigator.of(context).pop();
       return;
     }
@@ -225,6 +229,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   }
 
   ReportDraft _draft() {
+    final spot = _spot;
+    final area = spot == null ? null : blurPoint(spot.latitude, spot.longitude);
     final lost = _type == ReportType.lost;
     return ReportDraft(
       type: _type!,
@@ -238,9 +244,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           : _foundPhotos,
       place: _place!,
       placeDetail: _placeDetail.text,
-      areaLat: _street?.lat,
-      areaLng: _street?.lng,
-      areaRadius: _street?.radius,
+      areaLat: area?.$1,
+      areaLng: area?.$2,
+      areaRadius: area == null ? null : publicAreaRadius,
       eventAt: _eventAt,
       contactPhone: _phone.text,
       contactEmail: _email.text,
@@ -272,32 +278,38 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           );
       HapticFeedback.heavyImpact();
       if (!mounted) return;
-      setState(() {
-        _publishing = false;
-        _published = Report(
-          id: id,
-          ownerId: uid,
-          ownerName: draft.ownerName,
-          type: draft.type,
-          petId: draft.petId,
-          petName: draft.petName,
-          species: draft.species,
-          description: draft.description.trim(),
-          photoUrls: [
-            for (final p in draft.photos)
-              if (!p.isLocal) p.url!,
-          ],
-          country: draft.place.country,
-          city: draft.place.city,
-          cityKey: draft.place.cityKey,
-          placeDetail: _publicPlaceDetail.isEmpty ? null : _publicPlaceDetail,
-          areaRadius: draft.areaRadius,
-          lat: draft.areaLat ?? draft.place.lat,
-          lng: draft.areaLng ?? draft.place.lng,
-          eventAt: draft.eventAt,
-          status: ReportStatus.open,
-        );
-      });
+      final report = Report(
+        id: id,
+        ownerId: uid,
+        ownerName: draft.ownerName,
+        type: draft.type,
+        petId: draft.petId,
+        petName: draft.petName,
+        species: draft.species,
+        description: draft.description.trim(),
+        photoUrls: [
+          for (final p in draft.photos)
+            if (!p.isLocal) p.url!,
+        ],
+        country: draft.place.country,
+        city: draft.place.city,
+        cityKey: draft.place.cityKey,
+        placeDetail: _publicPlaceDetail.isEmpty ? null : _publicPlaceDetail,
+        areaRadius: draft.areaRadius,
+        lat: draft.areaLat ?? draft.place.lat,
+        lng: draft.areaLng ?? draft.place.lng,
+        eventAt: draft.eventAt,
+        status: ReportStatus.open,
+      );
+      ref.read(mapFocusProvider.notifier).show(report);
+      ref.read(shellTabProvider.notifier).select(0);
+      SnackbarUtils.showSuccess(
+        context,
+        draft.type == ReportType.lost
+            ? '${report.petName} is now on the map. We hope they\'re home soon.'
+            : 'Thank you! ${report.petName} is now on the map.',
+      );
+      Navigator.of(context).popUntil((route) => route.isFirst);
     } on ReportsException catch (e) {
       if (!mounted) return;
       setState(() {
@@ -333,85 +345,75 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           body: SafeArea(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 450),
-              child: _published != null
-                  ? _SuccessView(
-                      key: const ValueKey('success'),
-                      report: _published!,
-                    )
-                  : Column(
-                      key: const ValueKey('flow'),
+              child: Column(
+                key: const ValueKey('flow'),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 4, 20, 0),
+                    child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 4, 20, 0),
-                          child: Row(
-                            children: [
-                              IconButton(
-                                onPressed: _publishing ? null : _back,
-                                icon: Icon(
-                                  _step <= _firstStep
-                                      ? Icons.close_rounded
-                                      : Icons.arrow_back_rounded,
-                                ),
-                                color: AppColors.text,
-                              ),
-                              const SizedBox(width: 4),
-                              Expanded(
-                                child: AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 250),
-                                  child: Text(
-                                    title,
-                                    key: ValueKey(title),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          color: AppColors.text,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '$current of $total',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textMuted,
-                                ),
-                              ),
-                            ],
+                        IconButton(
+                          onPressed: _publishing ? null : _back,
+                          icon: Icon(
+                            _step <= _firstStep
+                                ? Icons.close_rounded
+                                : Icons.arrow_back_rounded,
                           ),
+                          color: AppColors.text,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
-                          child: _ProgressBar(
-                            value: current / total,
-                            color: accent,
-                          ),
-                        ),
+                        const SizedBox(width: 4),
                         Expanded(
-                          child: PageView(
-                            controller: _pageController,
-                            physics: const NeverScrollableScrollPhysics(),
-                            children: [
-                              _typeStep(),
-                              _petStep(),
-                              _whereStep(),
-                              _whenStep(),
-                              _detailsStep(),
-                              _reviewStep(),
-                            ],
+                          child: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 250),
+                            child: Text(
+                              title,
+                              key: ValueKey(title),
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.text,
+                                  ),
+                            ),
                           ),
                         ),
-                        ProgressSaveButton(
-                          label: _step == _Step.review.index
-                              ? 'Publish report'
-                              : 'Continue',
-                          saving: _publishing,
-                          progress: _progress,
-                          onPressed: _next,
+                        Text(
+                          '$current of $total',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.textMuted,
+                          ),
                         ),
                       ],
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
+                    child: _ProgressBar(value: current / total, color: accent),
+                  ),
+                  Expanded(
+                    child: PageView(
+                      controller: _pageController,
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: [
+                        _typeStep(),
+                        _petStep(),
+                        _whereStep(),
+                        _whenStep(),
+                        _detailsStep(),
+                        _reviewStep(),
+                      ],
+                    ),
+                  ),
+                  ProgressSaveButton(
+                    label: _step == _Step.review.index
+                        ? 'Publish report'
+                        : 'Continue',
+                    saving: _publishing,
+                    progress: _progress,
+                    onPressed: _next,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -592,27 +594,104 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           ? 'Where did you find it?'
           : 'Where was $_petName last seen?',
       subtitle:
-          'Choose the city, then a street or landmark nearby. People will only see an area of about 100 m, never the exact address.',
+          'Choose the city, then pin the spot on the map. People only see an area of about 100 m, never the exact address.',
       children: [
         _CityPicker(
           selected: _place,
           showError: _showErrors.contains(_Step.where) && _place == null,
           onChanged: (place) => setState(() {
             _place = place;
-            _street = null;
+            _spot = null;
+            _labelAuto = true;
             _placeDetail.clear();
           }),
         ),
-        const SizedBox(height: 22),
-        const SectionLabel('Street, area or landmark', optional: true),
-        const SizedBox(height: 8),
-        _StreetPicker(
-          controller: _placeDetail,
-          city: _place,
-          selected: _street,
-          onChanged: (street) => setState(() => _street = street),
-        ),
+        if (_place != null) ...[
+          const SizedBox(height: 22),
+          const SectionLabel('Street or landmark', optional: true),
+          const SizedBox(height: 8),
+          _StreetPicker(
+            controller: _placeDetail,
+            city: _place,
+            pinned: _spot != null,
+            onPicked: (street) => setState(() {
+              _spot = LatLng(street.lat, street.lng);
+              _labelAuto = true;
+            }),
+            onTyped: () => _labelAuto = false,
+          ),
+          const SizedBox(height: 14),
+          const SectionLabel('Pin the exact spot'),
+          const SizedBox(height: 8),
+          SpotPicker(
+            center: LatLng(_place!.lat, _place!.lng),
+            spot: _spot,
+            color: reportColor(_type ?? ReportType.lost),
+            onMoved: _onSpotMoved,
+          ),
+          const SizedBox(height: 10),
+          _spotHint(),
+        ],
       ],
+    );
+  }
+
+  Future<void> _onSpotMoved(LatLng spot) async {
+    setState(() => _spot = spot);
+    final id = ++_geocodeId;
+    final result = await ref
+        .read(placesServiceProvider)
+        .reverseGeocode(spot.latitude, spot.longitude);
+    if (!mounted || id != _geocodeId) return;
+    final label = result.label;
+    if (label != null && (_labelAuto || _placeDetail.text.trim().isEmpty)) {
+      setState(() {
+        _placeDetail.text = label;
+        _labelAuto = true;
+      });
+    }
+  }
+
+  Widget _spotHint() {
+    final spot = _spot;
+    final place = _place!;
+    final km = spot == null
+        ? 0.0
+        : metersBetween(place.lat, place.lng, spot.latitude, spot.longitude) /
+              1000;
+    final (icon, color, text) = switch (spot) {
+      null => (
+        Icons.touch_app_rounded,
+        AppColors.textMuted,
+        'Drag the map so the pin sits where $_petName was ${_type == ReportType.found ? 'found' : 'last seen'}.',
+      ),
+      _ when km > 30 => (
+        Icons.warning_amber_rounded,
+        AppColors.accent,
+        'This spot is ${km.round()} km from ${place.city}. Is the city right?',
+      ),
+      _ => (
+        Icons.shield_outlined,
+        AppColors.primary,
+        'Pinned. People only see an area of about $publicAreaRadius m around it, never the exact spot.',
+      ),
+    };
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 250),
+      child: Row(
+        key: ValueKey(text),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 16, color: color),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 12.5, height: 1.4, color: color),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -1382,14 +1461,16 @@ class _CityPickerState extends ConsumerState<_CityPicker> {
 class _StreetPicker extends ConsumerStatefulWidget {
   final TextEditingController controller;
   final ReportPlace? city;
-  final StreetPlace? selected;
-  final ValueChanged<StreetPlace?> onChanged;
+  final bool pinned;
+  final ValueChanged<StreetPlace> onPicked;
+  final VoidCallback onTyped;
 
   const _StreetPicker({
     required this.controller,
     required this.city,
-    required this.selected,
-    required this.onChanged,
+    required this.pinned,
+    required this.onPicked,
+    required this.onTyped,
   });
 
   @override
@@ -1421,7 +1502,7 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
 
   void _onChanged(String value) {
     _debounce?.cancel();
-    if (widget.selected != null) widget.onChanged(null);
+    widget.onTyped();
     setState(() => _error = null);
     final city = widget.city;
     if (city == null || value.trim().length < 2) {
@@ -1471,7 +1552,7 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
       final street = await _places.streetDetails(suggestion, city: city.city);
       if (!mounted || id != _requestId) return;
       widget.controller.text = street.label;
-      widget.onChanged(street);
+      widget.onPicked(street);
     } on PlacesException catch (e) {
       if (mounted) setState(() => _error = e.message);
     } finally {
@@ -1481,8 +1562,6 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final selected = widget.selected;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1490,10 +1569,8 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
           controller: widget.controller,
           focusNode: _focus,
           loading: _loading,
-          confirmed: selected != null,
-          hint: widget.city == null
-              ? 'Choose a city first'
-              : 'Search in ${widget.city!.city}, e.g. Via Dante',
+          confirmed: widget.pinned,
+          hint: 'Search in ${widget.city?.city ?? 'your city'}, e.g. Via Dante',
           icon: Icons.signpost_outlined,
           textCapitalization: TextCapitalization.sentences,
           onChanged: _onChanged,
@@ -1502,50 +1579,18 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
             _onChanged('');
           },
         ),
-        const SizedBox(height: 10),
-        if (_suggestions.isNotEmpty)
+        if (_suggestions.isNotEmpty) ...[
+          const SizedBox(height: 10),
           CitySuggestionList(
             suggestions: _suggestions,
             query: widget.controller.text,
             onSelect: _select,
             icon: Icons.signpost_rounded,
-          )
-        else if (_error != null)
-          CityMessageCard(message: _error!)
-        else
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 250),
-            child: Row(
-              key: ValueKey(selected != null),
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  selected != null
-                      ? Icons.radar_rounded
-                      : Icons.lock_outline_rounded,
-                  size: 16,
-                  color: selected != null
-                      ? AppColors.primary
-                      : AppColors.textMuted,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    selected != null
-                        ? 'People will see an area of about ${selected.radius} m around ${selected.label}.'
-                        : 'House numbers are never shown. Pick a suggestion so people can see the right area.',
-                    style: TextStyle(
-                      fontSize: 12.5,
-                      height: 1.4,
-                      color: selected != null
-                          ? AppColors.primary
-                          : AppColors.textMuted,
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
+        ] else if (_error != null) ...[
+          const SizedBox(height: 10),
+          CityMessageCard(message: _error!),
+        ],
       ],
     );
   }
@@ -1658,122 +1703,6 @@ class _ReviewRow extends StatelessWidget {
               text,
               style: const TextStyle(color: AppColors.text, fontSize: 13.5),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SuccessView extends StatelessWidget {
-  final Report report;
-
-  const _SuccessView({super.key, required this.report});
-
-  @override
-  Widget build(BuildContext context) {
-    final color = reportColor(report.type);
-    final lost = report.type == ReportType.lost;
-
-    return Padding(
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        children: [
-          const Spacer(),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              for (var i = 0; i < 3; i++)
-                Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: color.withValues(alpha: 0.5),
-                          width: 2,
-                        ),
-                      ),
-                    )
-                    .animate(onPlay: (c) => c.repeat())
-                    .scale(
-                      delay: (i * 600).ms,
-                      duration: 1800.ms,
-                      begin: const Offset(1, 1),
-                      end: const Offset(2.1, 2.1),
-                      curve: Curves.easeOut,
-                    )
-                    .fadeOut(delay: (i * 600).ms, duration: 1800.ms),
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [color, Color.lerp(color, Colors.black, 0.25)!],
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: color.withValues(alpha: 0.4),
-                      blurRadius: 30,
-                      offset: const Offset(0, 14),
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.check_rounded,
-                  color: Colors.white,
-                  size: 64,
-                ),
-              ).animate().scale(
-                duration: 700.ms,
-                curve: Curves.elasticOut,
-                begin: const Offset(0.3, 0.3),
-              ),
-            ],
-          ),
-          const SizedBox(height: 40),
-          Text(
-            'Report published!',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: AppColors.text,
-            ),
-          ).animate().fadeIn(delay: 250.ms).slideY(begin: 0.3, end: 0),
-          const SizedBox(height: 10),
-          Text(
-            lost
-                ? 'People around ${report.city} can now see ${report.petName}. We really hope they\'re home soon.'
-                : 'Thank you for helping! The owner can now find ${report.petName} and contact you.',
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: AppColors.textMuted, height: 1.5),
-          ).animate().fadeIn(delay: 400.ms),
-          const Spacer(),
-          ElevatedButton(
-            onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (_) => ReportDetailScreen(report: report),
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size.fromHeight(56),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            child: const Text('View report'),
-          ).animate().fadeIn(delay: 550.ms),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Back to home'),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import '../../../notifications/presentation/providers/notifications_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -239,6 +240,7 @@ class AuthNotifier extends AsyncNotifier<void> {
   }
 
   Future<void> logout() async {
+    await ref.read(pushServiceProvider).stop();
     await ref.read(authRepositoryProvider).signOut();
   }
 }

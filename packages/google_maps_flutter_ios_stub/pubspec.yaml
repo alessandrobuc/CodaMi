@@ -1,0 +1,17 @@
+name: google_maps_flutter_ios
+description: Placeholder for the CocoaPods-only Google Maps iOS plugin. CodaMi uses google_maps_flutter_ios_sdk10 (Swift Package Manager) instead.
+version: 2.18.6
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        dartPluginClass: GoogleMapsFlutterIosStub
+
+dependencies:
+  flutter:
+    sdk: flutter

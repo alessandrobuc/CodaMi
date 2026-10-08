@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/navigation/app_navigator.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../../notifications/presentation/providers/notifications_provider.dart';
+import '../../../notifications/presentation/screens/notifications_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../pets/presentation/screens/pets_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
+import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
 
-class MainShell extends StatefulWidget {
+class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
 
   @override
-  State<MainShell> createState() => _MainShellState();
+  ConsumerState<MainShell> createState() => _MainShellState();
 }
 
-class _MainShellState extends State<MainShell>
+class _MainShellState extends ConsumerState<MainShell>
     with SingleTickerProviderStateMixin {
   static const _items = [
     NavItem(
@@ -42,6 +48,25 @@ class _MainShellState extends State<MainShell>
   )..value = 1;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _startPush());
+  }
+
+  void _startPush() {
+    final uid = ref.read(authStateProvider).value?.uid;
+    if (uid == null || !mounted) return;
+    ref
+        .read(pushServiceProvider)
+        .start(
+          uid: uid,
+          onOpenReport: (id) => appNavigatorKey.currentState?.push(
+            MaterialPageRoute(builder: (_) => ReportByIdScreen(reportId: id)),
+          ),
+        );
+  }
+
+  @override
   void dispose() {
     _enter.dispose();
     super.dispose();
@@ -49,6 +74,7 @@ class _MainShellState extends State<MainShell>
 
   void _select(int index) {
     if (index == _index) return;
+    ref.read(shellTabProvider.notifier).select(index);
     setState(() {
       _direction = index > _index ? 1 : -1;
       _index = index;
@@ -58,6 +84,8 @@ class _MainShellState extends State<MainShell>
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(shellTabProvider, (_, index) => _select(index));
+
     return PopScope(
       canPop: _index == 0,
       onPopInvokedWithResult: (didPop, _) {

@@ -15,37 +15,31 @@ class ReportsRemoteDataSource {
   CollectionReference<Map<String, dynamic>> get _reports =>
       _firestore.collection('reports');
 
-  Stream<List<Report>> watchOpenReports(ReportType type) {
+  Stream<List<Report>> watchOpenReports(ReportType type, {required int limit}) {
     return _reports
         .where('status', isEqualTo: ReportStatus.open.name)
         .where('type', isEqualTo: type.name)
+        .orderBy('createdAt', descending: true)
+        .limit(limit)
         .snapshots()
-        .map((snap) {
-          final now = DateTime.now();
-          return snap.docs
+        .map(
+          (snap) => snap.docs
               .map((d) => ReportModel.fromMap(d.id, d.data()))
-              .toList()
-            ..sort(
-              (a, b) => (b.createdAt ?? now).compareTo(a.createdAt ?? now),
-            );
-        });
+              .toList(),
+        );
   }
 
-  Stream<List<Report>> watchResolvedReports({int limit = 20}) {
+  Stream<List<Report>> watchResolvedReports({required int limit}) {
     return _reports
         .where('status', isEqualTo: ReportStatus.resolved.name)
+        .orderBy('resolvedAt', descending: true)
+        .limit(limit)
         .snapshots()
-        .map((snap) {
-          final now = DateTime.now();
-          final reports =
-              snap.docs.map((d) => ReportModel.fromMap(d.id, d.data())).toList()
-                ..sort(
-                  (a, b) => (b.resolvedAt ?? b.createdAt ?? now).compareTo(
-                    a.resolvedAt ?? a.createdAt ?? now,
-                  ),
-                );
-          return reports.take(limit).toList();
-        });
+        .map(
+          (snap) => snap.docs
+              .map((d) => ReportModel.fromMap(d.id, d.data()))
+              .toList(),
+        );
   }
 
   Stream<Report?> watchReport(String id) {

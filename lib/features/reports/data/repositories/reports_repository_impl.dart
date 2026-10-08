@@ -11,11 +11,14 @@ class ReportsRepositoryImpl implements ReportsRepository {
   const ReportsRepositoryImpl(this._remote);
 
   @override
-  Stream<List<Report>> watchOpenReports(ReportType type) =>
-      _remote.watchOpenReports(type);
+  Stream<List<Report>> watchOpenReports(
+    ReportType type, {
+    required int limit,
+  }) => _remote.watchOpenReports(type, limit: limit);
 
   @override
-  Stream<List<Report>> watchResolvedReports() => _remote.watchResolvedReports();
+  Stream<List<Report>> watchResolvedReports({required int limit}) =>
+      _remote.watchResolvedReports(limit: limit);
 
   @override
   Stream<Report?> watchReport(String id) => _remote.watchReport(id);

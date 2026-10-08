@@ -57,6 +57,13 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read, write: if isUser(uid);
+
+      match /notifications/{notificationId} {
+        allow read, delete: if isUser(uid);
+        allow update: if isUser(uid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read'])
+          && request.resource.data.read is bool;
+      }
     }
 
     match /pets/{petId} {

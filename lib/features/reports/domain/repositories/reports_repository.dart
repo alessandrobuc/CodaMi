@@ -1,9 +1,9 @@
 import '../entities/reports_entity.dart';
 
 abstract class ReportsRepository {
-  Stream<List<Report>> watchOpenReports(ReportType type);
+  Stream<List<Report>> watchOpenReports(ReportType type, {required int limit});
 
-  Stream<List<Report>> watchResolvedReports();
+  Stream<List<Report>> watchResolvedReports({required int limit});
 
   Stream<Report?> watchReport(String id);
 

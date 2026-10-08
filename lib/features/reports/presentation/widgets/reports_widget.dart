@@ -9,6 +9,9 @@ import '../../domain/entities/reports_entity.dart';
 Color reportColor(ReportType type) =>
     type == ReportType.lost ? AppColors.lostPin : AppColors.foundPin;
 
+Color pinColor(Report report) =>
+    report.isOpen ? reportColor(report.type) : AppColors.foundPin;
+
 class ReportTypeBadge extends StatelessWidget {
   final ReportType type;
   final bool large;
@@ -173,7 +176,7 @@ class _ReportCardState extends State<ReportCard> {
                         Icon(
                           Icons.location_on_rounded,
                           size: 14,
-                          color: reportColor(report.type),
+                          color: pinColor(report),
                         ),
                         const SizedBox(width: 3),
                         Expanded(

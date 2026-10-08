@@ -102,6 +102,22 @@ class PlacesService {
     }
   }
 
+  Future<({String? label, String? city})> reverseGeocode(
+    double lat,
+    double lng,
+  ) async {
+    try {
+      final result = await _invoke('reverseGeocode', {'lat': lat, 'lng': lng});
+      return (
+        label: result['label'] as String?,
+        city: result['city'] as String?,
+      );
+    } catch (e) {
+      debugPrint('reverseGeocode failed: $e');
+      return (label: null, city: null);
+    }
+  }
+
   Future<Map<String, dynamic>> _call(
     String name,
     Map<String, dynamic> data,

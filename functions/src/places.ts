@@ -147,31 +147,7 @@ export function readCoordinate(data: unknown, field: string, limit: number): num
   return value;
 }
 
-export function blurLocation(
-  lat: number,
-  lng: number,
-  radiusMeters: number,
-  random: () => number = Math.random,
-): {lat: number; lng: number} {
-  const distance = radiusMeters * Math.sqrt(random());
-  const angle = 2 * Math.PI * random();
-  const metersPerDegree = 111_320;
-  const round = (v: number) => Math.round(v * 1e6) / 1e6;
-  return {
-    lat: round(lat + (distance * Math.cos(angle)) / metersPerDegree),
-    lng: round(
-      lng +
-        (distance * Math.sin(angle)) /
-          (metersPerDegree * Math.cos((lat * Math.PI) / 180)),
-    ),
-  };
-}
-
-export function parseStreetDetails(
-  body: Json,
-  radiusMeters: number,
-  random?: () => number,
-): StreetDetails | null {
+export function parseStreetDetails(body: Json): StreetDetails | null {
   const location = (body.location ?? {}) as Json;
   if (
     typeof location.latitude !== "number" ||
@@ -191,15 +167,44 @@ export function parseStreetDetails(
   const types = Array.isArray(body.types) ? (body.types as string[]) : [];
   const isAddress = types.some((t) => ADDRESS_TYPES.includes(t));
 
-  const label = (isAddress ? street || name : name || street)
-    .replace(/[\s,]+(n\.?\s*)?\d+[a-zA-Z]?(\/\w+)?$/, "")
-    .trim()
-    .slice(0, 80);
+  const label = withoutHouseNumber(isAddress ? street || name : name || street);
   if (!label) return null;
 
   return {
     placeId: typeof body.id === "string" ? body.id : "",
     label,
-    ...blurLocation(location.latitude, location.longitude, radiusMeters, random),
+    lat: location.latitude,
+    lng: location.longitude,
   };
+}
+
+export function withoutHouseNumber(text: string): string {
+  return text
+    .replace(/[\s,]+(n\.?\s*)?\d+[a-zA-Z]?(\/\w+)?$/, "")
+    .trim()
+    .slice(0, 80);
+}
+
+export interface ReverseGeocode {
+  label: string | null;
+  city: string | null;
+}
+
+export function parseReverseGeocode(body: Json): ReverseGeocode {
+  const results = (Array.isArray(body.results) ? body.results : []) as Json[];
+  let label: string | null = null;
+  let city: string | null = null;
+  for (const result of results) {
+    const components = (
+      Array.isArray(result.address_components) ? result.address_components : []
+    ) as Json[];
+    const find = (type: string) =>
+      components.find((c) => Array.isArray(c.types) && c.types.includes(type));
+    const name = (c: Json | undefined) =>
+      typeof c?.long_name === "string" ? c.long_name : null;
+    label ??= name(find("route")) ?? name(find("park")) ?? name(find("point_of_interest"));
+    city ??= name(find("locality")) ?? name(find("administrative_area_level_3"));
+    if (label && city) break;
+  }
+  return {label: label ? withoutHouseNumber(label) || null : null, city};
 }

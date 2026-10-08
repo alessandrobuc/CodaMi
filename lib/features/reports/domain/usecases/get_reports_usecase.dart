@@ -6,6 +6,6 @@ class GetReportsUseCase {
 
   const GetReportsUseCase(this._repository);
 
-  Stream<List<Report>> call(ReportType type) =>
-      _repository.watchOpenReports(type);
+  Stream<List<Report>> call(ReportType type, {required int limit}) =>
+      _repository.watchOpenReports(type, limit: limit);
 }
