@@ -119,6 +119,8 @@ class _AnimatedNavBarState extends State<AnimatedNavBar>
   @override
   Widget build(BuildContext context) {
     final count = widget.items.length;
+    final rtl = Directionality.of(context) == TextDirection.rtl;
+    double visual(double position) => rtl ? count - 1 - position : position;
 
     return SafeArea(
       top: false,
@@ -137,7 +139,7 @@ class _AnimatedNavBarState extends State<AnimatedNavBar>
                 animation: Listenable.merge([_position, _burst]),
                 builder: (context, _) {
                   final pos = _position.value.clamp(-0.1, count - 0.9);
-                  final cx = _sidePadding + slot * (pos + 0.5);
+                  final cx = _sidePadding + slot * (visual(pos) + 0.5);
                   final path = _barPath(bar, cx);
                   final hoverIndex = _position.value.round().clamp(
                     0,
@@ -169,7 +171,7 @@ class _AnimatedNavBarState extends State<AnimatedNavBar>
                       ),
                       for (var i = 0; i < count; i++)
                         Positioned(
-                          left: _sidePadding + slot * i,
+                          left: _sidePadding + slot * visual(i.toDouble()),
                           top: _rise,
                           width: slot,
                           height: _barHeight,

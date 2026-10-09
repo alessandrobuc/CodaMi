@@ -5,6 +5,8 @@ abstract class ReportsRepository {
 
   Stream<List<Report>> watchResolvedReports({required int limit});
 
+  Stream<List<Report>> watchMyReports(String ownerId, {required int limit});
+
   Stream<Report?> watchReport(String id);
 
   Future<String> createReport({
@@ -14,6 +16,8 @@ abstract class ReportsRepository {
   });
 
   Future<void> markResolved(Report report);
+
+  Future<void> deleteReport(Report report);
 }
 
 class ReportsException implements Exception {

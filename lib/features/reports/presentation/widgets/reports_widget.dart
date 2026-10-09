@@ -78,8 +78,14 @@ class ResolvedBadge extends StatelessWidget {
 class ReportCard extends StatefulWidget {
   final Report report;
   final VoidCallback onTap;
+  final Widget? footer;
 
-  const ReportCard({super.key, required this.report, required this.onTap});
+  const ReportCard({
+    super.key,
+    required this.report,
+    required this.onTap,
+    this.footer,
+  });
 
   @override
   State<ReportCard> createState() => _ReportCardState();
@@ -113,99 +119,111 @@ class _ReportCardState extends State<ReportCard> {
               ),
             ],
           ),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                width: 98,
-                height: 98,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Hero(
-                    tag: 'report-photo-${report.id}',
-                    child: PetImage.url(report.coverUrl),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 98,
+                    height: 98,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Hero(
+                        tag: 'report-photo-${report.id}',
+                        child: PetImage.url(report.coverUrl),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        report.isOpen
-                            ? ReportTypeBadge(type: report.type)
-                            : ResolvedBadge(label: report.resolvedLabel),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            timeAgo(
-                              report.resolvedAt ??
-                                  report.createdAt ??
-                                  report.eventAt,
+                        Row(
+                          children: [
+                            report.isOpen
+                                ? ReportTypeBadge(type: report.type)
+                                : ResolvedBadge(label: report.resolvedLabel),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                timeAgo(
+                                  report.resolvedAt ??
+                                      report.createdAt ??
+                                      report.eventAt,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.textMuted,
+                                ),
+                              ),
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: AppColors.textMuted,
+                            FaIcon(
+                              speciesIcon(report.species),
+                              size: 13,
+                              color: speciesColor(report.species),
                             ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          report.petName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.text,
                           ),
                         ),
-                        FaIcon(
-                          speciesIcon(report.species),
-                          size: 13,
-                          color: speciesColor(report.species),
+                        const SizedBox(height: 2),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_rounded,
+                              size: 14,
+                              color: pinColor(report),
+                            ),
+                            const SizedBox(width: 3),
+                            Expanded(
+                              child: Text(
+                                report.placeLabel,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12.5,
+                                  color: AppColors.textMuted,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          report.description,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 12.5,
+                            height: 1.35,
+                            color: AppColors.text,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      report.petName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.text,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_rounded,
-                          size: 14,
-                          color: pinColor(report),
-                        ),
-                        const SizedBox(width: 3),
-                        Expanded(
-                          child: Text(
-                            report.placeLabel,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 12.5,
-                              color: AppColors.textMuted,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      report.description,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 12.5,
-                        height: 1.35,
-                        color: AppColors.text,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+              if (widget.footer != null) ...[
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Divider(height: 1, color: AppColors.border),
+                ),
+                widget.footer!,
+              ],
             ],
           ),
         ),

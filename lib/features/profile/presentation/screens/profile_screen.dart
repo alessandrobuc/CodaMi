@@ -4,9 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../../l10n/app_languages.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/locale_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../location/presentation/screens/city_setup_screen.dart';
+import '../../../reports/presentation/screens/my_reports_screen.dart';
 import '../providers/profile_provider.dart';
+import 'language_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -17,17 +22,17 @@ class ProfileScreen extends ConsumerWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign out?'),
-        content: const Text('You can log back in anytime.'),
+        title: Text(context.l10n.signOutTitle),
+        content: Text(context.l10n.signOutMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-            child: const Text('Sign out'),
+            child: Text(context.l10n.signOut),
           ),
         ],
       ),
@@ -37,13 +42,78 @@ class ProfileScreen extends ConsumerWidget {
     }
   }
 
+  Future<void> _confirmDeleteAccount(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(
+          Icons.warning_amber_rounded,
+          color: AppColors.danger,
+          size: 32,
+        ),
+        title: Text(context.l10n.deleteAccountTitle),
+        content: Text(
+          context.l10n.deleteAccountMessage,
+          textAlign: TextAlign.center,
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(context.l10n.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
+            child: Text(context.l10n.deleteAccount),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+
+    final navigator = Navigator.of(context, rootNavigator: true);
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => PopScope(
+        canPop: false,
+        child: AlertDialog(
+          content: Row(
+            children: [
+              const SizedBox(
+                width: 22,
+                height: 22,
+                child: CircularProgressIndicator(strokeWidth: 2.5),
+              ),
+              const SizedBox(width: 18),
+              Expanded(child: Text(context.l10n.deletingAccount)),
+            ],
+          ),
+        ),
+      ),
+    );
+    try {
+      await ref.read(authProvider.notifier).deleteAccount();
+      navigator.pop();
+    } catch (e) {
+      navigator.pop();
+      if (context.mounted) SnackbarUtils.showError(context, e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final info = ref.watch(currentUserInfoProvider);
     final textTheme = Theme.of(context).textTheme;
+    final l10n = context.l10n;
+    final language = appLanguageFor(ref.watch(localeProvider)?.languageCode);
 
     void comingSoon(String feature) =>
-        SnackbarUtils.showInfo(context, '$feature is coming soon.');
+        SnackbarUtils.showInfo(context, l10n.comingSoon(feature));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -52,7 +122,7 @@ class ProfileScreen extends ConsumerWidget {
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
           children: [
             Text(
-              'Profile',
+              l10n.profileTitle,
               style: textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: AppColors.text,
@@ -137,21 +207,22 @@ class ProfileScreen extends ConsumerWidget {
                 _ProfileTile(
                   icon: Icons.pets_rounded,
                   color: AppColors.accent,
-                  title: 'My pets',
+                  title: l10n.myPets,
                   onTap: onOpenPets,
                 ),
                 _ProfileTile(
                   icon: Icons.campaign_rounded,
                   color: AppColors.lostPin,
-                  title: 'My reports',
-                  soon: true,
-                  onTap: () => comingSoon('My reports'),
+                  title: l10n.myReports,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const MyReportsScreen()),
+                  ),
                 ),
                 _ProfileTile(
                   icon: Icons.location_city_rounded,
                   color: AppColors.primary,
-                  title: 'Home city',
-                  subtitle: info.city ?? 'Not set',
+                  title: l10n.homeCity,
+                  subtitle: info.city ?? l10n.notSet,
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => const CitySetupScreen(isEditing: true),
@@ -159,11 +230,22 @@ class ProfileScreen extends ConsumerWidget {
                   ),
                 ),
                 _ProfileTile(
+                  icon: Icons.translate_rounded,
+                  color: AppColors.accent,
+                  title: l10n.language,
+                  subtitle: language == null
+                      ? l10n.phoneLanguage
+                      : '${language.flag}  ${language.nativeName}',
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const LanguageScreen()),
+                  ),
+                ),
+                _ProfileTile(
                   icon: Icons.notifications_none_rounded,
                   color: AppColors.primaryDark,
-                  title: 'Notifications',
+                  title: l10n.notifications,
                   soon: true,
-                  onTap: () => comingSoon('Notifications'),
+                  onTap: () => comingSoon(l10n.notifications),
                 ),
               ],
             ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
@@ -171,7 +253,7 @@ class ProfileScreen extends ConsumerWidget {
             OutlinedButton.icon(
               onPressed: () => _confirmLogout(context, ref),
               icon: const Icon(Icons.logout_rounded),
-              label: const Text('Sign out'),
+              label: Text(l10n.signOut),
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.danger,
                 minimumSize: const Size.fromHeight(54),
@@ -184,6 +266,15 @@ class ProfileScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
+            ),
+            const SizedBox(height: 8),
+            TextButton(
+              onPressed: () => _confirmDeleteAccount(context, ref),
+              style: TextButton.styleFrom(
+                foregroundColor: AppColors.textMuted,
+                minimumSize: const Size.fromHeight(44),
+              ),
+              child: Text(l10n.deleteAccount),
             ),
           ],
         ),
@@ -270,8 +361,8 @@ class _ProfileTile extends StatelessWidget {
                 color: AppColors.background,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Text(
-                'Soon',
+              child: Text(
+                context.l10n.soon,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,

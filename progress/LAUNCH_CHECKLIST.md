@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Thu 8 Oct 2026_
+_Last updated: Fri 9 Oct 2026_
 
 ---
 
@@ -58,10 +58,9 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 5. App content and polish
 
-- [ ] **Italian translation** of all app text (spec requires Italian UI)
+- [ ] **Italian translation** of all app text (spec requires Italian UI). Setup done and first screens translated on 9 Oct; about 200 texts left. 10 languages set up with a picker in the profile; the 8 others still to translate
 - [ ] App name, icon and splash final check
 - [ ] Remove any test reports, test users and test pets from Firestore
-- [ ] **My reports** screen (manage your own reports from the profile)
 - [ ] Empty states, error messages and loading states reviewed on a slow connection
 - [ ] Test on a small phone and a large phone (layout never breaks)
 - [ ] Version name and number set in `pubspec.yaml`
@@ -70,7 +69,6 @@ Add SHA-1s to the existing key. Never replace them.
 
 - [ ] **Privacy policy** page (public URL): what data is stored (email, name, phone, photos, approximate location), why, and how to delete it
 - [ ] **Terms of use**
-- [ ] **Account deletion** inside the app (required by Google Play and Apple)
 - [ ] Google Play **Data safety** form
 - [ ] App Store **privacy labels**
 - [ ] Store screenshots (phone), feature graphic (Play), short and full description in Italian and English
@@ -96,3 +94,5 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] iOS uses Swift Package Manager only (no CocoaPods), minimum iOS 16
 - [x] Push notifications on Android with the CodaMi notification icon and channel
 - [x] Lists paginated (20 per page); map capped at 300 newest pins with clustering
+- [x] **My reports** screen in the profile (mark as found, delete)
+- [x] **Account deletion** inside the app (deletes profile, pets, reports, photos and login)

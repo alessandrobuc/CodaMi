@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
@@ -7,9 +8,11 @@ import '../../features/pets/domain/entities/pets_entity.dart';
 
 class PhotoUploader {
   final FirebaseStorage _storage;
+  final FirebaseFirestore _firestore;
 
-  PhotoUploader({FirebaseStorage? storage})
-    : _storage = storage ?? FirebaseStorage.instance;
+  PhotoUploader({FirebaseStorage? storage, FirebaseFirestore? firestore})
+    : _storage = storage ?? FirebaseStorage.instance,
+      _firestore = firestore ?? FirebaseFirestore.instance;
 
   Future<List<String>> upload({
     required String folder,
@@ -57,7 +60,34 @@ class PhotoUploader {
     return urls;
   }
 
-  Future<void> delete(Iterable<String> urls) async {
+  // Lost reports reuse their pet's photos, so a photo is only deleted once
+  // none of the owner's pets or reports point to it.
+  Future<void> deleteUnused({
+    required String ownerId,
+    required Iterable<String> urls,
+  }) async {
+    final candidates = urls.toSet();
+    if (candidates.isEmpty) return;
+    try {
+      final owned = await Future.wait([
+        for (final name in ['pets', 'reports'])
+          _firestore
+              .collection(name)
+              .where('ownerId', isEqualTo: ownerId)
+              .get(),
+      ]);
+      for (final doc in owned.expand((snap) => snap.docs)) {
+        final used = doc.data()['photoUrls'];
+        if (used is List) candidates.removeAll(used);
+      }
+    } catch (e) {
+      debugPrint('Could not check photo usage: $e');
+      return;
+    }
+    await _delete(candidates);
+  }
+
+  Future<void> _delete(Iterable<String> urls) async {
     for (final url in urls) {
       try {
         await _storage.refFromURL(url).delete();

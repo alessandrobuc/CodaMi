@@ -1,6 +1,8 @@
 import {initializeApp} from "firebase-admin/app";
+import {getAuth} from "firebase-admin/auth";
 import {FieldValue, getFirestore} from "firebase-admin/firestore";
 import {getMessaging} from "firebase-admin/messaging";
+import {getStorage} from "firebase-admin/storage";
 import {onDocumentCreated, onDocumentUpdated} from "firebase-functions/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
@@ -335,4 +337,38 @@ export const reverseGeocode = onCall(async (request) => {
     logger.error("Geocoding API unreachable", error);
     return {label: null, city: null};
   }
+});
+
+export const deleteAccount = onCall(async (request) => {
+  if (!request.auth) {
+    throw new HttpsError("unauthenticated", "Please sign in again.");
+  }
+  const uid = request.auth.uid;
+  const db = getFirestore();
+
+  try {
+    for (const name of ["reports", "pets"]) {
+      const owned = await db.collection(name).where("ownerId", "==", uid).get();
+      for (const group of chunk(owned.docs, 400)) {
+        const batch = db.batch();
+        group.forEach((doc) => batch.delete(doc.ref));
+        await batch.commit();
+      }
+    }
+    await db.recursiveDelete(db.collection("users").doc(uid));
+
+    const bucket = getStorage().bucket();
+    await Promise.all(
+      ["reports", "pets"].map((folder) =>
+        bucket.deleteFiles({prefix: `${folder}/${uid}/`}),
+      ),
+    );
+
+    await getAuth().deleteUser(uid);
+  } catch (error) {
+    logger.error("Account deletion failed", {uid, error});
+    throw new HttpsError("internal", "Couldn't delete your account. Please try again.");
+  }
+  logger.info("Account deleted", {uid});
+  return {deleted: true};
 });

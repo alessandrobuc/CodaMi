@@ -55,13 +55,14 @@ class PetsRemoteDataSource {
       for (final e in fields.entries) e.key: e.value ?? FieldValue.delete(),
       'updatedAt': FieldValue.serverTimestamp(),
     });
-    await _photos.delete(
-      existing.photoUrls.where((url) => !photoUrls.contains(url)),
+    await _photos.deleteUnused(
+      ownerId: ownerId,
+      urls: existing.photoUrls.where((url) => !photoUrls.contains(url)),
     );
   }
 
   Future<void> deletePet(Pet pet) async {
     await _pets.doc(pet.id).delete();
-    await _photos.delete(pet.photoUrls);
+    await _photos.deleteUnused(ownerId: pet.ownerId, urls: pet.photoUrls);
   }
 }

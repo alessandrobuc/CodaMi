@@ -21,6 +21,10 @@ class ReportsRepositoryImpl implements ReportsRepository {
       _remote.watchResolvedReports(limit: limit);
 
   @override
+  Stream<List<Report>> watchMyReports(String ownerId, {required int limit}) =>
+      _remote.watchMyReports(ownerId, limit: limit);
+
+  @override
   Stream<Report?> watchReport(String id) => _remote.watchReport(id);
 
   @override
@@ -41,6 +45,12 @@ class ReportsRepositoryImpl implements ReportsRepository {
   Future<void> markResolved(Report report) => _guard(
     () => _remote.markResolved(report),
     failure: 'Couldn\'t update the report. Please try again.',
+  );
+
+  @override
+  Future<void> deleteReport(Report report) => _guard(
+    () => _remote.deleteReport(report),
+    failure: 'Couldn\'t delete the report. Please try again.',
   );
 
   Future<T> _guard<T>(

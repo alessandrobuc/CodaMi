@@ -42,6 +42,19 @@ class ReportsRemoteDataSource {
         );
   }
 
+  Stream<List<Report>> watchMyReports(String ownerId, {required int limit}) {
+    return _reports
+        .where('ownerId', isEqualTo: ownerId)
+        .orderBy('createdAt', descending: true)
+        .limit(limit)
+        .snapshots()
+        .map(
+          (snap) => snap.docs
+              .map((d) => ReportModel.fromMap(d.id, d.data()))
+              .toList(),
+        );
+  }
+
   Stream<Report?> watchReport(String id) {
     return _reports
         .doc(id)
@@ -82,5 +95,10 @@ class ReportsRemoteDataSource {
       'resolvedAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     });
+  }
+
+  Future<void> deleteReport(Report report) async {
+    await _reports.doc(report.id).delete();
+    await _photos.deleteUnused(ownerId: report.ownerId, urls: report.photoUrls);
   }
 }

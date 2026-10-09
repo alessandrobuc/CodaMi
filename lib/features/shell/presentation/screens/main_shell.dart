@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/navigation/app_navigator.dart';
+import '../../../../l10n/l10n.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
@@ -21,19 +22,19 @@ class MainShell extends ConsumerStatefulWidget {
 
 class _MainShellState extends ConsumerState<MainShell>
     with SingleTickerProviderStateMixin {
-  static const _items = [
+  static List<NavItem> _items(BuildContext context) => [
     NavItem(
-      label: 'Home',
+      label: context.l10n.navHome,
       icon: Icons.home_outlined,
       activeIcon: Icons.home_rounded,
     ),
     NavItem(
-      label: 'Pets',
+      label: context.l10n.navPets,
       icon: Icons.pets_outlined,
       activeIcon: Icons.pets_rounded,
     ),
     NavItem(
-      label: 'Profile',
+      label: context.l10n.navProfile,
       icon: Icons.person_outline_rounded,
       activeIcon: Icons.person_rounded,
     ),
@@ -116,7 +117,7 @@ class _MainShellState extends ConsumerState<MainShell>
           ),
         ),
         bottomNavigationBar: AnimatedNavBar(
-          items: _items,
+          items: _items(context),
           currentIndex: _index,
           onTap: _select,
         ),

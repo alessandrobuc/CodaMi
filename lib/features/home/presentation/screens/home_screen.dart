@@ -474,7 +474,7 @@ class _SegmentTabs extends StatelessWidget {
       child: Stack(
         children: [
           AnimatedAlign(
-            alignment: Alignment(-1 + index * 1.0, 0),
+            alignment: AlignmentDirectional(-1 + index * 1.0, 0),
             duration: const Duration(milliseconds: 350),
             curve: Curves.easeOutBack,
             child: FractionallySizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../data/datasources/reports_remote_data_source.dart';
 import '../../data/repositories/reports_repository_impl.dart';
 import '../../domain/entities/reports_entity.dart';
@@ -9,6 +10,7 @@ import '../../domain/usecases/get_reports_usecase.dart';
 const reportsPageSize = 20;
 const mapPinLimit = 300;
 const resolvedLimit = 20;
+const myReportsLimit = 100;
 
 final reportsRepositoryProvider = Provider<ReportsRepository>(
   (ref) => ReportsRepositoryImpl(ReportsRemoteDataSource()),
@@ -63,3 +65,11 @@ final resolvedReportsProvider = StreamProvider<List<Report>>(
 final reportProvider = StreamProvider.family<Report?, String>(
   (ref, id) => ref.watch(reportsRepositoryProvider).watchReport(id),
 );
+
+final myReportsProvider = StreamProvider<List<Report>>((ref) {
+  final uid = ref.watch(authStateProvider.select((s) => s.value?.uid));
+  if (uid == null) return Stream.value(const []);
+  return ref
+      .watch(reportsRepositoryProvider)
+      .watchMyReports(uid, limit: myReportsLimit);
+});

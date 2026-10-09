@@ -9,11 +9,12 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../../l10n/l10n.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/entities/reports_entity.dart';
-import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
+import '../widgets/report_actions.dart';
 import '../widgets/reports_widget.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
@@ -29,6 +30,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
   final _pageController = PageController();
   int _page = 0;
   bool _resolving = false;
+  bool _deleting = false;
 
   @override
   void dispose() {
@@ -86,53 +88,22 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
     );
   }
 
-  Future<void> _resolve(Report r) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.celebration_rounded,
-          color: AppColors.primary,
-          size: 32,
-        ),
-        title: Text(
-          r.type == ReportType.lost
-              ? 'Is ${r.petName} back home?'
-              : 'Has the owner been found?',
-        ),
-        content: Text(
-          r.type == ReportType.lost
-              ? 'The report will move to "Back home" in the Found tab, so neighbours know ${r.petName} is safe.'
-              : 'The report will move to "Reunited" in the Found tab.',
-          textAlign: TextAlign.center,
-        ),
-        actionsAlignment: MainAxisAlignment.center,
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Not yet'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Yes, resolved'),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !mounted) return;
+  void _setBusy(bool resolving, bool value) {
+    if (!mounted) return;
+    setState(() => resolving ? _resolving = value : _deleting = value);
+  }
 
-    setState(() => _resolving = true);
-    try {
-      await ref.read(reportsRepositoryProvider).markResolved(r);
-      HapticFeedback.lightImpact();
-      if (mounted) {
-        SnackbarUtils.showSuccess(context, 'Wonderful news! Report resolved.');
-      }
-    } on ReportsException catch (e) {
-      if (mounted) SnackbarUtils.showError(context, e.message);
-    } finally {
-      if (mounted) setState(() => _resolving = false);
-    }
+  Future<void> _resolve(Report r) =>
+      resolveReport(context, ref, r, onBusy: (v) => _setBusy(true, v));
+
+  Future<void> _delete(Report r) async {
+    final deleted = await deleteReport(
+      context,
+      ref,
+      r,
+      onBusy: (v) => _setBusy(false, v),
+    );
+    if (deleted && mounted) Navigator.of(context).pop();
   }
 
   @override
@@ -350,7 +321,9 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   _OwnerActions(
                     report: report,
                     resolving: _resolving,
+                    deleting: _deleting,
                     onResolve: () => _resolve(report),
+                    onDelete: () => _delete(report),
                     onCall: () => _call(report),
                     onEmail: () => _email(report),
                   )
@@ -623,7 +596,9 @@ class _ContactButton extends StatelessWidget {
 class _OwnerActions extends StatelessWidget {
   final Report report;
   final bool resolving;
+  final bool deleting;
   final VoidCallback onResolve;
+  final VoidCallback onDelete;
 
   final VoidCallback onCall;
   final VoidCallback onEmail;
@@ -631,43 +606,68 @@ class _OwnerActions extends StatelessWidget {
   const _OwnerActions({
     required this.report,
     required this.resolving,
+    required this.deleting,
     required this.onResolve,
+    required this.onDelete,
     required this.onCall,
     required this.onEmail,
   });
 
   @override
   Widget build(BuildContext context) {
+    final delete = TextButton.icon(
+      onPressed: deleting ? null : onDelete,
+      icon: deleting
+          ? const SizedBox(
+              width: 16,
+              height: 16,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          : const Icon(Icons.delete_outline_rounded),
+      label: Text(context.l10n.deleteReport),
+      style: TextButton.styleFrom(
+        foregroundColor: AppColors.danger,
+        minimumSize: const Size.fromHeight(48),
+      ),
+    );
+
     if (!report.isOpen) {
-      return Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColors.primary.withValues(alpha: 0.08),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          children: [
-            const Icon(
-              Icons.celebration_rounded,
-              color: AppColors.primary,
-              size: 28,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppColors.primary.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(20),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                report.type == ReportType.lost
-                    ? '${report.petName} is back home. Thank you for using CodaMi!'
-                    : 'This pet is back with its family. Thank you for helping!',
-                style: const TextStyle(
-                  color: AppColors.text,
-                  fontWeight: FontWeight.w600,
-                  height: 1.4,
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.celebration_rounded,
+                  color: AppColors.primary,
+                  size: 28,
                 ),
-              ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    report.type == ReportType.lost
+                        ? '${report.petName} is back home. Thank you for using CodaMi!'
+                        : 'This pet is back with its family. Thank you for helping!',
+                    style: const TextStyle(
+                      color: AppColors.text,
+                      fontWeight: FontWeight.w600,
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ).animate().fadeIn().scale(begin: const Offset(0.95, 0.95));
+          ).animate().fadeIn().scale(begin: const Offset(0.95, 0.95)),
+          const SizedBox(height: 8),
+          delete,
+        ],
+      );
     }
 
     final phone = report.contactPhone;
@@ -731,6 +731,8 @@ class _OwnerActions extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 8),
+        delete,
       ],
     );
   }

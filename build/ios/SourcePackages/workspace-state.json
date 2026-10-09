@@ -93,6 +93,26 @@
           "location" : "https://github.com/google/GoogleAppMeasurement.git",
           "name" : "GoogleAppMeasurement"
         },
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurementIdentitySupport/GoogleAppMeasurementIdentitySupport.xcframework",
+        "source" : {
+          "checksum" : "600d586bf3fb35b69822487f3748691b241b6eba70e75cc344ed8dcd55da2626",
+          "type" : "remote",
+          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.2/GoogleAppMeasurementIdentitySupport.zip"
+        },
+        "targetName" : "GoogleAppMeasurementIdentitySupport"
+      },
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "googleappmeasurement",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/google/GoogleAppMeasurement.git",
+          "name" : "GoogleAppMeasurement"
+        },
         "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurement/GoogleAppMeasurement.xcframework",
         "source" : {
           "checksum" : "b7d529c22a11411fb112772db2b80d134fc2b2e5d67899ab1f67a6b36ed23603",
@@ -108,18 +128,18 @@
           }
         },
         "packageRef" : {
-          "identity" : "googleappmeasurement",
+          "identity" : "grpc-binary",
           "kind" : "remoteSourceControl",
-          "location" : "https://github.com/google/GoogleAppMeasurement.git",
-          "name" : "GoogleAppMeasurement"
+          "location" : "https://github.com/google/grpc-binary.git",
+          "name" : "gRPC"
         },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/googleappmeasurement/GoogleAppMeasurementIdentitySupport/GoogleAppMeasurementIdentitySupport.xcframework",
+        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
         "source" : {
-          "checksum" : "600d586bf3fb35b69822487f3748691b241b6eba70e75cc344ed8dcd55da2626",
+          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
           "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/swiftpm/12.19.2/GoogleAppMeasurementIdentitySupport.zip"
+          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
         },
-        "targetName" : "GoogleAppMeasurementIdentitySupport"
+        "targetName" : "grpc"
       },
       {
         "kind" : {
@@ -160,26 +180,6 @@
           "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpcpp.zip"
         },
         "targetName" : "grpcpp"
-      },
-      {
-        "kind" : {
-          "xcframework" : {
-
-          }
-        },
-        "packageRef" : {
-          "identity" : "grpc-binary",
-          "kind" : "remoteSourceControl",
-          "location" : "https://github.com/google/grpc-binary.git",
-          "name" : "gRPC"
-        },
-        "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/build/ios/SourcePackages/artifacts/grpc-binary/grpc/grpc.xcframework",
-        "source" : {
-          "checksum" : "61bb6e29798cdc6898d7fcdf2d6a5e5191524dea4ece59d582329a1a56ebbfb3",
-          "type" : "remote",
-          "url" : "https://dl.google.com/firebase/ios/bin/grpc/1.69.1/rc0/grpc.zip"
-        },
-        "targetName" : "grpc"
       },
       {
         "kind" : {
@@ -690,6 +690,20 @@
           "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/share_plus-13.3.1"
         },
         "subpath" : "share_plus-13.3.1"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "shared_preferences_foundation-2.5.7",
+          "kind" : "fileSystem",
+          "location" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/shared_preferences_foundation-2.5.7",
+          "name" : "shared_preferences_foundation"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/ammar/Desktop/flutter apps/CodaMi/ios/Flutter/ephemeral/Packages/.packages/shared_preferences_foundation-2.5.7"
+        },
+        "subpath" : "shared_preferences_foundation-2.5.7"
       },
       {
         "basedOn" : null,

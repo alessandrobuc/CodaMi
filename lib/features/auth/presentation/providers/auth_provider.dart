@@ -1,5 +1,7 @@
+import '../../../location/data/datasources/places_service.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -49,7 +51,7 @@ class AuthRepository {
     final GoogleSignInAuthentication googleAuth = await account.authentication;
     final GoogleSignInClientAuthorization? authorization = await account
         .authorizationClient
-        ?.authorizationForScopes(_googleScopes);
+        .authorizationForScopes(_googleScopes);
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: authorization?.accessToken,
@@ -179,6 +181,17 @@ class AuthRepository {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+
+  Future<void> deleteAccount() async {
+    await FirebaseFunctions.instanceFor(region: PlacesService.functionsRegion)
+        .httpsCallable(
+          'deleteAccount',
+          options: HttpsCallableOptions(timeout: const Duration(seconds: 60)),
+        )
+        .call<Object?>();
+    if (_isGoogleInitialized) await GoogleSignIn.instance.signOut();
+    await _auth.signOut();
+  }
 }
 
 class AuthNotifier extends AsyncNotifier<void> {
@@ -236,6 +249,23 @@ class AuthNotifier extends AsyncNotifier<void> {
       state = const AsyncValue.data(null);
     } catch (e) {
       state = AsyncValue.error(e.toString(), StackTrace.current);
+    }
+  }
+
+  // Push stops first, so a token refresh can't recreate the deleted profile.
+  Future<void> deleteAccount() async {
+    await ref.read(pushServiceProvider).stop();
+    try {
+      await ref.read(authRepositoryProvider).deleteAccount();
+    } on FirebaseFunctionsException catch (e) {
+      throw switch (e.code) {
+        'unavailable' || 'deadline-exceeded' =>
+          'You\'re offline. Check your connection and try again.',
+        'unauthenticated' => 'Your session expired. Please sign in again.',
+        _ => 'Couldn\'t delete your account. Please try again.',
+      };
+    } catch (_) {
+      throw 'Couldn\'t delete your account. Please try again.';
     }
   }
 
