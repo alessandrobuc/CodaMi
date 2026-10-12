@@ -11,21 +11,9 @@ import '../../../reports/presentation/screens/create_report_screen.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
 import 'pet_form_screen.dart';
-
-const _months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
+import 'package:intl/intl.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 class PetDetailScreen extends ConsumerStatefulWidget {
   final Pet pet;
@@ -56,7 +44,7 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
     );
     if (name != null && mounted) {
       if (_page >= pet.photoUrls.length) _pageController.jumpToPage(0);
-      SnackbarUtils.showSuccess(context, '$name was updated.');
+      SnackbarUtils.showSuccess(context, context.l10n.petUpdated(name));
     }
   }
 
@@ -69,21 +57,21 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
           color: AppColors.danger,
           size: 32,
         ),
-        title: Text('Remove ${pet.name}?'),
-        content: const Text(
-          'This deletes the profile and its photos. It can\'t be undone.',
+        title: Text(context.l10n.removePetTitle(pet.name)),
+        content: Text(
+          context.l10n.removePetMessage,
           textAlign: TextAlign.center,
         ),
         actionsAlignment: MainAxisAlignment.center,
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
-            child: const Text('Remove'),
+            child: Text(context.l10n.remove),
           ),
         ],
       ),
@@ -95,7 +83,7 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
       await ref.read(petsRepositoryProvider).deletePet(pet);
       if (!mounted) return;
       Navigator.of(context).pop();
-      SnackbarUtils.showSuccess(context, '${pet.name} was removed.');
+      SnackbarUtils.showSuccess(context, context.l10n.petRemoved(pet.name));
     } on PetsException catch (e) {
       if (!mounted) return;
       setState(() => _deleting = false);
@@ -230,7 +218,7 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                pet.subtitle,
+                                pet.subtitle(context.l10n),
                                 style: textTheme.bodyLarge?.copyWith(
                                   color: AppColors.textMuted,
                                 ),
@@ -256,19 +244,19 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                                 _InfoTile(
                                   icon: Icons.pets_rounded,
                                   color: AppColors.primary,
-                                  label: 'Breed',
+                                  label: context.l10n.breed,
                                   value: pet.breed,
                                 ),
                                 _InfoTile(
                                   icon: Icons.palette_outlined,
                                   color: AppColors.accent,
-                                  label: 'Color',
+                                  label: context.l10n.color,
                                   value: pet.color,
                                 ),
                                 _InfoTile(
                                   icon: Icons.cake_outlined,
                                   color: AppColors.lostPin,
-                                  label: 'Age',
+                                  label: context.l10n.age,
                                   value: pet.age,
                                 ),
                                 _InfoTile(
@@ -276,8 +264,8 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                                       sexIcon(pet.sex) ??
                                       Icons.help_outline_rounded,
                                   color: sexColor(pet.sex),
-                                  label: 'Sex',
-                                  value: pet.sex?.label,
+                                  label: context.l10n.sex,
+                                  value: pet.sex?.label(context.l10n),
                                 ),
                               ]
                               .animate(interval: 60.ms)
@@ -304,7 +292,11 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                       const SizedBox(height: 16),
                       Center(
                         child: Text(
-                          'Added ${_months[pet.createdAt!.month - 1]} ${pet.createdAt!.day}, ${pet.createdAt!.year}',
+                          context.l10n.petAddedOn(
+                            DateFormat.yMMMd(
+                              context.l10n.localeName,
+                            ).format(pet.createdAt!),
+                          ),
                           style: textTheme.bodySmall?.copyWith(
                             color: AppColors.textMuted,
                           ),
@@ -394,7 +386,7 @@ class _SpeciesBadge extends StatelessWidget {
           FaIcon(speciesIcon(species), size: 14, color: color),
           const SizedBox(width: 6),
           Text(
-            species.label,
+            species.label(context.l10n),
             style: TextStyle(color: color, fontWeight: FontWeight.w700),
           ),
         ],
@@ -484,17 +476,17 @@ class _FeaturesCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.auto_awesome_rounded,
                 size: 18,
                 color: AppColors.accent,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
-                'Distinctive features',
-                style: TextStyle(
+                context.l10n.distinctiveFeatures,
+                style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   color: AppColors.text,
                 ),
@@ -536,16 +528,16 @@ class _ReportLostCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'If $petName ever goes missing',
+            context.l10n.ifPetGoesMissing(petName),
             style: const TextStyle(
               fontWeight: FontWeight.w700,
               color: AppColors.text,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
-            'Publish a lost report with this profile in seconds, and neighbours nearby will be alerted.',
-            style: TextStyle(
+          Text(
+            context.l10n.ifPetGoesMissingBody,
+            style: const TextStyle(
               fontSize: 13,
               color: AppColors.textMuted,
               height: 1.45,
@@ -555,7 +547,7 @@ class _ReportLostCard extends StatelessWidget {
           ElevatedButton.icon(
             onPressed: onReport,
             icon: const Icon(Icons.campaign_rounded),
-            label: Text('Report $petName as lost'),
+            label: Text(context.l10n.reportPetAsLost(petName)),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.lostPin,
               foregroundColor: Colors.white,

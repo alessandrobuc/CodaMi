@@ -1,38 +1,44 @@
 {
   "@@locale": "en",
-
   "navHome": "Home",
   "navPets": "Pets",
   "navProfile": "Profile",
-
   "cancel": "Cancel",
   "delete": "Delete",
   "notSet": "Not set",
   "soon": "Soon",
   "comingSoon": "{feature} is coming soon.",
-  "@comingSoon": {"placeholders": {"feature": {"type": "String"}}},
-
+  "@comingSoon": {
+    "placeholders": {
+      "feature": {
+        "type": "String"
+      }
+    }
+  },
   "profileTitle": "Profile",
   "myPets": "My pets",
   "myReports": "My reports",
   "homeCity": "Home city",
   "notifications": "Notifications",
+  "chooseLanguage": "Choose your language",
   "language": "Language",
-  "phoneLanguage": "Phone language",
-  "phoneLanguageHint": "Follow your phone's settings",
   "signOut": "Sign out",
   "signOutTitle": "Sign out?",
   "signOutMessage": "You can log back in anytime.",
-
   "deleteAccount": "Delete account",
   "deleteAccountTitle": "Delete your account?",
   "deleteAccountMessage": "This permanently deletes your profile, your pets, your reports and their photos. It can't be undone.",
   "deletingAccount": "Deleting your account…",
-
   "myReportsSubtitle": "Keep your reports up to date.",
   "statTotal": "Total",
   "postedOn": "Posted {date}",
-  "@postedOn": {"placeholders": {"date": {"type": "String"}}},
+  "@postedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "reportActive": "Active",
   "reportResolved": "Resolved",
   "myReportsLoadError": "Couldn't load your reports",
@@ -47,20 +53,768 @@
   "backHome": "Back home",
   "reunited": "Reunited",
   "deleteReport": "Delete report",
-
   "resolveLostTitle": "Is {petName} back home?",
-  "@resolveLostTitle": {"placeholders": {"petName": {"type": "String"}}},
+  "@resolveLostTitle": {
+    "placeholders": {
+      "petName": {
+        "type": "String"
+      }
+    }
+  },
   "resolveFoundTitle": "Has the owner been found?",
   "resolveLostMessage": "The report will move to \"Back home\" in the Found tab, so neighbours know {petName} is safe.",
-  "@resolveLostMessage": {"placeholders": {"petName": {"type": "String"}}},
+  "@resolveLostMessage": {
+    "placeholders": {
+      "petName": {
+        "type": "String"
+      }
+    }
+  },
   "resolveFoundMessage": "The report will move to \"Reunited\" in the Found tab.",
   "notYet": "Not yet",
   "yesResolved": "Yes, resolved",
   "reportResolvedSuccess": "Wonderful news! Report resolved.",
-
   "deleteReportTitle": "Delete this report?",
   "deleteOpenReportMessage": "It will disappear from the map and lists. If {petName} is safe, mark the report as found instead, so neighbours know.",
-  "@deleteOpenReportMessage": {"placeholders": {"petName": {"type": "String"}}},
+  "@deleteOpenReportMessage": {
+    "placeholders": {
+      "petName": {
+        "type": "String"
+      }
+    }
+  },
   "deleteResolvedReportMessage": "It will be removed from the map and the \"Back home\" list.",
-  "reportDeleted": "Report deleted."
+  "reportDeleted": "Report deleted.",
+  "onboarding1Title": "Every pet deserves\na ",
+  "onboarding1Highlight": "way home",
+  "onboarding1Body": "CodaMi connects neighbours so lost dogs and cats find their way back to the people who love them.",
+  "onboarding2Title": "Report a pet\nin ",
+  "onboarding2Highlight": "seconds",
+  "onboarding2Body": "Snap a photo, drop the location and publish a lost or found report. Everyone nearby sees it instantly.",
+  "onboarding3Title": "See who's\n",
+  "onboarding3Highlight": "nearby",
+  "onboarding3Body": "Lost and found pets around you, live on one map, so you always know where to look.",
+  "skip": "Skip",
+  "getStarted": "Get Started",
+  "lost": "Lost",
+  "found": "Found",
+  "you": "You",
+  "published": "Published",
+  "onboardingSampleBreed": "Golden Retriever · 3 yrs",
+  "onboardingSamplePlace": "Milano · 2h ago",
+  "validationNameRequired": "Please enter your name",
+  "validationNameTooShort": "Name must be at least 2 characters",
+  "validationNameTooLong": "Name must be under 50 characters",
+  "validationNameInvalid": "Name can only contain letters, spaces, hyphens and apostrophes",
+  "validationEmailRequired": "Please enter your email",
+  "validationEmailInvalid": "Please enter a valid email address",
+  "validationPasswordRequired": "Please enter your password",
+  "validationPasswordTooShort": "Password must be at least 8 characters long",
+  "validationConfirmRequired": "Please confirm your password",
+  "validationPasswordsDontMatch": "Passwords do not match",
+  "spamNote": "Can't find the reset email? Check your Spam or Junk folder, it sometimes lands there.",
+  "logIn": "Log In",
+  "signUp": "Sign Up",
+  "authResetSentTitle": "Check your inbox",
+  "authResetSentSubtitle": "We've sent you a link to reset your password.",
+  "authLoginTitle": "Welcome back!",
+  "authLoginSubtitle": "Log in to keep helping pets find their way home.",
+  "authSignupTitle": "Join the pack",
+  "authSignupSubtitle": "Create an account and help your neighbourhood.",
+  "authForgotTitle": "Forgot password?",
+  "authForgotSubtitle": "No worries, we'll email you a reset link.",
+  "fullName": "Full Name",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "forgotPassword": "Forgot Password?",
+  "createAccount": "Create Account",
+  "sendResetLink": "Send Reset Link",
+  "or": "or",
+  "continueWithGoogle": "Continue with Google",
+  "continueWithApple": "Continue with Apple",
+  "resetLinkSentTo": "We sent a reset link to",
+  "backToLogIn": "Back to Log In",
+  "sendAgain": "Didn't get it? Send again",
+  "errorOffline": "You're offline. Check your connection and try again.",
+  "errorSessionExpired": "Your session expired. Please sign in again.",
+  "deleteAccountFailed": "Couldn't delete your account. Please try again.",
+  "authErrorGeneric": "Something went wrong. Please try again.",
+  "authErrorDisabled": "This account has been disabled.",
+  "authErrorWrongCredentials": "Wrong email or password.",
+  "authErrorEmailInUse": "An account with this email already exists. Try logging in.",
+  "authErrorTooManyRequests": "Too many attempts. Please wait a moment and try again.",
+  "citySearchFailed": "City search failed. Please try again.",
+  "placeSearchFailed": "Place search failed. Please try again.",
+  "placeOutsideCity": "That place is outside your city. Please pick one in your city.",
+  "placeNotFound": "We couldn't find that place. Please pick another one.",
+  "citySearchOffline": "Couldn't reach city search. Check your connection and try again.",
+  "searchCityHint": "Search your city, e.g. Milano",
+  "noCitiesFound": "No cities found for \"{query}\".",
+  "@noCitiesFound": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "homeCityUpdated": "Home city updated to {city}.",
+  "@homeCityUpdated": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "saveCityFailed": "Couldn't save your city. Please try again.",
+  "citySetupTitle": "Where are ",
+  "citySetupHighlight": "you?",
+  "cityEditTitle": "Change your ",
+  "cityEditHighlight": "city",
+  "citySetupBody": "Pick your city so we can show lost & found pets near you and let you know when a pet goes missing in your area.",
+  "saveCity": "Save city",
+  "continueLabel": "Continue",
+  "notYouSignOut": "Not you? Sign out",
+  "greeting": "Hi, {name}!",
+  "@greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "showPetsWithin": "Show pets within",
+  "distanceFrom": "Distance from {city}",
+  "@distanceFrom": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "everywhere": "Everywhere",
+  "distanceKm": "{km} km",
+  "@distanceKm": {
+    "placeholders": {
+      "km": {
+        "type": "int"
+      }
+    }
+  },
+  "withinKm": "within {km} km",
+  "@withinKm": {
+    "placeholders": {
+      "km": {
+        "type": "int"
+      }
+    }
+  },
+  "areaNotSet": "Area not set yet",
+  "reportPetSemantics": "Report a lost or found pet",
+  "map": "Map",
+  "locationServicesOff": "Turn on location services to use your location.",
+  "locationPermissionDenied": "Allow location access in Settings to use your location.",
+  "locationFailed": "Couldn't get your location. Please try again.",
+  "back": "Back",
+  "fullScreen": "Full screen",
+  "loadingPets": "Loading pets…",
+  "mapLoadFailed": "Couldn't load reports. Check your connection.",
+  "mapNoLost": "No lost pets in this area",
+  "mapNoFound": "No found pets in this area",
+  "mapNoPets": "No lost or found pets in this area",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "myLocation": "My location",
+  "myCity": "My city",
+  "all": "All",
+  "timeJustNow": "Just now",
+  "timeMinutesAgo": "{minutes} min ago",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHoursAgo": "{hours} h ago",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "timeYesterday": "Yesterday",
+  "timeDaysAgo": "{days} days ago",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "notifLostTitle": "Lost pet in {city}",
+  "@notifLostTitle": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifLostBodyNear": "{pet} was last seen near {street}, {city}. Keep an eye out!",
+  "@notifLostBodyNear": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      },
+      "street": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifLostBodyIn": "{pet} was last seen in {city}. Keep an eye out!",
+  "@notifLostBodyIn": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifFoundTitle": "Pet found in {city}",
+  "@notifFoundTitle": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifFoundBodyNear": "{pet} was found near {street}, {city}. Do you know the owner?",
+  "@notifFoundBodyNear": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      },
+      "street": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifFoundBodyIn": "{pet} was found in {city}. Do you know the owner?",
+  "@notifFoundBodyIn": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifBackHomeTitle": "{pet} is back home",
+  "@notifBackHomeTitle": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "notifBackHomeBody": "Good news from {city}: {pet} has been found. Thank you for helping!",
+  "@notifBackHomeBody": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notifReunitedTitle": "{pet} is reunited",
+  "@notifReunitedTitle": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "notifReunitedBody": "The pet found in {city} is back with its family.",
+  "@notifReunitedBody": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTitle": "Notifications",
+  "markAllRead": "Mark all read",
+  "notificationsLoadError": "Couldn't load notifications",
+  "allCaughtUp": "You're all caught up",
+  "notificationsEmpty": "We'll let you know when a pet is lost or found in your city.",
+  "notificationsNew": "New",
+  "notificationsEarlier": "Earlier",
+  "reportNotAvailable": "Report not available",
+  "reportRemoved": "This report was removed by its owner.",
+  "reportsLoadError": "Couldn't load reports",
+  "pullToRetry": "Check your connection and pull down to try again.",
+  "noLostNearby": "No lost pets nearby",
+  "noLostNearbyMessage": "Good news! Nobody has reported a lost pet in your area yet.",
+  "noFoundYet": "No found pets yet",
+  "noFoundYetMessage": "Pets found by your neighbours will show up here.",
+  "backHomeSection": "Back home",
+  "backHomeSectionSubtitle": "Pets that found their way back to their families.",
+  "loadMore": "Load more",
+  "speciesDog": "Dog",
+  "speciesCat": "Cat",
+  "speciesOther": "Other",
+  "sexMale": "Male",
+  "sexFemale": "Female",
+  "sexUnknown": "Unknown",
+  "nearPlace": "Near {street}, {city}",
+  "@nearPlace": {
+    "placeholders": {
+      "street": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "callFailed": "Couldn't start a call.",
+  "whatsappFailed": "Couldn't open WhatsApp.",
+  "emailFailed": "Couldn't open your email app.",
+  "whatsappMessageLost": "Hi! I'm contacting you about the lost pet \"{pet}\" on CodaMi.",
+  "@whatsappMessageLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "whatsappMessageFound": "Hi! I'm contacting you about the found pet \"{pet}\" on CodaMi.",
+  "@whatsappMessageFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "emailSubjectLost": "About {pet} (lost pet on CodaMi)",
+  "@emailSubjectLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "emailSubjectFound": "About {pet} (found pet on CodaMi)",
+  "@emailSubjectFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "shareTitleLost": "LOST PET: {pet}",
+  "@shareTitleLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "shareTitleFound": "FOUND PET: {pet}",
+  "@shareTitleFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "shareFooter": "Seen this pet? Open CodaMi to get in touch.",
+  "lastSeen": "Last seen",
+  "foundAt": "Found at",
+  "areaAbout": "area of about {meters} m",
+  "@areaAbout": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "when": "When",
+  "postedBy": "Posted by",
+  "description": "Description",
+  "call": "Call",
+  "contactTitleLost": "Seen {pet}? Get in touch",
+  "@contactTitleLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "contactTitleFound": "Is this your pet? Get in touch",
+  "noContactShared": "No contact details were shared.",
+  "resolvedThanksLost": "{pet} is back home. Thank you for using CodaMi!",
+  "@resolvedThanksLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "resolvedThanksFound": "This pet is back with its family. Thank you for helping!",
+  "yourContactDetails": "Your contact details",
+  "markPetAsFound": "Mark {pet} as found",
+  "@markPetAsFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "markReturnedToOwner": "Mark as returned to owner",
+  "copiedToClipboard": "Copied to clipboard.",
+  "petSaveFailed": "Couldn't save your pet. Please try again.",
+  "petDeleteFailed": "Couldn't delete your pet. Please try again.",
+  "errorPermission": "You don't have permission to do that.",
+  "storageNotReady": "Photo storage isn't set up yet. Please try again later.",
+  "storageFull": "Storage is full right now. Please try again later.",
+  "petAdded": "{name} was added to your pets.",
+  "@petAdded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "petsLoadError": "Couldn't load your pets",
+  "noPetsYet": "No pets yet",
+  "noPetsYetMessage": "Add your pets now so you can report them in seconds if they ever get lost.",
+  "addFirstPet": "Add your first pet",
+  "petsHeaderEmpty": "Keep your pets' profiles ready, just in case.",
+  "petsHeaderCount": "{count, plural, =1{1 furry friend, ready if anything happens.} other{{count} furry friends, ready if anything happens.}}",
+  "@petsHeaderCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addPet": "Add pet",
+  "petUpdated": "{name} was updated.",
+  "@petUpdated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removePetTitle": "Remove {name}?",
+  "@removePetTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removePetMessage": "This deletes the profile and its photos. It can't be undone.",
+  "remove": "Remove",
+  "petRemoved": "{name} was removed.",
+  "@petRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "breed": "Breed",
+  "color": "Color",
+  "age": "Age",
+  "sex": "Sex",
+  "petAddedOn": "Added {date}",
+  "@petAddedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "distinctiveFeatures": "Distinctive features",
+  "ifPetGoesMissing": "If {name} ever goes missing",
+  "@ifPetGoesMissing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ifPetGoesMissingBody": "Publish a lost report with this profile in seconds, and neighbours nearby will be alerted.",
+  "reportPetAsLost": "Report {name} as lost",
+  "@reportPetAsLost": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "colorBlack": "Black",
+  "colorWhite": "White",
+  "colorBrown": "Brown",
+  "colorGolden": "Golden",
+  "colorGrey": "Grey",
+  "colorCream": "Cream",
+  "colorGinger": "Ginger",
+  "petPhotoRequired": "Add at least one photo of your pet.",
+  "petSpeciesRequired": "Choose whether your pet is a dog, cat or other.",
+  "checkHighlightedFields": "Please check the highlighted fields.",
+  "signInToSave": "Please sign in again to save.",
+  "discardChangesTitle": "Discard changes?",
+  "discardPetChanges": "Your changes to this pet will be lost.",
+  "keepEditing": "Keep editing",
+  "discard": "Discard",
+  "editPetTitle": "Edit {name}",
+  "@editPetTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "newPet": "New pet",
+  "whatKindOfPet": "What kind of pet?",
+  "name": "Name",
+  "petNameHint": "e.g. Luna",
+  "petNameRequired": "Please enter your pet's name",
+  "petNameTooLong": "Name must be under 40 characters",
+  "breedHint": "e.g. Golden Retriever, Mixed",
+  "colorHint": "e.g. Golden with white chest",
+  "ageHint": "e.g. 3 years, 8 months",
+  "featuresHint": "Collar, microchip, scars, spots… anything that helps someone recognise your pet.",
+  "saveChanges": "Save changes",
+  "savePet": "Save pet",
+  "cameraPermission": "Please allow camera access in Settings.",
+  "photosPermission": "Please allow photo access in Settings.",
+  "cameraFailed": "Couldn't open the camera.",
+  "galleryFailed": "Couldn't open the gallery.",
+  "optional": "Optional",
+  "addPetPhotos": "Add photos of your pet",
+  "addPetPhotosHint": "Clear, recent photos help people recognise them",
+  "photoRequired": "At least one photo is required",
+  "tapToMakeCover": "Tap a photo to make it the cover.",
+  "cover": "Cover",
+  "uploadingPhotos": "Uploading photos… {percent}%",
+  "@uploadingPhotos": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "saving": "Saving…",
+  "takePhoto": "Take a photo",
+  "useCamera": "Use your camera",
+  "chooseFromGallery": "Choose from gallery",
+  "pickExistingPhoto": "Pick an existing photo",
+  "yourPet": "your pet",
+  "unknownDog": "Unknown dog",
+  "unknownCat": "Unknown cat",
+  "unknownPet": "Unknown pet",
+  "errorChooseType": "Choose whether you lost or found a pet.",
+  "errorPickPet": "Pick the pet that is missing.",
+  "errorFoundPhoto": "Add at least one photo of the pet.",
+  "errorFoundSpecies": "Is it a dog, a cat or other?",
+  "errorChooseCity": "Choose the city where it happened.",
+  "errorFutureDate": "The date can't be in the future.",
+  "errorDescriptionShort": "Add a short description (at least 10 characters).",
+  "errorContactRequired": "Add a phone number or email so people can reach you.",
+  "errorPhoneInvalid": "Please enter a valid phone number.",
+  "discardReportTitle": "Discard this report?",
+  "discardReportMessage": "What you've entered so far will be lost.",
+  "signInToPublish": "Please sign in again to publish.",
+  "publishedLost": "{pet} is now on the map. We hope they're home soon.",
+  "@publishedLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "publishedFound": "Thank you! {pet} is now on the map.",
+  "@publishedFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "reportLostPetTitle": "Report a lost pet",
+  "reportFoundPetTitle": "Report a found pet",
+  "newReport": "New report",
+  "stepOf": "{current} of {total}",
+  "@stepOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "publishReport": "Publish report",
+  "stepTypeTitle": "What happened?",
+  "stepTypeSubtitle": "Let's get the word out to people nearby, fast.",
+  "stepFoundPetTitle": "Tell us about the pet",
+  "stepFoundPetSubtitle": "A clear photo is the fastest way for the owner to recognise them.",
+  "addFoundPhotos": "Add photos of the pet",
+  "addFoundPhotosHint": "Take one now, or pick from your gallery",
+  "whatKindOfAnimal": "What kind of animal?",
+  "collarName": "Name on collar or tag",
+  "collarNameHint": "Leave empty if you don't know",
+  "stepLostPetTitle": "Which pet is missing?",
+  "stepLostPetSubtitle": "We'll use their profile and photos so you don't have to retype anything.",
+  "stepWhereFoundTitle": "Where did you find it?",
+  "stepWhereLostTitle": "Where was {pet} last seen?",
+  "@stepWhereLostTitle": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "stepWhereSubtitle": "Choose the city, then pin the spot on the map. People only see an area of about 100 m, never the exact address.",
+  "streetOrLandmark": "Street or landmark",
+  "pinExactSpot": "Pin the exact spot",
+  "spotHintFound": "Drag the map so the pin sits where {pet} was found.",
+  "@spotHintFound": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "spotHintLost": "Drag the map so the pin sits where {pet} was last seen.",
+  "@spotHintLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "spotFarFromCity": "This spot is {km} km from {city}. Is the city right?",
+  "@spotFarFromCity": {
+    "placeholders": {
+      "km": {
+        "type": "int"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "spotPinned": "Pinned. People only see an area of about {meters} m around it, never the exact spot.",
+  "@spotPinned": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHourAgo": "1 hour ago",
+  "timeThisMorning": "This morning",
+  "stepWhenFoundTitle": "When did you find it?",
+  "stepWhenLostTitle": "When did you last see {pet}?",
+  "@stepWhenLostTitle": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "stepWhenSubtitle": "An approximate time is fine.",
+  "changeDate": "Change date",
+  "changeTime": "Change time",
+  "stepDetailsTitle": "Anything else we should know?",
+  "stepDetailsSubtitle": "Details help neighbours recognise the pet and reach you quickly.",
+  "descriptionHintLost": "Collar colour, behaviour, how {pet} went missing…",
+  "@descriptionHintLost": {
+    "placeholders": {
+      "pet": {
+        "type": "String"
+      }
+    }
+  },
+  "descriptionHintFound": "Condition, collar, behaviour, where exactly you found it…",
+  "howToReachYou": "How can people reach you?",
+  "contactPrivacyNote": "Shown only on the report page, never in lists.",
+  "phoneHint": "Phone, e.g. +39 333 123 4567",
+  "reachableOnWhatsapp": "Reachable on WhatsApp",
+  "reachableOnWhatsappHint": "People can message you on this number",
+  "stepReviewTitle": "Ready to publish?",
+  "stepReviewSubtitle": "This is how your report will look to people nearby.",
+  "iLostMyPet": "I lost my pet",
+  "iFoundAPet": "I found a pet",
+  "iLostMyPetHint": "Alert people nearby and get help searching.",
+  "iFoundAPetHint": "Help a lost pet find its way back home.",
+  "addAPet": "Add a pet",
+  "pleaseChooseCity": "Please choose a city",
+  "noPlacesFound": "No places found in {city} for \"{query}\".",
+  "@noPlacesFound": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      },
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchStreetHint": "Search in {city}, e.g. Via Dante",
+  "@searchStreetHint": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "yourCity": "your city",
+  "useMyLocation": "Use my location",
+  "publishFailed": "Couldn't publish your report. Please try again.",
+  "updateReportFailed": "Couldn't update the report. Please try again.",
+  "deleteReportFailed": "Couldn't delete the report. Please try again.",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfUse": "Terms of Use",
+  "legalLastUpdated": "Last updated: {date}",
+  "@legalLastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "legalEnglishOnly": "This document is shown in English. A translation will be available soon.",
+  "deleteAccountPasswordPrompt": "Enter your password to confirm.",
+  "deleteAccountTypeConfirm": "Type {word} to confirm.",
+  "@deleteAccountTypeConfirm": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "wrongPassword": "Wrong password. Please try again.",
+  "confirmPasswordAgain": "For your security, please confirm your password again.",
+  "contactUs": "Contact us",
+  "legalQuestions": "Questions about this document or your data?"
 }

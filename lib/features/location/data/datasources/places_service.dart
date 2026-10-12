@@ -5,6 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/city_place.dart';
+import '../../../../l10n/l10n.dart';
 
 class PlacesException implements Exception {
   final String message;
@@ -56,7 +57,7 @@ class PlacesService {
       return CityPlace.fromMap(result, suggestion: suggestion);
     } catch (e) {
       debugPrint('getCityDetails returned unexpected data: $e');
-      throw const PlacesException('City search failed. Please try again.');
+      throw PlacesException(appL10n.citySearchFailed);
     }
   }
 
@@ -98,7 +99,7 @@ class PlacesService {
       return StreetPlace.fromMap(result);
     } catch (e) {
       debugPrint('getStreetDetails returned unexpected data: $e');
-      throw const PlacesException('Place search failed. Please try again.');
+      throw PlacesException(appL10n.placeSearchFailed);
     }
   }
 
@@ -127,16 +128,15 @@ class PlacesService {
     } on FirebaseFunctionsException catch (e) {
       debugPrint('$name failed: ${e.code} ${e.message}');
       throw PlacesException(switch (e.code) {
-        'unauthenticated' => 'Your session expired. Please sign in again.',
-        'not-found' || 'out-of-range' when e.message != null => e.message!,
-        'not-found' => 'We couldn\'t find that city. Please pick another one.',
-        'unavailable' || 'deadline-exceeded' =>
-          'Couldn\'t reach city search. Check your connection and try again.',
-        _ => 'City search failed. Please try again.',
+        'unauthenticated' => appL10n.errorSessionExpired,
+        'out-of-range' => appL10n.placeOutsideCity,
+        'not-found' => appL10n.placeNotFound,
+        'unavailable' || 'deadline-exceeded' => appL10n.citySearchOffline,
+        _ => appL10n.citySearchFailed,
       });
     } catch (e) {
       debugPrint('$name failed: $e');
-      throw const PlacesException('City search failed. Please try again.');
+      throw PlacesException(appL10n.citySearchFailed);
     }
   }
 

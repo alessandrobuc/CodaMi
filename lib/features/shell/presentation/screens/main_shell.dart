@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/navigation/app_navigator.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../l10n/locale_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
@@ -57,6 +58,7 @@ class _MainShellState extends ConsumerState<MainShell>
   void _startPush() {
     final uid = ref.read(authStateProvider).value?.uid;
     if (uid == null || !mounted) return;
+    ref.read(localeProvider.notifier).saveToProfile(uid);
     ref
         .read(pushServiceProvider)
         .start(

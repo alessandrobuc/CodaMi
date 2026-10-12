@@ -4,6 +4,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../widgets/onboarding_illustrations.dart';
+import '../../../../core/widgets/language_picker.dart';
+import '../../../../l10n/l10n.dart';
 
 class _OnboardingPage {
   final String title;
@@ -21,28 +23,27 @@ class _OnboardingPage {
   });
 }
 
-final _pages = [
+const _pageCount = 3;
+
+List<_OnboardingPage> _pagesFor(AppLocalizations l10n) => [
   _OnboardingPage(
-    title: 'Every pet deserves\na ',
-    highlight: 'way home',
-    subtitle:
-        'CodaMi connects neighbours so lost dogs and cats find their way back to the people who love them.',
+    title: l10n.onboarding1Title,
+    highlight: l10n.onboarding1Highlight,
+    subtitle: l10n.onboarding1Body,
     tint: AppColors.primary,
     illustration: (active) => CommunityRadarIllustration(active: active),
   ),
   _OnboardingPage(
-    title: 'Report a pet\nin ',
-    highlight: 'seconds',
-    subtitle:
-        'Snap a photo, drop the location and publish a lost or found report. Everyone nearby sees it instantly.',
+    title: l10n.onboarding2Title,
+    highlight: l10n.onboarding2Highlight,
+    subtitle: l10n.onboarding2Body,
     tint: AppColors.accent,
     illustration: (active) => ReportCardIllustration(active: active),
   ),
   _OnboardingPage(
-    title: 'See who\'s\n',
-    highlight: 'nearby',
-    subtitle:
-        'Lost and found pets around you, live on one map, so you always know where to look.',
+    title: l10n.onboarding3Title,
+    highlight: l10n.onboarding3Highlight,
+    subtitle: l10n.onboarding3Body,
     tint: AppColors.lostPin,
     illustration: (active) => NearbyMapIllustration(active: active),
   ),
@@ -59,7 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentPage = 0;
 
-  bool get _isLastPage => _currentPage == _pages.length - 1;
+  bool get _isLastPage => _currentPage == _pageCount - 1;
 
   @override
   void dispose() {
@@ -91,20 +92,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ? _controller.page ?? 0
       : _currentPage.toDouble();
 
-  Color _tintAt(double page) {
-    final i = page.floor().clamp(0, _pages.length - 1);
-    final j = (i + 1).clamp(0, _pages.length - 1);
-    return Color.lerp(_pages[i].tint, _pages[j].tint, page - i)!;
+  Color _tintAt(List<_OnboardingPage> pages, double page) {
+    final i = page.floor().clamp(0, pages.length - 1);
+    final j = (i + 1).clamp(0, pages.length - 1);
+    return Color.lerp(pages[i].tint, pages[j].tint, page - i)!;
   }
 
   @override
   Widget build(BuildContext context) {
+    final pages = _pagesFor(context.l10n);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
-          final tint = _tintAt(_page);
+          final tint = _tintAt(pages, _page);
           return Stack(
             children: [
               Positioned(
@@ -127,7 +130,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               _TopBar(
                 showSkip: !_isLastPage,
                 onSkip: () => _controller.animateToPage(
-                  _pages.length - 1,
+                  _pageCount - 1,
                   duration: const Duration(milliseconds: 700),
                   curve: Curves.easeOutQuint,
                 ),
@@ -135,11 +138,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Expanded(
                 child: PageView.builder(
                   controller: _controller,
-                  itemCount: _pages.length,
+                  itemCount: pages.length,
                   onPageChanged: (index) =>
                       setState(() => _currentPage = index),
                   itemBuilder: (context, index) => _OnboardingPageView(
-                    page: _pages[index],
+                    page: pages[index],
                     index: index,
                     controller: _controller,
                     active: index == _currentPage,
@@ -152,7 +155,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     SmoothPageIndicator(
                       controller: _controller,
-                      count: _pages.length,
+                      count: pages.length,
                       effect: const ExpandingDotsEffect(
                         spacing: 8,
                         dotColor: AppColors.border,
@@ -199,6 +202,7 @@ class _TopBar extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            const LanguageButton(),
             AnimatedOpacity(
               opacity: showSkip ? 1 : 0,
               duration: const Duration(milliseconds: 250),
@@ -206,9 +210,9 @@ class _TopBar extends StatelessWidget {
                 ignoring: !showSkip,
                 child: TextButton(
                   onPressed: onSkip,
-                  child: const Text(
-                    'Skip',
-                    style: TextStyle(
+                  child: Text(
+                    context.l10n.skip,
+                    style: const TextStyle(
                       color: AppColors.textMuted,
                       fontWeight: FontWeight.w600,
                     ),
@@ -356,14 +360,14 @@ class _NextButton extends StatelessWidget {
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 250),
           child: expanded
-              ? const FittedBox(
-                  key: ValueKey('start'),
+              ? FittedBox(
+                  key: const ValueKey('start'),
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    'Get Started',
+                    context.l10n.getStarted,
                     maxLines: 1,
                     softWrap: false,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
                       fontSize: 16,

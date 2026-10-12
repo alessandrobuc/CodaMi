@@ -1,35 +1,27 @@
-const _months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-const _weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+import 'package:intl/intl.dart';
 
-String timeAgo(DateTime time, {DateTime? now}) {
+import '../../l10n/l10n.dart';
+
+String timeAgo(AppLocalizations l10n, DateTime time, {DateTime? now}) {
   final current = now ?? DateTime.now();
   final diff = current.difference(time);
-  if (diff.inMinutes < 1) return 'Just now';
-  if (diff.inMinutes < 60) return '${diff.inMinutes} min ago';
-  if (diff.inHours < 24) return '${diff.inHours} h ago';
-  if (diff.inDays == 1) return 'Yesterday';
-  if (diff.inDays < 7) return '${diff.inDays} days ago';
-  return shortDate(time);
+  if (diff.inMinutes < 1) return l10n.timeJustNow;
+  if (diff.inMinutes < 60) return l10n.timeMinutesAgo(diff.inMinutes);
+  if (diff.inHours < 24) return l10n.timeHoursAgo(diff.inHours);
+  if (diff.inDays == 1) return l10n.timeYesterday;
+  if (diff.inDays < 7) return l10n.timeDaysAgo(diff.inDays);
+  return shortDate(l10n, time);
 }
 
-String shortDate(DateTime time) =>
-    '${time.day} ${_months[time.month - 1]}${time.year == DateTime.now().year ? '' : ' ${time.year}'}';
+String shortDate(AppLocalizations l10n, DateTime time) =>
+    (time.year == DateTime.now().year
+            ? DateFormat.MMMd(l10n.localeName)
+            : DateFormat.yMMMd(l10n.localeName))
+        .format(time);
 
-String clockTime(DateTime time) =>
-    '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+String clockTime(AppLocalizations l10n, DateTime time) =>
+    DateFormat.Hm(l10n.localeName).format(time);
 
-String dateTimeLabel(DateTime time) =>
-    '${_weekdays[time.weekday - 1]} ${shortDate(time)}, ${clockTime(time)}';
+String dateTimeLabel(AppLocalizations l10n, DateTime time) =>
+    '${DateFormat.E(l10n.localeName).format(time)} ${shortDate(l10n, time)}, '
+    '${clockTime(l10n, time)}';

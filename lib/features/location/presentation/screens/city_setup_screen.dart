@@ -12,6 +12,7 @@ import '../../data/datasources/places_service.dart';
 import '../../data/models/city_place.dart';
 import '../providers/location_provider.dart';
 import '../widgets/city_search_widgets.dart';
+import '../../../../l10n/l10n.dart';
 
 class CitySetupScreen extends ConsumerStatefulWidget {
   final bool isEditing;
@@ -77,7 +78,7 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
       if (!mounted || requestId != _requestId) return;
       setState(() {
         _suggestions = results;
-        _error = results.isEmpty ? 'No cities found for "$value".' : null;
+        _error = results.isEmpty ? context.l10n.noCitiesFound(value) : null;
       });
     } on PlacesException catch (e) {
       if (!mounted || requestId != _requestId) return;
@@ -140,16 +141,13 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
       if (widget.isEditing) {
         SnackbarUtils.showSuccess(
           context,
-          'Home city updated to ${place.city}.',
+          context.l10n.homeCityUpdated(place.city),
         );
         Navigator.of(context).pop();
       }
     } catch (_) {
       if (mounted) {
-        SnackbarUtils.showError(
-          context,
-          'Couldn\'t save your city. Please try again.',
-        );
+        SnackbarUtils.showError(context, context.l10n.saveCityFailed);
       }
     } finally {
       if (mounted) setState(() => _saving = false);
@@ -250,11 +248,13 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
                           Text.rich(
                                 TextSpan(
                                   text: widget.isEditing
-                                      ? 'Change your '
-                                      : 'Where are ',
+                                      ? context.l10n.cityEditTitle
+                                      : context.l10n.citySetupTitle,
                                   children: [
                                     TextSpan(
-                                      text: widget.isEditing ? 'city' : 'you?',
+                                      text: widget.isEditing
+                                          ? context.l10n.cityEditHighlight
+                                          : context.l10n.citySetupHighlight,
                                       style: const TextStyle(
                                         color: AppColors.primary,
                                       ),
@@ -271,7 +271,7 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
                               .slideY(begin: 0.2, end: 0),
                           const SizedBox(height: 8),
                           Text(
-                            'Pick your city so we can show lost & found pets near you and let you know when a pet goes missing in your area.',
+                            context.l10n.citySetupBody,
                             style: textTheme.bodyMedium?.copyWith(
                               color: AppColors.textMuted,
                               height: 1.5,
@@ -295,7 +295,9 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
                   _ContinueButton(
                     enabled: _selected != null && !_resolving,
                     saving: _saving,
-                    label: widget.isEditing ? 'Save city' : 'Continue',
+                    label: widget.isEditing
+                        ? context.l10n.saveCity
+                        : context.l10n.continueLabel,
                     onPressed: _save,
                   ),
                   if (!widget.isEditing && !keyboardOpen) ...[
@@ -305,9 +307,9 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
                         onPressed: _saving
                             ? null
                             : () => ref.read(authProvider.notifier).logout(),
-                        child: const Text(
-                          'Not you? Sign out',
-                          style: TextStyle(color: AppColors.textMuted),
+                        child: Text(
+                          context.l10n.notYouSignOut,
+                          style: const TextStyle(color: AppColors.textMuted),
                         ),
                       ),
                     ),

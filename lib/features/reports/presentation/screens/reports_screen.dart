@@ -9,6 +9,7 @@ import '../../domain/entities/reports_entity.dart';
 import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
 import 'report_detail_screen.dart';
+import '../../../../l10n/l10n.dart';
 
 class ReportsListView extends ConsumerWidget {
   final ReportType type;
@@ -45,26 +46,25 @@ class ReportsListView extends ConsumerWidget {
     if (loading && empty) {
       placeholder = const ReportListSkeleton();
     } else if (state.hasError && !state.hasValue) {
-      placeholder = const EmptyState(
-        icon: Icon(Icons.cloud_off_rounded),
+      placeholder = EmptyState(
+        icon: const Icon(Icons.cloud_off_rounded),
         color: AppColors.lostPin,
-        title: 'Couldn\'t load reports',
-        message: 'Check your connection and pull down to try again.',
+        title: context.l10n.reportsLoadError,
+        message: context.l10n.pullToRetry,
       );
     } else if (empty && !hasMore) {
       placeholder = type == ReportType.lost
-          ? const EmptyState(
-              icon: Icon(Icons.search_rounded),
+          ? EmptyState(
+              icon: const Icon(Icons.search_rounded),
               color: AppColors.lostPin,
-              title: 'No lost pets nearby',
-              message:
-                  'Good news! Nobody has reported a lost pet in your area yet.',
+              title: context.l10n.noLostNearby,
+              message: context.l10n.noLostNearbyMessage,
             )
-          : const EmptyState(
-              icon: Icon(Icons.volunteer_activism_rounded),
+          : EmptyState(
+              icon: const Icon(Icons.volunteer_activism_rounded),
               color: AppColors.foundPin,
-              title: 'No found pets yet',
-              message: 'Pets found by your neighbours will show up here.',
+              title: context.l10n.noFoundYet,
+              message: context.l10n.noFoundYetMessage,
             );
     }
 
@@ -92,12 +92,12 @@ class ReportsListView extends ConsumerWidget {
           ),
         ),
         if (resolved.isNotEmpty) ...[
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(top: 6, bottom: 12),
+              padding: const EdgeInsets.only(top: 6, bottom: 12),
               child: _SectionHeader(
-                title: 'Back home',
-                subtitle: 'Pets that found their way back to their families.',
+                title: context.l10n.backHomeSection,
+                subtitle: context.l10n.backHomeSectionSubtitle,
               ),
             ),
           ),
@@ -190,27 +190,27 @@ class _ListFooter extends StatelessWidget {
                     key: const ValueKey('more'),
                     onPressed: onLoadMore,
                     icon: const Icon(Icons.expand_more_rounded),
-                    label: const Text('Load more'),
+                    label: Text(context.l10n.loadMore),
                   ),
           ),
         ),
       );
     }
     if (shown < reportsPageSize) return const SizedBox(height: 4);
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 12),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.check_circle_outline_rounded,
             size: 16,
             color: AppColors.textMuted,
           ),
-          SizedBox(width: 6),
+          const SizedBox(width: 6),
           Text(
-            'You\'re all caught up',
-            style: TextStyle(color: AppColors.textMuted, fontSize: 13),
+            context.l10n.allCaughtUp,
+            style: const TextStyle(color: AppColors.textMuted, fontSize: 13),
           ),
         ],
       ),

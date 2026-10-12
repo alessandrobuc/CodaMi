@@ -37,7 +37,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      locale: ref.watch(localeProvider),
+      locale: ref.watch(localeProvider).locale,
       supportedLocales: supportedAppLocales,
       home: const AuthWrapper(),
     );

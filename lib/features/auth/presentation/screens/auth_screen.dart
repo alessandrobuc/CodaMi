@@ -8,6 +8,8 @@ import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/utils/validators.dart';
 import '../providers/auth_provider.dart';
 import '../widgets/auth_widget.dart';
+import '../../../../core/widgets/language_picker.dart';
+import '../../../../l10n/l10n.dart';
 
 enum AuthMode { login, signup, forgotPassword }
 
@@ -72,22 +74,22 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   (String, String) get _headerText {
     if (_resetSent) {
       return (
-        'Check your inbox',
-        'We\'ve sent you a link to reset your password.',
+        context.l10n.authResetSentTitle,
+        context.l10n.authResetSentSubtitle,
       );
     }
     return switch (_authMode) {
       AuthMode.login => (
-        'Welcome back!',
-        'Log in to keep helping pets find their way home.',
+        context.l10n.authLoginTitle,
+        context.l10n.authLoginSubtitle,
       ),
       AuthMode.signup => (
-        'Join the pack',
-        'Create an account and help your neighbourhood.',
+        context.l10n.authSignupTitle,
+        context.l10n.authSignupSubtitle,
       ),
       AuthMode.forgotPassword => (
-        'Forgot password?',
-        'No worries, we\'ll email you a reset link.',
+        context.l10n.authForgotTitle,
+        context.l10n.authForgotSubtitle,
       ),
     };
   }
@@ -97,11 +99,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     ref.listen<AsyncValue<void>>(authProvider, (previous, next) {
       next.whenOrNull(
         error: (error, stackTrace) {
-          final errorMessage = error
-              .toString()
-              .replaceAll('Exception: ', '')
-              .trim();
-          SnackbarUtils.showError(context, errorMessage);
+          SnackbarUtils.showError(context, error.toString());
         },
       );
     });
@@ -129,19 +127,30 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       : MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: topInset + (isForgot || !compact ? 48 : 12),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: isForgot
-                            ? IconButton(
+                      height: topInset + (isForgot || !compact ? 56 : 48),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: 4,
+                          end: 16,
+                          bottom: 4,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            if (isForgot)
+                              IconButton(
                                 onPressed: () =>
                                     _switchAuthMode(AuthMode.login),
-                                icon: const Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Colors.white,
-                                ),
-                              )
-                            : null,
+                                icon: const BackButtonIcon(),
+                                color: Colors.white,
+                              ),
+                            const Spacer(),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 4),
+                              child: LanguageButton(onDark: true),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Padding(
@@ -209,7 +218,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           if (isSignup) ...[
             AuthTextField(
               controller: _nameController,
-              label: 'Full Name',
+              label: context.l10n.fullName,
               icon: Icons.person_outline_rounded,
               textCapitalization: TextCapitalization.words,
               validator: Validators.name,
@@ -219,7 +228,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           ],
           AuthTextField(
             controller: _emailController,
-            label: 'Email',
+            label: context.l10n.email,
             icon: Icons.email_outlined,
             validator: Validators.email,
             keyboardType: TextInputType.emailAddress,
@@ -232,7 +241,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             const SizedBox(height: 12),
             AuthTextField(
               controller: _passwordController,
-              label: 'Password',
+              label: context.l10n.password,
               icon: Icons.lock_outline_rounded,
               validator: Validators.password,
               onChanged: (_) {
@@ -253,7 +262,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             const SizedBox(height: 12),
             AuthTextField(
               controller: _confirmPasswordController,
-              label: 'Confirm Password',
+              label: context.l10n.confirmPassword,
               icon: Icons.lock_reset_rounded,
               fieldKey: _confirmFieldKey,
               validator: Validators.confirmPassword(
@@ -265,10 +274,10 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           ],
           if (isLogin)
             Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerEnd,
               child: TextButton(
                 onPressed: () => _switchAuthMode(AuthMode.forgotPassword),
-                child: const Text('Forgot Password?'),
+                child: Text(context.l10n.forgotPassword),
               ),
             )
           else
@@ -276,9 +285,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           if (isForgot) ...[const SpamNote(), const SizedBox(height: 20)],
           _PrimaryButton(
             label: switch (_authMode) {
-              AuthMode.login => 'Log In',
-              AuthMode.signup => 'Create Account',
-              AuthMode.forgotPassword => 'Send Reset Link',
+              AuthMode.login => context.l10n.logIn,
+              AuthMode.signup => context.l10n.createAccount,
+              AuthMode.forgotPassword => context.l10n.sendResetLink,
             },
             isLoading: isLoading,
             onPressed: _submit,
@@ -291,7 +300,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 14),
                   child: Text(
-                    'or',
+                    context.l10n.or,
                     style: Theme.of(
                       context,
                     ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
@@ -303,7 +312,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             const SizedBox(height: 16),
             SocialButton(
               asset: AppAssets.google,
-              label: 'Continue with Google',
+              label: context.l10n.continueWithGoogle,
               onPressed: isLoading
                   ? null
                   : () => ref.read(authProvider.notifier).signInWithGoogle(),
@@ -312,7 +321,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               const SizedBox(height: 12),
               SocialButton(
                 asset: AppAssets.apple,
-                label: 'Continue with Apple',
+                label: context.l10n.continueWithApple,
                 onPressed: isLoading
                     ? null
                     : () => ref.read(authProvider.notifier).signInWithApple(),
@@ -349,7 +358,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         const SizedBox(height: 16),
         Text.rich(
           TextSpan(
-            text: 'We sent a reset link to\n',
+            text: '${context.l10n.resetLinkSentTo}\n',
             children: [
               TextSpan(
                 text: _emailController.text.trim(),
@@ -370,14 +379,14 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         const SpamNote(),
         const SizedBox(height: 20),
         _PrimaryButton(
-          label: 'Back to Log In',
+          label: context.l10n.backToLogIn,
           isLoading: false,
           onPressed: () => _switchAuthMode(AuthMode.login),
         ),
         const SizedBox(height: 8),
         TextButton(
           onPressed: () => setState(() => _resetSent = false),
-          child: const Text('Didn\'t get it? Send again'),
+          child: Text(context.l10n.sendAgain),
         ),
       ],
     );

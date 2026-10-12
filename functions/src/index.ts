@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase-admin/app";
 import {getAuth} from "firebase-admin/auth";
-import {FieldValue, getFirestore} from "firebase-admin/firestore";
+import {FieldValue, getFirestore, type QueryDocumentSnapshot} from "firebase-admin/firestore";
 import {getMessaging} from "firebase-admin/messaging";
 import {getStorage} from "firebase-admin/storage";
 import {onDocumentCreated, onDocumentUpdated} from "firebase-functions/firestore";
@@ -25,6 +25,7 @@ import {
 import {
   becameResolved,
   chunk,
+  languageOf,
   newReportContent,
   readReport,
   resolvedContent,
@@ -223,7 +224,7 @@ const INVALID_TOKEN_CODES = new Set([
 
 async function notifyCity(
   report: ReportSummary,
-  content: NotificationContent,
+  contentFor: (lang: string) => NotificationContent,
 ): Promise<void> {
   const db = getFirestore();
   const users = await db
@@ -233,6 +234,23 @@ async function notifyCity(
   const recipients = users.docs.filter((d) => d.id !== report.ownerId);
   if (recipients.length === 0) return;
 
+  const byLanguage = new Map<string, typeof recipients>();
+  for (const user of recipients) {
+    const lang = languageOf(user.get("language"));
+    byLanguage.set(lang, [...(byLanguage.get(lang) ?? []), user]);
+  }
+
+  for (const [lang, group] of byLanguage) {
+    await notifyGroup(report, contentFor(lang), group);
+  }
+}
+
+async function notifyGroup(
+  report: ReportSummary,
+  content: NotificationContent,
+  recipients: QueryDocumentSnapshot[],
+): Promise<void> {
+  const db = getFirestore();
   for (const group of chunk(recipients, 400)) {
     const batch = db.batch();
     for (const user of group) {
@@ -243,6 +261,9 @@ async function notifyCity(
         reportId: report.id,
         reportType: report.type,
         photoUrl: report.photoUrl,
+        petName: report.petName,
+        city: report.city,
+        placeDetail: report.placeDetail,
         read: false,
         createdAt: FieldValue.serverTimestamp(),
       });
@@ -296,7 +317,7 @@ export const onReportCreated = onDocumentCreated(
   async (event) => {
     const report = readReport(event.params.reportId, event.data?.data());
     if (!report || report.status !== "open") return;
-    await notifyCity(report, newReportContent(report));
+    await notifyCity(report, (lang) => newReportContent(report, lang));
   },
 );
 
@@ -308,7 +329,7 @@ export const onReportResolved = onDocumentUpdated(
     if (!becameResolved(before, after)) return;
     const report = readReport(event.params.reportId, after);
     if (!report) return;
-    await notifyCity(report, resolvedContent(report));
+    await notifyCity(report, (lang) => resolvedContent(report, lang));
   },
 );
 
@@ -339,11 +360,18 @@ export const reverseGeocode = onCall(async (request) => {
   }
 });
 
+const RECENT_LOGIN_SECONDS = 5 * 60;
+
 export const deleteAccount = onCall(async (request) => {
   if (!request.auth) {
     throw new HttpsError("unauthenticated", "Please sign in again.");
   }
   const uid = request.auth.uid;
+  const token = request.auth.token;
+  const signedInAgo = Date.now() / 1000 - token.auth_time;
+  if (token.firebase.sign_in_provider === "password" && signedInAgo > RECENT_LOGIN_SECONDS) {
+    throw new HttpsError("failed-precondition", "Please confirm your password again.");
+  }
   const db = getFirestore();
 
   try {

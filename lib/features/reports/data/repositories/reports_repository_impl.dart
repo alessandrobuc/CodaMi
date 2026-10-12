@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../datasources/reports_remote_data_source.dart';
+import '../../../../l10n/l10n.dart';
 
 class ReportsRepositoryImpl implements ReportsRepository {
   final ReportsRemoteDataSource _remote;
@@ -38,24 +39,24 @@ class ReportsRepositoryImpl implements ReportsRepository {
       draft: draft,
       onUploadProgress: onUploadProgress,
     ),
-    failure: 'Couldn\'t publish your report. Please try again.',
+    failure: () => appL10n.publishFailed,
   );
 
   @override
   Future<void> markResolved(Report report) => _guard(
     () => _remote.markResolved(report),
-    failure: 'Couldn\'t update the report. Please try again.',
+    failure: () => appL10n.updateReportFailed,
   );
 
   @override
   Future<void> deleteReport(Report report) => _guard(
     () => _remote.deleteReport(report),
-    failure: 'Couldn\'t delete the report. Please try again.',
+    failure: () => appL10n.deleteReportFailed,
   );
 
   Future<T> _guard<T>(
     Future<T> Function() run, {
-    required String failure,
+    required String Function() failure,
   }) async {
     try {
       return await run();
@@ -64,14 +65,15 @@ class ReportsRepositoryImpl implements ReportsRepository {
       throw ReportsException(switch (e.code) {
         'permission-denied' ||
         'unauthorized' ||
-        'unauthenticated' => 'You don\'t have permission to do that.',
-        'unavailable' || 'retry-limit-exceeded' || 'network-request-failed' =>
-          'You\'re offline. Check your connection and try again.',
-        _ => failure,
+        'unauthenticated' => appL10n.errorPermission,
+        'unavailable' ||
+        'retry-limit-exceeded' ||
+        'network-request-failed' => appL10n.errorOffline,
+        _ => failure(),
       });
     } catch (e) {
       debugPrint('Report action failed: $e');
-      throw ReportsException(failure);
+      throw ReportsException(failure());
     }
   }
 }

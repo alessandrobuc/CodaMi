@@ -4,6 +4,7 @@ import {test} from "node:test";
 import {
   becameResolved,
   chunk,
+  languageOf,
   newReportContent,
   readReport,
   resolvedContent,
@@ -47,6 +48,15 @@ test("resolved message and transition", () => {
   assert.ok(becameResolved({status: "open"}, {status: "resolved"}));
   assert.ok(!becameResolved({status: "resolved"}, {status: "resolved"}));
   assert.ok(!becameResolved({status: "open"}, {status: "open"}));
+});
+
+test("messages follow the recipient's language", () => {
+  const report = readReport("r1", data)!;
+  assert.equal(newReportContent(report, "it").title, "Animale smarrito a Torremaggiore");
+  assert.equal(resolvedContent(report, "es").title, "Luna está de vuelta en casa");
+  assert.equal(newReportContent(report, "xx").title, "Lost pet in Torremaggiore");
+  assert.equal(languageOf(undefined), "en");
+  assert.equal(languageOf("de"), "de");
 });
 
 test("chunk splits evenly", () => {

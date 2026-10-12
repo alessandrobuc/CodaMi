@@ -8,6 +8,8 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../domain/entities/pets_entity.dart';
 import 'pets_widget.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 Future<String?> pickPhoto(BuildContext context) async {
   final source = await showModalBottomSheet<ImageSource>(
@@ -26,12 +28,13 @@ Future<String?> pickPhoto(BuildContext context) async {
     return file?.path;
   } on PlatformException catch (e) {
     if (context.mounted) {
-      final what = source == ImageSource.camera ? 'camera' : 'photo';
+      final camera = source == ImageSource.camera;
+      final l10n = context.l10n;
       SnackbarUtils.showError(
         context,
         e.code.contains('denied')
-            ? 'Please allow $what access in Settings.'
-            : 'Couldn\'t open the ${source == ImageSource.camera ? 'camera' : 'gallery'}.',
+            ? (camera ? l10n.cameraPermission : l10n.photosPermission)
+            : (camera ? l10n.cameraFailed : l10n.galleryFailed),
       );
     }
     return null;
@@ -58,9 +61,9 @@ class SectionLabel extends StatelessWidget {
         ),
         if (optional) ...[
           const SizedBox(width: 6),
-          const Text(
-            'Optional',
-            style: TextStyle(fontSize: 12, color: AppColors.textMuted),
+          Text(
+            context.l10n.optional,
+            style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
           ),
         ],
       ],
@@ -155,14 +158,14 @@ class PhotoPickerField extends StatelessWidget {
   final ValueChanged<int> onRemove;
   final ValueChanged<int> onMakeCover;
   final int maxPhotos;
-  final String emptyTitle;
-  final String emptySubtitle;
+  final String? emptyTitle;
+  final String? emptySubtitle;
 
   const PhotoPickerField({
     super.key,
     this.maxPhotos = 4,
-    this.emptyTitle = 'Add photos of your pet',
-    this.emptySubtitle = 'Clear, recent photos help people recognise them',
+    this.emptyTitle,
+    this.emptySubtitle,
     required this.photos,
     required this.showError,
     required this.enabled,
@@ -222,7 +225,7 @@ class PhotoPickerField extends StatelessWidget {
                     ),
                 const SizedBox(height: 14),
                 Text(
-                  emptyTitle,
+                  emptyTitle ?? context.l10n.addPetPhotos,
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: showError ? AppColors.danger : AppColors.text,
@@ -230,7 +233,9 @@ class PhotoPickerField extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  showError ? 'At least one photo is required' : emptySubtitle,
+                  showError
+                      ? context.l10n.photoRequired
+                      : emptySubtitle ?? context.l10n.addPetPhotosHint,
                   style: TextStyle(
                     fontSize: 12,
                     color: showError ? AppColors.danger : AppColors.textMuted,
@@ -296,9 +301,9 @@ class PhotoPickerField extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Tap a photo to make it the cover.',
-          style: TextStyle(fontSize: 12, color: AppColors.textMuted),
+        Text(
+          context.l10n.tapToMakeCover,
+          style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
         ),
       ],
     );
@@ -361,9 +366,9 @@ class _PhotoTile extends StatelessWidget {
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Text(
-                      'Cover',
-                      style: TextStyle(
+                    child: Text(
+                      context.l10n.cover,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
@@ -500,7 +505,7 @@ class _SpeciesCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      species.label,
+                      species.label(context.l10n),
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: selected ? Colors.white : AppColors.text,
@@ -551,8 +556,8 @@ class ProgressSaveButton extends StatelessWidget {
     final text = !saving
         ? label
         : uploading
-        ? 'Uploading photos… ${(progress! * 100).round()}%'
-        : 'Saving…';
+        ? context.l10n.uploadingPhotos((progress! * 100).round())
+        : context.l10n.saving;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
@@ -686,14 +691,14 @@ class PhotoSourceSheet extends StatelessWidget {
             ),
             option(
               Icons.photo_camera_rounded,
-              'Take a photo',
-              'Use your camera',
+              context.l10n.takePhoto,
+              context.l10n.useCamera,
               ImageSource.camera,
             ),
             option(
               Icons.photo_library_rounded,
-              'Choose from gallery',
-              'Pick an existing photo',
+              context.l10n.chooseFromGallery,
+              context.l10n.pickExistingPhoto,
               ImageSource.gallery,
             ),
           ],

@@ -11,10 +11,9 @@ class AppLanguage {
   Locale get locale => Locale(code);
 }
 
-// Italian comes first, so phones in any other language fall back to it.
 const appLanguages = [
-  AppLanguage('it', '🇮🇹', 'Italiano', 'Italian'),
   AppLanguage('en', '🇬🇧', 'English', 'English'),
+  AppLanguage('it', '🇮🇹', 'Italiano', 'Italian'),
   AppLanguage('es', '🇪🇸', 'Español', 'Spanish'),
   AppLanguage('fr', '🇫🇷', 'Français', 'French'),
   AppLanguage('de', '🇩🇪', 'Deutsch', 'German'),
@@ -24,6 +23,11 @@ const appLanguages = [
   AppLanguage('zh', '🇨🇳', '中文', 'Chinese'),
   AppLanguage('hi', '🇮🇳', 'हिन्दी', 'Hindi'),
 ];
+
+const defaultAppLanguage = AppLanguage('en', '🇬🇧', 'English', 'English');
+
+// Kept in sync by LocaleNotifier.
+AppLanguage currentAppLanguage = defaultAppLanguage;
 
 final supportedAppLocales = [for (final l in appLanguages) l.locale];
 

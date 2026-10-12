@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../data/models/user_model.dart';
+import '../../../../l10n/l10n.dart';
 
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
@@ -182,6 +183,26 @@ class AuthRepository {
     await _auth.signOut();
   }
 
+  // Email accounts confirm with their password; Google and Apple accounts
+  // type a confirmation word instead.
+  bool get usesPassword =>
+      _auth.currentUser?.providerData.any(
+        (p) => p.providerId == EmailAuthProvider.PROVIDER_ID,
+      ) ??
+      false;
+
+  Future<void> reauthenticate(String password) async {
+    final user = _auth.currentUser;
+    final email = user?.email;
+    if (user == null || email == null) {
+      throw FirebaseAuthException(code: 'user-not-found');
+    }
+    await user.reauthenticateWithCredential(
+      EmailAuthProvider.credential(email: email, password: password),
+    );
+    await user.getIdToken(true);
+  }
+
   Future<void> deleteAccount() async {
     await FirebaseFunctions.instanceFor(region: PlacesService.functionsRegion)
         .httpsCallable(
@@ -198,6 +219,13 @@ class AuthNotifier extends AsyncNotifier<void> {
   @override
   Future<void> build() async {}
 
+  void _fail(Object error) {
+    final message = authErrorMessage(error);
+    state = message == null
+        ? const AsyncValue.data(null)
+        : AsyncValue.error(message, StackTrace.current);
+  }
+
   Future<void> login(String email, String password) async {
     state = const AsyncValue.loading();
     try {
@@ -206,7 +234,7 @@ class AuthNotifier extends AsyncNotifier<void> {
           .signIn(email: email, password: password);
       state = const AsyncValue.data(null);
     } catch (e) {
-      state = AsyncValue.error(e.toString(), StackTrace.current);
+      _fail(e);
     }
   }
 
@@ -218,7 +246,7 @@ class AuthNotifier extends AsyncNotifier<void> {
           .signUp(email: email, password: password, name: name);
       state = const AsyncValue.data(null);
     } catch (e) {
-      state = AsyncValue.error(e.toString(), StackTrace.current);
+      _fail(e);
     }
   }
 
@@ -228,7 +256,7 @@ class AuthNotifier extends AsyncNotifier<void> {
       await ref.read(authRepositoryProvider).forgotPassword(email);
       state = const AsyncValue.data(null);
     } catch (e) {
-      state = AsyncValue.error(e.toString(), StackTrace.current);
+      _fail(e);
     }
   }
 
@@ -238,7 +266,7 @@ class AuthNotifier extends AsyncNotifier<void> {
       await ref.read(authRepositoryProvider).signInWithGoogle();
       state = const AsyncValue.data(null);
     } catch (e) {
-      state = AsyncValue.error(e.toString(), StackTrace.current);
+      _fail(e);
     }
   }
 
@@ -248,7 +276,7 @@ class AuthNotifier extends AsyncNotifier<void> {
       await ref.read(authRepositoryProvider).signInWithApple();
       state = const AsyncValue.data(null);
     } catch (e) {
-      state = AsyncValue.error(e.toString(), StackTrace.current);
+      _fail(e);
     }
   }
 
@@ -259,13 +287,13 @@ class AuthNotifier extends AsyncNotifier<void> {
       await ref.read(authRepositoryProvider).deleteAccount();
     } on FirebaseFunctionsException catch (e) {
       throw switch (e.code) {
-        'unavailable' || 'deadline-exceeded' =>
-          'You\'re offline. Check your connection and try again.',
-        'unauthenticated' => 'Your session expired. Please sign in again.',
-        _ => 'Couldn\'t delete your account. Please try again.',
+        'unavailable' || 'deadline-exceeded' => appL10n.errorOffline,
+        'unauthenticated' => appL10n.errorSessionExpired,
+        'failed-precondition' => appL10n.confirmPasswordAgain,
+        _ => appL10n.deleteAccountFailed,
       };
     } catch (_) {
-      throw 'Couldn\'t delete your account. Please try again.';
+      throw appL10n.deleteAccountFailed;
     }
   }
 
@@ -278,3 +306,30 @@ class AuthNotifier extends AsyncNotifier<void> {
 final authProvider = AsyncNotifierProvider<AuthNotifier, void>(
   AuthNotifier.new,
 );
+
+// null means the user cancelled, which needs no message.
+String? authErrorMessage(Object error) {
+  final l10n = appL10n;
+  if (error is GoogleSignInException &&
+      error.code == GoogleSignInExceptionCode.canceled) {
+    return null;
+  }
+  if (error is SignInWithAppleAuthorizationException &&
+      error.code == AuthorizationErrorCode.canceled) {
+    return null;
+  }
+  if (error is! FirebaseAuthException) return l10n.authErrorGeneric;
+  return switch (error.code) {
+    'invalid-email' => l10n.validationEmailInvalid,
+    'user-disabled' => l10n.authErrorDisabled,
+    'user-not-found' ||
+    'wrong-password' ||
+    'invalid-credential' ||
+    'INVALID_LOGIN_CREDENTIALS' => l10n.authErrorWrongCredentials,
+    'email-already-in-use' => l10n.authErrorEmailInUse,
+    'weak-password' => l10n.validationPasswordTooShort,
+    'too-many-requests' => l10n.authErrorTooManyRequests,
+    'network-request-failed' => l10n.errorOffline,
+    _ => l10n.authErrorGeneric,
+  };
+}

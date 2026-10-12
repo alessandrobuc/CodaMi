@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
-import '../../../../l10n/app_languages.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
@@ -12,6 +11,9 @@ import '../../../location/presentation/screens/city_setup_screen.dart';
 import '../../../reports/presentation/screens/my_reports_screen.dart';
 import '../providers/profile_provider.dart';
 import 'language_screen.dart';
+import '../widgets/delete_account_dialog.dart';
+import '../../../legal/legal_content.dart';
+import '../../../legal/legal_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -46,34 +48,8 @@ class ProfileScreen extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
   ) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.warning_amber_rounded,
-          color: AppColors.danger,
-          size: 32,
-        ),
-        title: Text(context.l10n.deleteAccountTitle),
-        content: Text(
-          context.l10n.deleteAccountMessage,
-          textAlign: TextAlign.center,
-        ),
-        actionsAlignment: MainAxisAlignment.center,
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(context.l10n.cancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
-            child: Text(context.l10n.deleteAccount),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !context.mounted) return;
+    final confirmed = await confirmAccountDeletion(context);
+    if (!confirmed || !context.mounted) return;
 
     final navigator = Navigator.of(context, rootNavigator: true);
     showDialog<void>(
@@ -110,7 +86,7 @@ class ProfileScreen extends ConsumerWidget {
     final info = ref.watch(currentUserInfoProvider);
     final textTheme = Theme.of(context).textTheme;
     final l10n = context.l10n;
-    final language = appLanguageFor(ref.watch(localeProvider)?.languageCode);
+    final language = ref.watch(localeProvider);
 
     void comingSoon(String feature) =>
         SnackbarUtils.showInfo(context, l10n.comingSoon(feature));
@@ -233,9 +209,7 @@ class ProfileScreen extends ConsumerWidget {
                   icon: Icons.translate_rounded,
                   color: AppColors.accent,
                   title: l10n.language,
-                  subtitle: language == null
-                      ? l10n.phoneLanguage
-                      : '${language.flag}  ${language.nativeName}',
+                  subtitle: '${language.flag}  ${language.nativeName}',
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) => const LanguageScreen()),
                   ),
@@ -249,6 +223,33 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ],
             ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
+            const SizedBox(height: 16),
+            _SectionCard(
+              children: [
+                _ProfileTile(
+                  icon: Icons.privacy_tip_outlined,
+                  color: AppColors.primary,
+                  title: l10n.privacyPolicy,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          const LegalScreen(document: LegalDocument.privacy),
+                    ),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.description_outlined,
+                  color: AppColors.primaryDark,
+                  title: l10n.termsOfUse,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          const LegalScreen(document: LegalDocument.terms),
+                    ),
+                  ),
+                ),
+              ],
+            ).animate().fadeIn(delay: 150.ms, duration: 400.ms),
             const SizedBox(height: 24),
             OutlinedButton.icon(
               onPressed: () => _confirmLogout(context, ref),

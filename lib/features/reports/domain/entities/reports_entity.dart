@@ -1,12 +1,8 @@
 import '../../../pets/domain/entities/pets_entity.dart';
 
 enum ReportType {
-  lost('Lost'),
-  found('Found');
-
-  final String label;
-
-  const ReportType(this.label);
+  lost,
+  found;
 
   static ReportType fromValue(String? value) =>
       value == 'found' ? ReportType.found : ReportType.lost;
@@ -95,15 +91,6 @@ class Report {
   String? get coverUrl => photoUrls.isEmpty ? null : photoUrls.first;
 
   String get ownerContact => contactPhone ?? contactEmail ?? '';
-
-  String get placeLabel => placeDetail == null
-      ? city
-      : areaRadius == null
-      ? '$placeDetail, $city'
-      : 'Near $placeDetail, $city';
-
-  String get resolvedLabel =>
-      type == ReportType.lost ? 'Back home' : 'Reunited';
 }
 
 class ReportDraft {

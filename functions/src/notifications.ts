@@ -1,3 +1,5 @@
+import {MESSAGES, type MessageKey} from "./messages";
+
 type Json = Record<string, unknown>;
 
 export type NotificationKind = "new_report" | "report_resolved";
@@ -43,34 +45,49 @@ export function readReport(id: string, data: Json | undefined): ReportSummary | 
   };
 }
 
-export function newReportContent(report: ReportSummary): NotificationContent {
-  const where = report.placeDetail
-    ? `near ${report.placeDetail}, ${report.city}`
-    : `in ${report.city}`;
+export function languageOf(value: unknown): string {
+  return typeof value === "string" && value in MESSAGES ? value : "en";
+}
+
+function text(lang: string, key: MessageKey, vars: Record<string, string>): string {
+  return MESSAGES[languageOf(lang)][key].replace(
+    /\{(\w+)\}/g,
+    (match, name: string) => vars[name] ?? match,
+  );
+}
+
+export function newReportContent(report: ReportSummary, lang = "en"): NotificationContent {
+  const vars = {
+    pet: report.petName,
+    city: report.city,
+    street: report.placeDetail ?? "",
+  };
+  const near = report.placeDetail !== null;
   return report.type === "lost"
     ? {
       kind: "new_report",
-      title: `Lost pet in ${report.city}`,
-      body: `${report.petName} was last seen ${where}. Keep an eye out!`,
+      title: text(lang, "notifLostTitle", vars),
+      body: text(lang, near ? "notifLostBodyNear" : "notifLostBodyIn", vars),
     }
     : {
       kind: "new_report",
-      title: `Pet found in ${report.city}`,
-      body: `${report.petName} was found ${where}. Do you know the owner?`,
+      title: text(lang, "notifFoundTitle", vars),
+      body: text(lang, near ? "notifFoundBodyNear" : "notifFoundBodyIn", vars),
     };
 }
 
-export function resolvedContent(report: ReportSummary): NotificationContent {
+export function resolvedContent(report: ReportSummary, lang = "en"): NotificationContent {
+  const vars = {pet: report.petName, city: report.city};
   return report.type === "lost"
     ? {
       kind: "report_resolved",
-      title: `${report.petName} is back home`,
-      body: `Good news from ${report.city}: ${report.petName} has been found. Thank you for helping!`,
+      title: text(lang, "notifBackHomeTitle", vars),
+      body: text(lang, "notifBackHomeBody", vars),
     }
     : {
       kind: "report_resolved",
-      title: `${report.petName} is reunited`,
-      body: `The pet found in ${report.city} is back with its family.`,
+      title: text(lang, "notifReunitedTitle", vars),
+      body: text(lang, "notifReunitedBody", vars),
     };
 }
 

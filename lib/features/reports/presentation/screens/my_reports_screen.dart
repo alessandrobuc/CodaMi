@@ -437,7 +437,7 @@ class _MyReportItemState extends ConsumerState<_MyReportItem> {
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
-                    l10n.postedOn(shortDate(posted)),
+                    l10n.postedOn(shortDate(l10n, posted)),
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 12.5,

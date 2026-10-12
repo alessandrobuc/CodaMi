@@ -9,6 +9,7 @@ import '../../../../core/utils/geo.dart';
 import '../../../map/presentation/screens/map_screen.dart';
 import '../../../map/presentation/widgets/map_style.dart';
 import '../../../map/presentation/widgets/map_widget.dart';
+import '../../../../l10n/l10n.dart';
 
 class SpotPicker extends StatefulWidget {
   final LatLng center;
@@ -203,9 +204,9 @@ class _SpotPickerState extends State<SpotPicker> {
                                   ),
                           ),
                           const SizedBox(width: 7),
-                          const Text(
-                            'Use my location',
-                            style: TextStyle(
+                          Text(
+                            context.l10n.useMyLocation,
+                            style: const TextStyle(
                               fontSize: 12.5,
                               fontWeight: FontWeight.w700,
                               color: AppColors.primaryDark,

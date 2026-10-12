@@ -1,6 +1,9 @@
 import 'package:CodaMi/features/pets/data/models/pets_model.dart';
 import 'package:CodaMi/features/pets/domain/entities/pets_entity.dart';
+import 'package:CodaMi/l10n/l10n.dart';
+import 'package:CodaMi/l10n/labels.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -69,7 +72,8 @@ void main() {
       age: '2 years',
     );
     const bare = Pet(id: 'b', ownerId: 'u', name: 'X', species: PetSpecies.cat);
-    expect(withDetails.subtitle, 'Beagle · 2 years');
-    expect(bare.subtitle, 'Cat');
+    final en = lookupAppLocalizations(const Locale('en'));
+    expect(withDetails.subtitle(en), 'Beagle · 2 years');
+    expect(bare.subtitle(en), 'Cat');
   });
 }

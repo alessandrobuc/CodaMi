@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../l10n/l10n.dart';
 
 class CommunityRadarIllustration extends StatefulWidget {
   final bool active;
@@ -225,7 +226,10 @@ class ReportCardIllustration extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        const _Badge(label: 'FOUND', color: AppColors.foundPin),
+                        _Badge(
+                          label: context.l10n.found.toUpperCase(),
+                          color: AppColors.foundPin,
+                        ),
                       ],
                     ),
                   ),
@@ -254,11 +258,11 @@ class ReportCardIllustration extends StatelessWidget {
                               cacheWidth: 600,
                             ),
                           ),
-                          const Positioned(
+                          Positioned(
                             top: 10,
                             left: 10,
                             child: _Badge(
-                              label: 'LOST',
+                              label: context.l10n.lost.toUpperCase(),
                               color: AppColors.lostPin,
                             ),
                           ),
@@ -274,7 +278,7 @@ class ReportCardIllustration extends StatelessWidget {
                             ),
                       ),
                       Text(
-                        'Golden Retriever · 3 yrs',
+                        context.l10n.onboardingSampleBreed,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: AppColors.textMuted,
                         ),
@@ -290,7 +294,7 @@ class ReportCardIllustration extends StatelessWidget {
                           const SizedBox(width: 4),
                           Expanded(
                             child: Text(
-                              'Milano · 2h ago',
+                              context.l10n.onboardingSamplePlace,
                               style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(color: AppColors.textMuted),
                             ),
@@ -330,18 +334,18 @@ class ReportCardIllustration extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.check_circle_rounded,
                             color: Colors.white,
                             size: 18,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'Published',
-                            style: TextStyle(
+                            context.l10n.published,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
@@ -561,14 +565,14 @@ class _NearbyMapIllustrationState extends State<NearbyMapIllustration>
           ),
         ),
         const SizedBox(height: 18),
-        const Row(
+        Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _LegendDot(color: AppColors.lostPin, label: 'Lost'),
-            SizedBox(width: 20),
-            _LegendDot(color: AppColors.foundPin, label: 'Found'),
-            SizedBox(width: 20),
-            _LegendDot(color: AppColors.primaryDark, label: 'You'),
+            _LegendDot(color: AppColors.lostPin, label: context.l10n.lost),
+            const SizedBox(width: 20),
+            _LegendDot(color: AppColors.foundPin, label: context.l10n.found),
+            const SizedBox(width: 20),
+            _LegendDot(color: AppColors.primaryDark, label: context.l10n.you),
           ],
         ).animate(target: widget.active ? 1 : 0).fadeIn(delay: 900.ms),
       ],

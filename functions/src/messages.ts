@@ -1,0 +1,136 @@
+// Generated from lib/l10n/app_*.arb. Keep in sync with the app's notif* strings.
+
+export type MessageKey =
+  | "notifLostTitle"
+  | "notifLostBodyNear"
+  | "notifLostBodyIn"
+  | "notifFoundTitle"
+  | "notifFoundBodyNear"
+  | "notifFoundBodyIn"
+  | "notifBackHomeTitle"
+  | "notifBackHomeBody"
+  | "notifReunitedTitle"
+  | "notifReunitedBody";
+
+export const MESSAGES: Record<string, Record<MessageKey, string>> = {
+  en: {
+    notifLostTitle: "Lost pet in {city}",
+    notifLostBodyNear: "{pet} was last seen near {street}, {city}. Keep an eye out!",
+    notifLostBodyIn: "{pet} was last seen in {city}. Keep an eye out!",
+    notifFoundTitle: "Pet found in {city}",
+    notifFoundBodyNear: "{pet} was found near {street}, {city}. Do you know the owner?",
+    notifFoundBodyIn: "{pet} was found in {city}. Do you know the owner?",
+    notifBackHomeTitle: "{pet} is back home",
+    notifBackHomeBody: "Good news from {city}: {pet} has been found. Thank you for helping!",
+    notifReunitedTitle: "{pet} is reunited",
+    notifReunitedBody: "The pet found in {city} is back with its family.",
+  },
+  it: {
+    notifLostTitle: "Animale smarrito a {city}",
+    notifLostBodyNear: "{pet} è stato visto l'ultima volta vicino a {street}, {city}. Tieni gli occhi aperti!",
+    notifLostBodyIn: "{pet} è stato visto l'ultima volta a {city}. Tieni gli occhi aperti!",
+    notifFoundTitle: "Animale trovato a {city}",
+    notifFoundBodyNear: "{pet} è stato trovato vicino a {street}, {city}. Conosci il proprietario?",
+    notifFoundBodyIn: "{pet} è stato trovato a {city}. Conosci il proprietario?",
+    notifBackHomeTitle: "{pet} è tornato a casa",
+    notifBackHomeBody: "Buone notizie da {city}: {pet} è stato ritrovato. Grazie per l'aiuto!",
+    notifReunitedTitle: "{pet} è di nuovo con la sua famiglia",
+    notifReunitedBody: "L'animale trovato a {city} è tornato dalla sua famiglia.",
+  },
+  es: {
+    notifLostTitle: "Mascota perdida en {city}",
+    notifLostBodyNear: "{pet} fue vista por última vez cerca de {street}, {city}. ¡Estate atento!",
+    notifLostBodyIn: "{pet} fue vista por última vez en {city}. ¡Estate atento!",
+    notifFoundTitle: "Mascota encontrada en {city}",
+    notifFoundBodyNear: "{pet} fue encontrada cerca de {street}, {city}. ¿Conoces a su dueño?",
+    notifFoundBodyIn: "{pet} fue encontrada en {city}. ¿Conoces a su dueño?",
+    notifBackHomeTitle: "{pet} está de vuelta en casa",
+    notifBackHomeBody: "Buenas noticias desde {city}: {pet} ha aparecido. ¡Gracias por ayudar!",
+    notifReunitedTitle: "{pet} está con su familia",
+    notifReunitedBody: "La mascota encontrada en {city} ha vuelto con su familia.",
+  },
+  fr: {
+    notifLostTitle: "Animal perdu à {city}",
+    notifLostBodyNear: "{pet} a été vu pour la dernière fois près de {street}, {city}. Ouvrez l'œil !",
+    notifLostBodyIn: "{pet} a été vu pour la dernière fois à {city}. Ouvrez l'œil !",
+    notifFoundTitle: "Animal trouvé à {city}",
+    notifFoundBodyNear: "{pet} a été trouvé près de {street}, {city}. Connaissez-vous son propriétaire ?",
+    notifFoundBodyIn: "{pet} a été trouvé à {city}. Connaissez-vous son propriétaire ?",
+    notifBackHomeTitle: "{pet} est rentré à la maison",
+    notifBackHomeBody: "Bonne nouvelle de {city} : {pet} a été retrouvé. Merci pour votre aide !",
+    notifReunitedTitle: "{pet} a retrouvé sa famille",
+    notifReunitedBody: "L'animal trouvé à {city} est de retour dans sa famille.",
+  },
+  de: {
+    notifLostTitle: "Tier vermisst in {city}",
+    notifLostBodyNear: "{pet} wurde zuletzt in der Nähe von {street}, {city} gesehen. Halte die Augen offen!",
+    notifLostBodyIn: "{pet} wurde zuletzt in {city} gesehen. Halte die Augen offen!",
+    notifFoundTitle: "Tier gefunden in {city}",
+    notifFoundBodyNear: "{pet} wurde in der Nähe von {street}, {city} gefunden. Kennst du den Besitzer?",
+    notifFoundBodyIn: "{pet} wurde in {city} gefunden. Kennst du den Besitzer?",
+    notifBackHomeTitle: "{pet} ist wieder zu Hause",
+    notifBackHomeBody: "Gute Nachrichten aus {city}: {pet} wurde gefunden. Danke für deine Hilfe!",
+    notifReunitedTitle: "{pet} ist wieder bei der Familie",
+    notifReunitedBody: "Das in {city} gefundene Tier ist wieder bei seiner Familie.",
+  },
+  pt: {
+    notifLostTitle: "Animal perdido em {city}",
+    notifLostBodyNear: "{pet} foi visto pela última vez perto de {street}, {city}. Fique atento!",
+    notifLostBodyIn: "{pet} foi visto pela última vez em {city}. Fique atento!",
+    notifFoundTitle: "Animal encontrado em {city}",
+    notifFoundBodyNear: "{pet} foi encontrado perto de {street}, {city}. Conhece o dono?",
+    notifFoundBodyIn: "{pet} foi encontrado em {city}. Conhece o dono?",
+    notifBackHomeTitle: "{pet} está de volta a casa",
+    notifBackHomeBody: "Boas notícias de {city}: {pet} foi encontrado. Obrigado pela ajuda!",
+    notifReunitedTitle: "{pet} voltou para a família",
+    notifReunitedBody: "O animal encontrado em {city} voltou para a sua família.",
+  },
+  ru: {
+    notifLostTitle: "Пропал питомец: {city}",
+    notifLostBodyNear: "{pet} в последний раз видели рядом с {street}, {city}. Будьте внимательны!",
+    notifLostBodyIn: "{pet} в последний раз видели в городе {city}. Будьте внимательны!",
+    notifFoundTitle: "Найден питомец: {city}",
+    notifFoundBodyNear: "{pet}: найден рядом с {street}, {city}. Вы знаете хозяина?",
+    notifFoundBodyIn: "{pet}: найден в городе {city}. Вы знаете хозяина?",
+    notifBackHomeTitle: "{pet} снова дома",
+    notifBackHomeBody: "Хорошие новости из города {city}: {pet} нашёлся. Спасибо за помощь!",
+    notifReunitedTitle: "{pet} вернулся к семье",
+    notifReunitedBody: "Питомец, найденный в городе {city}, вернулся к своей семье.",
+  },
+  ar: {
+    notifLostTitle: "حيوان مفقود في {city}",
+    notifLostBodyNear: "شوهد {pet} آخر مرة قرب {street}، {city}. ابقَ منتبهًا!",
+    notifLostBodyIn: "شوهد {pet} آخر مرة في {city}. ابقَ منتبهًا!",
+    notifFoundTitle: "عُثر على حيوان في {city}",
+    notifFoundBodyNear: "عُثر على {pet} قرب {street}، {city}. هل تعرف صاحبه؟",
+    notifFoundBodyIn: "عُثر على {pet} في {city}. هل تعرف صاحبه؟",
+    notifBackHomeTitle: "عاد {pet} إلى المنزل",
+    notifBackHomeBody: "أخبار سارة من {city}: تم العثور على {pet}. شكرًا لمساعدتك!",
+    notifReunitedTitle: "عاد {pet} إلى عائلته",
+    notifReunitedBody: "الحيوان الذي عُثر عليه في {city} عاد إلى عائلته.",
+  },
+  zh: {
+    notifLostTitle: "{city}有宠物走失",
+    notifLostBodyNear: "{pet}最后出现在{city}{street}附近，请留意！",
+    notifLostBodyIn: "{pet}最后出现在{city}，请留意！",
+    notifFoundTitle: "{city}有人捡到宠物",
+    notifFoundBodyNear: "有人在{city}{street}附近找到了{pet}。你认识它的主人吗？",
+    notifFoundBodyIn: "有人在{city}找到了{pet}。你认识它的主人吗？",
+    notifBackHomeTitle: "{pet}已经回家了",
+    notifBackHomeBody: "来自{city}的好消息：{pet}已经找到了。感谢你的帮助！",
+    notifReunitedTitle: "{pet}已与家人团聚",
+    notifReunitedBody: "在{city}被找到的宠物已回到家人身边。",
+  },
+  hi: {
+    notifLostTitle: "{city} में पालतू खो गया",
+    notifLostBodyNear: "{pet} को आख़िरी बार {street}, {city} के पास देखा गया था। नज़र रखें!",
+    notifLostBodyIn: "{pet} को आख़िरी बार {city} में देखा गया था। नज़र रखें!",
+    notifFoundTitle: "{city} में पालतू मिला",
+    notifFoundBodyNear: "{pet} {street}, {city} के पास मिला है। क्या आप इसके मालिक को जानते हैं?",
+    notifFoundBodyIn: "{pet} {city} में मिला है। क्या आप इसके मालिक को जानते हैं?",
+    notifBackHomeTitle: "{pet} घर लौट आया",
+    notifBackHomeBody: "{city} से अच्छी ख़बर: {pet} मिल गया है। मदद के लिए धन्यवाद!",
+    notifReunitedTitle: "{pet} अपने परिवार से मिल गया",
+    notifReunitedBody: "{city} में मिला पालतू अपने परिवार के पास लौट गया है।",
+  },
+};

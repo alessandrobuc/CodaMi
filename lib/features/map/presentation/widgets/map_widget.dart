@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/number_format.dart';
 import '../../../reports/domain/entities/reports_entity.dart';
+import '../../../../l10n/l10n.dart';
 
 class MapGlass extends StatelessWidget {
   final Widget child;
@@ -83,7 +84,7 @@ class MapControlPill extends StatelessWidget {
             children: [
               _ControlButton(
                 icon: Icons.add_rounded,
-                tooltip: 'Zoom in',
+                tooltip: context.l10n.zoomIn,
                 onTap: onZoomIn,
               ),
               const SizedBox(
@@ -92,7 +93,7 @@ class MapControlPill extends StatelessWidget {
               ),
               _ControlButton(
                 icon: Icons.remove_rounded,
-                tooltip: 'Zoom out',
+                tooltip: context.l10n.zoomOut,
                 onTap: onZoomOut,
               ),
             ],
@@ -108,7 +109,7 @@ class MapControlPill extends StatelessWidget {
                 valueListenable: locating,
                 builder: (context, busy, _) => _ControlButton(
                   icon: Icons.my_location_rounded,
-                  tooltip: 'My location',
+                  tooltip: context.l10n.myLocation,
                   onTap: busy ? null : onLocate,
                   busy: busy,
                 ),
@@ -119,7 +120,7 @@ class MapControlPill extends StatelessWidget {
               ),
               _ControlButton(
                 icon: Icons.home_work_outlined,
-                tooltip: 'My city',
+                tooltip: context.l10n.myCity,
                 onTap: onHome,
               ),
             ],
@@ -198,19 +199,19 @@ class MapTypeChips extends StatelessWidget {
           children: [
             _chip(
               null,
-              'All',
+              context.l10n.all,
               compactCount(lostCount + foundCount, more: lostMore || foundMore),
               AppColors.primary,
             ),
             _chip(
               ReportType.lost,
-              'Lost',
+              context.l10n.lost,
               compactCount(lostCount, more: lostMore),
               AppColors.lostPin,
             ),
             _chip(
               ReportType.found,
-              'Found',
+              context.l10n.found,
               compactCount(foundCount, more: foundMore),
               AppColors.foundPin,
             ),

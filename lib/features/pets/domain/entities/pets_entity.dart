@@ -1,11 +1,7 @@
 enum PetSpecies {
-  dog('Dog'),
-  cat('Cat'),
-  other('Other');
-
-  final String label;
-
-  const PetSpecies(this.label);
+  dog,
+  cat,
+  other;
 
   static PetSpecies fromValue(String? value) => PetSpecies.values.firstWhere(
     (s) => s.name == value,
@@ -14,14 +10,13 @@ enum PetSpecies {
 }
 
 enum PetSex {
-  male('M', 'Male'),
-  female('F', 'Female'),
-  unknown('unknown', 'Unknown');
+  male('M'),
+  female('F'),
+  unknown('unknown');
 
   final String code;
-  final String label;
 
-  const PetSex(this.code, this.label);
+  const PetSex(this.code);
 
   static PetSex? fromCode(String? code) {
     for (final sex in PetSex.values) {
@@ -61,11 +56,6 @@ class Pet {
   });
 
   String? get coverUrl => photoUrls.isEmpty ? null : photoUrls.first;
-
-  String get subtitle {
-    final parts = [breed, age].whereType<String>().where((p) => p.isNotEmpty);
-    return parts.isEmpty ? species.label : parts.join(' · ');
-  }
 }
 
 class PetPhoto {

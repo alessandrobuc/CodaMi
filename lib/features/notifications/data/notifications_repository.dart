@@ -43,6 +43,9 @@ class NotificationsRepository {
       reportId: map['reportId'] as String?,
       reportType: ReportType.fromValue(map['reportType'] as String?),
       photoUrl: map['photoUrl'] as String?,
+      petName: map['petName'] as String?,
+      city: map['city'] as String?,
+      placeDetail: map['placeDetail'] as String?,
       read: map['read'] as bool? ?? false,
       createdAt: created is Timestamp ? created.toDate() : null,
     );

@@ -2,8 +2,14 @@ import 'package:CodaMi/core/utils/date_format.dart';
 import 'package:CodaMi/features/pets/domain/entities/pets_entity.dart';
 import 'package:CodaMi/features/reports/data/models/reports_model.dart';
 import 'package:CodaMi/features/reports/domain/entities/reports_entity.dart';
+import 'package:CodaMi/l10n/l10n.dart';
+import 'package:CodaMi/l10n/labels.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+final _en = lookupAppLocalizations(const Locale('en'));
+final _it = lookupAppLocalizations(const Locale('it'));
 
 const _place = ReportPlace(
   city: 'Milano',
@@ -90,7 +96,7 @@ void main() {
     expect(report.isOpen, isFalse);
     expect(report.lat, 45.0);
     expect(report.eventAt.toUtc(), DateTime.utc(2026, 10, 6, 14, 30));
-    expect(report.placeLabel, 'Parco Sempione, Milano');
+    expect(report.placeLabel(_en), 'Parco Sempione, Milano');
     expect(report.contactPhone, isNull);
     expect(report.whatsapp, isFalse);
     expect(report.ownerContact, 'me@mail.com');
@@ -136,31 +142,36 @@ void main() {
     expect(map['areaRadius'], 100);
 
     final report = ReportModel.fromMap('r1', {...map, 'eventAt': 'x'});
-    expect(report.placeLabel, 'Near Piazzale Enrico Fermi, Milano');
-    expect(report.resolvedLabel, 'Back home');
+    expect(report.placeLabel(_en), 'Near Piazzale Enrico Fermi, Milano');
+    expect(report.resolvedLabel(_en), 'Back home');
   });
 
   test('timeAgo reads naturally', () {
     final now = DateTime(2026, 10, 6, 12);
     expect(
-      timeAgo(now.subtract(const Duration(seconds: 20)), now: now),
+      timeAgo(_en, now.subtract(const Duration(seconds: 20)), now: now),
       'Just now',
     );
     expect(
-      timeAgo(now.subtract(const Duration(minutes: 5)), now: now),
+      timeAgo(_en, now.subtract(const Duration(minutes: 5)), now: now),
       '5 min ago',
     );
     expect(
-      timeAgo(now.subtract(const Duration(hours: 3)), now: now),
+      timeAgo(_en, now.subtract(const Duration(hours: 3)), now: now),
       '3 h ago',
     );
     expect(
-      timeAgo(now.subtract(const Duration(days: 1)), now: now),
+      timeAgo(_en, now.subtract(const Duration(days: 1)), now: now),
       'Yesterday',
     );
     expect(
-      timeAgo(now.subtract(const Duration(days: 4)), now: now),
+      timeAgo(_en, now.subtract(const Duration(days: 4)), now: now),
       '4 days ago',
     );
+    expect(
+      timeAgo(_it, now.subtract(const Duration(days: 1)), now: now),
+      _it.timeYesterday,
+    );
+    expect(_it.timeYesterday, isNot('Yesterday'));
   });
 }

@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../l10n/l10n.dart';
 
 class AuthBackground extends StatefulWidget {
   final Widget child;
@@ -334,7 +335,9 @@ class AuthModeToggle extends StatelessWidget {
       child: Stack(
         children: [
           AnimatedAlign(
-            alignment: isLogin ? Alignment.centerLeft : Alignment.centerRight,
+            alignment: isLogin
+                ? AlignmentDirectional.centerStart
+                : AlignmentDirectional.centerEnd,
             duration: const Duration(milliseconds: 350),
             curve: Curves.easeOutBack,
             child: FractionallySizedBox(
@@ -358,12 +361,12 @@ class AuthModeToggle extends StatelessWidget {
           Row(
             children: [
               _ToggleLabel(
-                label: 'Log In',
+                label: context.l10n.logIn,
                 selected: isLogin,
                 onTap: () => onChanged(true),
               ),
               _ToggleLabel(
-                label: 'Sign Up',
+                label: context.l10n.signUp,
                 selected: !isLogin,
                 onTap: () => onChanged(false),
               ),
@@ -524,7 +527,7 @@ class SpamNote extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              "Can't find the reset email? Check your Spam or Junk folder, it sometimes lands there.",
+              context.l10n.spamNote,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.text,
                 height: 1.45,

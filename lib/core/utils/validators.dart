@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../../l10n/l10n.dart';
+
 class Validators {
   static final _emailRegex = RegExp(
     r'^[\w.+-]+@[\w-]+(\.[\w-]+)*\.[a-zA-Z]{2,}$',
@@ -11,29 +13,29 @@ class Validators {
 
   static String? name(String? value) {
     final name = value?.trim() ?? '';
-    if (name.isEmpty) return 'Please enter your name';
-    if (name.length < 2) return 'Name must be at least 2 characters';
-    if (name.length > 50) return 'Name must be under 50 characters';
+    if (name.isEmpty) return appL10n.validationNameRequired;
+    if (name.length < 2) return appL10n.validationNameTooShort;
+    if (name.length > 50) return appL10n.validationNameTooLong;
     if (!_nameRegex.hasMatch(name)) {
-      return 'Name can only contain letters, spaces, hyphens and apostrophes';
+      return appL10n.validationNameInvalid;
     }
     return null;
   }
 
   static String? email(String? value) {
     final email = value?.trim() ?? '';
-    if (email.isEmpty) return 'Please enter your email';
+    if (email.isEmpty) return appL10n.validationEmailRequired;
     if (!_emailRegex.hasMatch(email)) {
-      return 'Please enter a valid email address';
+      return appL10n.validationEmailInvalid;
     }
     return null;
   }
 
   static String? password(String? value) {
     final password = value ?? '';
-    if (password.isEmpty) return 'Please enter your password';
+    if (password.isEmpty) return appL10n.validationPasswordRequired;
     if (password.length < 8) {
-      return 'Password must be at least 8 characters long';
+      return appL10n.validationPasswordTooShort;
     }
     return null;
   }
@@ -42,8 +44,8 @@ class Validators {
     String Function() password,
   ) {
     return (value) {
-      if ((value ?? '').isEmpty) return 'Please confirm your password';
-      if (value != password()) return 'Passwords do not match';
+      if ((value ?? '').isEmpty) return appL10n.validationConfirmRequired;
+      if (value != password()) return appL10n.validationPasswordsDontMatch;
       return null;
     };
   }

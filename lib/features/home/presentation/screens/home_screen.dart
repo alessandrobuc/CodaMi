@@ -13,6 +13,7 @@ import '../../../reports/domain/entities/reports_entity.dart';
 import '../../../reports/presentation/screens/create_report_screen.dart';
 import '../../../reports/presentation/screens/reports_screen.dart';
 import '../../../shell/presentation/providers/shell_provider.dart';
+import '../../../../l10n/l10n.dart';
 
 enum _HomeSegment { map, lost, found }
 
@@ -72,7 +73,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi, $firstName!',
+                          context.l10n.greeting(firstName),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.headlineSmall?.copyWith(
@@ -162,9 +163,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 18),
-              const Text(
-                'Show pets within',
-                style: TextStyle(
+              Text(
+                context.l10n.showPetsWithin,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   color: AppColors.text,
@@ -172,7 +173,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
               const SizedBox(height: 4),
               Text(
-                'Distance from $city',
+                context.l10n.distanceFrom(city),
                 style: const TextStyle(color: AppColors.textMuted),
               ),
               const SizedBox(height: 16),
@@ -182,7 +183,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 children: [
                   for (final km in [...areaRadiusOptions, null])
                     ChoiceChip(
-                      label: Text(km == null ? 'Everywhere' : '$km km'),
+                      label: Text(
+                        km == null
+                            ? context.l10n.everywhere
+                            : context.l10n.distanceKm(km),
+                      ),
                       selected: km == current,
                       showCheckmark: false,
                       selectedColor: AppColors.primary,
@@ -216,11 +221,12 @@ class _AreaChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final label = city == null
-        ? 'Area not set yet'
+        ? l10n.areaNotSet
         : radius == null
-        ? '$city · Everywhere'
-        : '$city · within $radius km';
+        ? '$city · ${l10n.everywhere}'
+        : '$city · ${l10n.withinKm(radius!)}';
 
     return Material(
       color: Colors.transparent,
@@ -309,7 +315,7 @@ class _ReportButtonState extends State<_ReportButton> {
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
-      label: 'Report a lost or found pet',
+      label: context.l10n.reportPetSemantics,
       child: GestureDetector(
         onTapDown: (_) => _press(true),
         onTapCancel: () => _press(false),
@@ -364,9 +370,9 @@ class _ReportButtonState extends State<_ReportButton> {
                   ),
                 ),
                 const SizedBox(width: 10),
-                const Text(
-                  'Report a pet',
-                  style: TextStyle(
+                Text(
+                  context.l10n.reportAPet,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15.5,
                     fontWeight: FontWeight.w800,
@@ -453,11 +459,12 @@ class _SegmentTabs extends StatelessWidget {
 
   const _SegmentTabs({required this.selected, required this.onChanged});
 
-  static const _labels = {
-    _HomeSegment.map: 'Map',
-    _HomeSegment.lost: 'Lost',
-    _HomeSegment.found: 'Found',
-  };
+  static String _label(BuildContext context, _HomeSegment segment) =>
+      switch (segment) {
+        _HomeSegment.map => context.l10n.map,
+        _HomeSegment.lost => context.l10n.lost,
+        _HomeSegment.found => context.l10n.found,
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -508,7 +515,7 @@ class _SegmentTabs extends StatelessWidget {
                               ? Colors.white
                               : AppColors.textMuted,
                         ),
-                        child: Text(_labels[segment]!),
+                        child: Text(_label(context, segment)),
                       ),
                     ),
                   ),

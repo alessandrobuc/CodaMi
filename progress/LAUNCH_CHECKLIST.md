@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Fri 9 Oct 2026_
+_Last updated: Mon 12 Oct 2026_
 
 ---
 
@@ -58,7 +58,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 5. App content and polish
 
-- [ ] **Italian translation** of all app text (spec requires Italian UI). Setup done and first screens translated on 9 Oct; about 200 texts left. 10 languages set up with a picker in the profile; the 8 others still to translate
+- [ ] **Translation review** by native speakers (Italian first). All 10 languages are translated in the app.
 - [ ] App name, icon and splash final check
 - [ ] Remove any test reports, test users and test pets from Firestore
 - [ ] Empty states, error messages and loading states reviewed on a slow connection
@@ -67,8 +67,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 6. Legal and store listing
 
-- [ ] **Privacy policy** page (public URL): what data is stored (email, name, phone, photos, approximate location), why, and how to delete it
-- [ ] **Terms of use**
+- [ ] **Privacy policy** and **Terms of use**: written and shown in the app (Profile). Still to do: add the support email (`legalEmail` in `lib/features/legal/legal_content.dart`), have them reviewed, and publish the Privacy Policy at a public URL for the stores
 - [ ] Google Play **Data safety** form
 - [ ] App Store **privacy labels**
 - [ ] Store screenshots (phone), feature graphic (Play), short and full description in Italian and English
@@ -96,3 +95,4 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Lists paginated (20 per page); map capped at 300 newest pins with clustering
 - [x] **My reports** screen in the profile (mark as found, delete)
 - [x] **Account deletion** inside the app (deletes profile, pets, reports, photos and login)
+- [x] **10 languages** (EN, IT, ES, FR, DE, PT, RU, AR, ZH, HI), language picker on onboarding, login and profile; notifications in each user's language

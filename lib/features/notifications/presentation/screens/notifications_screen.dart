@@ -14,6 +14,7 @@ import '../../../reports/presentation/screens/report_detail_screen.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../providers/notifications_provider.dart';
+import '../../../../l10n/l10n.dart';
 
 class NotificationsScreen extends ConsumerWidget {
   const NotificationsScreen({super.key});
@@ -76,8 +77,8 @@ class NotificationsScreen extends ConsumerWidget {
                             }
                           },
                           background: Container(
-                            alignment: Alignment.centerRight,
-                            padding: const EdgeInsets.only(right: 24),
+                            alignment: AlignmentDirectional.centerEnd,
+                            padding: const EdgeInsetsDirectional.only(end: 24),
                             decoration: BoxDecoration(
                               color: AppColors.danger.withValues(alpha: 0.12),
                               borderRadius: BorderRadius.circular(20),
@@ -116,10 +117,10 @@ class NotificationsScreen extends ConsumerWidget {
                       color: AppColors.text,
                     ),
                     const SizedBox(width: 4),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Notifications',
-                        style: TextStyle(
+                        context.l10n.notificationsTitle,
+                        style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
                           color: AppColors.text,
@@ -131,7 +132,7 @@ class NotificationsScreen extends ConsumerWidget {
                         onPressed: () => ref
                             .read(notificationsRepositoryProvider)
                             .markAllRead(uid, unread.map((n) => n.id)),
-                        child: const Text('Mark all read'),
+                        child: Text(context.l10n.markAllRead),
                       ),
                   ],
                 ),
@@ -140,32 +141,40 @@ class NotificationsScreen extends ConsumerWidget {
                 child: state.isLoading && !state.hasValue
                     ? const Center(child: CircularProgressIndicator())
                     : state.hasError && !state.hasValue
-                    ? const Center(
+                    ? Center(
                         child: EmptyState(
-                          icon: Icon(Icons.cloud_off_rounded),
+                          icon: const Icon(Icons.cloud_off_rounded),
                           color: AppColors.lostPin,
-                          title: 'Couldn\'t load notifications',
-                          message: 'Check your connection and try again.',
+                          title: context.l10n.notificationsLoadError,
+                          message: context.l10n.checkConnection,
                         ),
                       )
                     : items.isEmpty
-                    ? const Center(
+                    ? Center(
                         child: SingleChildScrollView(
-                          padding: EdgeInsets.all(24),
+                          padding: const EdgeInsets.all(24),
                           child: EmptyState(
-                            icon: Icon(Icons.notifications_none_rounded),
-                            title: 'You\'re all caught up',
-                            message:
-                                'We\'ll let you know when a pet is lost or found in your city.',
+                            icon: const Icon(Icons.notifications_none_rounded),
+                            title: context.l10n.allCaughtUp,
+                            message: context.l10n.notificationsEmpty,
                           ),
                         ),
                       )
                     : ListView(
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                         children: [
-                          if (recent.isNotEmpty) section('NEW', recent, 0),
+                          if (recent.isNotEmpty)
+                            section(
+                              context.l10n.notificationsNew.toUpperCase(),
+                              recent,
+                              0,
+                            ),
                           if (earlier.isNotEmpty)
-                            section('EARLIER', earlier, recent.length),
+                            section(
+                              context.l10n.notificationsEarlier.toUpperCase(),
+                              earlier,
+                              recent.length,
+                            ),
                         ],
                       ),
               ),
@@ -177,6 +186,35 @@ class NotificationsScreen extends ConsumerWidget {
   }
 }
 
+// Built from the report fields so it follows the app language; older
+// notifications only have the text the server stored.
+(String, String) _text(AppLocalizations l10n, AppNotification n) {
+  final pet = n.petName;
+  final city = n.city;
+  if (pet == null || city == null) return (n.title, n.body);
+  final street = n.placeDetail;
+  final lost = n.reportType == ReportType.lost;
+  if (n.kind == NotificationKind.reportResolved) {
+    return lost
+        ? (l10n.notifBackHomeTitle(pet), l10n.notifBackHomeBody(pet, city))
+        : (l10n.notifReunitedTitle(pet), l10n.notifReunitedBody(city));
+  }
+  if (lost) {
+    return (
+      l10n.notifLostTitle(city),
+      street == null
+          ? l10n.notifLostBodyIn(pet, city)
+          : l10n.notifLostBodyNear(pet, street, city),
+    );
+  }
+  return (
+    l10n.notifFoundTitle(city),
+    street == null
+        ? l10n.notifFoundBodyIn(pet, city)
+        : l10n.notifFoundBodyNear(pet, street, city),
+  );
+}
+
 class _NotificationTile extends StatelessWidget {
   final AppNotification notification;
   final VoidCallback onTap;
@@ -186,6 +224,7 @@ class _NotificationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final n = notification;
+    final (title, body) = _text(context.l10n, n);
     final resolved = n.kind == NotificationKind.reportResolved;
     final color = resolved ? AppColors.primary : reportColor(n.reportType);
     final icon = resolved
@@ -247,7 +286,7 @@ class _NotificationTile extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            n.title,
+                            title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -273,7 +312,7 @@ class _NotificationTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      n.body,
+                      body,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -285,7 +324,7 @@ class _NotificationTile extends StatelessWidget {
                     if (n.createdAt != null) ...[
                       const SizedBox(height: 5),
                       Text(
-                        timeAgo(n.createdAt!),
+                        timeAgo(context.l10n, n.createdAt!),
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -321,12 +360,12 @@ class ReportByIdScreen extends ConsumerWidget {
       body: Center(
         child: state.isLoading
             ? const CircularProgressIndicator()
-            : const Padding(
-                padding: EdgeInsets.all(24),
+            : Padding(
+                padding: const EdgeInsets.all(24),
                 child: EmptyState(
-                  icon: Icon(Icons.search_off_rounded),
-                  title: 'Report not available',
-                  message: 'This report was removed by its owner.',
+                  icon: const Icon(Icons.search_off_rounded),
+                  title: context.l10n.reportNotAvailable,
+                  message: context.l10n.reportRemoved,
                 ),
               ),
       ),

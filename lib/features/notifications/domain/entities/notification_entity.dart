@@ -16,6 +16,9 @@ class AppNotification {
   final String? reportId;
   final ReportType reportType;
   final String? photoUrl;
+  final String? petName;
+  final String? city;
+  final String? placeDetail;
   final bool read;
   final DateTime? createdAt;
 
@@ -28,6 +31,9 @@ class AppNotification {
     required this.read,
     this.reportId,
     this.photoUrl,
+    this.petName,
+    this.city,
+    this.placeDetail,
     this.createdAt,
   });
 }

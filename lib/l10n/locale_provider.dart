@@ -13,26 +13,27 @@ final sharedPreferencesProvider = Provider<SharedPreferences>(
   (ref) => throw UnimplementedError(),
 );
 
-class LocaleNotifier extends Notifier<Locale?> {
+class LocaleNotifier extends Notifier<AppLanguage> {
   @override
-  Locale? build() => appLanguageFor(
-    ref.read(sharedPreferencesProvider).getString(_prefsKey),
-  )?.locale;
+  AppLanguage build() {
+    final saved = ref.read(sharedPreferencesProvider).getString(_prefsKey);
+    return currentAppLanguage = appLanguageFor(saved) ?? defaultAppLanguage;
+  }
 
-  // null means follow the phone's language.
-  Future<void> select(AppLanguage? language) async {
-    state = language?.locale;
-    final prefs = ref.read(sharedPreferencesProvider);
-    language == null
-        ? await prefs.remove(_prefsKey)
-        : await prefs.setString(_prefsKey, language.code);
-
-    // Saved on the profile so server notifications can use it later.
+  Future<void> select(AppLanguage language) async {
+    state = currentAppLanguage = language;
+    await ref
+        .read(sharedPreferencesProvider)
+        .setString(_prefsKey, language.code);
     final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null) return;
+    if (uid != null) await saveToProfile(uid);
+  }
+
+  // Server notifications are sent in the language stored on the profile.
+  Future<void> saveToProfile(String uid) async {
     try {
       await FirebaseFirestore.instance.collection('users').doc(uid).set({
-        'language': language?.code ?? FieldValue.delete(),
+        'language': state.code,
       }, SetOptions(merge: true));
     } catch (e) {
       debugPrint('Saving language failed: $e');
@@ -40,6 +41,6 @@ class LocaleNotifier extends Notifier<Locale?> {
   }
 }
 
-final localeProvider = NotifierProvider<LocaleNotifier, Locale?>(
+final localeProvider = NotifierProvider<LocaleNotifier, AppLanguage>(
   LocaleNotifier.new,
 );

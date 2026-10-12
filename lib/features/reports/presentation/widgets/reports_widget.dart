@@ -5,6 +5,8 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/entities/reports_entity.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 Color reportColor(ReportType type) =>
     type == ReportType.lost ? AppColors.lostPin : AppColors.foundPin;
@@ -30,7 +32,7 @@ class ReportTypeBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        type.label.toUpperCase(),
+        type.label(context.l10n).toUpperCase(),
         style: TextStyle(
           color: Colors.white,
           fontSize: large ? 12 : 10.5,
@@ -144,11 +146,14 @@ class _ReportCardState extends State<ReportCard> {
                           children: [
                             report.isOpen
                                 ? ReportTypeBadge(type: report.type)
-                                : ResolvedBadge(label: report.resolvedLabel),
+                                : ResolvedBadge(
+                                    label: report.resolvedLabel(context.l10n),
+                                  ),
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
                                 timeAgo(
+                                  context.l10n,
                                   report.resolvedAt ??
                                       report.createdAt ??
                                       report.eventAt,
@@ -190,7 +195,7 @@ class _ReportCardState extends State<ReportCard> {
                             const SizedBox(width: 3),
                             Expanded(
                               child: Text(
-                                report.placeLabel,
+                                report.placeLabel(context.l10n),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(

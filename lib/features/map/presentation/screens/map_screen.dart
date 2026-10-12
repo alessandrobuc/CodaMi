@@ -19,6 +19,7 @@ import '../providers/map_provider.dart';
 import '../widgets/map_style.dart';
 import '../widgets/map_widget.dart';
 import '../widgets/pin_icons.dart';
+import '../../../../l10n/l10n.dart';
 
 const _italy = LatLng(42.5, 12.5);
 const _italyZoom = 5.3;
@@ -29,13 +30,15 @@ const _areaZoom = 14.5;
 LatLng _point(Report r) => LatLng(r.lat, r.lng);
 
 Future<LatLng?> currentLocation(BuildContext context) async {
-  void fail(String message) {
-    if (context.mounted) SnackbarUtils.showError(context, message);
+  void fail(String Function(AppLocalizations l10n) message) {
+    if (context.mounted) {
+      SnackbarUtils.showError(context, message(context.l10n));
+    }
   }
 
   try {
     if (!await Geolocator.isLocationServiceEnabled()) {
-      fail('Turn on location services to use your location.');
+      fail((l10n) => l10n.locationServicesOff);
       return null;
     }
     var permission = await Geolocator.checkPermission();
@@ -44,7 +47,7 @@ Future<LatLng?> currentLocation(BuildContext context) async {
     }
     if (permission == LocationPermission.denied ||
         permission == LocationPermission.deniedForever) {
-      fail('Allow location access in Settings to use your location.');
+      fail((l10n) => l10n.locationPermissionDenied);
       return null;
     }
     final position = await Geolocator.getCurrentPosition(
@@ -56,7 +59,7 @@ Future<LatLng?> currentLocation(BuildContext context) async {
     return LatLng(position.latitude, position.longitude);
   } catch (e) {
     debugPrint('Location failed: $e');
-    fail('Couldn\'t get your location. Please try again.');
+    fail((l10n) => l10n.locationFailed);
     return null;
   }
 }
@@ -498,12 +501,12 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
           child: widget.fullscreen
               ? MapIconButton(
                   icon: Icons.arrow_back_rounded,
-                  tooltip: 'Back',
+                  tooltip: context.l10n.back,
                   onTap: () => Navigator.of(context).pop(),
                 )
               : MapIconButton(
                   icon: Icons.open_in_full_rounded,
-                  tooltip: 'Full screen',
+                  tooltip: context.l10n.fullScreen,
                   onTap: _openFullscreen,
                 ),
         ),
@@ -533,13 +536,13 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
                     ? Icons.cloud_off_rounded
                     : Icons.pets_rounded,
                 text: loading
-                    ? 'Loading pets…'
+                    ? context.l10n.loadingPets
                     : failed
-                    ? 'Couldn\'t load reports. Check your connection.'
+                    ? context.l10n.mapLoadFailed
                     : switch (_type) {
-                        ReportType.lost => 'No lost pets in this area',
-                        ReportType.found => 'No found pets in this area',
-                        null => 'No lost or found pets in this area',
+                        ReportType.lost => context.l10n.mapNoLost,
+                        ReportType.found => context.l10n.mapNoFound,
+                        null => context.l10n.mapNoPets,
                       },
               ).animate().fadeIn(duration: 250.ms),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../data/models/city_place.dart';
+import '../../../../l10n/l10n.dart';
 
 class CitySearchInput extends StatelessWidget {
   final TextEditingController controller;
@@ -11,7 +12,7 @@ class CitySearchInput extends StatelessWidget {
   final bool confirmed;
   final ValueChanged<String> onChanged;
   final VoidCallback onClear;
-  final String hint;
+  final String? hint;
   final IconData icon;
   final TextCapitalization textCapitalization;
 
@@ -23,7 +24,7 @@ class CitySearchInput extends StatelessWidget {
     required this.confirmed,
     required this.onChanged,
     required this.onClear,
-    this.hint = 'Search your city, e.g. Milano',
+    this.hint,
     this.icon = Icons.search_rounded,
     this.textCapitalization = TextCapitalization.words,
   });
@@ -58,7 +59,7 @@ class CitySearchInput extends StatelessWidget {
         textCapitalization: textCapitalization,
         autocorrect: false,
         decoration: InputDecoration(
-          hintText: hint,
+          hintText: hint ?? context.l10n.searchCityHint,
           prefixIcon: Icon(
             confirmed ? Icons.location_on_rounded : icon,
             color: confirmed ? AppColors.primary : AppColors.textMuted,

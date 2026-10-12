@@ -8,6 +8,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../domain/entities/pets_entity.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 const maleColor = Color(0xFF3B82F6);
 const femaleColor = Color(0xFFE5679A);
@@ -246,7 +248,7 @@ class _PetCardState extends State<PetCard> {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          pet.species.label,
+                          pet.species.label(context.l10n),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 11,
@@ -294,7 +296,7 @@ class _PetCardState extends State<PetCard> {
                         children: [
                           Expanded(
                             child: Text(
-                              pet.subtitle,
+                              pet.subtitle(context.l10n),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -375,9 +377,9 @@ class AddPetTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              const Text(
-                'Add pet',
-                style: TextStyle(
+              Text(
+                context.l10n.addPet,
+                style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   color: AppColors.primaryDark,
                 ),

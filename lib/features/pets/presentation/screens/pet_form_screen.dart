@@ -10,18 +10,20 @@ import '../../domain/repositories/pets_repository.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pet_form_widgets.dart';
 import '../widgets/pets_widget.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 const _maxPhotos = 4;
 
-const _quickColors = {
-  'Black': Color(0xFF2B2B2B),
-  'White': Color(0xFFF4F4F4),
-  'Brown': Color(0xFF8B5A2B),
-  'Golden': Color(0xFFD9A441),
-  'Grey': Color(0xFF9CA3AF),
-  'Cream': Color(0xFFF1E3C6),
-  'Ginger': Color(0xFFE07B39),
-};
+List<(String, Color)> _quickColors(AppLocalizations l10n) => [
+  (l10n.colorBlack, const Color(0xFF2B2B2B)),
+  (l10n.colorWhite, const Color(0xFFF4F4F4)),
+  (l10n.colorBrown, const Color(0xFF8B5A2B)),
+  (l10n.colorGolden, const Color(0xFFD9A441)),
+  (l10n.colorGrey, const Color(0xFF9CA3AF)),
+  (l10n.colorCream, const Color(0xFFF1E3C6)),
+  (l10n.colorGinger, const Color(0xFFE07B39)),
+];
 
 class PetFormScreen extends ConsumerStatefulWidget {
   final Pet? pet;
@@ -104,17 +106,17 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
       SnackbarUtils.showError(
         context,
         _photos.isEmpty
-            ? 'Add at least one photo of your pet.'
+            ? context.l10n.petPhotoRequired
             : _species == null
-            ? 'Choose whether your pet is a dog, cat or other.'
-            : 'Please check the highlighted fields.',
+            ? context.l10n.petSpeciesRequired
+            : context.l10n.checkHighlightedFields,
       );
       return;
     }
 
     final uid = ref.read(authStateProvider).value?.uid;
     if (uid == null) {
-      SnackbarUtils.showError(context, 'Please sign in again to save.');
+      SnackbarUtils.showError(context, context.l10n.signInToSave);
       return;
     }
 
@@ -165,17 +167,17 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
     final discard = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Discard changes?'),
-        content: const Text('Your changes to this pet will be lost.'),
+        title: Text(context.l10n.discardChangesTitle),
+        content: Text(context.l10n.discardPetChanges),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Keep editing'),
+            child: Text(context.l10n.keepEditing),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-            child: const Text('Discard'),
+            child: Text(context.l10n.discard),
           ),
         ],
       ),
@@ -213,7 +215,9 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        _isEditing ? 'Edit ${widget.pet!.name}' : 'New pet',
+                        _isEditing
+                            ? context.l10n.editPetTitle(widget.pet!.name)
+                            : context.l10n.newPet,
                         style: textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: AppColors.text,
@@ -239,7 +243,7 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                           onMakeCover: _makeCover,
                         ),
                         const SizedBox(height: 26),
-                        const SectionLabel('What kind of pet?'),
+                        SectionLabel(context.l10n.whatKindOfPet),
                         const SizedBox(height: 10),
                         SpeciesSelector(
                           selected: _species,
@@ -247,47 +251,47 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                           onChanged: (s) => setState(() => _species = s),
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel('Name'),
+                        SectionLabel(context.l10n.name),
                         const SizedBox(height: 8),
                         AppFormField(
                           controller: _name,
-                          hint: 'e.g. Luna',
+                          hint: context.l10n.petNameHint,
                           icon: Icons.badge_outlined,
                           textCapitalization: TextCapitalization.words,
                           validator: (v) {
                             final name = v?.trim() ?? '';
                             if (name.isEmpty) {
-                              return 'Please enter your pet\'s name';
+                              return context.l10n.petNameRequired;
                             }
                             if (name.length > 40) {
-                              return 'Name must be under 40 characters';
+                              return context.l10n.petNameTooLong;
                             }
                             return null;
                           },
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel('Sex', optional: true),
+                        SectionLabel(context.l10n.sex, optional: true),
                         const SizedBox(height: 10),
                         _SexSelector(
                           selected: _sex,
                           onChanged: (s) => setState(() => _sex = s),
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel('Breed', optional: true),
+                        SectionLabel(context.l10n.breed, optional: true),
                         const SizedBox(height: 8),
                         AppFormField(
                           controller: _breed,
-                          hint: 'e.g. Golden Retriever, Mixed',
+                          hint: context.l10n.breedHint,
                           icon: Icons.pets_outlined,
                           textCapitalization: TextCapitalization.words,
                           maxLength: 60,
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel('Color', optional: true),
+                        SectionLabel(context.l10n.color, optional: true),
                         const SizedBox(height: 8),
                         AppFormField(
                           controller: _color,
-                          hint: 'e.g. Golden with white chest',
+                          hint: context.l10n.colorHint,
                           icon: Icons.palette_outlined,
                           textCapitalization: TextCapitalization.sentences,
                           maxLength: 60,
@@ -299,24 +303,23 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                           onSelected: (c) => setState(() => _color.text = c),
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel('Age', optional: true),
+                        SectionLabel(context.l10n.age, optional: true),
                         const SizedBox(height: 8),
                         AppFormField(
                           controller: _age,
-                          hint: 'e.g. 3 years, 8 months',
+                          hint: context.l10n.ageHint,
                           icon: Icons.cake_outlined,
                           maxLength: 30,
                         ),
                         const SizedBox(height: 22),
-                        const SectionLabel(
-                          'Distinctive features',
+                        SectionLabel(
+                          context.l10n.distinctiveFeatures,
                           optional: true,
                         ),
                         const SizedBox(height: 8),
                         AppFormField(
                           controller: _features,
-                          hint:
-                              'Collar, microchip, scars, spots… anything that helps someone recognise your pet.',
+                          hint: context.l10n.featuresHint,
                           icon: Icons.auto_awesome_outlined,
                           textCapitalization: TextCapitalization.sentences,
                           maxLines: 4,
@@ -327,7 +330,9 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                   ),
                 ),
                 ProgressSaveButton(
-                  label: _isEditing ? 'Save changes' : 'Save pet',
+                  label: _isEditing
+                      ? context.l10n.saveChanges
+                      : context.l10n.savePet,
                   saving: _saving,
                   progress: _uploadProgress,
                   onPressed: _save,
@@ -386,7 +391,7 @@ class _SexSelector extends StatelessWidget {
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        sex.label,
+                        sex.label(context.l10n),
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: sex == selected
@@ -418,19 +423,19 @@ class _ColorChips extends StatelessWidget {
       spacing: 8,
       runSpacing: 8,
       children: [
-        for (final entry in _quickColors.entries)
+        for (final (name, swatch) in _quickColors(context.l10n))
           GestureDetector(
-            onTap: () => onSelected(entry.key),
+            onTap: () => onSelected(name),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               padding: const EdgeInsets.fromLTRB(6, 5, 12, 5),
               decoration: BoxDecoration(
-                color: value.trim().toLowerCase() == entry.key.toLowerCase()
+                color: value.trim().toLowerCase() == name.toLowerCase()
                     ? AppColors.primary.withValues(alpha: 0.1)
                     : AppColors.surface,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: value.trim().toLowerCase() == entry.key.toLowerCase()
+                  color: value.trim().toLowerCase() == name.toLowerCase()
                       ? AppColors.primary
                       : AppColors.border,
                 ),
@@ -442,14 +447,14 @@ class _ColorChips extends StatelessWidget {
                     width: 16,
                     height: 16,
                     decoration: BoxDecoration(
-                      color: entry.value,
+                      color: swatch,
                       shape: BoxShape.circle,
                       border: Border.all(color: AppColors.border),
                     ),
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    entry.key,
+                    name,
                     style: const TextStyle(
                       fontSize: 12.5,
                       fontWeight: FontWeight.w600,

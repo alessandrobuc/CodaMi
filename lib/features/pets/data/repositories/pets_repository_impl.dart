@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../../domain/repositories/pets_repository.dart';
 import '../datasources/pets_remote_data_source.dart';
+import '../../../../l10n/l10n.dart';
 
 class PetsRepositoryImpl implements PetsRepository {
   final PetsRemoteDataSource _remote;
@@ -44,22 +45,26 @@ class PetsRepositoryImpl implements PetsRepository {
       throw PetsException(_messageFor(e, action));
     } catch (e) {
       debugPrint('Pet $action failed: $e');
-      throw PetsException('Couldn\'t $action your pet. Please try again.');
+      throw PetsException(_failed(action));
     }
   }
+
+  String _failed(String action) =>
+      action == 'delete' ? appL10n.petDeleteFailed : appL10n.petSaveFailed;
 
   String _messageFor(FirebaseException e, String action) {
     return switch (e.code) {
       'permission-denied' ||
       'unauthorized' ||
-      'unauthenticated' => 'You don\'t have permission to $action this pet.',
-      'unavailable' || 'retry-limit-exceeded' || 'network-request-failed' =>
-        'You\'re offline. Check your connection and try again.',
+      'unauthenticated' => appL10n.errorPermission,
+      'unavailable' ||
+      'retry-limit-exceeded' ||
+      'network-request-failed' => appL10n.errorOffline,
       'bucket-not-found' || 'project-not-found' || 'object-not-found'
           when e.plugin == 'firebase_storage' =>
-        'Photo storage isn\'t set up yet. Please try again later.',
-      'quota-exceeded' => 'Storage is full right now. Please try again later.',
-      _ => 'Couldn\'t $action your pet. Please try again.',
+        appL10n.storageNotReady,
+      'quota-exceeded' => appL10n.storageFull,
+      _ => _failed(action),
     };
   }
 }

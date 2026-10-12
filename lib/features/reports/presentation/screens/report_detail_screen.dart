@@ -16,6 +16,7 @@ import '../../domain/entities/reports_entity.dart';
 import '../providers/reports_provider.dart';
 import '../widgets/report_actions.dart';
 import '../widgets/reports_widget.dart';
+import '../../../../l10n/labels.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
   final Report report;
@@ -47,19 +48,19 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
     }
   }
 
-  void _call(Report r) => _open(
-    Uri(scheme: 'tel', path: r.contactPhone),
-    'Couldn\'t start a call.',
-  );
+  void _call(Report r) =>
+      _open(Uri(scheme: 'tel', path: r.contactPhone), context.l10n.callFailed);
 
   void _whatsapp(Report r) {
     final digits = r.contactPhone!.replaceAll(RegExp(r'[^0-9]'), '');
     final text = Uri.encodeComponent(
-      'Hi! I\'m contacting you about the ${r.type.label.toLowerCase()} pet "${r.petName}" on CodaMi.',
+      r.type == ReportType.lost
+          ? context.l10n.whatsappMessageLost(r.petName)
+          : context.l10n.whatsappMessageFound(r.petName),
     );
     _open(
       Uri.parse('https://wa.me/$digits?text=$text'),
-      'Couldn\'t open WhatsApp.',
+      context.l10n.whatsappFailed,
     );
   }
 
@@ -68,22 +69,26 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
       scheme: 'mailto',
       path: r.contactEmail,
       query:
-          'subject=${Uri.encodeComponent('About ${r.petName} (${r.type.label.toLowerCase()} on CodaMi)')}',
+          'subject=${Uri.encodeComponent(r.type == ReportType.lost ? context.l10n.emailSubjectLost(r.petName) : context.l10n.emailSubjectFound(r.petName))}',
     ),
-    'Couldn\'t open your email app.',
+    context.l10n.emailFailed,
   );
 
   Future<void> _share(Report r) async {
-    final verb = r.type == ReportType.lost ? 'LOST' : 'FOUND';
+    final l10n = context.l10n;
+    final title = r.type == ReportType.lost
+        ? l10n.shareTitleLost(r.petName)
+        : l10n.shareTitleFound(r.petName);
     await SharePlus.instance.share(
       ShareParams(
-        subject: '$verb ${r.species.label.toLowerCase()}: ${r.petName}',
+        subject: title,
         text:
-            '$verb ${r.species.label.toLowerCase()} – ${r.petName}\n'
-            '📍 ${r.placeLabel}\n'
-            '🕒 ${dateTimeLabel(r.eventAt)}\n\n'
+            '$title\n'
+            '🐾 ${r.species.label(l10n)}\n'
+            '📍 ${r.placeLabel(l10n)}\n'
+            '🕒 ${dateTimeLabel(l10n, r.eventAt)}\n\n'
             '${r.description}\n\n'
-            'Seen this pet? Open CodaMi to get in touch.',
+            '${l10n.shareFooter}',
       ),
     );
   }
@@ -233,7 +238,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              report.resolvedLabel,
+                              report.resolvedLabel(context.l10n),
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
@@ -245,7 +250,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                       ),
                     const Spacer(),
                     Text(
-                      timeAgo(report.createdAt ?? report.eventAt),
+                      timeAgo(context.l10n, report.createdAt ?? report.eventAt),
                       style: textTheme.bodySmall?.copyWith(
                         color: AppColors.textMuted,
                       ),
@@ -289,27 +294,27 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   icon: Icons.location_on_rounded,
                   color: color,
                   label:
-                      '${report.type == ReportType.lost ? 'Last seen' : 'Found at'}'
-                      '${report.areaRadius == null ? '' : ' · area of about ${report.areaRadius} m'}',
-                  value: report.placeLabel,
+                      '${report.type == ReportType.lost ? context.l10n.lastSeen : context.l10n.foundAt}'
+                      '${report.areaRadius == null ? '' : ' · ${context.l10n.areaAbout(report.areaRadius!)}'}',
+                  value: report.placeLabel(context.l10n),
                 ),
                 const SizedBox(height: 10),
                 _InfoRow(
                   icon: Icons.schedule_rounded,
                   color: AppColors.accent,
-                  label: 'When',
-                  value: dateTimeLabel(report.eventAt),
+                  label: context.l10n.when,
+                  value: dateTimeLabel(context.l10n, report.eventAt),
                 ),
                 const SizedBox(height: 10),
                 _InfoRow(
                   icon: Icons.person_rounded,
                   color: AppColors.primary,
-                  label: 'Posted by',
-                  value: isOwner ? 'You' : report.ownerName,
+                  label: context.l10n.postedBy,
+                  value: isOwner ? context.l10n.you : report.ownerName,
                 ),
                 const SizedBox(height: 16),
                 _Card(
-                  title: 'Description',
+                  title: context.l10n.description,
                   icon: Icons.notes_rounded,
                   child: Text(
                     report.description,
@@ -501,7 +506,7 @@ class _ContactCard extends StatelessWidget {
       if (hasPhone)
         _ContactButton(
           icon: const Icon(Icons.call_rounded, color: Colors.white, size: 20),
-          label: 'Call',
+          label: context.l10n.call,
           color: AppColors.primary,
           onTap: onCall,
         ),
@@ -519,7 +524,7 @@ class _ContactCard extends StatelessWidget {
       if (report.contactEmail != null)
         _ContactButton(
           icon: const Icon(Icons.mail_rounded, color: Colors.white, size: 20),
-          label: 'Email',
+          label: context.l10n.email,
           color: AppColors.accent,
           onTap: onEmail,
         ),
@@ -527,13 +532,13 @@ class _ContactCard extends StatelessWidget {
 
     return _Card(
       title: report.type == ReportType.lost
-          ? 'Seen ${report.petName}? Get in touch'
-          : 'Is this your pet? Get in touch',
+          ? context.l10n.contactTitleLost(report.petName)
+          : context.l10n.contactTitleFound,
       icon: Icons.forum_rounded,
       child: buttons.isEmpty
-          ? const Text(
-              'No contact details were shared.',
-              style: TextStyle(color: AppColors.textMuted),
+          ? Text(
+              context.l10n.noContactShared,
+              style: const TextStyle(color: AppColors.textMuted),
             )
           : Row(
               children: [
@@ -652,8 +657,8 @@ class _OwnerActions extends StatelessWidget {
                 Expanded(
                   child: Text(
                     report.type == ReportType.lost
-                        ? '${report.petName} is back home. Thank you for using CodaMi!'
-                        : 'This pet is back with its family. Thank you for helping!',
+                        ? context.l10n.resolvedThanksLost(report.petName)
+                        : context.l10n.resolvedThanksFound,
                     style: const TextStyle(
                       color: AppColors.text,
                       fontWeight: FontWeight.w600,
@@ -678,7 +683,7 @@ class _OwnerActions extends StatelessWidget {
       children: [
         if (phone != null || email != null) ...[
           _Card(
-            title: 'Your contact details',
+            title: context.l10n.yourContactDetails,
             icon: Icons.contact_phone_rounded,
             child: Column(
               children: [
@@ -717,8 +722,8 @@ class _OwnerActions extends StatelessWidget {
               : const Icon(Icons.check_circle_rounded),
           label: Text(
             report.type == ReportType.lost
-                ? 'Mark ${report.petName} as found'
-                : 'Mark as returned to owner',
+                ? context.l10n.markPetAsFound(report.petName)
+                : context.l10n.markReturnedToOwner,
           ),
           style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(54),
@@ -759,7 +764,7 @@ class _ContactLine extends StatelessWidget {
       onLongPress: () {
         Clipboard.setData(ClipboardData(text: value));
         HapticFeedback.selectionClick();
-        SnackbarUtils.showSuccess(context, 'Copied to clipboard.');
+        SnackbarUtils.showSuccess(context, context.l10n.copiedToClipboard);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),

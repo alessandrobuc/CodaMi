@@ -10,6 +10,7 @@ import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
 import 'pet_detail_screen.dart';
 import 'pet_form_screen.dart';
+import '../../../../l10n/l10n.dart';
 
 class PetsScreen extends ConsumerWidget {
   const PetsScreen({super.key});
@@ -22,7 +23,7 @@ class PetsScreen extends ConsumerWidget {
       ),
     );
     if (name != null && context.mounted) {
-      SnackbarUtils.showSuccess(context, '$name was added to your pets.');
+      SnackbarUtils.showSuccess(context, context.l10n.petAdded(name));
     }
   }
 
@@ -57,16 +58,16 @@ class PetsScreen extends ConsumerWidget {
               sliver: PetGridSkeleton(),
             )
           else if (petsState.hasError && !petsState.hasValue)
-            const SliverFillRemaining(
+            SliverFillRemaining(
               hasScrollBody: false,
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(24),
                   child: EmptyState(
-                    icon: Icon(Icons.cloud_off_rounded),
+                    icon: const Icon(Icons.cloud_off_rounded),
                     color: AppColors.lostPin,
-                    title: 'Couldn\'t load your pets',
-                    message: 'Check your connection and try again.',
+                    title: context.l10n.petsLoadError,
+                    message: context.l10n.checkConnection,
                   ),
                 ),
               ),
@@ -80,13 +81,12 @@ class PetsScreen extends ConsumerWidget {
                   child: EmptyState(
                     icon: const Icon(Icons.pets_rounded),
                     color: AppColors.accent,
-                    title: 'No pets yet',
-                    message:
-                        'Add your pets now so you can report them in seconds if they ever get lost.',
+                    title: context.l10n.noPetsYet,
+                    message: context.l10n.noPetsYetMessage,
                     action: ElevatedButton.icon(
                       onPressed: () => _addPet(context),
                       icon: const Icon(Icons.add_rounded),
-                      label: const Text('Add your first pet'),
+                      label: Text(context.l10n.addFirstPet),
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(200, 52),
                         shape: RoundedRectangleBorder(
@@ -150,9 +150,8 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final subtitle = switch (count) {
-      null || 0 => 'Keep your pets\' profiles ready, just in case.',
-      1 => '1 furry friend, ready if anything happens.',
-      final n => '$n furry friends, ready if anything happens.',
+      null || 0 => context.l10n.petsHeaderEmpty,
+      final n => context.l10n.petsHeaderCount(n),
     };
 
     return Padding(
@@ -164,7 +163,7 @@ class _Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'My pets',
+                  context.l10n.myPets,
                   style: textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: AppColors.text,

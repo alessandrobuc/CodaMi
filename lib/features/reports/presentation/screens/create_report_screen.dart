@@ -29,6 +29,8 @@ import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
 import '../widgets/spot_picker.dart';
+import '../../../../l10n/l10n.dart';
+import '../../../../l10n/labels.dart';
 
 enum _Step { type, pet, where, when, details, review }
 
@@ -107,10 +109,14 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   }
 
   String get _petName => switch (_type) {
-    ReportType.lost => _pet?.name ?? 'your pet',
+    ReportType.lost => _pet?.name ?? context.l10n.yourPet,
     _ =>
       _foundName.text.trim().isEmpty
-          ? 'Unknown ${(_foundSpecies ?? PetSpecies.other).label.toLowerCase()}'
+          ? switch (_foundSpecies ?? PetSpecies.other) {
+              PetSpecies.dog => context.l10n.unknownDog,
+              PetSpecies.cat => context.l10n.unknownCat,
+              PetSpecies.other => context.l10n.unknownPet,
+            }
           : _foundName.text.trim(),
   };
 
@@ -125,28 +131,28 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   String? _errorFor(_Step step) {
     switch (step) {
       case _Step.type:
-        return _type == null ? 'Choose whether you lost or found a pet.' : null;
+        return _type == null ? context.l10n.errorChooseType : null;
       case _Step.pet:
         if (_type == ReportType.lost) {
-          return _pet == null ? 'Pick the pet that is missing.' : null;
+          return _pet == null ? context.l10n.errorPickPet : null;
         }
-        if (_foundPhotos.isEmpty) return 'Add at least one photo of the pet.';
-        if (_foundSpecies == null) return 'Is it a dog, a cat or other?';
+        if (_foundPhotos.isEmpty) return context.l10n.errorFoundPhoto;
+        if (_foundSpecies == null) return context.l10n.errorFoundSpecies;
         return null;
       case _Step.where:
-        return _place == null ? 'Choose the city where it happened.' : null;
+        return _place == null ? context.l10n.errorChooseCity : null;
       case _Step.when:
         return _eventAt.isAfter(DateTime.now().add(const Duration(minutes: 5)))
-            ? 'The date can\'t be in the future.'
+            ? context.l10n.errorFutureDate
             : null;
       case _Step.details:
         if (_description.text.trim().length < 10) {
-          return 'Add a short description (at least 10 characters).';
+          return context.l10n.errorDescriptionShort;
         }
         final phone = _phone.text.trim();
         final email = _email.text.trim();
         if (phone.isEmpty && email.isEmpty) {
-          return 'Add a phone number or email so people can reach you.';
+          return context.l10n.errorContactRequired;
         }
         if (phone.isNotEmpty && _phoneError(phone) != null) {
           return _phoneError(phone);
@@ -165,7 +171,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     if (!RegExp(r'^\+?[0-9 ()\-]+$').hasMatch(phone) ||
         digits.length < 6 ||
         digits.length > 15) {
-      return 'Please enter a valid phone number.';
+      return appL10n.errorPhoneInvalid;
     }
     return null;
   }
@@ -210,17 +216,17 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     final discard = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Discard this report?'),
-        content: const Text('What you\'ve entered so far will be lost.'),
+        title: Text(context.l10n.discardReportTitle),
+        content: Text(context.l10n.discardReportMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Keep editing'),
+            child: Text(context.l10n.keepEditing),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-            child: const Text('Discard'),
+            child: Text(context.l10n.discard),
           ),
         ],
       ),
@@ -257,7 +263,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   Future<void> _publish() async {
     final uid = ref.read(authStateProvider).value?.uid;
     if (uid == null) {
-      SnackbarUtils.showError(context, 'Please sign in again to publish.');
+      SnackbarUtils.showError(context, context.l10n.signInToPublish);
       return;
     }
     final draft = _draft();
@@ -306,8 +312,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
       SnackbarUtils.showSuccess(
         context,
         draft.type == ReportType.lost
-            ? '${report.petName} is now on the map. We hope they\'re home soon.'
-            : 'Thank you! ${report.petName} is now on the map.',
+            ? context.l10n.publishedLost(report.petName)
+            : context.l10n.publishedFound(report.petName),
       );
       Navigator.of(context).popUntil((route) => route.isFirst);
     } on ReportsException catch (e) {
@@ -325,9 +331,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     ref.watch(authStateProvider);
     _prefillFromProfile();
     final title = switch (_type) {
-      ReportType.lost => 'Report a lost pet',
-      ReportType.found => 'Report a found pet',
-      null => 'New report',
+      ReportType.lost => context.l10n.reportLostPetTitle,
+      ReportType.found => context.l10n.reportFoundPetTitle,
+      null => context.l10n.newReport,
     };
     final total = _Step.values.length - _firstStep;
     final current = _step - _firstStep + 1;
@@ -377,7 +383,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                           ),
                         ),
                         Text(
-                          '$current of $total',
+                          context.l10n.stepOf(current, total),
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: AppColors.textMuted,
@@ -406,8 +412,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                   ),
                   ProgressSaveButton(
                     label: _step == _Step.review.index
-                        ? 'Publish report'
-                        : 'Continue',
+                        ? context.l10n.publishReport
+                        : context.l10n.continueLabel,
                     saving: _publishing,
                     progress: _progress,
                     onPressed: _next,
@@ -451,8 +457,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
 
   Widget _typeStep() {
     return _stepScaffold(
-      title: 'What happened?',
-      subtitle: 'Let\'s get the word out to people nearby, fast.',
+      title: context.l10n.stepTypeTitle,
+      subtitle: context.l10n.stepTypeSubtitle,
       children: [
         for (final (i, type) in ReportType.values.indexed) ...[
           if (i > 0) const SizedBox(height: 14),
@@ -481,16 +487,15 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   Widget _petStep() {
     if (_type == ReportType.found) {
       return _stepScaffold(
-        title: 'Tell us about the pet',
-        subtitle:
-            'A clear photo is the fastest way for the owner to recognise them.',
+        title: context.l10n.stepFoundPetTitle,
+        subtitle: context.l10n.stepFoundPetSubtitle,
         children: [
           PhotoPickerField(
             photos: _foundPhotos,
             showError: _showErrors.contains(_Step.pet) && _foundPhotos.isEmpty,
             enabled: !_publishing,
-            emptyTitle: 'Add photos of the pet',
-            emptySubtitle: 'Take one now, or pick from your gallery',
+            emptyTitle: context.l10n.addFoundPhotos,
+            emptySubtitle: context.l10n.addFoundPhotosHint,
             onAdd: () async {
               if (_foundPhotos.length >= 4) return;
               final path = await pickPhoto(context);
@@ -508,7 +513,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             }),
           ),
           const SizedBox(height: 24),
-          const SectionLabel('What kind of animal?'),
+          SectionLabel(context.l10n.whatKindOfAnimal),
           const SizedBox(height: 10),
           SpeciesSelector(
             selected: _foundSpecies,
@@ -516,11 +521,11 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             onChanged: (s) => setState(() => _foundSpecies = s),
           ),
           const SizedBox(height: 22),
-          const SectionLabel('Name on collar or tag', optional: true),
+          SectionLabel(context.l10n.collarName, optional: true),
           const SizedBox(height: 8),
           AppFormField(
             controller: _foundName,
-            hint: 'Leave empty if you don\'t know',
+            hint: context.l10n.collarNameHint,
             icon: Icons.sell_outlined,
             textCapitalization: TextCapitalization.words,
             maxLength: 40,
@@ -542,9 +547,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     }
 
     return _stepScaffold(
-      title: 'Which pet is missing?',
-      subtitle:
-          'We\'ll use their profile and photos so you don\'t have to retype anything.',
+      title: context.l10n.stepLostPetTitle,
+      subtitle: context.l10n.stepLostPetSubtitle,
       children: [
         if (petsState.isLoading && !petsState.hasValue)
           const SizedBox(
@@ -591,10 +595,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   Widget _whereStep() {
     return _stepScaffold(
       title: _type == ReportType.found
-          ? 'Where did you find it?'
-          : 'Where was $_petName last seen?',
-      subtitle:
-          'Choose the city, then pin the spot on the map. People only see an area of about 100 m, never the exact address.',
+          ? context.l10n.stepWhereFoundTitle
+          : context.l10n.stepWhereLostTitle(_petName),
+      subtitle: context.l10n.stepWhereSubtitle,
       children: [
         _CityPicker(
           selected: _place,
@@ -608,7 +611,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
         ),
         if (_place != null) ...[
           const SizedBox(height: 22),
-          const SectionLabel('Street or landmark', optional: true),
+          SectionLabel(context.l10n.streetOrLandmark, optional: true),
           const SizedBox(height: 8),
           _StreetPicker(
             controller: _placeDetail,
@@ -621,7 +624,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             onTyped: () => _labelAuto = false,
           ),
           const SizedBox(height: 14),
-          const SectionLabel('Pin the exact spot'),
+          SectionLabel(context.l10n.pinExactSpot),
           const SizedBox(height: 8),
           SpotPicker(
             center: LatLng(_place!.lat, _place!.lng),
@@ -663,17 +666,19 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
       null => (
         Icons.touch_app_rounded,
         AppColors.textMuted,
-        'Drag the map so the pin sits where $_petName was ${_type == ReportType.found ? 'found' : 'last seen'}.',
+        _type == ReportType.found
+            ? context.l10n.spotHintFound(_petName)
+            : context.l10n.spotHintLost(_petName),
       ),
       _ when km > 30 => (
         Icons.warning_amber_rounded,
         AppColors.accent,
-        'This spot is ${km.round()} km from ${place.city}. Is the city right?',
+        context.l10n.spotFarFromCity(km.round(), place.city),
       ),
       _ => (
         Icons.shield_outlined,
         AppColors.primary,
-        'Pinned. People only see an area of about $publicAreaRadius m around it, never the exact spot.',
+        context.l10n.spotPinned(publicAreaRadius),
       ),
     };
     return AnimatedSwitcher(
@@ -698,17 +703,26 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   Widget _whenStep() {
     final now = DateTime.now();
     final choices = <String, (String, DateTime)>{
-      'now': ('Just now', now),
-      'hour': ('1 hour ago', now.subtract(const Duration(hours: 1))),
-      'morning': ('This morning', DateTime(now.year, now.month, now.day, 9)),
-      'yesterday': ('Yesterday', now.subtract(const Duration(days: 1))),
+      'now': (context.l10n.timeJustNow, now),
+      'hour': (
+        context.l10n.timeHourAgo,
+        now.subtract(const Duration(hours: 1)),
+      ),
+      'morning': (
+        context.l10n.timeThisMorning,
+        DateTime(now.year, now.month, now.day, 9),
+      ),
+      'yesterday': (
+        context.l10n.timeYesterday,
+        now.subtract(const Duration(days: 1)),
+      ),
     };
 
     return _stepScaffold(
       title: _type == ReportType.found
-          ? 'When did you find it?'
-          : 'When did you last see $_petName?',
-      subtitle: 'An approximate time is fine.',
+          ? context.l10n.stepWhenFoundTitle
+          : context.l10n.stepWhenLostTitle(_petName),
+      subtitle: context.l10n.stepWhenSubtitle,
       children: [
         Wrap(
           spacing: 10,
@@ -760,7 +774,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 200),
                       child: Text(
-                        dateTimeLabel(_eventAt),
+                        dateTimeLabel(context.l10n, _eventAt),
                         key: ValueKey(_eventAt),
                         style: const TextStyle(
                           fontSize: 16,
@@ -779,7 +793,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                     child: OutlinedButton.icon(
                       onPressed: _pickDate,
                       icon: const Icon(Icons.calendar_today_rounded, size: 18),
-                      label: const Text('Change date'),
+                      label: Text(context.l10n.changeDate),
                       style: _outlinedStyle,
                     ),
                   ),
@@ -788,7 +802,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                     child: OutlinedButton.icon(
                       onPressed: _pickTime,
                       icon: const Icon(Icons.access_time_rounded, size: 18),
-                      label: const Text('Change time'),
+                      label: Text(context.l10n.changeTime),
                       style: _outlinedStyle,
                     ),
                   ),
@@ -852,17 +866,16 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   Widget _detailsStep() {
     final lost = _type == ReportType.lost;
     return _stepScaffold(
-      title: 'Anything else we should know?',
-      subtitle:
-          'Details help neighbours recognise the pet and reach you quickly.',
+      title: context.l10n.stepDetailsTitle,
+      subtitle: context.l10n.stepDetailsSubtitle,
       children: [
-        const SectionLabel('Description'),
+        SectionLabel(context.l10n.description),
         const SizedBox(height: 8),
         AppFormField(
           controller: _description,
           hint: lost
-              ? 'Collar colour, behaviour, how $_petName went missing…'
-              : 'Condition, collar, behaviour, where exactly you found it…',
+              ? context.l10n.descriptionHintLost(_petName)
+              : context.l10n.descriptionHintFound,
           icon: Icons.notes_rounded,
           textCapitalization: TextCapitalization.sentences,
           maxLines: 5,
@@ -870,16 +883,16 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           onChanged: (_) => setState(() {}),
         ),
         const SizedBox(height: 22),
-        const SectionLabel('How can people reach you?'),
+        SectionLabel(context.l10n.howToReachYou),
         const SizedBox(height: 4),
-        const Text(
-          'Shown only on the report page, never in lists.',
-          style: TextStyle(fontSize: 12, color: AppColors.textMuted),
+        Text(
+          context.l10n.contactPrivacyNote,
+          style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
         ),
         const SizedBox(height: 10),
         AppFormField(
           controller: _phone,
-          hint: 'Phone, e.g. +39 333 123 4567',
+          hint: context.l10n.phoneHint,
           icon: Icons.phone_rounded,
           keyboardType: TextInputType.phone,
           maxLength: 20,
@@ -893,8 +906,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
               : Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: _ToggleTile(
-                    title: 'Reachable on WhatsApp',
-                    subtitle: 'People can message you on this number',
+                    title: context.l10n.reachableOnWhatsapp,
+                    subtitle: context.l10n.reachableOnWhatsappHint,
                     value: _whatsapp,
                     onChanged: (v) => setState(() => _whatsapp = v),
                   ),
@@ -902,7 +915,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
         ),
         AppFormField(
           controller: _email,
-          hint: 'Email',
+          hint: context.l10n.email,
           icon: Icons.mail_outline_rounded,
           keyboardType: TextInputType.emailAddress,
           maxLength: 100,
@@ -929,8 +942,8 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
     ].where((c) => c.isNotEmpty).join(' · ');
 
     return _stepScaffold(
-      title: 'Ready to publish?',
-      subtitle: 'This is how your report will look to people nearby.',
+      title: context.l10n.stepReviewTitle,
+      subtitle: context.l10n.stepReviewSubtitle,
       children: [
         Container(
               decoration: BoxDecoration(
@@ -986,7 +999,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                         _ReviewRow(
                           icon: Icons.schedule_rounded,
                           color: AppColors.accent,
-                          text: dateTimeLabel(_eventAt),
+                          text: dateTimeLabel(context.l10n, _eventAt),
                         ),
                         if (contact.isNotEmpty)
                           _ReviewRow(
@@ -1128,7 +1141,7 @@ class _TypeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      lost ? 'I lost my pet' : 'I found a pet',
+                      lost ? context.l10n.iLostMyPet : context.l10n.iFoundAPet,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -1138,8 +1151,8 @@ class _TypeCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       lost
-                          ? 'Alert people nearby and get help searching.'
-                          : 'Help a lost pet find its way back home.',
+                          ? context.l10n.iLostMyPetHint
+                          : context.l10n.iFoundAPetHint,
                       style: TextStyle(
                         fontSize: 13,
                         height: 1.4,
@@ -1260,14 +1273,18 @@ class _AddPetChoice extends StatelessWidget {
       onTap: onTap,
       child: CustomPaint(
         painter: const DashedBorderPainter(radius: 22),
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.add_circle_rounded, size: 40, color: AppColors.primary),
-            SizedBox(height: 8),
+            const Icon(
+              Icons.add_circle_rounded,
+              size: 40,
+              color: AppColors.primary,
+            ),
+            const SizedBox(height: 8),
             Text(
-              'Add a pet',
-              style: TextStyle(
+              context.l10n.addAPet,
+              style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 color: AppColors.primaryDark,
               ),
@@ -1334,7 +1351,7 @@ class _CityPickerState extends ConsumerState<_CityPicker> {
         if (!mounted || id != _requestId) return;
         setState(() {
           _suggestions = results;
-          _error = results.isEmpty ? 'No cities found for "$value".' : null;
+          _error = results.isEmpty ? context.l10n.noCitiesFound(value) : null;
         });
       } on PlacesException catch (e) {
         if (mounted && id == _requestId) setState(() => _error = e.message);
@@ -1439,9 +1456,9 @@ class _CityPickerState extends ConsumerState<_CityPicker> {
         ),
         if (widget.showError && selected == null) ...[
           const SizedBox(height: 6),
-          const Text(
-            'Please choose a city',
-            style: TextStyle(color: AppColors.danger, fontSize: 12),
+          Text(
+            context.l10n.pleaseChooseCity,
+            style: const TextStyle(color: AppColors.danger, fontSize: 12),
           ),
         ],
         const SizedBox(height: 10),
@@ -1528,7 +1545,7 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
         setState(() {
           _suggestions = results;
           _error = results.isEmpty
-              ? 'No places found in ${city.city} for "${value.trim()}".'
+              ? context.l10n.noPlacesFound(city.city, value.trim())
               : null;
         });
       } on PlacesException catch (e) {
@@ -1570,7 +1587,9 @@ class _StreetPickerState extends ConsumerState<_StreetPicker> {
           focusNode: _focus,
           loading: _loading,
           confirmed: widget.pinned,
-          hint: 'Search in ${widget.city?.city ?? 'your city'}, e.g. Via Dante',
+          hint: context.l10n.searchStreetHint(
+            widget.city?.city ?? context.l10n.yourCity,
+          ),
           icon: Icons.signpost_outlined,
           textCapitalization: TextCapitalization.sentences,
           onChanged: _onChanged,
