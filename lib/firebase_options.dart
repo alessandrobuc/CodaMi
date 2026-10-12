@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -56,13 +53,22 @@ class DefaultFirebaseOptions {
     projectId: 'codami-cd91e',
     storageBucket: 'codami-cd91e.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC3IiKH7u3F3Ws_QnwIocvpUfGw4pVX2pw',
     appId: '1:838596105438:ios:84514641c36897300d5e4f',
     messagingSenderId: '838596105438',
     projectId: 'codami-cd91e',
     storageBucket: 'codami-cd91e.firebasestorage.app',
+    androidClientId: '838596105438-t3884cs8iijcuhp0rousa73spbc08deb.apps.googleusercontent.com',
+    iosClientId: '838596105438-av2tip5n3mpsueo1bus1aqlapeag2gl1.apps.googleusercontent.com',
     iosBundleId: 'com.codami.app',
+  );
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAdZCf_yE2ho5B63PJnsxT0D7x_x1KNaVw',
+    appId: '1:838596105438:web:b2ffa688b56da7d60d5e4f',
+    messagingSenderId: '838596105438',
+    projectId: 'codami-cd91e',
+    authDomain: 'codami-cd91e.firebaseapp.com',
+    storageBucket: 'codami-cd91e.firebasestorage.app',
   );
 }
