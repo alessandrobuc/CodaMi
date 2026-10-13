@@ -1279,10 +1279,6 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get legalEnglishOnly =>
-      'Этот документ показан на английском. Перевод скоро появится.';
-
-  @override
   String get deleteAccountPasswordPrompt => 'Введите пароль для подтверждения.';
 
   @override

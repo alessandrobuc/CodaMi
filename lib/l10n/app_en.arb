@@ -803,7 +803,6 @@
       }
     }
   },
-  "legalEnglishOnly": "This document is shown in English. A translation will be available soon.",
   "deleteAccountPasswordPrompt": "Enter your password to confirm.",
   "deleteAccountTypeConfirm": "Type {word} to confirm.",
   "@deleteAccountTypeConfirm": {

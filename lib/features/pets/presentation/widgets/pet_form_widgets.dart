@@ -354,8 +354,8 @@ class _PhotoTile extends StatelessWidget {
             children: [
               PetImage(photo: photo),
               if (isCover)
-                Positioned(
-                  left: 6,
+                PositionedDirectional(
+                  start: 6,
                   bottom: 6,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -376,9 +376,9 @@ class _PhotoTile extends StatelessWidget {
                     ),
                   ),
                 ),
-              Positioned(
+              PositionedDirectional(
                 top: 6,
-                right: 6,
+                end: 6,
                 child: GestureDetector(
                   onTap: enabled ? onRemove : null,
                   child: Container(
@@ -515,9 +515,9 @@ class _SpeciesCard extends StatelessWidget {
                 ),
               ),
               if (selected)
-                Positioned(
+                PositionedDirectional(
                   top: 8,
-                  right: 8,
+                  end: 8,
                   child: Container(
                     width: 20,
                     height: 20,

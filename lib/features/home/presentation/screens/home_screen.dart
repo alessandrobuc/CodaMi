@@ -331,7 +331,7 @@ class _ReportButtonState extends State<_ReportButton> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 140),
             height: 56,
-            padding: const EdgeInsets.fromLTRB(8, 8, 22, 8),
+            padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 22, 8),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
@@ -416,9 +416,9 @@ class _BellButton extends StatelessWidget {
                 color: AppColors.text,
               ),
               if (unread > 0)
-                Positioned(
+                PositionedDirectional(
                   top: 6,
-                  right: 4,
+                  end: 4,
                   child:
                       Container(
                             constraints: const BoxConstraints(minWidth: 19),

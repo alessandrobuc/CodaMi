@@ -108,7 +108,7 @@ class NotificationsScreen extends ConsumerWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 4, 12, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 12, 0),
                 child: Row(
                   children: [
                     IconButton(
@@ -260,8 +260,8 @@ class _NotificationTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       child: SizedBox.expand(child: PetImage.url(n.photoUrl)),
                     ),
-                    Positioned(
-                      right: -4,
+                    PositionedDirectional(
+                      end: -4,
                       bottom: -4,
                       child: Container(
                         width: 24,
@@ -302,7 +302,7 @@ class _NotificationTile extends StatelessWidget {
                           Container(
                             width: 9,
                             height: 9,
-                            margin: const EdgeInsets.only(left: 8),
+                            margin: const EdgeInsetsDirectional.only(start: 8),
                             decoration: BoxDecoration(
                               color: color,
                               shape: BoxShape.circle,

@@ -2298,12 +2298,6 @@ abstract class AppLocalizations {
   /// **'Last updated: {date}'**
   String legalLastUpdated(String date);
 
-  /// No description provided for @legalEnglishOnly.
-  ///
-  /// In en, this message translates to:
-  /// **'This document is shown in English. A translation will be available soon.'**
-  String get legalEnglishOnly;
-
   /// No description provided for @deleteAccountPasswordPrompt.
   ///
   /// In en, this message translates to:

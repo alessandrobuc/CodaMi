@@ -1262,10 +1262,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get legalEnglishOnly =>
-      'يُعرض هذا المستند باللغة الإنجليزية. ستتوفر الترجمة قريبًا.';
-
-  @override
   String get deleteAccountPasswordPrompt => 'أدخل كلمة المرور للتأكيد.';
 
   @override

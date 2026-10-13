@@ -150,7 +150,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(28, 8, 24, 28),
+                padding: const EdgeInsetsDirectional.fromSTEB(28, 8, 24, 28),
                 child: Row(
                   children: [
                     SmoothPageIndicator(
@@ -187,7 +187,7 @@ class _TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 8, 12, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(20, 8, 12, 0),
       child: SizedBox(
         height: 48,
         child: Row(

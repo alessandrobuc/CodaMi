@@ -86,7 +86,7 @@ class MyReportsScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 20, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(8, 8, 20, 0),
                 child: Row(
                   children: [
                     const BackButton(color: AppColors.text),
@@ -404,7 +404,7 @@ class _MyReportItemState extends ConsumerState<_MyReportItem> {
           MaterialPageRoute(builder: (_) => ReportDetailScreen(report: report)),
         ),
         footer: Padding(
-          padding: const EdgeInsets.fromLTRB(4, 10, 0, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(4, 10, 0, 0),
           child: Row(
             children: [
               if (report.isOpen)

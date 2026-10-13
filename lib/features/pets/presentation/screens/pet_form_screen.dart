@@ -205,7 +205,7 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 4, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 20, 0),
                   child: Row(
                     children: [
                       IconButton(
@@ -428,7 +428,7 @@ class _ColorChips extends StatelessWidget {
             onTap: () => onSelected(name),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              padding: const EdgeInsets.fromLTRB(6, 5, 12, 5),
+              padding: const EdgeInsetsDirectional.fromSTEB(6, 5, 12, 5),
               decoration: BoxDecoration(
                 color: value.trim().toLowerCase() == name.toLowerCase()
                     ? AppColors.primary.withValues(alpha: 0.1)

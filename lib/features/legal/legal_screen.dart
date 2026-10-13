@@ -59,35 +59,6 @@ class LegalScreen extends StatelessWidget {
               ),
               style: const TextStyle(color: AppColors.textMuted, fontSize: 13),
             ),
-            if (code != 'en' && code != 'it') ...[
-              const SizedBox(height: 12),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.translate_rounded,
-                      size: 18,
-                      color: AppColors.accent,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        l10n.legalEnglishOnly,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: AppColors.text,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
             for (final section in sections) ...[
               const SizedBox(height: 22),
               Text(

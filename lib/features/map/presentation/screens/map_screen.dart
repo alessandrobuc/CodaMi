@@ -470,12 +470,12 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
               ),
             ),
           ),
-        Positioned(
+        PositionedDirectional(
           top: top,
-          left: widget.fullscreen ? 72 : 12,
-          right: 68,
+          start: widget.fullscreen ? 72 : 12,
+          end: 68,
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: MapTypeChips(
@@ -494,10 +494,10 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
             ),
           ),
         ),
-        Positioned(
+        PositionedDirectional(
           top: top,
-          left: widget.fullscreen ? 12 : null,
-          right: widget.fullscreen ? null : 12,
+          start: widget.fullscreen ? 12 : null,
+          end: widget.fullscreen ? null : 12,
           child: widget.fullscreen
               ? MapIconButton(
                   icon: Icons.arrow_back_rounded,
@@ -510,10 +510,10 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
                   onTap: _openFullscreen,
                 ),
         ),
-        AnimatedPositioned(
+        AnimatedPositionedDirectional(
           duration: const Duration(milliseconds: 280),
           curve: Curves.easeOutCubic,
-          right: 12,
+          end: 12,
           bottom: selected == null ? bottom : bottom + cardHeight + 12,
           child: MapControlPill(
             locating: _locating,

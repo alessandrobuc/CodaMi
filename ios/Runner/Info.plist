@@ -6,6 +6,19 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>it</string>
+		<string>es</string>
+		<string>fr</string>
+		<string>de</string>
+		<string>pt</string>
+		<string>ru</string>
+		<string>ar</string>
+		<string>zh-Hans</string>
+		<string>hi</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>CodaMi</string>
 	<key>CFBundleExecutable</key>

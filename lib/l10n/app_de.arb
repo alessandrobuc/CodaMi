@@ -364,7 +364,6 @@
   "privacyPolicy": "Datenschutzerklärung",
   "termsOfUse": "Nutzungsbedingungen",
   "legalLastUpdated": "Zuletzt aktualisiert: {date}",
-  "legalEnglishOnly": "Dieses Dokument wird auf Englisch angezeigt. Eine Übersetzung folgt in Kürze.",
   "deleteAccountPasswordPrompt": "Gib zur Bestätigung dein Passwort ein.",
   "deleteAccountTypeConfirm": "Gib zur Bestätigung {word} ein.",
   "wrongPassword": "Falsches Passwort. Bitte versuche es erneut.",

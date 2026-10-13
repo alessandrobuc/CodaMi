@@ -364,7 +364,6 @@
   "privacyPolicy": "गोपनीयता नीति",
   "termsOfUse": "उपयोग की शर्तें",
   "legalLastUpdated": "अंतिम अपडेट: {date}",
-  "legalEnglishOnly": "यह दस्तावेज़ अंग्रेज़ी में दिखाया गया है। अनुवाद जल्द उपलब्ध होगा।",
   "deleteAccountPasswordPrompt": "पुष्टि करने के लिए अपना पासवर्ड लिखें।",
   "deleteAccountTypeConfirm": "पुष्टि करने के लिए {word} लिखें।",
   "wrongPassword": "गलत पासवर्ड। फिर कोशिश करें।",

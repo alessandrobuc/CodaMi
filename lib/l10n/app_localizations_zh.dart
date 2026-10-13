@@ -1224,9 +1224,6 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get legalEnglishOnly => '本文件以英文显示，翻译版本即将推出。';
-
-  @override
   String get deleteAccountPasswordPrompt => '请输入密码以确认。';
 
   @override

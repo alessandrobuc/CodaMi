@@ -1271,10 +1271,6 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get legalEnglishOnly =>
-      'यह दस्तावेज़ अंग्रेज़ी में दिखाया गया है। अनुवाद जल्द उपलब्ध होगा।';
-
-  @override
   String get deleteAccountPasswordPrompt =>
       'पुष्टि करने के लिए अपना पासवर्ड लिखें।';
 

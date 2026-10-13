@@ -234,9 +234,9 @@ class _PetCardState extends State<PetCard> {
                     ),
                   ),
                 ),
-                Positioned(
+                PositionedDirectional(
                   top: 10,
-                  left: 10,
+                  start: 10,
                   child: FrostedPill(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -260,9 +260,9 @@ class _PetCardState extends State<PetCard> {
                   ),
                 ),
                 if (sex != null)
-                  Positioned(
+                  PositionedDirectional(
                     top: 10,
-                    right: 10,
+                    end: 10,
                     child: Container(
                       width: 28,
                       height: 28,

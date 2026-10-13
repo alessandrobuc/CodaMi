@@ -355,7 +355,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                 key: const ValueKey('flow'),
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 4, 20, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 20, 0),
                     child: Row(
                       children: [
                         IconButton(
@@ -967,9 +967,9 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                       fit: StackFit.expand,
                       children: [
                         PetImage(photo: cover),
-                        Positioned(
+                        PositionedDirectional(
                           top: 12,
-                          left: 12,
+                          start: 12,
                           child: ReportTypeBadge(type: _type!, large: true),
                         ),
                       ],
@@ -1237,9 +1237,9 @@ class _PetChoice extends StatelessWidget {
                 ),
               ),
               if (selected)
-                Positioned(
+                PositionedDirectional(
                   top: 8,
-                  right: 8,
+                  end: 8,
                   child: Container(
                     width: 26,
                     height: 26,

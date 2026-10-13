@@ -364,7 +364,6 @@
   "privacyPolicy": "Политика конфиденциальности",
   "termsOfUse": "Условия использования",
   "legalLastUpdated": "Последнее обновление: {date}",
-  "legalEnglishOnly": "Этот документ показан на английском. Перевод скоро появится.",
   "deleteAccountPasswordPrompt": "Введите пароль для подтверждения.",
   "deleteAccountTypeConfirm": "Введите {word} для подтверждения.",
   "wrongPassword": "Неверный пароль. Попробуйте снова.",

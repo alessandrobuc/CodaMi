@@ -1288,10 +1288,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get legalEnglishOnly =>
-      'Este documento se muestra en inglés. Pronto estará disponible una traducción.';
-
-  @override
   String get deleteAccountPasswordPrompt =>
       'Escribe tu contraseña para confirmar.';
 

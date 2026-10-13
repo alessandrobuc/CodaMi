@@ -170,8 +170,8 @@ class _SpotPickerState extends State<SpotPicker> {
                 ),
               ),
             ),
-            Positioned(
-              right: 10,
+            PositionedDirectional(
+              end: 10,
               bottom: 10,
               child: MapGlass(
                 borderRadius: BorderRadius.circular(18),

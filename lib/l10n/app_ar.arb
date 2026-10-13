@@ -364,7 +364,6 @@
   "privacyPolicy": "سياسة الخصوصية",
   "termsOfUse": "شروط الاستخدام",
   "legalLastUpdated": "آخر تحديث: {date}",
-  "legalEnglishOnly": "يُعرض هذا المستند باللغة الإنجليزية. ستتوفر الترجمة قريبًا.",
   "deleteAccountPasswordPrompt": "أدخل كلمة المرور للتأكيد.",
   "deleteAccountTypeConfirm": "اكتب {word} للتأكيد.",
   "wrongPassword": "كلمة المرور غير صحيحة. حاول مرة أخرى.",
