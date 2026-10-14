@@ -20,8 +20,11 @@ class AuthScreen extends ConsumerStatefulWidget {
   ConsumerState<AuthScreen> createState() => _AuthScreenState();
 }
 
+enum _AuthMethod { form, google, apple }
+
 class _AuthScreenState extends ConsumerState<AuthScreen> {
   AuthMode _authMode = AuthMode.login;
+  _AuthMethod _method = _AuthMethod.form;
   bool _resetSent = false;
   var _formKey = GlobalKey<FormState>();
   final _confirmFieldKey = GlobalKey<FormFieldState<String>>();
@@ -54,6 +57,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
     if (!(_formKey.currentState?.validate() ?? false)) return;
+    setState(() => _method = _AuthMethod.form);
     final auth = ref.read(authProvider.notifier);
     final email = _emailController.text.trim();
     final password = _passwordController.text;
@@ -69,6 +73,16 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         setState(() => _resetSent = true);
       }
     }
+  }
+
+  void _signInWithGoogle() {
+    setState(() => _method = _AuthMethod.google);
+    ref.read(authProvider.notifier).signInWithGoogle();
+  }
+
+  void _signInWithApple() {
+    setState(() => _method = _AuthMethod.apple);
+    ref.read(authProvider.notifier).signInWithApple();
   }
 
   (String, String) get _headerText {
@@ -289,8 +303,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               AuthMode.signup => context.l10n.createAccount,
               AuthMode.forgotPassword => context.l10n.sendResetLink,
             },
-            isLoading: isLoading,
-            onPressed: _submit,
+            isLoading: isLoading && _method == _AuthMethod.form,
+            onPressed: isLoading ? null : _submit,
           ),
           if (!isForgot) ...[
             const SizedBox(height: 16),
@@ -313,18 +327,16 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             SocialButton(
               asset: AppAssets.google,
               label: context.l10n.continueWithGoogle,
-              onPressed: isLoading
-                  ? null
-                  : () => ref.read(authProvider.notifier).signInWithGoogle(),
+              isLoading: isLoading && _method == _AuthMethod.google,
+              onPressed: isLoading ? null : _signInWithGoogle,
             ),
             if (Platform.isIOS) ...[
               const SizedBox(height: 12),
               SocialButton(
                 asset: AppAssets.apple,
                 label: context.l10n.continueWithApple,
-                onPressed: isLoading
-                    ? null
-                    : () => ref.read(authProvider.notifier).signInWithApple(),
+                isLoading: isLoading && _method == _AuthMethod.apple,
+                onPressed: isLoading ? null : _signInWithApple,
               ),
             ],
           ],
@@ -421,7 +433,7 @@ class _FormCard extends StatelessWidget {
 class _PrimaryButton extends StatelessWidget {
   final String label;
   final bool isLoading;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const _PrimaryButton({
     required this.label,
@@ -432,7 +444,7 @@ class _PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: isLoading ? null : onPressed,
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         minimumSize: const Size.fromHeight(56),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

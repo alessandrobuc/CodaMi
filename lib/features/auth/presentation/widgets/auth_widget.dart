@@ -544,12 +544,14 @@ class SocialButton extends StatelessWidget {
   final String asset;
   final String label;
   final VoidCallback? onPressed;
+  final bool isLoading;
 
   const SocialButton({
     super.key,
     required this.asset,
     required this.label,
     required this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -567,7 +569,17 @@ class SocialButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(asset, width: 22, height: 22),
+          if (isLoading)
+            const SizedBox(
+              width: 22,
+              height: 22,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.5,
+                color: AppColors.primary,
+              ),
+            )
+          else
+            Image.asset(asset, width: 22, height: 22),
           const SizedBox(width: 12),
           Flexible(
             child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis),

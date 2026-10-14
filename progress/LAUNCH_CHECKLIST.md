@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Mon 12 Oct 2026_
+_Last updated: Wed 14 Oct 2026_
 
 ---
 
@@ -24,17 +24,21 @@ _Last updated: Mon 12 Oct 2026_
 
 Add SHA-1s to the existing key. Never replace them.
 
-- [ ] Create an **upload keystore**:
-  - `keytool -genkey -v -keystore ~/codami-upload.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload`
-  - Store the keystore and passwords safely (password manager). If they are lost, you cannot update the app.
-- [ ] Add a `signingConfigs.release` in `android/app/build.gradle.kts` reading from a git-ignored `android/key.properties`. Today release builds are signed with the **debug** key.
-- [ ] Get the **upload key SHA-1**: `keytool -list -v -keystore ~/codami-upload.jks -alias upload`
-- [ ] Upload the first build to Play Console, then copy the **Play App Signing SHA-1** from Setup → App integrity
-- [ ] Add **all** SHA-1s (each dev debug, upload, Play App Signing) to:
-  - Google Cloud → Credentials → **CodaMi Maps Android** key
-  - Firebase console → Project settings → Android app (needed for Google Sign-In)
-- [ ] Download the updated `google-services.json` after adding SHA-1s
-- [ ] Test the map and Google Sign-In on a build **installed from Play** (internal testing track)
+- [x] Create an **upload keystore**: `android/app/upload-keystore.jks`, alias `upload` (git-ignored)
+  - [ ] Back up the keystore and passwords outside the project (password manager). If they are lost, you cannot update the app.
+- [x] `signingConfigs.release` in `android/app/build.gradle.kts` reading from git-ignored `android/key.properties`. Release builds are now signed with the upload key.
+- [x] Upload key fingerprints:
+  - SHA-1 `8D:FD:90:7A:2D:D1:3B:EB:3C:F5:44:1F:C2:89:9B:FD:54:A0:8B:8B`
+  - SHA-256 `1D:89:60:DD:C5:1E:A3:3F:10:AB:08:69:82:CE:3D:0C:9A:92:B3:75:1A:C7:6B:FE:DB:91:F8:DB:59:B7:1B:02`
+- [x] First build uploaded to Play Console. **Play App Signing** fingerprints (Test and release → App integrity):
+  - SHA-1 `C2:3A:86:A2:7E:1B:44:2E:FE:C7:4A:2F:78:DA:7F:82:58:B5:28:98`
+  - SHA-256 `D3:F6:E8:47:A9:6F:DF:94:9F:23:11:57:03:5E:3B:28:57:83:44:D8:C0:06:9B:A4:BD:80:61:65:E4:EB:83:6E`
+- [x] Firebase console → Android app: debug and Play App Signing SHA-1 added (Google Sign-In works for Play installs)
+  - [ ] Add the Play App Signing **SHA-256** (needed later for App Check)
+  - [ ] Optional: add the upload key SHA-1 and SHA-256 (only for release builds installed outside Play)
+- [x] Updated `google-services.json` downloaded (includes the Play App Signing OAuth client)
+- [ ] Add the Play App Signing and upload SHA-1s to Google Cloud → Credentials → **CodaMi Maps Android** key
+- [ ] Test the map and Google Sign-In on a build **installed from Play** (closed testing track)
 
 ## 3. iOS
 
@@ -63,15 +67,23 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Remove any test reports, test users and test pets from Firestore
 - [ ] Empty states, error messages and loading states reviewed on a slow connection
 - [ ] Test on a small phone and a large phone (layout never breaks)
-- [ ] Version name and number set in `pubspec.yaml`
+- [x] Version set in `pubspec.yaml` (`1.0.0+2`). Raise the number after `+` for every upload to Play.
 
 ## 6. Legal and store listing
 
-- [ ] **Privacy policy** and **Terms of use**: written and shown in the app (Profile). Still to do: add the support email (`legalEmail` in `lib/features/legal/legal_content.dart`), have them reviewed, and publish the Privacy Policy at a public URL for the stores
-- [ ] Google Play **Data safety** form
+- [ ] **Privacy policy** and **Terms of use**: written and shown in the app (Profile). Still to do: add the support email (`legalEmail` in `lib/features/legal/legal_content.dart`) and have them reviewed
+- [x] Public Privacy Policy page with account deletion steps: `docs/index.html` (for GitHub Pages)
+  - [ ] Replace the `support@email.com` placeholder, publish it and paste the URL in Play Console
+  - [ ] Play may require a way to **request** deletion without the app (for example by email) on this page
+- [ ] **Report / block users** in the app. Apple (guideline 1.2) requires it for apps with user content and Google Play expects it. Then update the content rating answers to "Yes"
+- [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
-- [ ] Store screenshots (phone), feature graphic (Play), short and full description in Italian and English
-- [ ] Content rating questionnaire
+- [x] Feature graphic and Play icon: `assets/graphics/`
+- [x] Framed store screenshots: `assets/graphics/screenshots/`
+  - [ ] Retake with clean demo data (Italian city and names, no test text) and regenerate
+- [x] Short and full description in English and Italian
+- [x] Content rating questionnaire
+- [x] Target audience: 18 and over
 - [ ] Support email
 
 ## 7. Scale (when users grow)
@@ -80,7 +92,6 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Notifications by **distance**, not only by city
 - [ ] Auto-close old reports (e.g. after 60 days) with a reminder to the owner
 - [ ] Image resizing on upload (smaller photos load faster and cost less)
-- [ ] Report / block users (moderation)
 
 ---
 
@@ -95,4 +106,6 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Lists paginated (20 per page); map capped at 300 newest pins with clustering
 - [x] **My reports** screen in the profile (mark as found, delete)
 - [x] **Account deletion** inside the app (deletes profile, pets, reports, photos and login)
+- [x] Release Android theme uses Material Components (light only)
+- [x] Unused `geolocator` foreground location service and permission removed (Play no longer asks for a foreground service declaration)
 - [x] **10 languages** (EN, IT, ES, FR, DE, PT, RU, AR, ZH, HI), language picker on onboarding, login and profile; notifications in each user's language
