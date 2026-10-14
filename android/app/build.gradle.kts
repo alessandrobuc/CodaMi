@@ -1,9 +1,19 @@
 import java.util.Properties
+import java.io.FileInputStream
+
 
 val localEnv = Properties().apply {
     val file = rootProject.file("../.env")
     if (file.exists()) file.inputStream().use { load(it) }
 }
+
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
 
 plugins {
     id("com.android.application")
@@ -36,11 +46,18 @@ android {
         manifestPlaceholders["MAPS_API_KEY"] = localEnv.getProperty("MAPS_API_KEY_ANDROID", "")
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+            storeFile = keystoreProperties.getProperty("storeFile")?.let { file(it) }
+            storePassword = keystoreProperties.getProperty("storePassword")
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
@@ -53,4 +70,10 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // ...
+    implementation("com.google.android.material:material:1.14.0")
+    // ...
 }

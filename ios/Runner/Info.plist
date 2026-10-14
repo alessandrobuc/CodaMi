@@ -19,6 +19,10 @@
 		<string>zh-Hans</string>
 		<string>hi</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>CodaMi</string>
 	<key>CFBundleExecutable</key>

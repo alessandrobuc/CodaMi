@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodaMi – Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for the CodaMi app, including how to delete your account and data.">
+  <style>
+    :root {
+      --primary: #1F6F5B;
+      --primary-dark: #145244;
+      --accent: #F4A261;
+      --bg: #F6F8F7;
+      --surface: #FFFFFF;
+      --text: #102A23;
+      --muted: #5C736C;
+      --border: #D7E3DE;
+      --danger: #B42318;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #5BC2A4;
+        --primary-dark: #8AD8C1;
+        --bg: #0E1714;
+        --surface: #15211D;
+        --text: #E6F0EC;
+        --muted: #9AB1AA;
+        --border: #263A33;
+        --danger: #F97066;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 48px 16px 40px;
+    }
+    @media (prefers-color-scheme: dark) {
+      header { background: #145244; }
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    header .brand { font-weight: 700; letter-spacing: .02em; opacity: .9; }
+    header h1 { margin: 8px 0 4px; font-size: 2rem; line-height: 1.2; }
+    header p { margin: 0; opacity: .85; }
+    main { padding: 24px 16px 48px; }
+    nav.toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    nav.toc strong { display: block; margin-bottom: 6px; }
+    nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+    @media (max-width: 560px) { nav.toc ol { columns: 1; } }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      scroll-margin-top: 16px;
+    }
+    @media (max-width: 560px) { section { padding: 18px 16px; } }
+    h2 { margin: 0 0 8px; font-size: 1.2rem; color: var(--primary-dark); }
+    @media (prefers-color-scheme: dark) { h2 { color: var(--primary); } }
+    h3 { margin: 20px 0 6px; font-size: 1.02rem; }
+    p { margin: 0 0 10px; }
+    ul, ol { margin: 0 0 10px; padding-left: 22px; }
+    li { margin-bottom: 4px; }
+    a { color: var(--primary); }
+    section.highlight { border: 2px solid var(--accent); }
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 12px;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    @media (prefers-color-scheme: dark) { .steps li::before { color: #0E1714; } }
+    .note {
+      border-left: 4px solid var(--danger);
+      padding: 8px 12px;
+      background: color-mix(in srgb, var(--danger) 8%, transparent);
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: .92em;
+    }
+    footer { text-align: center; color: var(--muted); font-size: .9rem; padding: 0 16px 40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">CodaMi</div>
+      <h1>Privacy Policy</h1>
+      <p>Last updated: 12 October 2026</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="toc" aria-label="Contents">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#who-we-are">Who we are</a></li>
+        <li><a href="#data-we-collect">What data we collect</a></li>
+        <li><a href="#locations">How we protect locations</a></li>
+        <li><a href="#why">Why we use your data</a></li>
+        <li><a href="#who-can-see">Who can see your data</a></li>
+        <li><a href="#providers">Service providers</a></li>
+        <li><a href="#retention">How long we keep it</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#delete-account">Deleting your account</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+
+    <section id="who-we-are">
+      <h2>1. Who we are</h2>
+      <p>CodaMi helps neighbours find lost pets and reunite found pets with their families. The data controller is CodaMi. You can contact us at any time at <a href="mailto:support@email.com">support@email.com</a>.</p>
+    </section>
+
+    <section id="data-we-collect">
+      <h2>2. What data we collect</h2>
+      <ul>
+        <li><strong>Account:</strong> your name, email address and password. Passwords are handled by Firebase Authentication and we never see them. If you sign in with Google or Apple, we receive your name, email and profile photo from them.</li>
+        <li><strong>Profile:</strong> your home city, your chosen language and, if you add one to a report, your phone number.</li>
+        <li><strong>Pets:</strong> the details you enter (name, species, breed, colour, sex, age, distinctive features) and their photos.</li>
+        <li><strong>Reports:</strong> pet details, photos, description, date and time, the area where the pet was lost or found, and the contact details you choose to show.</li>
+        <li><strong>Notifications:</strong> a device token so we can send alerts to your phone, and the list of alerts you received.</li>
+        <li><strong>Location:</strong> only when you tap “Use my location” or “My location”. It is used on your phone to place the pin and is not stored on its own.</li>
+      </ul>
+    </section>
+
+    <section id="locations">
+      <h2>3. How we protect locations</h2>
+      <p>Before a report is saved, the location is moved to a random point within about 100 m and house numbers are removed from street names. Other people only see an area of about 100 m, never your exact address.</p>
+    </section>
+
+    <section id="why">
+      <h2>4. Why we use your data</h2>
+      <ul>
+        <li>To run CodaMi: create your account, show reports on the map and in lists, and let people contact each other about a pet (performance of our agreement with you).</li>
+        <li>To send alerts when a pet is lost or found in your city. You can turn these off in your phone settings.</li>
+        <li>To keep CodaMi safe and prevent abuse (our legitimate interest).</li>
+        <li>To comply with the law when required.</li>
+      </ul>
+    </section>
+
+    <section id="who-can-see">
+      <h2>5. Who can see your data</h2>
+      <ul>
+        <li>Reports are visible to all signed-in CodaMi users: pet details, photos, description, approximate area, your name and the contact details you chose to share.</li>
+        <li>Your pets’ profiles, your email address and your home city are private.</li>
+        <li>We do not sell your data and we do not show advertising.</li>
+      </ul>
+    </section>
+
+    <section id="providers">
+      <h2>6. Service providers</h2>
+      <p>We use Google Firebase (Authentication, Cloud Firestore, Cloud Storage, Cloud Functions and Cloud Messaging) to store data and send notifications, and Google Maps Platform for maps and place search. Sign in with Google and Sign in with Apple are provided by Google and Apple. These providers process data on our behalf. Some processing may take place outside the European Union, protected by the European Commission’s Standard Contractual Clauses.</p>
+    </section>
+
+    <section id="retention">
+      <h2>7. How long we keep it</h2>
+      <p>We keep your data while your account exists. Reports stay visible until you delete them or your account. When you delete your account, your profile, pets, reports, photos and login are deleted from our systems.</p>
+    </section>
+
+    <section id="rights">
+      <h2>8. Your rights</h2>
+      <p>Under the GDPR you can access, correct or delete your data, restrict or object to its use, receive a copy of it, and withdraw consent at any time. Write to us at <a href="mailto:support@email.com">support@email.com</a>. You can also complain to the Italian data protection authority (Garante per la protezione dei dati personali, <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
+    </section>
+
+    <section id="delete-account" class="highlight">
+      <h2>9. Deleting your account</h2>
+      <p>You can delete your CodaMi account and all its data at any time, directly in the app.</p>
+
+      <h3>How to delete your account</h3>
+      <ol class="steps">
+        <li>Open the <strong>CodaMi</strong> app and sign in to the account you want to delete.</li>
+        <li>Tap the <strong>Profile</strong> tab.</li>
+        <li>Scroll to the bottom of the screen and tap <strong>Delete account</strong> (below “Sign out”).</li>
+        <li>Confirm it’s you:
+          <ul>
+            <li>If you signed up with <strong>email and password</strong>, enter your password.</li>
+            <li>If you signed in with <strong>Google</strong> or <strong>Apple</strong>, type <code>CONFIRM</code>.</li>
+          </ul>
+        </li>
+        <li>Tap <strong>Delete account</strong> in the “Delete your account?” dialog. Your account and data are deleted right away and you are signed out.</li>
+      </ol>
+
+      <h3>What gets deleted</h3>
+      <ul>
+        <li>Your profile (name, email, home city, language, phone number)</li>
+        <li>Your login (email/password, Google or Apple sign-in link)</li>
+        <li>All your pets and their photos</li>
+        <li>All your reports (lost and found) and their photos — they disappear from the map and lists</li>
+        <li>Your notification device tokens and alert history</li>
+      </ul>
+      <div class="note">Deletion is permanent and can’t be undone. We don’t keep any of your data after your account is deleted, unless the law requires us to.</div>
+    </section>
+
+    <section id="children">
+      <h2>10. Children</h2>
+      <p>CodaMi is not intended for children under 14. If we learn that a child under 14 has created an account, we will delete it.</p>
+    </section>
+
+    <section id="security">
+      <h2>11. Security</h2>
+      <p>Data is sent over encrypted connections. Access rules make sure only you can change your own pets and reports, and only signed-in users can see reports.</p>
+    </section>
+
+    <section id="changes">
+      <h2>12. Changes to this policy</h2>
+      <p>If we make important changes, we will tell you in the app before they take effect and update the date at the top of this page.</p>
+    </section>
+
+    <section id="contact">
+      <h2>13. Contact us</h2>
+      <p>Questions about this policy or your data? Email us at <a href="mailto:support@email.com">support@email.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 CodaMi. All rights reserved.</footer>
+</body>
+</html>
