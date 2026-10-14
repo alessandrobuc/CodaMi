@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "838596105438-5nesrtmd9ig51qu8jbfc4kt8m4o6bvft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codami.app",
+            "certificate_hash": "c23a86a27e1b442efec74a2f78da7f8258b52898"
+          }
+        },
+        {
           "client_id": "838596105438-t3884cs8iijcuhp0rousa73spbc08deb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
