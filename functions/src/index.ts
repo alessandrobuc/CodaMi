@@ -231,7 +231,9 @@ async function notifyCity(
     .collection("users")
     .where("cityKey", "==", report.cityKey)
     .get();
-  const recipients = users.docs.filter((d) => d.id !== report.ownerId);
+  const recipients = users.docs.filter(
+    (d) => d.id !== report.ownerId && !hasBlocked(d, report.ownerId),
+  );
   if (recipients.length === 0) return;
 
   const byLanguage = new Map<string, typeof recipients>();
@@ -243,6 +245,11 @@ async function notifyCity(
   for (const [lang, group] of byLanguage) {
     await notifyGroup(report, contentFor(lang), group);
   }
+}
+
+function hasBlocked(user: QueryDocumentSnapshot, ownerId: string): boolean {
+  const blocked = user.get("blockedUsers");
+  return typeof blocked === "object" && blocked !== null && ownerId in blocked;
 }
 
 async function notifyGroup(
@@ -372,31 +379,109 @@ export const deleteAccount = onCall(async (request) => {
   if (token.firebase.sign_in_provider === "password" && signedInAgo > RECENT_LOGIN_SECONDS) {
     throw new HttpsError("failed-precondition", "Please confirm your password again.");
   }
-  const db = getFirestore();
-
   try {
-    for (const name of ["reports", "pets"]) {
-      const owned = await db.collection(name).where("ownerId", "==", uid).get();
-      for (const group of chunk(owned.docs, 400)) {
-        const batch = db.batch();
-        group.forEach((doc) => batch.delete(doc.ref));
-        await batch.commit();
-      }
-    }
-    await db.recursiveDelete(db.collection("users").doc(uid));
-
-    const bucket = getStorage().bucket();
-    await Promise.all(
-      ["reports", "pets"].map((folder) =>
-        bucket.deleteFiles({prefix: `${folder}/${uid}/`}),
-      ),
-    );
-
-    await getAuth().deleteUser(uid);
+    await deleteUserData(uid);
   } catch (error) {
     logger.error("Account deletion failed", {uid, error});
     throw new HttpsError("internal", "Couldn't delete your account. Please try again.");
   }
   logger.info("Account deleted", {uid});
+  return {deleted: true};
+});
+
+async function deleteUserData(uid: string): Promise<void> {
+  const db = getFirestore();
+  for (const name of ["reports", "pets"]) {
+    const owned = await db.collection(name).where("ownerId", "==", uid).get();
+    for (const group of chunk(owned.docs, 400)) {
+      const batch = db.batch();
+      group.forEach((doc) => batch.delete(doc.ref));
+      await batch.commit();
+    }
+  }
+  await db.recursiveDelete(db.collection("users").doc(uid));
+
+  const bucket = getStorage().bucket();
+  await Promise.all(
+    ["reports", "pets"].map((folder) =>
+      bucket.deleteFiles({prefix: `${folder}/${uid}/`}),
+    ),
+  );
+
+  await getAuth().deleteUser(uid).catch((error) => {
+    if (error?.code !== "auth/user-not-found") throw error;
+  });
+}
+
+// Admins can manage ordinary users and support staff, never themselves or other admins.
+async function requireAdminTarget(request: CallableRequest): Promise<string> {
+  if (!request.auth) {
+    throw new HttpsError("unauthenticated", "Please sign in again.");
+  }
+  const db = getFirestore();
+  const caller = await db.collection("users").doc(request.auth.uid).get();
+  if (caller.get("role") !== "admin") {
+    throw new HttpsError("permission-denied", "Only admins can do this.");
+  }
+  const uid = readString(request.data, "uid", {min: 1, max: 128, pattern: SAFE_ID_PATTERN});
+  if (uid === request.auth.uid) {
+    throw new HttpsError("failed-precondition", "You can't change your own account here.");
+  }
+  const target = await db.collection("users").doc(uid).get();
+  if (target.get("role") === "admin") {
+    throw new HttpsError("permission-denied", "Admins can't be changed from the app.");
+  }
+  return uid;
+}
+
+const HIDDEN_BY_DISABLE = "disable";
+
+export const adminSetUserDisabled = onCall(async (request) => {
+  const uid = await requireAdminTarget(request);
+  const disabled = (request.data as {disabled?: unknown} | null)?.disabled;
+  if (typeof disabled !== "boolean") {
+    throw new HttpsError("invalid-argument", "Missing disabled flag.");
+  }
+  const db = getFirestore();
+
+  await getAuth().updateUser(uid, {disabled});
+  if (disabled) await getAuth().revokeRefreshTokens(uid);
+  await db.collection("users").doc(uid).set(
+    {disabled, updatedAt: FieldValue.serverTimestamp()},
+    {merge: true},
+  );
+
+  // Disabling hides the user's open reports; enabling brings back only those.
+  const reports = disabled ?
+    await db.collection("reports").where("ownerId", "==", uid).where("status", "==", "open").get() :
+    await db.collection("reports").where("ownerId", "==", uid).where("hiddenBy", "==", HIDDEN_BY_DISABLE).get();
+  for (const group of chunk(reports.docs, 400)) {
+    const batch = db.batch();
+    group.forEach((doc) =>
+      batch.update(doc.ref, disabled ?
+        {status: "hidden", hiddenBy: HIDDEN_BY_DISABLE, updatedAt: FieldValue.serverTimestamp()} :
+        {status: "open", hiddenBy: FieldValue.delete(), updatedAt: FieldValue.serverTimestamp()}),
+    );
+    await batch.commit();
+  }
+
+  logger.info("User disabled flag changed", {
+    uid,
+    disabled,
+    by: request.auth?.uid,
+    reports: reports.size,
+  });
+  return {disabled};
+});
+
+export const adminDeleteUser = onCall(async (request) => {
+  const uid = await requireAdminTarget(request);
+  try {
+    await deleteUserData(uid);
+  } catch (error) {
+    logger.error("Admin account deletion failed", {uid, error});
+    throw new HttpsError("internal", "Couldn't delete this account. Please try again.");
+  }
+  logger.info("Account deleted by admin", {uid, by: request.auth?.uid});
   return {deleted: true};
 });

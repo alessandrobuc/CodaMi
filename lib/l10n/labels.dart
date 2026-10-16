@@ -32,8 +32,11 @@ extension ReportLabels on Report {
     return areaRadius == null ? '$detail, $city' : l10n.nearPlace(detail, city);
   }
 
-  String resolvedLabel(AppLocalizations l10n) =>
-      type == ReportType.lost ? l10n.backHome : l10n.reunited;
+  String resolvedLabel(AppLocalizations l10n) => isHidden
+      ? l10n.hiddenListing
+      : type == ReportType.lost
+      ? l10n.backHome
+      : l10n.reunited;
 }
 
 extension PetLabels on Pet {

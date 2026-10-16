@@ -9,6 +9,7 @@ import '../../../../l10n/locale_provider.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import 'admin_users_screen.dart';
 import 'support_staff_screen.dart';
 
 class AdminMoreTab extends ConsumerWidget {
@@ -125,8 +126,12 @@ class AdminMoreTab extends ConsumerWidget {
                     icon: Icons.people_alt_rounded,
                     color: AppColors.primaryDark,
                     title: l10n.adminUsers,
-                    soon: true,
-                    onTap: () => comingSoon(l10n.adminUsers),
+                    subtitle: l10n.adminUsersSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminUsersScreen(),
+                      ),
+                    ),
                   ),
                   _Tile(
                     icon: Icons.smart_display_rounded,

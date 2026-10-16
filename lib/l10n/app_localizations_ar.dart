@@ -1391,4 +1391,215 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get statBackHome => 'حيوانات عادت إلى البيت';
+
+  @override
+  String get flagListing => 'الإبلاغ عن الإعلان';
+
+  @override
+  String get flagTitle => 'لماذا تبلّغ عن هذا الإعلان؟';
+
+  @override
+  String get flagHint => 'سيراجعه فريقنا. لن يعرف صاحب الإعلان من أبلغ عنه.';
+
+  @override
+  String get flagReasonSpam => 'رسائل مزعجة أو إعلانات';
+
+  @override
+  String get flagReasonScam => 'احتيال';
+
+  @override
+  String get flagReasonInappropriate => 'محتوى غير لائق';
+
+  @override
+  String get flagReasonWrongInfo => 'معلومات خاطئة أو مضللة';
+
+  @override
+  String get flagReasonOther => 'سبب آخر';
+
+  @override
+  String get flagNoteHint => 'أضف تفاصيل (اختياري)';
+
+  @override
+  String get flagSubmit => 'إرسال البلاغ';
+
+  @override
+  String get flagSent => 'شكرًا. سيراجع فريقنا هذا الإعلان.';
+
+  @override
+  String get alreadyFlagged => 'لقد أبلغت عن هذا الإعلان من قبل.';
+
+  @override
+  String blockUser(String name) {
+    return 'حظر $name';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return 'حظر $name؟';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'لن ترى إعلاناته ولن تصلك تنبيهات عنها. يمكنك إلغاء الحظر من الملف الشخصي ← المستخدمون المحظورون.';
+
+  @override
+  String get block => 'حظر';
+
+  @override
+  String userBlocked(String name) {
+    return 'تم حظر $name.';
+  }
+
+  @override
+  String get blockedUsers => 'المستخدمون المحظورون';
+
+  @override
+  String get noBlockedUsers => 'لم تحظر أحدًا.';
+
+  @override
+  String get unblock => 'إلغاء الحظر';
+
+  @override
+  String userUnblocked(String name) {
+    return 'تم إلغاء حظر $name.';
+  }
+
+  @override
+  String get unknownUser => 'مستخدم غير معروف';
+
+  @override
+  String get hiddenListing => 'مخفي';
+
+  @override
+  String get hiddenListingNotice =>
+      'أخفى فريق CodaMi هذا الإعلان ولم يعد عامًا.';
+
+  @override
+  String get moderation => 'الإشراف';
+
+  @override
+  String get noFlagsOnListing => 'لم يبلّغ أحد عن هذا الإعلان.';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count بلاغ',
+      few: '$count بلاغات',
+      two: 'بلاغان',
+      one: 'بلاغ واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'تجاهل البلاغات';
+
+  @override
+  String get flagsDismissed => 'تم تجاهل البلاغات.';
+
+  @override
+  String get hideListing => 'إخفاء الإعلان';
+
+  @override
+  String get restoreListing => 'استعادة الإعلان';
+
+  @override
+  String get listingHidden => 'تم إخفاء الإعلان. صاحبه فقط يستطيع رؤيته.';
+
+  @override
+  String get listingRestored => 'تمت استعادة الإعلان.';
+
+  @override
+  String get deleteListing => 'حذف الإعلان';
+
+  @override
+  String get deleteListingTitle => 'حذف هذا الإعلان؟';
+
+  @override
+  String get deleteListingMessage =>
+      'سيُحذف الإعلان وصوره للجميع. لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get listingDeleted => 'تم حذف الإعلان.';
+
+  @override
+  String get listingUnavailable => 'الإعلان لم يعد متاحًا';
+
+  @override
+  String get noReportedContent => 'لا توجد بلاغات';
+
+  @override
+  String get noReportedContentMessage =>
+      'ستظهر هنا الإعلانات التي أبلغ عنها المستخدمون.';
+
+  @override
+  String get filterOpen => 'مفتوحة';
+
+  @override
+  String get filterResolved => 'محلولة';
+
+  @override
+  String get filterHidden => 'مخفية';
+
+  @override
+  String get noListings => 'لا توجد إعلانات';
+
+  @override
+  String get tryAnotherFilter => 'جرّب فلترًا آخر.';
+
+  @override
+  String get adminUsersSubtitle => 'عرض الحسابات أو تعطيلها أو حذفها';
+
+  @override
+  String get searchByEmail => 'البحث بالبريد الإلكتروني';
+
+  @override
+  String get noUsersFound => 'لم يتم العثور على مستخدمين.';
+
+  @override
+  String get roleUser => 'مستخدم';
+
+  @override
+  String get userDisabled => 'معطّل';
+
+  @override
+  String get phone => 'الهاتف';
+
+  @override
+  String get memberSince => 'عضو منذ';
+
+  @override
+  String get disableAccount => 'تعطيل الحساب';
+
+  @override
+  String get enableAccount => 'تفعيل الحساب';
+
+  @override
+  String disableUserTitle(String name) {
+    return 'تعطيل حساب $name؟';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'سيتم تسجيل خروجه ولن يتمكن من الدخول. ستبقى إعلاناته المفتوحة مخفية حتى يُعاد تفعيل الحساب.';
+
+  @override
+  String get accountDisabled => 'تم تعطيل الحساب.';
+
+  @override
+  String get accountEnabled => 'تم تفعيل الحساب.';
+
+  @override
+  String deleteUserTitle(String name) {
+    return 'حذف حساب $name؟';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'سيُحذف ملفه الشخصي وحيواناته وإعلاناته وصوره نهائيًا. لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get userDeleted => 'تم حذف الحساب.';
 }

@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Thu 15 Oct 2026_
+_Last updated: Fri 16 Oct 2026_
 
 ---
 
@@ -52,7 +52,7 @@ Add SHA-1s to the existing key. Never replace them.
 ## 4. Firebase
 
 - [ ] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`
-- [ ] **Deploy the new Firestore rules before releasing the next build** (reward field and roles). Old rules reject reports with a reward.
+- [ ] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
@@ -77,7 +77,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Public Privacy Policy page with account deletion steps: `docs/index.html` (for GitHub Pages)
   - [ ] Replace the `support@email.com` placeholder, publish it and paste the URL in Play Console
   - [ ] Play may require a way to **request** deletion without the app (for example by email) on this page
-- [ ] **Report / block users** in the app. Apple (guideline 1.2) requires it for apps with user content and Google Play expects it. Then update the content rating answers to "Yes"
+- [x] **Report / block users** in the app (Apple guideline 1.2, Google Play UGC policy)
+  - [ ] Update the content rating answers to "Yes"
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

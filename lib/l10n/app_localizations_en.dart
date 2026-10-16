@@ -1407,4 +1407,215 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get statBackHome => 'Pets back home';
+
+  @override
+  String get flagListing => 'Report listing';
+
+  @override
+  String get flagTitle => 'Why are you reporting this listing?';
+
+  @override
+  String get flagHint =>
+      'Our team will review it. The owner won\'t know who reported it.';
+
+  @override
+  String get flagReasonSpam => 'Spam or advertising';
+
+  @override
+  String get flagReasonScam => 'Scam or fraud';
+
+  @override
+  String get flagReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get flagReasonWrongInfo => 'False or misleading information';
+
+  @override
+  String get flagReasonOther => 'Something else';
+
+  @override
+  String get flagNoteHint => 'Add details (optional)';
+
+  @override
+  String get flagSubmit => 'Send report';
+
+  @override
+  String get flagSent => 'Thanks. Our team will review this listing.';
+
+  @override
+  String get alreadyFlagged => 'You have already reported this listing.';
+
+  @override
+  String blockUser(String name) {
+    return 'Block $name';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return 'Block $name?';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'You won\'t see their listings or get alerts about them. You can unblock them in Profile → Blocked users.';
+
+  @override
+  String get block => 'Block';
+
+  @override
+  String userBlocked(String name) {
+    return '$name is blocked.';
+  }
+
+  @override
+  String get blockedUsers => 'Blocked users';
+
+  @override
+  String get noBlockedUsers => 'You haven\'t blocked anyone.';
+
+  @override
+  String get unblock => 'Unblock';
+
+  @override
+  String userUnblocked(String name) {
+    return '$name is unblocked.';
+  }
+
+  @override
+  String get unknownUser => 'Unknown user';
+
+  @override
+  String get hiddenListing => 'Hidden';
+
+  @override
+  String get hiddenListingNotice =>
+      'This listing was hidden by the CodaMi team and is no longer public.';
+
+  @override
+  String get moderation => 'Moderation';
+
+  @override
+  String get noFlagsOnListing => 'No one has reported this listing.';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Reported $count times',
+      one: 'Reported once',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'Dismiss reports';
+
+  @override
+  String get flagsDismissed => 'Reports dismissed.';
+
+  @override
+  String get hideListing => 'Hide listing';
+
+  @override
+  String get restoreListing => 'Restore listing';
+
+  @override
+  String get listingHidden =>
+      'Listing hidden. Only the owner can still see it.';
+
+  @override
+  String get listingRestored => 'Listing restored.';
+
+  @override
+  String get deleteListing => 'Delete listing';
+
+  @override
+  String get deleteListingTitle => 'Delete this listing?';
+
+  @override
+  String get deleteListingMessage =>
+      'The listing and its photos are deleted for everyone. This can\'t be undone.';
+
+  @override
+  String get listingDeleted => 'Listing deleted.';
+
+  @override
+  String get listingUnavailable => 'Listing no longer available';
+
+  @override
+  String get noReportedContent => 'Nothing reported';
+
+  @override
+  String get noReportedContentMessage =>
+      'Listings reported by users will appear here.';
+
+  @override
+  String get filterOpen => 'Open';
+
+  @override
+  String get filterResolved => 'Resolved';
+
+  @override
+  String get filterHidden => 'Hidden';
+
+  @override
+  String get noListings => 'No listings here';
+
+  @override
+  String get tryAnotherFilter => 'Try another filter.';
+
+  @override
+  String get adminUsersSubtitle => 'View, disable or delete accounts';
+
+  @override
+  String get searchByEmail => 'Search by email';
+
+  @override
+  String get noUsersFound => 'No users found.';
+
+  @override
+  String get roleUser => 'User';
+
+  @override
+  String get userDisabled => 'Disabled';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get memberSince => 'Member since';
+
+  @override
+  String get disableAccount => 'Disable account';
+
+  @override
+  String get enableAccount => 'Enable account';
+
+  @override
+  String disableUserTitle(String name) {
+    return 'Disable $name\'s account?';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'They will be signed out and can\'t log in. Their open listings are hidden until the account is enabled again.';
+
+  @override
+  String get accountDisabled => 'Account disabled.';
+
+  @override
+  String get accountEnabled => 'Account enabled.';
+
+  @override
+  String deleteUserTitle(String name) {
+    return 'Delete $name\'s account?';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'This permanently deletes their profile, pets, listings and photos. It can\'t be undone.';
+
+  @override
+  String get userDeleted => 'Account deleted.';
 }

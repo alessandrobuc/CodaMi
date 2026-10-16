@@ -1442,4 +1442,215 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get statBackHome => 'Wieder zu Hause';
+
+  @override
+  String get flagListing => 'Anzeige melden';
+
+  @override
+  String get flagTitle => 'Warum meldest du diese Anzeige?';
+
+  @override
+  String get flagHint =>
+      'Unser Team prüft sie. Der Besitzer erfährt nicht, wer sie gemeldet hat.';
+
+  @override
+  String get flagReasonSpam => 'Spam oder Werbung';
+
+  @override
+  String get flagReasonScam => 'Betrug';
+
+  @override
+  String get flagReasonInappropriate => 'Unangemessener Inhalt';
+
+  @override
+  String get flagReasonWrongInfo => 'Falsche oder irreführende Angaben';
+
+  @override
+  String get flagReasonOther => 'Etwas anderes';
+
+  @override
+  String get flagNoteHint => 'Details hinzufügen (optional)';
+
+  @override
+  String get flagSubmit => 'Meldung senden';
+
+  @override
+  String get flagSent => 'Danke. Unser Team prüft diese Anzeige.';
+
+  @override
+  String get alreadyFlagged => 'Du hast diese Anzeige bereits gemeldet.';
+
+  @override
+  String blockUser(String name) {
+    return '$name blockieren';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return '$name blockieren?';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'Du siehst keine Anzeigen dieser Person mehr und bekommst keine Hinweise dazu. Du kannst sie unter Profil → Blockierte Nutzer wieder freigeben.';
+
+  @override
+  String get block => 'Blockieren';
+
+  @override
+  String userBlocked(String name) {
+    return '$name ist blockiert.';
+  }
+
+  @override
+  String get blockedUsers => 'Blockierte Nutzer';
+
+  @override
+  String get noBlockedUsers => 'Du hast niemanden blockiert.';
+
+  @override
+  String get unblock => 'Freigeben';
+
+  @override
+  String userUnblocked(String name) {
+    return '$name ist nicht mehr blockiert.';
+  }
+
+  @override
+  String get unknownUser => 'Unbekannter Nutzer';
+
+  @override
+  String get hiddenListing => 'Ausgeblendet';
+
+  @override
+  String get hiddenListingNotice =>
+      'Diese Anzeige wurde vom CodaMi-Team ausgeblendet und ist nicht mehr öffentlich.';
+
+  @override
+  String get moderation => 'Moderation';
+
+  @override
+  String get noFlagsOnListing => 'Niemand hat diese Anzeige gemeldet.';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count-mal gemeldet',
+      one: 'Einmal gemeldet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'Meldungen verwerfen';
+
+  @override
+  String get flagsDismissed => 'Meldungen verworfen.';
+
+  @override
+  String get hideListing => 'Anzeige ausblenden';
+
+  @override
+  String get restoreListing => 'Anzeige wiederherstellen';
+
+  @override
+  String get listingHidden =>
+      'Anzeige ausgeblendet. Nur der Besitzer kann sie noch sehen.';
+
+  @override
+  String get listingRestored => 'Anzeige wiederhergestellt.';
+
+  @override
+  String get deleteListing => 'Anzeige löschen';
+
+  @override
+  String get deleteListingTitle => 'Diese Anzeige löschen?';
+
+  @override
+  String get deleteListingMessage =>
+      'Die Anzeige und ihre Fotos werden für alle gelöscht. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get listingDeleted => 'Anzeige gelöscht.';
+
+  @override
+  String get listingUnavailable => 'Anzeige nicht mehr verfügbar';
+
+  @override
+  String get noReportedContent => 'Keine Meldungen';
+
+  @override
+  String get noReportedContentMessage =>
+      'Von Nutzern gemeldete Anzeigen erscheinen hier.';
+
+  @override
+  String get filterOpen => 'Offen';
+
+  @override
+  String get filterResolved => 'Erledigt';
+
+  @override
+  String get filterHidden => 'Ausgeblendet';
+
+  @override
+  String get noListings => 'Keine Anzeigen';
+
+  @override
+  String get tryAnotherFilter => 'Probiere einen anderen Filter.';
+
+  @override
+  String get adminUsersSubtitle => 'Konten ansehen, sperren oder löschen';
+
+  @override
+  String get searchByEmail => 'Nach E-Mail suchen';
+
+  @override
+  String get noUsersFound => 'Keine Nutzer gefunden.';
+
+  @override
+  String get roleUser => 'Nutzer';
+
+  @override
+  String get userDisabled => 'Gesperrt';
+
+  @override
+  String get phone => 'Telefon';
+
+  @override
+  String get memberSince => 'Mitglied seit';
+
+  @override
+  String get disableAccount => 'Konto sperren';
+
+  @override
+  String get enableAccount => 'Konto entsperren';
+
+  @override
+  String disableUserTitle(String name) {
+    return 'Konto von $name sperren?';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'Die Person wird abgemeldet und kann sich nicht mehr anmelden. Ihre offenen Anzeigen bleiben ausgeblendet, bis das Konto entsperrt wird.';
+
+  @override
+  String get accountDisabled => 'Konto gesperrt.';
+
+  @override
+  String get accountEnabled => 'Konto entsperrt.';
+
+  @override
+  String deleteUserTitle(String name) {
+    return 'Konto von $name löschen?';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'Profil, Haustiere, Anzeigen und Fotos werden endgültig gelöscht. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get userDeleted => 'Konto gelöscht.';
 }

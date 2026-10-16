@@ -87,21 +87,26 @@ class RewardBadge extends StatelessWidget {
 
 class ResolvedBadge extends StatelessWidget {
   final String label;
+  final bool hidden;
 
-  const ResolvedBadge({super.key, required this.label});
+  const ResolvedBadge({super.key, required this.label, this.hidden = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.primary,
+        color: hidden ? AppColors.textMuted : AppColors.primary,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.home_rounded, size: 12, color: Colors.white),
+          Icon(
+            hidden ? Icons.visibility_off_rounded : Icons.home_rounded,
+            size: 12,
+            color: Colors.white,
+          ),
           const SizedBox(width: 4),
           Text(
             label.toUpperCase(),
@@ -189,6 +194,7 @@ class _ReportCardState extends State<ReportCard> {
                                 ? ReportTypeBadge(type: report.type)
                                 : ResolvedBadge(
                                     label: report.resolvedLabel(context.l10n),
+                                    hidden: report.isHidden,
                                   ),
                             if (report.activeReward case final reward?) ...[
                               const SizedBox(width: 6),

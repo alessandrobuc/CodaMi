@@ -22,4 +22,15 @@ void main() {
     );
     expect(user.toMap()['role'], 'user');
   });
+
+  test('reads disabled flag and blocked users', () {
+    final user = UserModel.fromMap({
+      'uid': 'u1',
+      'disabled': true,
+      'blockedUsers': {'u2': 'Luca', 'u3': null},
+    });
+    expect(user.disabled, isTrue);
+    expect(user.blockedUsers, {'u2': 'Luca', 'u3': ''});
+    expect(UserModel.fromMap({'uid': 'u1'}).blockedUsers, isEmpty);
+  });
 }

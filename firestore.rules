@@ -15,9 +15,16 @@ service cloud.firestore {
       return data.get('role', 'user');
     }
 
+    function myRole() {
+      return roleOf(get(/databases/$(database)/documents/users/$(request.auth.uid)).data);
+    }
+
     function isAdmin() {
-      return signedIn()
-        && roleOf(get(/databases/$(database)/documents/users/$(request.auth.uid)).data) == 'admin';
+      return signedIn() && myRole() == 'admin';
+    }
+
+    function isStaff() {
+      return signedIn() && myRole() in ['support', 'admin'];
     }
 
     function optionalString(data, field, maxLength) {
@@ -69,7 +76,12 @@ service cloud.firestore {
     match /users/{uid} {
       allow read: if isUser(uid) || isAdmin();
       allow create: if isUser(uid) && roleOf(request.resource.data) == 'user';
-      allow update: if (isUser(uid) && roleOf(request.resource.data) == roleOf(resource.data))
+      allow update: if (isUser(uid)
+          && roleOf(request.resource.data) == roleOf(resource.data)
+          && request.resource.data.get('disabled', false) == resource.data.get('disabled', false)
+          && (!('blockedUsers' in request.resource.data)
+            || (request.resource.data.blockedUsers is map
+              && request.resource.data.blockedUsers.size() <= 500)))
         || (isAdmin() && !isUser(uid)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
           && roleOf(resource.data) in ['user', 'support']
@@ -99,11 +111,35 @@ service cloud.firestore {
       allow create: if isUser(request.resource.data.ownerId)
         && request.resource.data.status == 'open'
         && validReport(request.resource.data);
-      allow update: if isUser(resource.data.ownerId)
-        && request.resource.data.diff(resource.data).affectedKeys()
-             .hasOnly(['status', 'resolvedAt', 'updatedAt'])
-        && request.resource.data.status in ['open', 'resolved', 'closed'];
-      allow delete: if isUser(resource.data.ownerId);
+      // Hidden reports can only be changed by staff.
+      allow update: if (isUser(resource.data.ownerId)
+          && resource.data.status != 'hidden'
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'resolvedAt', 'updatedAt'])
+          && request.resource.data.status in ['open', 'resolved', 'closed'])
+        || (isStaff()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'hiddenBy', 'updatedAt'])
+          && request.resource.data.status in ['open', 'resolved', 'hidden']
+          && !('hiddenBy' in request.resource.data));
+      allow delete: if isUser(resource.data.ownerId) || isAdmin();
+    }
+
+    // One flag per user per report: the ID is `{reporterId}_{reportId}`.
+    match /flags/{flagId} {
+      allow read: if isStaff() || isUser(resource.data.reporterId);
+      allow create: if isUser(request.resource.data.reporterId)
+        && flagId == request.auth.uid + '_' + request.resource.data.reportId
+        && request.resource.data.keys().hasOnly([
+            'reportId', 'reportOwnerId', 'reporterId', 'reason', 'note', 'createdAt'
+          ])
+        && request.resource.data.reportId is string
+        && request.resource.data.reportOwnerId is string
+        && request.resource.data.reportOwnerId != request.auth.uid
+        && request.resource.data.reason in ['spam', 'scam', 'inappropriate', 'wrongInfo', 'other']
+        && optionalString(request.resource.data, 'note', 300)
+        && request.resource.data.createdAt == request.time;
+      allow delete: if isStaff();
     }
   }
 }

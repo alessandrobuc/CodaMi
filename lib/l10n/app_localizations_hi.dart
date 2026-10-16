@@ -1404,4 +1404,215 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get statBackHome => 'घर लौटे पालतू';
+
+  @override
+  String get flagListing => 'लिस्टिंग की शिकायत करें';
+
+  @override
+  String get flagTitle => 'आप इस लिस्टिंग की शिकायत क्यों कर रहे हैं?';
+
+  @override
+  String get flagHint =>
+      'हमारी टीम इसकी जाँच करेगी। मालिक को पता नहीं चलेगा कि शिकायत किसने की।';
+
+  @override
+  String get flagReasonSpam => 'स्पैम या विज्ञापन';
+
+  @override
+  String get flagReasonScam => 'धोखाधड़ी';
+
+  @override
+  String get flagReasonInappropriate => 'अनुचित सामग्री';
+
+  @override
+  String get flagReasonWrongInfo => 'गलत या भ्रामक जानकारी';
+
+  @override
+  String get flagReasonOther => 'कुछ और';
+
+  @override
+  String get flagNoteHint => 'विवरण जोड़ें (वैकल्पिक)';
+
+  @override
+  String get flagSubmit => 'शिकायत भेजें';
+
+  @override
+  String get flagSent => 'धन्यवाद। हमारी टीम इस लिस्टिंग की जाँच करेगी।';
+
+  @override
+  String get alreadyFlagged => 'आप पहले ही इस लिस्टिंग की शिकायत कर चुके हैं।';
+
+  @override
+  String blockUser(String name) {
+    return '$name को ब्लॉक करें';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return '$name को ब्लॉक करें?';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'आपको उनकी लिस्टिंग नहीं दिखेंगी और उनके बारे में अलर्ट नहीं मिलेंगे। आप प्रोफ़ाइल → ब्लॉक किए गए उपयोगकर्ता में अनब्लॉक कर सकते हैं।';
+
+  @override
+  String get block => 'ब्लॉक करें';
+
+  @override
+  String userBlocked(String name) {
+    return '$name को ब्लॉक कर दिया गया।';
+  }
+
+  @override
+  String get blockedUsers => 'ब्लॉक किए गए उपयोगकर्ता';
+
+  @override
+  String get noBlockedUsers => 'आपने किसी को ब्लॉक नहीं किया है।';
+
+  @override
+  String get unblock => 'अनब्लॉक करें';
+
+  @override
+  String userUnblocked(String name) {
+    return '$name को अनब्लॉक कर दिया गया।';
+  }
+
+  @override
+  String get unknownUser => 'अज्ञात उपयोगकर्ता';
+
+  @override
+  String get hiddenListing => 'छिपाई गई';
+
+  @override
+  String get hiddenListingNotice =>
+      'CodaMi टीम ने यह लिस्टिंग छिपा दी है और अब यह सार्वजनिक नहीं है।';
+
+  @override
+  String get moderation => 'मॉडरेशन';
+
+  @override
+  String get noFlagsOnListing => 'किसी ने इस लिस्टिंग की शिकायत नहीं की है।';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बार शिकायत',
+      one: '1 बार शिकायत',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'शिकायतें खारिज करें';
+
+  @override
+  String get flagsDismissed => 'शिकायतें खारिज कर दी गईं।';
+
+  @override
+  String get hideListing => 'लिस्टिंग छिपाएँ';
+
+  @override
+  String get restoreListing => 'लिस्टिंग वापस लाएँ';
+
+  @override
+  String get listingHidden =>
+      'लिस्टिंग छिपा दी गई। अब केवल मालिक इसे देख सकता है।';
+
+  @override
+  String get listingRestored => 'लिस्टिंग वापस आ गई।';
+
+  @override
+  String get deleteListing => 'लिस्टिंग हटाएँ';
+
+  @override
+  String get deleteListingTitle => 'यह लिस्टिंग हटाएँ?';
+
+  @override
+  String get deleteListingMessage =>
+      'लिस्टिंग और उसकी फ़ोटो सभी के लिए हटा दी जाएँगी। इसे पूर्ववत नहीं किया जा सकता।';
+
+  @override
+  String get listingDeleted => 'लिस्टिंग हटा दी गई।';
+
+  @override
+  String get listingUnavailable => 'लिस्टिंग अब उपलब्ध नहीं है';
+
+  @override
+  String get noReportedContent => 'कोई शिकायत नहीं';
+
+  @override
+  String get noReportedContentMessage =>
+      'उपयोगकर्ताओं द्वारा शिकायत की गई लिस्टिंग यहाँ दिखेंगी।';
+
+  @override
+  String get filterOpen => 'खुली';
+
+  @override
+  String get filterResolved => 'हल हो चुकी';
+
+  @override
+  String get filterHidden => 'छिपाई गई';
+
+  @override
+  String get noListings => 'कोई लिस्टिंग नहीं';
+
+  @override
+  String get tryAnotherFilter => 'कोई दूसरा फ़िल्टर आज़माएँ।';
+
+  @override
+  String get adminUsersSubtitle => 'खाते देखें, बंद करें या हटाएँ';
+
+  @override
+  String get searchByEmail => 'ईमेल से खोजें';
+
+  @override
+  String get noUsersFound => 'कोई उपयोगकर्ता नहीं मिला।';
+
+  @override
+  String get roleUser => 'उपयोगकर्ता';
+
+  @override
+  String get userDisabled => 'बंद';
+
+  @override
+  String get phone => 'फ़ोन';
+
+  @override
+  String get memberSince => 'सदस्य कब से';
+
+  @override
+  String get disableAccount => 'खाता बंद करें';
+
+  @override
+  String get enableAccount => 'खाता चालू करें';
+
+  @override
+  String disableUserTitle(String name) {
+    return '$name का खाता बंद करें?';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'उन्हें साइन आउट कर दिया जाएगा और वे लॉग इन नहीं कर पाएँगे। खाता फिर से चालू होने तक उनकी खुली लिस्टिंग छिपी रहेंगी।';
+
+  @override
+  String get accountDisabled => 'खाता बंद कर दिया गया।';
+
+  @override
+  String get accountEnabled => 'खाता चालू कर दिया गया।';
+
+  @override
+  String deleteUserTitle(String name) {
+    return '$name का खाता हटाएँ?';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'उनकी प्रोफ़ाइल, पालतू जानवर, लिस्टिंग और फ़ोटो हमेशा के लिए हटा दी जाएँगी। इसे पूर्ववत नहीं किया जा सकता।';
+
+  @override
+  String get userDeleted => 'खाता हटा दिया गया।';
 }

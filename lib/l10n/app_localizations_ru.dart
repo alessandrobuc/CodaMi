@@ -1411,4 +1411,217 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get statBackHome => 'Вернулись домой';
+
+  @override
+  String get flagListing => 'Пожаловаться';
+
+  @override
+  String get flagTitle => 'Почему вы жалуетесь на это объявление?';
+
+  @override
+  String get flagHint =>
+      'Наша команда проверит его. Владелец не узнает, кто пожаловался.';
+
+  @override
+  String get flagReasonSpam => 'Спам или реклама';
+
+  @override
+  String get flagReasonScam => 'Мошенничество';
+
+  @override
+  String get flagReasonInappropriate => 'Неприемлемый контент';
+
+  @override
+  String get flagReasonWrongInfo =>
+      'Ложная или вводящая в заблуждение информация';
+
+  @override
+  String get flagReasonOther => 'Другое';
+
+  @override
+  String get flagNoteHint => 'Добавьте подробности (необязательно)';
+
+  @override
+  String get flagSubmit => 'Отправить жалобу';
+
+  @override
+  String get flagSent => 'Спасибо. Наша команда проверит это объявление.';
+
+  @override
+  String get alreadyFlagged => 'Вы уже пожаловались на это объявление.';
+
+  @override
+  String blockUser(String name) {
+    return 'Заблокировать: $name';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return 'Заблокировать: $name?';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'Вы больше не увидите объявления этого пользователя и не получите уведомлений о них. Разблокировать можно в Профиль → Заблокированные.';
+
+  @override
+  String get block => 'Заблокировать';
+
+  @override
+  String userBlocked(String name) {
+    return '$name: пользователь заблокирован.';
+  }
+
+  @override
+  String get blockedUsers => 'Заблокированные';
+
+  @override
+  String get noBlockedUsers => 'Вы никого не заблокировали.';
+
+  @override
+  String get unblock => 'Разблокировать';
+
+  @override
+  String userUnblocked(String name) {
+    return '$name: пользователь разблокирован.';
+  }
+
+  @override
+  String get unknownUser => 'Неизвестный пользователь';
+
+  @override
+  String get hiddenListing => 'Скрыто';
+
+  @override
+  String get hiddenListingNotice =>
+      'Команда CodaMi скрыла это объявление, оно больше не публичное.';
+
+  @override
+  String get moderation => 'Модерация';
+
+  @override
+  String get noFlagsOnListing => 'На это объявление никто не жаловался.';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count жалобы',
+      many: '$count жалоб',
+      few: '$count жалобы',
+      one: '1 жалоба',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'Отклонить жалобы';
+
+  @override
+  String get flagsDismissed => 'Жалобы отклонены.';
+
+  @override
+  String get hideListing => 'Скрыть объявление';
+
+  @override
+  String get restoreListing => 'Восстановить объявление';
+
+  @override
+  String get listingHidden => 'Объявление скрыто. Его видит только владелец.';
+
+  @override
+  String get listingRestored => 'Объявление восстановлено.';
+
+  @override
+  String get deleteListing => 'Удалить объявление';
+
+  @override
+  String get deleteListingTitle => 'Удалить это объявление?';
+
+  @override
+  String get deleteListingMessage =>
+      'Объявление и его фото будут удалены для всех. Это действие нельзя отменить.';
+
+  @override
+  String get listingDeleted => 'Объявление удалено.';
+
+  @override
+  String get listingUnavailable => 'Объявление больше недоступно';
+
+  @override
+  String get noReportedContent => 'Жалоб нет';
+
+  @override
+  String get noReportedContentMessage =>
+      'Здесь появятся объявления, на которые пожаловались пользователи.';
+
+  @override
+  String get filterOpen => 'Открытые';
+
+  @override
+  String get filterResolved => 'Решённые';
+
+  @override
+  String get filterHidden => 'Скрытые';
+
+  @override
+  String get noListings => 'Объявлений нет';
+
+  @override
+  String get tryAnotherFilter => 'Попробуйте другой фильтр.';
+
+  @override
+  String get adminUsersSubtitle => 'Просмотр, блокировка и удаление аккаунтов';
+
+  @override
+  String get searchByEmail => 'Поиск по email';
+
+  @override
+  String get noUsersFound => 'Пользователи не найдены.';
+
+  @override
+  String get roleUser => 'Пользователь';
+
+  @override
+  String get userDisabled => 'Отключён';
+
+  @override
+  String get phone => 'Телефон';
+
+  @override
+  String get memberSince => 'Участник с';
+
+  @override
+  String get disableAccount => 'Отключить аккаунт';
+
+  @override
+  String get enableAccount => 'Включить аккаунт';
+
+  @override
+  String disableUserTitle(String name) {
+    return 'Отключить аккаунт: $name?';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'Пользователь выйдет из системы и не сможет войти. Его открытые объявления будут скрыты, пока аккаунт снова не включат.';
+
+  @override
+  String get accountDisabled => 'Аккаунт отключён.';
+
+  @override
+  String get accountEnabled => 'Аккаунт включён.';
+
+  @override
+  String deleteUserTitle(String name) {
+    return 'Удалить аккаунт: $name?';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'Профиль, питомцы, объявления и фото будут удалены навсегда. Это действие нельзя отменить.';
+
+  @override
+  String get userDeleted => 'Аккаунт удалён.';
 }

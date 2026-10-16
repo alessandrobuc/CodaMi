@@ -2537,6 +2537,372 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pets back home'**
   String get statBackHome;
+
+  /// No description provided for @flagListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Report listing'**
+  String get flagListing;
+
+  /// No description provided for @flagTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you reporting this listing?'**
+  String get flagTitle;
+
+  /// No description provided for @flagHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Our team will review it. The owner won\'t know who reported it.'**
+  String get flagHint;
+
+  /// No description provided for @flagReasonSpam.
+  ///
+  /// In en, this message translates to:
+  /// **'Spam or advertising'**
+  String get flagReasonSpam;
+
+  /// No description provided for @flagReasonScam.
+  ///
+  /// In en, this message translates to:
+  /// **'Scam or fraud'**
+  String get flagReasonScam;
+
+  /// No description provided for @flagReasonInappropriate.
+  ///
+  /// In en, this message translates to:
+  /// **'Inappropriate content'**
+  String get flagReasonInappropriate;
+
+  /// No description provided for @flagReasonWrongInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'False or misleading information'**
+  String get flagReasonWrongInfo;
+
+  /// No description provided for @flagReasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Something else'**
+  String get flagReasonOther;
+
+  /// No description provided for @flagNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add details (optional)'**
+  String get flagNoteHint;
+
+  /// No description provided for @flagSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Send report'**
+  String get flagSubmit;
+
+  /// No description provided for @flagSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks. Our team will review this listing.'**
+  String get flagSent;
+
+  /// No description provided for @alreadyFlagged.
+  ///
+  /// In en, this message translates to:
+  /// **'You have already reported this listing.'**
+  String get alreadyFlagged;
+
+  /// No description provided for @blockUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Block {name}'**
+  String blockUser(String name);
+
+  /// No description provided for @blockUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Block {name}?'**
+  String blockUserTitle(String name);
+
+  /// No description provided for @blockUserMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You won\'t see their listings or get alerts about them. You can unblock them in Profile → Blocked users.'**
+  String get blockUserMessage;
+
+  /// No description provided for @block.
+  ///
+  /// In en, this message translates to:
+  /// **'Block'**
+  String get block;
+
+  /// No description provided for @userBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is blocked.'**
+  String userBlocked(String name);
+
+  /// No description provided for @blockedUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked users'**
+  String get blockedUsers;
+
+  /// No description provided for @noBlockedUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t blocked anyone.'**
+  String get noBlockedUsers;
+
+  /// No description provided for @unblock.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock'**
+  String get unblock;
+
+  /// No description provided for @userUnblocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is unblocked.'**
+  String userUnblocked(String name);
+
+  /// No description provided for @unknownUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown user'**
+  String get unknownUser;
+
+  /// No description provided for @hiddenListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get hiddenListing;
+
+  /// No description provided for @hiddenListingNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'This listing was hidden by the CodaMi team and is no longer public.'**
+  String get hiddenListingNotice;
+
+  /// No description provided for @moderation.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderation'**
+  String get moderation;
+
+  /// No description provided for @noFlagsOnListing.
+  ///
+  /// In en, this message translates to:
+  /// **'No one has reported this listing.'**
+  String get noFlagsOnListing;
+
+  /// No description provided for @flagCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Reported once} other{Reported {count} times}}'**
+  String flagCount(int count);
+
+  /// No description provided for @dismissFlags.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss reports'**
+  String get dismissFlags;
+
+  /// No description provided for @flagsDismissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports dismissed.'**
+  String get flagsDismissed;
+
+  /// No description provided for @hideListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide listing'**
+  String get hideListing;
+
+  /// No description provided for @restoreListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore listing'**
+  String get restoreListing;
+
+  /// No description provided for @listingHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing hidden. Only the owner can still see it.'**
+  String get listingHidden;
+
+  /// No description provided for @listingRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing restored.'**
+  String get listingRestored;
+
+  /// No description provided for @deleteListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete listing'**
+  String get deleteListing;
+
+  /// No description provided for @deleteListingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this listing?'**
+  String get deleteListingTitle;
+
+  /// No description provided for @deleteListingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The listing and its photos are deleted for everyone. This can\'t be undone.'**
+  String get deleteListingMessage;
+
+  /// No description provided for @listingDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing deleted.'**
+  String get listingDeleted;
+
+  /// No description provided for @listingUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing no longer available'**
+  String get listingUnavailable;
+
+  /// No description provided for @noReportedContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing reported'**
+  String get noReportedContent;
+
+  /// No description provided for @noReportedContentMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Listings reported by users will appear here.'**
+  String get noReportedContentMessage;
+
+  /// No description provided for @filterOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get filterOpen;
+
+  /// No description provided for @filterResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get filterResolved;
+
+  /// No description provided for @filterHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get filterHidden;
+
+  /// No description provided for @noListings.
+  ///
+  /// In en, this message translates to:
+  /// **'No listings here'**
+  String get noListings;
+
+  /// No description provided for @tryAnotherFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another filter.'**
+  String get tryAnotherFilter;
+
+  /// No description provided for @adminUsersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View, disable or delete accounts'**
+  String get adminUsersSubtitle;
+
+  /// No description provided for @searchByEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by email'**
+  String get searchByEmail;
+
+  /// No description provided for @noUsersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No users found.'**
+  String get noUsersFound;
+
+  /// No description provided for @roleUser.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get roleUser;
+
+  /// No description provided for @userDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled'**
+  String get userDisabled;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @memberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member since'**
+  String get memberSince;
+
+  /// No description provided for @disableAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Disable account'**
+  String get disableAccount;
+
+  /// No description provided for @enableAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable account'**
+  String get enableAccount;
+
+  /// No description provided for @disableUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Disable {name}\'s account?'**
+  String disableUserTitle(String name);
+
+  /// No description provided for @disableUserMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'They will be signed out and can\'t log in. Their open listings are hidden until the account is enabled again.'**
+  String get disableUserMessage;
+
+  /// No description provided for @accountDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Account disabled.'**
+  String get accountDisabled;
+
+  /// No description provided for @accountEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Account enabled.'**
+  String get accountEnabled;
+
+  /// No description provided for @deleteUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}\'s account?'**
+  String deleteUserTitle(String name);
+
+  /// No description provided for @deleteUserMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes their profile, pets, listings and photos. It can\'t be undone.'**
+  String get deleteUserMessage;
+
+  /// No description provided for @userDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted.'**
+  String get userDeleted;
 }
 
 class _AppLocalizationsDelegate

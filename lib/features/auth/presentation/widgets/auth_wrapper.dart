@@ -58,6 +58,12 @@ class _AuthWrapperState extends ConsumerState<AuthWrapper> {
       }
     });
 
+    ref.listen(userProfileProvider, (_, next) {
+      if (next.value?.disabled ?? false) {
+        ref.read(authProvider.notifier).logout();
+      }
+    });
+
     final authState = ref.watch(authStateProvider);
     final profileState = authState.value == null
         ? null

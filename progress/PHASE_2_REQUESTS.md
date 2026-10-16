@@ -9,12 +9,12 @@ The client's new feature requests (received Thu 15 Oct 2026), what already exist
 - **Donations:** the interface is built first; the payment integration is decided by the client after reviewing the options below. CodaMi is not a registered nonprofit, so in-app payments must use Google Play Billing and Apple In-App Purchase.
 - **Videos are uploaded and managed by admins** from the admin section of the app.
 
-_Last updated: Thu 15 Oct 2026_
+_Last updated: Fri 16 Oct 2026_
 
 | # | Request | Status | Size |
 |---|---|---|---|
 | 1 | Language selection on first launch | Done (Thu 15 Oct) | Small |
-| 2 | Administrative dashboard | Foundation done (roles, admin side, dashboard, support staff) | Large |
+| 2 | Administrative dashboard | Mostly done (roles, dashboard, support staff, reported content, listings, users). Tickets and videos left | Large |
 | 3 | Custom notification sounds | Not started | Medium |
 | 4 | Optional cash reward on lost listings | Done (Thu 15 Oct) | Small |
 | 5 | Educational videos and support prompts | Not started | Medium |
@@ -42,7 +42,13 @@ _Last updated: Thu 15 Oct 2026_
 - [x] Admin side navigation: **Dashboard**, **Listings** (admin only), **Reported**, **Tickets**, **More**
 - [x] Dashboard: registered users (admin only), open lost reports, open found reports, pets back home
 - [x] More: **Support staff** (admin only: add by email, list, remove), Users and Videos (soon), language, sign out
-- [ ] Listings, Reported content, Tickets, Users and Videos screens (marked "Soon")
+**Done (Fri 16 Oct)**
+- [x] In-app **report a listing** (reason + optional note, once per user) and **block a user** (listings and alerts hidden, Profile → Blocked users)
+- [x] **Reported** tab (staff): reports grouped per listing; dismiss, hide or (admin) delete
+- [x] **Listings** tab (admin): Open / Resolved / Hidden filters; hide, restore, delete
+- [x] **Users** (admin): list, search by email, details, disable / enable (server function, also hides and restores their open listings), delete (server function)
+- [x] Rules: `flags` collection, staff hide/restore, admin delete, protected `disabled` field (32 rule checks pass in the emulator)
+- [ ] Tickets and Videos screens (marked "Soon")
 
 **First admin:** Firebase console → Firestore → `users` → your user document → add field `role` (string) = `admin`.
 

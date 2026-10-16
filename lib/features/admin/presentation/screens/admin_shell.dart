@@ -9,7 +9,9 @@ import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../shell/presentation/widgets/animated_nav_bar.dart';
 import 'admin_dashboard_tab.dart';
+import 'admin_listings_tab.dart';
 import 'admin_more_tab.dart';
+import 'admin_reported_tab.dart';
 import 'admin_soon_tab.dart';
 
 class _AdminTab {
@@ -58,7 +60,7 @@ class _AdminShellState extends ConsumerState<AdminShell> {
             icon: Icons.campaign_outlined,
             activeIcon: Icons.campaign_rounded,
           ),
-          AdminSoonTab(icon: Icons.campaign_rounded, title: l10n.adminListings),
+          const AdminListingsTab(),
         ),
       _AdminTab(
         NavItem(
@@ -66,10 +68,7 @@ class _AdminShellState extends ConsumerState<AdminShell> {
           icon: Icons.flag_outlined,
           activeIcon: Icons.flag_rounded,
         ),
-        AdminSoonTab(
-          icon: Icons.flag_rounded,
-          title: l10n.adminReportedContent,
-        ),
+        const AdminReportedTab(),
       ),
       _AdminTab(
         NavItem(

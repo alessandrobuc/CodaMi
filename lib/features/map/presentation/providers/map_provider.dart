@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 
 import '../../../../core/utils/geo.dart';
+import '../../../moderation/presentation/providers/moderation_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../reports/domain/entities/reports_entity.dart';
 import '../../../reports/presentation/providers/reports_provider.dart';
@@ -40,10 +41,15 @@ final areaReportsProvider =
       final center = ref.watch(homeCenterProvider);
       final km = ref.watch(areaRadiusProvider);
       final limit = ref.watch(reportsLimitProvider(type));
+      final blocked = ref.watch(blockedUsersProvider);
       return ref
           .watch(openReportsProvider(type))
           .whenData(
-            (reports) => filterByArea(reports.take(limit).toList(), center, km),
+            (reports) => filterByArea(
+              withoutBlocked(reports.take(limit).toList(), blocked),
+              center,
+              km,
+            ),
           );
     });
 
@@ -51,11 +57,15 @@ final mapAreaReportsProvider =
     Provider.family<AsyncValue<List<Report>>, ReportType>((ref, type) {
       final center = ref.watch(homeCenterProvider);
       final km = ref.watch(areaRadiusProvider);
+      final blocked = ref.watch(blockedUsersProvider);
       return ref
           .watch(mapReportsProvider(type))
           .whenData(
-            (reports) =>
-                filterByArea(reports.take(mapPinLimit).toList(), center, km),
+            (reports) => filterByArea(
+              withoutBlocked(reports.take(mapPinLimit).toList(), blocked),
+              center,
+              km,
+            ),
           );
     });
 
@@ -67,7 +77,10 @@ final mapHasMoreProvider = Provider.family<bool, ReportType>(
 final areaResolvedReportsProvider = Provider<AsyncValue<List<Report>>>((ref) {
   final center = ref.watch(homeCenterProvider);
   final km = ref.watch(areaRadiusProvider);
+  final blocked = ref.watch(blockedUsersProvider);
   return ref
       .watch(resolvedReportsProvider)
-      .whenData((reports) => filterByArea(reports, center, km));
+      .whenData(
+        (reports) => filterByArea(withoutBlocked(reports, blocked), center, km),
+      );
 });

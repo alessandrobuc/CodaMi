@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../auth/data/models/user_model.dart';
+import '../../location/data/datasources/places_service.dart';
+import '../../reports/data/models/reports_model.dart';
 import '../../reports/domain/entities/reports_entity.dart';
 
 class StaffMember {
@@ -73,6 +76,71 @@ class AdminRepository {
     'role': role.name,
     'updatedAt': FieldValue.serverTimestamp(),
   });
+
+  Stream<List<Report>> watchReports(
+    ReportStatus status, {
+    required int limit,
+  }) => _db
+      .collection('reports')
+      .where('status', isEqualTo: status.name)
+      .orderBy('createdAt', descending: true)
+      .limit(limit)
+      .snapshots()
+      .map(
+        (snap) =>
+            snap.docs.map((d) => ReportModel.fromMap(d.id, d.data())).toList(),
+      );
+
+  // `createdAt` is an ISO string, so it sorts by date.
+  Stream<List<UserModel>> watchUsers({required int limit}) => _users
+      .orderBy('createdAt', descending: true)
+      .limit(limit)
+      .snapshots()
+      .map(
+        (snap) => snap.docs
+            .map((d) => UserModel.fromMap({...d.data(), 'uid': d.id}))
+            .toList(),
+      );
+
+  Stream<UserModel?> watchUser(String uid) => _users
+      .doc(uid)
+      .snapshots()
+      .map(
+        (d) => d.exists ? UserModel.fromMap({...d.data()!, 'uid': d.id}) : null,
+      );
+
+  Future<List<UserModel>> searchUsers(String email) async {
+    final typed = email.trim();
+    final snap = await _users
+        .where('email', whereIn: {typed, typed.toLowerCase()}.toList())
+        .limit(5)
+        .get();
+    return snap.docs
+        .map((d) => UserModel.fromMap({...d.data(), 'uid': d.id}))
+        .toList();
+  }
+
+  Future<int> reportCount(String uid) async =>
+      (await _db
+              .collection('reports')
+              .where('ownerId', isEqualTo: uid)
+              .count()
+              .get())
+          .count ??
+      0;
+
+  Future<void> setDisabled(String uid, {required bool disabled}) =>
+      _call('adminSetUserDisabled', {'uid': uid, 'disabled': disabled});
+
+  Future<void> deleteUser(String uid) => _call('adminDeleteUser', {'uid': uid});
+
+  Future<void> _call(String name, Map<String, Object> data) =>
+      FirebaseFunctions.instanceFor(region: PlacesService.functionsRegion)
+          .httpsCallable(
+            name,
+            options: HttpsCallableOptions(timeout: const Duration(seconds: 60)),
+          )
+          .call<Object?>(data);
 
   Future<DashboardStats> stats({required bool includeUsers}) async {
     final reports = _db.collection('reports');

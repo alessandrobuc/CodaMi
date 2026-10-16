@@ -23,6 +23,8 @@ class UserModel {
   final double? homeLng;
   final String? phone;
   final UserRole role;
+  final bool disabled;
+  final Map<String, String> blockedUsers;
 
   UserModel({
     required this.uid,
@@ -38,6 +40,8 @@ class UserModel {
     this.homeLng,
     this.phone,
     this.role = UserRole.user,
+    this.disabled = false,
+    this.blockedUsers = const {},
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -69,6 +73,11 @@ class UserModel {
       homeLng: (map['homeLng'] as num?)?.toDouble(),
       phone: map['phone'] as String?,
       role: UserRole.fromValue(map['role']),
+      disabled: map['disabled'] == true,
+      blockedUsers: {
+        for (final e in (map['blockedUsers'] as Map? ?? const {}).entries)
+          '${e.key}': '${e.value ?? ''}',
+      },
     );
   }
 }

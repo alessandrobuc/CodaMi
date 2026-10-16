@@ -1350,4 +1350,207 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get statBackHome => '已回家的宠物';
+
+  @override
+  String get flagListing => '举报信息';
+
+  @override
+  String get flagTitle => '你为什么要举报这条信息？';
+
+  @override
+  String get flagHint => '我们的团队会进行审核。发布者不会知道是谁举报的。';
+
+  @override
+  String get flagReasonSpam => '垃圾信息或广告';
+
+  @override
+  String get flagReasonScam => '诈骗';
+
+  @override
+  String get flagReasonInappropriate => '不当内容';
+
+  @override
+  String get flagReasonWrongInfo => '虚假或误导性信息';
+
+  @override
+  String get flagReasonOther => '其他原因';
+
+  @override
+  String get flagNoteHint => '补充说明（可选）';
+
+  @override
+  String get flagSubmit => '提交举报';
+
+  @override
+  String get flagSent => '谢谢。我们的团队会审核这条信息。';
+
+  @override
+  String get alreadyFlagged => '你已经举报过这条信息。';
+
+  @override
+  String blockUser(String name) {
+    return '屏蔽 $name';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return '屏蔽 $name？';
+  }
+
+  @override
+  String get blockUserMessage =>
+      '你将不再看到对方的信息，也不会收到相关提醒。可以在 个人资料 → 已屏蔽用户 中取消屏蔽。';
+
+  @override
+  String get block => '屏蔽';
+
+  @override
+  String userBlocked(String name) {
+    return '已屏蔽 $name。';
+  }
+
+  @override
+  String get blockedUsers => '已屏蔽用户';
+
+  @override
+  String get noBlockedUsers => '你还没有屏蔽任何人。';
+
+  @override
+  String get unblock => '取消屏蔽';
+
+  @override
+  String userUnblocked(String name) {
+    return '已取消屏蔽 $name。';
+  }
+
+  @override
+  String get unknownUser => '未知用户';
+
+  @override
+  String get hiddenListing => '已隐藏';
+
+  @override
+  String get hiddenListingNotice => '此信息已被 CodaMi 团队隐藏，不再公开。';
+
+  @override
+  String get moderation => '内容管理';
+
+  @override
+  String get noFlagsOnListing => '没有人举报这条信息。';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '被举报 $count 次',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => '忽略举报';
+
+  @override
+  String get flagsDismissed => '已忽略举报。';
+
+  @override
+  String get hideListing => '隐藏信息';
+
+  @override
+  String get restoreListing => '恢复信息';
+
+  @override
+  String get listingHidden => '信息已隐藏，只有发布者还能看到。';
+
+  @override
+  String get listingRestored => '信息已恢复。';
+
+  @override
+  String get deleteListing => '删除信息';
+
+  @override
+  String get deleteListingTitle => '删除这条信息？';
+
+  @override
+  String get deleteListingMessage => '信息及其照片将对所有人删除，且无法撤销。';
+
+  @override
+  String get listingDeleted => '信息已删除。';
+
+  @override
+  String get listingUnavailable => '信息已不可用';
+
+  @override
+  String get noReportedContent => '暂无举报';
+
+  @override
+  String get noReportedContentMessage => '用户举报的信息会显示在这里。';
+
+  @override
+  String get filterOpen => '进行中';
+
+  @override
+  String get filterResolved => '已解决';
+
+  @override
+  String get filterHidden => '已隐藏';
+
+  @override
+  String get noListings => '暂无信息';
+
+  @override
+  String get tryAnotherFilter => '试试其他筛选条件。';
+
+  @override
+  String get adminUsersSubtitle => '查看、停用或删除账户';
+
+  @override
+  String get searchByEmail => '按邮箱搜索';
+
+  @override
+  String get noUsersFound => '未找到用户。';
+
+  @override
+  String get roleUser => '用户';
+
+  @override
+  String get userDisabled => '已停用';
+
+  @override
+  String get phone => '电话';
+
+  @override
+  String get memberSince => '注册时间';
+
+  @override
+  String get disableAccount => '停用账户';
+
+  @override
+  String get enableAccount => '启用账户';
+
+  @override
+  String disableUserTitle(String name) {
+    return '停用 $name 的账户？';
+  }
+
+  @override
+  String get disableUserMessage => '对方将被退出登录且无法再登录。账户重新启用前，其进行中的信息将保持隐藏。';
+
+  @override
+  String get accountDisabled => '账户已停用。';
+
+  @override
+  String get accountEnabled => '账户已启用。';
+
+  @override
+  String deleteUserTitle(String name) {
+    return '删除 $name 的账户？';
+  }
+
+  @override
+  String get deleteUserMessage => '将永久删除其个人资料、宠物、信息和照片，且无法撤销。';
+
+  @override
+  String get userDeleted => '账户已删除。';
 }

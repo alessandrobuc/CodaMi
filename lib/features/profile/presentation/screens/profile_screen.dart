@@ -14,6 +14,7 @@ import 'language_screen.dart';
 import '../widgets/delete_account_dialog.dart';
 import '../../../legal/legal_content.dart';
 import '../../../legal/legal_screen.dart';
+import '../../../moderation/presentation/screens/blocked_users_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -212,6 +213,16 @@ class ProfileScreen extends ConsumerWidget {
                   subtitle: '${language.flag}  ${language.nativeName}',
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) => const LanguageScreen()),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.block_rounded,
+                  color: AppColors.danger,
+                  title: l10n.blockedUsers,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const BlockedUsersScreen(),
+                    ),
                   ),
                 ),
                 _ProfileTile(

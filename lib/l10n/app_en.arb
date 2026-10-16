@@ -870,5 +870,115 @@
   "statUsers": "Registered users",
   "statOpenLost": "Open lost reports",
   "statOpenFound": "Open found reports",
-  "statBackHome": "Pets back home"
+  "statBackHome": "Pets back home",
+  "flagListing": "Report listing",
+  "flagTitle": "Why are you reporting this listing?",
+  "flagHint": "Our team will review it. The owner won't know who reported it.",
+  "flagReasonSpam": "Spam or advertising",
+  "flagReasonScam": "Scam or fraud",
+  "flagReasonInappropriate": "Inappropriate content",
+  "flagReasonWrongInfo": "False or misleading information",
+  "flagReasonOther": "Something else",
+  "flagNoteHint": "Add details (optional)",
+  "flagSubmit": "Send report",
+  "flagSent": "Thanks. Our team will review this listing.",
+  "alreadyFlagged": "You have already reported this listing.",
+  "blockUser": "Block {name}",
+  "@blockUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "blockUserTitle": "Block {name}?",
+  "@blockUserTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "blockUserMessage": "You won't see their listings or get alerts about them. You can unblock them in Profile → Blocked users.",
+  "block": "Block",
+  "userBlocked": "{name} is blocked.",
+  "@userBlocked": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedUsers": "Blocked users",
+  "noBlockedUsers": "You haven't blocked anyone.",
+  "unblock": "Unblock",
+  "userUnblocked": "{name} is unblocked.",
+  "@userUnblocked": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownUser": "Unknown user",
+  "hiddenListing": "Hidden",
+  "hiddenListingNotice": "This listing was hidden by the CodaMi team and is no longer public.",
+  "moderation": "Moderation",
+  "noFlagsOnListing": "No one has reported this listing.",
+  "flagCount": "{count, plural, =1{Reported once} other{Reported {count} times}}",
+  "@flagCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dismissFlags": "Dismiss reports",
+  "flagsDismissed": "Reports dismissed.",
+  "hideListing": "Hide listing",
+  "restoreListing": "Restore listing",
+  "listingHidden": "Listing hidden. Only the owner can still see it.",
+  "listingRestored": "Listing restored.",
+  "deleteListing": "Delete listing",
+  "deleteListingTitle": "Delete this listing?",
+  "deleteListingMessage": "The listing and its photos are deleted for everyone. This can't be undone.",
+  "listingDeleted": "Listing deleted.",
+  "listingUnavailable": "Listing no longer available",
+  "noReportedContent": "Nothing reported",
+  "noReportedContentMessage": "Listings reported by users will appear here.",
+  "filterOpen": "Open",
+  "filterResolved": "Resolved",
+  "filterHidden": "Hidden",
+  "noListings": "No listings here",
+  "tryAnotherFilter": "Try another filter.",
+  "adminUsersSubtitle": "View, disable or delete accounts",
+  "searchByEmail": "Search by email",
+  "noUsersFound": "No users found.",
+  "roleUser": "User",
+  "userDisabled": "Disabled",
+  "phone": "Phone",
+  "memberSince": "Member since",
+  "disableAccount": "Disable account",
+  "enableAccount": "Enable account",
+  "disableUserTitle": "Disable {name}'s account?",
+  "@disableUserTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "disableUserMessage": "They will be signed out and can't log in. Their open listings are hidden until the account is enabled again.",
+  "accountDisabled": "Account disabled.",
+  "accountEnabled": "Account enabled.",
+  "deleteUserTitle": "Delete {name}'s account?",
+  "@deleteUserTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteUserMessage": "This permanently deletes their profile, pets, listings and photos. It can't be undone.",
+  "userDeleted": "Account deleted."
 }

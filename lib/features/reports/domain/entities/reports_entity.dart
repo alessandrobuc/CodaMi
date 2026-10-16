@@ -11,7 +11,8 @@ enum ReportType {
 enum ReportStatus {
   open,
   resolved,
-  closed;
+  closed,
+  hidden;
 
   static ReportStatus fromValue(String? value) => ReportStatus.values
       .firstWhere((s) => s.name == value, orElse: () => ReportStatus.open);
@@ -89,6 +90,8 @@ class Report {
   });
 
   bool get isOpen => status == ReportStatus.open;
+
+  bool get isHidden => status == ReportStatus.hidden;
 
   // Shown only while a lost report is still open.
   int? get activeReward => isOpen && type == ReportType.lost ? reward : null;

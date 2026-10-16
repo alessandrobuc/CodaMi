@@ -12,6 +12,9 @@ import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../../moderation/presentation/widgets/flag_actions.dart';
+import '../../../moderation/presentation/widgets/moderation_panel.dart';
+import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../providers/reports_provider.dart';
@@ -114,11 +117,17 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
     if (deleted && mounted) Navigator.of(context).pop();
   }
 
+  Future<void> _block(Report r) async {
+    final blocked = await blockOwner(context, ref, r);
+    if (blocked && mounted) Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     final report =
         ref.watch(reportProvider(widget.report.id)).value ?? widget.report;
     final isOwner = ref.watch(authStateProvider).value?.uid == report.ownerId;
+    final isStaff = ref.watch(userRoleProvider).isStaff;
     final textTheme = Theme.of(context).textTheme;
     final color = reportColor(report.type);
 
@@ -141,10 +150,19 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
               ),
             ),
             actions: [
-              _GlassButton(
-                icon: Icons.ios_share_rounded,
-                onTap: () => _share(report),
-              ),
+              if (!report.isHidden)
+                _GlassButton(
+                  icon: Icons.ios_share_rounded,
+                  onTap: () => _share(report),
+                ),
+              if (!isOwner && !isStaff) ...[
+                const SizedBox(width: 8),
+                _MoreMenu(
+                  ownerName: report.ownerName,
+                  onFlag: () => flagReport(context, ref, report),
+                  onBlock: () => _block(report),
+                ),
+              ],
               const SizedBox(width: 12),
             ],
             flexibleSpace: FlexibleSpaceBar(
@@ -357,7 +375,11 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   ),
                 ).animate().fadeIn(delay: 150.ms, duration: 350.ms),
                 const SizedBox(height: 16),
-                if (isOwner)
+                if (isStaff)
+                  ModerationPanel(report: report)
+                else if (report.isHidden && !isOwner)
+                  const _HiddenNotice()
+                else if (isOwner)
                   _OwnerActions(
                     report: report,
                     resolving: _resolving,
@@ -396,6 +418,89 @@ class _GlassButton extends StatelessWidget {
       child: FrostedPill(
         padding: const EdgeInsets.all(9),
         child: Icon(icon, color: Colors.white, size: 21),
+      ),
+    );
+  }
+}
+
+class _MoreMenu extends StatelessWidget {
+  final String ownerName;
+  final VoidCallback onFlag;
+  final VoidCallback onBlock;
+
+  const _MoreMenu({
+    required this.ownerName,
+    required this.onFlag,
+    required this.onBlock,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return PopupMenuButton<VoidCallback>(
+      tooltip: '',
+      position: PopupMenuPosition.under,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      onSelected: (action) => action(),
+      itemBuilder: (_) => [
+        PopupMenuItem(
+          value: onFlag,
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.flag_outlined),
+            title: Text(l10n.flagListing),
+          ),
+        ),
+        PopupMenuItem(
+          value: onBlock,
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.block_rounded, color: AppColors.danger),
+            title: Text(
+              l10n.blockUser(ownerName),
+              style: const TextStyle(color: AppColors.danger),
+            ),
+          ),
+        ),
+      ],
+      child: const FrostedPill(
+        padding: EdgeInsets.all(9),
+        child: Icon(Icons.more_vert_rounded, color: Colors.white, size: 21),
+      ),
+    );
+  }
+}
+
+class _HiddenNotice extends StatelessWidget {
+  const _HiddenNotice();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.textMuted.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.visibility_off_rounded,
+            color: AppColors.textMuted,
+            size: 26,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              context.l10n.hiddenListingNotice,
+              style: const TextStyle(
+                color: AppColors.text,
+                fontWeight: FontWeight.w600,
+                height: 1.4,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -670,6 +775,13 @@ class _OwnerActions extends StatelessWidget {
         minimumSize: const Size.fromHeight(48),
       ),
     );
+
+    if (report.isHidden) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [const _HiddenNotice(), const SizedBox(height: 8), delete],
+      );
+    }
 
     if (!report.isOpen) {
       return Column(

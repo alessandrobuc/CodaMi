@@ -1420,4 +1420,214 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get statBackHome => 'Animais de volta a casa';
+
+  @override
+  String get flagListing => 'Denunciar anúncio';
+
+  @override
+  String get flagTitle => 'Por que você está denunciando este anúncio?';
+
+  @override
+  String get flagHint =>
+      'Nossa equipe vai analisá-lo. O dono não saberá quem denunciou.';
+
+  @override
+  String get flagReasonSpam => 'Spam ou publicidade';
+
+  @override
+  String get flagReasonScam => 'Golpe ou fraude';
+
+  @override
+  String get flagReasonInappropriate => 'Conteúdo impróprio';
+
+  @override
+  String get flagReasonWrongInfo => 'Informações falsas ou enganosas';
+
+  @override
+  String get flagReasonOther => 'Outro motivo';
+
+  @override
+  String get flagNoteHint => 'Adicione detalhes (opcional)';
+
+  @override
+  String get flagSubmit => 'Enviar denúncia';
+
+  @override
+  String get flagSent => 'Obrigado. Nossa equipe vai analisar este anúncio.';
+
+  @override
+  String get alreadyFlagged => 'Você já denunciou este anúncio.';
+
+  @override
+  String blockUser(String name) {
+    return 'Bloquear $name';
+  }
+
+  @override
+  String blockUserTitle(String name) {
+    return 'Bloquear $name?';
+  }
+
+  @override
+  String get blockUserMessage =>
+      'Você não verá mais os anúncios dessa pessoa nem receberá alertas sobre eles. Você pode desbloquear em Perfil → Usuários bloqueados.';
+
+  @override
+  String get block => 'Bloquear';
+
+  @override
+  String userBlocked(String name) {
+    return '$name foi bloqueado.';
+  }
+
+  @override
+  String get blockedUsers => 'Usuários bloqueados';
+
+  @override
+  String get noBlockedUsers => 'Você não bloqueou ninguém.';
+
+  @override
+  String get unblock => 'Desbloquear';
+
+  @override
+  String userUnblocked(String name) {
+    return '$name foi desbloqueado.';
+  }
+
+  @override
+  String get unknownUser => 'Usuário desconhecido';
+
+  @override
+  String get hiddenListing => 'Oculto';
+
+  @override
+  String get hiddenListingNotice =>
+      'Este anúncio foi ocultado pela equipe CodaMi e não é mais público.';
+
+  @override
+  String get moderation => 'Moderação';
+
+  @override
+  String get noFlagsOnListing => 'Ninguém denunciou este anúncio.';
+
+  @override
+  String flagCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Denunciado $count vezes',
+      one: 'Denunciado uma vez',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dismissFlags => 'Descartar denúncias';
+
+  @override
+  String get flagsDismissed => 'Denúncias descartadas.';
+
+  @override
+  String get hideListing => 'Ocultar anúncio';
+
+  @override
+  String get restoreListing => 'Restaurar anúncio';
+
+  @override
+  String get listingHidden => 'Anúncio ocultado. Só o dono ainda pode vê-lo.';
+
+  @override
+  String get listingRestored => 'Anúncio restaurado.';
+
+  @override
+  String get deleteListing => 'Excluir anúncio';
+
+  @override
+  String get deleteListingTitle => 'Excluir este anúncio?';
+
+  @override
+  String get deleteListingMessage =>
+      'O anúncio e as fotos são excluídos para todos. Isso não pode ser desfeito.';
+
+  @override
+  String get listingDeleted => 'Anúncio excluído.';
+
+  @override
+  String get listingUnavailable => 'Anúncio não está mais disponível';
+
+  @override
+  String get noReportedContent => 'Nenhuma denúncia';
+
+  @override
+  String get noReportedContentMessage =>
+      'Os anúncios denunciados pelos usuários aparecerão aqui.';
+
+  @override
+  String get filterOpen => 'Abertos';
+
+  @override
+  String get filterResolved => 'Resolvidos';
+
+  @override
+  String get filterHidden => 'Ocultos';
+
+  @override
+  String get noListings => 'Nenhum anúncio';
+
+  @override
+  String get tryAnotherFilter => 'Tente outro filtro.';
+
+  @override
+  String get adminUsersSubtitle => 'Ver, desativar ou excluir contas';
+
+  @override
+  String get searchByEmail => 'Buscar por e-mail';
+
+  @override
+  String get noUsersFound => 'Nenhum usuário encontrado.';
+
+  @override
+  String get roleUser => 'Usuário';
+
+  @override
+  String get userDisabled => 'Desativado';
+
+  @override
+  String get phone => 'Telefone';
+
+  @override
+  String get memberSince => 'Membro desde';
+
+  @override
+  String get disableAccount => 'Desativar conta';
+
+  @override
+  String get enableAccount => 'Reativar conta';
+
+  @override
+  String disableUserTitle(String name) {
+    return 'Desativar a conta de $name?';
+  }
+
+  @override
+  String get disableUserMessage =>
+      'A pessoa será desconectada e não poderá entrar. Os anúncios abertos ficam ocultos até a conta ser reativada.';
+
+  @override
+  String get accountDisabled => 'Conta desativada.';
+
+  @override
+  String get accountEnabled => 'Conta reativada.';
+
+  @override
+  String deleteUserTitle(String name) {
+    return 'Excluir a conta de $name?';
+  }
+
+  @override
+  String get deleteUserMessage =>
+      'Exclui para sempre o perfil, os pets, os anúncios e as fotos. Isso não pode ser desfeito.';
+
+  @override
+  String get userDeleted => 'Conta excluída.';
 }
