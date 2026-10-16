@@ -1,4 +1,5 @@
 import 'package:CodaMi/core/utils/number_format.dart';
+import 'package:CodaMi/l10n/app_languages.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -14,5 +15,14 @@ void main() {
     expect(compactCount(1000000), '1M');
     expect(compactCount(2350000), '2.3M');
     expect(compactCount(300, more: true), '300+');
+  });
+
+  test('euroAmount follows the app language', () {
+    currentAppLanguage = appLanguageFor('en')!;
+    expect(euroAmount(200), '€200');
+    expect(euroAmount(1500), '€1,500');
+    currentAppLanguage = appLanguageFor('it')!;
+    expect(euroAmount(1500), '1.500\u00a0€');
+    currentAppLanguage = defaultAppLanguage;
   });
 }

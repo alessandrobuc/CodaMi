@@ -1292,4 +1292,116 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get legalQuestions =>
       'इस दस्तावेज़ या अपने डेटा के बारे में सवाल हैं?';
+
+  @override
+  String get languageChangeLater =>
+      'आप इसे कभी भी अपनी प्रोफ़ाइल में बदल सकते हैं।';
+
+  @override
+  String get reward => 'इनाम';
+
+  @override
+  String get rewardHint => 'राशि यूरो में';
+
+  @override
+  String get rewardNote =>
+      'इनाम मालिक और पालतू ढूँढने वाले के बीच एक निजी समझौता है। CodaMi किसी भुगतान की गारंटी नहीं देता और न ही उसे संसाधित करता है।';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'इनाम $amount';
+  }
+
+  @override
+  String get adminPanel => 'एडमिन पैनल';
+
+  @override
+  String get roleAdmin => 'एडमिन';
+
+  @override
+  String get roleSupport => 'सपोर्ट';
+
+  @override
+  String get supportStaff => 'सपोर्ट टीम';
+
+  @override
+  String get supportStaffSubtitle => 'सपोर्ट अनुरोधों का जवाब देने वाले लोग';
+
+  @override
+  String get adminUsers => 'उपयोगकर्ता';
+
+  @override
+  String get adminListings => 'लिस्टिंग';
+
+  @override
+  String get adminReportedContent => 'रिपोर्ट की गई सामग्री';
+
+  @override
+  String get adminTickets => 'सपोर्ट अनुरोध';
+
+  @override
+  String get adminVideos => 'वीडियो';
+
+  @override
+  String get addSupportStaff => 'सपोर्ट में जोड़ें';
+
+  @override
+  String get addSupportStaffHint =>
+      'किसी मौजूदा CodaMi खाते का ईमेल दर्ज करें।';
+
+  @override
+  String get userNotFound => 'इस ईमेल से कोई CodaMi खाता नहीं है।';
+
+  @override
+  String get alreadyStaff => 'यह व्यक्ति पहले से टीम में है।';
+
+  @override
+  String staffAdded(String name) {
+    return '$name अब सपोर्ट टीम में है।';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return '$name को हटाएँ?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'उनके पास अब एडमिन पैनल की पहुँच नहीं रहेगी।';
+
+  @override
+  String get noSupportStaff => 'सपोर्ट टीम में अभी कोई नहीं है।';
+
+  @override
+  String get add => 'जोड़ें';
+
+  @override
+  String get actionFailed => 'कुछ गलत हो गया। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get adminDashboard => 'डैशबोर्ड';
+
+  @override
+  String get adminMore => 'और';
+
+  @override
+  String get adminReportedShort => 'रिपोर्ट किए गए';
+
+  @override
+  String get adminTicketsShort => 'अनुरोध';
+
+  @override
+  String get adminSectionSoon => 'यह सेक्शन जल्द आ रहा है।';
+
+  @override
+  String get statUsers => 'पंजीकृत उपयोगकर्ता';
+
+  @override
+  String get statOpenLost => 'खुली गुमशुदगी रिपोर्ट';
+
+  @override
+  String get statOpenFound => 'खुली मिले पालतू रिपोर्ट';
+
+  @override
+  String get statBackHome => 'घर लौटे पालतू';
 }

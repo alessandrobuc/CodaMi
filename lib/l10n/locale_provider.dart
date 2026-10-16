@@ -44,3 +44,26 @@ class LocaleNotifier extends Notifier<AppLanguage> {
 final localeProvider = NotifierProvider<LocaleNotifier, AppLanguage>(
   LocaleNotifier.new,
 );
+
+const _confirmedKey = 'app_language_confirmed';
+
+// False only on first launch, until the user confirms a language.
+class LanguageConfirmedNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    final prefs = ref.read(sharedPreferencesProvider);
+    return prefs.getBool(_confirmedKey) ?? prefs.containsKey(_prefsKey);
+  }
+
+  Future<void> confirm() async {
+    final language = ref.read(localeProvider);
+    await ref.read(localeProvider.notifier).select(language);
+    await ref.read(sharedPreferencesProvider).setBool(_confirmedKey, true);
+    state = true;
+  }
+}
+
+final languageConfirmedProvider =
+    NotifierProvider<LanguageConfirmedNotifier, bool>(
+      LanguageConfirmedNotifier.new,
+    );

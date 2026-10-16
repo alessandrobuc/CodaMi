@@ -1328,4 +1328,118 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get legalQuestions => 'Fragen zu diesem Dokument oder deinen Daten?';
+
+  @override
+  String get languageChangeLater =>
+      'Du kannst sie jederzeit in deinem Profil ändern.';
+
+  @override
+  String get reward => 'Finderlohn';
+
+  @override
+  String get rewardHint => 'Betrag in Euro';
+
+  @override
+  String get rewardNote =>
+      'Der Finderlohn ist eine private Vereinbarung zwischen Besitzer und Finder. CodaMi garantiert oder verarbeitet keine Zahlungen.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'Finderlohn $amount';
+  }
+
+  @override
+  String get adminPanel => 'Admin-Bereich';
+
+  @override
+  String get roleAdmin => 'Administrator';
+
+  @override
+  String get roleSupport => 'Support';
+
+  @override
+  String get supportStaff => 'Support-Team';
+
+  @override
+  String get supportStaffSubtitle =>
+      'Personen, die Support-Anfragen beantworten';
+
+  @override
+  String get adminUsers => 'Nutzer';
+
+  @override
+  String get adminListings => 'Anzeigen';
+
+  @override
+  String get adminReportedContent => 'Gemeldete Inhalte';
+
+  @override
+  String get adminTickets => 'Support-Anfragen';
+
+  @override
+  String get adminVideos => 'Videos';
+
+  @override
+  String get addSupportStaff => 'Zum Support hinzufügen';
+
+  @override
+  String get addSupportStaffHint =>
+      'Gib die E-Mail eines bestehenden CodaMi-Kontos ein.';
+
+  @override
+  String get userNotFound => 'Kein CodaMi-Konto verwendet diese E-Mail.';
+
+  @override
+  String get alreadyStaff => 'Diese Person ist bereits im Team.';
+
+  @override
+  String staffAdded(String name) {
+    return '$name ist jetzt im Support-Team.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return '$name entfernen?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'Die Person hat dann keinen Zugriff mehr auf den Admin-Bereich.';
+
+  @override
+  String get noSupportStaff => 'Noch niemand im Support-Team.';
+
+  @override
+  String get add => 'Hinzufügen';
+
+  @override
+  String get actionFailed =>
+      'Etwas ist schiefgelaufen. Bitte versuche es erneut.';
+
+  @override
+  String get adminDashboard => 'Übersicht';
+
+  @override
+  String get adminMore => 'Mehr';
+
+  @override
+  String get adminReportedShort => 'Gemeldet';
+
+  @override
+  String get adminTicketsShort => 'Anfragen';
+
+  @override
+  String get adminSectionSoon => 'Dieser Bereich kommt bald.';
+
+  @override
+  String get statUsers => 'Registrierte Nutzer';
+
+  @override
+  String get statOpenLost => 'Offene Vermisstmeldungen';
+
+  @override
+  String get statOpenFound => 'Offene Fundmeldungen';
+
+  @override
+  String get statBackHome => 'Wieder zu Hause';
 }

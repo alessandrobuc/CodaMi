@@ -256,19 +256,26 @@ class _NavSlot extends StatelessWidget {
               ),
             ),
             Positioned(
+              left: 2,
+              right: 2,
               bottom: 9,
-              child: Text(
-                item.label,
-                maxLines: 1,
-                style: TextStyle(
-                  fontFamily: Theme.of(context).textTheme.bodySmall?.fontFamily,
-                  fontSize: 11.5,
-                  height: 1,
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                  color: Color.lerp(
-                    AppColors.primary,
-                    AppColors.textMuted,
-                    reveal,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  item.label,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontFamily: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.fontFamily,
+                    fontSize: 11.5,
+                    height: 1,
+                    fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                    color: Color.lerp(
+                      AppColors.primary,
+                      AppColors.textMuted,
+                      reveal,
+                    ),
                   ),
                 ),
               ),

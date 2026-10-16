@@ -81,6 +81,7 @@ class AppFormField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const AppFormField({
     super.key,
@@ -93,6 +94,7 @@ class AppFormField extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.keyboardType,
+    this.inputFormatters,
   });
 
   OutlineInputBorder _border(Color color, [double width = 1]) =>
@@ -110,6 +112,7 @@ class AppFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textCapitalization: textCapitalization,
       keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       maxLines: maxLines,
       maxLength: maxLength,
       textInputAction: maxLines > 1

@@ -9,6 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/geo.dart';
+import '../../../../core/utils/number_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
@@ -30,7 +31,6 @@ import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
 import '../widgets/spot_picker.dart';
 import '../../../../l10n/l10n.dart';
-import '../../../../l10n/labels.dart';
 
 enum _Step { type, pet, where, when, details, review }
 
@@ -69,6 +69,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   final _description = TextEditingController();
   final _phone = TextEditingController();
   final _email = TextEditingController();
+  final _reward = TextEditingController();
   bool _whatsapp = true;
   bool _prefilled = false;
 
@@ -78,7 +79,14 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   @override
   void dispose() {
     _pageController.dispose();
-    for (final c in [_foundName, _placeDetail, _description, _phone, _email]) {
+    for (final c in [
+      _foundName,
+      _placeDetail,
+      _description,
+      _phone,
+      _email,
+      _reward,
+    ]) {
       c.dispose();
     }
     super.dispose();
@@ -119,6 +127,12 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             }
           : _foundName.text.trim(),
   };
+
+  int? get _rewardAmount {
+    if (_type != ReportType.lost) return null;
+    final amount = int.tryParse(_reward.text.trim()) ?? 0;
+    return amount > 0 ? amount : null;
+  }
 
   String get _publicPlaceDetail =>
       ReportModel.withoutHouseNumber(_placeDetail.text);
@@ -257,6 +271,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
       contactPhone: _phone.text,
       contactEmail: _email.text,
       whatsapp: _whatsapp,
+      reward: _rewardAmount,
     );
   }
 
@@ -306,6 +321,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
         lng: draft.areaLng ?? draft.place.lng,
         eventAt: draft.eventAt,
         status: ReportStatus.open,
+        reward: draft.reward,
       );
       ref.read(mapFocusProvider.notifier).show(report);
       ref.read(shellTabProvider.notifier).select(0);
@@ -882,6 +898,24 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           maxLength: 1000,
           onChanged: (_) => setState(() {}),
         ),
+        if (lost) ...[
+          const SizedBox(height: 22),
+          SectionLabel(context.l10n.reward, optional: true),
+          const SizedBox(height: 4),
+          Text(
+            context.l10n.rewardNote,
+            style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
+          ),
+          const SizedBox(height: 10),
+          AppFormField(
+            controller: _reward,
+            hint: context.l10n.rewardHint,
+            icon: Icons.euro_rounded,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            maxLength: 5,
+          ),
+        ],
         const SizedBox(height: 22),
         SectionLabel(context.l10n.howToReachYou),
         const SizedBox(height: 4),
@@ -1001,6 +1035,12 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
                           color: AppColors.accent,
                           text: dateTimeLabel(context.l10n, _eventAt),
                         ),
+                        if (_rewardAmount case final reward?)
+                          _ReviewRow(
+                            icon: Icons.redeem_rounded,
+                            color: AppColors.accent,
+                            text: context.l10n.rewardAmount(euroAmount(reward)),
+                          ),
                         if (contact.isNotEmpty)
                           _ReviewRow(
                             icon: Icons.contact_phone_rounded,

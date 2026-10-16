@@ -27,6 +27,7 @@ class ReportModel {
       contactPhone: _optional(map['contactPhone']),
       contactEmail: _optional(map['contactEmail']),
       whatsapp: map['whatsapp'] as bool? ?? false,
+      reward: (map['reward'] as num?)?.toInt(),
       createdAt: _date(map['createdAt']),
       resolvedAt: _date(map['resolvedAt']),
     );
@@ -63,6 +64,7 @@ class ReportModel {
       'contactPhone': phone,
       'contactEmail': email,
       'whatsapp': phone != null && draft.whatsapp,
+      'reward': draft.type == ReportType.lost ? draft.reward : null,
       'createdAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     };

@@ -10,6 +10,16 @@ service cloud.firestore {
       return signedIn() && request.auth.uid == uid;
     }
 
+    // A missing role means 'user'. Admins are only set in the Firebase console.
+    function roleOf(data) {
+      return data.get('role', 'user');
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && roleOf(get(/databases/$(database)/documents/users/$(request.auth.uid)).data) == 'admin';
+    }
+
     function optionalString(data, field, maxLength) {
       return !(field in data)
         || (data[field] is string && data[field].size() <= maxLength);
@@ -35,7 +45,7 @@ service cloud.firestore {
           'ownerId', 'ownerName', 'ownerContact', 'type', 'petId', 'petName',
           'species', 'description', 'photoUrls', 'country', 'city', 'cityKey',
           'placeDetail', 'areaRadius', 'lat', 'lng', 'eventAt', 'status', 'contactPhone',
-          'contactEmail', 'whatsapp', 'createdAt', 'updatedAt', 'resolvedAt'
+          'contactEmail', 'whatsapp', 'reward', 'createdAt', 'updatedAt', 'resolvedAt'
         ])
         && data.type in ['lost', 'found']
         && data.status in ['open', 'resolved', 'closed']
@@ -52,11 +62,19 @@ service cloud.firestore {
         && optionalString(data, 'contactPhone', 20)
         && optionalString(data, 'contactEmail', 100)
         && optionalString(data, 'placeDetail', 80)
-        && (!('areaRadius' in data) || (data.areaRadius is int && data.areaRadius >= 50 && data.areaRadius <= 500));
+        && (!('areaRadius' in data) || (data.areaRadius is int && data.areaRadius >= 50 && data.areaRadius <= 500))
+        && (!('reward' in data) || (data.type == 'lost' && data.reward is int && data.reward >= 1 && data.reward <= 99999));
     }
 
     match /users/{uid} {
-      allow read, write: if isUser(uid);
+      allow read: if isUser(uid) || isAdmin();
+      allow create: if isUser(uid) && roleOf(request.resource.data) == 'user';
+      allow update: if (isUser(uid) && roleOf(request.resource.data) == roleOf(resource.data))
+        || (isAdmin() && !isUser(uid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
+          && roleOf(resource.data) in ['user', 'support']
+          && roleOf(request.resource.data) in ['user', 'support']);
+      allow delete: if isUser(uid);
 
       match /notifications/{notificationId} {
         allow read, delete: if isUser(uid);

@@ -815,5 +815,60 @@
   "wrongPassword": "Wrong password. Please try again.",
   "confirmPasswordAgain": "For your security, please confirm your password again.",
   "contactUs": "Contact us",
-  "legalQuestions": "Questions about this document or your data?"
+  "legalQuestions": "Questions about this document or your data?",
+  "languageChangeLater": "You can change it anytime in your profile.",
+  "reward": "Reward",
+  "rewardHint": "Amount in euros",
+  "rewardNote": "The reward is a private arrangement between the owner and the finder. CodaMi does not guarantee or process any payment.",
+  "rewardAmount": "Reward {amount}",
+  "@rewardAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPanel": "Admin panel",
+  "roleAdmin": "Admin",
+  "roleSupport": "Support",
+  "supportStaff": "Support staff",
+  "supportStaffSubtitle": "People who answer support requests",
+  "adminUsers": "Users",
+  "adminListings": "Listings",
+  "adminReportedContent": "Reported content",
+  "adminTickets": "Support tickets",
+  "adminVideos": "Videos",
+  "addSupportStaff": "Add support staff",
+  "addSupportStaffHint": "Enter the email of an existing CodaMi account.",
+  "userNotFound": "No CodaMi account uses this email.",
+  "alreadyStaff": "This person is already on the team.",
+  "staffAdded": "{name} is now on the support team.",
+  "removeStaffTitle": "Remove {name}?",
+  "removeStaffMessage": "They will no longer have access to the admin panel.",
+  "noSupportStaff": "No support staff yet.",
+  "add": "Add",
+  "actionFailed": "Something went wrong. Please try again.",
+  "@staffAdded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@removeStaffTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminDashboard": "Dashboard",
+  "adminMore": "More",
+  "adminReportedShort": "Reported",
+  "adminTicketsShort": "Tickets",
+  "adminSectionSoon": "This section is coming soon.",
+  "statUsers": "Registered users",
+  "statOpenLost": "Open lost reports",
+  "statOpenFound": "Open found reports",
+  "statBackHome": "Pets back home"
 }

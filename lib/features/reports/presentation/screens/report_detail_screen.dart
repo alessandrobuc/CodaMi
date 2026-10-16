@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/number_format.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
@@ -86,7 +87,9 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
             '$title\n'
             '🐾 ${r.species.label(l10n)}\n'
             '📍 ${r.placeLabel(l10n)}\n'
-            '🕒 ${dateTimeLabel(l10n, r.eventAt)}\n\n'
+            '🕒 ${dateTimeLabel(l10n, r.eventAt)}\n'
+            '${r.activeReward == null ? '' : '🎁 ${l10n.rewardAmount(euroAmount(r.activeReward!))}\n'}'
+            '\n'
             '${r.description}\n\n'
             '${l10n.shareFooter}',
       ),
@@ -218,6 +221,10 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   children: [
                     ReportTypeBadge(type: report.type, large: true),
                     const SizedBox(width: 8),
+                    if (report.activeReward case final reward?) ...[
+                      RewardBadge(amount: reward, large: true),
+                      const SizedBox(width: 8),
+                    ],
                     if (!report.isOpen)
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -312,6 +319,34 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   label: context.l10n.postedBy,
                   value: isOwner ? context.l10n.you : report.ownerName,
                 ),
+                if (report.activeReward case final reward?) ...[
+                  const SizedBox(height: 16),
+                  _Card(
+                    title: context.l10n.reward,
+                    icon: Icons.redeem_rounded,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          euroAmount(reward),
+                          style: textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.rewardText,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          context.l10n.rewardNote,
+                          style: const TextStyle(
+                            fontSize: 12.5,
+                            height: 1.4,
+                            color: AppColors.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ).animate().fadeIn(delay: 100.ms, duration: 350.ms),
+                ],
                 const SizedBox(height: 16),
                 _Card(
                   title: context.l10n.description,

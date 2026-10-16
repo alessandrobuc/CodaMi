@@ -2333,6 +2333,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Questions about this document or your data?'**
   String get legalQuestions;
+
+  /// No description provided for @languageChangeLater.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change it anytime in your profile.'**
+  String get languageChangeLater;
+
+  /// No description provided for @reward.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward'**
+  String get reward;
+
+  /// No description provided for @rewardHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount in euros'**
+  String get rewardHint;
+
+  /// No description provided for @rewardNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The reward is a private arrangement between the owner and the finder. CodaMi does not guarantee or process any payment.'**
+  String get rewardNote;
+
+  /// No description provided for @rewardAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Reward {amount}'**
+  String rewardAmount(String amount);
+
+  /// No description provided for @adminPanel.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin panel'**
+  String get adminPanel;
+
+  /// No description provided for @roleAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get roleAdmin;
+
+  /// No description provided for @roleSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get roleSupport;
+
+  /// No description provided for @supportStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Support staff'**
+  String get supportStaff;
+
+  /// No description provided for @supportStaffSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'People who answer support requests'**
+  String get supportStaffSubtitle;
+
+  /// No description provided for @adminUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get adminUsers;
+
+  /// No description provided for @adminListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Listings'**
+  String get adminListings;
+
+  /// No description provided for @adminReportedContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported content'**
+  String get adminReportedContent;
+
+  /// No description provided for @adminTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Support tickets'**
+  String get adminTickets;
+
+  /// No description provided for @adminVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get adminVideos;
+
+  /// No description provided for @addSupportStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Add support staff'**
+  String get addSupportStaff;
+
+  /// No description provided for @addSupportStaffHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the email of an existing CodaMi account.'**
+  String get addSupportStaffHint;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No CodaMi account uses this email.'**
+  String get userNotFound;
+
+  /// No description provided for @alreadyStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'This person is already on the team.'**
+  String get alreadyStaff;
+
+  /// No description provided for @staffAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is now on the support team.'**
+  String staffAdded(String name);
+
+  /// No description provided for @removeStaffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name}?'**
+  String removeStaffTitle(String name);
+
+  /// No description provided for @removeStaffMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'They will no longer have access to the admin panel.'**
+  String get removeStaffMessage;
+
+  /// No description provided for @noSupportStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'No support staff yet.'**
+  String get noSupportStaff;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @actionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get actionFailed;
+
+  /// No description provided for @adminDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get adminDashboard;
+
+  /// No description provided for @adminMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get adminMore;
+
+  /// No description provided for @adminReportedShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported'**
+  String get adminReportedShort;
+
+  /// No description provided for @adminTicketsShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Tickets'**
+  String get adminTicketsShort;
+
+  /// No description provided for @adminSectionSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'This section is coming soon.'**
+  String get adminSectionSoon;
+
+  /// No description provided for @statUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered users'**
+  String get statUsers;
+
+  /// No description provided for @statOpenLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Open lost reports'**
+  String get statOpenLost;
+
+  /// No description provided for @statOpenFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Open found reports'**
+  String get statOpenFound;
+
+  /// No description provided for @statBackHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Pets back home'**
+  String get statBackHome;
 }
 
 class _AppLocalizationsDelegate

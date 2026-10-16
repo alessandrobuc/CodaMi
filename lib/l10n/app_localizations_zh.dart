@@ -1242,4 +1242,112 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get legalQuestions => '对本文件或你的数据有疑问？';
+
+  @override
+  String get languageChangeLater => '你可以随时在个人资料中更改。';
+
+  @override
+  String get reward => '酬谢';
+
+  @override
+  String get rewardHint => '金额（欧元）';
+
+  @override
+  String get rewardNote => '酬谢是主人与发现者之间的私人约定。CodaMi 不担保也不处理任何付款。';
+
+  @override
+  String rewardAmount(String amount) {
+    return '酬谢 $amount';
+  }
+
+  @override
+  String get adminPanel => '管理面板';
+
+  @override
+  String get roleAdmin => '管理员';
+
+  @override
+  String get roleSupport => '客服';
+
+  @override
+  String get supportStaff => '客服团队';
+
+  @override
+  String get supportStaffSubtitle => '负责回复支持请求的成员';
+
+  @override
+  String get adminUsers => '用户';
+
+  @override
+  String get adminListings => '发布信息';
+
+  @override
+  String get adminReportedContent => '被举报的内容';
+
+  @override
+  String get adminTickets => '支持请求';
+
+  @override
+  String get adminVideos => '视频';
+
+  @override
+  String get addSupportStaff => '添加客服';
+
+  @override
+  String get addSupportStaffHint => '请输入已有 CodaMi 账户的邮箱。';
+
+  @override
+  String get userNotFound => '没有使用此邮箱的 CodaMi 账户。';
+
+  @override
+  String get alreadyStaff => '此人已在团队中。';
+
+  @override
+  String staffAdded(String name) {
+    return '$name 已加入客服团队。';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return '移除 $name？';
+  }
+
+  @override
+  String get removeStaffMessage => '对方将无法再访问管理面板。';
+
+  @override
+  String get noSupportStaff => '客服团队暂无成员。';
+
+  @override
+  String get add => '添加';
+
+  @override
+  String get actionFailed => '出了点问题，请重试。';
+
+  @override
+  String get adminDashboard => '概览';
+
+  @override
+  String get adminMore => '更多';
+
+  @override
+  String get adminReportedShort => '被举报';
+
+  @override
+  String get adminTicketsShort => '支持请求';
+
+  @override
+  String get adminSectionSoon => '此功能即将推出。';
+
+  @override
+  String get statUsers => '注册用户';
+
+  @override
+  String get statOpenLost => '进行中的走失信息';
+
+  @override
+  String get statOpenFound => '进行中的拾获信息';
+
+  @override
+  String get statBackHome => '已回家的宠物';
 }

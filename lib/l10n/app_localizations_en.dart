@@ -1295,4 +1295,116 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get legalQuestions => 'Questions about this document or your data?';
+
+  @override
+  String get languageChangeLater =>
+      'You can change it anytime in your profile.';
+
+  @override
+  String get reward => 'Reward';
+
+  @override
+  String get rewardHint => 'Amount in euros';
+
+  @override
+  String get rewardNote =>
+      'The reward is a private arrangement between the owner and the finder. CodaMi does not guarantee or process any payment.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'Reward $amount';
+  }
+
+  @override
+  String get adminPanel => 'Admin panel';
+
+  @override
+  String get roleAdmin => 'Admin';
+
+  @override
+  String get roleSupport => 'Support';
+
+  @override
+  String get supportStaff => 'Support staff';
+
+  @override
+  String get supportStaffSubtitle => 'People who answer support requests';
+
+  @override
+  String get adminUsers => 'Users';
+
+  @override
+  String get adminListings => 'Listings';
+
+  @override
+  String get adminReportedContent => 'Reported content';
+
+  @override
+  String get adminTickets => 'Support tickets';
+
+  @override
+  String get adminVideos => 'Videos';
+
+  @override
+  String get addSupportStaff => 'Add support staff';
+
+  @override
+  String get addSupportStaffHint =>
+      'Enter the email of an existing CodaMi account.';
+
+  @override
+  String get userNotFound => 'No CodaMi account uses this email.';
+
+  @override
+  String get alreadyStaff => 'This person is already on the team.';
+
+  @override
+  String staffAdded(String name) {
+    return '$name is now on the support team.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return 'Remove $name?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'They will no longer have access to the admin panel.';
+
+  @override
+  String get noSupportStaff => 'No support staff yet.';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get actionFailed => 'Something went wrong. Please try again.';
+
+  @override
+  String get adminDashboard => 'Dashboard';
+
+  @override
+  String get adminMore => 'More';
+
+  @override
+  String get adminReportedShort => 'Reported';
+
+  @override
+  String get adminTicketsShort => 'Tickets';
+
+  @override
+  String get adminSectionSoon => 'This section is coming soon.';
+
+  @override
+  String get statUsers => 'Registered users';
+
+  @override
+  String get statOpenLost => 'Open lost reports';
+
+  @override
+  String get statOpenFound => 'Open found reports';
+
+  @override
+  String get statBackHome => 'Pets back home';
 }

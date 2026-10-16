@@ -1312,4 +1312,118 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get legalQuestions => 'Des questions sur ce document ou vos données ?';
+
+  @override
+  String get languageChangeLater =>
+      'Vous pourrez la modifier à tout moment dans votre profil.';
+
+  @override
+  String get reward => 'Récompense';
+
+  @override
+  String get rewardHint => 'Montant en euros';
+
+  @override
+  String get rewardNote =>
+      'La récompense est un accord privé entre le propriétaire et la personne qui trouve l\'animal. CodaMi ne garantit ni ne traite aucun paiement.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'Récompense $amount';
+  }
+
+  @override
+  String get adminPanel => 'Panneau d\'administration';
+
+  @override
+  String get roleAdmin => 'Administrateur';
+
+  @override
+  String get roleSupport => 'Support';
+
+  @override
+  String get supportStaff => 'Équipe support';
+
+  @override
+  String get supportStaffSubtitle =>
+      'Les personnes qui répondent aux demandes d\'assistance';
+
+  @override
+  String get adminUsers => 'Utilisateurs';
+
+  @override
+  String get adminListings => 'Annonces';
+
+  @override
+  String get adminReportedContent => 'Contenus signalés';
+
+  @override
+  String get adminTickets => 'Demandes d\'assistance';
+
+  @override
+  String get adminVideos => 'Vidéos';
+
+  @override
+  String get addSupportStaff => 'Ajouter au support';
+
+  @override
+  String get addSupportStaffHint =>
+      'Saisissez l\'email d\'un compte CodaMi existant.';
+
+  @override
+  String get userNotFound => 'Aucun compte CodaMi n\'utilise cet email.';
+
+  @override
+  String get alreadyStaff => 'Cette personne fait déjà partie de l\'équipe.';
+
+  @override
+  String staffAdded(String name) {
+    return '$name fait désormais partie de l\'équipe support.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return 'Retirer $name ?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'Cette personne n\'aura plus accès au panneau d\'administration.';
+
+  @override
+  String get noSupportStaff =>
+      'Personne dans l\'équipe support pour l\'instant.';
+
+  @override
+  String get add => 'Ajouter';
+
+  @override
+  String get actionFailed => 'Une erreur s\'est produite. Veuillez réessayer.';
+
+  @override
+  String get adminDashboard => 'Tableau de bord';
+
+  @override
+  String get adminMore => 'Plus';
+
+  @override
+  String get adminReportedShort => 'Signalés';
+
+  @override
+  String get adminTicketsShort => 'Demandes';
+
+  @override
+  String get adminSectionSoon => 'Cette section arrive bientôt.';
+
+  @override
+  String get statUsers => 'Utilisateurs inscrits';
+
+  @override
+  String get statOpenLost => 'Perdus en cours';
+
+  @override
+  String get statOpenFound => 'Trouvés en cours';
+
+  @override
+  String get statBackHome => 'Animaux rentrés à la maison';
 }

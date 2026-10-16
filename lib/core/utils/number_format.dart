@@ -1,3 +1,13 @@
+import 'package:intl/intl.dart';
+
+import '../../l10n/app_languages.dart';
+
+String euroAmount(int amount) => NumberFormat.currency(
+  locale: currentAppLanguage.code,
+  symbol: '€',
+  decimalDigits: 0,
+).format(amount);
+
 String compactCount(int value, {bool more = false}) {
   final suffix = more ? '+' : '';
   if (value < 1000) return '$value$suffix';

@@ -11,6 +11,7 @@ class AppColors {
   static const Color textMuted = Color(0xFF5C736C);
   static const Color border = Color(0xFFD7E3DE);
   static const Color danger = Color(0xFFB42318);
+  static const Color rewardText = Color(0xFF9A4A0C);
 
   static const Color lostPin = Color(0xFFC2410C);
   static const Color foundPin = Color(0xFF1F6F5B);

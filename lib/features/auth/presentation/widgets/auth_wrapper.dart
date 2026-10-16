@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../l10n/locale_provider.dart';
+import '../../../admin/presentation/screens/admin_shell.dart';
 import '../../../location/presentation/screens/city_setup_screen.dart';
+import '../../../onboarding/presentation/screens/language_select_screen.dart';
 import '../../../onboarding/presentation/screens/onboarding_screen.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../shell/presentation/screens/main_shell.dart';
@@ -75,6 +78,9 @@ class _AuthWrapperState extends ConsumerState<AuthWrapper> {
     AsyncValue<UserModel?>? profileState,
   ) {
     if (authState.isLoading) return const SizedBox.shrink();
+    if (!ref.watch(languageConfirmedProvider)) {
+      return const LanguageSelectScreen(key: ValueKey('language'));
+    }
     if (profileState == null) {
       return _signedOutThisSession
           ? const AuthScreen(key: ValueKey('auth'))
@@ -83,7 +89,11 @@ class _AuthWrapperState extends ConsumerState<AuthWrapper> {
     if (profileState.isLoading) {
       return const _LoadingView(key: ValueKey('loading'));
     }
-    if (profileState.hasError || (profileState.value?.hasCity ?? false)) {
+    final profile = profileState.value;
+    if (profile?.role.isStaff ?? false) {
+      return const AdminShell(key: ValueKey('admin'));
+    }
+    if (profileState.hasError || (profile?.hasCity ?? false)) {
       return const MainShell(key: ValueKey('shell'));
     }
     return const CitySetupScreen(key: ValueKey('city'));

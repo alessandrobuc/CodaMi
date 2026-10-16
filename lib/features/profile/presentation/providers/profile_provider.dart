@@ -15,6 +15,10 @@ final userProfileProvider = StreamProvider<UserModel?>((ref) {
       .map((doc) => doc.exists ? UserModel.fromMap(doc.data()!) : null);
 });
 
+final userRoleProvider = Provider<UserRole>(
+  (ref) => ref.watch(userProfileProvider).value?.role ?? UserRole.user,
+);
+
 class CurrentUserInfo {
   final String name;
   final String email;

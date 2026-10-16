@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Wed 14 Oct 2026_
+_Last updated: Thu 15 Oct 2026_
 
 ---
 
@@ -52,6 +52,8 @@ Add SHA-1s to the existing key. Never replace them.
 ## 4. Firebase
 
 - [ ] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`
+- [ ] **Deploy the new Firestore rules before releasing the next build** (reward field and roles). Old rules reject reports with a reward.
+- [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
 - [ ] Turn on **App Check** (Play Integrity / App Attest) for Firestore, Storage and Functions, so only the real app can call them
@@ -85,6 +87,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Content rating questionnaire
 - [x] Target audience: 18 and over
 - [ ] Support email
+
+Phase 2 features requested by the client (admin panel, rewards, donations, support, videos, sounds) are tracked in `PHASE_2_REQUESTS.md`. Donations and videos will change the Data safety form, privacy labels and possibly the content rating.
 
 ## 7. Scale (when users grow)
 

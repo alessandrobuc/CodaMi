@@ -57,6 +57,7 @@ class Report {
   final String? contactPhone;
   final String? contactEmail;
   final bool whatsapp;
+  final int? reward;
   final DateTime? createdAt;
   final DateTime? resolvedAt;
 
@@ -82,11 +83,15 @@ class Report {
     this.contactPhone,
     this.contactEmail,
     this.whatsapp = false,
+    this.reward,
     this.createdAt,
     this.resolvedAt,
   });
 
   bool get isOpen => status == ReportStatus.open;
+
+  // Shown only while a lost report is still open.
+  int? get activeReward => isOpen && type == ReportType.lost ? reward : null;
 
   String? get coverUrl => photoUrls.isEmpty ? null : photoUrls.first;
 
@@ -110,6 +115,7 @@ class ReportDraft {
   final String? contactPhone;
   final String? contactEmail;
   final bool whatsapp;
+  final int? reward;
 
   const ReportDraft({
     required this.type,
@@ -128,5 +134,6 @@ class ReportDraft {
     this.contactPhone,
     this.contactEmail,
     this.whatsapp = false,
+    this.reward,
   });
 }

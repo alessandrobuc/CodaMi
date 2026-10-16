@@ -1298,4 +1298,117 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get legalQuestions => 'Вопросы об этом документе или ваших данных?';
+
+  @override
+  String get languageChangeLater =>
+      'Вы можете изменить его в любое время в профиле.';
+
+  @override
+  String get reward => 'Вознаграждение';
+
+  @override
+  String get rewardHint => 'Сумма в евро';
+
+  @override
+  String get rewardNote =>
+      'Вознаграждение — это частная договорённость между владельцем и нашедшим. CodaMi не гарантирует и не обрабатывает платежи.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'Вознаграждение $amount';
+  }
+
+  @override
+  String get adminPanel => 'Панель администратора';
+
+  @override
+  String get roleAdmin => 'Администратор';
+
+  @override
+  String get roleSupport => 'Поддержка';
+
+  @override
+  String get supportStaff => 'Команда поддержки';
+
+  @override
+  String get supportStaffSubtitle =>
+      'Люди, которые отвечают на обращения в поддержку';
+
+  @override
+  String get adminUsers => 'Пользователи';
+
+  @override
+  String get adminListings => 'Объявления';
+
+  @override
+  String get adminReportedContent => 'Жалобы на контент';
+
+  @override
+  String get adminTickets => 'Обращения в поддержку';
+
+  @override
+  String get adminVideos => 'Видео';
+
+  @override
+  String get addSupportStaff => 'Добавить в поддержку';
+
+  @override
+  String get addSupportStaffHint =>
+      'Введите email существующего аккаунта CodaMi.';
+
+  @override
+  String get userNotFound => 'Нет аккаунта CodaMi с таким email.';
+
+  @override
+  String get alreadyStaff => 'Этот человек уже в команде.';
+
+  @override
+  String staffAdded(String name) {
+    return '$name теперь в команде поддержки.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return 'Удалить $name?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'Доступ к панели администратора будет закрыт.';
+
+  @override
+  String get noSupportStaff => 'В команде поддержки пока никого нет.';
+
+  @override
+  String get add => 'Добавить';
+
+  @override
+  String get actionFailed => 'Что-то пошло не так. Попробуйте ещё раз.';
+
+  @override
+  String get adminDashboard => 'Обзор';
+
+  @override
+  String get adminMore => 'Ещё';
+
+  @override
+  String get adminReportedShort => 'Жалобы';
+
+  @override
+  String get adminTicketsShort => 'Обращения';
+
+  @override
+  String get adminSectionSoon => 'Этот раздел скоро появится.';
+
+  @override
+  String get statUsers => 'Зарегистрированные пользователи';
+
+  @override
+  String get statOpenLost => 'Открытые объявления о пропаже';
+
+  @override
+  String get statOpenFound => 'Открытые объявления о находке';
+
+  @override
+  String get statBackHome => 'Вернулись домой';
 }

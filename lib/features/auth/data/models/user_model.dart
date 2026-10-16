@@ -1,3 +1,14 @@
+enum UserRole {
+  user,
+  support,
+  admin;
+
+  bool get isStaff => this != user;
+
+  static UserRole fromValue(Object? value) =>
+      values.where((r) => r.name == value).firstOrNull ?? user;
+}
+
 class UserModel {
   final String uid;
   final String name;
@@ -11,6 +22,7 @@ class UserModel {
   final double? homeLat;
   final double? homeLng;
   final String? phone;
+  final UserRole role;
 
   UserModel({
     required this.uid,
@@ -25,6 +37,7 @@ class UserModel {
     this.homeLat,
     this.homeLng,
     this.phone,
+    this.role = UserRole.user,
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -36,6 +49,7 @@ class UserModel {
       'email': email,
       'photoUrl': photoUrl,
       'isPremium': isPremium,
+      'role': role.name,
       'createdAt': createdAt.toIso8601String(),
     };
   }
@@ -54,6 +68,7 @@ class UserModel {
       homeLat: (map['homeLat'] as num?)?.toDouble(),
       homeLng: (map['homeLng'] as num?)?.toDouble(),
       phone: map['phone'] as String?,
+      role: UserRole.fromValue(map['role']),
     );
   }
 }

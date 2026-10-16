@@ -20,24 +20,53 @@ const _place = ReportPlace(
   label: 'Milano, MI, Italia',
 );
 
-ReportDraft _draft({String? phone, String? email, bool whatsapp = true}) =>
-    ReportDraft(
-      type: ReportType.lost,
-      ownerName: ' Ammar ',
-      petId: 'pet1',
-      petName: 'Milo ',
-      species: PetSpecies.dog,
-      description: '  Golden retriever with a red collar  ',
-      photos: const [],
-      place: _place,
-      placeDetail: '  ',
-      eventAt: DateTime.utc(2026, 10, 6, 14, 30),
-      contactPhone: phone,
-      contactEmail: email,
-      whatsapp: whatsapp,
-    );
+ReportDraft _draft({
+  String? phone,
+  String? email,
+  bool whatsapp = true,
+  ReportType type = ReportType.lost,
+  int? reward,
+}) => ReportDraft(
+  type: type,
+  ownerName: ' Ammar ',
+  petId: 'pet1',
+  petName: 'Milo ',
+  species: PetSpecies.dog,
+  description: '  Golden retriever with a red collar  ',
+  photos: const [],
+  place: _place,
+  placeDetail: '  ',
+  eventAt: DateTime.utc(2026, 10, 6, 14, 30),
+  contactPhone: phone,
+  contactEmail: email,
+  whatsapp: whatsapp,
+  reward: reward,
+);
 
 void main() {
+  test('reward is saved only on lost reports', () {
+    Map<String, Object> map(ReportType type, int? reward) =>
+        ReportModel.toCreateMap(
+          ownerId: 'u1',
+          draft: _draft(email: 'me@mail.com', type: type, reward: reward),
+          photoUrls: const ['https://a'],
+        );
+    expect(map(ReportType.lost, 200)['reward'], 200);
+    expect(map(ReportType.lost, null).containsKey('reward'), isFalse);
+    expect(map(ReportType.found, 200).containsKey('reward'), isFalse);
+  });
+
+  test('activeReward hides the reward once a report is resolved', () {
+    Report report(String status, String type) => ReportModel.fromMap('r1', {
+      'type': type,
+      'status': status,
+      'reward': 150,
+    });
+    expect(report('open', 'lost').activeReward, 150);
+    expect(report('resolved', 'lost').activeReward, isNull);
+    expect(report('open', 'found').activeReward, isNull);
+  });
+
   test('toCreateMap trims, drops empty optionals and sets status', () {
     final map = ReportModel.toCreateMap(
       ownerId: 'u1',

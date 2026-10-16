@@ -1308,4 +1308,117 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get legalQuestions => '¿Preguntas sobre este documento o tus datos?';
+
+  @override
+  String get languageChangeLater =>
+      'Puedes cambiarlo cuando quieras en tu perfil.';
+
+  @override
+  String get reward => 'Recompensa';
+
+  @override
+  String get rewardHint => 'Importe en euros';
+
+  @override
+  String get rewardNote =>
+      'La recompensa es un acuerdo privado entre el dueño y quien encuentre al animal. CodaMi no garantiza ni gestiona ningún pago.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'Recompensa $amount';
+  }
+
+  @override
+  String get adminPanel => 'Panel de administración';
+
+  @override
+  String get roleAdmin => 'Administrador';
+
+  @override
+  String get roleSupport => 'Soporte';
+
+  @override
+  String get supportStaff => 'Equipo de soporte';
+
+  @override
+  String get supportStaffSubtitle =>
+      'Personas que responden a las solicitudes de soporte';
+
+  @override
+  String get adminUsers => 'Usuarios';
+
+  @override
+  String get adminListings => 'Anuncios';
+
+  @override
+  String get adminReportedContent => 'Contenido denunciado';
+
+  @override
+  String get adminTickets => 'Solicitudes de soporte';
+
+  @override
+  String get adminVideos => 'Vídeos';
+
+  @override
+  String get addSupportStaff => 'Añadir al soporte';
+
+  @override
+  String get addSupportStaffHint =>
+      'Introduce el email de una cuenta de CodaMi existente.';
+
+  @override
+  String get userNotFound => 'Ninguna cuenta de CodaMi usa este email.';
+
+  @override
+  String get alreadyStaff => 'Esta persona ya forma parte del equipo.';
+
+  @override
+  String staffAdded(String name) {
+    return '$name ya forma parte del equipo de soporte.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return '¿Quitar a $name?';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'Ya no tendrá acceso al panel de administración.';
+
+  @override
+  String get noSupportStaff => 'Todavía no hay nadie en el equipo de soporte.';
+
+  @override
+  String get add => 'Añadir';
+
+  @override
+  String get actionFailed => 'Algo salió mal. Inténtalo de nuevo.';
+
+  @override
+  String get adminDashboard => 'Panel';
+
+  @override
+  String get adminMore => 'Más';
+
+  @override
+  String get adminReportedShort => 'Denunciados';
+
+  @override
+  String get adminTicketsShort => 'Solicitudes';
+
+  @override
+  String get adminSectionSoon => 'Esta sección llegará pronto.';
+
+  @override
+  String get statUsers => 'Usuarios registrados';
+
+  @override
+  String get statOpenLost => 'Perdidos abiertos';
+
+  @override
+  String get statOpenFound => 'Encontrados abiertos';
+
+  @override
+  String get statBackHome => 'Mascotas de vuelta en casa';
 }

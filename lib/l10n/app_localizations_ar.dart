@@ -1280,4 +1280,115 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get legalQuestions => 'هل لديك أسئلة حول هذا المستند أو بياناتك؟';
+
+  @override
+  String get languageChangeLater => 'يمكنك تغييرها في أي وقت من ملفك الشخصي.';
+
+  @override
+  String get reward => 'مكافأة';
+
+  @override
+  String get rewardHint => 'المبلغ باليورو';
+
+  @override
+  String get rewardNote =>
+      'المكافأة اتفاق خاص بين المالك ومن يجد الحيوان. لا تضمن CodaMi أي دفعة ولا تعالجها.';
+
+  @override
+  String rewardAmount(String amount) {
+    return 'مكافأة $amount';
+  }
+
+  @override
+  String get adminPanel => 'لوحة الإدارة';
+
+  @override
+  String get roleAdmin => 'مسؤول';
+
+  @override
+  String get roleSupport => 'الدعم';
+
+  @override
+  String get supportStaff => 'فريق الدعم';
+
+  @override
+  String get supportStaffSubtitle => 'الأشخاص الذين يردّون على طلبات الدعم';
+
+  @override
+  String get adminUsers => 'المستخدمون';
+
+  @override
+  String get adminListings => 'الإعلانات';
+
+  @override
+  String get adminReportedContent => 'المحتوى المُبلَّغ عنه';
+
+  @override
+  String get adminTickets => 'طلبات الدعم';
+
+  @override
+  String get adminVideos => 'الفيديوهات';
+
+  @override
+  String get addSupportStaff => 'إضافة إلى الدعم';
+
+  @override
+  String get addSupportStaffHint =>
+      'أدخل البريد الإلكتروني لحساب CodaMi موجود.';
+
+  @override
+  String get userNotFound => 'لا يوجد حساب CodaMi بهذا البريد الإلكتروني.';
+
+  @override
+  String get alreadyStaff => 'هذا الشخص ضمن الفريق بالفعل.';
+
+  @override
+  String staffAdded(String name) {
+    return 'أصبح $name ضمن فريق الدعم.';
+  }
+
+  @override
+  String removeStaffTitle(String name) {
+    return 'إزالة $name؟';
+  }
+
+  @override
+  String get removeStaffMessage =>
+      'لن يتمكن بعد الآن من الوصول إلى لوحة الإدارة.';
+
+  @override
+  String get noSupportStaff => 'لا يوجد أحد في فريق الدعم بعد.';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
+  String get actionFailed => 'حدث خطأ ما. يُرجى المحاولة مرة أخرى.';
+
+  @override
+  String get adminDashboard => 'لوحة المعلومات';
+
+  @override
+  String get adminMore => 'المزيد';
+
+  @override
+  String get adminReportedShort => 'المُبلَّغ عنه';
+
+  @override
+  String get adminTicketsShort => 'الطلبات';
+
+  @override
+  String get adminSectionSoon => 'هذا القسم قادم قريبًا.';
+
+  @override
+  String get statUsers => 'المستخدمون المسجلون';
+
+  @override
+  String get statOpenLost => 'بلاغات فقدان مفتوحة';
+
+  @override
+  String get statOpenFound => 'بلاغات عثور مفتوحة';
+
+  @override
+  String get statBackHome => 'حيوانات عادت إلى البيت';
 }

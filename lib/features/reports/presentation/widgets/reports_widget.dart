@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/number_format.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/entities/reports_entity.dart';
@@ -39,6 +40,46 @@ class ReportTypeBadge extends StatelessWidget {
           fontWeight: FontWeight.w800,
           letterSpacing: 0.8,
         ),
+      ),
+    );
+  }
+}
+
+class RewardBadge extends StatelessWidget {
+  final int amount;
+  final bool large;
+
+  const RewardBadge({super.key, required this.amount, this.large = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: large ? 10 : 8,
+        vertical: large ? 5 : 3,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.accent.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.redeem_rounded,
+            size: large ? 14 : 12,
+            color: AppColors.rewardText,
+          ),
+          const SizedBox(width: 4),
+          Text(
+            euroAmount(amount),
+            style: TextStyle(
+              color: AppColors.rewardText,
+              fontSize: large ? 12 : 10.5,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -149,6 +190,10 @@ class _ReportCardState extends State<ReportCard> {
                                 : ResolvedBadge(
                                     label: report.resolvedLabel(context.l10n),
                                   ),
+                            if (report.activeReward case final reward?) ...[
+                              const SizedBox(width: 6),
+                              RewardBadge(amount: reward),
+                            ],
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
