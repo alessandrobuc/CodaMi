@@ -1618,4 +1618,233 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get userDeleted => 'Account deleted.';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get requiredField => 'Required';
+
+  @override
+  String get notificationSettingsIntro =>
+      'Choose which alerts you get and give each one its own sound, so you know what happened before you look.';
+
+  @override
+  String get notificationSound => 'Sound';
+
+  @override
+  String get alertLostTitle => 'Lost pets nearby';
+
+  @override
+  String get alertLostDescription => 'When a pet goes missing in your city';
+
+  @override
+  String get alertFoundTitle => 'Found pets nearby';
+
+  @override
+  String get alertFoundDescription => 'When someone finds a pet in your city';
+
+  @override
+  String get alertResolvedTitle => 'Happy endings';
+
+  @override
+  String get alertResolvedDescription =>
+      'When a lost or found pet is back home';
+
+  @override
+  String get soundDefault => 'Phone default';
+
+  @override
+  String get soundSilent => 'Silent';
+
+  @override
+  String get soundChime => 'Chime';
+
+  @override
+  String get soundBell => 'Bell';
+
+  @override
+  String get soundBright => 'Bright';
+
+  @override
+  String get soundSoft => 'Soft';
+
+  @override
+  String get soundCustom => 'Custom sound';
+
+  @override
+  String get soundFromPhone => 'Ringtones and tones on your phone';
+
+  @override
+  String get soundFromFile => 'Music or audio file';
+
+  @override
+  String get soundIosNote =>
+      'On iPhone, notification sounds have to come from the app, so choose one of the sounds above.';
+
+  @override
+  String get soundPickFailed =>
+      'Couldn\'t use that sound. Please try another one.';
+
+  @override
+  String get videosForYou => 'Videos for you';
+
+  @override
+  String get videosForYourPets => 'Picked for your pets';
+
+  @override
+  String get videosGeneral => 'Animal welfare and responsible pet care';
+
+  @override
+  String get videosShuffle => 'Show other videos';
+
+  @override
+  String get videoMotivational => 'Motivation';
+
+  @override
+  String get videoEducational => 'Learn';
+
+  @override
+  String get videoTagGeneral => 'Everyone';
+
+  @override
+  String get videoLoadError =>
+      'This video can\'t be played right now. Please try again later.';
+
+  @override
+  String get adminVideosSubtitle => 'Upload and manage videos';
+
+  @override
+  String get addVideo => 'Add video';
+
+  @override
+  String get editVideo => 'Edit video';
+
+  @override
+  String get noVideosYet =>
+      'No videos yet. Add the first one with the button below.';
+
+  @override
+  String get deleteVideoTitle => 'Delete this video?';
+
+  @override
+  String get deleteVideoMessage =>
+      'It will be removed from the app for everyone. This can\'t be undone.';
+
+  @override
+  String get videoHidden => 'Hidden';
+
+  @override
+  String get allLanguages => 'All languages';
+
+  @override
+  String get chooseVideo => 'Choose a video';
+
+  @override
+  String get chooseVideoHint =>
+      'From your gallery, up to 200 MB. Short videos (under 2 minutes) work best.';
+
+  @override
+  String get videoTitle => 'Title';
+
+  @override
+  String get videoType => 'Type';
+
+  @override
+  String get videoAnimals => 'Animals';
+
+  @override
+  String get videoAnimalsHint =>
+      'Pick the animals this video is about. Choose \"Everyone\" for general videos shown to all users.';
+
+  @override
+  String get videoVisible => 'Visible in the app';
+
+  @override
+  String get videoVisibleHint => 'Hidden videos are only seen by admins.';
+
+  @override
+  String get videoTooLarge =>
+      'This video is larger than 200 MB. Please choose a shorter one.';
+
+  @override
+  String get videoSaved => 'Video saved.';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'Uploading… $percent%';
+  }
+
+  @override
+  String get navVideos => 'Videos';
+
+  @override
+  String get videosEmptyTitle => 'Videos are on the way';
+
+  @override
+  String get videosEmptyMessage =>
+      'Soon you\'ll find short videos here about caring for your animals.';
+
+  @override
+  String get moreVideos => 'More videos';
+
+  @override
+  String get videoWatched => 'Watched';
+
+  @override
+  String get videoBack10 => 'Back 10 seconds';
+
+  @override
+  String get videoForward10 => 'Forward 10 seconds';
+
+  @override
+  String get videoFullscreen => 'Full screen';
+
+  @override
+  String get videoExitFullscreen => 'Exit full screen';
+
+  @override
+  String get videoRetry => 'Try again';
+
+  @override
+  String get videoDeleted => 'Video deleted.';
+
+  @override
+  String get noVideosYetTitle => 'No videos yet';
+
+  @override
+  String get videoVisibleShort => 'Visible';
+
+  @override
+  String get play => 'Play';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get videoSectionFile => 'Video';
+
+  @override
+  String get videoSectionDetails => 'Details';
+
+  @override
+  String get videoSectionAudience => 'Who sees it';
+
+  @override
+  String get videoCover => 'Cover image';
+
+  @override
+  String get videoCoverHint => 'Optional. Shown on the video card.';
+
+  @override
+  String get videoMotivationalHint => 'Inspiring stories and happy moments';
+
+  @override
+  String get videoEducationalHint => 'Tips and how-tos for owners';
+
+  @override
+  String get uploadVideo => 'Upload video';
 }

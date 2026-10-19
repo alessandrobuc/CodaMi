@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/navigation/app_navigator.dart';
 import 'core/theme/app_theme.dart';
+import 'core/utils/system_bars.dart';
 import 'features/auth/presentation/widgets/auth_wrapper.dart';
 import 'l10n/app_languages.dart';
 import 'l10n/l10n.dart';
@@ -13,6 +14,8 @@ import 'l10n/locale_provider.dart';
 void main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   binding.deferFirstFrame();
+  // Clears a full-screen state left over from the video player.
+  showSystemBars();
   final (_, prefs) = await (
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     SharedPreferences.getInstance(),

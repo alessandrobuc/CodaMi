@@ -122,9 +122,13 @@ class _AnimatedNavBarState extends State<AnimatedNavBar>
     final rtl = Directionality.of(context) == TextDirection.rtl;
     double visual(double position) => rtl ? count - 1 - position : position;
 
-    return SafeArea(
-      top: false,
-      minimum: const EdgeInsets.only(bottom: 10),
+    final insets = MediaQuery.viewPaddingOf(context);
+    return Padding(
+      padding: EdgeInsets.only(
+        left: insets.left,
+        right: insets.right,
+        bottom: insets.bottom + 10,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SizedBox(

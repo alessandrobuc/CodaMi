@@ -1653,4 +1653,236 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get userDeleted => 'Konto gelöscht.';
+
+  @override
+  String get save => 'Speichern';
+
+  @override
+  String get requiredField => 'Pflichtfeld';
+
+  @override
+  String get notificationSettingsIntro =>
+      'Wähle, welche Hinweise du bekommst, und gib jedem einen eigenen Ton, damit du schon vorher weißt, worum es geht.';
+
+  @override
+  String get notificationSound => 'Ton';
+
+  @override
+  String get alertLostTitle => 'Vermisste Tiere in der Nähe';
+
+  @override
+  String get alertLostDescription =>
+      'Wenn in deiner Stadt ein Tier verschwindet';
+
+  @override
+  String get alertFoundTitle => 'Gefundene Tiere in der Nähe';
+
+  @override
+  String get alertFoundDescription =>
+      'Wenn jemand in deiner Stadt ein Tier findet';
+
+  @override
+  String get alertResolvedTitle => 'Happy Ends';
+
+  @override
+  String get alertResolvedDescription =>
+      'Wenn ein vermisstes oder gefundenes Tier wieder zu Hause ist';
+
+  @override
+  String get soundDefault => 'Standardton des Handys';
+
+  @override
+  String get soundSilent => 'Lautlos';
+
+  @override
+  String get soundChime => 'Glockenspiel';
+
+  @override
+  String get soundBell => 'Glocke';
+
+  @override
+  String get soundBright => 'Hell';
+
+  @override
+  String get soundSoft => 'Sanft';
+
+  @override
+  String get soundCustom => 'Eigener Ton';
+
+  @override
+  String get soundFromPhone => 'Klingeltöne und Töne des Handys';
+
+  @override
+  String get soundFromFile => 'Musik oder Audiodatei';
+
+  @override
+  String get soundIosNote =>
+      'Auf dem iPhone müssen Mitteilungstöne aus der App kommen. Wähle einen der Töne oben.';
+
+  @override
+  String get soundPickFailed =>
+      'Dieser Ton kann nicht verwendet werden. Bitte wähle einen anderen.';
+
+  @override
+  String get videosForYou => 'Videos für dich';
+
+  @override
+  String get videosForYourPets => 'Passend zu deinen Tieren';
+
+  @override
+  String get videosGeneral => 'Tierschutz und verantwortungsvolle Tierhaltung';
+
+  @override
+  String get videosShuffle => 'Andere Videos zeigen';
+
+  @override
+  String get videoMotivational => 'Motivation';
+
+  @override
+  String get videoEducational => 'Lernen';
+
+  @override
+  String get videoTagGeneral => 'Für alle';
+
+  @override
+  String get videoLoadError =>
+      'Dieses Video kann gerade nicht abgespielt werden. Bitte versuche es später noch einmal.';
+
+  @override
+  String get adminVideosSubtitle => 'Videos hochladen und verwalten';
+
+  @override
+  String get addVideo => 'Video hinzufügen';
+
+  @override
+  String get editVideo => 'Video bearbeiten';
+
+  @override
+  String get noVideosYet =>
+      'Noch keine Videos. Füge das erste mit dem Button unten hinzu.';
+
+  @override
+  String get deleteVideoTitle => 'Dieses Video löschen?';
+
+  @override
+  String get deleteVideoMessage =>
+      'Es wird für alle aus der App entfernt. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get videoHidden => 'Ausgeblendet';
+
+  @override
+  String get allLanguages => 'Alle Sprachen';
+
+  @override
+  String get chooseVideo => 'Video auswählen';
+
+  @override
+  String get chooseVideoHint =>
+      'Aus deiner Galerie, bis 200 MB. Kurze Videos (unter 2 Minuten) eignen sich am besten.';
+
+  @override
+  String get videoTitle => 'Titel';
+
+  @override
+  String get videoType => 'Art';
+
+  @override
+  String get videoAnimals => 'Tiere';
+
+  @override
+  String get videoAnimalsHint =>
+      'Wähle die Tiere, um die es im Video geht. Wähle „Für alle“ für allgemeine Videos, die alle sehen.';
+
+  @override
+  String get videoVisible => 'In der App sichtbar';
+
+  @override
+  String get videoVisibleHint => 'Ausgeblendete Videos sehen nur Admins.';
+
+  @override
+  String get videoTooLarge =>
+      'Das Video ist größer als 200 MB. Bitte wähle ein kürzeres.';
+
+  @override
+  String get videoSaved => 'Video gespeichert.';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'Wird hochgeladen… $percent %';
+  }
+
+  @override
+  String get navVideos => 'Videos';
+
+  @override
+  String get videosEmptyTitle => 'Videos sind unterwegs';
+
+  @override
+  String get videosEmptyMessage =>
+      'Bald findest du hier kurze Videos rund um die Pflege deiner Tiere.';
+
+  @override
+  String get moreVideos => 'Weitere Videos';
+
+  @override
+  String get videoWatched => 'Angesehen';
+
+  @override
+  String get videoBack10 => '10 Sekunden zurück';
+
+  @override
+  String get videoForward10 => '10 Sekunden vor';
+
+  @override
+  String get videoFullscreen => 'Vollbild';
+
+  @override
+  String get videoExitFullscreen => 'Vollbild beenden';
+
+  @override
+  String get videoRetry => 'Erneut versuchen';
+
+  @override
+  String get videoDeleted => 'Video gelöscht.';
+
+  @override
+  String get noVideosYetTitle => 'Noch keine Videos';
+
+  @override
+  String get videoVisibleShort => 'Sichtbar';
+
+  @override
+  String get play => 'Abspielen';
+
+  @override
+  String get edit => 'Bearbeiten';
+
+  @override
+  String get change => 'Ändern';
+
+  @override
+  String get videoSectionFile => 'Video';
+
+  @override
+  String get videoSectionDetails => 'Details';
+
+  @override
+  String get videoSectionAudience => 'Wer es sieht';
+
+  @override
+  String get videoCover => 'Titelbild';
+
+  @override
+  String get videoCoverHint => 'Optional. Erscheint auf der Videokarte.';
+
+  @override
+  String get videoMotivationalHint =>
+      'Inspirierende Geschichten und schöne Momente';
+
+  @override
+  String get videoEducationalHint => 'Tipps und Anleitungen für Halter';
+
+  @override
+  String get uploadVideo => 'Video hochladen';
 }

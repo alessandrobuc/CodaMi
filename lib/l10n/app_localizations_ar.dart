@@ -1602,4 +1602,231 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get userDeleted => 'تم حذف الحساب.';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get requiredField => 'مطلوب';
+
+  @override
+  String get notificationSettingsIntro =>
+      'اختر التنبيهات التي تصلك وخصص لكل منها صوتًا مختلفًا، لتعرف ما حدث قبل أن تنظر.';
+
+  @override
+  String get notificationSound => 'الصوت';
+
+  @override
+  String get alertLostTitle => 'حيوانات مفقودة بالقرب منك';
+
+  @override
+  String get alertLostDescription => 'عندما يُفقد حيوان في مدينتك';
+
+  @override
+  String get alertFoundTitle => 'حيوانات تم العثور عليها بالقرب منك';
+
+  @override
+  String get alertFoundDescription => 'عندما يعثر شخص على حيوان في مدينتك';
+
+  @override
+  String get alertResolvedTitle => 'نهايات سعيدة';
+
+  @override
+  String get alertResolvedDescription =>
+      'عندما يعود حيوان مفقود أو تم العثور عليه إلى منزله';
+
+  @override
+  String get soundDefault => 'الافتراضي في الهاتف';
+
+  @override
+  String get soundSilent => 'صامت';
+
+  @override
+  String get soundChime => 'رنين';
+
+  @override
+  String get soundBell => 'جرس';
+
+  @override
+  String get soundBright => 'مشرق';
+
+  @override
+  String get soundSoft => 'هادئ';
+
+  @override
+  String get soundCustom => 'صوت مخصص';
+
+  @override
+  String get soundFromPhone => 'نغمات الرنين والأصوات في هاتفك';
+
+  @override
+  String get soundFromFile => 'موسيقى أو ملف صوتي';
+
+  @override
+  String get soundIosNote =>
+      'على iPhone يجب أن تكون أصوات الإشعارات من التطبيق نفسه، لذا اختر أحد الأصوات أعلاه.';
+
+  @override
+  String get soundPickFailed => 'تعذر استخدام هذا الصوت. جرّب صوتًا آخر.';
+
+  @override
+  String get videosForYou => 'فيديوهات لك';
+
+  @override
+  String get videosForYourPets => 'مختارة لحيواناتك';
+
+  @override
+  String get videosGeneral =>
+      'رعاية الحيوان والعناية المسؤولة بالحيوانات الأليفة';
+
+  @override
+  String get videosShuffle => 'عرض فيديوهات أخرى';
+
+  @override
+  String get videoMotivational => 'تحفيز';
+
+  @override
+  String get videoEducational => 'تعلّم';
+
+  @override
+  String get videoTagGeneral => 'للجميع';
+
+  @override
+  String get videoLoadError => 'لا يمكن تشغيل هذا الفيديو الآن. حاول لاحقًا.';
+
+  @override
+  String get adminVideosSubtitle => 'رفع الفيديوهات وإدارتها';
+
+  @override
+  String get addVideo => 'إضافة فيديو';
+
+  @override
+  String get editVideo => 'تعديل الفيديو';
+
+  @override
+  String get noVideosYet => 'لا توجد فيديوهات بعد. أضف أول فيديو بالزر أدناه.';
+
+  @override
+  String get deleteVideoTitle => 'حذف هذا الفيديو؟';
+
+  @override
+  String get deleteVideoMessage =>
+      'ستتم إزالته من التطبيق للجميع. لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get videoHidden => 'مخفي';
+
+  @override
+  String get allLanguages => 'كل اللغات';
+
+  @override
+  String get chooseVideo => 'اختر فيديو';
+
+  @override
+  String get chooseVideoHint =>
+      'من معرض الصور، حتى 200 ميغابايت. الفيديوهات القصيرة (أقل من دقيقتين) هي الأفضل.';
+
+  @override
+  String get videoTitle => 'العنوان';
+
+  @override
+  String get videoType => 'النوع';
+
+  @override
+  String get videoAnimals => 'الحيوانات';
+
+  @override
+  String get videoAnimalsHint =>
+      'اختر الحيوانات التي يتناولها الفيديو. اختر \"للجميع\" للفيديوهات العامة التي تظهر لكل المستخدمين.';
+
+  @override
+  String get videoVisible => 'ظاهر في التطبيق';
+
+  @override
+  String get videoVisibleHint => 'الفيديوهات المخفية يراها المشرفون فقط.';
+
+  @override
+  String get videoTooLarge =>
+      'حجم الفيديو أكبر من 200 ميغابايت. اختر فيديو أقصر.';
+
+  @override
+  String get videoSaved => 'تم حفظ الفيديو.';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'جارٍ الرفع… $percent%';
+  }
+
+  @override
+  String get navVideos => 'فيديوهات';
+
+  @override
+  String get videosEmptyTitle => 'الفيديوهات في الطريق';
+
+  @override
+  String get videosEmptyMessage =>
+      'قريبًا ستجد هنا فيديوهات قصيرة عن العناية بحيواناتك.';
+
+  @override
+  String get moreVideos => 'المزيد من الفيديوهات';
+
+  @override
+  String get videoWatched => 'تمت المشاهدة';
+
+  @override
+  String get videoBack10 => 'رجوع 10 ثوانٍ';
+
+  @override
+  String get videoForward10 => 'تقديم 10 ثوانٍ';
+
+  @override
+  String get videoFullscreen => 'ملء الشاشة';
+
+  @override
+  String get videoExitFullscreen => 'الخروج من ملء الشاشة';
+
+  @override
+  String get videoRetry => 'إعادة المحاولة';
+
+  @override
+  String get videoDeleted => 'تم حذف الفيديو.';
+
+  @override
+  String get noVideosYetTitle => 'لا توجد فيديوهات بعد';
+
+  @override
+  String get videoVisibleShort => 'ظاهرة';
+
+  @override
+  String get play => 'تشغيل';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get videoSectionFile => 'الفيديو';
+
+  @override
+  String get videoSectionDetails => 'التفاصيل';
+
+  @override
+  String get videoSectionAudience => 'من يشاهده';
+
+  @override
+  String get videoCover => 'صورة الغلاف';
+
+  @override
+  String get videoCoverHint => 'اختيارية. تظهر على بطاقة الفيديو.';
+
+  @override
+  String get videoMotivationalHint => 'قصص ملهمة ولحظات سعيدة';
+
+  @override
+  String get videoEducationalHint => 'نصائح وإرشادات للمالكين';
+
+  @override
+  String get uploadVideo => 'رفع الفيديو';
 }

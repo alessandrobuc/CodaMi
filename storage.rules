@@ -14,5 +14,22 @@ service firebase.storage {
           || (folder == 'reports'
             && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.get('role', 'user') == 'admin'));
     }
+
+    match /videos/{videoId}/{fileName} {
+      allow read: if request.auth != null;
+      allow create, update: if isAdmin()
+        && ((fileName.matches('video\\..*')
+            && request.resource.size < 200 * 1024 * 1024
+            && request.resource.contentType.matches('video/.*'))
+          || (fileName.matches('thumbnail(_[0-9]+)?\\..*')
+            && request.resource.size < 5 * 1024 * 1024
+            && request.resource.contentType.matches('image/.*')));
+      allow delete: if isAdmin();
+    }
+  }
+
+  function isAdmin() {
+    return request.auth != null
+      && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.get('role', 'user') == 'admin';
   }
 }

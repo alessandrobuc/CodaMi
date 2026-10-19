@@ -1615,4 +1615,233 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get userDeleted => 'खाता हटा दिया गया।';
+
+  @override
+  String get save => 'सहेजें';
+
+  @override
+  String get requiredField => 'आवश्यक';
+
+  @override
+  String get notificationSettingsIntro =>
+      'चुनें कि आपको कौन-से अलर्ट मिलें और हर एक को अपनी अलग आवाज़ दें, ताकि देखने से पहले ही पता चल जाए कि क्या हुआ।';
+
+  @override
+  String get notificationSound => 'आवाज़';
+
+  @override
+  String get alertLostTitle => 'आस-पास खोए पालतू जानवर';
+
+  @override
+  String get alertLostDescription => 'जब आपके शहर में कोई पालतू जानवर खो जाए';
+
+  @override
+  String get alertFoundTitle => 'आस-पास मिले पालतू जानवर';
+
+  @override
+  String get alertFoundDescription => 'जब कोई आपके शहर में पालतू जानवर पाए';
+
+  @override
+  String get alertResolvedTitle => 'खुशखबरी';
+
+  @override
+  String get alertResolvedDescription =>
+      'जब खोया या मिला पालतू जानवर घर लौट आए';
+
+  @override
+  String get soundDefault => 'फ़ोन की डिफ़ॉल्ट';
+
+  @override
+  String get soundSilent => 'साइलेंट';
+
+  @override
+  String get soundChime => 'चाइम';
+
+  @override
+  String get soundBell => 'घंटी';
+
+  @override
+  String get soundBright => 'चमकीली';
+
+  @override
+  String get soundSoft => 'कोमल';
+
+  @override
+  String get soundCustom => 'कस्टम आवाज़';
+
+  @override
+  String get soundFromPhone => 'आपके फ़ोन की रिंगटोन और टोन';
+
+  @override
+  String get soundFromFile => 'संगीत या ऑडियो फ़ाइल';
+
+  @override
+  String get soundIosNote =>
+      'iPhone पर नोटिफ़िकेशन की आवाज़ ऐप से ही होनी चाहिए, इसलिए ऊपर दी गई आवाज़ों में से एक चुनें।';
+
+  @override
+  String get soundPickFailed =>
+      'यह आवाज़ इस्तेमाल नहीं हो सकी। कृपया कोई दूसरी चुनें।';
+
+  @override
+  String get videosForYou => 'आपके लिए वीडियो';
+
+  @override
+  String get videosForYourPets => 'आपके पालतू जानवरों के लिए चुने गए';
+
+  @override
+  String get videosGeneral => 'पशु कल्याण और ज़िम्मेदार देखभाल';
+
+  @override
+  String get videosShuffle => 'दूसरे वीडियो दिखाएँ';
+
+  @override
+  String get videoMotivational => 'प्रेरणा';
+
+  @override
+  String get videoEducational => 'सीखें';
+
+  @override
+  String get videoTagGeneral => 'सभी के लिए';
+
+  @override
+  String get videoLoadError =>
+      'यह वीडियो अभी नहीं चल सकता। कृपया बाद में फिर कोशिश करें।';
+
+  @override
+  String get adminVideosSubtitle => 'वीडियो अपलोड और मैनेज करें';
+
+  @override
+  String get addVideo => 'वीडियो जोड़ें';
+
+  @override
+  String get editVideo => 'वीडियो बदलें';
+
+  @override
+  String get noVideosYet =>
+      'अभी कोई वीडियो नहीं है। नीचे दिए बटन से पहला वीडियो जोड़ें।';
+
+  @override
+  String get deleteVideoTitle => 'यह वीडियो हटाएँ?';
+
+  @override
+  String get deleteVideoMessage =>
+      'यह सभी के लिए ऐप से हट जाएगा। इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String get videoHidden => 'छिपा हुआ';
+
+  @override
+  String get allLanguages => 'सभी भाषाएँ';
+
+  @override
+  String get chooseVideo => 'वीडियो चुनें';
+
+  @override
+  String get chooseVideoHint =>
+      'गैलरी से, 200 MB तक। छोटे वीडियो (2 मिनट से कम) सबसे अच्छे रहते हैं।';
+
+  @override
+  String get videoTitle => 'शीर्षक';
+
+  @override
+  String get videoType => 'प्रकार';
+
+  @override
+  String get videoAnimals => 'जानवर';
+
+  @override
+  String get videoAnimalsHint =>
+      'चुनें कि यह वीडियो किन जानवरों के बारे में है। सभी उपयोगकर्ताओं को दिखने वाले सामान्य वीडियो के लिए \"सभी के लिए\" चुनें।';
+
+  @override
+  String get videoVisible => 'ऐप में दिखाएँ';
+
+  @override
+  String get videoVisibleHint => 'छिपे हुए वीडियो केवल एडमिन देख सकते हैं।';
+
+  @override
+  String get videoTooLarge =>
+      'यह वीडियो 200 MB से बड़ा है। कृपया छोटा वीडियो चुनें।';
+
+  @override
+  String get videoSaved => 'वीडियो सहेजा गया।';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'अपलोड हो रहा है… $percent%';
+  }
+
+  @override
+  String get navVideos => 'वीडियो';
+
+  @override
+  String get videosEmptyTitle => 'वीडियो जल्द आ रहे हैं';
+
+  @override
+  String get videosEmptyMessage =>
+      'जल्द ही यहाँ आपके जानवरों की देखभाल पर छोटे वीडियो मिलेंगे।';
+
+  @override
+  String get moreVideos => 'और वीडियो';
+
+  @override
+  String get videoWatched => 'देखा गया';
+
+  @override
+  String get videoBack10 => '10 सेकंड पीछे';
+
+  @override
+  String get videoForward10 => '10 सेकंड आगे';
+
+  @override
+  String get videoFullscreen => 'फ़ुल स्क्रीन';
+
+  @override
+  String get videoExitFullscreen => 'फ़ुल स्क्रीन बंद करें';
+
+  @override
+  String get videoRetry => 'फिर कोशिश करें';
+
+  @override
+  String get videoDeleted => 'वीडियो हटाया गया।';
+
+  @override
+  String get noVideosYetTitle => 'अभी कोई वीडियो नहीं';
+
+  @override
+  String get videoVisibleShort => 'दिखने वाले';
+
+  @override
+  String get play => 'चलाएँ';
+
+  @override
+  String get edit => 'बदलें';
+
+  @override
+  String get change => 'बदलें';
+
+  @override
+  String get videoSectionFile => 'वीडियो';
+
+  @override
+  String get videoSectionDetails => 'विवरण';
+
+  @override
+  String get videoSectionAudience => 'कौन देखेगा';
+
+  @override
+  String get videoCover => 'कवर इमेज';
+
+  @override
+  String get videoCoverHint => 'वैकल्पिक। वीडियो कार्ड पर दिखती है।';
+
+  @override
+  String get videoMotivationalHint => 'प्रेरक कहानियाँ और खुशी के पल';
+
+  @override
+  String get videoEducationalHint => 'मालिकों के लिए टिप्स और तरीके';
+
+  @override
+  String get uploadVideo => 'वीडियो अपलोड करें';
 }

@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Fri 16 Oct 2026_
+_Last updated: Mon 19 Oct 2026_
 
 ---
 
@@ -53,11 +53,12 @@ Add SHA-1s to the existing key. Never replace them.
 
 - [ ] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`
 - [ ] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
+- [ ] **Also in that deploy (Mon 19 Oct, storage rules changed again for cover image names):** `videos` rules (Firestore and Storage, admin-only uploads) and the `notificationPrefs` rule; the updated `onReportCreated` / `onReportResolved` send each user's chosen sound and skip turned-off alert types. The first Storage deploy may ask to let Storage rules read Firestore: answer yes.
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
 - [ ] Turn on **App Check** (Play Integrity / App Attest) for Firestore, Storage and Functions, so only the real app can call them
-- [ ] Set a **budget alert** in Google Cloud Billing (e.g. €20 / €50 / €100)
+- [ ] Set a **budget alert** in Google Cloud Billing (e.g. €20 / €50 / €100). Even more important now: every video view is Storage download traffic
 - [ ] Set **quotas** on Places and Geocoding APIs (per day) to cap surprise costs
 - [ ] Add **Crashlytics** for crash reports
 - [ ] Consider a separate `codami-dev` project for testing, so test data never mixes with real users
@@ -69,7 +70,10 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Remove any test reports, test users and test pets from Firestore
 - [ ] Empty states, error messages and loading states reviewed on a slow connection
 - [ ] Test on a small phone and a large phone (layout never breaks)
-- [x] Version set in `pubspec.yaml` (`1.0.0+2`). Raise the number after `+` for every upload to Play.
+- [x] Notification sounds on a real Android phone (Mon 19 Oct)
+- [ ] Notification sounds on a real iPhone (CodaMi sounds; app open, in background and closed). Needs the client's Apple account
+- [ ] Videos: upload a few test videos (admin), check Videos for you with no pets, a dog, and a cat, on Wi-Fi and mobile data
+- [x] Version set in `pubspec.yaml` (now `1.0.0+5`). Raise the number after `+` for every upload to Play.
 
 ## 6. Legal and store listing
 

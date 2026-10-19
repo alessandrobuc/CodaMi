@@ -9,17 +9,17 @@ The client's new feature requests (received Thu 15 Oct 2026), what already exist
 - **Donations:** the interface is built first; the payment integration is decided by the client after reviewing the options below. CodaMi is not a registered nonprofit, so in-app payments must use Google Play Billing and Apple In-App Purchase.
 - **Videos are uploaded and managed by admins** from the admin section of the app.
 
-_Last updated: Fri 16 Oct 2026_
+_Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 and 5)_
 
 | # | Request | Status | Size |
 |---|---|---|---|
 | 1 | Language selection on first launch | Done (Thu 15 Oct) | Small |
-| 2 | Administrative dashboard | Mostly done (roles, dashboard, support staff, reported content, listings, users). Tickets and videos left | Large |
-| 3 | Custom notification sounds | Not started | Medium |
+| 2 | Administrative dashboard | Mostly done (roles, dashboard, support staff, reported content, listings, users, videos). Tickets left | Large |
+| 3 | Customizable notifications (per-type sounds, phone sounds) | Built (Mon 19 Oct), to test on real phones. iPhone custom files left | Medium |
 | 4 | Optional cash reward on lost listings | Done (Thu 15 Oct) | Small |
-| 5 | Educational videos and support prompts | Not started | Medium |
+| 5 | Random videos based on the user's pets | Built (Mon 19 Oct), to test with real videos. YouTube links left | Medium |
 | 6 | Optional donations | Not started | Small (interface) + Medium (payments) |
-| 7 | Support tickets and live chat | Not started | Large |
+| 7 | Live chat, tickets and operator monitoring | Not started | Large |
 
 ---
 
@@ -48,7 +48,8 @@ _Last updated: Fri 16 Oct 2026_
 - [x] **Listings** tab (admin): Open / Resolved / Hidden filters; hide, restore, delete
 - [x] **Users** (admin): list, search by email, details, disable / enable (server function, also hides and restores their open listings), delete (server function)
 - [x] Rules: `flags` collection, staff hide/restore, admin delete, protected `disabled` field (32 rule checks pass in the emulator)
-- [ ] Tickets and Videos screens (marked "Soon")
+- [x] Videos screen (Mon 19 Oct, see 5)
+- [ ] Tickets screen (marked "Soon", see 7)
 
 **First admin:** Firebase console → Firestore → `users` → your user document → add field `role` (string) = `admin`.
 
@@ -61,15 +62,30 @@ _Last updated: Fri 16 Oct 2026_
 - Store review: Apple and Google reviewers sign in with a normal account, so admin screens are never shown to them. No extra store forms needed.
 - Needs **in-app report / block** first (also required by Apple guideline 1.2 and expected by Google Play)
 
-## 3. Custom notification sounds
+## 3. Customizable notifications
 
-**Already there:** all notifications use the phone's default sound.
+**Client clarification (Mon 19 Oct):** a different sound per notification type, including music, custom tones or other sounds on the phone. Settings must be simple to use.
+
+**Already there:** all notifications use the phone's default sound. Types today: `new_report`, `report_resolved`.
+
+**Done (Mon 19 Oct)**
+- [x] Profile → **Notifications**: Lost pets nearby, Found pets nearby, Happy endings. Each has an on/off switch and its own sound, with a preview when tapped
+- [x] Sounds: phone default, silent, 4 CodaMi sounds (Chime, Bell, Bright, Soft); on Android also phone ringtones and tones and any music or audio file (Android 10+)
+- [x] Android: one channel per type, created in `MainActivity.kt`; a new channel is made when the sound changes and the old one is deleted. Picked audio files are copied to `Notifications/CodaMi` so the system can play them
+- [x] iPhone: the 4 CodaMi sounds are copied to `Library/Sounds` at launch (`AppDelegate.swift`) and sent as the alert sound
+- [x] Server: skips the phone alert for turned-off types (still listed in the app's notifications) and sends each user's channel and sound. Old app versions keep using `codami_alerts`
+- [x] Rules: `notificationPrefs` only accepts `lost`, `found`, `resolved`. Unit tests and function tests pass
+- [x] Tested on a real Android phone (Mon 19 Oct): works
+- [ ] Test on a real iPhone (CodaMi sounds; app open, in the background and closed) once the client gives access to the Apple account
+- [ ] iPhone audio files from Files (convert and trim to 30 s) once the client accepts Apple's limits
+- [ ] Support reply notifications get their own type when 7 is built
 
 **Proposed approach**
-- 4–6 short sounds bundled in the app, plus **Default** and **Silent**
-- Preview by tapping a sound in Profile → Notifications
-- Choice saved on the profile; the server sends each alert with the user's sound
-- Android: one notification channel per sound (Android does not allow changing a channel's sound after it is created). iOS: sound files bundled in the app, under 30 seconds.
+- Profile → **Notifications** screen: one row per type (new lost/found pet nearby, report resolved, support reply, app news), each with an on/off switch, a sound and a preview button
+- Sound choices: **Default**, **Silent**, 4–6 CodaMi sounds bundled in the app, and **Choose from phone**
+- Preferences saved on `users/{userId}.notificationPrefs`. Cloud Functions read them and skip disabled types; they send the right Android channel and iOS sound with each push.
+- **Android:** the system ringtone/notification picker plus any audio file. One channel per type. A channel's sound cannot change after it is created, so a new sound means deleting the channel and creating a new versioned one (`support_reply_v3`). The current channel id is stored on the profile for the server. Needs `flutter_local_notifications` plus a small native piece for the system sound picker.
+- **iOS limits (tell the client):** iOS only plays sounds that are stored inside the app, are 30 seconds or less, and are AIFF/WAV/CAF files. Users can pick an audio file from the Files app; the app converts it, trims it to 30 s and saves it in `Library/Sounds`. Apple does not allow access to system ringtones or Apple Music songs (DRM).
 
 ## 4. Optional cash reward on lost listings
 
@@ -81,12 +97,41 @@ _Last updated: Fri 16 Oct 2026_
 - CodaMi never handles money, so there are no payment or licensing obligations
 - Re-check the Play content rating answer about cash rewards before release
 
-## 5. Educational videos and support prompts
+## 5. Random videos based on the user's pets
 
-**Already there:** nothing.
+**Client clarification (Mon 19 Oct):** random motivational and educational videos that match the species of the user's registered pets (dog → dog videos, and so on). Users with no pets see general videos about animal welfare and responsible ownership. The content should change over time.
+
+**Already there:** nothing. Pets have `species`: `dog`, `cat` or `other`.
+
+**Done (Mon 19 Oct)**
+- [x] Admin side → More → **Videos** (admin only): upload from the gallery (up to 200 MB) with an optional cover image and upload progress, title, type (Motivation / Learn), animals (dog, cat, other, everyone), language (one or all), visible switch. Edit, hide / show, delete (removes the files too), play
+- [x] `videos` collection and `videos/{id}/` in Storage; only admins can write, users only see visible videos (25 rule checks pass in the emulator)
+- [x] New **Videos** tab in the user app (Home, Pets, Videos, Profile), moved out of the Pets tab on Mon 19 Oct so it is always visible:
+  - a large featured video, then "More videos"
+  - All / Motivation / Learn filters
+  - about 70% about the user's animals and 30% for everyone; with no pets, only "everyone" videos
+  - videos in the app language (or all languages) first; recently watched ones (last 30, kept on the phone) go last and show "Watched"
+  - new mix every launch, a shuffle button and pull down to shuffle
+  - a friendly "Videos are on the way" screen while there are none
+- [x] Video player:
+  - controls hide after 3 s and come back on tap
+  - spinner while loading, buffering or seeking
+  - back / forward 10 s
+  - seek bar showing the buffered part and the time while dragging
+  - full screen in landscape
+  - Retry when a video fails
+- [x] Admin Videos list and form redesigned:
+  - the list has filters (All / Visible / Hidden with counts) and simple cards: cover, type, title, animals and language, a "Hidden" badge, and a play / edit / delete menu. Visibility is changed in the edit screen
+  - the form has sections, a preview of the picked video, type cards and animal tiles
+  - the cover image of an existing video can be changed or removed when editing (new file name each time, so phones don't keep showing the old one)
+- [x] Every new screen in all 10 languages
+- [ ] Test with real videos (the client to provide a first set, with the rights to use them)
+- [ ] YouTube links as a second source (the `source` field is ready)
 
 **Proposed approach**
-- **Admins upload videos from the admin section** (decided). Files go to Firebase Storage and each video gets a Firestore entry (title, language, topic, thumbnail, active flag), so content changes never need a new app version.
+- **Admins upload videos from the admin section** (decided). Files go to Firebase Storage. Each video gets a `videos/{id}` entry with title, type (`motivational` / `educational`), `species` tags (`dog`, `cat`, `other`, `general`), languages, thumbnail, duration and an active flag. Content changes never need a new app version.
+- Selection runs in the app: read the user's pet species, load active videos tagged with those species or `general`, then do a weighted random pick (about 70% matching species, 30% general). Videos watched recently (kept on the phone) are skipped until the pool runs out. With no pets, only `general` videos are used.
+- Option to keep storage costs down: admins can paste a YouTube link instead of uploading a file
 - Admins can hide, reorder or delete videos at any time
 - A few test videos at first, rotated between sessions
 - Shown only in calm places (for example the home list or a "Learn" card), never during report creation or contact flows
@@ -115,27 +160,66 @@ _Last updated: Fri 16 Oct 2026_
 
 **Question for the client:** go ahead with store payments? If yes, which amounts?
 
-## 7. Support tickets and live chat
+## 7. Live chat, tickets and operator monitoring
 
-**Already there:** a **Contact us** button on the legal pages that opens an email.
+**Client clarification (Mon 19 Oct):** live chat in the Support section. The admin panel must show the operator assigned to each case, operator activity and performance, timings (opened, taken over, time spent), status (open, in progress, waiting for response, resolved, closed), the full message history, unanswered requests, and each operator's cases and response times.
 
-**Proposed approach**
-- **Tickets** in Firestore: subject, category, description, screenshots (Firebase Storage), reference number (for example `CM-1042`), status (open, waiting, closed), message thread
-- Users see their tickets in Profile → Help, and get a push notification when support replies
-- Support staff answer from the admin section of the app (see 2)
-- **Live chat:** the same message thread in real time when an operator is online. When no one is online, the app says so and offers to create a ticket instead.
+**Already there:** a **Contact us** button on the legal pages that opens an email. A `support` role and the **Support staff** screen. A **Tickets** tab marked "Soon".
 
-**Questions for the client:** who answers, in which languages, and during which hours?
+**Data model**
+- `supportCases/{id}`
+  - Basic fields: `kind` (`chat` / `ticket`), reference number `CM-1042` (counter in a transaction), userId, subject, category, language
+  - Status: `open`, `in_progress`, `waiting_user`, `resolved`, `closed`
+  - Assignment: `assignedTo`, `assignedAt`
+  - Timestamps: `createdAt`, `firstResponseAt`, `lastUserMessageAt`, `lastStaffMessageAt`, `resolvedAt`, `closedAt`
+  - `awaitingStaff` flag
+- `supportCases/{id}/messages`: sender, role, text, attachments, `createdAt`. Users and staff write messages through the rules, which check the sender.
+- `supportCases/{id}/events`: an audit trail that cannot be changed (created, taken, reassigned, status change, who did it and when). Only Cloud Functions write it.
+- `staffPresence/{uid}`: online/away/offline and last seen. Live chat is offered only while at least one operator is online; otherwise the app offers a ticket.
+
+**Server (Cloud Functions)**
+- Callables for take over, reassign (admin only), change status and close. Each runs in a transaction, so two operators cannot take the same case, and each writes an event.
+- Message trigger:
+  - User message: set `awaitingStaff`; reopen if the case was resolved
+  - First staff reply: set `firstResponseAt`
+  - Staff reply: status becomes `waiting_user`
+  - Push the other side
+- Scheduled check every 10 min:
+  - Push admins about unassigned cases and cases with no reply past their time limit
+  - Auto-close cases left `resolved` for 7 days
+- Times measured: wait to takeover (`assignedAt − createdAt`), first response time, handling time (`resolvedAt − assignedAt`). They come from server timestamps, so operators cannot change them.
+
+**Admin side screens**
+- **Tickets** tab:
+  - Filters: Unassigned, Mine, Unanswered, All
+  - Search by reference number or email
+  - Each row shows status, assigned operator and waiting time
+- **Case screen:** the chat thread, a timeline of events, and take/reassign/status buttons
+- **Operators** screen (admin):
+  - Per operator: online status, open cases, cases handled, average first response time, average handling time
+  - Opening an operator lists their cases
+- **Dashboard:** counts of open, unanswered and unassigned cases
+
+**User side:** Profile → **Help & support**
+- Start a live chat or create a ticket
+- My requests, each with its status and the full history
+- Push notification when support replies
+
+**Questions for the client:**
+- Who answers, in which languages, and during which hours?
+- Time limits for "unanswered": for example 5 min for chat, 24 h for tickets
+- Auto-close after 7 days?
+- Admin panel only in the app, or also as a web page for desktop use? The admin side can be built for Flutter web.
 
 ---
 
 ## Suggested order
 
-1. Language screen on first launch (finishes request 1)
-2. Optional reward (small, self-contained)
-3. Roles and role-based navigation, plus in-app report / block (store requirement, foundation for 2, 5 and 7)
-4. Admin section: listings, reported content, users
-5. Support tickets, then live chat
-6. Videos: admin upload, then rotation in the app and support prompts
-7. Notification sounds
+1. ~~Language screen on first launch~~ (done)
+2. ~~Optional reward~~ (done)
+3. ~~Roles and role-based navigation, plus in-app report / block~~ (done)
+4. ~~Admin section: listings, reported content, users~~ (done)
+5. Videos: admin upload and videos for you (built Mon 19 Oct); YouTube links and support prompts later
+6. Notification settings and sounds (built Mon 19 Oct); iPhone audio files after the client replies
+7. Support tickets, live chat and operator monitoring
 8. Donation interface, then store payments once the client decides and sets up the payment profiles

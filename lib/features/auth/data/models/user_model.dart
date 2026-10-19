@@ -1,3 +1,5 @@
+import '../../../notifications/domain/entities/notification_prefs.dart';
+
 enum UserRole {
   user,
   support,
@@ -25,6 +27,7 @@ class UserModel {
   final UserRole role;
   final bool disabled;
   final Map<String, String> blockedUsers;
+  final NotificationPrefs notificationPrefs;
 
   UserModel({
     required this.uid,
@@ -42,6 +45,7 @@ class UserModel {
     this.role = UserRole.user,
     this.disabled = false,
     this.blockedUsers = const {},
+    this.notificationPrefs = const NotificationPrefs(),
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -78,6 +82,7 @@ class UserModel {
         for (final e in (map['blockedUsers'] as Map? ?? const {}).entries)
           '${e.key}': '${e.value ?? ''}',
       },
+      notificationPrefs: NotificationPrefs.fromMap(map['notificationPrefs']),
     );
   }
 }

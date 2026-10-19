@@ -1553,4 +1553,223 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get userDeleted => '账户已删除。';
+
+  @override
+  String get save => '保存';
+
+  @override
+  String get requiredField => '必填';
+
+  @override
+  String get notificationSettingsIntro =>
+      '选择要接收的提醒，并为每种提醒设置不同的声音，不用看手机就知道发生了什么。';
+
+  @override
+  String get notificationSound => '声音';
+
+  @override
+  String get alertLostTitle => '附近走失的宠物';
+
+  @override
+  String get alertLostDescription => '当你所在城市有宠物走失时';
+
+  @override
+  String get alertFoundTitle => '附近找到的宠物';
+
+  @override
+  String get alertFoundDescription => '当有人在你所在城市找到宠物时';
+
+  @override
+  String get alertResolvedTitle => '圆满结局';
+
+  @override
+  String get alertResolvedDescription => '当走失或被找到的宠物回到家时';
+
+  @override
+  String get soundDefault => '手机默认';
+
+  @override
+  String get soundSilent => '静音';
+
+  @override
+  String get soundChime => '风铃';
+
+  @override
+  String get soundBell => '铃声';
+
+  @override
+  String get soundBright => '明快';
+
+  @override
+  String get soundSoft => '柔和';
+
+  @override
+  String get soundCustom => '自定义声音';
+
+  @override
+  String get soundFromPhone => '手机里的铃声和提示音';
+
+  @override
+  String get soundFromFile => '音乐或音频文件';
+
+  @override
+  String get soundIosNote => '在 iPhone 上，通知声音必须来自应用本身，请从上面的声音中选择。';
+
+  @override
+  String get soundPickFailed => '无法使用该声音，请换一个试试。';
+
+  @override
+  String get videosForYou => '为你推荐的视频';
+
+  @override
+  String get videosForYourPets => '根据你的宠物挑选';
+
+  @override
+  String get videosGeneral => '动物福利与负责任的养宠';
+
+  @override
+  String get videosShuffle => '换一批';
+
+  @override
+  String get videoMotivational => '励志';
+
+  @override
+  String get videoEducational => '知识';
+
+  @override
+  String get videoTagGeneral => '所有人';
+
+  @override
+  String get videoLoadError => '暂时无法播放此视频，请稍后再试。';
+
+  @override
+  String get adminVideosSubtitle => '上传和管理视频';
+
+  @override
+  String get addVideo => '添加视频';
+
+  @override
+  String get editVideo => '编辑视频';
+
+  @override
+  String get noVideosYet => '还没有视频。点击下方按钮添加第一个。';
+
+  @override
+  String get deleteVideoTitle => '删除这个视频？';
+
+  @override
+  String get deleteVideoMessage => '它将从应用中对所有人移除，且无法撤销。';
+
+  @override
+  String get videoHidden => '已隐藏';
+
+  @override
+  String get allLanguages => '所有语言';
+
+  @override
+  String get chooseVideo => '选择视频';
+
+  @override
+  String get chooseVideoHint => '从相册选择，最大 200 MB。短视频（2 分钟以内）效果最好。';
+
+  @override
+  String get videoTitle => '标题';
+
+  @override
+  String get videoType => '类型';
+
+  @override
+  String get videoAnimals => '动物';
+
+  @override
+  String get videoAnimalsHint => '选择视频涉及的动物。选择“所有人”表示向所有用户展示的通用视频。';
+
+  @override
+  String get videoVisible => '在应用中显示';
+
+  @override
+  String get videoVisibleHint => '隐藏的视频只有管理员可见。';
+
+  @override
+  String get videoTooLarge => '视频超过 200 MB，请选择更短的视频。';
+
+  @override
+  String get videoSaved => '视频已保存。';
+
+  @override
+  String uploadingProgress(int percent) {
+    return '正在上传… $percent%';
+  }
+
+  @override
+  String get navVideos => '视频';
+
+  @override
+  String get videosEmptyTitle => '视频即将上线';
+
+  @override
+  String get videosEmptyMessage => '很快这里会有关于照顾宠物的短视频。';
+
+  @override
+  String get moreVideos => '更多视频';
+
+  @override
+  String get videoWatched => '已看过';
+
+  @override
+  String get videoBack10 => '后退 10 秒';
+
+  @override
+  String get videoForward10 => '前进 10 秒';
+
+  @override
+  String get videoFullscreen => '全屏';
+
+  @override
+  String get videoExitFullscreen => '退出全屏';
+
+  @override
+  String get videoRetry => '重试';
+
+  @override
+  String get videoDeleted => '视频已删除。';
+
+  @override
+  String get noVideosYetTitle => '还没有视频';
+
+  @override
+  String get videoVisibleShort => '可见';
+
+  @override
+  String get play => '播放';
+
+  @override
+  String get edit => '编辑';
+
+  @override
+  String get change => '更换';
+
+  @override
+  String get videoSectionFile => '视频';
+
+  @override
+  String get videoSectionDetails => '详情';
+
+  @override
+  String get videoSectionAudience => '谁能看到';
+
+  @override
+  String get videoCover => '封面图片';
+
+  @override
+  String get videoCoverHint => '可选，显示在视频卡片上。';
+
+  @override
+  String get videoMotivationalHint => '鼓舞人心的故事和快乐时刻';
+
+  @override
+  String get videoEducationalHint => '给主人的建议和指南';
+
+  @override
+  String get uploadVideo => '上传视频';
 }

@@ -15,6 +15,7 @@ import '../widgets/delete_account_dialog.dart';
 import '../../../legal/legal_content.dart';
 import '../../../legal/legal_screen.dart';
 import '../../../moderation/presentation/screens/blocked_users_screen.dart';
+import '../../../notifications/presentation/screens/notification_settings_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -88,9 +89,6 @@ class ProfileScreen extends ConsumerWidget {
     final textTheme = Theme.of(context).textTheme;
     final l10n = context.l10n;
     final language = ref.watch(localeProvider);
-
-    void comingSoon(String feature) =>
-        SnackbarUtils.showInfo(context, l10n.comingSoon(feature));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -229,8 +227,11 @@ class ProfileScreen extends ConsumerWidget {
                   icon: Icons.notifications_none_rounded,
                   color: AppColors.primaryDark,
                   title: l10n.notifications,
-                  soon: true,
-                  onTap: () => comingSoon(l10n.notifications),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const NotificationSettingsScreen(),
+                    ),
+                  ),
                 ),
               ],
             ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
@@ -327,7 +328,6 @@ class _ProfileTile extends StatelessWidget {
   final Color color;
   final String title;
   final String? subtitle;
-  final bool soon;
   final VoidCallback onTap;
 
   const _ProfileTile({
@@ -336,7 +336,6 @@ class _ProfileTile extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.subtitle,
-    this.soon = false,
   });
 
   @override
@@ -366,23 +365,10 @@ class _ProfileTile extends StatelessWidget {
               subtitle!,
               style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
             ),
-      trailing: soon
-          ? Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Text(
-                context.l10n.soon,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textMuted,
-                ),
-              ),
-            )
-          : const Icon(Icons.chevron_right_rounded, color: AppColors.textMuted),
+      trailing: const Icon(
+        Icons.chevron_right_rounded,
+        color: AppColors.textMuted,
+      ),
     );
   }
 }

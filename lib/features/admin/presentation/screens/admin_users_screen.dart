@@ -173,10 +173,7 @@ class UserTile extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          [
-            if (user.name.isNotEmpty) user.email,
-            ?user.city,
-          ].join(' · '),
+          [if (user.name.isNotEmpty) user.email, ?user.city].join(' · '),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

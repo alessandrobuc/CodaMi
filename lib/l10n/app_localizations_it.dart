@@ -1628,4 +1628,236 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get userDeleted => 'Account eliminato.';
+
+  @override
+  String get save => 'Salva';
+
+  @override
+  String get requiredField => 'Obbligatorio';
+
+  @override
+  String get notificationSettingsIntro =>
+      'Scegli quali avvisi ricevere e dai a ognuno un suono diverso, così capisci cosa è successo prima ancora di guardare.';
+
+  @override
+  String get notificationSound => 'Suono';
+
+  @override
+  String get alertLostTitle => 'Animali smarriti vicino a te';
+
+  @override
+  String get alertLostDescription =>
+      'Quando un animale si smarrisce nella tua città';
+
+  @override
+  String get alertFoundTitle => 'Animali trovati vicino a te';
+
+  @override
+  String get alertFoundDescription =>
+      'Quando qualcuno trova un animale nella tua città';
+
+  @override
+  String get alertResolvedTitle => 'Lieto fine';
+
+  @override
+  String get alertResolvedDescription =>
+      'Quando un animale smarrito o trovato torna a casa';
+
+  @override
+  String get soundDefault => 'Predefinito del telefono';
+
+  @override
+  String get soundSilent => 'Silenzioso';
+
+  @override
+  String get soundChime => 'Rintocco';
+
+  @override
+  String get soundBell => 'Campana';
+
+  @override
+  String get soundBright => 'Brillante';
+
+  @override
+  String get soundSoft => 'Delicato';
+
+  @override
+  String get soundCustom => 'Suono personalizzato';
+
+  @override
+  String get soundFromPhone => 'Suonerie e toni del telefono';
+
+  @override
+  String get soundFromFile => 'Musica o file audio';
+
+  @override
+  String get soundIosNote =>
+      'Su iPhone i suoni delle notifiche devono provenire dall\'app: scegli uno dei suoni qui sopra.';
+
+  @override
+  String get soundPickFailed =>
+      'Impossibile usare questo suono. Prova con un altro.';
+
+  @override
+  String get videosForYou => 'Video per te';
+
+  @override
+  String get videosForYourPets => 'Scelti per i tuoi animali';
+
+  @override
+  String get videosGeneral => 'Benessere animale e cura responsabile';
+
+  @override
+  String get videosShuffle => 'Mostra altri video';
+
+  @override
+  String get videoMotivational => 'Motivazione';
+
+  @override
+  String get videoEducational => 'Impara';
+
+  @override
+  String get videoTagGeneral => 'Per tutti';
+
+  @override
+  String get videoLoadError =>
+      'Al momento non è possibile riprodurre il video. Riprova più tardi.';
+
+  @override
+  String get adminVideosSubtitle => 'Carica e gestisci i video';
+
+  @override
+  String get addVideo => 'Aggiungi video';
+
+  @override
+  String get editVideo => 'Modifica video';
+
+  @override
+  String get noVideosYet =>
+      'Ancora nessun video. Aggiungi il primo con il pulsante qui sotto.';
+
+  @override
+  String get deleteVideoTitle => 'Eliminare questo video?';
+
+  @override
+  String get deleteVideoMessage =>
+      'Verrà rimosso dall\'app per tutti. L\'azione non può essere annullata.';
+
+  @override
+  String get videoHidden => 'Nascosto';
+
+  @override
+  String get allLanguages => 'Tutte le lingue';
+
+  @override
+  String get chooseVideo => 'Scegli un video';
+
+  @override
+  String get chooseVideoHint =>
+      'Dalla galleria, fino a 200 MB. I video brevi (meno di 2 minuti) funzionano meglio.';
+
+  @override
+  String get videoTitle => 'Titolo';
+
+  @override
+  String get videoType => 'Tipo';
+
+  @override
+  String get videoAnimals => 'Animali';
+
+  @override
+  String get videoAnimalsHint =>
+      'Scegli gli animali di cui parla il video. Scegli \"Per tutti\" per i video generali mostrati a tutti.';
+
+  @override
+  String get videoVisible => 'Visibile nell\'app';
+
+  @override
+  String get videoVisibleHint =>
+      'I video nascosti sono visibili solo agli amministratori.';
+
+  @override
+  String get videoTooLarge =>
+      'Il video supera i 200 MB. Scegline uno più breve.';
+
+  @override
+  String get videoSaved => 'Video salvato.';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'Caricamento… $percent%';
+  }
+
+  @override
+  String get navVideos => 'Video';
+
+  @override
+  String get videosEmptyTitle => 'I video stanno arrivando';
+
+  @override
+  String get videosEmptyMessage =>
+      'Presto qui troverai brevi video su come prenderti cura dei tuoi animali.';
+
+  @override
+  String get moreVideos => 'Altri video';
+
+  @override
+  String get videoWatched => 'Visto';
+
+  @override
+  String get videoBack10 => 'Indietro di 10 secondi';
+
+  @override
+  String get videoForward10 => 'Avanti di 10 secondi';
+
+  @override
+  String get videoFullscreen => 'Schermo intero';
+
+  @override
+  String get videoExitFullscreen => 'Esci da schermo intero';
+
+  @override
+  String get videoRetry => 'Riprova';
+
+  @override
+  String get videoDeleted => 'Video eliminato.';
+
+  @override
+  String get noVideosYetTitle => 'Ancora nessun video';
+
+  @override
+  String get videoVisibleShort => 'Visibili';
+
+  @override
+  String get play => 'Riproduci';
+
+  @override
+  String get edit => 'Modifica';
+
+  @override
+  String get change => 'Cambia';
+
+  @override
+  String get videoSectionFile => 'Video';
+
+  @override
+  String get videoSectionDetails => 'Dettagli';
+
+  @override
+  String get videoSectionAudience => 'Chi lo vede';
+
+  @override
+  String get videoCover => 'Copertina';
+
+  @override
+  String get videoCoverHint => 'Facoltativa. Appare sulla scheda del video.';
+
+  @override
+  String get videoMotivationalHint => 'Storie che ispirano e momenti felici';
+
+  @override
+  String get videoEducationalHint => 'Consigli e guide per chi ha animali';
+
+  @override
+  String get uploadVideo => 'Carica video';
 }

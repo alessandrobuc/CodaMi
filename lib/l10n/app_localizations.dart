@@ -2903,6 +2903,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account deleted.'**
   String get userDeleted;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get requiredField;
+
+  /// No description provided for @notificationSettingsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which alerts you get and give each one its own sound, so you know what happened before you look.'**
+  String get notificationSettingsIntro;
+
+  /// No description provided for @notificationSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound'**
+  String get notificationSound;
+
+  /// No description provided for @alertLostTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost pets nearby'**
+  String get alertLostTitle;
+
+  /// No description provided for @alertLostDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'When a pet goes missing in your city'**
+  String get alertLostDescription;
+
+  /// No description provided for @alertFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Found pets nearby'**
+  String get alertFoundTitle;
+
+  /// No description provided for @alertFoundDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'When someone finds a pet in your city'**
+  String get alertFoundDescription;
+
+  /// No description provided for @alertResolvedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Happy endings'**
+  String get alertResolvedTitle;
+
+  /// No description provided for @alertResolvedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'When a lost or found pet is back home'**
+  String get alertResolvedDescription;
+
+  /// No description provided for @soundDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone default'**
+  String get soundDefault;
+
+  /// No description provided for @soundSilent.
+  ///
+  /// In en, this message translates to:
+  /// **'Silent'**
+  String get soundSilent;
+
+  /// No description provided for @soundChime.
+  ///
+  /// In en, this message translates to:
+  /// **'Chime'**
+  String get soundChime;
+
+  /// No description provided for @soundBell.
+  ///
+  /// In en, this message translates to:
+  /// **'Bell'**
+  String get soundBell;
+
+  /// No description provided for @soundBright.
+  ///
+  /// In en, this message translates to:
+  /// **'Bright'**
+  String get soundBright;
+
+  /// No description provided for @soundSoft.
+  ///
+  /// In en, this message translates to:
+  /// **'Soft'**
+  String get soundSoft;
+
+  /// No description provided for @soundCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom sound'**
+  String get soundCustom;
+
+  /// No description provided for @soundFromPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Ringtones and tones on your phone'**
+  String get soundFromPhone;
+
+  /// No description provided for @soundFromFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Music or audio file'**
+  String get soundFromFile;
+
+  /// No description provided for @soundIosNote.
+  ///
+  /// In en, this message translates to:
+  /// **'On iPhone, notification sounds have to come from the app, so choose one of the sounds above.'**
+  String get soundIosNote;
+
+  /// No description provided for @soundPickFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t use that sound. Please try another one.'**
+  String get soundPickFailed;
+
+  /// No description provided for @videosForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos for you'**
+  String get videosForYou;
+
+  /// No description provided for @videosForYourPets.
+  ///
+  /// In en, this message translates to:
+  /// **'Picked for your pets'**
+  String get videosForYourPets;
+
+  /// No description provided for @videosGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal welfare and responsible pet care'**
+  String get videosGeneral;
+
+  /// No description provided for @videosShuffle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show other videos'**
+  String get videosShuffle;
+
+  /// No description provided for @videoMotivational.
+  ///
+  /// In en, this message translates to:
+  /// **'Motivation'**
+  String get videoMotivational;
+
+  /// No description provided for @videoEducational.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn'**
+  String get videoEducational;
+
+  /// No description provided for @videoTagGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone'**
+  String get videoTagGeneral;
+
+  /// No description provided for @videoLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'This video can\'t be played right now. Please try again later.'**
+  String get videoLoadError;
+
+  /// No description provided for @adminVideosSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload and manage videos'**
+  String get adminVideosSubtitle;
+
+  /// No description provided for @addVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Add video'**
+  String get addVideo;
+
+  /// No description provided for @editVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit video'**
+  String get editVideo;
+
+  /// No description provided for @noVideosYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No videos yet. Add the first one with the button below.'**
+  String get noVideosYet;
+
+  /// No description provided for @deleteVideoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this video?'**
+  String get deleteVideoTitle;
+
+  /// No description provided for @deleteVideoMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed from the app for everyone. This can\'t be undone.'**
+  String get deleteVideoMessage;
+
+  /// No description provided for @videoHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get videoHidden;
+
+  /// No description provided for @allLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'All languages'**
+  String get allLanguages;
+
+  /// No description provided for @chooseVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a video'**
+  String get chooseVideo;
+
+  /// No description provided for @chooseVideoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'From your gallery, up to 200 MB. Short videos (under 2 minutes) work best.'**
+  String get chooseVideoHint;
+
+  /// No description provided for @videoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get videoTitle;
+
+  /// No description provided for @videoType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get videoType;
+
+  /// No description provided for @videoAnimals.
+  ///
+  /// In en, this message translates to:
+  /// **'Animals'**
+  String get videoAnimals;
+
+  /// No description provided for @videoAnimalsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the animals this video is about. Choose \"Everyone\" for general videos shown to all users.'**
+  String get videoAnimalsHint;
+
+  /// No description provided for @videoVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible in the app'**
+  String get videoVisible;
+
+  /// No description provided for @videoVisibleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden videos are only seen by admins.'**
+  String get videoVisibleHint;
+
+  /// No description provided for @videoTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'This video is larger than 200 MB. Please choose a shorter one.'**
+  String get videoTooLarge;
+
+  /// No description provided for @videoSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Video saved.'**
+  String get videoSaved;
+
+  /// No description provided for @uploadingProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading… {percent}%'**
+  String uploadingProgress(int percent);
+
+  /// No description provided for @navVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get navVideos;
+
+  /// No description provided for @videosEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos are on the way'**
+  String get videosEmptyTitle;
+
+  /// No description provided for @videosEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Soon you\'ll find short videos here about caring for your animals.'**
+  String get videosEmptyMessage;
+
+  /// No description provided for @moreVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'More videos'**
+  String get moreVideos;
+
+  /// No description provided for @videoWatched.
+  ///
+  /// In en, this message translates to:
+  /// **'Watched'**
+  String get videoWatched;
+
+  /// No description provided for @videoBack10.
+  ///
+  /// In en, this message translates to:
+  /// **'Back 10 seconds'**
+  String get videoBack10;
+
+  /// No description provided for @videoForward10.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward 10 seconds'**
+  String get videoForward10;
+
+  /// No description provided for @videoFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full screen'**
+  String get videoFullscreen;
+
+  /// No description provided for @videoExitFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit full screen'**
+  String get videoExitFullscreen;
+
+  /// No description provided for @videoRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get videoRetry;
+
+  /// No description provided for @videoDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Video deleted.'**
+  String get videoDeleted;
+
+  /// No description provided for @noVideosYetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No videos yet'**
+  String get noVideosYetTitle;
+
+  /// No description provided for @videoVisibleShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible'**
+  String get videoVisibleShort;
+
+  /// No description provided for @play.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get play;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// No description provided for @videoSectionFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get videoSectionFile;
+
+  /// No description provided for @videoSectionDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get videoSectionDetails;
+
+  /// No description provided for @videoSectionAudience.
+  ///
+  /// In en, this message translates to:
+  /// **'Who sees it'**
+  String get videoSectionAudience;
+
+  /// No description provided for @videoCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover image'**
+  String get videoCover;
+
+  /// No description provided for @videoCoverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Shown on the video card.'**
+  String get videoCoverHint;
+
+  /// No description provided for @videoMotivationalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspiring stories and happy moments'**
+  String get videoMotivationalHint;
+
+  /// No description provided for @videoEducationalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips and how-tos for owners'**
+  String get videoEducationalHint;
+
+  /// No description provided for @uploadVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload video'**
+  String get uploadVideo;
 }
 
 class _AppLocalizationsDelegate

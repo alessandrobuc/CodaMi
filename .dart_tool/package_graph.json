@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "CodaMi",
-      "version": "1.0.0+5",
+      "version": "1.0.0+6",
       "dependencies": [
         "cached_network_image",
         "cloud_firestore",
@@ -32,7 +32,8 @@
         "shared_preferences",
         "sign_in_with_apple",
         "smooth_page_indicator",
-        "url_launcher"
+        "url_launcher",
+        "video_player"
       ],
       "devDependencies": [
         "flutter_launcher_icons",
@@ -83,6 +84,19 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "video_player",
+      "version": "2.14.1",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "html",
+        "video_player_android",
+        "video_player_avfoundation",
+        "video_player_platform_interface",
+        "video_player_web"
       ]
     },
     {
@@ -493,6 +507,50 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "video_player_web",
+      "version": "2.4.0",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins",
+        "video_player_platform_interface",
+        "web"
+      ]
+    },
+    {
+      "name": "video_player_platform_interface",
+      "version": "6.9.0",
+      "dependencies": [
+        "flutter",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "video_player_avfoundation",
+      "version": "2.12.1",
+      "dependencies": [
+        "flutter",
+        "meta",
+        "video_player_platform_interface"
+      ]
+    },
+    {
+      "name": "video_player_android",
+      "version": "2.12.2",
+      "dependencies": [
+        "flutter",
+        "meta",
+        "video_player_platform_interface"
+      ]
+    },
+    {
+      "name": "html",
+      "version": "0.15.7",
+      "dependencies": [
+        "csslib",
+        "source_span"
       ]
     },
     {
@@ -1231,6 +1289,20 @@
       ]
     },
     {
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "csslib",
+      "version": "1.0.2",
+      "dependencies": [
+        "source_span"
+      ]
+    },
+    {
       "name": "path_provider_windows",
       "version": "2.3.0",
       "dependencies": [
@@ -1247,13 +1319,6 @@
         "flutter",
         "platform",
         "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "plugin_platform_interface",
-      "version": "2.1.8",
-      "dependencies": [
-        "meta"
       ]
     },
     {
@@ -1497,14 +1562,6 @@
       ]
     },
     {
-      "name": "html",
-      "version": "0.15.7",
-      "dependencies": [
-        "csslib",
-        "source_span"
-      ]
-    },
-    {
       "name": "fixnum",
       "version": "1.1.1",
       "dependencies": []
@@ -1601,13 +1658,6 @@
         "package_config",
         "path",
         "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "csslib",
-      "version": "1.0.2",
-      "dependencies": [
-        "source_span"
       ]
     },
     {

@@ -23,13 +23,16 @@ import {
   readString,
 } from "./places";
 import {
+  alertTypeOf,
   becameResolved,
   chunk,
   languageOf,
   newReportContent,
+  pushSettingsOf,
   readReport,
   resolvedContent,
   type NotificationContent,
+  type PushSettings,
   type ReportSummary,
 } from "./notifications";
 
@@ -278,45 +281,69 @@ async function notifyGroup(
     await batch.commit();
   }
 
-  const tokens = recipients.flatMap((user) => {
+  const type = alertTypeOf(content.kind, report.type);
+  const byPayload = new Map<string, {settings: PushSettings; tokens: PushToken[]}>();
+  for (const user of recipients) {
+    const settings = pushSettingsOf(user.get("notificationPrefs"), type);
     const list = user.get("fcmTokens");
-    return Array.isArray(list) ?
-      list.filter((t): t is string => typeof t === "string").map((token) => ({user, token})) :
-      [];
+    if (!settings.enabled || !Array.isArray(list)) continue;
+    const key = `${settings.channelId}|${settings.iosSound}`;
+    const group = byPayload.get(key) ?? {settings, tokens: []};
+    for (const token of list) {
+      if (typeof token === "string") group.tokens.push({user, token});
+    }
+    byPayload.set(key, group);
+  }
+
+  for (const {settings, tokens} of byPayload.values()) {
+    for (const group of chunk(tokens, 500)) {
+      await sendPush(report, content, settings, group);
+    }
+  }
+}
+
+interface PushToken {
+  user: QueryDocumentSnapshot;
+  token: string;
+}
+
+async function sendPush(
+  report: ReportSummary,
+  content: NotificationContent,
+  settings: PushSettings,
+  group: PushToken[],
+): Promise<void> {
+  const response = await getMessaging().sendEachForMulticast({
+    tokens: group.map((t) => t.token),
+    notification: {title: content.title, body: content.body},
+    data: {reportId: report.id, kind: content.kind},
+    android: {
+      priority: "high",
+      notification: {
+        channelId: settings.channelId,
+        color: report.type === "lost" ? "#C2410C" : "#1F6F5B",
+        ...(report.photoUrl ? {imageUrl: report.photoUrl} : {}),
+      },
+    },
+    apns: {payload: {aps: settings.iosSound ? {sound: settings.iosSound} : {}}},
   });
 
-  for (const group of chunk(tokens, 500)) {
-    const response = await getMessaging().sendEachForMulticast({
-      tokens: group.map((t) => t.token),
-      notification: {title: content.title, body: content.body},
-      data: {reportId: report.id, kind: content.kind},
-      android: {
-        priority: "high",
-        notification: {
-          channelId: "codami_alerts",
-          color: report.type === "lost" ? "#C2410C" : "#1F6F5B",
-          ...(report.photoUrl ? {imageUrl: report.photoUrl} : {}),
-        },
-      },
-      apns: {payload: {aps: {sound: "default"}}},
-    });
-
-    const stale = response.responses.flatMap((r, i) =>
-      !r.success && INVALID_TOKEN_CODES.has(r.error?.code ?? "") ? [group[i]] : [],
-    );
-    await Promise.all(
-      stale.map(({user, token}) =>
-        user.ref.update({fcmTokens: FieldValue.arrayRemove(token)}),
-      ),
-    );
-    logger.info("Report notification sent", {
-      reportId: report.id,
-      kind: content.kind,
-      success: response.successCount,
-      failed: response.failureCount,
-      removedTokens: stale.length,
-    });
-  }
+  const stale = response.responses.flatMap((r, i) =>
+    !r.success && INVALID_TOKEN_CODES.has(r.error?.code ?? "") ? [group[i]] : [],
+  );
+  await Promise.all(
+    stale.map(({user, token}) =>
+      user.ref.update({fcmTokens: FieldValue.arrayRemove(token)}),
+    ),
+  );
+  logger.info("Report notification sent", {
+    reportId: report.id,
+    kind: content.kind,
+    channel: settings.channelId,
+    success: response.successCount,
+    failed: response.failureCount,
+    removedTokens: stale.length,
+  });
 }
 
 export const onReportCreated = onDocumentCreated(

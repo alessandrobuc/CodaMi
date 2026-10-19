@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
-import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/language_picker.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
@@ -10,6 +9,7 @@ import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import 'admin_users_screen.dart';
+import 'admin_videos_screen.dart';
 import 'support_staff_screen.dart';
 
 class AdminMoreTab extends ConsumerWidget {
@@ -45,9 +45,6 @@ class AdminMoreTab extends ConsumerWidget {
     final info = ref.watch(currentUserInfoProvider);
     final isAdmin = ref.watch(userRoleProvider) == UserRole.admin;
     final language = ref.watch(localeProvider);
-
-    void comingSoon(String feature) =>
-        SnackbarUtils.showInfo(context, l10n.comingSoon(feature));
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -137,8 +134,12 @@ class AdminMoreTab extends ConsumerWidget {
                     icon: Icons.smart_display_rounded,
                     color: AppColors.accent,
                     title: l10n.adminVideos,
-                    soon: true,
-                    onTap: () => comingSoon(l10n.adminVideos),
+                    subtitle: l10n.adminVideosSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminVideosScreen(),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -200,7 +201,6 @@ class _Tile extends StatelessWidget {
   final Color color;
   final String title;
   final String? subtitle;
-  final bool soon;
   final VoidCallback onTap;
 
   const _Tile({
@@ -209,7 +209,6 @@ class _Tile extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.subtitle,
-    this.soon = false,
   });
 
   @override
@@ -242,16 +241,10 @@ class _Tile extends StatelessWidget {
                 color: AppColors.textMuted,
               ),
             ),
-      trailing: soon
-          ? Text(
-              context.l10n.soon,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: AppColors.textMuted,
-              ),
-            )
-          : const Icon(Icons.chevron_right_rounded, color: AppColors.textMuted),
+      trailing: const Icon(
+        Icons.chevron_right_rounded,
+        color: AppColors.textMuted,
+      ),
     );
   }
 }

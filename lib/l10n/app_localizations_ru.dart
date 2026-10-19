@@ -1624,4 +1624,233 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get userDeleted => 'Аккаунт удалён.';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get requiredField => 'Обязательно';
+
+  @override
+  String get notificationSettingsIntro =>
+      'Выберите, какие оповещения получать, и задайте каждому свой звук, чтобы понимать, что случилось, ещё не глядя на экран.';
+
+  @override
+  String get notificationSound => 'Звук';
+
+  @override
+  String get alertLostTitle => 'Потерянные животные рядом';
+
+  @override
+  String get alertLostDescription => 'Когда в вашем городе пропадает животное';
+
+  @override
+  String get alertFoundTitle => 'Найденные животные рядом';
+
+  @override
+  String get alertFoundDescription =>
+      'Когда кто-то находит животное в вашем городе';
+
+  @override
+  String get alertResolvedTitle => 'Счастливые истории';
+
+  @override
+  String get alertResolvedDescription =>
+      'Когда потерянное или найденное животное вернулось домой';
+
+  @override
+  String get soundDefault => 'Звук телефона по умолчанию';
+
+  @override
+  String get soundSilent => 'Без звука';
+
+  @override
+  String get soundChime => 'Перезвон';
+
+  @override
+  String get soundBell => 'Колокольчик';
+
+  @override
+  String get soundBright => 'Яркий';
+
+  @override
+  String get soundSoft => 'Мягкий';
+
+  @override
+  String get soundCustom => 'Свой звук';
+
+  @override
+  String get soundFromPhone => 'Мелодии и сигналы телефона';
+
+  @override
+  String get soundFromFile => 'Музыка или аудиофайл';
+
+  @override
+  String get soundIosNote =>
+      'На iPhone звуки уведомлений должны быть из приложения, поэтому выберите один из звуков выше.';
+
+  @override
+  String get soundPickFailed =>
+      'Не удалось использовать этот звук. Попробуйте другой.';
+
+  @override
+  String get videosForYou => 'Видео для вас';
+
+  @override
+  String get videosForYourPets => 'Подобраны для ваших питомцев';
+
+  @override
+  String get videosGeneral => 'Благополучие животных и ответственный уход';
+
+  @override
+  String get videosShuffle => 'Показать другие видео';
+
+  @override
+  String get videoMotivational => 'Мотивация';
+
+  @override
+  String get videoEducational => 'Полезно знать';
+
+  @override
+  String get videoTagGeneral => 'Для всех';
+
+  @override
+  String get videoLoadError =>
+      'Сейчас это видео нельзя воспроизвести. Попробуйте позже.';
+
+  @override
+  String get adminVideosSubtitle => 'Загрузка видео и управление ими';
+
+  @override
+  String get addVideo => 'Добавить видео';
+
+  @override
+  String get editVideo => 'Изменить видео';
+
+  @override
+  String get noVideosYet => 'Видео пока нет. Добавьте первое кнопкой ниже.';
+
+  @override
+  String get deleteVideoTitle => 'Удалить это видео?';
+
+  @override
+  String get deleteVideoMessage =>
+      'Оно исчезнет из приложения для всех. Это действие нельзя отменить.';
+
+  @override
+  String get videoHidden => 'Скрыто';
+
+  @override
+  String get allLanguages => 'Все языки';
+
+  @override
+  String get chooseVideo => 'Выбрать видео';
+
+  @override
+  String get chooseVideoHint =>
+      'Из галереи, до 200 МБ. Лучше всего подходят короткие видео (до 2 минут).';
+
+  @override
+  String get videoTitle => 'Название';
+
+  @override
+  String get videoType => 'Тип';
+
+  @override
+  String get videoAnimals => 'Животные';
+
+  @override
+  String get videoAnimalsHint =>
+      'Выберите, о каких животных это видео. Выберите «Для всех» для общих видео, которые видят все.';
+
+  @override
+  String get videoVisible => 'Показывать в приложении';
+
+  @override
+  String get videoVisibleHint => 'Скрытые видео видят только администраторы.';
+
+  @override
+  String get videoTooLarge => 'Видео больше 200 МБ. Выберите покороче.';
+
+  @override
+  String get videoSaved => 'Видео сохранено.';
+
+  @override
+  String uploadingProgress(int percent) {
+    return 'Загрузка… $percent%';
+  }
+
+  @override
+  String get navVideos => 'Видео';
+
+  @override
+  String get videosEmptyTitle => 'Видео скоро появятся';
+
+  @override
+  String get videosEmptyMessage =>
+      'Скоро здесь появятся короткие видео об уходе за вашими животными.';
+
+  @override
+  String get moreVideos => 'Ещё видео';
+
+  @override
+  String get videoWatched => 'Просмотрено';
+
+  @override
+  String get videoBack10 => 'Назад на 10 секунд';
+
+  @override
+  String get videoForward10 => 'Вперёд на 10 секунд';
+
+  @override
+  String get videoFullscreen => 'Во весь экран';
+
+  @override
+  String get videoExitFullscreen => 'Выйти из полноэкранного режима';
+
+  @override
+  String get videoRetry => 'Повторить';
+
+  @override
+  String get videoDeleted => 'Видео удалено.';
+
+  @override
+  String get noVideosYetTitle => 'Видео пока нет';
+
+  @override
+  String get videoVisibleShort => 'Видимые';
+
+  @override
+  String get play => 'Смотреть';
+
+  @override
+  String get edit => 'Изменить';
+
+  @override
+  String get change => 'Заменить';
+
+  @override
+  String get videoSectionFile => 'Видео';
+
+  @override
+  String get videoSectionDetails => 'Описание';
+
+  @override
+  String get videoSectionAudience => 'Кто увидит';
+
+  @override
+  String get videoCover => 'Обложка';
+
+  @override
+  String get videoCoverHint => 'Необязательно. Показывается на карточке видео.';
+
+  @override
+  String get videoMotivationalHint =>
+      'Вдохновляющие истории и радостные моменты';
+
+  @override
+  String get videoEducationalHint => 'Советы и инструкции для владельцев';
+
+  @override
+  String get uploadVideo => 'Загрузить видео';
 }

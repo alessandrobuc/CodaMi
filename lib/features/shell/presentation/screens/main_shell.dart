@@ -6,11 +6,13 @@ import '../../../../core/navigation/app_navigator.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../../notifications/presentation/providers/notification_settings_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../pets/presentation/screens/pets_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
+import '../../../videos/presentation/screens/videos_screen.dart';
 import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
 
@@ -33,6 +35,11 @@ class _MainShellState extends ConsumerState<MainShell>
       label: context.l10n.navPets,
       icon: Icons.pets_outlined,
       activeIcon: Icons.pets_rounded,
+    ),
+    NavItem(
+      label: context.l10n.navVideos,
+      icon: Icons.smart_display_outlined,
+      activeIcon: Icons.smart_display_rounded,
     ),
     NavItem(
       label: context.l10n.navProfile,
@@ -67,6 +74,7 @@ class _MainShellState extends ConsumerState<MainShell>
             MaterialPageRoute(builder: (_) => ReportByIdScreen(reportId: id)),
           ),
         );
+    ref.read(notificationSettingsProvider).restoreChannels();
   }
 
   @override
@@ -114,6 +122,7 @@ class _MainShellState extends ConsumerState<MainShell>
             children: [
               const HomeScreen(),
               const PetsScreen(),
+              const VideosScreen(),
               ProfileScreen(onOpenPets: () => _select(1)),
             ],
           ),
