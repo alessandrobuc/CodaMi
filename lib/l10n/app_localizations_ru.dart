@@ -1853,4 +1853,417 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get uploadVideo => 'Загрузить видео';
+
+  @override
+  String get helpSupport => 'Помощь и поддержка';
+
+  @override
+  String get helpSupportSubtitle =>
+      'Напишите нам в чат или отправьте обращение';
+
+  @override
+  String get supportIntroTitle => 'Чем мы можем помочь?';
+
+  @override
+  String get supportIntroMessage =>
+      'Наша команда отвечает здесь, в приложении. Вы получите уведомление, когда мы ответим.';
+
+  @override
+  String get supportStartChat => 'Начать чат';
+
+  @override
+  String get supportStartChatOnline => 'Оператор сейчас в сети';
+
+  @override
+  String get supportChatOffline =>
+      'Сейчас нет операторов в сети. Отправьте обращение, и мы ответим как можно скорее.';
+
+  @override
+  String get supportSendRequest => 'Отправить обращение';
+
+  @override
+  String get supportSendRequestSubtitle =>
+      'Обычно мы отвечаем в течение 24 часов';
+
+  @override
+  String get supportMyRequests => 'Мои обращения';
+
+  @override
+  String get supportNoRequests => 'Обращений пока нет';
+
+  @override
+  String get supportNoRequestsMessage =>
+      'Здесь появятся ваши переписки с поддержкой.';
+
+  @override
+  String get supportNewChat => 'Новый чат';
+
+  @override
+  String get supportNewRequest => 'Новое обращение';
+
+  @override
+  String get supportCategory => 'Тема';
+
+  @override
+  String get categoryAccount => 'Аккаунт и вход';
+
+  @override
+  String get categoryListing => 'Объявление о пропаже или находке';
+
+  @override
+  String get categoryApp => 'Проблема с приложением';
+
+  @override
+  String get categoryOther => 'Другое';
+
+  @override
+  String get supportSubject => 'Тема обращения';
+
+  @override
+  String get supportSubjectHint => 'В двух словах';
+
+  @override
+  String get supportSubjectTooShort => 'Введите не менее 3 символов';
+
+  @override
+  String get supportMessage => 'Сообщение';
+
+  @override
+  String get supportMessageHint => 'Расскажите, что случилось';
+
+  @override
+  String get supportMessageRequired => 'Напишите сообщение';
+
+  @override
+  String get supportSend => 'Отправить';
+
+  @override
+  String get supportTooManyOpen =>
+      'У вас уже 3 открытых обращения. Продолжите в одном из них.';
+
+  @override
+  String get supportTypeMessage => 'Напишите сообщение…';
+
+  @override
+  String get supportTeam => 'Поддержка CodaMi';
+
+  @override
+  String get supportMarkSolved => 'Отметить как решённое';
+
+  @override
+  String get supportMarkSolvedConfirm =>
+      'Отметить обращение как решённое? Вы сможете написать снова, если понадобится помощь.';
+
+  @override
+  String get supportClosedNote =>
+      'Обращение закрыто. Создайте новое, если нужна помощь.';
+
+  @override
+  String get supportResolvedNote =>
+      'Отмечено как решённое. Новое сообщение откроет его снова.';
+
+  @override
+  String get supportWaitingNote => 'Спасибо! Наша команда скоро ответит здесь.';
+
+  @override
+  String get kindChat => 'Чат';
+
+  @override
+  String get kindTicket => 'Обращение';
+
+  @override
+  String get caseStatusOpen => 'Открыто';
+
+  @override
+  String get caseStatusInProgress => 'В работе';
+
+  @override
+  String get caseStatusWaitingUser => 'Ожидает ответа';
+
+  @override
+  String get caseStatusResolved => 'Решено';
+
+  @override
+  String get caseStatusClosed => 'Закрыто';
+
+  @override
+  String get filterUnanswered => 'Без ответа';
+
+  @override
+  String get filterUnassigned => 'Не назначены';
+
+  @override
+  String get filterMine => 'Мои';
+
+  @override
+  String get filterActive => 'Активные';
+
+  @override
+  String get filterDone => 'Завершённые';
+
+  @override
+  String get supportSearchHint => 'Поиск: CM-1042 или email';
+
+  @override
+  String get supportNoCases => 'Здесь нет обращений';
+
+  @override
+  String get supportNoCasesMessage => 'В этом списке ничего не ждёт.';
+
+  @override
+  String get supportTake => 'Взять в работу';
+
+  @override
+  String get supportTakeToReply =>
+      'Возьмите обращение в работу, чтобы ответить.';
+
+  @override
+  String get supportAlreadyTaken => 'Другой оператор уже взял это обращение.';
+
+  @override
+  String get supportUnassigned => 'Не назначено';
+
+  @override
+  String get supportReassign => 'Передать';
+
+  @override
+  String get supportAssignTo => 'Назначить';
+
+  @override
+  String get supportBackToQueue => 'Вернуть в очередь';
+
+  @override
+  String get supportChangeStatus => 'Изменить статус';
+
+  @override
+  String get supportChat => 'Чат';
+
+  @override
+  String get supportTimeline => 'История';
+
+  @override
+  String get supportDetails => 'Подробности';
+
+  @override
+  String supportWaitingFor(String time) {
+    return 'Ждёт $time';
+  }
+
+  @override
+  String get supportOverdue => 'Ответ просрочен';
+
+  @override
+  String get supportOpened => 'Открыто';
+
+  @override
+  String get supportTakenOver => 'Взято в работу';
+
+  @override
+  String get supportWaitToTake => 'Ожидание до взятия';
+
+  @override
+  String get supportFirstReply => 'Первый ответ';
+
+  @override
+  String get supportAvgReply => 'Среднее время ответа';
+
+  @override
+  String get supportHandlingTime => 'Затрачено времени';
+
+  @override
+  String get supportResolvedAt => 'Решено';
+
+  @override
+  String get supportMessagesCount => 'Сообщения';
+
+  @override
+  String get supportOperator => 'Оператор';
+
+  @override
+  String get supportUserLabel => 'Пользователь';
+
+  @override
+  String eventCreated(String name) {
+    return 'Создано: $name';
+  }
+
+  @override
+  String eventTaken(String name) {
+    return 'Взято в работу: $name';
+  }
+
+  @override
+  String eventReassigned(String from, String to) {
+    return 'Передано от $from к $to';
+  }
+
+  @override
+  String eventStatus(String name, String status) {
+    return '$name изменил(а) статус на «$status»';
+  }
+
+  @override
+  String get eventReopened => 'Открыто пользователем повторно';
+
+  @override
+  String get eventOverdue => 'Нет ответа в установленный срок';
+
+  @override
+  String get eventAutoClosed => 'Закрыто автоматически';
+
+  @override
+  String get presenceOnline => 'В сети';
+
+  @override
+  String get presenceAway => 'Отошёл';
+
+  @override
+  String get presenceOffline => 'Не в сети';
+
+  @override
+  String get presenceAvailable => 'Доступен для чата';
+
+  @override
+  String get presenceAvailableSubtitle =>
+      'Пользователи могут начать чат, пока оператор в сети';
+
+  @override
+  String get supportOperators => 'Операторы';
+
+  @override
+  String get supportOperatorsSubtitle => 'Активность, обращения и время ответа';
+
+  @override
+  String get operatorOpenCases => 'Открытые';
+
+  @override
+  String get operatorTaken => 'Взято';
+
+  @override
+  String get operatorResolved => 'Решено';
+
+  @override
+  String get operatorReplies => 'Ответы';
+
+  @override
+  String get operatorAvgHandling => 'Среднее время на обращение';
+
+  @override
+  String operatorLastActive(String time) {
+    return 'Последняя активность $time';
+  }
+
+  @override
+  String get operatorCases => 'Обращения';
+
+  @override
+  String get noOperators =>
+      'Операторов пока нет. Добавьте их в разделе «Сотрудники поддержки».';
+
+  @override
+  String get statUnassigned => 'Неназначенные обращения';
+
+  @override
+  String get statUnanswered => 'Обращения без ответа';
+
+  @override
+  String get statOverdue => 'Просроченные ответы';
+
+  @override
+  String get alertSupportTitle => 'Ответы поддержки';
+
+  @override
+  String get alertSupportDescription => 'Когда поддержка CodaMi пишет вам';
+
+  @override
+  String durationSeconds(int n) {
+    return '$n с';
+  }
+
+  @override
+  String durationMinutes(int n) {
+    return '$n мин';
+  }
+
+  @override
+  String durationHours(int h, int m) {
+    return '$h ч $m мин';
+  }
+
+  @override
+  String durationDays(int d, int h) {
+    return '$d д $h ч';
+  }
+
+  @override
+  String get searchUsersHint => 'Поиск по имени или email';
+
+  @override
+  String get searchTooShort => 'Введите не менее 2 символов';
+
+  @override
+  String get pickStaffTitle => 'Выберите пользователя';
+
+  @override
+  String get pickStaffHint =>
+      'Нажмите на человека, чтобы добавить его в поддержку.';
+
+  @override
+  String makeStaffTitle(String name) {
+    return 'Сделать $name сотрудником поддержки?';
+  }
+
+  @override
+  String get makeStaffMessage =>
+      'Он увидит раздел администратора и сможет отвечать на обращения и чаты. Его можно убрать в любой момент.';
+
+  @override
+  String get makeStaff => 'Добавить в команду';
+
+  @override
+  String get supportStaffSwitch => 'Сотрудник поддержки';
+
+  @override
+  String get supportStaffSwitchSubtitle => 'Может отвечать на обращения и чаты';
+
+  @override
+  String staffRemoved(String name) {
+    return '$name больше не в команде поддержки.';
+  }
+
+  @override
+  String get removeStaffCasesNote =>
+      'Его открытые обращения вернутся в очередь.';
+
+  @override
+  String get pushOpen => 'Открыть';
+
+  @override
+  String get chatToday => 'Сегодня';
+
+  @override
+  String get chatLoadEarlier => 'Загрузить более ранние';
+
+  @override
+  String get supportPeople => 'Участники';
+
+  @override
+  String get supportTimes => 'Время';
+
+  @override
+  String get supportRequestInfo => 'Обращение';
+
+  @override
+  String get supportType => 'Тип';
+
+  @override
+  String get supportResolve => 'Отметить как решённое';
+
+  @override
+  String ticketsWaiting(int count) {
+    return 'Ждут ответа: $count';
+  }
+
+  @override
+  String get ticketsAllClear => 'Всё обработано';
 }

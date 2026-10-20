@@ -29,12 +29,14 @@ extension AlertTypeLabels on AlertType {
     AlertType.lost => l10n.alertLostTitle,
     AlertType.found => l10n.alertFoundTitle,
     AlertType.resolved => l10n.alertResolvedTitle,
+    AlertType.support => l10n.alertSupportTitle,
   };
 
   String description(AppLocalizations l10n) => switch (this) {
     AlertType.lost => l10n.alertLostDescription,
     AlertType.found => l10n.alertFoundDescription,
     AlertType.resolved => l10n.alertResolvedDescription,
+    AlertType.support => l10n.alertSupportDescription,
   };
 }
 

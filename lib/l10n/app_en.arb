@@ -1059,5 +1059,232 @@
   "videoCoverHint": "Optional. Shown on the video card.",
   "videoMotivationalHint": "Inspiring stories and happy moments",
   "videoEducationalHint": "Tips and how-tos for owners",
-  "uploadVideo": "Upload video"
+  "uploadVideo": "Upload video",
+  "helpSupport": "Help & support",
+  "helpSupportSubtitle": "Chat with us or send a request",
+  "supportIntroTitle": "How can we help?",
+  "supportIntroMessage": "Our team answers here in the app. You'll get a notification when we reply.",
+  "supportStartChat": "Start a live chat",
+  "supportStartChatOnline": "An operator is online now",
+  "supportChatOffline": "No operator is online right now. Send a request and we'll reply as soon as possible.",
+  "supportSendRequest": "Send a request",
+  "supportSendRequestSubtitle": "We usually reply within 24 hours",
+  "supportMyRequests": "My requests",
+  "supportNoRequests": "No requests yet",
+  "supportNoRequestsMessage": "Your conversations with support will appear here.",
+  "supportNewChat": "New live chat",
+  "supportNewRequest": "New request",
+  "supportCategory": "Topic",
+  "categoryAccount": "Account and login",
+  "categoryListing": "A lost or found listing",
+  "categoryApp": "Problem with the app",
+  "categoryOther": "Something else",
+  "supportSubject": "Subject",
+  "supportSubjectHint": "In a few words",
+  "supportSubjectTooShort": "Please write at least 3 characters",
+  "supportMessage": "Message",
+  "supportMessageHint": "Tell us what happened",
+  "supportMessageRequired": "Please write a message",
+  "supportSend": "Send",
+  "supportTooManyOpen": "You already have 3 open requests. Please continue in one of them.",
+  "supportTypeMessage": "Write a message…",
+  "supportTeam": "CodaMi support",
+  "supportMarkSolved": "Mark as solved",
+  "supportMarkSolvedConfirm": "Mark this request as solved? You can write again if you still need help.",
+  "supportClosedNote": "This request is closed. Start a new one if you need more help.",
+  "supportResolvedNote": "Marked as solved. Writing again reopens it.",
+  "supportWaitingNote": "Thanks! Our team will reply here soon.",
+  "kindChat": "Live chat",
+  "kindTicket": "Request",
+  "caseStatusOpen": "Open",
+  "caseStatusInProgress": "In progress",
+  "caseStatusWaitingUser": "Waiting for response",
+  "caseStatusResolved": "Resolved",
+  "caseStatusClosed": "Closed",
+  "filterUnanswered": "Unanswered",
+  "filterUnassigned": "Unassigned",
+  "filterMine": "Mine",
+  "filterActive": "Active",
+  "filterDone": "Finished",
+  "supportSearchHint": "Search CM-1042 or email",
+  "supportNoCases": "No requests here",
+  "supportNoCasesMessage": "Nothing is waiting in this list.",
+  "supportTake": "Take this case",
+  "supportTakeToReply": "Take this case to reply.",
+  "supportAlreadyTaken": "Another operator already took this case.",
+  "supportUnassigned": "Not assigned",
+  "supportReassign": "Reassign",
+  "supportAssignTo": "Assign to",
+  "supportBackToQueue": "Back to the queue",
+  "supportChangeStatus": "Change status",
+  "supportChat": "Chat",
+  "supportTimeline": "Timeline",
+  "supportDetails": "Details",
+  "supportWaitingFor": "Waiting {time}",
+  "@supportWaitingFor": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "supportOverdue": "Late reply",
+  "supportOpened": "Opened",
+  "supportTakenOver": "Taken over",
+  "supportWaitToTake": "Wait before takeover",
+  "supportFirstReply": "First reply",
+  "supportAvgReply": "Average reply time",
+  "supportHandlingTime": "Time spent",
+  "supportResolvedAt": "Resolved",
+  "supportMessagesCount": "Messages",
+  "supportOperator": "Operator",
+  "supportUserLabel": "User",
+  "eventCreated": "Opened by {name}",
+  "@eventCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "eventTaken": "Taken by {name}",
+  "@eventTaken": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "eventReassigned": "Reassigned from {from} to {to}",
+  "@eventReassigned": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "eventStatus": "{name} set the status to {status}",
+  "@eventStatus": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "eventReopened": "Reopened by the user",
+  "eventOverdue": "No reply within the time limit",
+  "eventAutoClosed": "Closed automatically",
+  "presenceOnline": "Online",
+  "presenceAway": "Away",
+  "presenceOffline": "Offline",
+  "presenceAvailable": "Available for live chat",
+  "presenceAvailableSubtitle": "Users can start a live chat while an operator is online",
+  "supportOperators": "Operators",
+  "supportOperatorsSubtitle": "Activity, cases and reply times",
+  "operatorOpenCases": "Open cases",
+  "operatorTaken": "Taken",
+  "operatorResolved": "Resolved",
+  "operatorReplies": "Replies",
+  "operatorAvgHandling": "Average time per case",
+  "operatorLastActive": "Last active {time}",
+  "@operatorLastActive": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "operatorCases": "Cases",
+  "noOperators": "No support staff yet. Add them in Support staff.",
+  "statUnassigned": "Unassigned requests",
+  "statUnanswered": "Unanswered requests",
+  "statOverdue": "Late replies",
+  "alertSupportTitle": "Support replies",
+  "alertSupportDescription": "When CodaMi support writes to you",
+  "durationSeconds": "{n} s",
+  "@durationSeconds": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durationMinutes": "{n} min",
+  "@durationMinutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHours": "{h} h {m} min",
+  "@durationHours": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "durationDays": "{d} d {h} h",
+  "@durationDays": {
+    "placeholders": {
+      "d": {
+        "type": "int"
+      },
+      "h": {
+        "type": "int"
+      }
+    }
+  },
+  "searchUsersHint": "Search by name or email",
+  "searchTooShort": "Type at least 2 characters",
+  "pickStaffTitle": "Choose a user",
+  "pickStaffHint": "Tap a person to add them to the support team.",
+  "makeStaffTitle": "Make {name} support staff?",
+  "@makeStaffTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "makeStaffMessage": "They will see the admin side and can answer tickets and live chats. You can remove them at any time.",
+  "makeStaff": "Add to team",
+  "supportStaffSwitch": "Support staff",
+  "supportStaffSwitchSubtitle": "Can answer tickets and live chats",
+  "staffRemoved": "{name} is no longer on the support team.",
+  "@staffRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "removeStaffCasesNote": "Their open cases go back to the queue.",
+  "pushOpen": "Open",
+  "chatToday": "Today",
+  "chatLoadEarlier": "Load earlier messages",
+  "supportPeople": "People",
+  "supportTimes": "Times",
+  "supportRequestInfo": "Request",
+  "supportType": "Type",
+  "supportResolve": "Mark as resolved",
+  "ticketsWaiting": "{count} waiting for a reply",
+  "@ticketsWaiting": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ticketsAllClear": "All caught up"
 }

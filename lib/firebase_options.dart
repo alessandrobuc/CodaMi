@@ -59,8 +59,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '838596105438',
     projectId: 'codami-cd91e',
     storageBucket: 'codami-cd91e.firebasestorage.app',
-    androidClientId: '838596105438-t3884cs8iijcuhp0rousa73spbc08deb.apps.googleusercontent.com',
-    iosClientId: '838596105438-av2tip5n3mpsueo1bus1aqlapeag2gl1.apps.googleusercontent.com',
+    androidClientId:
+        '838596105438-t3884cs8iijcuhp0rousa73spbc08deb.apps.googleusercontent.com',
+    iosClientId:
+        '838596105438-av2tip5n3mpsueo1bus1aqlapeag2gl1.apps.googleusercontent.com',
     iosBundleId: 'com.codami.app',
   );
   static const FirebaseOptions web = FirebaseOptions(

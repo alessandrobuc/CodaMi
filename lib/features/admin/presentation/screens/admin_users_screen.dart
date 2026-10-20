@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
-import '../../../../core/utils/validators.dart';
+import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
 import 'admin_user_screen.dart';
 
+// With `pickStaff`, tapping a user adds them to the support team and pops
+// with their name instead of opening their details.
 class AdminUsersScreen extends ConsumerStatefulWidget {
-  const AdminUsersScreen({super.key});
+  final bool pickStaff;
+
+  const AdminUsersScreen({super.key, this.pickStaff = false});
 
   @override
   ConsumerState<AdminUsersScreen> createState() => _AdminUsersScreenState();
@@ -29,11 +33,10 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
   }
 
   Future<void> _runSearch() async {
-    final email = _search.text.trim();
-    if (email.isEmpty) return _clear();
-    final invalid = Validators.email(email);
-    if (invalid != null) {
-      setState(() => _searchError = invalid);
+    final text = _search.text.trim();
+    if (text.isEmpty) return _clear();
+    if (text.length < 2) {
+      setState(() => _searchError = context.l10n.searchTooShort);
       return;
     }
     setState(() {
@@ -41,12 +44,49 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
       _searchError = null;
     });
     try {
-      final found = await ref.read(adminRepositoryProvider).searchUsers(email);
+      final found = await ref.read(adminRepositoryProvider).searchUsers(text);
       if (mounted) setState(() => _results = found);
     } catch (_) {
       if (mounted) setState(() => _searchError = context.l10n.actionFailed);
     } finally {
       if (mounted) setState(() => _searching = false);
+    }
+  }
+
+  Future<void> _makeStaff(UserModel user) async {
+    final l10n = context.l10n;
+    final name = user.name.isEmpty ? user.email : user.name;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(
+          Icons.support_agent_rounded,
+          color: AppColors.primary,
+          size: 32,
+        ),
+        title: Text(l10n.makeStaffTitle(name)),
+        content: Text(l10n.makeStaffMessage, textAlign: TextAlign.center),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l10n.makeStaff),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    try {
+      await ref
+          .read(adminRepositoryProvider)
+          .setRole(user.uid, UserRole.support);
+      if (mounted) Navigator.pop(context, name);
+    } catch (_) {
+      if (mounted) SnackbarUtils.showError(context, l10n.actionFailed);
     }
   }
 
@@ -81,7 +121,12 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
       );
     } else {
       list = ListView.separated(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
+        padding: EdgeInsets.fromLTRB(
+          20,
+          4,
+          20,
+          100 + MediaQuery.viewPaddingOf(context).bottom,
+        ),
         itemCount: users.length + (hasMore ? 1 : 0),
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (context, i) {
@@ -96,7 +141,14 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
               ),
             );
           }
-          return UserTile(user: users[i]);
+          final user = users[i];
+          if (!widget.pickStaff) return UserTile(user: user);
+          final canPick = !user.role.isStaff && !user.disabled;
+          return UserTile(
+            user: user,
+            enabled: canPick,
+            onTap: canPick ? () => _makeStaff(user) : null,
+          );
         },
       );
     }
@@ -104,21 +156,28 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(l10n.adminUsers),
+        title: Text(widget.pickStaff ? l10n.pickStaffTitle : l10n.adminUsers),
         backgroundColor: AppColors.background,
         surfaceTintColor: Colors.transparent,
       ),
       body: Column(
         children: [
+          if (widget.pickStaff)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+              child: Text(
+                l10n.pickStaffHint,
+                style: const TextStyle(color: AppColors.textMuted),
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
             child: TextField(
               controller: _search,
-              keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.search,
               onSubmitted: (_) => _runSearch(),
               decoration: InputDecoration(
-                hintText: l10n.searchByEmail,
+                hintText: l10n.searchUsersHint,
                 errorText: _searchError,
                 prefixIcon: const Icon(Icons.search_rounded),
                 suffixIcon: _searching
@@ -149,7 +208,16 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
 class UserTile extends StatelessWidget {
   final UserModel user;
 
-  const UserTile({super.key, required this.user});
+  // Defaults to opening the user's details.
+  final VoidCallback? onTap;
+  final bool enabled;
+
+  const UserTile({
+    super.key,
+    required this.user,
+    this.onTap,
+    this.enabled = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -162,9 +230,16 @@ class UserTile extends StatelessWidget {
         side: const BorderSide(color: AppColors.border),
       ),
       child: ListTile(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => AdminUserScreen(uid: user.uid)),
-        ),
+        enabled: enabled,
+        onTap:
+            onTap ??
+            (enabled
+                ? () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => AdminUserScreen(uid: user.uid),
+                    ),
+                  )
+                : null),
         leading: UserAvatar(user: user),
         title: Text(
           name,

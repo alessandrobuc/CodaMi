@@ -4,6 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
+// Phones don't show pushes while the app is open, so the app shows them itself.
+typedef ForegroundPush =
+    void Function(RemoteMessage message, void Function() open);
+
 class PushService {
   final FirebaseMessaging _messaging;
   final FirebaseFirestore _firestore;
@@ -18,17 +22,28 @@ class PushService {
   Future<void> start({
     required String uid,
     required void Function(String reportId) onOpenReport,
+    void Function(String caseId)? onOpenCase,
+    ForegroundPush? onForeground,
   }) async {
     if (_uid == uid) return;
     await stop();
     _uid = uid;
 
     void open(RemoteMessage message) {
-      final id = message.data['reportId'];
-      if (id is String && id.isNotEmpty) onOpenReport(id);
+      final reportId = message.data['reportId'];
+      final caseId = message.data['caseId'];
+      if (reportId is String && reportId.isNotEmpty) onOpenReport(reportId);
+      if (caseId is String && caseId.isNotEmpty) onOpenCase?.call(caseId);
     }
 
     _subscriptions.add(FirebaseMessaging.onMessageOpenedApp.listen(open));
+    if (onForeground != null) {
+      _subscriptions.add(
+        FirebaseMessaging.onMessage.listen(
+          (m) => onForeground(m, () => open(m)),
+        ),
+      );
+    }
     try {
       final initial = await _messaging.getInitialMessage();
       if (initial != null) open(initial);

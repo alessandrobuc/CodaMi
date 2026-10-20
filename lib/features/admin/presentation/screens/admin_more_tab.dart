@@ -8,6 +8,7 @@ import '../../../../l10n/locale_provider.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../support/presentation/screens/operators_screen.dart';
 import 'admin_users_screen.dart';
 import 'admin_videos_screen.dart';
 import 'support_staff_screen.dart';
@@ -116,6 +117,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const SupportStaffScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.insights_rounded,
+                    color: AppColors.lostPin,
+                    title: l10n.supportOperators,
+                    subtitle: l10n.supportOperatorsSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const OperatorsScreen(),
                       ),
                     ),
                   ),

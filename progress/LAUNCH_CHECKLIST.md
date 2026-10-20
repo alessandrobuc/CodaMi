@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Mon 19 Oct 2026_
+_Last updated: Tue 20 Oct 2026_
 
 ---
 
@@ -54,6 +54,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`
 - [ ] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
 - [ ] **Also in that deploy (Mon 19 Oct, storage rules changed again for cover image names):** `videos` rules (Firestore and Storage, admin-only uploads) and the `notificationPrefs` rule; the updated `onReportCreated` / `onReportResolved` send each user's chosen sound and skip turned-off alert types. The first Storage deploy may ask to let Storage rules read Firestore: answer yes.
+- [ ] **Support (Tue 20 Oct), same deploy:** new rules (`supportCases`, `staffPresence`, `staffStats`, `config/support`, the `support` notification type), 6 new indexes and the functions `supportAvailability`, `supportCreateCase`, `supportTakeCase`, `supportReassignCase`, `supportSetStatus`, `onSupportMessageCreated` the scheduled `supportSweep` (every 10 minutes) and `onUserWritten` (search fields for the users list, frees the cases of removed staff). The first deploy of a scheduled function may ask to enable Cloud Scheduler: answer yes.
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
@@ -72,6 +73,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Test on a small phone and a large phone (layout never breaks)
 - [x] Notification sounds on a real Android phone (Mon 19 Oct)
 - [ ] Notification sounds on a real iPhone (CodaMi sounds; app open, in background and closed). Needs the client's Apple account
+- [ ] Support on two real phones: user chat and request, operator take / reply / resolve, admin reassign, Operators screen
+- [ ] Support notifications on a real Android phone, with the app open (in-app banner), in the background and closed: new request, new message, reply, taken, assigned, resolved / closed, solved by the user, late reply, cases back in the queue. Check the Support replies switch and sound in Profile → Notifications
 - [ ] Videos: upload a few test videos (admin), check Videos for you with no pets, a dog, and a cat, on Wi-Fi and mobile data
 - [x] Version set in `pubspec.yaml` (now `1.0.0+5`). Raise the number after `+` for every upload to Play.
 

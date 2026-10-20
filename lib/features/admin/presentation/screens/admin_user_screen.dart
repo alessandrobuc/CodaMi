@@ -90,6 +90,25 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     );
   }
 
+  Future<void> _setStaff(UserModel user, String name, bool staff) async {
+    final l10n = context.l10n;
+    if (!staff) {
+      final confirmed = await _confirm(
+        icon: Icons.person_remove_alt_1_rounded,
+        title: l10n.removeStaffTitle(name),
+        message: '${l10n.removeStaffMessage} ${l10n.removeStaffCasesNote}',
+        action: l10n.remove,
+      );
+      if (!confirmed) return;
+    }
+    await _run(
+      () => ref
+          .read(adminRepositoryProvider)
+          .setRole(user.uid, staff ? UserRole.support : UserRole.user),
+      staff ? l10n.staffAdded(name) : l10n.staffRemoved(name),
+    );
+  }
+
   Future<void> _delete(UserModel user, String name) async {
     final l10n = context.l10n;
     final navigator = Navigator.of(context);
@@ -137,7 +156,12 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     final canManage = !isMe && user.role != UserRole.admin;
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
+      padding: EdgeInsets.fromLTRB(
+        20,
+        0,
+        20,
+        100 + MediaQuery.viewPaddingOf(context).bottom,
+      ),
       children: [
         Center(child: UserAvatar(user: user, radius: 40)),
         const SizedBox(height: 12),
@@ -201,6 +225,33 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
           ),
         ),
         if (canManage) ...[
+          const SizedBox(height: 12),
+          Material(
+            color: AppColors.surface,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: const BorderSide(color: AppColors.border),
+            ),
+            child: SwitchListTile(
+              value: user.role == UserRole.support,
+              onChanged:
+                  _busy || (user.disabled && user.role != UserRole.support)
+                  ? null
+                  : (v) => _setStaff(user, name, v),
+              secondary: const Icon(
+                Icons.support_agent_rounded,
+                color: AppColors.primary,
+              ),
+              title: Text(
+                l10n.supportStaffSwitch,
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+              subtitle: Text(
+                l10n.supportStaffSwitchSubtitle,
+                style: const TextStyle(fontSize: 12.5),
+              ),
+            ),
+          ),
           const SizedBox(height: 20),
           user.disabled
               ? FilledButton.icon(

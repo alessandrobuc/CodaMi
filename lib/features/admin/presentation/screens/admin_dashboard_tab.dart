@@ -6,6 +6,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../support/presentation/providers/support_provider.dart';
 import '../providers/admin_provider.dart';
 
 class AdminDashboardTab extends ConsumerWidget {
@@ -18,8 +19,27 @@ class AdminDashboardTab extends ConsumerWidget {
     final info = ref.watch(currentUserInfoProvider);
     final isAdmin = ref.watch(userRoleProvider) == UserRole.admin;
     final stats = ref.watch(dashboardStatsProvider);
+    final support = ref.watch(supportCountsProvider).value;
 
     final cards = [
+      (
+        Icons.mark_chat_unread_rounded,
+        AppColors.accent,
+        l10n.statUnanswered,
+        support?.unanswered,
+      ),
+      (
+        Icons.inbox_rounded,
+        AppColors.lostPin,
+        l10n.statUnassigned,
+        support?.unassigned,
+      ),
+      (
+        Icons.alarm_rounded,
+        AppColors.danger,
+        l10n.statOverdue,
+        support?.overdue,
+      ),
       if (isAdmin)
         (
           Icons.people_alt_rounded,
@@ -51,7 +71,10 @@ class AdminDashboardTab extends ConsumerWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: RefreshIndicator(
-          onRefresh: () => ref.refresh(dashboardStatsProvider.future),
+          onRefresh: () => (
+            ref.refresh(dashboardStatsProvider.future),
+            ref.refresh(supportCountsProvider.future),
+          ).wait,
           child: ListView(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
             children: [

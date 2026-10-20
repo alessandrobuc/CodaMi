@@ -1871,4 +1871,419 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get uploadVideo => 'Envoyer la vidéo';
+
+  @override
+  String get helpSupport => 'Aide et assistance';
+
+  @override
+  String get helpSupportSubtitle => 'Discutez avec nous ou envoyez une demande';
+
+  @override
+  String get supportIntroTitle => 'Comment pouvons-nous vous aider ?';
+
+  @override
+  String get supportIntroMessage =>
+      'Notre équipe répond ici, dans l\'app. Vous recevrez une notification à chaque réponse.';
+
+  @override
+  String get supportStartChat => 'Démarrer un chat en direct';
+
+  @override
+  String get supportStartChatOnline => 'Un opérateur est en ligne';
+
+  @override
+  String get supportChatOffline =>
+      'Aucun opérateur n\'est en ligne pour le moment. Envoyez une demande et nous répondrons dès que possible.';
+
+  @override
+  String get supportSendRequest => 'Envoyer une demande';
+
+  @override
+  String get supportSendRequestSubtitle =>
+      'Nous répondons généralement sous 24 heures';
+
+  @override
+  String get supportMyRequests => 'Mes demandes';
+
+  @override
+  String get supportNoRequests => 'Aucune demande pour l\'instant';
+
+  @override
+  String get supportNoRequestsMessage =>
+      'Vos échanges avec l\'assistance apparaîtront ici.';
+
+  @override
+  String get supportNewChat => 'Nouveau chat en direct';
+
+  @override
+  String get supportNewRequest => 'Nouvelle demande';
+
+  @override
+  String get supportCategory => 'Sujet';
+
+  @override
+  String get categoryAccount => 'Compte et connexion';
+
+  @override
+  String get categoryListing => 'Une annonce de perte ou de découverte';
+
+  @override
+  String get categoryApp => 'Problème avec l\'app';
+
+  @override
+  String get categoryOther => 'Autre chose';
+
+  @override
+  String get supportSubject => 'Objet';
+
+  @override
+  String get supportSubjectHint => 'En quelques mots';
+
+  @override
+  String get supportSubjectTooShort => 'Écrivez au moins 3 caractères';
+
+  @override
+  String get supportMessage => 'Message';
+
+  @override
+  String get supportMessageHint => 'Dites-nous ce qui s\'est passé';
+
+  @override
+  String get supportMessageRequired => 'Écrivez un message';
+
+  @override
+  String get supportSend => 'Envoyer';
+
+  @override
+  String get supportTooManyOpen =>
+      'Vous avez déjà 3 demandes ouvertes. Continuez dans l\'une d\'elles.';
+
+  @override
+  String get supportTypeMessage => 'Écrivez un message…';
+
+  @override
+  String get supportTeam => 'Assistance CodaMi';
+
+  @override
+  String get supportMarkSolved => 'Marquer comme résolue';
+
+  @override
+  String get supportMarkSolvedConfirm =>
+      'Marquer cette demande comme résolue ? Vous pourrez réécrire si besoin.';
+
+  @override
+  String get supportClosedNote =>
+      'Cette demande est fermée. Ouvrez-en une nouvelle si besoin.';
+
+  @override
+  String get supportResolvedNote =>
+      'Marquée comme résolue. Un nouveau message la rouvre.';
+
+  @override
+  String get supportWaitingNote =>
+      'Merci ! Notre équipe vous répondra ici bientôt.';
+
+  @override
+  String get kindChat => 'Chat en direct';
+
+  @override
+  String get kindTicket => 'Demande';
+
+  @override
+  String get caseStatusOpen => 'Ouverte';
+
+  @override
+  String get caseStatusInProgress => 'En cours';
+
+  @override
+  String get caseStatusWaitingUser => 'En attente de réponse';
+
+  @override
+  String get caseStatusResolved => 'Résolue';
+
+  @override
+  String get caseStatusClosed => 'Fermée';
+
+  @override
+  String get filterUnanswered => 'Sans réponse';
+
+  @override
+  String get filterUnassigned => 'Non attribuées';
+
+  @override
+  String get filterMine => 'Les miennes';
+
+  @override
+  String get filterActive => 'Actives';
+
+  @override
+  String get filterDone => 'Terminées';
+
+  @override
+  String get supportSearchHint => 'Rechercher CM-1042 ou e-mail';
+
+  @override
+  String get supportNoCases => 'Aucune demande ici';
+
+  @override
+  String get supportNoCasesMessage => 'Rien n\'attend dans cette liste.';
+
+  @override
+  String get supportTake => 'Prendre en charge';
+
+  @override
+  String get supportTakeToReply => 'Prenez la demande en charge pour répondre.';
+
+  @override
+  String get supportAlreadyTaken =>
+      'Un autre opérateur a déjà pris cette demande.';
+
+  @override
+  String get supportUnassigned => 'Non attribuée';
+
+  @override
+  String get supportReassign => 'Réattribuer';
+
+  @override
+  String get supportAssignTo => 'Attribuer à';
+
+  @override
+  String get supportBackToQueue => 'Remettre dans la file';
+
+  @override
+  String get supportChangeStatus => 'Changer le statut';
+
+  @override
+  String get supportChat => 'Chat';
+
+  @override
+  String get supportTimeline => 'Historique';
+
+  @override
+  String get supportDetails => 'Détails';
+
+  @override
+  String supportWaitingFor(String time) {
+    return 'En attente depuis $time';
+  }
+
+  @override
+  String get supportOverdue => 'Réponse en retard';
+
+  @override
+  String get supportOpened => 'Ouverte';
+
+  @override
+  String get supportTakenOver => 'Prise en charge';
+
+  @override
+  String get supportWaitToTake => 'Attente avant prise en charge';
+
+  @override
+  String get supportFirstReply => 'Première réponse';
+
+  @override
+  String get supportAvgReply => 'Temps de réponse moyen';
+
+  @override
+  String get supportHandlingTime => 'Temps passé';
+
+  @override
+  String get supportResolvedAt => 'Résolue';
+
+  @override
+  String get supportMessagesCount => 'Messages';
+
+  @override
+  String get supportOperator => 'Opérateur';
+
+  @override
+  String get supportUserLabel => 'Utilisateur';
+
+  @override
+  String eventCreated(String name) {
+    return 'Ouverte par $name';
+  }
+
+  @override
+  String eventTaken(String name) {
+    return 'Prise en charge par $name';
+  }
+
+  @override
+  String eventReassigned(String from, String to) {
+    return 'Réattribuée de $from à $to';
+  }
+
+  @override
+  String eventStatus(String name, String status) {
+    return '$name a changé le statut en $status';
+  }
+
+  @override
+  String get eventReopened => 'Rouverte par l\'utilisateur';
+
+  @override
+  String get eventOverdue => 'Pas de réponse dans le délai';
+
+  @override
+  String get eventAutoClosed => 'Fermée automatiquement';
+
+  @override
+  String get presenceOnline => 'En ligne';
+
+  @override
+  String get presenceAway => 'Absent';
+
+  @override
+  String get presenceOffline => 'Hors ligne';
+
+  @override
+  String get presenceAvailable => 'Disponible pour le chat';
+
+  @override
+  String get presenceAvailableSubtitle =>
+      'Les utilisateurs peuvent démarrer un chat quand un opérateur est en ligne';
+
+  @override
+  String get supportOperators => 'Opérateurs';
+
+  @override
+  String get supportOperatorsSubtitle =>
+      'Activité, demandes et temps de réponse';
+
+  @override
+  String get operatorOpenCases => 'Demandes ouvertes';
+
+  @override
+  String get operatorTaken => 'Prises en charge';
+
+  @override
+  String get operatorResolved => 'Résolues';
+
+  @override
+  String get operatorReplies => 'Réponses';
+
+  @override
+  String get operatorAvgHandling => 'Temps moyen par demande';
+
+  @override
+  String operatorLastActive(String time) {
+    return 'Dernière activité $time';
+  }
+
+  @override
+  String get operatorCases => 'Demandes';
+
+  @override
+  String get noOperators =>
+      'Pas encore d\'opérateurs. Ajoutez-les dans Équipe d\'assistance.';
+
+  @override
+  String get statUnassigned => 'Demandes non attribuées';
+
+  @override
+  String get statUnanswered => 'Demandes sans réponse';
+
+  @override
+  String get statOverdue => 'Réponses en retard';
+
+  @override
+  String get alertSupportTitle => 'Réponses de l\'assistance';
+
+  @override
+  String get alertSupportDescription => 'Quand l\'assistance CodaMi vous écrit';
+
+  @override
+  String durationSeconds(int n) {
+    return '$n s';
+  }
+
+  @override
+  String durationMinutes(int n) {
+    return '$n min';
+  }
+
+  @override
+  String durationHours(int h, int m) {
+    return '$h h $m min';
+  }
+
+  @override
+  String durationDays(int d, int h) {
+    return '$d j $h h';
+  }
+
+  @override
+  String get searchUsersHint => 'Rechercher par nom ou e-mail';
+
+  @override
+  String get searchTooShort => 'Saisissez au moins 2 caractères';
+
+  @override
+  String get pickStaffTitle => 'Choisir un utilisateur';
+
+  @override
+  String get pickStaffHint =>
+      'Touchez une personne pour l\'ajouter à l\'équipe d\'assistance.';
+
+  @override
+  String makeStaffTitle(String name) {
+    return 'Ajouter $name à l\'équipe d\'assistance ?';
+  }
+
+  @override
+  String get makeStaffMessage =>
+      'Cette personne verra l\'espace d\'administration et pourra répondre aux demandes et aux chats. Vous pouvez la retirer à tout moment.';
+
+  @override
+  String get makeStaff => 'Ajouter à l\'équipe';
+
+  @override
+  String get supportStaffSwitch => 'Équipe d\'assistance';
+
+  @override
+  String get supportStaffSwitchSubtitle =>
+      'Peut répondre aux demandes et aux chats';
+
+  @override
+  String staffRemoved(String name) {
+    return '$name ne fait plus partie de l\'équipe d\'assistance.';
+  }
+
+  @override
+  String get removeStaffCasesNote =>
+      'Ses demandes ouvertes retournent dans la file.';
+
+  @override
+  String get pushOpen => 'Ouvrir';
+
+  @override
+  String get chatToday => 'Aujourd\'hui';
+
+  @override
+  String get chatLoadEarlier => 'Charger les messages précédents';
+
+  @override
+  String get supportPeople => 'Personnes';
+
+  @override
+  String get supportTimes => 'Délais';
+
+  @override
+  String get supportRequestInfo => 'Demande';
+
+  @override
+  String get supportType => 'Type';
+
+  @override
+  String get supportResolve => 'Marquer comme résolue';
+
+  @override
+  String ticketsWaiting(int count) {
+    return '$count en attente de réponse';
+  }
+
+  @override
+  String get ticketsAllClear => 'Tout est à jour';
 }

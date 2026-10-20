@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "CodaMi",
-      "version": "1.0.0+6",
+      "version": "1.0.0+7",
       "dependencies": [
         "cached_network_image",
         "cloud_firestore",

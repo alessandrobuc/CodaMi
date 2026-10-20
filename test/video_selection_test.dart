@@ -4,16 +4,15 @@ import 'package:CodaMi/features/videos/domain/entities/video_entity.dart';
 import 'package:CodaMi/features/videos/domain/video_selection.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-Video _video(String id, List<String> tags, {String language = 'all'}) =>
-    Video(
-      id: id,
-      title: id,
-      category: VideoCategory.educational,
-      tags: tags,
-      language: language,
-      videoUrl: 'https://v/$id',
-      storagePath: 'videos/$id/video.mp4',
-    );
+Video _video(String id, List<String> tags, {String language = 'all'}) => Video(
+  id: id,
+  title: id,
+  category: VideoCategory.educational,
+  tags: tags,
+  language: language,
+  videoUrl: 'https://v/$id',
+  storagePath: 'videos/$id/video.mp4',
+);
 
 final _videos = [
   for (var i = 0; i < 6; i++) _video('dog$i', ['dog']),

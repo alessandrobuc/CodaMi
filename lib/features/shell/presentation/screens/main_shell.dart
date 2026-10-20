@@ -8,10 +8,12 @@ import '../../../../l10n/locale_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../notifications/presentation/providers/notification_settings_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
+import '../../../notifications/presentation/widgets/push_banner.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../pets/presentation/screens/pets_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';
+import '../../../support/presentation/screens/support_case_screen.dart';
 import '../../../videos/presentation/screens/videos_screen.dart';
 import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
@@ -72,6 +74,10 @@ class _MainShellState extends ConsumerState<MainShell>
           uid: uid,
           onOpenReport: (id) => appNavigatorKey.currentState?.push(
             MaterialPageRoute(builder: (_) => ReportByIdScreen(reportId: id)),
+          ),
+          onForeground: showPushBanner,
+          onOpenCase: (id) => appNavigatorKey.currentState?.push(
+            MaterialPageRoute(builder: (_) => SupportCaseScreen(caseId: id)),
           ),
         );
     ref.read(notificationSettingsProvider).restoreChannels();

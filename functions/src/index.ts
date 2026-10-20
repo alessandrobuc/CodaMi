@@ -1,12 +1,12 @@
+import "./options";
+
 import {initializeApp} from "firebase-admin/app";
 import {getAuth} from "firebase-admin/auth";
 import {FieldValue, getFirestore, type QueryDocumentSnapshot} from "firebase-admin/firestore";
-import {getMessaging} from "firebase-admin/messaging";
 import {getStorage} from "firebase-admin/storage";
-import {onDocumentCreated, onDocumentUpdated} from "firebase-functions/firestore";
+import {onDocumentCreated, onDocumentUpdated, onDocumentWritten} from "firebase-functions/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
-import {setGlobalOptions} from "firebase-functions/options";
 import {defineString} from "firebase-functions/params";
 
 import {
@@ -35,6 +35,9 @@ import {
   type PushSettings,
   type ReportSummary,
 } from "./notifications";
+import {sendToTokens, tokensOf, type PushToken} from "./push";
+import {releaseCasesOf} from "./supportFunctions";
+import {searchFieldsOf} from "./users";
 
 initializeApp();
 
@@ -50,8 +53,6 @@ const ITALY_BIAS = {
 const LANGUAGE = "it";
 const STREET_SEARCH_RADIUS = 15_000;
 const PUBLIC_AREA_RADIUS = 100;
-
-setGlobalOptions({region: "europe-west1", maxInstances: 10});
 
 function requireAuth(request: CallableRequest): void {
   if (!request.auth) {
@@ -219,11 +220,6 @@ export const getStreetDetails = onCall(async (request) => {
 });
 
 const TRIGGER_REGION = "us-central1";
-const INVALID_TOKEN_CODES = new Set([
-  "messaging/registration-token-not-registered",
-  "messaging/invalid-registration-token",
-  "messaging/invalid-argument",
-]);
 
 async function notifyCity(
   report: ReportSummary,
@@ -285,36 +281,26 @@ async function notifyGroup(
   const byPayload = new Map<string, {settings: PushSettings; tokens: PushToken[]}>();
   for (const user of recipients) {
     const settings = pushSettingsOf(user.get("notificationPrefs"), type);
-    const list = user.get("fcmTokens");
-    if (!settings.enabled || !Array.isArray(list)) continue;
+    if (!settings.enabled) continue;
     const key = `${settings.channelId}|${settings.iosSound}`;
     const group = byPayload.get(key) ?? {settings, tokens: []};
-    for (const token of list) {
-      if (typeof token === "string") group.tokens.push({user, token});
-    }
+    group.tokens.push(...tokensOf(user));
     byPayload.set(key, group);
   }
 
   for (const {settings, tokens} of byPayload.values()) {
-    for (const group of chunk(tokens, 500)) {
-      await sendPush(report, content, settings, group);
-    }
+    await sendPush(report, content, settings, tokens);
   }
-}
-
-interface PushToken {
-  user: QueryDocumentSnapshot;
-  token: string;
 }
 
 async function sendPush(
   report: ReportSummary,
   content: NotificationContent,
   settings: PushSettings,
-  group: PushToken[],
+  tokens: PushToken[],
 ): Promise<void> {
-  const response = await getMessaging().sendEachForMulticast({
-    tokens: group.map((t) => t.token),
+  if (tokens.length === 0) return;
+  const result = await sendToTokens(tokens, {
     notification: {title: content.title, body: content.body},
     data: {reportId: report.id, kind: content.kind},
     android: {
@@ -327,22 +313,11 @@ async function sendPush(
     },
     apns: {payload: {aps: settings.iosSound ? {sound: settings.iosSound} : {}}},
   });
-
-  const stale = response.responses.flatMap((r, i) =>
-    !r.success && INVALID_TOKEN_CODES.has(r.error?.code ?? "") ? [group[i]] : [],
-  );
-  await Promise.all(
-    stale.map(({user, token}) =>
-      user.ref.update({fcmTokens: FieldValue.arrayRemove(token)}),
-    ),
-  );
   logger.info("Report notification sent", {
     reportId: report.id,
     kind: content.kind,
     channel: settings.channelId,
-    success: response.successCount,
-    failed: response.failureCount,
-    removedTokens: stale.length,
+    ...result,
   });
 }
 
@@ -426,6 +401,8 @@ async function deleteUserData(uid: string): Promise<void> {
       await batch.commit();
     }
   }
+  const cases = await db.collection("supportCases").where("userId", "==", uid).get();
+  for (const doc of cases.docs) await db.recursiveDelete(doc.ref);
   await db.recursiveDelete(db.collection("users").doc(uid));
 
   const bucket = getStorage().bucket();
@@ -512,3 +489,26 @@ export const adminDeleteUser = onCall(async (request) => {
   logger.info("Account deleted by admin", {uid, by: request.auth?.uid});
   return {deleted: true};
 });
+
+// Keeps the lowercase search fields current and frees the cases of removed staff.
+export const onUserWritten = onDocumentWritten(
+  {document: "users/{uid}", region: TRIGGER_REGION},
+  async (event) => {
+    const before = event.data?.before.data();
+    const after = event.data?.after.data();
+    const uid = event.params.uid;
+
+    const wasStaff = before?.role === "support" || before?.role === "admin";
+    const isStaff = after?.role === "support" || after?.role === "admin";
+    if (wasStaff && !isStaff) {
+      const released = await releaseCasesOf(uid);
+      logger.info("Staff removed, cases back in the queue", {uid, released});
+    }
+
+    if (!after) return;
+    const search = searchFieldsOf(after);
+    if (search) await event.data!.after.ref.update(search);
+  },
+);
+
+export * from "./supportFunctions";

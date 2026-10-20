@@ -16,6 +16,7 @@ class NotificationSettingsScreen extends ConsumerWidget {
     AlertType.lost: (Icons.search_rounded, AppColors.lostPin),
     AlertType.found: (Icons.volunteer_activism_rounded, AppColors.foundPin),
     AlertType.resolved: (Icons.home_rounded, AppColors.accent),
+    AlertType.support: (Icons.support_agent_rounded, AppColors.primaryDark),
   };
 
   Future<void> _run(

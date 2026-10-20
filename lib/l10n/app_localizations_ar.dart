@@ -1829,4 +1829,409 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get uploadVideo => 'رفع الفيديو';
+
+  @override
+  String get helpSupport => 'المساعدة والدعم';
+
+  @override
+  String get helpSupportSubtitle => 'تحدّث معنا أو أرسل طلبًا';
+
+  @override
+  String get supportIntroTitle => 'كيف يمكننا مساعدتك؟';
+
+  @override
+  String get supportIntroMessage =>
+      'يرد فريقنا هنا داخل التطبيق. سيصلك إشعار عندما نرد.';
+
+  @override
+  String get supportStartChat => 'ابدأ محادثة مباشرة';
+
+  @override
+  String get supportStartChatOnline => 'يوجد موظف دعم متصل الآن';
+
+  @override
+  String get supportChatOffline =>
+      'لا يوجد موظف دعم متصل الآن. أرسل طلبًا وسنرد في أقرب وقت ممكن.';
+
+  @override
+  String get supportSendRequest => 'أرسل طلبًا';
+
+  @override
+  String get supportSendRequestSubtitle => 'نرد عادةً خلال 24 ساعة';
+
+  @override
+  String get supportMyRequests => 'طلباتي';
+
+  @override
+  String get supportNoRequests => 'لا توجد طلبات بعد';
+
+  @override
+  String get supportNoRequestsMessage => 'ستظهر محادثاتك مع الدعم هنا.';
+
+  @override
+  String get supportNewChat => 'محادثة مباشرة جديدة';
+
+  @override
+  String get supportNewRequest => 'طلب جديد';
+
+  @override
+  String get supportCategory => 'الموضوع';
+
+  @override
+  String get categoryAccount => 'الحساب وتسجيل الدخول';
+
+  @override
+  String get categoryListing => 'إعلان عن حيوان مفقود أو معثور عليه';
+
+  @override
+  String get categoryApp => 'مشكلة في التطبيق';
+
+  @override
+  String get categoryOther => 'شيء آخر';
+
+  @override
+  String get supportSubject => 'العنوان';
+
+  @override
+  String get supportSubjectHint => 'في كلمات قليلة';
+
+  @override
+  String get supportSubjectTooShort => 'اكتب 3 أحرف على الأقل';
+
+  @override
+  String get supportMessage => 'الرسالة';
+
+  @override
+  String get supportMessageHint => 'أخبرنا بما حدث';
+
+  @override
+  String get supportMessageRequired => 'اكتب رسالة';
+
+  @override
+  String get supportSend => 'إرسال';
+
+  @override
+  String get supportTooManyOpen => 'لديك بالفعل 3 طلبات مفتوحة. تابع في أحدها.';
+
+  @override
+  String get supportTypeMessage => 'اكتب رسالة…';
+
+  @override
+  String get supportTeam => 'دعم CodaMi';
+
+  @override
+  String get supportMarkSolved => 'وضع علامة تم الحل';
+
+  @override
+  String get supportMarkSolvedConfirm =>
+      'هل تريد وضع علامة تم الحل على هذا الطلب؟ يمكنك الكتابة مجددًا إذا احتجت إلى مساعدة.';
+
+  @override
+  String get supportClosedNote =>
+      'هذا الطلب مغلق. ابدأ طلبًا جديدًا إذا احتجت إلى مساعدة.';
+
+  @override
+  String get supportResolvedNote =>
+      'تم وضع علامة تم الحل. الكتابة مجددًا تعيد فتحه.';
+
+  @override
+  String get supportWaitingNote => 'شكرًا! سيرد فريقنا هنا قريبًا.';
+
+  @override
+  String get kindChat => 'محادثة مباشرة';
+
+  @override
+  String get kindTicket => 'طلب';
+
+  @override
+  String get caseStatusOpen => 'مفتوح';
+
+  @override
+  String get caseStatusInProgress => 'قيد المعالجة';
+
+  @override
+  String get caseStatusWaitingUser => 'بانتظار الرد';
+
+  @override
+  String get caseStatusResolved => 'تم الحل';
+
+  @override
+  String get caseStatusClosed => 'مغلق';
+
+  @override
+  String get filterUnanswered => 'دون رد';
+
+  @override
+  String get filterUnassigned => 'غير مُسندة';
+
+  @override
+  String get filterMine => 'الخاصة بي';
+
+  @override
+  String get filterActive => 'النشطة';
+
+  @override
+  String get filterDone => 'المنتهية';
+
+  @override
+  String get supportSearchHint => 'ابحث عن CM-1042 أو البريد';
+
+  @override
+  String get supportNoCases => 'لا توجد طلبات هنا';
+
+  @override
+  String get supportNoCasesMessage => 'لا يوجد شيء بانتظارك في هذه القائمة.';
+
+  @override
+  String get supportTake => 'تولَّ هذه الحالة';
+
+  @override
+  String get supportTakeToReply => 'تولَّ الحالة لتتمكن من الرد.';
+
+  @override
+  String get supportAlreadyTaken => 'تولّى موظف آخر هذه الحالة بالفعل.';
+
+  @override
+  String get supportUnassigned => 'غير مُسندة';
+
+  @override
+  String get supportReassign => 'إعادة الإسناد';
+
+  @override
+  String get supportAssignTo => 'إسناد إلى';
+
+  @override
+  String get supportBackToQueue => 'إعادة إلى قائمة الانتظار';
+
+  @override
+  String get supportChangeStatus => 'تغيير الحالة';
+
+  @override
+  String get supportChat => 'المحادثة';
+
+  @override
+  String get supportTimeline => 'السجل';
+
+  @override
+  String get supportDetails => 'التفاصيل';
+
+  @override
+  String supportWaitingFor(String time) {
+    return 'بانتظار منذ $time';
+  }
+
+  @override
+  String get supportOverdue => 'رد متأخر';
+
+  @override
+  String get supportOpened => 'فُتح';
+
+  @override
+  String get supportTakenOver => 'تم التولي';
+
+  @override
+  String get supportWaitToTake => 'الانتظار قبل التولي';
+
+  @override
+  String get supportFirstReply => 'أول رد';
+
+  @override
+  String get supportAvgReply => 'متوسط وقت الرد';
+
+  @override
+  String get supportHandlingTime => 'الوقت المستغرق';
+
+  @override
+  String get supportResolvedAt => 'تم الحل';
+
+  @override
+  String get supportMessagesCount => 'الرسائل';
+
+  @override
+  String get supportOperator => 'موظف الدعم';
+
+  @override
+  String get supportUserLabel => 'المستخدم';
+
+  @override
+  String eventCreated(String name) {
+    return 'فتحها $name';
+  }
+
+  @override
+  String eventTaken(String name) {
+    return 'تولّاها $name';
+  }
+
+  @override
+  String eventReassigned(String from, String to) {
+    return 'أُعيد إسنادها من $from إلى $to';
+  }
+
+  @override
+  String eventStatus(String name, String status) {
+    return 'غيّر $name الحالة إلى $status';
+  }
+
+  @override
+  String get eventReopened => 'أعاد المستخدم فتحها';
+
+  @override
+  String get eventOverdue => 'لا رد خلال المهلة';
+
+  @override
+  String get eventAutoClosed => 'أُغلقت تلقائيًا';
+
+  @override
+  String get presenceOnline => 'متصل';
+
+  @override
+  String get presenceAway => 'بعيد';
+
+  @override
+  String get presenceOffline => 'غير متصل';
+
+  @override
+  String get presenceAvailable => 'متاح للمحادثة المباشرة';
+
+  @override
+  String get presenceAvailableSubtitle =>
+      'يمكن للمستخدمين بدء محادثة ما دام موظف دعم متصلًا';
+
+  @override
+  String get supportOperators => 'موظفو الدعم';
+
+  @override
+  String get supportOperatorsSubtitle => 'النشاط والحالات وأوقات الرد';
+
+  @override
+  String get operatorOpenCases => 'حالات مفتوحة';
+
+  @override
+  String get operatorTaken => 'تم توليها';
+
+  @override
+  String get operatorResolved => 'تم حلها';
+
+  @override
+  String get operatorReplies => 'الردود';
+
+  @override
+  String get operatorAvgHandling => 'متوسط الوقت لكل حالة';
+
+  @override
+  String operatorLastActive(String time) {
+    return 'آخر نشاط $time';
+  }
+
+  @override
+  String get operatorCases => 'الحالات';
+
+  @override
+  String get noOperators => 'لا يوجد موظفو دعم بعد. أضفهم من فريق الدعم.';
+
+  @override
+  String get statUnassigned => 'طلبات غير مُسندة';
+
+  @override
+  String get statUnanswered => 'طلبات دون رد';
+
+  @override
+  String get statOverdue => 'ردود متأخرة';
+
+  @override
+  String get alertSupportTitle => 'ردود الدعم';
+
+  @override
+  String get alertSupportDescription => 'عندما يراسلك دعم CodaMi';
+
+  @override
+  String durationSeconds(int n) {
+    return '$n ث';
+  }
+
+  @override
+  String durationMinutes(int n) {
+    return '$n د';
+  }
+
+  @override
+  String durationHours(int h, int m) {
+    return '$h س $m د';
+  }
+
+  @override
+  String durationDays(int d, int h) {
+    return '$d ي $h س';
+  }
+
+  @override
+  String get searchUsersHint => 'ابحث بالاسم أو البريد';
+
+  @override
+  String get searchTooShort => 'اكتب حرفين على الأقل';
+
+  @override
+  String get pickStaffTitle => 'اختر مستخدمًا';
+
+  @override
+  String get pickStaffHint => 'اضغط على شخص لإضافته إلى فريق الدعم.';
+
+  @override
+  String makeStaffTitle(String name) {
+    return 'هل تريد إضافة $name إلى فريق الدعم؟';
+  }
+
+  @override
+  String get makeStaffMessage =>
+      'سيرى قسم الإدارة ويمكنه الرد على الطلبات والمحادثات. يمكنك إزالته في أي وقت.';
+
+  @override
+  String get makeStaff => 'إضافة إلى الفريق';
+
+  @override
+  String get supportStaffSwitch => 'فريق الدعم';
+
+  @override
+  String get supportStaffSwitchSubtitle => 'يمكنه الرد على الطلبات والمحادثات';
+
+  @override
+  String staffRemoved(String name) {
+    return 'لم يعد $name ضمن فريق الدعم.';
+  }
+
+  @override
+  String get removeStaffCasesNote => 'تعود حالاته المفتوحة إلى قائمة الانتظار.';
+
+  @override
+  String get pushOpen => 'فتح';
+
+  @override
+  String get chatToday => 'اليوم';
+
+  @override
+  String get chatLoadEarlier => 'تحميل الرسائل الأقدم';
+
+  @override
+  String get supportPeople => 'الأشخاص';
+
+  @override
+  String get supportTimes => 'الأوقات';
+
+  @override
+  String get supportRequestInfo => 'الطلب';
+
+  @override
+  String get supportType => 'النوع';
+
+  @override
+  String get supportResolve => 'وضع علامة تم الحل';
+
+  @override
+  String ticketsWaiting(int count) {
+    return '$count بانتظار الرد';
+  }
+
+  @override
+  String get ticketsAllClear => 'لا شيء بانتظارك';
 }

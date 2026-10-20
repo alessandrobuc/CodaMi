@@ -3335,6 +3335,750 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upload video'**
   String get uploadVideo;
+
+  /// No description provided for @helpSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & support'**
+  String get helpSupport;
+
+  /// No description provided for @helpSupportSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with us or send a request'**
+  String get helpSupportSubtitle;
+
+  /// No description provided for @supportIntroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How can we help?'**
+  String get supportIntroTitle;
+
+  /// No description provided for @supportIntroMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Our team answers here in the app. You\'ll get a notification when we reply.'**
+  String get supportIntroMessage;
+
+  /// No description provided for @supportStartChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a live chat'**
+  String get supportStartChat;
+
+  /// No description provided for @supportStartChatOnline.
+  ///
+  /// In en, this message translates to:
+  /// **'An operator is online now'**
+  String get supportStartChatOnline;
+
+  /// No description provided for @supportChatOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'No operator is online right now. Send a request and we\'ll reply as soon as possible.'**
+  String get supportChatOffline;
+
+  /// No description provided for @supportSendRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a request'**
+  String get supportSendRequest;
+
+  /// No description provided for @supportSendRequestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We usually reply within 24 hours'**
+  String get supportSendRequestSubtitle;
+
+  /// No description provided for @supportMyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'My requests'**
+  String get supportMyRequests;
+
+  /// No description provided for @supportNoRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get supportNoRequests;
+
+  /// No description provided for @supportNoRequestsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your conversations with support will appear here.'**
+  String get supportNoRequestsMessage;
+
+  /// No description provided for @supportNewChat.
+  ///
+  /// In en, this message translates to:
+  /// **'New live chat'**
+  String get supportNewChat;
+
+  /// No description provided for @supportNewRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get supportNewRequest;
+
+  /// No description provided for @supportCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic'**
+  String get supportCategory;
+
+  /// No description provided for @categoryAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account and login'**
+  String get categoryAccount;
+
+  /// No description provided for @categoryListing.
+  ///
+  /// In en, this message translates to:
+  /// **'A lost or found listing'**
+  String get categoryListing;
+
+  /// No description provided for @categoryApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem with the app'**
+  String get categoryApp;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Something else'**
+  String get categoryOther;
+
+  /// No description provided for @supportSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get supportSubject;
+
+  /// No description provided for @supportSubjectHint.
+  ///
+  /// In en, this message translates to:
+  /// **'In a few words'**
+  String get supportSubjectHint;
+
+  /// No description provided for @supportSubjectTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write at least 3 characters'**
+  String get supportSubjectTooShort;
+
+  /// No description provided for @supportMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get supportMessage;
+
+  /// No description provided for @supportMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us what happened'**
+  String get supportMessageHint;
+
+  /// No description provided for @supportMessageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write a message'**
+  String get supportMessageRequired;
+
+  /// No description provided for @supportSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get supportSend;
+
+  /// No description provided for @supportTooManyOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have 3 open requests. Please continue in one of them.'**
+  String get supportTooManyOpen;
+
+  /// No description provided for @supportTypeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message…'**
+  String get supportTypeMessage;
+
+  /// No description provided for @supportTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi support'**
+  String get supportTeam;
+
+  /// No description provided for @supportMarkSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as solved'**
+  String get supportMarkSolved;
+
+  /// No description provided for @supportMarkSolvedConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark this request as solved? You can write again if you still need help.'**
+  String get supportMarkSolvedConfirm;
+
+  /// No description provided for @supportClosedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This request is closed. Start a new one if you need more help.'**
+  String get supportClosedNote;
+
+  /// No description provided for @supportResolvedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as solved. Writing again reopens it.'**
+  String get supportResolvedNote;
+
+  /// No description provided for @supportWaitingNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks! Our team will reply here soon.'**
+  String get supportWaitingNote;
+
+  /// No description provided for @kindChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Live chat'**
+  String get kindChat;
+
+  /// No description provided for @kindTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'Request'**
+  String get kindTicket;
+
+  /// No description provided for @caseStatusOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get caseStatusOpen;
+
+  /// No description provided for @caseStatusInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get caseStatusInProgress;
+
+  /// No description provided for @caseStatusWaitingUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for response'**
+  String get caseStatusWaitingUser;
+
+  /// No description provided for @caseStatusResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get caseStatusResolved;
+
+  /// No description provided for @caseStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get caseStatusClosed;
+
+  /// No description provided for @filterUnanswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered'**
+  String get filterUnanswered;
+
+  /// No description provided for @filterUnassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Unassigned'**
+  String get filterUnassigned;
+
+  /// No description provided for @filterMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Mine'**
+  String get filterMine;
+
+  /// No description provided for @filterActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get filterActive;
+
+  /// No description provided for @filterDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get filterDone;
+
+  /// No description provided for @supportSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search CM-1042 or email'**
+  String get supportSearchHint;
+
+  /// No description provided for @supportNoCases.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests here'**
+  String get supportNoCases;
+
+  /// No description provided for @supportNoCasesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is waiting in this list.'**
+  String get supportNoCasesMessage;
+
+  /// No description provided for @supportTake.
+  ///
+  /// In en, this message translates to:
+  /// **'Take this case'**
+  String get supportTake;
+
+  /// No description provided for @supportTakeToReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Take this case to reply.'**
+  String get supportTakeToReply;
+
+  /// No description provided for @supportAlreadyTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Another operator already took this case.'**
+  String get supportAlreadyTaken;
+
+  /// No description provided for @supportUnassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Not assigned'**
+  String get supportUnassigned;
+
+  /// No description provided for @supportReassign.
+  ///
+  /// In en, this message translates to:
+  /// **'Reassign'**
+  String get supportReassign;
+
+  /// No description provided for @supportAssignTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign to'**
+  String get supportAssignTo;
+
+  /// No description provided for @supportBackToQueue.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the queue'**
+  String get supportBackToQueue;
+
+  /// No description provided for @supportChangeStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Change status'**
+  String get supportChangeStatus;
+
+  /// No description provided for @supportChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get supportChat;
+
+  /// No description provided for @supportTimeline.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline'**
+  String get supportTimeline;
+
+  /// No description provided for @supportDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get supportDetails;
+
+  /// No description provided for @supportWaitingFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting {time}'**
+  String supportWaitingFor(String time);
+
+  /// No description provided for @supportOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'Late reply'**
+  String get supportOverdue;
+
+  /// No description provided for @supportOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'Opened'**
+  String get supportOpened;
+
+  /// No description provided for @supportTakenOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken over'**
+  String get supportTakenOver;
+
+  /// No description provided for @supportWaitToTake.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait before takeover'**
+  String get supportWaitToTake;
+
+  /// No description provided for @supportFirstReply.
+  ///
+  /// In en, this message translates to:
+  /// **'First reply'**
+  String get supportFirstReply;
+
+  /// No description provided for @supportAvgReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Average reply time'**
+  String get supportAvgReply;
+
+  /// No description provided for @supportHandlingTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Time spent'**
+  String get supportHandlingTime;
+
+  /// No description provided for @supportResolvedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get supportResolvedAt;
+
+  /// No description provided for @supportMessagesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get supportMessagesCount;
+
+  /// No description provided for @supportOperator.
+  ///
+  /// In en, this message translates to:
+  /// **'Operator'**
+  String get supportOperator;
+
+  /// No description provided for @supportUserLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get supportUserLabel;
+
+  /// No description provided for @eventCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Opened by {name}'**
+  String eventCreated(String name);
+
+  /// No description provided for @eventTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken by {name}'**
+  String eventTaken(String name);
+
+  /// No description provided for @eventReassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Reassigned from {from} to {to}'**
+  String eventReassigned(String from, String to);
+
+  /// No description provided for @eventStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} set the status to {status}'**
+  String eventStatus(String name, String status);
+
+  /// No description provided for @eventReopened.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopened by the user'**
+  String get eventReopened;
+
+  /// No description provided for @eventOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'No reply within the time limit'**
+  String get eventOverdue;
+
+  /// No description provided for @eventAutoClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed automatically'**
+  String get eventAutoClosed;
+
+  /// No description provided for @presenceOnline.
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get presenceOnline;
+
+  /// No description provided for @presenceAway.
+  ///
+  /// In en, this message translates to:
+  /// **'Away'**
+  String get presenceAway;
+
+  /// No description provided for @presenceOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get presenceOffline;
+
+  /// No description provided for @presenceAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available for live chat'**
+  String get presenceAvailable;
+
+  /// No description provided for @presenceAvailableSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Users can start a live chat while an operator is online'**
+  String get presenceAvailableSubtitle;
+
+  /// No description provided for @supportOperators.
+  ///
+  /// In en, this message translates to:
+  /// **'Operators'**
+  String get supportOperators;
+
+  /// No description provided for @supportOperatorsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity, cases and reply times'**
+  String get supportOperatorsSubtitle;
+
+  /// No description provided for @operatorOpenCases.
+  ///
+  /// In en, this message translates to:
+  /// **'Open cases'**
+  String get operatorOpenCases;
+
+  /// No description provided for @operatorTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get operatorTaken;
+
+  /// No description provided for @operatorResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get operatorResolved;
+
+  /// No description provided for @operatorReplies.
+  ///
+  /// In en, this message translates to:
+  /// **'Replies'**
+  String get operatorReplies;
+
+  /// No description provided for @operatorAvgHandling.
+  ///
+  /// In en, this message translates to:
+  /// **'Average time per case'**
+  String get operatorAvgHandling;
+
+  /// No description provided for @operatorLastActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Last active {time}'**
+  String operatorLastActive(String time);
+
+  /// No description provided for @operatorCases.
+  ///
+  /// In en, this message translates to:
+  /// **'Cases'**
+  String get operatorCases;
+
+  /// No description provided for @noOperators.
+  ///
+  /// In en, this message translates to:
+  /// **'No support staff yet. Add them in Support staff.'**
+  String get noOperators;
+
+  /// No description provided for @statUnassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Unassigned requests'**
+  String get statUnassigned;
+
+  /// No description provided for @statUnanswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered requests'**
+  String get statUnanswered;
+
+  /// No description provided for @statOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'Late replies'**
+  String get statOverdue;
+
+  /// No description provided for @alertSupportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Support replies'**
+  String get alertSupportTitle;
+
+  /// No description provided for @alertSupportDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'When CodaMi support writes to you'**
+  String get alertSupportDescription;
+
+  /// No description provided for @durationSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} s'**
+  String durationSeconds(int n);
+
+  /// No description provided for @durationMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} min'**
+  String durationMinutes(int n);
+
+  /// No description provided for @durationHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{h} h {m} min'**
+  String durationHours(int h, int m);
+
+  /// No description provided for @durationDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{d} d {h} h'**
+  String durationDays(int d, int h);
+
+  /// No description provided for @searchUsersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or email'**
+  String get searchUsersHint;
+
+  /// No description provided for @searchTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Type at least 2 characters'**
+  String get searchTooShort;
+
+  /// No description provided for @pickStaffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a user'**
+  String get pickStaffTitle;
+
+  /// No description provided for @pickStaffHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a person to add them to the support team.'**
+  String get pickStaffHint;
+
+  /// No description provided for @makeStaffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make {name} support staff?'**
+  String makeStaffTitle(String name);
+
+  /// No description provided for @makeStaffMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'They will see the admin side and can answer tickets and live chats. You can remove them at any time.'**
+  String get makeStaffMessage;
+
+  /// No description provided for @makeStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to team'**
+  String get makeStaff;
+
+  /// No description provided for @supportStaffSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Support staff'**
+  String get supportStaffSwitch;
+
+  /// No description provided for @supportStaffSwitchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Can answer tickets and live chats'**
+  String get supportStaffSwitchSubtitle;
+
+  /// No description provided for @staffRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is no longer on the support team.'**
+  String staffRemoved(String name);
+
+  /// No description provided for @removeStaffCasesNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Their open cases go back to the queue.'**
+  String get removeStaffCasesNote;
+
+  /// No description provided for @pushOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get pushOpen;
+
+  /// No description provided for @chatToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get chatToday;
+
+  /// No description provided for @chatLoadEarlier.
+  ///
+  /// In en, this message translates to:
+  /// **'Load earlier messages'**
+  String get chatLoadEarlier;
+
+  /// No description provided for @supportPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get supportPeople;
+
+  /// No description provided for @supportTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Times'**
+  String get supportTimes;
+
+  /// No description provided for @supportRequestInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Request'**
+  String get supportRequestInfo;
+
+  /// No description provided for @supportType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get supportType;
+
+  /// No description provided for @supportResolve.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as resolved'**
+  String get supportResolve;
+
+  /// No description provided for @ticketsWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} waiting for a reply'**
+  String ticketsWaiting(int count);
+
+  /// No description provided for @ticketsAllClear.
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up'**
+  String get ticketsAllClear;
 }
 
 class _AppLocalizationsDelegate

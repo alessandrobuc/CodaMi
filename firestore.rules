@@ -65,6 +65,10 @@ service cloud.firestore {
         && (!('durationSeconds' in data) || data.durationSeconds is int);
     }
 
+    function supportCase(caseId) {
+      return get(/databases/$(database)/documents/supportCases/$(caseId)).data;
+    }
+
     function validReport(data) {
       return data.keys().hasOnly([
           'ownerId', 'ownerName', 'ownerContact', 'type', 'petId', 'petName',
@@ -102,7 +106,7 @@ service cloud.firestore {
               && request.resource.data.blockedUsers.size() <= 500))
           && (!('notificationPrefs' in request.resource.data)
             || (request.resource.data.notificationPrefs is map
-              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved']))))
+              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support']))))
         || (isAdmin() && !isUser(uid)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
           && roleOf(resource.data) in ['user', 'support']
@@ -168,6 +172,54 @@ service cloud.firestore {
         && optionalString(request.resource.data, 'note', 300)
         && request.resource.data.createdAt == request.time;
       allow delete: if isStaff();
+    }
+
+    // Support cases, events and stats are written only by Cloud Functions.
+    match /supportCases/{caseId} {
+      allow read: if isStaff() || isUser(resource.data.userId);
+
+      // Users write as the case owner; support staff only once they took the case.
+      match /messages/{messageId} {
+        allow read: if isStaff() || isUser(supportCase(caseId).userId);
+        allow create: if signedIn()
+          && request.resource.data.keys().hasOnly(['senderId', 'senderRole', 'text', 'createdAt'])
+          && request.resource.data.senderId == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 2000
+          && request.resource.data.createdAt == request.time
+          && supportCase(caseId).status != 'closed'
+          && ((request.resource.data.senderRole == 'user'
+              && supportCase(caseId).userId == request.auth.uid)
+            || (request.resource.data.senderRole == 'staff'
+              && (isAdmin() || (isStaff() && supportCase(caseId).assignedTo == request.auth.uid))));
+      }
+
+      match /events/{eventId} {
+        allow read: if isStaff();
+      }
+    }
+
+    match /staffPresence/{uid} {
+      allow read: if isStaff();
+      allow create, update: if isUser(uid) && isStaff()
+        && request.resource.data.keys().hasOnly(['state', 'lastSeen'])
+        && request.resource.data.state in ['online', 'away', 'offline']
+        && request.resource.data.lastSeen == request.time;
+      allow delete: if isUser(uid);
+    }
+
+    match /staffStats/{uid} {
+      allow read: if isAdmin() || (isUser(uid) && isStaff());
+    }
+
+    match /config/support {
+      allow read: if isStaff();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['chatReplyMinutes', 'ticketReplyHours', 'autoCloseDays'])
+        && request.resource.data.get('chatReplyMinutes', 1) is int
+        && request.resource.data.get('ticketReplyHours', 1) is int
+        && request.resource.data.get('autoCloseDays', 1) is int;
     }
   }
 }

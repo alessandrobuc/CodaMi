@@ -16,6 +16,7 @@ import '../../../legal/legal_content.dart';
 import '../../../legal/legal_screen.dart';
 import '../../../moderation/presentation/screens/blocked_users_screen.dart';
 import '../../../notifications/presentation/screens/notification_settings_screen.dart';
+import '../../../support/presentation/screens/help_support_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -238,6 +239,17 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             _SectionCard(
               children: [
+                _ProfileTile(
+                  icon: Icons.support_agent_rounded,
+                  color: AppColors.primary,
+                  title: l10n.helpSupport,
+                  subtitle: l10n.helpSupportSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const HelpSupportScreen(),
+                    ),
+                  ),
+                ),
                 _ProfileTile(
                   icon: Icons.privacy_tip_outlined,
                   color: AppColors.primary,

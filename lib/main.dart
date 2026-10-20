@@ -37,6 +37,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'CodaMi',
       navigatorKey: appNavigatorKey,
+      scaffoldMessengerKey: appMessengerKey,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

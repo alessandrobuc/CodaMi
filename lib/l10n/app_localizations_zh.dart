@@ -1772,4 +1772,402 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get uploadVideo => '上传视频';
+
+  @override
+  String get helpSupport => '帮助与支持';
+
+  @override
+  String get helpSupportSubtitle => '与我们聊天或提交请求';
+
+  @override
+  String get supportIntroTitle => '我们能帮你什么？';
+
+  @override
+  String get supportIntroMessage => '我们的团队会在应用内回复。回复时你会收到通知。';
+
+  @override
+  String get supportStartChat => '开始在线聊天';
+
+  @override
+  String get supportStartChatOnline => '现在有客服在线';
+
+  @override
+  String get supportChatOffline => '目前没有客服在线。提交请求后我们会尽快回复。';
+
+  @override
+  String get supportSendRequest => '提交请求';
+
+  @override
+  String get supportSendRequestSubtitle => '我们通常在 24 小时内回复';
+
+  @override
+  String get supportMyRequests => '我的请求';
+
+  @override
+  String get supportNoRequests => '暂无请求';
+
+  @override
+  String get supportNoRequestsMessage => '你与客服的对话会显示在这里。';
+
+  @override
+  String get supportNewChat => '新的在线聊天';
+
+  @override
+  String get supportNewRequest => '新请求';
+
+  @override
+  String get supportCategory => '主题';
+
+  @override
+  String get categoryAccount => '账户与登录';
+
+  @override
+  String get categoryListing => '走失或寻获信息';
+
+  @override
+  String get categoryApp => '应用问题';
+
+  @override
+  String get categoryOther => '其他';
+
+  @override
+  String get supportSubject => '标题';
+
+  @override
+  String get supportSubjectHint => '简单描述';
+
+  @override
+  String get supportSubjectTooShort => '请至少输入 3 个字符';
+
+  @override
+  String get supportMessage => '消息';
+
+  @override
+  String get supportMessageHint => '告诉我们发生了什么';
+
+  @override
+  String get supportMessageRequired => '请输入消息';
+
+  @override
+  String get supportSend => '发送';
+
+  @override
+  String get supportTooManyOpen => '你已有 3 个未完成的请求，请在其中一个中继续。';
+
+  @override
+  String get supportTypeMessage => '输入消息…';
+
+  @override
+  String get supportTeam => 'CodaMi 客服';
+
+  @override
+  String get supportMarkSolved => '标记为已解决';
+
+  @override
+  String get supportMarkSolvedConfirm => '将此请求标记为已解决？如仍需帮助，可以再次发送消息。';
+
+  @override
+  String get supportClosedNote => '此请求已关闭。如需更多帮助，请新建请求。';
+
+  @override
+  String get supportResolvedNote => '已标记为已解决。再次发送消息会重新打开。';
+
+  @override
+  String get supportWaitingNote => '谢谢！我们的团队很快会在这里回复。';
+
+  @override
+  String get kindChat => '在线聊天';
+
+  @override
+  String get kindTicket => '请求';
+
+  @override
+  String get caseStatusOpen => '待处理';
+
+  @override
+  String get caseStatusInProgress => '处理中';
+
+  @override
+  String get caseStatusWaitingUser => '等待回复';
+
+  @override
+  String get caseStatusResolved => '已解决';
+
+  @override
+  String get caseStatusClosed => '已关闭';
+
+  @override
+  String get filterUnanswered => '未回复';
+
+  @override
+  String get filterUnassigned => '未分配';
+
+  @override
+  String get filterMine => '我的';
+
+  @override
+  String get filterActive => '进行中';
+
+  @override
+  String get filterDone => '已完成';
+
+  @override
+  String get supportSearchHint => '搜索 CM-1042 或邮箱';
+
+  @override
+  String get supportNoCases => '这里没有请求';
+
+  @override
+  String get supportNoCasesMessage => '此列表中没有待处理的内容。';
+
+  @override
+  String get supportTake => '接手此请求';
+
+  @override
+  String get supportTakeToReply => '接手此请求后才能回复。';
+
+  @override
+  String get supportAlreadyTaken => '其他客服已接手此请求。';
+
+  @override
+  String get supportUnassigned => '未分配';
+
+  @override
+  String get supportReassign => '重新分配';
+
+  @override
+  String get supportAssignTo => '分配给';
+
+  @override
+  String get supportBackToQueue => '放回队列';
+
+  @override
+  String get supportChangeStatus => '更改状态';
+
+  @override
+  String get supportChat => '聊天';
+
+  @override
+  String get supportTimeline => '时间线';
+
+  @override
+  String get supportDetails => '详情';
+
+  @override
+  String supportWaitingFor(String time) {
+    return '已等待 $time';
+  }
+
+  @override
+  String get supportOverdue => '回复超时';
+
+  @override
+  String get supportOpened => '创建时间';
+
+  @override
+  String get supportTakenOver => '接手时间';
+
+  @override
+  String get supportWaitToTake => '等待接手时长';
+
+  @override
+  String get supportFirstReply => '首次回复';
+
+  @override
+  String get supportAvgReply => '平均回复时间';
+
+  @override
+  String get supportHandlingTime => '处理时长';
+
+  @override
+  String get supportResolvedAt => '解决时间';
+
+  @override
+  String get supportMessagesCount => '消息数';
+
+  @override
+  String get supportOperator => '客服';
+
+  @override
+  String get supportUserLabel => '用户';
+
+  @override
+  String eventCreated(String name) {
+    return '$name 创建了请求';
+  }
+
+  @override
+  String eventTaken(String name) {
+    return '$name 接手了请求';
+  }
+
+  @override
+  String eventReassigned(String from, String to) {
+    return '已从 $from 重新分配给 $to';
+  }
+
+  @override
+  String eventStatus(String name, String status) {
+    return '$name 将状态改为$status';
+  }
+
+  @override
+  String get eventReopened => '用户重新打开了请求';
+
+  @override
+  String get eventOverdue => '未在时限内回复';
+
+  @override
+  String get eventAutoClosed => '已自动关闭';
+
+  @override
+  String get presenceOnline => '在线';
+
+  @override
+  String get presenceAway => '离开';
+
+  @override
+  String get presenceOffline => '离线';
+
+  @override
+  String get presenceAvailable => '可接待在线聊天';
+
+  @override
+  String get presenceAvailableSubtitle => '有客服在线时，用户可以发起在线聊天';
+
+  @override
+  String get supportOperators => '客服人员';
+
+  @override
+  String get supportOperatorsSubtitle => '活动、请求与回复时间';
+
+  @override
+  String get operatorOpenCases => '进行中的请求';
+
+  @override
+  String get operatorTaken => '已接手';
+
+  @override
+  String get operatorResolved => '已解决';
+
+  @override
+  String get operatorReplies => '回复数';
+
+  @override
+  String get operatorAvgHandling => '每个请求的平均时长';
+
+  @override
+  String operatorLastActive(String time) {
+    return '最近活动 $time';
+  }
+
+  @override
+  String get operatorCases => '请求';
+
+  @override
+  String get noOperators => '暂无客服人员，请在客服团队中添加。';
+
+  @override
+  String get statUnassigned => '未分配的请求';
+
+  @override
+  String get statUnanswered => '未回复的请求';
+
+  @override
+  String get statOverdue => '超时未回复';
+
+  @override
+  String get alertSupportTitle => '客服回复';
+
+  @override
+  String get alertSupportDescription => 'CodaMi 客服给你发消息时';
+
+  @override
+  String durationSeconds(int n) {
+    return '$n 秒';
+  }
+
+  @override
+  String durationMinutes(int n) {
+    return '$n 分钟';
+  }
+
+  @override
+  String durationHours(int h, int m) {
+    return '$h 小时 $m 分钟';
+  }
+
+  @override
+  String durationDays(int d, int h) {
+    return '$d 天 $h 小时';
+  }
+
+  @override
+  String get searchUsersHint => '按姓名或邮箱搜索';
+
+  @override
+  String get searchTooShort => '请至少输入 2 个字符';
+
+  @override
+  String get pickStaffTitle => '选择用户';
+
+  @override
+  String get pickStaffHint => '点击某人即可将其加入客服团队。';
+
+  @override
+  String makeStaffTitle(String name) {
+    return '将 $name 设为客服人员？';
+  }
+
+  @override
+  String get makeStaffMessage => '对方将看到管理端，并可回复请求和在线聊天。你可以随时移除。';
+
+  @override
+  String get makeStaff => '加入团队';
+
+  @override
+  String get supportStaffSwitch => '客服人员';
+
+  @override
+  String get supportStaffSwitchSubtitle => '可回复请求和在线聊天';
+
+  @override
+  String staffRemoved(String name) {
+    return '$name 已不再是客服人员。';
+  }
+
+  @override
+  String get removeStaffCasesNote => '其未完成的请求将回到队列。';
+
+  @override
+  String get pushOpen => '打开';
+
+  @override
+  String get chatToday => '今天';
+
+  @override
+  String get chatLoadEarlier => '加载更早的消息';
+
+  @override
+  String get supportPeople => '人员';
+
+  @override
+  String get supportTimes => '时间';
+
+  @override
+  String get supportRequestInfo => '请求';
+
+  @override
+  String get supportType => '类型';
+
+  @override
+  String get supportResolve => '标记为已解决';
+
+  @override
+  String ticketsWaiting(int count) {
+    return '$count 个等待回复';
+  }
+
+  @override
+  String get ticketsAllClear => '全部处理完毕';
 }

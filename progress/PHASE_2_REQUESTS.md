@@ -9,17 +9,17 @@ The client's new feature requests (received Thu 15 Oct 2026), what already exist
 - **Donations:** the interface is built first; the payment integration is decided by the client after reviewing the options below. CodaMi is not a registered nonprofit, so in-app payments must use Google Play Billing and Apple In-App Purchase.
 - **Videos are uploaded and managed by admins** from the admin section of the app.
 
-_Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 and 5)_
+_Last updated: Tue 20 Oct 2026 (support, 7, built)_
 
 | # | Request | Status | Size |
 |---|---|---|---|
 | 1 | Language selection on first launch | Done (Thu 15 Oct) | Small |
-| 2 | Administrative dashboard | Mostly done (roles, dashboard, support staff, reported content, listings, users, videos). Tickets left | Large |
+| 2 | Administrative dashboard | Done (roles, dashboard, support staff, reported content, listings, users, videos, tickets, operators) | Large |
 | 3 | Customizable notifications (per-type sounds, phone sounds) | Built (Mon 19 Oct), to test on real phones. iPhone custom files left | Medium |
 | 4 | Optional cash reward on lost listings | Done (Thu 15 Oct) | Small |
 | 5 | Random videos based on the user's pets | Built (Mon 19 Oct), to test with real videos. YouTube links left | Medium |
 | 6 | Optional donations | Not started | Small (interface) + Medium (payments) |
-| 7 | Live chat, tickets and operator monitoring | Not started | Large |
+| 7 | Live chat, tickets and operator monitoring | Built (Tue 20 Oct), to test on real phones | Large |
 
 ---
 
@@ -49,7 +49,7 @@ _Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 a
 - [x] **Users** (admin): list, search by email, details, disable / enable (server function, also hides and restores their open listings), delete (server function)
 - [x] Rules: `flags` collection, staff hide/restore, admin delete, protected `disabled` field (32 rule checks pass in the emulator)
 - [x] Videos screen (Mon 19 Oct, see 5)
-- [ ] Tickets screen (marked "Soon", see 7)
+- [x] Tickets tab and Operators screen (Tue 20 Oct, see 7)
 
 **First admin:** Firebase console → Firestore → `users` → your user document → add field `role` (string) = `admin`.
 
@@ -78,7 +78,7 @@ _Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 a
 - [x] Tested on a real Android phone (Mon 19 Oct): works
 - [ ] Test on a real iPhone (CodaMi sounds; app open, in the background and closed) once the client gives access to the Apple account
 - [ ] iPhone audio files from Files (convert and trim to 30 s) once the client accepts Apple's limits
-- [ ] Support reply notifications get their own type when 7 is built
+- [x] Support replies have their own type (`support`) with its own switch and sound (Tue 20 Oct)
 
 **Proposed approach**
 - Profile → **Notifications** screen: one row per type (new lost/found pet nearby, report resolved, support reply, app news), each with an on/off switch, a sound and a preview button
@@ -166,6 +166,23 @@ _Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 a
 
 **Already there:** a **Contact us** button on the legal pages that opens an email. A `support` role and the **Support staff** screen. A **Tickets** tab marked "Soon".
 
+**Done (Tue 20 Oct)**
+- [x] Data model, rules and indexes as below; `counters/supportCases` gives reference numbers from `CM-1001`
+- [x] Cloud Functions: `supportAvailability`, `supportCreateCase` (max 3 open requests per user), `supportTakeCase`, `supportReassignCase` (admin), `supportSetStatus`, `onSupportMessageCreated`, `supportSweep` (every 10 min: late replies, auto-close). Code in `functions/src/support.ts` (rules and timings, unit tested) and `functions/src/supportFunctions.ts`
+- [x] Staff must take a case before replying (rules check it); admins can always reply. Users can mark their request as solved; a new message reopens it
+- [x] Response times per reply and handling time per work period, added up per case and per operator in `staffStats/{uid}`
+- [x] Presence: the admin side sends a heartbeat every 2 minutes; staff count as online for 5 minutes after the last one. Operators can switch to "away"
+- [x] Limits in `config/support` (`chatReplyMinutes` 5, `ticketReplyHours` 24, `autoCloseDays` 7), defaults used when missing
+- [x] User side: Profile → Help & support, new chat / request, My requests, chat screen, push on reply
+- [x] Admin side: Tickets tab (Unanswered, Unassigned, Mine, Active, Finished, search), case screen (Chat, Details, Timeline, take / status / reassign), More → Operators with per-operator stats and cases, support counts on the dashboard
+- [x] Account deletion removes the user's support requests
+- [x] Pushes for every support event: new request, new message, reply, taken, assigned / reassigned, resolved / closed by staff, solved by the user, late reply (operator and admins), cases back in the queue
+- [x] Support staff are picked from the users list (search by name or email) or switched on from a user's page; removed staff's open cases go back to the queue (`onUserWritten`)
+- [x] All 10 languages; server, app, rules and full emulator tests pass
+- [ ] Test on real phones
+- [ ] Attachments (photos) in chat, if the client wants them
+- [ ] Web admin panel, if the client wants it
+
 **Data model**
 - `supportCases/{id}`
   - Basic fields: `kind` (`chat` / `ticket`), reference number `CM-1042` (counter in a transaction), userId, subject, category, language
@@ -221,5 +238,5 @@ _Last updated: Mon 19 Oct 2026 (client clarified 3, 5 and 7; work started on 3 a
 4. ~~Admin section: listings, reported content, users~~ (done)
 5. Videos: admin upload and videos for you (built Mon 19 Oct); YouTube links and support prompts later
 6. Notification settings and sounds (built Mon 19 Oct); iPhone audio files after the client replies
-7. Support tickets, live chat and operator monitoring
+7. ~~Support tickets, live chat and operator monitoring~~ (built Tue 20 Oct)
 8. Donation interface, then store payments once the client decides and sets up the payment profiles

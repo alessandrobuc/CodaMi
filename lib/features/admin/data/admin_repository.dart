@@ -63,15 +63,6 @@ class AdminRepository {
           ),
       );
 
-  Future<StaffMember?> findUserByEmail(String email) async {
-    final typed = email.trim();
-    final snap = await _users
-        .where('email', whereIn: {typed, typed.toLowerCase()}.toList())
-        .limit(1)
-        .get();
-    return snap.docs.isEmpty ? null : StaffMember.fromDoc(snap.docs.first);
-  }
-
   Future<void> setRole(String uid, UserRole role) => _users.doc(uid).update({
     'role': role.name,
     'updatedAt': FieldValue.serverTimestamp(),
@@ -109,15 +100,29 @@ class AdminRepository {
         (d) => d.exists ? UserModel.fromMap({...d.data()!, 'uid': d.id}) : null,
       );
 
-  Future<List<UserModel>> searchUsers(String email) async {
-    final typed = email.trim();
-    final snap = await _users
-        .where('email', whereIn: {typed, typed.toLowerCase()}.toList())
-        .limit(5)
-        .get();
-    return snap.docs
+  // Matches the start of a name or email. `searchName` / `searchEmail` are
+  // kept by a Cloud Function; the exact `email` match covers older profiles.
+  Future<List<UserModel>> searchUsers(String text) async {
+    final typed = text.trim();
+    final lower = typed.toLowerCase();
+    Query<Map<String, dynamic>> prefix(String field) => _users
+        .where(field, isGreaterThanOrEqualTo: lower)
+        .where(field, isLessThan: '$lower\uf8ff')
+        .limit(20);
+
+    final results = await Future.wait([
+      prefix('searchName').get(),
+      prefix('searchEmail').get(),
+      _users.where('email', whereIn: {typed, lower}.toList()).limit(5).get(),
+    ]);
+    final byId = {
+      for (final snap in results)
+        for (final d in snap.docs) d.id: d,
+    };
+    return byId.values
         .map((d) => UserModel.fromMap({...d.data(), 'uid': d.id}))
-        .toList();
+        .toList()
+      ..sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
   }
 
   Future<int> reportCount(String uid) async =>

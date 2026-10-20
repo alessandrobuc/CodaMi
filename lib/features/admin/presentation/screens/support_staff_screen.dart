@@ -3,19 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
-import '../../../../core/utils/validators.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
+import 'admin_users_screen.dart';
 
 class SupportStaffScreen extends ConsumerWidget {
   const SupportStaffScreen({super.key});
 
   Future<void> _add(BuildContext context, WidgetRef ref) async {
-    final added = await showDialog<String>(
-      context: context,
-      builder: (_) => const _AddStaffDialog(),
+    final added = await Navigator.of(context).push<String>(
+      MaterialPageRoute(
+        builder: (_) => const AdminUsersScreen(pickStaff: true),
+      ),
     );
     if (added != null && context.mounted) {
       SnackbarUtils.showSuccess(context, context.l10n.staffAdded(added));
@@ -32,7 +33,9 @@ class SupportStaffScreen extends ConsumerWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l10n.removeStaffTitle(member.name)),
-        content: Text(l10n.removeStaffMessage),
+        content: Text(
+          '${l10n.removeStaffMessage} ${l10n.removeStaffCasesNote}',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -51,6 +54,12 @@ class SupportStaffScreen extends ConsumerWidget {
       await ref
           .read(adminRepositoryProvider)
           .setRole(member.uid, UserRole.user);
+      if (context.mounted) {
+        SnackbarUtils.showSuccess(
+          context,
+          l10n.staffRemoved(member.name.isEmpty ? member.email : member.name),
+        );
+      }
     } catch (_) {
       if (context.mounted) SnackbarUtils.showError(context, l10n.actionFailed);
     }
@@ -88,7 +97,12 @@ class SupportStaffScreen extends ConsumerWidget {
                 ),
               )
             : ListView.separated(
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 96),
+                padding: EdgeInsets.fromLTRB(
+                  20,
+                  8,
+                  20,
+                  120 + MediaQuery.viewPaddingOf(context).bottom,
+                ),
                 itemCount: members.length,
                 separatorBuilder: (_, _) => const SizedBox(height: 10),
                 itemBuilder: (context, i) {
@@ -127,104 +141,6 @@ class SupportStaffScreen extends ConsumerWidget {
                 },
               ),
       ),
-    );
-  }
-}
-
-class _AddStaffDialog extends ConsumerStatefulWidget {
-  const _AddStaffDialog();
-
-  @override
-  ConsumerState<_AddStaffDialog> createState() => _AddStaffDialogState();
-}
-
-class _AddStaffDialogState extends ConsumerState<_AddStaffDialog> {
-  final _email = TextEditingController();
-  bool _busy = false;
-  String? _error;
-
-  @override
-  void dispose() {
-    _email.dispose();
-    super.dispose();
-  }
-
-  Future<void> _submit() async {
-    final l10n = context.l10n;
-    final email = _email.text.trim();
-    final invalid = Validators.email(email);
-    if (invalid != null) {
-      setState(() => _error = invalid);
-      return;
-    }
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
-      final repo = ref.read(adminRepositoryProvider);
-      final user = await repo.findUserByEmail(email);
-      if (user == null) {
-        setState(() => _error = l10n.userNotFound);
-      } else if (user.role.isStaff) {
-        setState(() => _error = l10n.alreadyStaff);
-      } else {
-        await repo.setRole(user.uid, UserRole.support);
-        if (mounted) {
-          Navigator.pop(context, user.name.isEmpty ? user.email : user.name);
-        }
-        return;
-      }
-    } catch (_) {
-      setState(() => _error = l10n.actionFailed);
-    }
-    if (mounted) setState(() => _busy = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return AlertDialog(
-      title: Text(l10n.addSupportStaff),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.addSupportStaffHint,
-            style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
-          ),
-          const SizedBox(height: 12),
-          TextField(
-            controller: _email,
-            autofocus: true,
-            keyboardType: TextInputType.emailAddress,
-            enabled: !_busy,
-            onSubmitted: (_) => _submit(),
-            decoration: InputDecoration(
-              hintText: l10n.email,
-              errorText: _error,
-              prefixIcon: const Icon(Icons.email_outlined),
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: _busy ? null : () => Navigator.pop(context),
-          child: Text(l10n.cancel),
-        ),
-        TextButton(
-          onPressed: _busy ? null : _submit,
-          child: _busy
-              ? const SizedBox(
-                  width: 18,
-                  height: 18,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                )
-              : Text(l10n.add),
-        ),
-      ],
     );
   }
 }
