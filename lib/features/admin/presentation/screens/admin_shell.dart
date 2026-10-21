@@ -9,6 +9,7 @@ import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../../moderation/presentation/providers/moderation_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/widgets/push_banner.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
@@ -66,9 +67,18 @@ class _AdminShellState extends ConsumerState<AdminShell>
                 builder: (_) => SupportCaseScreen(caseId: id, asStaff: true),
               ),
             ),
+            onOpenPhotoReview: _openReported,
           );
       _startHeartbeat();
     });
+  }
+
+  void _openReported() {
+    if (!mounted) return;
+    appNavigatorKey.currentState?.popUntil((route) => route.isFirst);
+    final isAdmin = ref.read(userRoleProvider) == UserRole.admin;
+    ref.read(reportedSectionProvider.notifier).select(ReportedSection.photos);
+    setState(() => _index = isAdmin ? 2 : 1);
   }
 
   @override

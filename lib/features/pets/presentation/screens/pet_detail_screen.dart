@@ -14,6 +14,7 @@ import 'pet_form_screen.dart';
 import 'package:intl/intl.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/labels.dart';
+import '../../../moderation/presentation/widgets/held_photo_notice.dart';
 
 class PetDetailScreen extends ConsumerStatefulWidget {
   final Pet pet;
@@ -201,6 +202,7 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                 ),
                 sliver: SliverList.list(
                   children: [
+                    HeldPhotoNotice(photoUrls: pet.photoUrls),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

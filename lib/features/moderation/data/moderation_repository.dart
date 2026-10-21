@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../location/data/datasources/places_service.dart';
 import '../../reports/domain/entities/reports_entity.dart';
 
 enum FlagReason {
@@ -67,6 +69,78 @@ class FlaggedReport {
       (byReport[flag.reportId] ??= []).add(flag);
     }
     return [for (final e in byReport.entries) FlaggedReport(e.key, e.value)];
+  }
+}
+
+enum PhotoCheckReason {
+  adult,
+  racy,
+  violence;
+
+  static PhotoCheckReason fromValue(Object? value) =>
+      values.where((r) => r.name == value).firstOrNull ?? adult;
+}
+
+enum Likelihood {
+  possible,
+  likely,
+  veryLikely;
+
+  static Likelihood fromValue(Object? value) => switch (value) {
+    'VERY_LIKELY' => veryLikely,
+    'LIKELY' => likely,
+    _ => possible,
+  };
+}
+
+// A photo the AI held back, waiting for a moderator. Written by Cloud Functions.
+class PhotoCheck {
+  final String id;
+  final String path;
+  final String ownerId;
+  final String ownerName;
+  final bool isPetPhoto;
+  final bool blocked;
+  final PhotoCheckReason reason;
+  final Likelihood level;
+  final DateTime? createdAt;
+
+  const PhotoCheck({
+    required this.id,
+    required this.path,
+    required this.ownerId,
+    required this.ownerName,
+    required this.isPetPhoto,
+    required this.blocked,
+    required this.reason,
+    required this.level,
+    this.createdAt,
+  });
+
+  factory PhotoCheck.fromDoc(DocumentSnapshot<Map<String, dynamic>> doc) {
+    final data = doc.data() ?? const {};
+    return PhotoCheck(
+      id: doc.id,
+      path: data['path'] as String? ?? '',
+      ownerId: data['ownerId'] as String? ?? '',
+      ownerName: data['ownerName'] as String? ?? '',
+      isPetPhoto: data['folder'] == 'pets',
+      blocked: data['result'] == 'blocked',
+      reason: PhotoCheckReason.fromValue(data['reason']),
+      level: Likelihood.fromValue(data['level']),
+      createdAt: (data['createdAt'] as Timestamp?)?.toDate(),
+    );
+  }
+
+  // Download links look like `.../o/pets%2Fuid%2Fname.jpg?alt=media&token=...`.
+  static String? pathOfUrl(String url) {
+    final match = RegExp(r'/o/([^?#]+)').firstMatch(url);
+    if (match == null) return null;
+    try {
+      return Uri.decodeComponent(match.group(1)!);
+    } catch (_) {
+      return null;
+    }
   }
 }
 
@@ -158,6 +232,32 @@ class ModerationRepository {
             : ReportStatus.resolved.name,
         'hiddenBy': FieldValue.delete(),
         'updatedAt': FieldValue.serverTimestamp(),
+      });
+
+  Query<Map<String, dynamic>> get _pendingChecks =>
+      _db.collection('photoChecks').where('status', isEqualTo: 'pending');
+
+  Stream<List<PhotoCheck>> watchPhotoReviews({required int limit}) =>
+      _pendingChecks
+          .orderBy('createdAt')
+          .limit(limit)
+          .snapshots()
+          .map((snap) => snap.docs.map(PhotoCheck.fromDoc).toList());
+
+  Stream<Set<String>> watchHeldPaths(String uid) => _pendingChecks
+      .where('ownerId', isEqualTo: uid)
+      .snapshots()
+      .map((snap) => {for (final d in snap.docs) PhotoCheck.fromDoc(d).path});
+
+  Future<String> heldPhotoUrl(String path) =>
+      _storage.ref('quarantine/$path').getDownloadURL();
+
+  Future<void> reviewPhoto(String checkId, {required bool approve}) =>
+      FirebaseFunctions.instanceFor(
+        region: PlacesService.functionsRegion,
+      ).httpsCallable('moderatePhoto').call<Object?>({
+        'checkId': checkId,
+        'action': approve ? 'approve' : 'remove',
       });
 
   // Lost reports can reuse pet photos, so only photos in the report folder go.

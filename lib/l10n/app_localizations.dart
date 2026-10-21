@@ -4079,6 +4079,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All caught up'**
   String get ticketsAllClear;
+
+  /// No description provided for @photoReviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos the AI held back. They stay hidden until you decide.'**
+  String get photoReviewHint;
+
+  /// No description provided for @reasonAdult.
+  ///
+  /// In en, this message translates to:
+  /// **'Nudity or sexual content'**
+  String get reasonAdult;
+
+  /// No description provided for @reasonRacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestive content'**
+  String get reasonRacy;
+
+  /// No description provided for @reasonViolence.
+  ///
+  /// In en, this message translates to:
+  /// **'Violence or blood'**
+  String get reasonViolence;
+
+  /// No description provided for @likelihoodPossible.
+  ///
+  /// In en, this message translates to:
+  /// **'Possible'**
+  String get likelihoodPossible;
+
+  /// No description provided for @likelihoodLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'Likely'**
+  String get likelihoodLikely;
+
+  /// No description provided for @likelihoodVeryLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'Very likely'**
+  String get likelihoodVeryLikely;
+
+  /// No description provided for @hiddenByAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden by AI'**
+  String get hiddenByAi;
+
+  /// No description provided for @petPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet photo'**
+  String get petPhoto;
+
+  /// No description provided for @listingPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing photo'**
+  String get listingPhoto;
+
+  /// No description provided for @uploadedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'By {name}'**
+  String uploadedBy(String name);
+
+  /// No description provided for @tapToView.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to view'**
+  String get tapToView;
+
+  /// No description provided for @approvePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get approvePhoto;
+
+  /// No description provided for @removePhotoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this photo?'**
+  String get removePhotoTitle;
+
+  /// No description provided for @removePhotoMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed from the user\'s pet or listing, and the user will be told why.'**
+  String get removePhotoMessage;
+
+  /// No description provided for @photoApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo approved'**
+  String get photoApproved;
+
+  /// No description provided for @photoRemovedDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo removed'**
+  String get photoRemovedDone;
+
+  /// No description provided for @photoUnderReview.
+  ///
+  /// In en, this message translates to:
+  /// **'A photo is being checked by our team and is hidden until then.'**
+  String get photoUnderReview;
+
+  /// No description provided for @reportedTabPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'AI photos'**
+  String get reportedTabPhotos;
+
+  /// No description provided for @reportedTabReports.
+  ///
+  /// In en, this message translates to:
+  /// **'User reports'**
+  String get reportedTabReports;
+
+  /// No description provided for @noPhotosToReview.
+  ///
+  /// In en, this message translates to:
+  /// **'No photos to review'**
+  String get noPhotosToReview;
+
+  /// No description provided for @noPhotosToReviewMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos the AI holds back will appear here.'**
+  String get noPhotosToReviewMessage;
 }
 
 class _AppLocalizationsDelegate

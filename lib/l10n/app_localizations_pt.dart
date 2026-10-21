@@ -2276,4 +2276,76 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'Tudo em dia';
+
+  @override
+  String get photoReviewHint =>
+      'Fotos retidas pela IA. Ficam ocultas até decidires.';
+
+  @override
+  String get reasonAdult => 'Nudez ou conteúdo sexual';
+
+  @override
+  String get reasonRacy => 'Conteúdo provocador';
+
+  @override
+  String get reasonViolence => 'Violência ou sangue';
+
+  @override
+  String get likelihoodPossible => 'Possível';
+
+  @override
+  String get likelihoodLikely => 'Provável';
+
+  @override
+  String get likelihoodVeryLikely => 'Muito provável';
+
+  @override
+  String get hiddenByAi => 'Oculta pela IA';
+
+  @override
+  String get petPhoto => 'Foto do animal';
+
+  @override
+  String get listingPhoto => 'Foto do anúncio';
+
+  @override
+  String uploadedBy(String name) {
+    return 'De $name';
+  }
+
+  @override
+  String get tapToView => 'Toca para ver';
+
+  @override
+  String get approvePhoto => 'Aprovar';
+
+  @override
+  String get removePhotoTitle => 'Remover esta foto?';
+
+  @override
+  String get removePhotoMessage =>
+      'Será removida do animal ou do anúncio do utilizador, que será informado do motivo.';
+
+  @override
+  String get photoApproved => 'Foto aprovada';
+
+  @override
+  String get photoRemovedDone => 'Foto removida';
+
+  @override
+  String get photoUnderReview =>
+      'A nossa equipa está a verificar uma foto, que fica oculta até lá.';
+
+  @override
+  String get reportedTabPhotos => 'Fotos IA';
+
+  @override
+  String get reportedTabReports => 'Denúncias';
+
+  @override
+  String get noPhotosToReview => 'Nenhuma foto para rever';
+
+  @override
+  String get noPhotosToReviewMessage =>
+      'As fotos retidas pela IA vão aparecer aqui.';
 }

@@ -35,6 +35,8 @@ import {
   type PushSettings,
   type ReportSummary,
 } from "./notifications";
+import {pathOfUrl} from "./moderation";
+import {deleteModerationData, isCleared} from "./moderationFunctions";
 import {sendToTokens, tokensOf, type PushToken} from "./push";
 import {releaseCasesOf} from "./supportFunctions";
 import {searchFieldsOf} from "./users";
@@ -321,11 +323,23 @@ async function sendPush(
   });
 }
 
+// New photos are checked by `onPhotoUploaded` at the same time, so wait a little for the result.
+async function withCheckedPhoto(report: ReportSummary, waitMs: number): Promise<ReportSummary> {
+  const path = pathOfUrl(report.photoUrl);
+  const deadline = Date.now() + waitMs;
+  for (;;) {
+    if (await isCleared(path)) return report;
+    if (Date.now() >= deadline) return {...report, photoUrl: null};
+    await new Promise((resolve) => setTimeout(resolve, 1_500));
+  }
+}
+
 export const onReportCreated = onDocumentCreated(
   {document: "reports/{reportId}", region: TRIGGER_REGION},
   async (event) => {
-    const report = readReport(event.params.reportId, event.data?.data());
-    if (!report || report.status !== "open") return;
+    const found = readReport(event.params.reportId, event.data?.data());
+    if (!found || found.status !== "open") return;
+    const report = await withCheckedPhoto(found, 15_000);
     await notifyCity(report, (lang) => newReportContent(report, lang));
   },
 );
@@ -336,8 +350,9 @@ export const onReportResolved = onDocumentUpdated(
     const before = event.data?.before.data();
     const after = event.data?.after.data();
     if (!becameResolved(before, after)) return;
-    const report = readReport(event.params.reportId, after);
-    if (!report) return;
+    const found = readReport(event.params.reportId, after);
+    if (!found) return;
+    const report = await withCheckedPhoto(found, 0);
     await notifyCity(report, (lang) => resolvedContent(report, lang));
   },
 );
@@ -404,6 +419,7 @@ async function deleteUserData(uid: string): Promise<void> {
   const cases = await db.collection("supportCases").where("userId", "==", uid).get();
   for (const doc of cases.docs) await db.recursiveDelete(doc.ref);
   await db.recursiveDelete(db.collection("users").doc(uid));
+  await deleteModerationData(uid);
 
   const bucket = getStorage().bucket();
   await Promise.all(
@@ -512,3 +528,4 @@ export const onUserWritten = onDocumentWritten(
 );
 
 export * from "./supportFunctions";
+export {moderatePhoto, moderationSweep, onPhotoUploaded} from "./moderationFunctions";

@@ -53,11 +53,34 @@ class PhotoUploader {
         await progress.cancel();
       }
       uploadedBytes += sizes[path]!;
-      urls.add(await ref.getDownloadURL());
+      urls.add(await _downloadUrl(ref));
     }
 
     onProgress?.call(1);
     return urls;
+  }
+
+  // Moderation can move a photo to quarantine right after upload. The server
+  // saves its original link first, and that link works again once approved.
+  Future<String> _downloadUrl(Reference ref) async {
+    try {
+      return await ref.getDownloadURL();
+    } on FirebaseException catch (e) {
+      if (e.code != 'object-not-found') rethrow;
+      final ownerId = ref.fullPath.split('/')[1];
+      for (var attempt = 0; attempt < 10; attempt++) {
+        final held = await _firestore
+            .collection('photoChecks')
+            .where('ownerId', isEqualTo: ownerId)
+            .where('path', isEqualTo: ref.fullPath)
+            .limit(1)
+            .get();
+        final url = held.docs.firstOrNull?.data()['url'];
+        if (url is String) return url;
+        await Future<void>.delayed(const Duration(seconds: 1));
+      }
+      rethrow;
+    }
   }
 
   // Lost reports reuse their pet's photos, so a photo is only deleted once

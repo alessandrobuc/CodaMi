@@ -213,6 +213,15 @@ service cloud.firestore {
       allow read: if isAdmin() || (isUser(uid) && isStaff());
     }
 
+    // Written only by Cloud Functions. Owners see the checks of their own photos.
+    match /photoChecks/{checkId} {
+      allow read: if isStaff() || (signedIn() && resource.data.ownerId == request.auth.uid);
+    }
+
+    match /config/moderation {
+      allow read: if isStaff();
+    }
+
     match /config/support {
       allow read: if isStaff();
       allow write: if isAdmin()

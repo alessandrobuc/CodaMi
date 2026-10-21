@@ -2170,4 +2170,72 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get ticketsAllClear => '全部处理完毕';
+
+  @override
+  String get photoReviewHint => '被 AI 拦下的照片，在你做出决定前保持隐藏。';
+
+  @override
+  String get reasonAdult => '裸露或色情内容';
+
+  @override
+  String get reasonRacy => '挑逗性内容';
+
+  @override
+  String get reasonViolence => '暴力或血腥';
+
+  @override
+  String get likelihoodPossible => '可能';
+
+  @override
+  String get likelihoodLikely => '很可能';
+
+  @override
+  String get likelihoodVeryLikely => '极有可能';
+
+  @override
+  String get hiddenByAi => '已被 AI 隐藏';
+
+  @override
+  String get petPhoto => '宠物照片';
+
+  @override
+  String get listingPhoto => '启事照片';
+
+  @override
+  String uploadedBy(String name) {
+    return '上传者：$name';
+  }
+
+  @override
+  String get tapToView => '点击查看';
+
+  @override
+  String get approvePhoto => '通过';
+
+  @override
+  String get removePhotoTitle => '移除这张照片？';
+
+  @override
+  String get removePhotoMessage => '照片将从该用户的宠物或启事中移除，并会告知用户原因。';
+
+  @override
+  String get photoApproved => '照片已通过';
+
+  @override
+  String get photoRemovedDone => '照片已移除';
+
+  @override
+  String get photoUnderReview => '我们的团队正在审核一张照片，审核完成前将保持隐藏。';
+
+  @override
+  String get reportedTabPhotos => 'AI 照片';
+
+  @override
+  String get reportedTabReports => '用户举报';
+
+  @override
+  String get noPhotosToReview => '没有待审核的照片';
+
+  @override
+  String get noPhotosToReviewMessage => '被 AI 拦下的照片会显示在这里。';
 }

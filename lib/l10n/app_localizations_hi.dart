@@ -2256,4 +2256,75 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'सब निपट गया';
+
+  @override
+  String get photoReviewHint =>
+      'AI द्वारा रोकी गई फ़ोटो। आपके फ़ैसले तक ये छिपी रहेंगी।';
+
+  @override
+  String get reasonAdult => 'नग्नता या यौन सामग्री';
+
+  @override
+  String get reasonRacy => 'उत्तेजक सामग्री';
+
+  @override
+  String get reasonViolence => 'हिंसा या ख़ून';
+
+  @override
+  String get likelihoodPossible => 'संभव';
+
+  @override
+  String get likelihoodLikely => 'संभावित';
+
+  @override
+  String get likelihoodVeryLikely => 'बहुत संभावित';
+
+  @override
+  String get hiddenByAi => 'AI ने छिपाई';
+
+  @override
+  String get petPhoto => 'पालतू की फ़ोटो';
+
+  @override
+  String get listingPhoto => 'विज्ञापन की फ़ोटो';
+
+  @override
+  String uploadedBy(String name) {
+    return '$name द्वारा';
+  }
+
+  @override
+  String get tapToView => 'देखने के लिए टैप करें';
+
+  @override
+  String get approvePhoto => 'मंज़ूर करें';
+
+  @override
+  String get removePhotoTitle => 'यह फ़ोटो हटाएँ?';
+
+  @override
+  String get removePhotoMessage =>
+      'इसे उपयोगकर्ता के पालतू या विज्ञापन से हटा दिया जाएगा, और उपयोगकर्ता को कारण बताया जाएगा।';
+
+  @override
+  String get photoApproved => 'फ़ोटो मंज़ूर की गई';
+
+  @override
+  String get photoRemovedDone => 'फ़ोटो हटाई गई';
+
+  @override
+  String get photoUnderReview =>
+      'हमारी टीम एक फ़ोटो की जाँच कर रही है, तब तक वह छिपी रहेगी।';
+
+  @override
+  String get reportedTabPhotos => 'AI फ़ोटो';
+
+  @override
+  String get reportedTabReports => 'उपयोगकर्ता रिपोर्ट';
+
+  @override
+  String get noPhotosToReview => 'जाँच के लिए कोई फ़ोटो नहीं';
+
+  @override
+  String get noPhotosToReviewMessage => 'AI द्वारा रोकी गई फ़ोटो यहाँ दिखेंगी।';
 }

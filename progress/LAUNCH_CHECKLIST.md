@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Wed 21 Oct 2026_
+_Last updated: Wed 21 Oct 2026 (deployed)_
 
 ---
 
@@ -51,10 +51,11 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 4. Firebase
 
-- [ ] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`
-- [ ] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
-- [ ] **Also in that deploy (Mon 19 Oct, storage rules changed again for cover image names):** `videos` rules (Firestore and Storage, admin-only uploads) and the `notificationPrefs` rule; the updated `onReportCreated` / `onReportResolved` send each user's chosen sound and skip turned-off alert types. The first Storage deploy may ask to let Storage rules read Firestore: answer yes.
-- [ ] **Support (Tue 20 Oct), same deploy:** new rules (`supportCases`, `staffPresence`, `staffStats`, `config/support`, the `support` notification type), 6 new indexes and the functions `supportAvailability`, `supportCreateCase`, `supportTakeCase`, `supportReassignCase`, `supportSetStatus`, `onSupportMessageCreated` the scheduled `supportSweep` (every 10 minutes) and `onUserWritten` (search fields for the users list, frees the cases of removed staff). The first deploy of a scheduled function may ask to enable Cloud Scheduler: answer yes.
+- [x] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions` (Wed 21 Oct)
+- [x] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
+- [x] **Also in that deploy (Mon 19 Oct, storage rules changed again for cover image names):** `videos` rules (Firestore and Storage, admin-only uploads) and the `notificationPrefs` rule; the updated `onReportCreated` / `onReportResolved` send each user's chosen sound and skip turned-off alert types. The first Storage deploy may ask to let Storage rules read Firestore: answer yes.
+- [x] **Support (Tue 20 Oct), same deploy:** new rules (`supportCases`, `staffPresence`, `staffStats`, `config/support`, the `support` notification type), 6 new indexes and the functions `supportAvailability`, `supportCreateCase`, `supportTakeCase`, `supportReassignCase`, `supportSetStatus`, `onSupportMessageCreated` the scheduled `supportSweep` (every 10 minutes) and `onUserWritten` (search fields for the users list, frees the cases of removed staff). The first deploy of a scheduled function may ask to enable Cloud Scheduler: answer yes.
+- [x] **AI photo moderation (Wed 21 Oct), same deploy:** the trigger runs in the bucket's region, `us-east1` (confirmed). Cloud Vision API is already enabled. New rules (`photoChecks`, `config/moderation`, `quarantine/` in Storage), 1 new index, and the functions `onPhotoUploaded`, `moderatePhoto`, `moderationSweep`. The first Storage trigger deploy may ask to grant permissions (Eventarc / Pub/Sub): answer yes.
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
@@ -96,7 +97,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Target audience: 18 and over
 - [ ] Support email
 
-Phase 2 features requested by the client (admin panel, rewards, donations, support, videos, sounds) are tracked in `PHASE_2_REQUESTS.md`. Donations and videos will change the Data safety form, privacy labels and possibly the content rating.
+Phase 2 features requested by the client (admin panel, rewards, donations, support, videos, sounds) are tracked in `PHASE_2_REQUESTS.md`. New requests (AI moderation, referrals, emergencies) are in `PHASE_3_REQUESTS.md`, and open questions for the client in `WAITING_FOR_CLIENT.md`. Donations and videos will change the Data safety form, privacy labels and possibly the content rating.
 
 ## 7. Scale (when users grow)
 

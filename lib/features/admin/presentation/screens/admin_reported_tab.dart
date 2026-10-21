@@ -10,6 +10,7 @@ import '../../../../l10n/labels.dart';
 import '../../../moderation/data/moderation_repository.dart';
 import '../../../moderation/presentation/providers/moderation_provider.dart';
 import '../../../moderation/presentation/widgets/flag_actions.dart';
+import '../../../moderation/presentation/widgets/photo_review_card.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../../reports/presentation/providers/reports_provider.dart';
 import '../../../reports/presentation/screens/report_detail_screen.dart';
@@ -21,31 +22,23 @@ class AdminReportedTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final state = ref.watch(flaggedReportsProvider);
-    final items = state.value ?? const <FlaggedReport>[];
+    final flagState = ref.watch(flaggedReportsProvider);
+    final photoState = ref.watch(photoReviewsProvider);
+    final items = flagState.value ?? const <FlaggedReport>[];
+    final photos = photoState.value ?? const <PhotoCheck>[];
+    final section =
+        ref.watch(reportedSectionProvider) ??
+        (photos.isEmpty && items.isNotEmpty
+            ? ReportedSection.reports
+            : ReportedSection.photos);
 
-    final Widget body;
-    if (state.isLoading && !state.hasValue) {
-      body = const Center(child: CircularProgressIndicator());
-    } else if (state.hasError && !state.hasValue) {
-      body = Center(child: Text(l10n.actionFailed));
-    } else if (items.isEmpty) {
-      body = Center(
-        child: EmptyState(
-          icon: const Icon(Icons.verified_user_rounded),
-          title: l10n.noReportedContent,
-          message: l10n.noReportedContentMessage,
-        ),
-      );
-    } else {
-      body = ListView.separated(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 120),
-        itemCount: items.length,
-        separatorBuilder: (_, _) => const SizedBox(height: 12),
-        itemBuilder: (context, i) =>
-            _FlaggedItem(key: ValueKey(items[i].reportId), item: items[i]),
-      );
-    }
+    final Widget body = switch (section) {
+      ReportedSection.photos => _PhotoReviewList(
+        state: photoState,
+        photos: photos,
+      ),
+      ReportedSection.reports => _FlaggedList(state: flagState, items: items),
+    };
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -63,10 +56,144 @@ class AdminReportedTab extends ConsumerWidget {
                 ),
               ),
             ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+              child: Row(
+                children: [
+                  _SectionChip(
+                    label: l10n.reportedTabPhotos,
+                    count: photos.length,
+                    selected: section == ReportedSection.photos,
+                    onSelected: () => ref
+                        .read(reportedSectionProvider.notifier)
+                        .select(ReportedSection.photos),
+                  ),
+                  const SizedBox(width: 8),
+                  _SectionChip(
+                    label: l10n.reportedTabReports,
+                    count: items.length,
+                    selected: section == ReportedSection.reports,
+                    onSelected: () => ref
+                        .read(reportedSectionProvider.notifier)
+                        .select(ReportedSection.reports),
+                  ),
+                ],
+              ),
+            ),
             Expanded(child: body),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SectionChip extends StatelessWidget {
+  final String label;
+  final int count;
+  final bool selected;
+  final VoidCallback onSelected;
+
+  const _SectionChip({
+    required this.label,
+    required this.count,
+    required this.selected,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ChoiceChip(
+      label: Text(count > 0 ? '$label ($count)' : label),
+      selected: selected,
+      showCheckmark: false,
+      selectedColor: AppColors.primary,
+      backgroundColor: AppColors.surface,
+      side: BorderSide(color: selected ? AppColors.primary : AppColors.border),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: selected ? Colors.white : AppColors.text,
+      ),
+      onSelected: (_) => onSelected(),
+    );
+  }
+}
+
+class _PhotoReviewList extends StatelessWidget {
+  final AsyncValue<List<PhotoCheck>> state;
+  final List<PhotoCheck> photos;
+
+  const _PhotoReviewList({required this.state, required this.photos});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    if (state.isLoading && !state.hasValue) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    if (state.hasError && !state.hasValue) {
+      return Center(child: Text(l10n.actionFailed));
+    }
+    if (photos.isEmpty) {
+      return Center(
+        child: EmptyState(
+          icon: const Icon(Icons.auto_awesome_rounded),
+          title: l10n.noPhotosToReview,
+          message: l10n.noPhotosToReviewMessage,
+        ),
+      );
+    }
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Text(
+            l10n.photoReviewHint,
+            style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
+          ),
+        ),
+        for (final check in photos) ...[
+          PhotoReviewCard(key: ValueKey(check.id), check: check),
+          const SizedBox(height: 12),
+        ],
+      ],
+    );
+  }
+}
+
+class _FlaggedList extends StatelessWidget {
+  final AsyncValue<List<FlaggedReport>> state;
+  final List<FlaggedReport> items;
+
+  const _FlaggedList({required this.state, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    if (state.isLoading && !state.hasValue) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    if (state.hasError && !state.hasValue) {
+      return Center(child: Text(l10n.actionFailed));
+    }
+    if (items.isEmpty) {
+      return Center(
+        child: EmptyState(
+          icon: const Icon(Icons.verified_user_rounded),
+          title: l10n.noReportedContent,
+          message: l10n.noReportedContentMessage,
+        ),
+      );
+    }
+    return ListView.separated(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+      itemCount: items.length,
+      separatorBuilder: (_, _) => const SizedBox(height: 12),
+      itemBuilder: (context, i) =>
+          _FlaggedItem(key: ValueKey(items[i].reportId), item: items[i]),
     );
   }
 }

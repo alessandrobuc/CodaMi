@@ -5,6 +5,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 // Phones don't show pushes while the app is open, so the app shows them itself.
+const photoReviewKind = 'photo_review';
+
 typedef ForegroundPush =
     void Function(RemoteMessage message, void Function() open);
 
@@ -23,6 +25,7 @@ class PushService {
     required String uid,
     required void Function(String reportId) onOpenReport,
     void Function(String caseId)? onOpenCase,
+    void Function()? onOpenPhotoReview,
     ForegroundPush? onForeground,
   }) async {
     if (_uid == uid) return;
@@ -34,6 +37,7 @@ class PushService {
       final caseId = message.data['caseId'];
       if (reportId is String && reportId.isNotEmpty) onOpenReport(reportId);
       if (caseId is String && caseId.isNotEmpty) onOpenCase?.call(caseId);
+      if (message.data['kind'] == photoReviewKind) onOpenPhotoReview?.call();
     }
 
     _subscriptions.add(FirebaseMessaging.onMessageOpenedApp.listen(open));

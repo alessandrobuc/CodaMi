@@ -2274,4 +2274,76 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'Tutto in ordine';
+
+  @override
+  String get photoReviewHint =>
+      'Foto bloccate dall\'IA. Restano nascoste finché non decidi tu.';
+
+  @override
+  String get reasonAdult => 'Nudità o contenuti sessuali';
+
+  @override
+  String get reasonRacy => 'Contenuti provocanti';
+
+  @override
+  String get reasonViolence => 'Violenza o sangue';
+
+  @override
+  String get likelihoodPossible => 'Possibile';
+
+  @override
+  String get likelihoodLikely => 'Probabile';
+
+  @override
+  String get likelihoodVeryLikely => 'Molto probabile';
+
+  @override
+  String get hiddenByAi => 'Nascosta dall\'IA';
+
+  @override
+  String get petPhoto => 'Foto dell\'animale';
+
+  @override
+  String get listingPhoto => 'Foto dell\'annuncio';
+
+  @override
+  String uploadedBy(String name) {
+    return 'Di $name';
+  }
+
+  @override
+  String get tapToView => 'Tocca per vedere';
+
+  @override
+  String get approvePhoto => 'Approva';
+
+  @override
+  String get removePhotoTitle => 'Rimuovere questa foto?';
+
+  @override
+  String get removePhotoMessage =>
+      'Verrà rimossa dall\'animale o dall\'annuncio dell\'utente, che riceverà una spiegazione.';
+
+  @override
+  String get photoApproved => 'Foto approvata';
+
+  @override
+  String get photoRemovedDone => 'Foto rimossa';
+
+  @override
+  String get photoUnderReview =>
+      'Il nostro team sta controllando una foto, che resta nascosta fino ad allora.';
+
+  @override
+  String get reportedTabPhotos => 'Foto IA';
+
+  @override
+  String get reportedTabReports => 'Segnalazioni';
+
+  @override
+  String get noPhotosToReview => 'Nessuna foto da controllare';
+
+  @override
+  String get noPhotosToReviewMessage =>
+      'Qui compariranno le foto bloccate dall\'IA.';
 }

@@ -6,6 +6,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/navigation/app_navigator.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../support/presentation/screens/support_case_screen.dart';
+import '../../data/push_service.dart';
 
 void showPushBanner(RemoteMessage message, void Function() open) {
   final caseId = message.data['caseId'];
@@ -79,7 +80,8 @@ void showPushBanner(RemoteMessage message, void Function() open) {
         ),
         action:
             message.data.containsKey('caseId') ||
-                message.data.containsKey('reportId')
+                message.data.containsKey('reportId') ||
+                message.data['kind'] == photoReviewKind
             ? SnackBarAction(
                 label: appL10n.pushOpen,
                 textColor: AppColors.accent,

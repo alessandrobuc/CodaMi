@@ -68,7 +68,7 @@ async function staffOf(uid: string): Promise<Staff | null> {
   return {uid, role, name: nameOf(user)};
 }
 
-async function requireStaff(request: CallableRequest, adminOnly = false): Promise<Staff> {
+export async function requireStaff(request: CallableRequest, adminOnly = false): Promise<Staff> {
   const staff = await staffOf(requireSignedIn(request));
   if (!staff || (adminOnly && staff.role !== "admin")) {
     throw new HttpsError("permission-denied", "Only support staff can do this.");
@@ -153,7 +153,7 @@ interface PushContent {
 }
 
 // Online operators first; when nobody is online every staff member hears about it.
-async function staffToAlert(): Promise<string[]> {
+export async function staffToAlert(): Promise<string[]> {
   const online = await onlineStaffIds();
   if (online.length > 0) return online;
   const staff = await db().collection("users").where("role", "in", STAFF_ROLES).get();

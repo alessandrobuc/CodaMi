@@ -2298,4 +2298,76 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'Alles erledigt';
+
+  @override
+  String get photoReviewHint =>
+      'Von der KI zurückgehaltene Fotos. Sie bleiben ausgeblendet, bis du entscheidest.';
+
+  @override
+  String get reasonAdult => 'Nacktheit oder sexuelle Inhalte';
+
+  @override
+  String get reasonRacy => 'Anzügliche Inhalte';
+
+  @override
+  String get reasonViolence => 'Gewalt oder Blut';
+
+  @override
+  String get likelihoodPossible => 'Möglich';
+
+  @override
+  String get likelihoodLikely => 'Wahrscheinlich';
+
+  @override
+  String get likelihoodVeryLikely => 'Sehr wahrscheinlich';
+
+  @override
+  String get hiddenByAi => 'Von der KI ausgeblendet';
+
+  @override
+  String get petPhoto => 'Tierfoto';
+
+  @override
+  String get listingPhoto => 'Foto der Anzeige';
+
+  @override
+  String uploadedBy(String name) {
+    return 'Von $name';
+  }
+
+  @override
+  String get tapToView => 'Zum Ansehen tippen';
+
+  @override
+  String get approvePhoto => 'Freigeben';
+
+  @override
+  String get removePhotoTitle => 'Dieses Foto entfernen?';
+
+  @override
+  String get removePhotoMessage =>
+      'Es wird aus dem Tier oder der Anzeige des Nutzers entfernt, und der Nutzer erfährt den Grund.';
+
+  @override
+  String get photoApproved => 'Foto freigegeben';
+
+  @override
+  String get photoRemovedDone => 'Foto entfernt';
+
+  @override
+  String get photoUnderReview =>
+      'Unser Team prüft gerade ein Foto. Bis dahin ist es ausgeblendet.';
+
+  @override
+  String get reportedTabPhotos => 'KI-Fotos';
+
+  @override
+  String get reportedTabReports => 'Nutzermeldungen';
+
+  @override
+  String get noPhotosToReview => 'Keine Fotos zu prüfen';
+
+  @override
+  String get noPhotosToReviewMessage =>
+      'Hier erscheinen Fotos, die die KI zurückhält.';
 }

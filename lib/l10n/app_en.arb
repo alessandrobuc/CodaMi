@@ -1286,5 +1286,34 @@
       }
     }
   },
-  "ticketsAllClear": "All caught up"
+  "ticketsAllClear": "All caught up",
+  "photoReviewHint": "Photos the AI held back. They stay hidden until you decide.",
+  "reasonAdult": "Nudity or sexual content",
+  "reasonRacy": "Suggestive content",
+  "reasonViolence": "Violence or blood",
+  "likelihoodPossible": "Possible",
+  "likelihoodLikely": "Likely",
+  "likelihoodVeryLikely": "Very likely",
+  "hiddenByAi": "Hidden by AI",
+  "petPhoto": "Pet photo",
+  "listingPhoto": "Listing photo",
+  "uploadedBy": "By {name}",
+  "@uploadedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tapToView": "Tap to view",
+  "approvePhoto": "Approve",
+  "removePhotoTitle": "Remove this photo?",
+  "removePhotoMessage": "It will be removed from the user's pet or listing, and the user will be told why.",
+  "photoApproved": "Photo approved",
+  "photoRemovedDone": "Photo removed",
+  "photoUnderReview": "A photo is being checked by our team and is hidden until then.",
+  "reportedTabPhotos": "AI photos",
+  "reportedTabReports": "User reports",
+  "noPhotosToReview": "No photos to review",
+  "noPhotosToReviewMessage": "Photos the AI holds back will appear here."
 }

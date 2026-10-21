@@ -2254,4 +2254,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'All caught up';
+
+  @override
+  String get photoReviewHint =>
+      'Photos the AI held back. They stay hidden until you decide.';
+
+  @override
+  String get reasonAdult => 'Nudity or sexual content';
+
+  @override
+  String get reasonRacy => 'Suggestive content';
+
+  @override
+  String get reasonViolence => 'Violence or blood';
+
+  @override
+  String get likelihoodPossible => 'Possible';
+
+  @override
+  String get likelihoodLikely => 'Likely';
+
+  @override
+  String get likelihoodVeryLikely => 'Very likely';
+
+  @override
+  String get hiddenByAi => 'Hidden by AI';
+
+  @override
+  String get petPhoto => 'Pet photo';
+
+  @override
+  String get listingPhoto => 'Listing photo';
+
+  @override
+  String uploadedBy(String name) {
+    return 'By $name';
+  }
+
+  @override
+  String get tapToView => 'Tap to view';
+
+  @override
+  String get approvePhoto => 'Approve';
+
+  @override
+  String get removePhotoTitle => 'Remove this photo?';
+
+  @override
+  String get removePhotoMessage =>
+      'It will be removed from the user\'s pet or listing, and the user will be told why.';
+
+  @override
+  String get photoApproved => 'Photo approved';
+
+  @override
+  String get photoRemovedDone => 'Photo removed';
+
+  @override
+  String get photoUnderReview =>
+      'A photo is being checked by our team and is hidden until then.';
+
+  @override
+  String get reportedTabPhotos => 'AI photos';
+
+  @override
+  String get reportedTabReports => 'User reports';
+
+  @override
+  String get noPhotosToReview => 'No photos to review';
+
+  @override
+  String get noPhotosToReviewMessage =>
+      'Photos the AI holds back will appear here.';
 }

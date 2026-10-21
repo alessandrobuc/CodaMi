@@ -64,4 +64,22 @@ void main() {
     expect(hidden.isOpen, isFalse);
     expect(hidden.activeReward, isNull);
   });
+
+  test('download links map back to their storage path', () {
+    expect(
+      PhotoCheck.pathOfUrl(
+        'https://firebasestorage.googleapis.com/v0/b/app/o/pets%2Fu1%2F1_0.jpg?alt=media&token=t',
+      ),
+      'pets/u1/1_0.jpg',
+    );
+    expect(PhotoCheck.pathOfUrl('https://example.com/a.jpg'), isNull);
+  });
+
+  test('photo check reasons and levels read the server values', () {
+    expect(PhotoCheckReason.fromValue('violence'), PhotoCheckReason.violence);
+    expect(PhotoCheckReason.fromValue('nope'), PhotoCheckReason.adult);
+    expect(Likelihood.fromValue('VERY_LIKELY'), Likelihood.veryLikely);
+    expect(Likelihood.fromValue('LIKELY'), Likelihood.likely);
+    expect(Likelihood.fromValue('POSSIBLE'), Likelihood.possible);
+  });
 }

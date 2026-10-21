@@ -21,6 +21,7 @@ import '../providers/reports_provider.dart';
 import '../widgets/report_actions.dart';
 import '../widgets/reports_widget.dart';
 import '../../../../l10n/labels.dart';
+import '../../../moderation/presentation/widgets/held_photo_notice.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
   final Report report;
@@ -235,6 +236,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
             ),
             sliver: SliverList.list(
               children: [
+                if (isOwner) HeldPhotoNotice(photoUrls: report.photoUrls),
                 Row(
                   children: [
                     ReportTypeBadge(type: report.type, large: true),

@@ -2234,4 +2234,76 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'لا شيء بانتظارك';
+
+  @override
+  String get photoReviewHint =>
+      'صور أوقفها الذكاء الاصطناعي. تبقى مخفية حتى تقرر.';
+
+  @override
+  String get reasonAdult => 'عُري أو محتوى جنسي';
+
+  @override
+  String get reasonRacy => 'محتوى مثير';
+
+  @override
+  String get reasonViolence => 'عنف أو دماء';
+
+  @override
+  String get likelihoodPossible => 'محتمل';
+
+  @override
+  String get likelihoodLikely => 'مرجّح';
+
+  @override
+  String get likelihoodVeryLikely => 'مرجّح جدًا';
+
+  @override
+  String get hiddenByAi => 'أخفاها الذكاء الاصطناعي';
+
+  @override
+  String get petPhoto => 'صورة الحيوان';
+
+  @override
+  String get listingPhoto => 'صورة الإعلان';
+
+  @override
+  String uploadedBy(String name) {
+    return 'من $name';
+  }
+
+  @override
+  String get tapToView => 'اضغط للعرض';
+
+  @override
+  String get approvePhoto => 'موافقة';
+
+  @override
+  String get removePhotoTitle => 'إزالة هذه الصورة؟';
+
+  @override
+  String get removePhotoMessage =>
+      'ستُزال من حيوان المستخدم أو إعلانه، وسيُبلَّغ المستخدم بالسبب.';
+
+  @override
+  String get photoApproved => 'تمت الموافقة على الصورة';
+
+  @override
+  String get photoRemovedDone => 'تمت إزالة الصورة';
+
+  @override
+  String get photoUnderReview =>
+      'يتحقق فريقنا من إحدى الصور، وستبقى مخفية حتى ذلك الحين.';
+
+  @override
+  String get reportedTabPhotos => 'صور الذكاء الاصطناعي';
+
+  @override
+  String get reportedTabReports => 'بلاغات المستخدمين';
+
+  @override
+  String get noPhotosToReview => 'لا توجد صور للمراجعة';
+
+  @override
+  String get noPhotosToReviewMessage =>
+      'ستظهر هنا الصور التي يوقفها الذكاء الاصطناعي.';
 }

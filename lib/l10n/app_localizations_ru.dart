@@ -2266,4 +2266,75 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ticketsAllClear => 'Всё обработано';
+
+  @override
+  String get photoReviewHint =>
+      'Фото, задержанные ИИ. Они скрыты, пока вы не примете решение.';
+
+  @override
+  String get reasonAdult => 'Нагота или сексуальный контент';
+
+  @override
+  String get reasonRacy => 'Откровенный контент';
+
+  @override
+  String get reasonViolence => 'Насилие или кровь';
+
+  @override
+  String get likelihoodPossible => 'Возможно';
+
+  @override
+  String get likelihoodLikely => 'Вероятно';
+
+  @override
+  String get likelihoodVeryLikely => 'Очень вероятно';
+
+  @override
+  String get hiddenByAi => 'Скрыто ИИ';
+
+  @override
+  String get petPhoto => 'Фото питомца';
+
+  @override
+  String get listingPhoto => 'Фото объявления';
+
+  @override
+  String uploadedBy(String name) {
+    return 'Автор: $name';
+  }
+
+  @override
+  String get tapToView => 'Нажмите, чтобы посмотреть';
+
+  @override
+  String get approvePhoto => 'Одобрить';
+
+  @override
+  String get removePhotoTitle => 'Удалить это фото?';
+
+  @override
+  String get removePhotoMessage =>
+      'Оно будет удалено из питомца или объявления пользователя, и пользователь узнает причину.';
+
+  @override
+  String get photoApproved => 'Фото одобрено';
+
+  @override
+  String get photoRemovedDone => 'Фото удалено';
+
+  @override
+  String get photoUnderReview =>
+      'Наша команда проверяет фото. До тех пор оно скрыто.';
+
+  @override
+  String get reportedTabPhotos => 'Фото ИИ';
+
+  @override
+  String get reportedTabReports => 'Жалобы';
+
+  @override
+  String get noPhotosToReview => 'Нет фото на проверку';
+
+  @override
+  String get noPhotosToReviewMessage => 'Здесь появятся фото, задержанные ИИ.';
 }
