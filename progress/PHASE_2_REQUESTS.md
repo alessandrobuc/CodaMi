@@ -181,7 +181,7 @@ _Last updated: Tue 20 Oct 2026 (support, 7, built)_
 - [x] All 10 languages; server, app, rules and full emulator tests pass
 - [ ] Test on real phones
 - [ ] Attachments (photos) in chat, if the client wants them
-- [ ] Web admin panel, if the client wants it
+- [x] Web admin panel: not needed, the admin side stays in the app (decided Wed 21 Oct)
 
 **Data model**
 - `supportCases/{id}`
@@ -226,7 +226,7 @@ _Last updated: Tue 20 Oct 2026 (support, 7, built)_
 - Who answers, in which languages, and during which hours?
 - Time limits for "unanswered": for example 5 min for chat, 24 h for tickets
 - Auto-close after 7 days?
-- Admin panel only in the app, or also as a web page for desktop use? The admin side can be built for Flutter web.
+- ~~Admin panel only in the app, or also as a web page?~~ Only in the app (Wed 21 Oct)
 
 ---
 

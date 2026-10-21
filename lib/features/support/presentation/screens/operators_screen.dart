@@ -271,13 +271,22 @@ class OperatorScreen extends ConsumerWidget {
                             ),
                           ),
                           const SizedBox(height: 2),
-                          Text(
-                            label,
-                            maxLines: 2,
-                            style: const TextStyle(
-                              fontSize: 11,
-                              color: AppColors.textMuted,
-                            ),
+                          Stack(
+                            children: [
+                              const Text(
+                                '\n',
+                                style: TextStyle(fontSize: 11),
+                              ),
+                              Text(
+                                label,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  color: AppColors.textMuted,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

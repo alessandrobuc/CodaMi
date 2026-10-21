@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Tue 20 Oct 2026_
+_Last updated: Wed 21 Oct 2026_
 
 ---
 
@@ -44,10 +44,10 @@ Add SHA-1s to the existing key. Never replace them.
 
 - [ ] Apple Developer account (client owned)
 - [ ] Upload an **APNs key** in Firebase console → Cloud Messaging (push does not work on iPhone without it)
-- [ ] Xcode: enable Push Notifications + Background Modes (Remote notifications) capabilities
+- [x] Xcode: enable Push Notifications + Background Modes (Remote notifications) capabilities
 - [ ] Full iOS build and test on a real iPhone (map, location permission, push, sign-in)
-- [ ] Check `Info.plist` permission texts (location, camera, photos) are clear and translated
-- [ ] Sign in with Apple, if Google sign-in is offered on iOS (App Store rule)
+- [x] Check `Info.plist` permission texts (location, camera, photos) are clear and translated (all 10 languages in `InfoPlist.strings`)
+- [x] Sign in with Apple, if Google sign-in is offered on iOS (App Store rule). Built; still to test on a real iPhone
 
 ## 4. Firebase
 
@@ -76,7 +76,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Support on two real phones: user chat and request, operator take / reply / resolve, admin reassign, Operators screen
 - [ ] Support notifications on a real Android phone, with the app open (in-app banner), in the background and closed: new request, new message, reply, taken, assigned, resolved / closed, solved by the user, late reply, cases back in the queue. Check the Support replies switch and sound in Profile → Notifications
 - [ ] Videos: upload a few test videos (admin), check Videos for you with no pets, a dog, and a cat, on Wi-Fi and mobile data
-- [x] Version set in `pubspec.yaml` (now `1.0.0+5`). Raise the number after `+` for every upload to Play.
+- [x] Version set in `pubspec.yaml` (now `1.0.0+8`). Raise the number after `+` for every upload to Play.
 
 ## 6. Legal and store listing
 
