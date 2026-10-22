@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -162,163 +163,166 @@ class _CitySetupScreenState extends ConsumerState<CitySetupScreen> {
     final typing =
         keyboardOpen || _focusNode.hasFocus || _suggestions.isNotEmpty;
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: Stack(
-        children: [
-          Positioned(
-            top: -110,
-            right: -90,
-            child: _Blob(
-              size: 300,
-              color: AppColors.primary.withValues(alpha: 0.1),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: Stack(
+          children: [
+            Positioned(
+              top: -110,
+              right: -90,
+              child: _Blob(
+                size: 300,
+                color: AppColors.primary.withValues(alpha: 0.1),
+              ),
             ),
-          ),
-          Positioned(
-            top: 220,
-            left: -130,
-            child: _Blob(
-              size: 240,
-              color: AppColors.accent.withValues(alpha: 0.12),
+            Positioned(
+              top: 220,
+              left: -130,
+              child: _Blob(
+                size: 240,
+                color: AppColors.accent.withValues(alpha: 0.12),
+              ),
             ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    height: 48,
-                    child: Row(
-                      children: [
-                        if (widget.isEditing)
-                          IconButton(
-                            onPressed: () => Navigator.of(context).pop(),
-                            icon: const Icon(Icons.arrow_back_rounded),
-                            color: AppColors.text,
-                          )
-                        else ...[
-                          Image.asset(AppAssets.logo, width: 34, height: 34),
-                          const SizedBox(width: 8),
-                          Text(
-                            'CodaMi',
-                            style: textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.primaryDark,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      controller: _scrollController,
-                      keyboardDismissBehavior:
-                          ScrollViewKeyboardDismissBehavior.onDrag,
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: 48,
+                      child: Row(
                         children: [
-                          AnimatedSize(
-                            duration: const Duration(milliseconds: 350),
-                            curve: Curves.easeOutCubic,
-                            child: typing
-                                ? const SizedBox(
-                                    width: double.infinity,
-                                    height: 12,
-                                  )
-                                : Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: compact ? 8 : 20,
-                                    ),
-                                    child: Center(
-                                      child: SizedBox.square(
-                                        dimension: compact ? 124 : 170,
-                                        child: FittedBox(
-                                          child: _PinIllustration(
-                                            confirmed: _selected != null,
+                          if (widget.isEditing)
+                            IconButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(Icons.arrow_back_rounded),
+                              color: AppColors.text,
+                            )
+                          else ...[
+                            Image.asset(AppAssets.logo, width: 34, height: 34),
+                            const SizedBox(width: 8),
+                            Text(
+                              'CodaMi',
+                              style: textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primaryDark,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        controller: _scrollController,
+                        keyboardDismissBehavior:
+                            ScrollViewKeyboardDismissBehavior.onDrag,
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            AnimatedSize(
+                              duration: const Duration(milliseconds: 350),
+                              curve: Curves.easeOutCubic,
+                              child: typing
+                                  ? const SizedBox(
+                                      width: double.infinity,
+                                      height: 12,
+                                    )
+                                  : Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: compact ? 8 : 20,
+                                      ),
+                                      child: Center(
+                                        child: SizedBox.square(
+                                          dimension: compact ? 124 : 170,
+                                          child: FittedBox(
+                                            child: _PinIllustration(
+                                              confirmed: _selected != null,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                          ),
-                          Text.rich(
-                                TextSpan(
-                                  text: widget.isEditing
-                                      ? context.l10n.cityEditTitle
-                                      : context.l10n.citySetupTitle,
-                                  children: [
-                                    TextSpan(
-                                      text: widget.isEditing
-                                          ? context.l10n.cityEditHighlight
-                                          : context.l10n.citySetupHighlight,
-                                      style: const TextStyle(
-                                        color: AppColors.primary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                style: textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.text,
-                                ),
-                              )
-                              .animate()
-                              .fadeIn(duration: 400.ms)
-                              .slideY(begin: 0.2, end: 0),
-                          const SizedBox(height: 8),
-                          Text(
-                            context.l10n.citySetupBody,
-                            style: textTheme.bodyMedium?.copyWith(
-                              color: AppColors.textMuted,
-                              height: 1.5,
                             ),
-                          ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
-                          const SizedBox(height: 18),
-                          CitySearchInput(
-                            controller: _controller,
-                            focusNode: _focusNode,
-                            loading: _searching || _resolving,
-                            confirmed: _selected != null,
-                            onChanged: _onChanged,
-                            onClear: _clear,
-                          ).animate().fadeIn(delay: 200.ms, duration: 400.ms),
-                          const SizedBox(height: 12),
-                          _buildResults(textTheme),
-                        ],
-                      ),
-                    ),
-                  ),
-                  _ContinueButton(
-                    enabled: _selected != null && !_resolving,
-                    saving: _saving,
-                    label: widget.isEditing
-                        ? context.l10n.saveCity
-                        : context.l10n.continueLabel,
-                    onPressed: _save,
-                  ),
-                  if (!widget.isEditing && !keyboardOpen) ...[
-                    const SizedBox(height: 4),
-                    Center(
-                      child: TextButton(
-                        onPressed: _saving
-                            ? null
-                            : () => ref.read(authProvider.notifier).logout(),
-                        child: Text(
-                          context.l10n.notYouSignOut,
-                          style: const TextStyle(color: AppColors.textMuted),
+                            Text.rich(
+                                  TextSpan(
+                                    text: widget.isEditing
+                                        ? context.l10n.cityEditTitle
+                                        : context.l10n.citySetupTitle,
+                                    children: [
+                                      TextSpan(
+                                        text: widget.isEditing
+                                            ? context.l10n.cityEditHighlight
+                                            : context.l10n.citySetupHighlight,
+                                        style: const TextStyle(
+                                          color: AppColors.primary,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  style: textTheme.headlineMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.text,
+                                  ),
+                                )
+                                .animate()
+                                .fadeIn(duration: 400.ms)
+                                .slideY(begin: 0.2, end: 0),
+                            const SizedBox(height: 8),
+                            Text(
+                              context.l10n.citySetupBody,
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: AppColors.textMuted,
+                                height: 1.5,
+                              ),
+                            ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
+                            const SizedBox(height: 18),
+                            CitySearchInput(
+                              controller: _controller,
+                              focusNode: _focusNode,
+                              loading: _searching || _resolving,
+                              confirmed: _selected != null,
+                              onChanged: _onChanged,
+                              onClear: _clear,
+                            ).animate().fadeIn(delay: 200.ms, duration: 400.ms),
+                            const SizedBox(height: 12),
+                            _buildResults(textTheme),
+                          ],
                         ),
                       ),
                     ),
+                    _ContinueButton(
+                      enabled: _selected != null && !_resolving,
+                      saving: _saving,
+                      label: widget.isEditing
+                          ? context.l10n.saveCity
+                          : context.l10n.continueLabel,
+                      onPressed: _save,
+                    ),
+                    if (!widget.isEditing && !keyboardOpen) ...[
+                      const SizedBox(height: 4),
+                      Center(
+                        child: TextButton(
+                          onPressed: _saving
+                              ? null
+                              : () => ref.read(authProvider.notifier).logout(),
+                          child: Text(
+                            context.l10n.notYouSignOut,
+                            style: const TextStyle(color: AppColors.textMuted),
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -273,10 +273,7 @@ class OperatorScreen extends ConsumerWidget {
                           const SizedBox(height: 2),
                           Stack(
                             children: [
-                              const Text(
-                                '\n',
-                                style: TextStyle(fontSize: 11),
-                              ),
+                              const Text('\n', style: TextStyle(fontSize: 11)),
                               Text(
                                 label,
                                 maxLines: 2,

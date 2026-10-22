@@ -17,12 +17,16 @@ class SpotPicker extends StatefulWidget {
   final Color color;
   final ValueChanged<LatLng> onMoved;
 
+  // The circle shows the area the public sees instead of the exact spot.
+  final bool showPublicArea;
+
   const SpotPicker({
     super.key,
     required this.center,
     required this.spot,
     required this.color,
     required this.onMoved,
+    this.showPublicArea = true,
   });
 
   @override
@@ -130,34 +134,35 @@ class _SpotPickerState extends State<SpotPicker> {
                 ),
               ),
             ),
-            IgnorePointer(
-              child: ValueListenableBuilder<CameraPosition>(
-                valueListenable: _camera,
-                builder: (context, camera, _) {
-                  final size =
-                      2 *
-                      publicAreaRadius /
-                      metersPerLogicalPixel(
-                        camera.target.latitude,
-                        camera.zoom,
-                      );
-                  return Center(
-                    child: Container(
-                      width: size.clamp(0, 1000),
-                      height: size.clamp(0, 1000),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: widget.color.withValues(alpha: 0.12),
-                        border: Border.all(
-                          color: widget.color.withValues(alpha: 0.55),
-                          width: 1.5,
+            if (widget.showPublicArea)
+              IgnorePointer(
+                child: ValueListenableBuilder<CameraPosition>(
+                  valueListenable: _camera,
+                  builder: (context, camera, _) {
+                    final size =
+                        2 *
+                        publicAreaRadius /
+                        metersPerLogicalPixel(
+                          camera.target.latitude,
+                          camera.zoom,
+                        );
+                    return Center(
+                      child: Container(
+                        width: size.clamp(0, 1000),
+                        height: size.clamp(0, 1000),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: widget.color.withValues(alpha: 0.12),
+                          border: Border.all(
+                            color: widget.color.withValues(alpha: 0.55),
+                            width: 1.5,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
             IgnorePointer(
               child: Center(
                 child: Padding(

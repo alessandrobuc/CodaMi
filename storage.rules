@@ -3,14 +3,14 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     match /{folder}/{uid}/{allPaths=**} {
-      allow read: if request.auth != null && folder in ['pets', 'reports'];
+      allow read: if request.auth != null && folder in ['pets', 'reports', 'emergencies'];
       allow create, update: if request.auth != null
-        && folder in ['pets', 'reports']
+        && folder in ['pets', 'reports', 'emergencies']
         && request.auth.uid == uid
         && request.resource.size < 5 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
       allow delete: if request.auth != null
-        && ((folder in ['pets', 'reports'] && request.auth.uid == uid)
+        && ((folder in ['pets', 'reports', 'emergencies'] && request.auth.uid == uid)
           || (folder == 'reports'
             && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.get('role', 'user') == 'admin'));
     }

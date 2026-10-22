@@ -1,4 +1,5 @@
 import '../../../notifications/domain/entities/notification_prefs.dart';
+import '../../../points/domain/points.dart';
 
 enum UserRole {
   user,
@@ -28,6 +29,12 @@ class UserModel {
   final bool disabled;
   final Map<String, String> blockedUsers;
   final NotificationPrefs notificationPrefs;
+  final int points;
+  final DailyState daily;
+  final String? inviteCode;
+  final String? referredBy;
+  final int referralCount;
+  final AmbassadorLevel? ambassadorLevel;
 
   UserModel({
     required this.uid,
@@ -46,6 +53,12 @@ class UserModel {
     this.disabled = false,
     this.blockedUsers = const {},
     this.notificationPrefs = const NotificationPrefs(),
+    this.points = 0,
+    this.daily = const DailyState(),
+    this.inviteCode,
+    this.referredBy,
+    this.referralCount = 0,
+    this.ambassadorLevel,
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -83,6 +96,12 @@ class UserModel {
           '${e.key}': '${e.value ?? ''}',
       },
       notificationPrefs: NotificationPrefs.fromMap(map['notificationPrefs']),
+      points: (map['points'] as num?)?.toInt() ?? 0,
+      daily: DailyState.fromMap(map['daily']),
+      inviteCode: map['inviteCode'] as String?,
+      referredBy: map['referredBy'] as String?,
+      referralCount: (map['referralCount'] as num?)?.toInt() ?? 0,
+      ambassadorLevel: AmbassadorLevel.fromValue(map['ambassadorLevel']),
     );
   }
 }

@@ -2,7 +2,7 @@
 
 Questions sent to the client that still need an answer. Move an item to **Answered** with the date and the answer when it comes back.
 
-_Last updated: Wed 21 Oct 2026_
+_Last updated: Thu 22 Oct 2026_
 
 ---
 
@@ -33,27 +33,32 @@ See `PHASE_3_REQUESTS.md` for the details of each request.
 
 AI moderation is decided by us, no questions for the client (see `PHASE_3_REQUESTS.md`).
 
-**Referral system**
-- [ ] **What are points for?** Badges and a ranking only, or prizes, discounts or money? (Prizes or money can bring Italian prize promotion rules and tax obligations, so check with an accountant first.)
-- [ ] How many points for each step: registers, completes the account, actively uses the app
-- [ ] What does "completes the account" mean (for example: photo, city, phone number, at least one pet)?
-- [ ] What does "actively uses the app" mean (for example: opens it on 5 different days in the first 30 days, or publishes a report)?
-- [ ] Should the invited friend also get something?
-- [ ] Any limit on invites or points per user (to stop fake accounts)?
-- [ ] Where are points shown: profile only, or also a public ranking?
+Referral and emergency questions were answered on Thu 22 Oct (see **Answered** below).
 
-**Emergency management**
-- [ ] Is this for now or for later? The request says "in the future".
-- [ ] Who responds to an emergency: nearby users, CodaMi staff, or partner organizations with their own accounts?
-- [ ] **List of services and organizations** to contact (vets, animal welfare groups, municipal services), with phone numbers and areas covered. Who provides and updates it?
-- [ ] Which emergency types: injured, in danger, abandoned, urgent found animal, request for intervention, others?
-- [ ] Who gets the alert, and how far away (for example everyone within 5 km, with a louder sound)?
-- [ ] What should the app say about real emergencies (for example "call 112 or a vet first")? Needs the client's wording for liability.
-- [ ] What happens to fake or wrong emergencies (warning, block)?
-- [ ] Does an emergency close by itself after a time, and who can mark it as handled?
+**Follow-up (Thu 22 Oct)**
+- [ ] **Emails to organizations:** emergency alerts to vets and associations by email need an email sending service (for example Brevo or SendGrid, free tiers exist). OK to set one up, and which sender address? Until then, organizations are shown in the app for users to call or email directly.
+- [ ] **Real contacts:** the list of real vets, associations and services, with phone, email, address and area covered (test placeholders are used until then)
 
 ---
 
 ## Answered
 
-_Nothing yet._
+**Disclaimer wording: approved**
+- The client approved the text as it is: "CodaMi is not an emergency service. If an animal is in immediate danger, call 112 or a vet first. Don't rely only on app notifications." Already in the app in all 10 languages.
+
+**Thu 22 Oct: referral system and points**
+- Build a **flexible points system** that later features can plug into without rework. We choose the starting values; they must be changeable from the admin panel or config.
+- For now: points from **referrals**, a **daily reward** for opening and actively using the app, and a basic **daily activity** system that can grow.
+- Invited users don't need points just for registering. We design an **ambassador** strategy for organic growth.
+- **No limit** on invitations, but reasonable **anti-fraud** checks (fake accounts, repeated sign-ups, abuse). Device checks allowed if they respect privacy law and store policies, collect no unnecessary data, and never automatically punish people who share a device.
+- Points, referral rules and daily rewards must all be adjustable later.
+
+**Thu 22 Oct: emergency management**
+- Build it **now**, before launch.
+- Users report animal emergencies; the right people or organizations are notified.
+- Vets, associations and services show their **phone and email in the app** so users can contact them directly.
+- Start with clearly marked **test placeholder contacts**, never presented as real or verified.
+- **Contact directory managed from the admin panel**: add, edit, verify, remove.
+- Notifications **prioritized by distance and relevance**: nearest suitable and available contacts first, recommended organizations can take precedence. **Radius and priority rules configurable**, not one fixed distance.
+- The app must clearly say **CodaMi is not a replacement for emergency services**.
+- Structure both features for future expansion.

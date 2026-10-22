@@ -17,6 +17,9 @@ import '../../../support/presentation/screens/support_case_screen.dart';
 import '../../../videos/presentation/screens/videos_screen.dart';
 import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
+import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../points/data/points_repository.dart';
+import '../../../points/presentation/providers/points_provider.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -79,8 +82,13 @@ class _MainShellState extends ConsumerState<MainShell>
           onOpenCase: (id) => appNavigatorKey.currentState?.push(
             MaterialPageRoute(builder: (_) => SupportCaseScreen(caseId: id)),
           ),
+          onOpenEmergency: (id) => appNavigatorKey.currentState?.push(
+            MaterialPageRoute(builder: (_) => EmergencyScreen(emergencyId: id)),
+          ),
         );
     ref.read(notificationSettingsProvider).restoreChannels();
+    ref.read(pointsRepositoryProvider).registerVisit();
+    ref.read(activeTimeProvider);
   }
 
   @override

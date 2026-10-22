@@ -65,6 +65,49 @@ service cloud.firestore {
         && (!('durationSeconds' in data) || data.durationSeconds is int);
     }
 
+    // Written only by Cloud Functions: points, daily rewards, invites, activity and the home geohash.
+    function serverUserFields() {
+      return ['points', 'daily', 'activity', 'installHashes', 'inviteCode', 'referredBy',
+        'referralCount', 'ambassadorLevel', 'homeGeohash', 'inviteTries'];
+    }
+
+    function validEmergency(data) {
+      return data.keys().hasOnly([
+          'ownerId', 'ownerName', 'type', 'species', 'description', 'photoUrls', 'lat', 'lng',
+          'placeLabel', 'city', 'cityKey', 'contactPhone', 'status', 'createdAt', 'updatedAt',
+          'lastActivityAt'
+        ])
+        && data.type in ['injured', 'danger', 'abandoned', 'urgent_found', 'intervention', 'other']
+        && data.species in ['dog', 'cat', 'other']
+        && data.description is string && data.description.size() <= 1000
+        && data.photoUrls is list && data.photoUrls.size() <= 4
+        && data.lat is number && data.lng is number
+        && data.status == 'open'
+        && data.ownerName is string && data.ownerName.size() <= 80
+        && optionalString(data, 'placeLabel', 160)
+        && optionalString(data, 'city', 80)
+        && optionalString(data, 'cityKey', 120)
+        && optionalString(data, 'contactPhone', 20);
+    }
+
+    function validContact(data) {
+      return data.keys().hasOnly([
+          'name', 'kind', 'phones', 'email', 'address', 'city', 'lat', 'lng', 'areaKm', 'types',
+          'open24h', 'hours', 'verified', 'recommended', 'active', 'isTest', 'createdAt', 'updatedAt'
+        ])
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 120
+        && data.kind in ['vet', 'association', 'public_service', 'other']
+        && data.phones is list && data.phones.size() <= 5
+        && data.lat is number && data.lng is number
+        && data.types is list
+        && data.types.hasOnly(['injured', 'danger', 'abandoned', 'urgent_found', 'intervention', 'other'])
+        && data.verified is bool && data.recommended is bool && data.active is bool && data.isTest is bool
+        && (!('areaKm' in data) || data.areaKm == null || data.areaKm is number)
+        && (!('email' in data) || data.email == null || (data.email is string && data.email.size() <= 120))
+        && (!('address' in data) || data.address == null || (data.address is string && data.address.size() <= 200))
+        && (!('hours' in data) || data.hours == null || (data.hours is string && data.hours.size() <= 200));
+    }
+
     function supportCase(caseId) {
       return get(/databases/$(database)/documents/supportCases/$(caseId)).data;
     }
@@ -97,21 +140,27 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if isUser(uid) || isAdmin();
-      allow create: if isUser(uid) && roleOf(request.resource.data) == 'user';
+      allow create: if isUser(uid) && roleOf(request.resource.data) == 'user'
+        && !request.resource.data.keys().hasAny(serverUserFields());
       allow update: if (isUser(uid)
           && roleOf(request.resource.data) == roleOf(resource.data)
           && request.resource.data.get('disabled', false) == resource.data.get('disabled', false)
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(serverUserFields())
           && (!('blockedUsers' in request.resource.data)
             || (request.resource.data.blockedUsers is map
               && request.resource.data.blockedUsers.size() <= 500))
           && (!('notificationPrefs' in request.resource.data)
             || (request.resource.data.notificationPrefs is map
-              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support']))))
+              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support', 'emergency']))))
         || (isAdmin() && !isUser(uid)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
           && roleOf(resource.data) in ['user', 'support']
           && roleOf(request.resource.data) in ['user', 'support']);
       allow delete: if isUser(uid);
+
+      match /pointsLedger/{entryId} {
+        allow read: if isUser(uid) || isAdmin();
+      }
 
       match /notifications/{notificationId} {
         allow read, delete: if isUser(uid);
@@ -211,6 +260,54 @@ service cloud.firestore {
 
     match /staffStats/{uid} {
       allow read: if isAdmin() || (isUser(uid) && isStaff());
+    }
+
+    // Created by the reporter; every later change goes through `updateEmergency`.
+    match /emergencies/{emergencyId} {
+      allow read: if signedIn();
+      allow create: if isUser(request.resource.data.ownerId)
+        && validEmergency(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.lastActivityAt == request.time;
+      allow delete: if isUser(resource.data.ownerId) || isAdmin();
+
+      match /events/{eventId} {
+        allow read: if isStaff();
+      }
+    }
+
+    // Users only see active contacts, so their queries must filter on `active`.
+    match /emergencyContacts/{contactId} {
+      allow read: if (signedIn() && resource.data.active == true) || isStaff();
+      allow create, update: if isAdmin() && validContact(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // Keyed by the invited user. Written only by Cloud Functions.
+    match /referrals/{inviteeId} {
+      allow read: if isUser(inviteeId)
+        || (signedIn() && resource.data.inviterId == request.auth.uid)
+        || isAdmin();
+    }
+
+    match /config/points {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'dailyCheckin', 'dailyActive', 'activeMinutes', 'streakDays', 'streakBonus',
+          'referralQualified', 'referralWelcome', 'qualifyDays', 'qualifyWithinDays',
+          'codeEntryDays', 'maxQualifiedPerDay', 'levels'
+        ]);
+    }
+
+    match /config/emergency {
+      allow read: if isStaff();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'ringsKm', 'minRecipients', 'maxRecipients', 'autoCloseHours', 'defaultAreaKm',
+          'maxSuggested', 'weightRecommended', 'weightVerified', 'weight24h', 'weightPerKm',
+          'emailEnabled'
+        ]);
     }
 
     // Written only by Cloud Functions. Owners see the checks of their own photos.

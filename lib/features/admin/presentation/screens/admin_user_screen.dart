@@ -11,6 +11,8 @@ import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
 import 'admin_users_screen.dart';
+import '../../../points/data/points_repository.dart';
+import '../../../points/presentation/widgets/points_widgets.dart';
 
 class AdminUserScreen extends ConsumerStatefulWidget {
   final String uid;
@@ -126,6 +128,64 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     if (deleted) navigator.pop();
   }
 
+  Future<void> _adjustPoints(UserModel user) async {
+    final l10n = context.l10n;
+    final amount = TextEditingController();
+    final reason = TextEditingController();
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.adjustPoints),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: amount,
+              keyboardType: const TextInputType.numberWithOptions(signed: true),
+              decoration: InputDecoration(
+                labelText: l10n.adjustPointsAmount,
+                helperText: l10n.adjustPointsAmountHelp,
+              ),
+            ),
+            TextField(
+              controller: reason,
+              maxLength: 200,
+              decoration: InputDecoration(labelText: l10n.adjustPointsReason),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l10n.save),
+          ),
+        ],
+      ),
+    );
+    final value = int.tryParse(amount.text.trim());
+    final text = reason.text.trim();
+    amount.dispose();
+    reason.dispose();
+    if (confirmed != true || !mounted) return;
+    if (value == null || value == 0 || text.isEmpty) {
+      SnackbarUtils.showError(context, l10n.adjustPointsInvalid);
+      return;
+    }
+    setState(() => _busy = true);
+    try {
+      await ref.read(pointsRepositoryProvider).adjust(user.uid, value, text);
+      if (mounted) SnackbarUtils.showSuccess(context, l10n.settingsSaved);
+    } catch (_) {
+      if (mounted) SnackbarUtils.showError(context, l10n.actionFailed);
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -221,9 +281,30 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
                 label: l10n.adminListings,
                 value: reports == null ? '…' : '$reports',
               ),
+              _InfoTile(
+                icon: Icons.stars_rounded,
+                label: l10n.myPoints,
+                value: [
+                  l10n.pointsTotal(user.points),
+                  ?user.ambassadorLevel?.label(l10n),
+                ].join(' · '),
+              ),
+              _InfoTile(
+                icon: Icons.group_add_rounded,
+                label: l10n.invitedFriends,
+                value: '${user.referralCount}',
+              ),
             ],
           ),
         ),
+        if (!isMe) ...[
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: _busy ? null : () => _adjustPoints(user),
+            icon: const Icon(Icons.exposure_rounded),
+            label: Text(l10n.adjustPoints),
+          ),
+        ],
         if (canManage) ...[
           const SizedBox(height: 12),
           Material(

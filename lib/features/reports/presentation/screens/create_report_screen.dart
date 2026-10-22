@@ -575,6 +575,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
           GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
+            padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: 12,
             crossAxisSpacing: 12,

@@ -36,7 +36,9 @@ import {
   type ReportSummary,
 } from "./notifications";
 import {pathOfUrl} from "./moderation";
+import {deleteEmergencyData, homeGeohashOf} from "./emergencyFunctions";
 import {deleteModerationData, isCleared} from "./moderationFunctions";
+import {deletePointsData} from "./pointsFunctions";
 import {sendToTokens, tokensOf, type PushToken} from "./push";
 import {releaseCasesOf} from "./supportFunctions";
 import {searchFieldsOf} from "./users";
@@ -420,6 +422,8 @@ async function deleteUserData(uid: string): Promise<void> {
   for (const doc of cases.docs) await db.recursiveDelete(doc.ref);
   await db.recursiveDelete(db.collection("users").doc(uid));
   await deleteModerationData(uid);
+  await deletePointsData(uid);
+  await deleteEmergencyData(uid);
 
   const bucket = getStorage().bucket();
   await Promise.all(
@@ -506,7 +510,7 @@ export const adminDeleteUser = onCall(async (request) => {
   return {deleted: true};
 });
 
-// Keeps the lowercase search fields current and frees the cases of removed staff.
+// Keeps the search fields and home geohash current and frees the cases of removed staff.
 export const onUserWritten = onDocumentWritten(
   {document: "users/{uid}", region: TRIGGER_REGION},
   async (event) => {
@@ -522,10 +526,22 @@ export const onUserWritten = onDocumentWritten(
     }
 
     if (!after) return;
-    const search = searchFieldsOf(after);
-    if (search) await event.data!.after.ref.update(search);
+    const update: Record<string, unknown> = {...searchFieldsOf(after)};
+    const geohash = homeGeohashOf(after);
+    if (geohash && after.homeGeohash !== geohash) update.homeGeohash = geohash;
+    if (Object.keys(update).length > 0) await event.data!.after.ref.update(update);
   },
 );
 
 export * from "./supportFunctions";
 export {moderatePhoto, moderationSweep, onPhotoUploaded} from "./moderationFunctions";
+export {
+  adminAdjustPoints,
+  adminReviewReferral,
+  claimDailyTask,
+  getInviteCode,
+  pointsSweep,
+  redeemInviteCode,
+  registerVisit,
+} from "./pointsFunctions";
+export {emergencySweep, onEmergencyCreated, seedTestContacts, updateEmergency} from "./emergencyFunctions";

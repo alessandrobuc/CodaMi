@@ -4,7 +4,12 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../emergency/presentation/providers/emergency_provider.dart';
+import '../../../emergency/presentation/screens/create_emergency_screen.dart';
+import '../../../emergency/presentation/screens/emergencies_screen.dart';
+import '../../../emergency/presentation/widgets/emergency_widgets.dart';
 import '../../../map/presentation/providers/map_provider.dart';
+import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
 import '../../../map/presentation/screens/map_screen.dart';
@@ -90,7 +95,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
+                  const PointsChip(),
+                  const SizedBox(width: 8),
+                  _SosButton(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        fullscreenDialog: true,
+                        builder: (_) => const CreateEmergencyScreen(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
                   _BellButton(
                     unread: ref.watch(unreadNotificationsProvider),
                     onTap: () => Navigator.of(context).push(
@@ -102,6 +118,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ],
               ),
               const SizedBox(height: 16),
+              if (ref.watch(nearbyEmergenciesProvider) case final nearby
+                  when nearby.isNotEmpty) ...[
+                _EmergencyBanner(
+                  count: nearby.length,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const EmergenciesScreen(),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
               _SegmentTabs(
                 selected: _segment,
                 onChanged: (segment) => setState(() => _segment = segment),
@@ -381,6 +409,84 @@ class _ReportButtonState extends State<_ReportButton> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SosButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _SosButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      label: context.l10n.reportEmergency,
+      child: Material(
+        color: emergencyColor,
+        shape: const CircleBorder(),
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: () {
+            HapticFeedback.mediumImpact();
+            onTap();
+          },
+          child: const SizedBox(
+            width: 46,
+            height: 46,
+            child: Center(
+              child: Text(
+                'SOS',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 13,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _EmergencyBanner extends StatelessWidget {
+  final int count;
+  final VoidCallback onTap;
+
+  const _EmergencyBanner({required this.count, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: emergencyColor.withValues(alpha: 0.09),
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          child: Row(
+            children: [
+              const Icon(Icons.emergency_rounded, color: emergencyColor),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  context.l10n.emergenciesNearYouCount(count),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: emergencyColor,
+                  ),
+                ),
+              ),
+              const Icon(Icons.chevron_right_rounded, color: emergencyColor),
+            ],
           ),
         ),
       ),

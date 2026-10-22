@@ -26,6 +26,7 @@ class PushService {
     required void Function(String reportId) onOpenReport,
     void Function(String caseId)? onOpenCase,
     void Function()? onOpenPhotoReview,
+    void Function(String emergencyId)? onOpenEmergency,
     ForegroundPush? onForeground,
   }) async {
     if (_uid == uid) return;
@@ -38,6 +39,10 @@ class PushService {
       if (reportId is String && reportId.isNotEmpty) onOpenReport(reportId);
       if (caseId is String && caseId.isNotEmpty) onOpenCase?.call(caseId);
       if (message.data['kind'] == photoReviewKind) onOpenPhotoReview?.call();
+      final emergencyId = message.data['emergencyId'];
+      if (emergencyId is String && emergencyId.isNotEmpty) {
+        onOpenEmergency?.call(emergencyId);
+      }
     }
 
     _subscriptions.add(FirebaseMessaging.onMessageOpenedApp.listen(open));

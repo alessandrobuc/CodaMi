@@ -56,6 +56,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **Also in that deploy (Mon 19 Oct, storage rules changed again for cover image names):** `videos` rules (Firestore and Storage, admin-only uploads) and the `notificationPrefs` rule; the updated `onReportCreated` / `onReportResolved` send each user's chosen sound and skip turned-off alert types. The first Storage deploy may ask to let Storage rules read Firestore: answer yes.
 - [x] **Support (Tue 20 Oct), same deploy:** new rules (`supportCases`, `staffPresence`, `staffStats`, `config/support`, the `support` notification type), 6 new indexes and the functions `supportAvailability`, `supportCreateCase`, `supportTakeCase`, `supportReassignCase`, `supportSetStatus`, `onSupportMessageCreated` the scheduled `supportSweep` (every 10 minutes) and `onUserWritten` (search fields for the users list, frees the cases of removed staff). The first deploy of a scheduled function may ask to enable Cloud Scheduler: answer yes.
 - [x] **AI photo moderation (Wed 21 Oct), same deploy:** the trigger runs in the bucket's region, `us-east1` (confirmed). Cloud Vision API is already enabled. New rules (`photoChecks`, `config/moderation`, `quarantine/` in Storage), 1 new index, and the functions `onPhotoUploaded`, `moderatePhoto`, `moderationSweep`. The first Storage trigger deploy may ask to grant permissions (Eventarc / Pub/Sub): answer yes.
+- [ ] **Points, invites and emergencies (Thu 22 Oct):** deploy rules, indexes (7 new) and functions: `registerVisit`, `claimDailyTask`, `getInviteCode`, `redeemInviteCode`, `adminReviewReferral`, `adminAdjustPoints`, `pointsSweep`, `onEmergencyCreated`, `updateEmergency`, `emergencySweep`, `seedTestContacts`, plus the updated `onUserWritten`, `onPhotoUploaded` and `deleteAccount`. Then add the test contacts from Admin → More → Emergency contacts
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
 - [ ] Review `firestore.rules` and `storage.rules` one final time
@@ -87,6 +88,7 @@ Add SHA-1s to the existing key. Never replace them.
   - [ ] Play may require a way to **request** deletion without the app (for example by email) on this page
 - [x] **Report / block users** in the app (Apple guideline 1.2, Google Play UGC policy)
   - [ ] Update the content rating answers to "Yes"
+- [ ] Privacy policy and Data safety: mention the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

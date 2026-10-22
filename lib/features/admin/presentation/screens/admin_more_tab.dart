@@ -8,10 +8,18 @@ import '../../../../l10n/locale_provider.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../support/data/support_repository.dart';
+import '../../../support/domain/support_case.dart';
 import '../../../support/presentation/screens/operators_screen.dart';
 import 'admin_users_screen.dart';
 import 'admin_videos_screen.dart';
 import 'support_staff_screen.dart';
+import '../../../emergency/presentation/screens/admin_contacts_screen.dart';
+import '../../../emergency/presentation/screens/admin_emergencies_screen.dart';
+import '../../../emergency/presentation/screens/admin_emergency_settings_screen.dart';
+import '../../../points/presentation/screens/admin_points_settings_screen.dart';
+import '../../../points/presentation/screens/admin_referrals_screen.dart';
+import '../../../points/presentation/widgets/points_widgets.dart';
 
 class AdminMoreTab extends ConsumerWidget {
   const AdminMoreTab({super.key});
@@ -36,7 +44,15 @@ class AdminMoreTab extends ConsumerWidget {
         ],
       ),
     );
-    if (confirmed == true) await ref.read(authProvider.notifier).logout();
+    if (confirmed != true) return;
+    final uid = ref.read(authStateProvider).value?.uid;
+    if (uid != null) {
+      await ref
+          .read(supportRepositoryProvider)
+          .setPresence(uid, PresenceState.offline)
+          .catchError((Object e) => debugPrint('Presence update failed: $e'));
+    }
+    await ref.read(authProvider.notifier).logout();
   }
 
   @override
@@ -150,6 +166,75 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminVideosScreen(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+            _Group(
+              children: [
+                _Tile(
+                  icon: Icons.emergency_rounded,
+                  color: AppColors.danger,
+                  title: l10n.emergencies,
+                  subtitle: l10n.adminEmergenciesSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const AdminEmergenciesScreen(),
+                    ),
+                  ),
+                ),
+                if (isAdmin) ...[
+                  _Tile(
+                    icon: Icons.contact_phone_rounded,
+                    color: AppColors.danger,
+                    title: l10n.emergencyContacts,
+                    subtitle: l10n.adminContactsSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminContactsScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.tune_rounded,
+                    color: AppColors.danger,
+                    title: l10n.emergencySettings,
+                    subtitle: l10n.emergencySettingsSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminEmergencySettingsScreen(),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+            const SizedBox(height: 16),
+            if (isAdmin) ...[
+              _Group(
+                children: [
+                  _Tile(
+                    icon: Icons.stars_rounded,
+                    color: pointsColor,
+                    title: l10n.pointsSettings,
+                    subtitle: l10n.pointsSettingsSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminPointsSettingsScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.policy_rounded,
+                    color: pointsColor,
+                    title: l10n.invitesToReview,
+                    subtitle: l10n.invitesToReviewSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminReferralsScreen(),
                       ),
                     ),
                   ),

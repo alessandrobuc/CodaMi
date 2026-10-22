@@ -41,6 +41,7 @@ class NotificationsRepository {
       title: map['title'] as String? ?? '',
       body: map['body'] as String? ?? '',
       reportId: map['reportId'] as String?,
+      emergencyId: map['emergencyId'] as String?,
       reportType: ReportType.fromValue(map['reportType'] as String?),
       photoUrl: map['photoUrl'] as String?,
       petName: map['petName'] as String?,

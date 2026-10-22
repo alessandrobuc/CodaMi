@@ -2327,4 +2327,872 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get noPhotosToReviewMessage => 'AI द्वारा रोकी गई फ़ोटो यहाँ दिखेंगी।';
+
+  @override
+  String get aFriend => 'एक दोस्त';
+
+  @override
+  String get addContact => 'संपर्क जोड़ें';
+
+  @override
+  String get addTestContacts => 'टेस्ट संपर्क जोड़ें';
+
+  @override
+  String get adjustPoints => 'पॉइंट बदलें';
+
+  @override
+  String get adjustPointsAmount => 'जोड़ने या घटाने के पॉइंट';
+
+  @override
+  String get adjustPointsAmountHelp =>
+      'पॉइंट घटाने के लिए माइनस लगाएँ, जैसे -20';
+
+  @override
+  String get adjustPointsInvalid => 'पॉइंट की संख्या और कारण लिखें।';
+
+  @override
+  String get adjustPointsReason => 'कारण (उपयोगकर्ता को दिखेगा)';
+
+  @override
+  String get adminContactsSubtitle =>
+      'उपयोगकर्ताओं को दिखने वाले पशु-चिकित्सक, संस्थाएँ और सेवाएँ';
+
+  @override
+  String get adminEmergenciesSubtitle =>
+      'रिपोर्ट की गई जानवरों की आपात स्थितियाँ';
+
+  @override
+  String get alertEmergencyDescription =>
+      'आपके शहर के पास जिन जानवरों को तुरंत मदद चाहिए';
+
+  @override
+  String get alertEmergencyTitle => 'पास की आपात स्थितियाँ';
+
+  @override
+  String get allContacts => 'सभी';
+
+  @override
+  String get ambassadorLevels => 'राजदूत स्तर';
+
+  @override
+  String get call112 => '112 पर कॉल करें';
+
+  @override
+  String get claim => 'लें';
+
+  @override
+  String get claimed => 'मिल गए';
+
+  @override
+  String get codeCopied => 'कोड कॉपी हो गया';
+
+  @override
+  String get confirm => 'पुष्टि करें';
+
+  @override
+  String get contactActive => 'उपयोगकर्ताओं को दिखाएँ';
+
+  @override
+  String get contactActiveHelp => 'बिना हटाए संपर्क छिपाने के लिए बंद करें।';
+
+  @override
+  String get contactAddress => 'पता';
+
+  @override
+  String get contactAreaKm => 'सेवा क्षेत्र (किमी)';
+
+  @override
+  String get contactAreaKmHelp =>
+      'पते से कितनी दूरी तक मदद कर सकता है। ख़ाली छोड़ें तो आपात सेटिंग का डिफ़ॉल्ट मान लगेगा।';
+
+  @override
+  String get contactCity => 'शहर या कस्बा';
+
+  @override
+  String get contactHandles => 'कौन-सी आपात स्थितियाँ संभालता है';
+
+  @override
+  String get contactHandlesHelp =>
+      'अगर हर तरह की स्थिति संभालता है तो सब बंद छोड़ दें।';
+
+  @override
+  String get contactHoursHint => 'खुलने का समय, जैसे सोम–शुक्र 9:00–18:00';
+
+  @override
+  String get contactInactive => 'छिपा हुआ';
+
+  @override
+  String get contactKindAssociation => 'पशु कल्याण संस्था';
+
+  @override
+  String get contactKindOther => 'अन्य सेवा';
+
+  @override
+  String get contactKindPublicService => 'सरकारी पशु-चिकित्सा सेवा';
+
+  @override
+  String get contactKindVet => 'पशु-चिकित्सक';
+
+  @override
+  String get contactMissingFields => 'नाम लिखें और नक्शे पर पिन लगाएँ।';
+
+  @override
+  String get contactName => 'नाम';
+
+  @override
+  String get contactNameHint => 'जैसे सैन फ्रांसेस्को पशु क्लिनिक';
+
+  @override
+  String get contactPhones => 'फ़ोन नंबर';
+
+  @override
+  String get contactPhonesHint => 'नंबरों को कॉमा से अलग करें';
+
+  @override
+  String get contactPlace => 'कहाँ है';
+
+  @override
+  String get contactRecommendedHelp =>
+      'आपात स्थिति रिपोर्ट होने पर पास के संपर्कों से पहले दिखता है।';
+
+  @override
+  String get contactTestHelp =>
+      'टेस्ट के लिए नमूना संपर्क। TEST लेबल के साथ दिखता है, कभी सत्यापित नहीं होता और ईमेल नहीं जाता।';
+
+  @override
+  String get contactType => 'प्रकार';
+
+  @override
+  String get contactVerifiedHelp =>
+      'तभी चालू करें जब संस्था सूची में आने के लिए राज़ी हो और जानकारी जाँच ली गई हो।';
+
+  @override
+  String get copyCode => 'कॉपी करें';
+
+  @override
+  String get dailyActive => 'आज सक्रिय';
+
+  @override
+  String get dailyCheckin => 'रोज़ाना चेक-इन';
+
+  @override
+  String get dailyRewards => 'रोज़ाना इनाम';
+
+  @override
+  String get deleteContactTitle => 'यह संपर्क हटाएँ?';
+
+  @override
+  String get directions => 'रास्ता';
+
+  @override
+  String get editContact => 'संपर्क बदलें';
+
+  @override
+  String get emergencies => 'आपात स्थितियाँ';
+
+  @override
+  String get emergenciesActive => 'सक्रिय';
+
+  @override
+  String get emergenciesAll => 'सभी';
+
+  @override
+  String get emergenciesNearYou => 'आपके पास';
+
+  @override
+  String get emergenciesSubtitle => 'जिन जानवरों को तुरंत मदद चाहिए';
+
+  @override
+  String get emergencyAddPhotos => 'फ़ोटो जोड़ें';
+
+  @override
+  String get emergencyAddPhotosHint =>
+      'दूसरों को जानवर ढूँढने और पहचानने में मदद मिलती है';
+
+  @override
+  String get emergencyAllContacts => 'सभी आपात संपर्क देखें';
+
+  @override
+  String get emergencyAlreadyReported => 'आप पहले ही रिपोर्ट कर चुके हैं।';
+
+  @override
+  String get emergencyCallReporter => 'रिपोर्ट करने वाले को कॉल करें';
+
+  @override
+  String get emergencyClose => 'बंद करें';
+
+  @override
+  String get emergencyCloseTitle => 'यह आपात स्थिति बंद करें?';
+
+  @override
+  String get emergencyContacts => 'आपात संपर्क';
+
+  @override
+  String get emergencyDetails => 'क्या हो रहा है?';
+
+  @override
+  String get emergencyDetailsHint =>
+      'जैसे कुत्ते को गाड़ी ने टक्कर मारी, सड़क किनारे पड़ा है, साँस ले रहा है';
+
+  @override
+  String get emergencyDetailsRequired => 'कुछ शब्दों में स्थिति बताएँ।';
+
+  @override
+  String get emergencyDisclaimer =>
+      'CodaMi आपात सेवा नहीं है। अगर जानवर तुरंत ख़तरे में है, तो पहले 112 या किसी पशु-चिकित्सक को कॉल करें। सिर्फ़ ऐप की सूचनाओं पर निर्भर न रहें।';
+
+  @override
+  String get emergencyFalseAlarmTitle => 'झूठा अलार्म मानें?';
+
+  @override
+  String get emergencyFindingContacts =>
+      'इस जगह के पास संपर्क खोजे जा रहे हैं…';
+
+  @override
+  String get emergencyHelpDone =>
+      'धन्यवाद! रिपोर्ट करने वाले को बता दिया गया है।';
+
+  @override
+  String get emergencyHelpMessage =>
+      'रिपोर्ट करने वाले को पता चलेगा कि कोई आ रहा है। तभी जाएँ जब यह आपके लिए सुरक्षित हो।';
+
+  @override
+  String get emergencyHelpTitle => 'क्या आप मदद के लिए जा रहे हैं?';
+
+  @override
+  String get emergencyImHelping => 'मैं मदद करूँगा';
+
+  @override
+  String get emergencyMarkFalseAlarm => 'झूठा अलार्म मानें';
+
+  @override
+  String get emergencyMarkResolved => 'हल हुआ मानें';
+
+  @override
+  String get emergencyMissingFields =>
+      'क्या हुआ और कौन-सा जानवर है चुनें, स्थिति बताएँ और पिन लगाएँ।';
+
+  @override
+  String get emergencyNoContacts =>
+      'इस इलाक़े के लिए अभी कोई संपर्क नहीं है। 112 या किसी पशु-चिकित्सक को कॉल करें।';
+
+  @override
+  String get emergencyPhoneHint =>
+      'मदद करने वालों को दिखेगा ताकि वे आपको कॉल कर सकें।';
+
+  @override
+  String get emergencyPinHint => 'नक्शा खिसकाकर पिन वहाँ लगाएँ जहाँ जानवर है।';
+
+  @override
+  String get emergencyPinned => 'पिन लग गया';
+
+  @override
+  String get emergencyReopen => 'फिर से खोलें';
+
+  @override
+  String get emergencyReportFalse => 'झूठी बताकर रिपोर्ट करें';
+
+  @override
+  String get emergencyReportFalseDone => 'धन्यवाद, हमारी टीम जाँच करेगी।';
+
+  @override
+  String get emergencyReportFalseMessage =>
+      'हमारी टीम इस आपात स्थिति की जाँच करेगी।';
+
+  @override
+  String get emergencyReportFalseTitle => 'क्या यह आपात स्थिति झूठी है?';
+
+  @override
+  String get emergencyResolveTitle => 'हल हुआ मानें?';
+
+  @override
+  String get emergencyResolved => 'हल हुआ मान लिया गया';
+
+  @override
+  String get emergencySend => 'आपात स्थिति भेजें';
+
+  @override
+  String get emergencySendFailed =>
+      'भेजा नहीं जा सका। कनेक्शन जाँचकर फिर कोशिश करें, या 112 पर कॉल करें।';
+
+  @override
+  String get emergencySending => 'भेजा जा रहा है…';
+
+  @override
+  String get emergencySent =>
+      'भेज दिया गया। पास के लोगों को सूचना दी जा रही है। आप नीचे दिए संपर्कों को सीधे कॉल भी कर सकते हैं।';
+
+  @override
+  String get emergencySettings => 'आपात सेटिंग';
+
+  @override
+  String get emergencySettingsSubtitle => 'सूचना की दूरी और संपर्कों का क्रम';
+
+  @override
+  String get emergencyStatusClosed => 'बंद';
+
+  @override
+  String get emergencyStatusFalseAlarm => 'झूठा अलार्म';
+
+  @override
+  String get emergencyStatusHelping => 'मदद रास्ते में है';
+
+  @override
+  String get emergencyStatusOpen => 'मदद चाहिए';
+
+  @override
+  String get emergencyStatusResolved => 'हल हुआ';
+
+  @override
+  String get emergencySuggestedContacts => 'कौन मदद कर सकता है';
+
+  @override
+  String get emergencySuggestedContactsHint =>
+      'सबसे पास के उपयुक्त संपर्क पहले। उन्हें सीधे कॉल करें।';
+
+  @override
+  String get emergencyTypeAbandoned => 'छोड़ा हुआ जानवर';
+
+  @override
+  String get emergencyTypeDanger => 'ख़तरे में जानवर';
+
+  @override
+  String get emergencyTypeInjured => 'घायल जानवर';
+
+  @override
+  String get emergencyTypeIntervention => 'मदद का अनुरोध';
+
+  @override
+  String get emergencyTypeOther => 'अन्य आपात स्थिति';
+
+  @override
+  String get emergencyTypeUrgentFound => 'मिला, तुरंत देखभाल चाहिए';
+
+  @override
+  String get emergencyUnavailable => 'यह आपात स्थिति अब उपलब्ध नहीं है।';
+
+  @override
+  String get emergencyWhatHappened => 'क्या हुआ?';
+
+  @override
+  String get emergencyWhere => 'जानवर कहाँ है?';
+
+  @override
+  String get emergencyWhereHint =>
+      'सटीक जगह साझा की जाती है ताकि मदद करने वाले जानवर तक पहुँच सकें।';
+
+  @override
+  String get emergencyYouAreHelping => 'आपने कहा है कि आप मदद करेंगे। धन्यवाद!';
+
+  @override
+  String get emergencyYourPhone => 'आपका फ़ोन';
+
+  @override
+  String get flagBurst => 'इस उपयोगकर्ता के कई दोस्त एक ही दिन सक्रिय हुए';
+
+  @override
+  String get flagDeviceUsed =>
+      'यह फ़ोन पहले किसी दूसरे निमंत्रण में इस्तेमाल हो चुका है';
+
+  @override
+  String get flagSameDevice => 'आमंत्रित करने वाले जैसा ही फ़ोन';
+
+  @override
+  String get haveInviteCode => 'किसी दोस्त ने बुलाया? उनका कोड डालें';
+
+  @override
+  String get invitePromptTitle => 'क्या किसी दोस्त ने आपको आमंत्रित किया?';
+
+  @override
+  String get invitePromptBody =>
+      'उनका आमंत्रण कोड डालें, ताकि आपको CodaMi पर लाने का श्रेय आपके दोस्त को मिले।';
+
+  @override
+  String invitePromptLater(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'आप इसे बाद में भी प्रोफ़ाइल → दोस्तों को आमंत्रित करें में जोड़ सकते हैं, साइन अप के $days दिनों के भीतर।',
+      one:
+          'आप इसे आज बाद में भी प्रोफ़ाइल → दोस्तों को आमंत्रित करें में जोड़ सकते हैं।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inviteCodeLabel => 'आमंत्रण कोड';
+
+  @override
+  String get inviteCodeFormat =>
+      'आमंत्रण कोड में 6 अक्षर और अंक होते हैं, जैसे ABC234।';
+
+  @override
+  String get inviteCodeNotFound =>
+      'हमें यह कोड नहीं मिला। अपने दोस्त से इसकी पुष्टि करें।';
+
+  @override
+  String get inviteCodeOwn =>
+      'यह आपका अपना कोड है। इसे अपने दोस्तों के साथ शेयर करें।';
+
+  @override
+  String inviteCodeTooLate(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'आमंत्रण कोड केवल साइन अप के पहले $days दिनों में ही जोड़ा जा सकता है।',
+      one: 'आमंत्रण कोड केवल साइन अप वाले दिन ही जोड़ा जा सकता है।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inviteCodeTooManyTries =>
+      'आज बहुत सारे गलत कोड डाले गए। कल फिर कोशिश करें।';
+
+  @override
+  String get howInvitesWork => 'यह कैसे काम करता है';
+
+  @override
+  String get inviteApproved => 'निमंत्रण मंज़ूर';
+
+  @override
+  String get inviteCodeAlreadyUsed =>
+      'आप पहले ही एक निमंत्रण कोड इस्तेमाल कर चुके हैं।';
+
+  @override
+  String get inviteCodeInvalid => 'यह कोड मान्य नहीं है।';
+
+  @override
+  String get inviteCodeNotAllowed =>
+      'यह कोड इस्तेमाल नहीं हो सकता: यह आपका अपना कोड है, या साइन अप किए बहुत समय हो गया है।';
+
+  @override
+  String get inviteFriends => 'दोस्तों को बुलाएँ';
+
+  @override
+  String get inviteFriendsSubtitle => 'CodaMi राजदूत बनें';
+
+  @override
+  String get inviteIntro =>
+      'CodaMi का हर नया उपयोगकर्ता खोए हुए पालतू जानवरों के लिए एक और जोड़ी आँखें है। अपने दोस्तों को बुलाएँ और CodaMi राजदूत बनें।';
+
+  @override
+  String get inviteRejected => 'निमंत्रण अस्वीकार';
+
+  @override
+  String get inviteStatusExpired => 'समय पर सक्रिय नहीं हुए';
+
+  @override
+  String get inviteStatusPending => 'जुड़ गए, अभी सक्रिय नहीं';
+
+  @override
+  String get inviteStatusQualified => 'सक्रिय – पॉइंट मिले';
+
+  @override
+  String get inviteStatusRejected => 'गिना नहीं गया';
+
+  @override
+  String get inviteStatusReview => 'जाँच हो रही है';
+
+  @override
+  String get inviteStep1 =>
+      'अपना कोड साझा करें। आपका दोस्त साइन अप के बाद प्रोफ़ाइल → दोस्तों को बुलाएँ में इसे डालता है।';
+
+  @override
+  String get invitedFriends => 'बुलाए गए दोस्त (सक्रिय)';
+
+  @override
+  String get invitesToReview => 'जाँच के लिए निमंत्रण';
+
+  @override
+  String get invitesToReviewSubtitle =>
+      'धोखाधड़ी-रोधी जाँच में रोके गए निमंत्रण';
+
+  @override
+  String get levelAmbassador => 'राजदूत';
+
+  @override
+  String get levelBonus => 'बोनस पॉइंट';
+
+  @override
+  String get settingsActiveFriends => 'सक्रिय दोस्त';
+
+  @override
+  String get levelChampion => 'CodaMi चैंपियन';
+
+  @override
+  String get levelSuperAmbassador => 'सुपर राजदूत';
+
+  @override
+  String get levelSupporter => 'समर्थक';
+
+  @override
+  String get myEmergencies => 'मेरी';
+
+  @override
+  String get myPoints => 'मेरे पॉइंट';
+
+  @override
+  String get noActiveEmergencies => 'कोई आपात स्थिति नहीं';
+
+  @override
+  String get noEmergenciesMessage =>
+      'आपके शहर के पास रिपोर्ट की गई आपात स्थितियाँ यहाँ दिखेंगी।';
+
+  @override
+  String get noEmergenciesNearby => 'आपके पास कोई आपात स्थिति नहीं';
+
+  @override
+  String get noEmergencyContacts => 'अभी कोई संपर्क नहीं';
+
+  @override
+  String get noEmergencyContactsAdmin =>
+      'पशु-चिकित्सक, संस्थाएँ और सेवाएँ जोड़ें, या सुविधा आज़माने के लिए टेस्ट संपर्क जोड़ें।';
+
+  @override
+  String get noEmergencyContactsMessage =>
+      'संपर्क जल्द जोड़े जाएँगे। आपात स्थिति में 112 या किसी पशु-चिकित्सक को कॉल करें।';
+
+  @override
+  String get noInvitesToReview => 'जाँचने को कुछ नहीं';
+
+  @override
+  String get noInvitesToReviewMessage =>
+      'संदिग्ध निमंत्रण यहाँ दिखते हैं। आपके फ़ैसले के बिना कुछ अस्वीकार नहीं होता।';
+
+  @override
+  String get noInvitesYet =>
+      'अभी कोई निमंत्रण नहीं। शुरू करने के लिए अपना कोड साझा करें।';
+
+  @override
+  String get noLevelYet => 'अभी कोई स्तर नहीं';
+
+  @override
+  String get noMyEmergencies => 'आपने कोई आपात स्थिति रिपोर्ट नहीं की है';
+
+  @override
+  String get noPointsYet =>
+      'अभी कोई पॉइंट नहीं। शुरू करने के लिए रोज़ाना इनाम लें।';
+
+  @override
+  String get open24h => '24 घंटे खुला';
+
+  @override
+  String get openMapFailed => 'नक्शा नहीं खुल सका।';
+
+  @override
+  String get photos => 'फ़ोटो';
+
+  @override
+  String get pointsAdjusted => 'CodaMi ने बदले';
+
+  @override
+  String get pointsDailyActive => 'आज सक्रिय';
+
+  @override
+  String get pointsDailyCheckin => 'रोज़ाना चेक-इन';
+
+  @override
+  String get pointsFriendJoined => 'एक दोस्त सक्रिय हुआ';
+
+  @override
+  String get pointsHistory => 'इतिहास';
+
+  @override
+  String get pointsLevelBonus => 'नए स्तर का बोनस';
+
+  @override
+  String get pointsOther => 'पॉइंट';
+
+  @override
+  String get pointsSettings => 'पॉइंट और इनाम';
+
+  @override
+  String get pointsSettingsIntro =>
+      'बदलाव तुरंत लागू होते हैं। सीमा से बाहर के मान डिफ़ॉल्ट से बदल दिए जाते हैं।';
+
+  @override
+  String get pointsSettingsSubtitle => 'रोज़ाना इनाम, निमंत्रण और स्तर';
+
+  @override
+  String get pointsStreakBonus => 'लगातार दिनों का बोनस';
+
+  @override
+  String get pointsWelcome => 'स्वागत बोनस';
+
+  @override
+  String get recommendedContact => 'सुझाया गया';
+
+  @override
+  String get reject => 'अस्वीकार करें';
+
+  @override
+  String get reportEmergency => 'आपात स्थिति रिपोर्ट करें';
+
+  @override
+  String get searchContacts => 'नाम या शहर से खोजें';
+
+  @override
+  String get settingsActiveMinutes => '“आज सक्रिय” के लिए इस्तेमाल के मिनट';
+
+  @override
+  String get settingsAlertsNearby => 'पास के लोगों को सूचना';
+
+  @override
+  String get settingsAutoCloseHours =>
+      'कितनी देर बाद बंद करें (बिना अपडेट के घंटे)';
+
+  @override
+  String get settingsAutoCloseHoursHelp =>
+      'खुली आपात स्थितियाँ इतने समय बाद अपने-आप बंद हो जाती हैं।';
+
+  @override
+  String get settingsCodeEntryDays => 'साइन अप के बाद कोड डालने के दिन';
+
+  @override
+  String get settingsContactsPriority => 'संपर्कों की प्राथमिकता';
+
+  @override
+  String get settingsDefaultAreaKm => 'डिफ़ॉल्ट सेवा क्षेत्र (किमी)';
+
+  @override
+  String get settingsDefaultAreaKmHelp =>
+      'उन संपर्कों के लिए जिनका अपना क्षेत्र नहीं है।';
+
+  @override
+  String get settingsEmailContacts => 'संपर्कों को ईमेल सूचना';
+
+  @override
+  String get settingsEmailContactsHelp =>
+      'सत्यापित संपर्कों को ईमेल भेजता है। पहले ईमेल सेवा सेट करनी होगी।';
+
+  @override
+  String get settingsMaxPerDay => 'जाँच से पहले रोज़ के सक्रिय दोस्त';
+
+  @override
+  String get settingsMaxPerDayHelp =>
+      '24 घंटे में इससे ज़्यादा होने पर निमंत्रण जाँच में चला जाता है।';
+
+  @override
+  String get settingsMaxRecipients => 'ज़्यादा से ज़्यादा सूचित लोग';
+
+  @override
+  String get settingsMaxSuggested => 'सुझाए गए संपर्क';
+
+  @override
+  String get settingsMinRecipients => 'कितने लोगों तक पहुँचना है';
+
+  @override
+  String get settingsMinRecipientsHelp =>
+      'इतने लोग मिलने तक अगला घेरा इस्तेमाल होता है।';
+
+  @override
+  String get settingsQualifyDays => 'ज़रूरी सक्रिय दिन';
+
+  @override
+  String get settingsQualifyWithinDays => 'इतने दिनों में (साइन अप के बाद)';
+
+  @override
+  String get settingsReferralPoints => 'हर सक्रिय दोस्त के पॉइंट';
+
+  @override
+  String get settingsRings => 'सूचना के घेरे (किमी)';
+
+  @override
+  String get settingsRingsHelp => 'कॉमा से अलग, छोटे से बड़े, जैसे 5, 10, 25';
+
+  @override
+  String get settingsSaved => 'सेव हो गया';
+
+  @override
+  String get settingsStreakDays => 'लगातार बोनस के लिए दिन';
+
+  @override
+  String get settingsWeight24h => '24 घंटे खुले का बोनस';
+
+  @override
+  String get settingsWeightHelp =>
+      'संपर्कों को ये बोनस मिलते हैं और हर किमी दूरी पर पॉइंट घटते हैं। सबसे ज़्यादा स्कोर पहले आता है।';
+
+  @override
+  String get settingsWeightPerKm => 'प्रति किमी कटौती';
+
+  @override
+  String get settingsWeightPerKmHelp =>
+      '1 पर, सुझाया गया संपर्क (20) अपने से 20 किमी तक पास वाले संपर्क से पहले आता है।';
+
+  @override
+  String get settingsWeightRecommended => 'सुझाए गए का बोनस';
+
+  @override
+  String get settingsWeightVerified => 'सत्यापित का बोनस';
+
+  @override
+  String get settingsWelcomePoints => 'बुलाए गए दोस्त के पॉइंट';
+
+  @override
+  String get settingsWelcomePointsHelp =>
+      'कोड डालने पर मिलते हैं। 0 बंद कर देता है।';
+
+  @override
+  String get shareInvite => 'साझा करें';
+
+  @override
+  String get statActiveEmergencies => 'सक्रिय आपात स्थितियाँ';
+
+  @override
+  String get testContactBadge => 'TEST – असली संपर्क नहीं';
+
+  @override
+  String get topLevelReached => 'आप सबसे ऊँचे स्तर पर पहुँच गए। धन्यवाद!';
+
+  @override
+  String get useCode => 'इस्तेमाल करें';
+
+  @override
+  String get verifiedContact => 'सत्यापित';
+
+  @override
+  String get viewInvitee => 'बुलाया गया उपयोगकर्ता';
+
+  @override
+  String get viewInviter => 'बुलाने वाला';
+
+  @override
+  String get yourInviteCode => 'आपका निमंत्रण कोड';
+
+  @override
+  String get yourInvites => 'आपके निमंत्रण';
+
+  @override
+  String get zeroTurnsOff => '0 बंद कर देता है';
+
+  @override
+  String activeProgress(int done, int total) {
+    return 'आज $total में से $done मिनट';
+  }
+
+  @override
+  String claimedPoints(int points) {
+    return '+$points पॉइंट!';
+  }
+
+  @override
+  String claimedWithBonus(int points, int bonus) {
+    return '+$points पॉइंट और +$bonus लगातार बोनस!';
+  }
+
+  @override
+  String emergenciesNearYouCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'आपके पास $count जानवरों की आपात स्थितियाँ',
+      one: 'आपके पास 1 जानवर की आपात स्थिति',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyAlertedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'पास के $count लोगों को सूचना दी गई',
+      one: 'पास के 1 व्यक्ति को सूचना दी गई',
+      zero: 'पास में अभी किसी ने सूचनाएँ चालू नहीं की हैं',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyFalseReports(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बार झूठी बताई गई',
+      one: 'एक बार झूठी बताई गई',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyHelpersCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count लोग मदद के लिए जा रहे हैं',
+      one: '1 व्यक्ति मदद के लिए जा रहा है',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inviteCodeAccepted(String name) {
+    return 'कोड मान लिया गया। आपको $name ने बुलाया – CodaMi में स्वागत है!';
+  }
+
+  @override
+  String inviteShareText(String code, String link) {
+    return 'मैं खोए पालतू जानवरों को घर पहुँचाने में मदद के लिए CodaMi इस्तेमाल करता हूँ। मेरे निमंत्रण कोड $code से जुड़ें: $link';
+  }
+
+  @override
+  String inviteStep2(int days, int within) {
+    return 'वे अपना शहर चुनते हैं और साइन अप के $within दिनों में $days अलग-अलग दिन ऐप इस्तेमाल करते हैं।';
+  }
+
+  @override
+  String inviteStep3(int points) {
+    return 'आपको $points पॉइंट मिलते हैं और आप राजदूत स्तर में आगे बढ़ते हैं।';
+  }
+
+  @override
+  String kmAway(String km) {
+    return '$km किमी दूर';
+  }
+
+  @override
+  String levelFriends(String level) {
+    return '$level: सक्रिय दोस्त';
+  }
+
+  @override
+  String levelRule(String level, int friends, int bonus) {
+    return '$level · $friends+ दोस्त · +$bonus';
+  }
+
+  @override
+  String nextLevelHint(int count, String level) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$level बनने के लिए $count और सक्रिय दोस्त',
+      one: '$level बनने के लिए 1 और सक्रिय दोस्त',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String plusPoints(int points) {
+    return '+$points पॉइंट';
+  }
+
+  @override
+  String pointsTotal(int points) {
+    String _temp0 = intl.Intl.pluralLogic(
+      points,
+      locale: localeName,
+      other: '$points पॉइंट',
+      one: '1 पॉइंट',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String streakLine(int streak, int days, int bonus) {
+    return 'लगातार $streak दिन · हर $days दिन पर +$bonus बोनस';
+  }
 }

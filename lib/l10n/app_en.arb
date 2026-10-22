@@ -1315,5 +1315,402 @@
   "reportedTabPhotos": "AI photos",
   "reportedTabReports": "User reports",
   "noPhotosToReview": "No photos to review",
-  "noPhotosToReviewMessage": "Photos the AI holds back will appear here."
+  "noPhotosToReviewMessage": "Photos the AI holds back will appear here.",
+  "aFriend": "A friend",
+  "addContact": "Add contact",
+  "addTestContacts": "Add test contacts",
+  "adjustPoints": "Adjust points",
+  "adjustPointsAmount": "Points to add or remove",
+  "adjustPointsAmountHelp": "Use a minus sign to remove points, e.g. -20",
+  "adjustPointsInvalid": "Enter a number of points and a reason.",
+  "adjustPointsReason": "Reason (shown to the user)",
+  "adminContactsSubtitle": "Vets, associations and services shown to users",
+  "adminEmergenciesSubtitle": "Reported animal emergencies",
+  "alertEmergencyDescription": "Animals that need urgent help near your city",
+  "alertEmergencyTitle": "Emergencies nearby",
+  "allContacts": "All",
+  "ambassadorLevels": "Ambassador levels",
+  "call112": "Call 112",
+  "claim": "Claim",
+  "claimed": "Claimed",
+  "codeCopied": "Code copied",
+  "confirm": "Confirm",
+  "contactActive": "Shown to users",
+  "contactActiveHelp": "Turn off to hide this contact without deleting it.",
+  "contactAddress": "Address",
+  "contactAreaKm": "Area covered (km)",
+  "contactAreaKmHelp": "How far from its address it can help. Leave empty to use the default from the emergency settings.",
+  "contactCity": "Town or city",
+  "contactHandles": "Emergencies it handles",
+  "contactHandlesHelp": "Leave all off if it handles every kind.",
+  "contactHoursHint": "Opening hours, e.g. Mon–Fri 9:00–18:00",
+  "contactInactive": "Hidden",
+  "contactKindAssociation": "Animal welfare association",
+  "contactKindOther": "Other service",
+  "contactKindPublicService": "Public veterinary service",
+  "contactKindVet": "Vet",
+  "contactMissingFields": "Add a name and place the pin on the map.",
+  "contactName": "Name",
+  "contactNameHint": "e.g. Clinica Veterinaria San Francesco",
+  "contactPhones": "Phone numbers",
+  "contactPhonesHint": "Separate numbers with commas",
+  "contactPlace": "Where it is",
+  "contactRecommendedHelp": "Shown before nearer contacts when an emergency is reported.",
+  "contactTestHelp": "Placeholder for testing. Shown with a TEST label, never verified or emailed.",
+  "contactType": "Type",
+  "contactVerifiedHelp": "Only after the organization agreed to be listed and the details were checked.",
+  "copyCode": "Copy",
+  "dailyActive": "Active today",
+  "dailyCheckin": "Daily check-in",
+  "dailyRewards": "Daily rewards",
+  "deleteContactTitle": "Delete this contact?",
+  "directions": "Directions",
+  "editContact": "Edit contact",
+  "emergencies": "Emergencies",
+  "emergenciesActive": "Active",
+  "emergenciesAll": "All",
+  "emergenciesNearYou": "Near you",
+  "emergenciesSubtitle": "Animals that need urgent help",
+  "emergencyAddPhotos": "Add a photo",
+  "emergencyAddPhotosHint": "Helps others find and recognise the animal",
+  "emergencyAllContacts": "See all emergency contacts",
+  "emergencyAlreadyReported": "You already reported this.",
+  "emergencyCallReporter": "Call the person who reported it",
+  "emergencyClose": "Close",
+  "emergencyCloseTitle": "Close this emergency?",
+  "emergencyContacts": "Emergency contacts",
+  "emergencyDetails": "What's happening?",
+  "emergencyDetailsHint": "e.g. Dog hit by a car, lying by the road, still breathing",
+  "emergencyDetailsRequired": "Describe the situation in a few words.",
+  "emergencyDisclaimer": "CodaMi is not an emergency service. If an animal is in immediate danger, call 112 or a vet first. Don't rely only on app notifications.",
+  "emergencyFalseAlarmTitle": "Mark as a false alarm?",
+  "emergencyFindingContacts": "Finding contacts near this place…",
+  "emergencyHelpDone": "Thank you! The person who reported it was told.",
+  "emergencyHelpMessage": "The person who reported it will know someone is coming. Only go if it's safe for you.",
+  "emergencyHelpTitle": "Are you going to help?",
+  "emergencyImHelping": "I'm going to help",
+  "emergencyMarkFalseAlarm": "Mark as false alarm",
+  "emergencyMarkResolved": "Mark as resolved",
+  "emergencyMissingFields": "Choose what happened and the animal, describe it and place the pin.",
+  "emergencyNoContacts": "No contacts listed for this area yet. Call 112 or a vet.",
+  "emergencyPhoneHint": "Shown to people who want to help, so they can call you.",
+  "emergencyPinHint": "Move the map to put the pin where the animal is.",
+  "emergencyPinned": "Pin placed",
+  "emergencyReopen": "Reopen",
+  "emergencyReportFalse": "Report as false",
+  "emergencyReportFalseDone": "Thanks, our team will check it.",
+  "emergencyReportFalseMessage": "Our team will check this emergency.",
+  "emergencyReportFalseTitle": "Is this emergency false?",
+  "emergencyResolveTitle": "Mark as resolved?",
+  "emergencyResolved": "Marked as resolved",
+  "emergencySend": "Send emergency",
+  "emergencySendFailed": "Couldn't send the emergency. Check your connection and try again, or call 112.",
+  "emergencySending": "Sending…",
+  "emergencySent": "Emergency sent. People nearby are being alerted. You can also call the contacts below directly.",
+  "emergencySettings": "Emergency settings",
+  "emergencySettingsSubtitle": "Alert distances and how contacts are ranked",
+  "emergencyStatusClosed": "Closed",
+  "emergencyStatusFalseAlarm": "False alarm",
+  "emergencyStatusHelping": "Help on the way",
+  "emergencyStatusOpen": "Needs help",
+  "emergencyStatusResolved": "Resolved",
+  "emergencySuggestedContacts": "Who can help",
+  "emergencySuggestedContactsHint": "Nearest suitable contacts first. Call them directly.",
+  "emergencyTypeAbandoned": "Abandoned animal",
+  "emergencyTypeDanger": "Animal in danger",
+  "emergencyTypeInjured": "Injured animal",
+  "emergencyTypeIntervention": "Request for intervention",
+  "emergencyTypeOther": "Other emergency",
+  "emergencyTypeUrgentFound": "Found, needs urgent care",
+  "emergencyUnavailable": "This emergency is no longer available.",
+  "emergencyWhatHappened": "What happened?",
+  "emergencyWhere": "Where is the animal?",
+  "emergencyWhereHint": "The exact place is shared so helpers can find the animal.",
+  "emergencyYouAreHelping": "You said you're going to help. Thank you!",
+  "emergencyYourPhone": "Your phone",
+  "flagBurst": "Many friends of this user became active on the same day",
+  "flagDeviceUsed": "This phone was already used for another invite",
+  "flagSameDevice": "Same phone as the person who invited them",
+  "haveInviteCode": "Did a friend invite you? Enter their code",
+  "invitePromptTitle": "Did a friend invite you?",
+  "invitePromptBody": "Enter their invite code so your friend gets the credit for bringing you to CodaMi.",
+  "invitePromptLater": "{days, plural, =1{You can also add it later today in Profile → Invite friends.} other{You can also add it later in Profile → Invite friends, within {days} days of signing up.}}",
+  "inviteCodeLabel": "Invite code",
+  "inviteCodeFormat": "Invite codes have 6 letters and numbers, like ABC234.",
+  "inviteCodeNotFound": "We couldn't find this code. Check it with your friend.",
+  "inviteCodeOwn": "That's your own code. Share it with your friends instead.",
+  "inviteCodeTooLate": "{days, plural, =1{Invite codes can only be added on the day you sign up.} other{Invite codes can only be added in the first {days} days after signing up.}}",
+  "inviteCodeTooManyTries": "Too many wrong codes today. Try again tomorrow.",
+  "@invitePromptLater": {"placeholders": {"days": {"type": "int"}}},
+  "@inviteCodeTooLate": {"placeholders": {"days": {"type": "int"}}},
+  "howInvitesWork": "How it works",
+  "inviteApproved": "Invite approved",
+  "inviteCodeAlreadyUsed": "You already used an invite code.",
+  "inviteCodeInvalid": "This code isn't valid.",
+  "inviteCodeNotAllowed": "This code can't be used: it's your own code, or it's too long since you signed up.",
+  "inviteFriends": "Invite friends",
+  "inviteFriendsSubtitle": "Become a CodaMi ambassador",
+  "inviteIntro": "Every new CodaMi user is one more pair of eyes for lost pets. Invite your friends and become a CodaMi ambassador.",
+  "inviteRejected": "Invite rejected",
+  "inviteStatusExpired": "Didn't become active in time",
+  "inviteStatusPending": "Joined, not active yet",
+  "inviteStatusQualified": "Active – points earned",
+  "inviteStatusRejected": "Not counted",
+  "inviteStatusReview": "Being checked",
+  "inviteStep1": "Share your code. Your friend enters it in Profile → Invite friends after signing up.",
+  "invitedFriends": "Invited friends (active)",
+  "invitesToReview": "Invites to review",
+  "invitesToReviewSubtitle": "Invites held by the anti-fraud checks",
+  "levelAmbassador": "Ambassador",
+  "levelBonus": "Bonus points",
+  "settingsActiveFriends": "Active friends",
+  "levelChampion": "CodaMi Champion",
+  "levelSuperAmbassador": "Super Ambassador",
+  "levelSupporter": "Supporter",
+  "myEmergencies": "Mine",
+  "myPoints": "My points",
+  "noActiveEmergencies": "No emergencies",
+  "noEmergenciesMessage": "Emergencies reported near your city appear here.",
+  "noEmergenciesNearby": "No emergencies near you",
+  "noEmergencyContacts": "No contacts yet",
+  "noEmergencyContactsAdmin": "Add vets, associations and services, or add test contacts to try the feature.",
+  "noEmergencyContactsMessage": "Contacts will be added soon. In an emergency, call 112 or a vet.",
+  "noInvitesToReview": "Nothing to review",
+  "noInvitesToReviewMessage": "Invites that look suspicious appear here. Nothing is rejected without you.",
+  "noInvitesYet": "No invites yet. Share your code to start.",
+  "noLevelYet": "No level yet",
+  "noMyEmergencies": "You haven't reported any emergencies",
+  "noPointsYet": "No points yet. Claim your daily reward to start.",
+  "open24h": "Open 24 hours",
+  "openMapFailed": "Couldn't open the map.",
+  "photos": "Photos",
+  "pointsAdjusted": "Adjusted by CodaMi",
+  "pointsDailyActive": "Active today",
+  "pointsDailyCheckin": "Daily check-in",
+  "pointsFriendJoined": "A friend became active",
+  "pointsHistory": "History",
+  "pointsLevelBonus": "New level bonus",
+  "pointsOther": "Points",
+  "pointsSettings": "Points and rewards",
+  "pointsSettingsIntro": "Changes apply straight away. Values out of range are replaced by the defaults.",
+  "pointsSettingsSubtitle": "Daily rewards, invites and levels",
+  "pointsStreakBonus": "Streak bonus",
+  "pointsWelcome": "Welcome bonus",
+  "recommendedContact": "Recommended",
+  "reject": "Reject",
+  "reportEmergency": "Report an emergency",
+  "searchContacts": "Search by name or town",
+  "settingsActiveMinutes": "Minutes of use for “Active today”",
+  "settingsAlertsNearby": "Alerts to people nearby",
+  "settingsAutoCloseHours": "Close after (hours without updates)",
+  "settingsAutoCloseHoursHelp": "Open emergencies close by themselves after this time.",
+  "settingsCodeEntryDays": "Days after sign-up to enter a code",
+  "settingsContactsPriority": "Contact priority",
+  "settingsDefaultAreaKm": "Default area covered (km)",
+  "settingsDefaultAreaKmHelp": "Used for contacts without their own area.",
+  "settingsEmailContacts": "Email alerts to contacts",
+  "settingsEmailContactsHelp": "Sends an email to verified contacts. The email service must be set up first.",
+  "settingsMaxPerDay": "Active friends per day before a check",
+  "settingsMaxPerDayHelp": "More than this in 24 hours sends the invite to review.",
+  "settingsMaxRecipients": "Maximum people alerted",
+  "settingsMaxSuggested": "Contacts suggested",
+  "settingsMinRecipients": "People to reach",
+  "settingsMinRecipientsHelp": "The next circle is used until this many people are reached.",
+  "settingsQualifyDays": "Active days needed",
+  "settingsQualifyWithinDays": "Within (days after sign-up)",
+  "settingsReferralPoints": "Points for each active friend",
+  "settingsRings": "Alert circles (km)",
+  "settingsRingsHelp": "Comma separated, smallest first, e.g. 5, 10, 25",
+  "settingsSaved": "Saved",
+  "settingsStreakDays": "Days for a streak bonus",
+  "settingsWeight24h": "Bonus for open 24 hours",
+  "settingsWeightHelp": "Contacts get these bonuses and lose points for each km of distance. The highest score comes first.",
+  "settingsWeightPerKm": "Penalty per km",
+  "settingsWeightPerKmHelp": "With 1, a recommended contact (20) comes before one up to 20 km nearer.",
+  "settingsWeightRecommended": "Bonus for recommended",
+  "settingsWeightVerified": "Bonus for verified",
+  "settingsWelcomePoints": "Points for the invited friend",
+  "settingsWelcomePointsHelp": "Given when they enter a code. 0 turns it off.",
+  "shareInvite": "Share",
+  "statActiveEmergencies": "Active emergencies",
+  "testContactBadge": "TEST – not a real contact",
+  "topLevelReached": "You reached the top level. Thank you!",
+  "useCode": "Use",
+  "verifiedContact": "Verified",
+  "viewInvitee": "Invited user",
+  "viewInviter": "Inviter",
+  "yourInviteCode": "Your invite code",
+  "yourInvites": "Your invites",
+  "zeroTurnsOff": "0 turns it off",
+  "activeProgress": "{done} of {total} minutes today",
+  "@activeProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "claimedPoints": "+{points} points!",
+  "@claimedPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "claimedWithBonus": "+{points} points and a +{bonus} streak bonus!",
+  "@claimedWithBonus": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      },
+      "bonus": {
+        "type": "int"
+      }
+    }
+  },
+  "emergenciesNearYouCount": "{count, plural, =1{1 animal emergency near you} other{{count} animal emergencies near you}}",
+  "@emergenciesNearYouCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "emergencyAlertedCount": "{count, plural, =0{Nobody nearby has alerts on yet} =1{1 person nearby was alerted} other{{count} people nearby were alerted}}",
+  "@emergencyAlertedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "emergencyFalseReports": "{count, plural, =1{Reported as false once} other{Reported as false {count} times}}",
+  "@emergencyFalseReports": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "emergencyHelpersCount": "{count, plural, =1{1 person is going to help} other{{count} people are going to help}}",
+  "@emergencyHelpersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteCodeAccepted": "Code accepted. {name} invited you – welcome to CodaMi!",
+  "@inviteCodeAccepted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteShareText": "I use CodaMi to help lost pets get back home. Join me with my invite code {code}: {link}",
+  "@inviteShareText": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteStep2": "They set their city and use the app on {days} different days within {within} days of signing up.",
+  "@inviteStep2": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "within": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteStep3": "You get {points} points and move up the ambassador levels.",
+  "@inviteStep3": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "kmAway": "{km} km away",
+  "@kmAway": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "levelFriends": "{level}: active friends",
+  "@levelFriends": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "levelRule": "{level} · {friends}+ friends · +{bonus}",
+  "@levelRule": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      },
+      "friends": {
+        "type": "int"
+      },
+      "bonus": {
+        "type": "int"
+      }
+    }
+  },
+  "nextLevelHint": "{count, plural, =1{1 more active friend to become {level}} other{{count} more active friends to become {level}}}",
+  "@nextLevelHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "plusPoints": "+{points} points",
+  "@plusPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "pointsTotal": "{points, plural, =1{1 point} other{{points} points}}",
+  "@pointsTotal": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "streakLine": "{streak}-day streak · +{bonus} bonus every {days} days",
+  "@streakLine": {
+    "placeholders": {
+      "streak": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      },
+      "bonus": {
+        "type": "int"
+      }
+    }
+  }
 }

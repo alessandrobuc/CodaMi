@@ -87,6 +87,7 @@ test("only user photo paths are checked", () => {
   assert.deepEqual(photoOwnerOf("reports/u1/r1/1_0.png"), {folder: "reports", ownerId: "u1"});
   assert.deepEqual(photoOwnerOf("pets/u1/1_0.jpg"), {folder: "pets", ownerId: "u1"});
   assert.equal(photoOwnerOf("quarantine/pets/u1/pet1/1_0.jpg"), null);
+  assert.deepEqual(photoOwnerOf("emergencies/u1/e1/1_0.jpg"), {folder: "emergencies", ownerId: "u1"});
   assert.equal(photoOwnerOf("videos/v1/thumbnail.jpg"), null);
   assert.equal(photoOwnerOf("pets/u1"), null);
   assert.equal(photoOwnerOf("pets//1.jpg"), null);

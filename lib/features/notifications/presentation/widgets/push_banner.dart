@@ -18,9 +18,9 @@ void showPushBanner(RemoteMessage message, void Function() open) {
   if (messenger == null) return;
 
   HapticFeedback.mediumImpact();
-  final isSupport = (message.data['kind'] as String? ?? '').startsWith(
-    'support',
-  );
+  final kind = message.data['kind'] as String? ?? '';
+  final isSupport = kind.startsWith('support');
+  final isEmergency = kind.startsWith('emergency');
   messenger
     ..hideCurrentSnackBar()
     ..showSnackBar(
@@ -40,7 +40,9 @@ void showPushBanner(RemoteMessage message, void Function() open) {
                 borderRadius: BorderRadius.circular(11),
               ),
               child: Icon(
-                isSupport
+                isEmergency
+                    ? Icons.emergency_rounded
+                    : isSupport
                     ? Icons.support_agent_rounded
                     : Icons.notifications_active_rounded,
                 color: Colors.white,
@@ -81,6 +83,7 @@ void showPushBanner(RemoteMessage message, void Function() open) {
         action:
             message.data.containsKey('caseId') ||
                 message.data.containsKey('reportId') ||
+                message.data.containsKey('emergencyId') ||
                 message.data['kind'] == photoReviewKind
             ? SnackBarAction(
                 label: appL10n.pushOpen,

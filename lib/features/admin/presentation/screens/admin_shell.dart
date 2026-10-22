@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,6 +25,7 @@ import 'admin_dashboard_tab.dart';
 import 'admin_listings_tab.dart';
 import 'admin_more_tab.dart';
 import 'admin_reported_tab.dart';
+import '../../../emergency/presentation/screens/emergency_screen.dart';
 
 class _AdminTab {
   final NavItem item;
@@ -44,10 +46,12 @@ class _AdminShellState extends ConsumerState<AdminShell>
   int _index = 0;
   Timer? _heartbeat;
   String? _uid;
+  late final SupportRepository _support;
 
   @override
   void initState() {
     super.initState();
+    _support = ref.read(supportRepositoryProvider);
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final uid = ref.read(authStateProvider).value?.uid;
@@ -68,6 +72,11 @@ class _AdminShellState extends ConsumerState<AdminShell>
               ),
             ),
             onOpenPhotoReview: _openReported,
+            onOpenEmergency: (id) => appNavigatorKey.currentState?.push(
+              MaterialPageRoute(
+                builder: (_) => EmergencyScreen(emergencyId: id),
+              ),
+            ),
           );
       _startHeartbeat();
     });
@@ -85,7 +94,10 @@ class _AdminShellState extends ConsumerState<AdminShell>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _heartbeat?.cancel();
-    _sendPresence(PresenceState.offline);
+    // After sign-out the user can't write any more; sign-out already set them offline.
+    if (FirebaseAuth.instance.currentUser?.uid == _uid) {
+      _sendPresence(PresenceState.offline);
+    }
     super.dispose();
   }
 
@@ -118,8 +130,7 @@ class _AdminShellState extends ConsumerState<AdminShell>
   void _sendPresence(PresenceState state) {
     final uid = _uid;
     if (uid == null) return;
-    ref
-        .read(supportRepositoryProvider)
+    _support
         .setPresence(uid, state)
         .catchError((Object e) => debugPrint('Presence update failed: $e'));
   }

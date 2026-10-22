@@ -17,6 +17,11 @@ import '../../../legal/legal_screen.dart';
 import '../../../moderation/presentation/screens/blocked_users_screen.dart';
 import '../../../notifications/presentation/screens/notification_settings_screen.dart';
 import '../../../support/presentation/screens/help_support_screen.dart';
+import '../../../emergency/presentation/screens/emergencies_screen.dart';
+import '../../../emergency/presentation/screens/emergency_contacts_screen.dart';
+import '../../../points/presentation/screens/invite_screen.dart';
+import '../../../points/presentation/screens/points_screen.dart';
+import '../../../points/presentation/widgets/points_widgets.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -236,6 +241,52 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ],
             ).animate().fadeIn(delay: 100.ms, duration: 400.ms),
+            const SizedBox(height: 16),
+            _SectionCard(
+              children: [
+                _ProfileTile(
+                  icon: Icons.stars_rounded,
+                  color: pointsColor,
+                  title: l10n.myPoints,
+                  subtitle: l10n.pointsTotal(
+                    ref.watch(userProfileProvider).value?.points ?? 0,
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const PointsScreen()),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.group_add_rounded,
+                  color: AppColors.primary,
+                  title: l10n.inviteFriends,
+                  subtitle: l10n.inviteFriendsSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const InviteScreen()),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.emergency_rounded,
+                  color: AppColors.danger,
+                  title: l10n.emergencies,
+                  subtitle: l10n.emergenciesSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const EmergenciesScreen(),
+                    ),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.contact_phone_rounded,
+                  color: AppColors.danger,
+                  title: l10n.emergencyContacts,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const EmergencyContactsScreen(),
+                    ),
+                  ),
+                ),
+              ],
+            ).animate().fadeIn(delay: 125.ms, duration: 400.ms),
             const SizedBox(height: 16),
             _SectionCard(
               children: [

@@ -2,10 +2,14 @@ import '../../../reports/domain/entities/reports_entity.dart';
 
 enum NotificationKind {
   newReport,
-  reportResolved;
+  reportResolved,
+  emergency;
 
-  static NotificationKind fromValue(String? value) =>
-      value == 'report_resolved' ? reportResolved : newReport;
+  static NotificationKind fromValue(String? value) => switch (value) {
+    'report_resolved' => reportResolved,
+    'emergency' => emergency,
+    _ => newReport,
+  };
 }
 
 class AppNotification {
@@ -14,6 +18,7 @@ class AppNotification {
   final String title;
   final String body;
   final String? reportId;
+  final String? emergencyId;
   final ReportType reportType;
   final String? photoUrl;
   final String? petName;
@@ -30,6 +35,7 @@ class AppNotification {
     required this.reportType,
     required this.read,
     this.reportId,
+    this.emergencyId,
     this.photoUrl,
     this.petName,
     this.city,

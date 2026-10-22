@@ -11,6 +11,7 @@ import {onObjectFinalized} from "firebase-functions/storage";
 import {
   MAX_ATTEMPTS,
   PURGE_AFTER_DAYS,
+  USER_PHOTO_FOLDERS,
   checkIdOf,
   classify,
   downloadUrlOf,
@@ -182,7 +183,7 @@ async function pushTo(
 // Takes a removed photo out of the owner's pets and listings.
 async function removeLinks(ownerId: string, path: string): Promise<number> {
   let changed = 0;
-  for (const name of ["pets", "reports"]) {
+  for (const name of USER_PHOTO_FOLDERS) {
     const owned = await db().collection(name).where("ownerId", "==", ownerId).get();
     for (const doc of owned.docs) {
       const kept = withoutPath(doc.get("photoUrls"), path);
@@ -285,7 +286,7 @@ export async function deleteModerationData(uid: string): Promise<void> {
   const checks = await checksRef().where("ownerId", "==", uid).get();
   await Promise.all(checks.docs.map((doc) => doc.ref.delete()));
   await Promise.all(
-    ["pets", "reports"].map((folder) =>
+    USER_PHOTO_FOLDERS.map((folder) =>
       bucket().deleteFiles({prefix: quarantinePathOf(`${folder}/${uid}/`)}),
     ),
   );

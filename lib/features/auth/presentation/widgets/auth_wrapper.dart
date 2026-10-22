@@ -10,6 +10,9 @@ import '../../../admin/presentation/screens/admin_shell.dart';
 import '../../../location/presentation/screens/city_setup_screen.dart';
 import '../../../onboarding/presentation/screens/language_select_screen.dart';
 import '../../../onboarding/presentation/screens/onboarding_screen.dart';
+import '../../../points/domain/points.dart';
+import '../../../points/presentation/providers/points_provider.dart';
+import '../../../points/presentation/screens/invite_prompt_screen.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../shell/presentation/screens/main_shell.dart';
 import '../../data/models/user_model.dart';
@@ -99,10 +102,25 @@ class _AuthWrapperState extends ConsumerState<AuthWrapper> {
     if (profile?.role.isStaff ?? false) {
       return const AdminShell(key: ValueKey('admin'));
     }
-    if (profileState.hasError || (profile?.hasCity ?? false)) {
-      return const MainShell(key: ValueKey('shell'));
+    if (profileState.hasError) return const MainShell(key: ValueKey('shell'));
+    if (profile == null || !profile.hasCity) {
+      return const CitySetupScreen(key: ValueKey('city'));
     }
-    return const CitySetupScreen(key: ValueKey('city'));
+    if (_askForInviteCode(profile)) {
+      return InvitePromptScreen(
+        key: const ValueKey('invite'),
+        uid: profile.uid,
+      );
+    }
+    return const MainShell(key: ValueKey('shell'));
+  }
+
+  bool _askForInviteCode(UserModel profile) {
+    if (profile.referredBy != null) return false;
+    if (ref.watch(invitePromptSeenProvider).contains(profile.uid)) return false;
+    final days = (ref.watch(pointsConfigProvider).value ?? const PointsConfig())
+        .codeEntryDays;
+    return DateTime.now().difference(profile.createdAt).inDays < days;
   }
 }
 

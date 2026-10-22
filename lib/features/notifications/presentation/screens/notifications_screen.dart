@@ -15,6 +15,7 @@ import '../../../reports/presentation/widgets/reports_widget.dart';
 import '../../domain/entities/notification_entity.dart';
 import '../providers/notifications_provider.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../emergency/presentation/screens/emergency_screen.dart';
 
 class NotificationsScreen extends ConsumerWidget {
   const NotificationsScreen({super.key});
@@ -38,6 +39,12 @@ class NotificationsScreen extends ConsumerWidget {
     void open(AppNotification n) {
       if (uid != null && !n.read) {
         ref.read(notificationsRepositoryProvider).markRead(uid, n.id);
+      }
+      if (n.emergencyId case final id?) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => EmergencyScreen(emergencyId: id)),
+        );
+        return;
       }
       final id = n.reportId;
       if (id == null) return;
@@ -226,8 +233,15 @@ class _NotificationTile extends StatelessWidget {
     final n = notification;
     final (title, body) = _text(context.l10n, n);
     final resolved = n.kind == NotificationKind.reportResolved;
-    final color = resolved ? AppColors.primary : reportColor(n.reportType);
-    final icon = resolved
+    final emergency = n.kind == NotificationKind.emergency;
+    final color = emergency
+        ? AppColors.danger
+        : resolved
+        ? AppColors.primary
+        : reportColor(n.reportType);
+    final icon = emergency
+        ? Icons.emergency_rounded
+        : resolved
         ? Icons.home_rounded
         : n.reportType == ReportType.lost
         ? Icons.search_rounded

@@ -8,6 +8,7 @@ import '../../../auth/data/models/user_model.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../support/presentation/providers/support_provider.dart';
 import '../providers/admin_provider.dart';
+import '../../../emergency/presentation/providers/emergency_provider.dart';
 
 class AdminDashboardTab extends ConsumerWidget {
   const AdminDashboardTab({super.key});
@@ -20,8 +21,15 @@ class AdminDashboardTab extends ConsumerWidget {
     final isAdmin = ref.watch(userRoleProvider) == UserRole.admin;
     final stats = ref.watch(dashboardStatsProvider);
     final support = ref.watch(supportCountsProvider).value;
+    final emergencies = ref.watch(activeEmergenciesProvider).value;
 
     final cards = [
+      (
+        Icons.emergency_rounded,
+        AppColors.danger,
+        l10n.statActiveEmergencies,
+        emergencies?.length,
+      ),
       (
         Icons.mark_chat_unread_rounded,
         AppColors.accent,

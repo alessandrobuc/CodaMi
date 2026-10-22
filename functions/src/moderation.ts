@@ -12,7 +12,7 @@ export const LIKELIHOODS = [
   "VERY_LIKELY",
 ] as const;
 export const CATEGORIES = ["adult", "racy", "violence", "medical", "spoof"] as const;
-export const USER_PHOTO_FOLDERS = ["pets", "reports"] as const;
+export const USER_PHOTO_FOLDERS = ["pets", "reports", "emergencies"] as const;
 export const QUARANTINE_FOLDER = "quarantine";
 export const PURGE_AFTER_DAYS = 7;
 export const MAX_ATTEMPTS = 5;

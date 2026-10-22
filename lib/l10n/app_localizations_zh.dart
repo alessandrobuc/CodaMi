@@ -2238,4 +2238,814 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noPhotosToReviewMessage => '被 AI 拦下的照片会显示在这里。';
+
+  @override
+  String get aFriend => '一位朋友';
+
+  @override
+  String get addContact => '添加联系人';
+
+  @override
+  String get addTestContacts => '添加测试联系人';
+
+  @override
+  String get adjustPoints => '调整积分';
+
+  @override
+  String get adjustPointsAmount => '要增加或扣除的积分';
+
+  @override
+  String get adjustPointsAmountHelp => '用负号扣除积分，例如 -20';
+
+  @override
+  String get adjustPointsInvalid => '请输入积分数量和原因。';
+
+  @override
+  String get adjustPointsReason => '原因（用户可见）';
+
+  @override
+  String get adminContactsSubtitle => '向用户显示的兽医、机构和服务';
+
+  @override
+  String get adminEmergenciesSubtitle => '已报告的动物紧急情况';
+
+  @override
+  String get alertEmergencyDescription => '你所在城市附近急需帮助的动物';
+
+  @override
+  String get alertEmergencyTitle => '附近的紧急情况';
+
+  @override
+  String get allContacts => '全部';
+
+  @override
+  String get ambassadorLevels => '大使等级';
+
+  @override
+  String get call112 => '拨打 112';
+
+  @override
+  String get claim => '领取';
+
+  @override
+  String get claimed => '已领取';
+
+  @override
+  String get codeCopied => '已复制邀请码';
+
+  @override
+  String get confirm => '确认';
+
+  @override
+  String get contactActive => '对用户显示';
+
+  @override
+  String get contactActiveHelp => '关闭后隐藏该联系人，但不会删除。';
+
+  @override
+  String get contactAddress => '地址';
+
+  @override
+  String get contactAreaKm => '服务范围（公里）';
+
+  @override
+  String get contactAreaKmHelp => '距地址多远范围内可以提供帮助。留空则使用紧急情况设置中的默认值。';
+
+  @override
+  String get contactCity => '城镇';
+
+  @override
+  String get contactHandles => '可处理的紧急情况';
+
+  @override
+  String get contactHandlesHelp => '如果可处理所有类型，全部保持关闭即可。';
+
+  @override
+  String get contactHoursHint => '营业时间，例如 周一至周五 9:00–18:00';
+
+  @override
+  String get contactInactive => '已隐藏';
+
+  @override
+  String get contactKindAssociation => '动物保护机构';
+
+  @override
+  String get contactKindOther => '其他服务';
+
+  @override
+  String get contactKindPublicService => '公共兽医服务';
+
+  @override
+  String get contactKindVet => '兽医';
+
+  @override
+  String get contactMissingFields => '请填写名称并在地图上放置标记。';
+
+  @override
+  String get contactName => '名称';
+
+  @override
+  String get contactNameHint => '例如 圣方济各宠物医院';
+
+  @override
+  String get contactPhones => '电话号码';
+
+  @override
+  String get contactPhonesHint => '多个号码用逗号分隔';
+
+  @override
+  String get contactPlace => '所在位置';
+
+  @override
+  String get contactRecommendedHelp => '报告紧急情况时，排在更近的联系人前面。';
+
+  @override
+  String get contactTestHelp => '用于测试的占位联系人。显示“测试”标签，永不认证，也不会收到邮件。';
+
+  @override
+  String get contactType => '类型';
+
+  @override
+  String get contactVerifiedHelp => '仅在机构同意列出且信息核实后开启。';
+
+  @override
+  String get copyCode => '复制';
+
+  @override
+  String get dailyActive => '今日活跃';
+
+  @override
+  String get dailyCheckin => '每日签到';
+
+  @override
+  String get dailyRewards => '每日奖励';
+
+  @override
+  String get deleteContactTitle => '删除此联系人？';
+
+  @override
+  String get directions => '路线';
+
+  @override
+  String get editContact => '编辑联系人';
+
+  @override
+  String get emergencies => '紧急情况';
+
+  @override
+  String get emergenciesActive => '进行中';
+
+  @override
+  String get emergenciesAll => '全部';
+
+  @override
+  String get emergenciesNearYou => '你附近';
+
+  @override
+  String get emergenciesSubtitle => '急需帮助的动物';
+
+  @override
+  String get emergencyAddPhotos => '添加照片';
+
+  @override
+  String get emergencyAddPhotosHint => '帮助他人找到并认出这只动物';
+
+  @override
+  String get emergencyAllContacts => '查看所有紧急联系人';
+
+  @override
+  String get emergencyAlreadyReported => '你已经报告过了。';
+
+  @override
+  String get emergencyCallReporter => '联系报告人';
+
+  @override
+  String get emergencyClose => '关闭';
+
+  @override
+  String get emergencyCloseTitle => '关闭此紧急情况？';
+
+  @override
+  String get emergencyContacts => '紧急联系人';
+
+  @override
+  String get emergencyDetails => '发生了什么？';
+
+  @override
+  String get emergencyDetailsHint => '例如 一只狗被车撞了，躺在路边，还有呼吸';
+
+  @override
+  String get emergencyDetailsRequired => '请用几句话描述情况。';
+
+  @override
+  String get emergencyDisclaimer =>
+      'CodaMi 不是紧急救援服务。如果动物正处于紧急危险中，请先拨打 112 或联系兽医。不要只依赖应用通知。';
+
+  @override
+  String get emergencyFalseAlarmTitle => '标记为误报？';
+
+  @override
+  String get emergencyFindingContacts => '正在查找此地附近的联系人…';
+
+  @override
+  String get emergencyHelpDone => '谢谢！已通知报告人。';
+
+  @override
+  String get emergencyHelpMessage => '报告人会知道有人正在赶来。请在确保自身安全的情况下前往。';
+
+  @override
+  String get emergencyHelpTitle => '你要去帮忙吗？';
+
+  @override
+  String get emergencyImHelping => '我去帮忙';
+
+  @override
+  String get emergencyMarkFalseAlarm => '标记为误报';
+
+  @override
+  String get emergencyMarkResolved => '标记为已解决';
+
+  @override
+  String get emergencyMissingFields => '请选择发生了什么和动物种类，描述情况并放置标记。';
+
+  @override
+  String get emergencyNoContacts => '该地区还没有联系人。请拨打 112 或联系兽医。';
+
+  @override
+  String get emergencyPhoneHint => '愿意帮忙的人可以看到，方便给你打电话。';
+
+  @override
+  String get emergencyPinHint => '移动地图，把标记放在动物所在的位置。';
+
+  @override
+  String get emergencyPinned => '已放置标记';
+
+  @override
+  String get emergencyReopen => '重新打开';
+
+  @override
+  String get emergencyReportFalse => '举报为虚假';
+
+  @override
+  String get emergencyReportFalseDone => '谢谢，我们的团队会核查。';
+
+  @override
+  String get emergencyReportFalseMessage => '我们的团队会核查这个紧急情况。';
+
+  @override
+  String get emergencyReportFalseTitle => '这是虚假的紧急情况吗？';
+
+  @override
+  String get emergencyResolveTitle => '标记为已解决？';
+
+  @override
+  String get emergencyResolved => '已标记为已解决';
+
+  @override
+  String get emergencySend => '发送紧急情况';
+
+  @override
+  String get emergencySendFailed => '无法发送。请检查网络后重试，或拨打 112。';
+
+  @override
+  String get emergencySending => '正在发送…';
+
+  @override
+  String get emergencySent => '已发送。正在通知附近的人。你也可以直接拨打下方的联系人。';
+
+  @override
+  String get emergencySettings => '紧急情况设置';
+
+  @override
+  String get emergencySettingsSubtitle => '提醒范围和联系人排序';
+
+  @override
+  String get emergencyStatusClosed => '已关闭';
+
+  @override
+  String get emergencyStatusFalseAlarm => '误报';
+
+  @override
+  String get emergencyStatusHelping => '救助正在赶来';
+
+  @override
+  String get emergencyStatusOpen => '需要帮助';
+
+  @override
+  String get emergencyStatusResolved => '已解决';
+
+  @override
+  String get emergencySuggestedContacts => '谁能帮忙';
+
+  @override
+  String get emergencySuggestedContactsHint => '最近的合适联系人排在前面。请直接联系他们。';
+
+  @override
+  String get emergencyTypeAbandoned => '被遗弃的动物';
+
+  @override
+  String get emergencyTypeDanger => '处于危险中的动物';
+
+  @override
+  String get emergencyTypeInjured => '受伤的动物';
+
+  @override
+  String get emergencyTypeIntervention => '请求救助';
+
+  @override
+  String get emergencyTypeOther => '其他紧急情况';
+
+  @override
+  String get emergencyTypeUrgentFound => '发现动物，需要紧急护理';
+
+  @override
+  String get emergencyUnavailable => '此紧急情况已不可用。';
+
+  @override
+  String get emergencyWhatHappened => '发生了什么？';
+
+  @override
+  String get emergencyWhere => '动物在哪里？';
+
+  @override
+  String get emergencyWhereHint => '会分享准确位置，方便救助者找到动物。';
+
+  @override
+  String get emergencyYouAreHelping => '你表示会去帮忙，谢谢！';
+
+  @override
+  String get emergencyYourPhone => '你的电话';
+
+  @override
+  String get flagBurst => '该用户的许多朋友在同一天变为活跃';
+
+  @override
+  String get flagDeviceUsed => '这部手机已用于另一个邀请';
+
+  @override
+  String get flagSameDevice => '与邀请人使用同一部手机';
+
+  @override
+  String get haveInviteCode => '朋友邀请你了吗？输入他的邀请码';
+
+  @override
+  String get invitePromptTitle => '是朋友邀请你来的吗？';
+
+  @override
+  String get invitePromptBody => '输入朋友的邀请码，让你的朋友获得邀请你加入 CodaMi 的奖励。';
+
+  @override
+  String invitePromptLater(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '你也可以稍后在 个人资料 → 邀请好友 中添加，需在注册后 $days 天内。',
+      one: '你也可以今天稍后在 个人资料 → 邀请好友 中添加。',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inviteCodeLabel => '邀请码';
+
+  @override
+  String get inviteCodeFormat => '邀请码由 6 位字母和数字组成，例如 ABC234。';
+
+  @override
+  String get inviteCodeNotFound => '找不到这个邀请码。请向朋友确认。';
+
+  @override
+  String get inviteCodeOwn => '这是你自己的邀请码。请分享给你的朋友。';
+
+  @override
+  String inviteCodeTooLate(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '邀请码只能在注册后的前 $days 天内添加。',
+      one: '邀请码只能在注册当天添加。',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inviteCodeTooManyTries => '今天输入错误的邀请码次数过多。请明天再试。';
+
+  @override
+  String get howInvitesWork => '规则说明';
+
+  @override
+  String get inviteApproved => '邀请已批准';
+
+  @override
+  String get inviteCodeAlreadyUsed => '你已经使用过邀请码。';
+
+  @override
+  String get inviteCodeInvalid => '邀请码无效。';
+
+  @override
+  String get inviteCodeNotAllowed => '无法使用此邀请码：这是你自己的邀请码，或注册时间已太久。';
+
+  @override
+  String get inviteFriends => '邀请朋友';
+
+  @override
+  String get inviteFriendsSubtitle => '成为 CodaMi 大使';
+
+  @override
+  String get inviteIntro => '每位新的 CodaMi 用户都会为走失的宠物多带来一双眼睛。邀请朋友，成为 CodaMi 大使。';
+
+  @override
+  String get inviteRejected => '邀请已拒绝';
+
+  @override
+  String get inviteStatusExpired => '未能按时变为活跃';
+
+  @override
+  String get inviteStatusPending => '已注册，尚未活跃';
+
+  @override
+  String get inviteStatusQualified => '活跃 – 已获得积分';
+
+  @override
+  String get inviteStatusRejected => '不计入';
+
+  @override
+  String get inviteStatusReview => '审核中';
+
+  @override
+  String get inviteStep1 => '分享你的邀请码。朋友注册后在 个人资料 → 邀请朋友 中输入。';
+
+  @override
+  String get invitedFriends => '已邀请的朋友（活跃）';
+
+  @override
+  String get invitesToReview => '待审核的邀请';
+
+  @override
+  String get invitesToReviewSubtitle => '被反作弊检查拦下的邀请';
+
+  @override
+  String get levelAmbassador => '大使';
+
+  @override
+  String get levelBonus => '奖励积分';
+
+  @override
+  String get settingsActiveFriends => '活跃好友';
+
+  @override
+  String get levelChampion => 'CodaMi 冠军';
+
+  @override
+  String get levelSuperAmbassador => '超级大使';
+
+  @override
+  String get levelSupporter => '支持者';
+
+  @override
+  String get myEmergencies => '我的';
+
+  @override
+  String get myPoints => '我的积分';
+
+  @override
+  String get noActiveEmergencies => '没有紧急情况';
+
+  @override
+  String get noEmergenciesMessage => '你所在城市附近报告的紧急情况会显示在这里。';
+
+  @override
+  String get noEmergenciesNearby => '你附近没有紧急情况';
+
+  @override
+  String get noEmergencyContacts => '还没有联系人';
+
+  @override
+  String get noEmergencyContactsAdmin => '添加兽医、机构和服务，或添加测试联系人来试用此功能。';
+
+  @override
+  String get noEmergencyContactsMessage => '联系人即将添加。遇到紧急情况，请拨打 112 或联系兽医。';
+
+  @override
+  String get noInvitesToReview => '没有需要审核的内容';
+
+  @override
+  String get noInvitesToReviewMessage => '可疑的邀请会显示在这里。没有你的决定，不会拒绝任何邀请。';
+
+  @override
+  String get noInvitesYet => '还没有邀请。分享你的邀请码开始吧。';
+
+  @override
+  String get noLevelYet => '暂无等级';
+
+  @override
+  String get noMyEmergencies => '你还没有报告过紧急情况';
+
+  @override
+  String get noPointsYet => '还没有积分。领取每日奖励开始吧。';
+
+  @override
+  String get open24h => '24 小时营业';
+
+  @override
+  String get openMapFailed => '无法打开地图。';
+
+  @override
+  String get photos => '照片';
+
+  @override
+  String get pointsAdjusted => '由 CodaMi 调整';
+
+  @override
+  String get pointsDailyActive => '今日活跃';
+
+  @override
+  String get pointsDailyCheckin => '每日签到';
+
+  @override
+  String get pointsFriendJoined => '一位朋友变为活跃';
+
+  @override
+  String get pointsHistory => '记录';
+
+  @override
+  String get pointsLevelBonus => '新等级奖励';
+
+  @override
+  String get pointsOther => '积分';
+
+  @override
+  String get pointsSettings => '积分与奖励';
+
+  @override
+  String get pointsSettingsIntro => '修改会立即生效。超出范围的数值会被默认值替代。';
+
+  @override
+  String get pointsSettingsSubtitle => '每日奖励、邀请和等级';
+
+  @override
+  String get pointsStreakBonus => '连续奖励';
+
+  @override
+  String get pointsWelcome => '欢迎奖励';
+
+  @override
+  String get recommendedContact => '推荐';
+
+  @override
+  String get reject => '拒绝';
+
+  @override
+  String get reportEmergency => '报告紧急情况';
+
+  @override
+  String get searchContacts => '按名称或城镇搜索';
+
+  @override
+  String get settingsActiveMinutes => '“今日活跃”所需使用分钟数';
+
+  @override
+  String get settingsAlertsNearby => '通知附近的人';
+
+  @override
+  String get settingsAutoCloseHours => '多久后关闭（无更新的小时数）';
+
+  @override
+  String get settingsAutoCloseHoursHelp => '进行中的紧急情况超过此时间会自动关闭。';
+
+  @override
+  String get settingsCodeEntryDays => '注册后可输入邀请码的天数';
+
+  @override
+  String get settingsContactsPriority => '联系人优先级';
+
+  @override
+  String get settingsDefaultAreaKm => '默认服务范围（公里）';
+
+  @override
+  String get settingsDefaultAreaKmHelp => '用于没有自定义范围的联系人。';
+
+  @override
+  String get settingsEmailContacts => '向联系人发送邮件提醒';
+
+  @override
+  String get settingsEmailContactsHelp => '向已认证的联系人发送邮件。需先设置邮件服务。';
+
+  @override
+  String get settingsMaxPerDay => '每天活跃朋友数上限（超过则审核）';
+
+  @override
+  String get settingsMaxPerDayHelp => '24 小时内超过此数量，邀请会进入审核。';
+
+  @override
+  String get settingsMaxRecipients => '最多通知人数';
+
+  @override
+  String get settingsMaxSuggested => '推荐联系人数';
+
+  @override
+  String get settingsMinRecipients => '需要触达的人数';
+
+  @override
+  String get settingsMinRecipientsHelp => '会逐步扩大到下一个圈，直到达到这个人数。';
+
+  @override
+  String get settingsQualifyDays => '需要的活跃天数';
+
+  @override
+  String get settingsQualifyWithinDays => '期限（注册后的天数）';
+
+  @override
+  String get settingsReferralPoints => '每位活跃朋友的积分';
+
+  @override
+  String get settingsRings => '提醒范围圈（公里）';
+
+  @override
+  String get settingsRingsHelp => '用逗号分隔，从小到大，例如 5, 10, 25';
+
+  @override
+  String get settingsSaved => '已保存';
+
+  @override
+  String get settingsStreakDays => '连续奖励所需天数';
+
+  @override
+  String get settingsWeight24h => '24 小时营业加分';
+
+  @override
+  String get settingsWeightHelp => '联系人获得这些加分，并按距离每公里扣分。得分最高的排在最前。';
+
+  @override
+  String get settingsWeightPerKm => '每公里扣分';
+
+  @override
+  String get settingsWeightPerKmHelp => '设为 1 时，推荐联系人（20）会排在近 20 公里以内的其他联系人前面。';
+
+  @override
+  String get settingsWeightRecommended => '推荐加分';
+
+  @override
+  String get settingsWeightVerified => '认证加分';
+
+  @override
+  String get settingsWelcomePoints => '被邀请朋友的积分';
+
+  @override
+  String get settingsWelcomePointsHelp => '输入邀请码时发放。设为 0 即关闭。';
+
+  @override
+  String get shareInvite => '分享';
+
+  @override
+  String get statActiveEmergencies => '进行中的紧急情况';
+
+  @override
+  String get testContactBadge => '测试 – 非真实联系人';
+
+  @override
+  String get topLevelReached => '你已达到最高等级，谢谢！';
+
+  @override
+  String get useCode => '使用';
+
+  @override
+  String get verifiedContact => '已认证';
+
+  @override
+  String get viewInvitee => '被邀请用户';
+
+  @override
+  String get viewInviter => '邀请人';
+
+  @override
+  String get yourInviteCode => '你的邀请码';
+
+  @override
+  String get yourInvites => '你的邀请';
+
+  @override
+  String get zeroTurnsOff => '设为 0 即关闭';
+
+  @override
+  String activeProgress(int done, int total) {
+    return '今天 $done/$total 分钟';
+  }
+
+  @override
+  String claimedPoints(int points) {
+    return '+$points 积分！';
+  }
+
+  @override
+  String claimedWithBonus(int points, int bonus) {
+    return '+$points 积分，外加 +$bonus 连续奖励！';
+  }
+
+  @override
+  String emergenciesNearYouCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '你附近有 $count 起动物紧急情况',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyAlertedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '已通知附近 $count 人',
+      zero: '附近还没有人开启提醒',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyFalseReports(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '被举报为虚假 $count 次',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String emergencyHelpersCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 人正在赶去帮忙',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inviteCodeAccepted(String name) {
+    return '邀请码已接受。$name 邀请了你，欢迎来到 CodaMi！';
+  }
+
+  @override
+  String inviteShareText(String code, String link) {
+    return '我在用 CodaMi 帮助走失的宠物回家。用我的邀请码 $code 加入吧：$link';
+  }
+
+  @override
+  String inviteStep2(int days, int within) {
+    return '对方设置所在城市，并在注册后 $within 天内有 $days 天使用应用。';
+  }
+
+  @override
+  String inviteStep3(int points) {
+    return '你获得 $points 积分，并提升大使等级。';
+  }
+
+  @override
+  String kmAway(String km) {
+    return '距离 $km 公里';
+  }
+
+  @override
+  String levelFriends(String level) {
+    return '$level：活跃朋友数';
+  }
+
+  @override
+  String levelRule(String level, int friends, int bonus) {
+    return '$level · $friends+ 位朋友 · +$bonus';
+  }
+
+  @override
+  String nextLevelHint(int count, String level) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '再邀请 $count 位活跃朋友即可成为$level',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String plusPoints(int points) {
+    return '+$points 积分';
+  }
+
+  @override
+  String pointsTotal(int points) {
+    String _temp0 = intl.Intl.pluralLogic(
+      points,
+      locale: localeName,
+      other: '$points 积分',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String streakLine(int streak, int days, int bonus) {
+    return '已连续 $streak 天 · 每 $days 天奖励 +$bonus';
+  }
 }

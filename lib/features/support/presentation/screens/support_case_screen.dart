@@ -719,7 +719,7 @@ class _ChatViewState extends ConsumerState<_ChatView>
     final isAdmin = ref.watch(userRoleProvider) == UserRole.admin;
     final messages = ref.watch(supportMessagesProvider(c.id));
     final limit = ref.watch(supportLimitProvider(messagesKey(c.id)));
-    if (widget.asStaff) ref.watch(supportStaffProvider);
+    if (widget.asStaff && isAdmin) ref.watch(supportStaffProvider);
     final all = messages.value ?? const <SupportMessage>[];
     final hasEarlier = all.length > limit;
     final newestFirst = all.take(limit).toList();
@@ -878,6 +878,7 @@ class _ChatViewState extends ConsumerState<_ChatView>
     if (!message.fromStaff) return c.userName.isEmpty ? null : c.userName;
     if (message.senderId == uid) return null;
     if (message.senderId == c.assignedTo) return c.assignedName;
+    if (ref.read(userRoleProvider) != UserRole.admin) return l10n.supportTeam;
     final staff = ref.read(supportStaffProvider).value ?? const [];
     return staff.where((s) => s.uid == message.senderId).firstOrNull?.name ??
         l10n.roleAdmin;
@@ -1184,6 +1185,7 @@ class _DetailsView extends StatelessWidget {
         GridView.count(
           crossAxisCount: 2,
           shrinkWrap: true,
+          padding: EdgeInsets.zero,
           physics: const NeverScrollableScrollPhysics(),
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
@@ -1358,7 +1360,7 @@ class _InfoCard extends StatelessWidget {
                     flex: 2,
                     child: SelectableText(
                       value,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontSize: 13.5,
                         fontWeight: FontWeight.w600,

@@ -4211,6 +4211,1458 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Photos the AI holds back will appear here.'**
   String get noPhotosToReviewMessage;
+
+  /// No description provided for @aFriend.
+  ///
+  /// In en, this message translates to:
+  /// **'A friend'**
+  String get aFriend;
+
+  /// No description provided for @addContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Add contact'**
+  String get addContact;
+
+  /// No description provided for @addTestContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Add test contacts'**
+  String get addTestContacts;
+
+  /// No description provided for @adjustPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust points'**
+  String get adjustPoints;
+
+  /// No description provided for @adjustPointsAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Points to add or remove'**
+  String get adjustPointsAmount;
+
+  /// No description provided for @adjustPointsAmountHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a minus sign to remove points, e.g. -20'**
+  String get adjustPointsAmountHelp;
+
+  /// No description provided for @adjustPointsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number of points and a reason.'**
+  String get adjustPointsInvalid;
+
+  /// No description provided for @adjustPointsReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (shown to the user)'**
+  String get adjustPointsReason;
+
+  /// No description provided for @adminContactsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vets, associations and services shown to users'**
+  String get adminContactsSubtitle;
+
+  /// No description provided for @adminEmergenciesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported animal emergencies'**
+  String get adminEmergenciesSubtitle;
+
+  /// No description provided for @alertEmergencyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Animals that need urgent help near your city'**
+  String get alertEmergencyDescription;
+
+  /// No description provided for @alertEmergencyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergencies nearby'**
+  String get alertEmergencyTitle;
+
+  /// No description provided for @allContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allContacts;
+
+  /// No description provided for @ambassadorLevels.
+  ///
+  /// In en, this message translates to:
+  /// **'Ambassador levels'**
+  String get ambassadorLevels;
+
+  /// No description provided for @call112.
+  ///
+  /// In en, this message translates to:
+  /// **'Call 112'**
+  String get call112;
+
+  /// No description provided for @claim.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim'**
+  String get claim;
+
+  /// No description provided for @claimed.
+  ///
+  /// In en, this message translates to:
+  /// **'Claimed'**
+  String get claimed;
+
+  /// No description provided for @codeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Code copied'**
+  String get codeCopied;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @contactActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown to users'**
+  String get contactActive;
+
+  /// No description provided for @contactActiveHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off to hide this contact without deleting it.'**
+  String get contactActiveHelp;
+
+  /// No description provided for @contactAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get contactAddress;
+
+  /// No description provided for @contactAreaKm.
+  ///
+  /// In en, this message translates to:
+  /// **'Area covered (km)'**
+  String get contactAreaKm;
+
+  /// No description provided for @contactAreaKmHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'How far from its address it can help. Leave empty to use the default from the emergency settings.'**
+  String get contactAreaKmHelp;
+
+  /// No description provided for @contactCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Town or city'**
+  String get contactCity;
+
+  /// No description provided for @contactHandles.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergencies it handles'**
+  String get contactHandles;
+
+  /// No description provided for @contactHandlesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave all off if it handles every kind.'**
+  String get contactHandlesHelp;
+
+  /// No description provided for @contactHoursHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening hours, e.g. Mon–Fri 9:00–18:00'**
+  String get contactHoursHint;
+
+  /// No description provided for @contactInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get contactInactive;
+
+  /// No description provided for @contactKindAssociation.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal welfare association'**
+  String get contactKindAssociation;
+
+  /// No description provided for @contactKindOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other service'**
+  String get contactKindOther;
+
+  /// No description provided for @contactKindPublicService.
+  ///
+  /// In en, this message translates to:
+  /// **'Public veterinary service'**
+  String get contactKindPublicService;
+
+  /// No description provided for @contactKindVet.
+  ///
+  /// In en, this message translates to:
+  /// **'Vet'**
+  String get contactKindVet;
+
+  /// No description provided for @contactMissingFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a name and place the pin on the map.'**
+  String get contactMissingFields;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get contactName;
+
+  /// No description provided for @contactNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Clinica Veterinaria San Francesco'**
+  String get contactNameHint;
+
+  /// No description provided for @contactPhones.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone numbers'**
+  String get contactPhones;
+
+  /// No description provided for @contactPhonesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Separate numbers with commas'**
+  String get contactPhonesHint;
+
+  /// No description provided for @contactPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'Where it is'**
+  String get contactPlace;
+
+  /// No description provided for @contactRecommendedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown before nearer contacts when an emergency is reported.'**
+  String get contactRecommendedHelp;
+
+  /// No description provided for @contactTestHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Placeholder for testing. Shown with a TEST label, never verified or emailed.'**
+  String get contactTestHelp;
+
+  /// No description provided for @contactType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get contactType;
+
+  /// No description provided for @contactVerifiedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Only after the organization agreed to be listed and the details were checked.'**
+  String get contactVerifiedHelp;
+
+  /// No description provided for @copyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copyCode;
+
+  /// No description provided for @dailyActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active today'**
+  String get dailyActive;
+
+  /// No description provided for @dailyCheckin.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily check-in'**
+  String get dailyCheckin;
+
+  /// No description provided for @dailyRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily rewards'**
+  String get dailyRewards;
+
+  /// No description provided for @deleteContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this contact?'**
+  String get deleteContactTitle;
+
+  /// No description provided for @directions.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get directions;
+
+  /// No description provided for @editContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit contact'**
+  String get editContact;
+
+  /// No description provided for @emergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergencies'**
+  String get emergencies;
+
+  /// No description provided for @emergenciesActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get emergenciesActive;
+
+  /// No description provided for @emergenciesAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get emergenciesAll;
+
+  /// No description provided for @emergenciesNearYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Near you'**
+  String get emergenciesNearYou;
+
+  /// No description provided for @emergenciesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Animals that need urgent help'**
+  String get emergenciesSubtitle;
+
+  /// No description provided for @emergencyAddPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo'**
+  String get emergencyAddPhotos;
+
+  /// No description provided for @emergencyAddPhotosHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Helps others find and recognise the animal'**
+  String get emergencyAddPhotosHint;
+
+  /// No description provided for @emergencyAllContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'See all emergency contacts'**
+  String get emergencyAllContacts;
+
+  /// No description provided for @emergencyAlreadyReported.
+  ///
+  /// In en, this message translates to:
+  /// **'You already reported this.'**
+  String get emergencyAlreadyReported;
+
+  /// No description provided for @emergencyCallReporter.
+  ///
+  /// In en, this message translates to:
+  /// **'Call the person who reported it'**
+  String get emergencyCallReporter;
+
+  /// No description provided for @emergencyClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get emergencyClose;
+
+  /// No description provided for @emergencyCloseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close this emergency?'**
+  String get emergencyCloseTitle;
+
+  /// No description provided for @emergencyContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency contacts'**
+  String get emergencyContacts;
+
+  /// No description provided for @emergencyDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s happening?'**
+  String get emergencyDetails;
+
+  /// No description provided for @emergencyDetailsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Dog hit by a car, lying by the road, still breathing'**
+  String get emergencyDetailsHint;
+
+  /// No description provided for @emergencyDetailsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe the situation in a few words.'**
+  String get emergencyDetailsRequired;
+
+  /// No description provided for @emergencyDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi is not an emergency service. If an animal is in immediate danger, call 112 or a vet first. Don\'t rely only on app notifications.'**
+  String get emergencyDisclaimer;
+
+  /// No description provided for @emergencyFalseAlarmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as a false alarm?'**
+  String get emergencyFalseAlarmTitle;
+
+  /// No description provided for @emergencyFindingContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Finding contacts near this place…'**
+  String get emergencyFindingContacts;
+
+  /// No description provided for @emergencyHelpDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you! The person who reported it was told.'**
+  String get emergencyHelpDone;
+
+  /// No description provided for @emergencyHelpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The person who reported it will know someone is coming. Only go if it\'s safe for you.'**
+  String get emergencyHelpMessage;
+
+  /// No description provided for @emergencyHelpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you going to help?'**
+  String get emergencyHelpTitle;
+
+  /// No description provided for @emergencyImHelping.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m going to help'**
+  String get emergencyImHelping;
+
+  /// No description provided for @emergencyMarkFalseAlarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as false alarm'**
+  String get emergencyMarkFalseAlarm;
+
+  /// No description provided for @emergencyMarkResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as resolved'**
+  String get emergencyMarkResolved;
+
+  /// No description provided for @emergencyMissingFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what happened and the animal, describe it and place the pin.'**
+  String get emergencyMissingFields;
+
+  /// No description provided for @emergencyNoContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'No contacts listed for this area yet. Call 112 or a vet.'**
+  String get emergencyNoContacts;
+
+  /// No description provided for @emergencyPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown to people who want to help, so they can call you.'**
+  String get emergencyPhoneHint;
+
+  /// No description provided for @emergencyPinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Move the map to put the pin where the animal is.'**
+  String get emergencyPinHint;
+
+  /// No description provided for @emergencyPinned.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin placed'**
+  String get emergencyPinned;
+
+  /// No description provided for @emergencyReopen.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen'**
+  String get emergencyReopen;
+
+  /// No description provided for @emergencyReportFalse.
+  ///
+  /// In en, this message translates to:
+  /// **'Report as false'**
+  String get emergencyReportFalse;
+
+  /// No description provided for @emergencyReportFalseDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks, our team will check it.'**
+  String get emergencyReportFalseDone;
+
+  /// No description provided for @emergencyReportFalseMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Our team will check this emergency.'**
+  String get emergencyReportFalseMessage;
+
+  /// No description provided for @emergencyReportFalseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this emergency false?'**
+  String get emergencyReportFalseTitle;
+
+  /// No description provided for @emergencyResolveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as resolved?'**
+  String get emergencyResolveTitle;
+
+  /// No description provided for @emergencyResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as resolved'**
+  String get emergencyResolved;
+
+  /// No description provided for @emergencySend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send emergency'**
+  String get emergencySend;
+
+  /// No description provided for @emergencySendFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t send the emergency. Check your connection and try again, or call 112.'**
+  String get emergencySendFailed;
+
+  /// No description provided for @emergencySending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get emergencySending;
+
+  /// No description provided for @emergencySent.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency sent. People nearby are being alerted. You can also call the contacts below directly.'**
+  String get emergencySent;
+
+  /// No description provided for @emergencySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency settings'**
+  String get emergencySettings;
+
+  /// No description provided for @emergencySettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert distances and how contacts are ranked'**
+  String get emergencySettingsSubtitle;
+
+  /// No description provided for @emergencyStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get emergencyStatusClosed;
+
+  /// No description provided for @emergencyStatusFalseAlarm.
+  ///
+  /// In en, this message translates to:
+  /// **'False alarm'**
+  String get emergencyStatusFalseAlarm;
+
+  /// No description provided for @emergencyStatusHelping.
+  ///
+  /// In en, this message translates to:
+  /// **'Help on the way'**
+  String get emergencyStatusHelping;
+
+  /// No description provided for @emergencyStatusOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs help'**
+  String get emergencyStatusOpen;
+
+  /// No description provided for @emergencyStatusResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get emergencyStatusResolved;
+
+  /// No description provided for @emergencySuggestedContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Who can help'**
+  String get emergencySuggestedContacts;
+
+  /// No description provided for @emergencySuggestedContactsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearest suitable contacts first. Call them directly.'**
+  String get emergencySuggestedContactsHint;
+
+  /// No description provided for @emergencyTypeAbandoned.
+  ///
+  /// In en, this message translates to:
+  /// **'Abandoned animal'**
+  String get emergencyTypeAbandoned;
+
+  /// No description provided for @emergencyTypeDanger.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal in danger'**
+  String get emergencyTypeDanger;
+
+  /// No description provided for @emergencyTypeInjured.
+  ///
+  /// In en, this message translates to:
+  /// **'Injured animal'**
+  String get emergencyTypeInjured;
+
+  /// No description provided for @emergencyTypeIntervention.
+  ///
+  /// In en, this message translates to:
+  /// **'Request for intervention'**
+  String get emergencyTypeIntervention;
+
+  /// No description provided for @emergencyTypeOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other emergency'**
+  String get emergencyTypeOther;
+
+  /// No description provided for @emergencyTypeUrgentFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Found, needs urgent care'**
+  String get emergencyTypeUrgentFound;
+
+  /// No description provided for @emergencyUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This emergency is no longer available.'**
+  String get emergencyUnavailable;
+
+  /// No description provided for @emergencyWhatHappened.
+  ///
+  /// In en, this message translates to:
+  /// **'What happened?'**
+  String get emergencyWhatHappened;
+
+  /// No description provided for @emergencyWhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Where is the animal?'**
+  String get emergencyWhere;
+
+  /// No description provided for @emergencyWhereHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The exact place is shared so helpers can find the animal.'**
+  String get emergencyWhereHint;
+
+  /// No description provided for @emergencyYouAreHelping.
+  ///
+  /// In en, this message translates to:
+  /// **'You said you\'re going to help. Thank you!'**
+  String get emergencyYouAreHelping;
+
+  /// No description provided for @emergencyYourPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone'**
+  String get emergencyYourPhone;
+
+  /// No description provided for @flagBurst.
+  ///
+  /// In en, this message translates to:
+  /// **'Many friends of this user became active on the same day'**
+  String get flagBurst;
+
+  /// No description provided for @flagDeviceUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone was already used for another invite'**
+  String get flagDeviceUsed;
+
+  /// No description provided for @flagSameDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Same phone as the person who invited them'**
+  String get flagSameDevice;
+
+  /// No description provided for @haveInviteCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Did a friend invite you? Enter their code'**
+  String get haveInviteCode;
+
+  /// No description provided for @invitePromptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Did a friend invite you?'**
+  String get invitePromptTitle;
+
+  /// No description provided for @invitePromptBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter their invite code so your friend gets the credit for bringing you to CodaMi.'**
+  String get invitePromptBody;
+
+  /// No description provided for @invitePromptLater.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{You can also add it later today in Profile → Invite friends.} other{You can also add it later in Profile → Invite friends, within {days} days of signing up.}}'**
+  String invitePromptLater(int days);
+
+  /// No description provided for @inviteCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get inviteCodeLabel;
+
+  /// No description provided for @inviteCodeFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite codes have 6 letters and numbers, like ABC234.'**
+  String get inviteCodeFormat;
+
+  /// No description provided for @inviteCodeNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find this code. Check it with your friend.'**
+  String get inviteCodeNotFound;
+
+  /// No description provided for @inviteCodeOwn.
+  ///
+  /// In en, this message translates to:
+  /// **'That\'s your own code. Share it with your friends instead.'**
+  String get inviteCodeOwn;
+
+  /// No description provided for @inviteCodeTooLate.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{Invite codes can only be added on the day you sign up.} other{Invite codes can only be added in the first {days} days after signing up.}}'**
+  String inviteCodeTooLate(int days);
+
+  /// No description provided for @inviteCodeTooManyTries.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong codes today. Try again tomorrow.'**
+  String get inviteCodeTooManyTries;
+
+  /// No description provided for @howInvitesWork.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get howInvitesWork;
+
+  /// No description provided for @inviteApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite approved'**
+  String get inviteApproved;
+
+  /// No description provided for @inviteCodeAlreadyUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'You already used an invite code.'**
+  String get inviteCodeAlreadyUsed;
+
+  /// No description provided for @inviteCodeInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This code isn\'t valid.'**
+  String get inviteCodeInvalid;
+
+  /// No description provided for @inviteCodeNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'This code can\'t be used: it\'s your own code, or it\'s too long since you signed up.'**
+  String get inviteCodeNotAllowed;
+
+  /// No description provided for @inviteFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite friends'**
+  String get inviteFriends;
+
+  /// No description provided for @inviteFriendsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Become a CodaMi ambassador'**
+  String get inviteFriendsSubtitle;
+
+  /// No description provided for @inviteIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Every new CodaMi user is one more pair of eyes for lost pets. Invite your friends and become a CodaMi ambassador.'**
+  String get inviteIntro;
+
+  /// No description provided for @inviteRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite rejected'**
+  String get inviteRejected;
+
+  /// No description provided for @inviteStatusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t become active in time'**
+  String get inviteStatusExpired;
+
+  /// No description provided for @inviteStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Joined, not active yet'**
+  String get inviteStatusPending;
+
+  /// No description provided for @inviteStatusQualified.
+  ///
+  /// In en, this message translates to:
+  /// **'Active – points earned'**
+  String get inviteStatusQualified;
+
+  /// No description provided for @inviteStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not counted'**
+  String get inviteStatusRejected;
+
+  /// No description provided for @inviteStatusReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Being checked'**
+  String get inviteStatusReview;
+
+  /// No description provided for @inviteStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your code. Your friend enters it in Profile → Invite friends after signing up.'**
+  String get inviteStep1;
+
+  /// No description provided for @invitedFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Invited friends (active)'**
+  String get invitedFriends;
+
+  /// No description provided for @invitesToReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Invites to review'**
+  String get invitesToReview;
+
+  /// No description provided for @invitesToReviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invites held by the anti-fraud checks'**
+  String get invitesToReviewSubtitle;
+
+  /// No description provided for @levelAmbassador.
+  ///
+  /// In en, this message translates to:
+  /// **'Ambassador'**
+  String get levelAmbassador;
+
+  /// No description provided for @levelBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus points'**
+  String get levelBonus;
+
+  /// No description provided for @settingsActiveFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Active friends'**
+  String get settingsActiveFriends;
+
+  /// No description provided for @levelChampion.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi Champion'**
+  String get levelChampion;
+
+  /// No description provided for @levelSuperAmbassador.
+  ///
+  /// In en, this message translates to:
+  /// **'Super Ambassador'**
+  String get levelSuperAmbassador;
+
+  /// No description provided for @levelSupporter.
+  ///
+  /// In en, this message translates to:
+  /// **'Supporter'**
+  String get levelSupporter;
+
+  /// No description provided for @myEmergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'Mine'**
+  String get myEmergencies;
+
+  /// No description provided for @myPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'My points'**
+  String get myPoints;
+
+  /// No description provided for @noActiveEmergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'No emergencies'**
+  String get noActiveEmergencies;
+
+  /// No description provided for @noEmergenciesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergencies reported near your city appear here.'**
+  String get noEmergenciesMessage;
+
+  /// No description provided for @noEmergenciesNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'No emergencies near you'**
+  String get noEmergenciesNearby;
+
+  /// No description provided for @noEmergencyContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'No contacts yet'**
+  String get noEmergencyContacts;
+
+  /// No description provided for @noEmergencyContactsAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Add vets, associations and services, or add test contacts to try the feature.'**
+  String get noEmergencyContactsAdmin;
+
+  /// No description provided for @noEmergencyContactsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts will be added soon. In an emergency, call 112 or a vet.'**
+  String get noEmergencyContactsMessage;
+
+  /// No description provided for @noInvitesToReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to review'**
+  String get noInvitesToReview;
+
+  /// No description provided for @noInvitesToReviewMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Invites that look suspicious appear here. Nothing is rejected without you.'**
+  String get noInvitesToReviewMessage;
+
+  /// No description provided for @noInvitesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No invites yet. Share your code to start.'**
+  String get noInvitesYet;
+
+  /// No description provided for @noLevelYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No level yet'**
+  String get noLevelYet;
+
+  /// No description provided for @noMyEmergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t reported any emergencies'**
+  String get noMyEmergencies;
+
+  /// No description provided for @noPointsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No points yet. Claim your daily reward to start.'**
+  String get noPointsYet;
+
+  /// No description provided for @open24h.
+  ///
+  /// In en, this message translates to:
+  /// **'Open 24 hours'**
+  String get open24h;
+
+  /// No description provided for @openMapFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the map.'**
+  String get openMapFailed;
+
+  /// No description provided for @photos.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos'**
+  String get photos;
+
+  /// No description provided for @pointsAdjusted.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjusted by CodaMi'**
+  String get pointsAdjusted;
+
+  /// No description provided for @pointsDailyActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active today'**
+  String get pointsDailyActive;
+
+  /// No description provided for @pointsDailyCheckin.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily check-in'**
+  String get pointsDailyCheckin;
+
+  /// No description provided for @pointsFriendJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'A friend became active'**
+  String get pointsFriendJoined;
+
+  /// No description provided for @pointsHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get pointsHistory;
+
+  /// No description provided for @pointsLevelBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'New level bonus'**
+  String get pointsLevelBonus;
+
+  /// No description provided for @pointsOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get pointsOther;
+
+  /// No description provided for @pointsSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Points and rewards'**
+  String get pointsSettings;
+
+  /// No description provided for @pointsSettingsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes apply straight away. Values out of range are replaced by the defaults.'**
+  String get pointsSettingsIntro;
+
+  /// No description provided for @pointsSettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily rewards, invites and levels'**
+  String get pointsSettingsSubtitle;
+
+  /// No description provided for @pointsStreakBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak bonus'**
+  String get pointsStreakBonus;
+
+  /// No description provided for @pointsWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome bonus'**
+  String get pointsWelcome;
+
+  /// No description provided for @recommendedContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get recommendedContact;
+
+  /// No description provided for @reject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get reject;
+
+  /// No description provided for @reportEmergency.
+  ///
+  /// In en, this message translates to:
+  /// **'Report an emergency'**
+  String get reportEmergency;
+
+  /// No description provided for @searchContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or town'**
+  String get searchContacts;
+
+  /// No description provided for @settingsActiveMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes of use for “Active today”'**
+  String get settingsActiveMinutes;
+
+  /// No description provided for @settingsAlertsNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts to people nearby'**
+  String get settingsAlertsNearby;
+
+  /// No description provided for @settingsAutoCloseHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Close after (hours without updates)'**
+  String get settingsAutoCloseHours;
+
+  /// No description provided for @settingsAutoCloseHoursHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Open emergencies close by themselves after this time.'**
+  String get settingsAutoCloseHoursHelp;
+
+  /// No description provided for @settingsCodeEntryDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days after sign-up to enter a code'**
+  String get settingsCodeEntryDays;
+
+  /// No description provided for @settingsContactsPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact priority'**
+  String get settingsContactsPriority;
+
+  /// No description provided for @settingsDefaultAreaKm.
+  ///
+  /// In en, this message translates to:
+  /// **'Default area covered (km)'**
+  String get settingsDefaultAreaKm;
+
+  /// No description provided for @settingsDefaultAreaKmHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for contacts without their own area.'**
+  String get settingsDefaultAreaKmHelp;
+
+  /// No description provided for @settingsEmailContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Email alerts to contacts'**
+  String get settingsEmailContacts;
+
+  /// No description provided for @settingsEmailContactsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sends an email to verified contacts. The email service must be set up first.'**
+  String get settingsEmailContactsHelp;
+
+  /// No description provided for @settingsMaxPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Active friends per day before a check'**
+  String get settingsMaxPerDay;
+
+  /// No description provided for @settingsMaxPerDayHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'More than this in 24 hours sends the invite to review.'**
+  String get settingsMaxPerDayHelp;
+
+  /// No description provided for @settingsMaxRecipients.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum people alerted'**
+  String get settingsMaxRecipients;
+
+  /// No description provided for @settingsMaxSuggested.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts suggested'**
+  String get settingsMaxSuggested;
+
+  /// No description provided for @settingsMinRecipients.
+  ///
+  /// In en, this message translates to:
+  /// **'People to reach'**
+  String get settingsMinRecipients;
+
+  /// No description provided for @settingsMinRecipientsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The next circle is used until this many people are reached.'**
+  String get settingsMinRecipientsHelp;
+
+  /// No description provided for @settingsQualifyDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Active days needed'**
+  String get settingsQualifyDays;
+
+  /// No description provided for @settingsQualifyWithinDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Within (days after sign-up)'**
+  String get settingsQualifyWithinDays;
+
+  /// No description provided for @settingsReferralPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points for each active friend'**
+  String get settingsReferralPoints;
+
+  /// No description provided for @settingsRings.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert circles (km)'**
+  String get settingsRings;
+
+  /// No description provided for @settingsRingsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Comma separated, smallest first, e.g. 5, 10, 25'**
+  String get settingsRingsHelp;
+
+  /// No description provided for @settingsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get settingsSaved;
+
+  /// No description provided for @settingsStreakDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days for a streak bonus'**
+  String get settingsStreakDays;
+
+  /// No description provided for @settingsWeight24h.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus for open 24 hours'**
+  String get settingsWeight24h;
+
+  /// No description provided for @settingsWeightHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts get these bonuses and lose points for each km of distance. The highest score comes first.'**
+  String get settingsWeightHelp;
+
+  /// No description provided for @settingsWeightPerKm.
+  ///
+  /// In en, this message translates to:
+  /// **'Penalty per km'**
+  String get settingsWeightPerKm;
+
+  /// No description provided for @settingsWeightPerKmHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'With 1, a recommended contact (20) comes before one up to 20 km nearer.'**
+  String get settingsWeightPerKmHelp;
+
+  /// No description provided for @settingsWeightRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus for recommended'**
+  String get settingsWeightRecommended;
+
+  /// No description provided for @settingsWeightVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus for verified'**
+  String get settingsWeightVerified;
+
+  /// No description provided for @settingsWelcomePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points for the invited friend'**
+  String get settingsWelcomePoints;
+
+  /// No description provided for @settingsWelcomePointsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Given when they enter a code. 0 turns it off.'**
+  String get settingsWelcomePointsHelp;
+
+  /// No description provided for @shareInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareInvite;
+
+  /// No description provided for @statActiveEmergencies.
+  ///
+  /// In en, this message translates to:
+  /// **'Active emergencies'**
+  String get statActiveEmergencies;
+
+  /// No description provided for @testContactBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'TEST – not a real contact'**
+  String get testContactBadge;
+
+  /// No description provided for @topLevelReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You reached the top level. Thank you!'**
+  String get topLevelReached;
+
+  /// No description provided for @useCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Use'**
+  String get useCode;
+
+  /// No description provided for @verifiedContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get verifiedContact;
+
+  /// No description provided for @viewInvitee.
+  ///
+  /// In en, this message translates to:
+  /// **'Invited user'**
+  String get viewInvitee;
+
+  /// No description provided for @viewInviter.
+  ///
+  /// In en, this message translates to:
+  /// **'Inviter'**
+  String get viewInviter;
+
+  /// No description provided for @yourInviteCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Your invite code'**
+  String get yourInviteCode;
+
+  /// No description provided for @yourInvites.
+  ///
+  /// In en, this message translates to:
+  /// **'Your invites'**
+  String get yourInvites;
+
+  /// No description provided for @zeroTurnsOff.
+  ///
+  /// In en, this message translates to:
+  /// **'0 turns it off'**
+  String get zeroTurnsOff;
+
+  /// No description provided for @activeProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} minutes today'**
+  String activeProgress(int done, int total);
+
+  /// No description provided for @claimedPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} points!'**
+  String claimedPoints(int points);
+
+  /// No description provided for @claimedWithBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} points and a +{bonus} streak bonus!'**
+  String claimedWithBonus(int points, int bonus);
+
+  /// No description provided for @emergenciesNearYouCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 animal emergency near you} other{{count} animal emergencies near you}}'**
+  String emergenciesNearYouCount(int count);
+
+  /// No description provided for @emergencyAlertedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nobody nearby has alerts on yet} =1{1 person nearby was alerted} other{{count} people nearby were alerted}}'**
+  String emergencyAlertedCount(int count);
+
+  /// No description provided for @emergencyFalseReports.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Reported as false once} other{Reported as false {count} times}}'**
+  String emergencyFalseReports(int count);
+
+  /// No description provided for @emergencyHelpersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 person is going to help} other{{count} people are going to help}}'**
+  String emergencyHelpersCount(int count);
+
+  /// No description provided for @inviteCodeAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Code accepted. {name} invited you – welcome to CodaMi!'**
+  String inviteCodeAccepted(String name);
+
+  /// No description provided for @inviteShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'I use CodaMi to help lost pets get back home. Join me with my invite code {code}: {link}'**
+  String inviteShareText(String code, String link);
+
+  /// No description provided for @inviteStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'They set their city and use the app on {days} different days within {within} days of signing up.'**
+  String inviteStep2(int days, int within);
+
+  /// No description provided for @inviteStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'You get {points} points and move up the ambassador levels.'**
+  String inviteStep3(int points);
+
+  /// No description provided for @kmAway.
+  ///
+  /// In en, this message translates to:
+  /// **'{km} km away'**
+  String kmAway(String km);
+
+  /// No description provided for @levelFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'{level}: active friends'**
+  String levelFriends(String level);
+
+  /// No description provided for @levelRule.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} · {friends}+ friends · +{bonus}'**
+  String levelRule(String level, int friends, int bonus);
+
+  /// No description provided for @nextLevelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 more active friend to become {level}} other{{count} more active friends to become {level}}}'**
+  String nextLevelHint(int count, String level);
+
+  /// No description provided for @plusPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} points'**
+  String plusPoints(int points);
+
+  /// No description provided for @pointsTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{points, plural, =1{1 point} other{{points} points}}'**
+  String pointsTotal(int points);
+
+  /// No description provided for @streakLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{streak}-day streak · +{bonus} bonus every {days} days'**
+  String streakLine(int streak, int days, int bonus);
 }
 
 class _AppLocalizationsDelegate

@@ -172,7 +172,10 @@ class AuthRepository {
   }
 
   Future<void> _saveUserData(UserModel user) async {
-    await _firestore.collection('users').doc(user.uid).set(user.toMap());
+    await _firestore
+        .collection('users')
+        .doc(user.uid)
+        .set(user.toMap(), SetOptions(merge: true));
   }
 
   Future<void> forgotPassword(String email) async {
