@@ -36,4 +36,18 @@ void main() {
     expect(extractInviteCode('QWE789 or ZXC456'), isNull);
     expect(extractInviteCode('hello there'), isNull);
   });
+
+  test('reads the code from the Play Store install referrer', () {
+    expect(inviteCodeFromReferrer('ABC234'), 'ABC234');
+    expect(inviteCodeFromReferrer(' abc234 '), 'ABC234');
+    expect(inviteCodeFromReferrer('referrer%3DABC234'), 'ABC234');
+    expect(inviteCodeFromReferrer('utm_source=x&code=abc234'), 'ABC234');
+    expect(
+      inviteCodeFromReferrer('utm_source=google-play&utm_medium=organic'),
+      isNull,
+    );
+    expect(inviteCodeFromReferrer('ABC23'), isNull);
+    expect(inviteCodeFromReferrer(''), isNull);
+    expect(inviteCodeFromReferrer(null), isNull);
+  });
 }

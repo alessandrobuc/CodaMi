@@ -2724,6 +2724,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get inviteCodeLabel => 'आमंत्रण कोड';
 
   @override
+  String get inviteCodeFromLink =>
+      'आपके आमंत्रण लिंक से भरा गया। पुष्टि करने के लिए इस्तेमाल करें पर टैप करें।';
+
+  @override
   String get inviteCodeFormat =>
       'आमंत्रण कोड में 6 अक्षर और अंक होते हैं, जैसे ABC234।';
 
@@ -3195,4 +3199,190 @@ class AppLocalizationsHi extends AppLocalizations {
   String streakLine(int streak, int days, int bonus) {
     return 'लगातार $streak दिन · हर $days दिन पर +$bonus बोनस';
   }
+
+  @override
+  String get pointsFeedback => 'फ़ीडबैक भेजा';
+
+  @override
+  String get whatsNew => 'नया क्या है';
+
+  @override
+  String get whatsNewSubtitle => 'हर संस्करण में बदलाव';
+
+  @override
+  String get whatsNewTitle => 'CodaMi में नया क्या है';
+
+  @override
+  String get whatsNewIntro => 'पिछले अपडेट में ये बदलाव हुए हैं।';
+
+  @override
+  String whatsNewVersion(String version) {
+    return 'संस्करण $version';
+  }
+
+  @override
+  String get whatsNewSectionNew => 'नया';
+
+  @override
+  String get whatsNewSectionImproved => 'बेहतर';
+
+  @override
+  String get whatsNewSectionFixed => 'ठीक किया';
+
+  @override
+  String get whatsNewEmpty => 'अभी कोई अपडेट नोट नहीं है।';
+
+  @override
+  String get whatsNewDone => 'समझ गया';
+
+  @override
+  String get feedbackTitle => 'आपको CodaMi कैसा लगा?';
+
+  @override
+  String get feedbackBody =>
+      'आपका फ़ीडबैक सीधे CodaMi टीम तक पहुँचता है और ऐप को बेहतर बनाने में हमारी मदद करता है।';
+
+  @override
+  String feedbackPointsOffer(int points) {
+    return 'पहले फ़ीडबैक पर +$points पॉइंट';
+  }
+
+  @override
+  String get feedbackStarsHint => 'रेटिंग देने के लिए किसी स्टार पर टैप करें';
+
+  @override
+  String get feedbackCommentHint =>
+      'आपको क्या पसंद है, या क्या बेहतर हो सकता है? (वैकल्पिक)';
+
+  @override
+  String get feedbackSend => 'फ़ीडबैक भेजें';
+
+  @override
+  String get feedbackLater => 'अभी नहीं';
+
+  @override
+  String get feedbackThanks => 'आपके फ़ीडबैक के लिए धन्यवाद!';
+
+  @override
+  String feedbackThanksPoints(int points) {
+    return 'आपके फ़ीडबैक के लिए धन्यवाद! +$points पॉइंट';
+  }
+
+  @override
+  String get feedbackAlreadyToday =>
+      'आप आज फ़ीडबैक भेज चुके हैं। कल फिर भेज सकते हैं।';
+
+  @override
+  String get sendFeedbackSubtitle => 'टीम को अपनी राय बताएँ';
+
+  @override
+  String get rateCodaMi => 'CodaMi को रेट करें';
+
+  @override
+  String get rateCodaMiSubtitle => 'Google Play पर रिव्यू दें';
+
+  @override
+  String get adminFeedback => 'फ़ीडबैक';
+
+  @override
+  String get adminFeedbackSubtitle =>
+      'उपयोगकर्ता ऐप के बारे में क्या सोचते हैं';
+
+  @override
+  String get adminFeedbackEmpty => 'अभी कोई फ़ीडबैक नहीं है।';
+
+  @override
+  String feedbackRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count रेटिंग',
+      one: '1 रेटिंग',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get feedbackNoComment => 'कोई टिप्पणी नहीं';
+
+  @override
+  String get adminWhatsNewSubtitle =>
+      'हर अपडेट के बाद उपयोगकर्ताओं को दिखने वाले नोट';
+
+  @override
+  String get releaseAdd => 'संस्करण जोड़ें';
+
+  @override
+  String get releaseEdit => 'नोट बदलें';
+
+  @override
+  String get releaseVersion => 'संस्करण संख्या';
+
+  @override
+  String get releaseVersionHelp =>
+      'जैसे 1.1.0। यह स्टोर में ऐप के संस्करण नाम से मेल खाना चाहिए।';
+
+  @override
+  String get releaseVersionInvalid => 'अंक और बिंदु इस्तेमाल करें, जैसे 1.1.0।';
+
+  @override
+  String get releaseVersionExists => 'इस संस्करण के नोट पहले से हैं।';
+
+  @override
+  String get releasePublishedHelp => 'उपयोगकर्ता केवल प्रकाशित नोट देखते हैं।';
+
+  @override
+  String get releaseDraft => 'ड्राफ़्ट';
+
+  @override
+  String get releaseLinesHelp => 'हर पंक्ति में एक बदलाव।';
+
+  @override
+  String get releaseLanguageHelp =>
+      'खाली छोड़ी गई भाषाओं में अंग्रेज़ी नोट दिखते हैं।';
+
+  @override
+  String get releaseEnglishRequired =>
+      'पहले अंग्रेज़ी नोट लिखें: बाकी भाषाएँ उन्हीं पर निर्भर रहती हैं।';
+
+  @override
+  String get releaseDeleteTitle => 'ये नोट हटाएँ?';
+
+  @override
+  String releaseDeleteBody(String version) {
+    return 'संस्करण $version के नोट सभी के लिए हटा दिए जाएँगे।';
+  }
+
+  @override
+  String get releaseNone =>
+      'अभी कोई संस्करण नहीं। अपने अगले अपडेट के नोट जोड़ें।';
+
+  @override
+  String releaseThisApp(String version) {
+    return 'यह ऐप: संस्करण $version';
+  }
+
+  @override
+  String get feedbackAndReviews => 'फ़ीडबैक और रिव्यू';
+
+  @override
+  String get settingsFeedbackPoints => 'पहले फ़ीडबैक के पॉइंट';
+
+  @override
+  String get settingsFeedbackAfterDays =>
+      'साइन-अप के कितने दिन बाद फ़ीडबैक माँगें';
+
+  @override
+  String get settingsReviewActiveDays => 'पूछने से पहले उपयोग के दिन';
+
+  @override
+  String get settingsReviewAfterDays =>
+      'साइन-अप के कितने दिन बाद स्टोर रेटिंग विंडो दिखे';
+
+  @override
+  String get settingsReviewEveryDays => 'स्टोर रेटिंग अनुरोधों के बीच दिन';
+
+  @override
+  String get settingsReviewHelp =>
+      'स्टोर रेटिंग विंडो कभी पॉइंट नहीं देती: Google Play और App Store इसकी अनुमति नहीं देते।';
 }

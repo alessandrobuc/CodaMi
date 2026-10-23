@@ -35,6 +35,8 @@ class UserModel {
   final String? referredBy;
   final int referralCount;
   final AmbassadorLevel? ambassadorLevel;
+  final int activeDays;
+  final bool feedbackSent;
 
   UserModel({
     required this.uid,
@@ -59,6 +61,8 @@ class UserModel {
     this.referredBy,
     this.referralCount = 0,
     this.ambassadorLevel,
+    this.activeDays = 0,
+    this.feedbackSent = false,
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -102,6 +106,8 @@ class UserModel {
       referredBy: map['referredBy'] as String?,
       referralCount: (map['referralCount'] as num?)?.toInt() ?? 0,
       ambassadorLevel: AmbassadorLevel.fromValue(map['ambassadorLevel']),
+      activeDays: ((map['activity'] as Map?)?['days'] as num?)?.toInt() ?? 0,
+      feedbackSent: map['feedbackDay'] is String,
     );
   }
 }

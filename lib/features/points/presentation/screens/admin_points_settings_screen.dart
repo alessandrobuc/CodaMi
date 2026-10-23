@@ -78,6 +78,11 @@ class _AdminPointsSettingsScreenState
       qualifyWithinDays: read('qualifyWithinDays', d.qualifyWithinDays),
       codeEntryDays: read('codeEntryDays', d.codeEntryDays),
       maxQualifiedPerDay: read('maxQualifiedPerDay', d.maxQualifiedPerDay),
+      feedbackPoints: read('feedbackPoints', d.feedbackPoints),
+      feedbackAfterDays: read('feedbackAfterDays', d.feedbackAfterDays),
+      reviewAfterDays: read('reviewAfterDays', d.reviewAfterDays),
+      reviewMinActiveDays: read('reviewMinActiveDays', d.reviewMinActiveDays),
+      reviewEveryDays: read('reviewEveryDays', d.reviewEveryDays),
       levels: [
         for (final rule in d.levels)
           LevelRule(
@@ -166,6 +171,26 @@ class _AdminPointsSettingsScreenState
                         friends: _levelFriends[level]!,
                         bonus: _levelBonus[level]!,
                       ),
+                  ],
+                ),
+                SettingsSection(
+                  title: l10n.feedbackAndReviews,
+                  icon: Icons.rate_review_rounded,
+                  color: AppColors.accent,
+                  children: [
+                    field(
+                      'feedbackPoints',
+                      l10n.settingsFeedbackPoints,
+                      l10n.zeroTurnsOff,
+                    ),
+                    field('feedbackAfterDays', l10n.settingsFeedbackAfterDays),
+                    field('reviewMinActiveDays', l10n.settingsReviewActiveDays),
+                    field('reviewAfterDays', l10n.settingsReviewAfterDays),
+                    field(
+                      'reviewEveryDays',
+                      l10n.settingsReviewEveryDays,
+                      l10n.settingsReviewHelp,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 24),

@@ -2609,6 +2609,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get inviteCodeLabel => '邀请码';
 
   @override
+  String get inviteCodeFromLink => '已从你的邀请链接中填入。点击“使用”确认。';
+
+  @override
   String get inviteCodeFormat => '邀请码由 6 位字母和数字组成，例如 ABC234。';
 
   @override
@@ -3048,4 +3051,178 @@ class AppLocalizationsZh extends AppLocalizations {
   String streakLine(int streak, int days, int bonus) {
     return '已连续 $streak 天 · 每 $days 天奖励 +$bonus';
   }
+
+  @override
+  String get pointsFeedback => '已提交反馈';
+
+  @override
+  String get whatsNew => '新功能';
+
+  @override
+  String get whatsNewSubtitle => '每个版本的更新内容';
+
+  @override
+  String get whatsNewTitle => 'CodaMi 新功能';
+
+  @override
+  String get whatsNewIntro => '以下是最近一次更新的变化。';
+
+  @override
+  String whatsNewVersion(String version) {
+    return '版本 $version';
+  }
+
+  @override
+  String get whatsNewSectionNew => '新增';
+
+  @override
+  String get whatsNewSectionImproved => '改进';
+
+  @override
+  String get whatsNewSectionFixed => '修复';
+
+  @override
+  String get whatsNewEmpty => '暂无更新说明。';
+
+  @override
+  String get whatsNewDone => '知道了';
+
+  @override
+  String get feedbackTitle => '你觉得 CodaMi 怎么样？';
+
+  @override
+  String get feedbackBody => '你的反馈会直接发送给 CodaMi 团队，帮助我们把应用做得更好。';
+
+  @override
+  String feedbackPointsOffer(int points) {
+    return '首次反馈可得 +$points 积分';
+  }
+
+  @override
+  String get feedbackStarsHint => '点击星星评分';
+
+  @override
+  String get feedbackCommentHint => '你喜欢什么，或者哪里可以改进？（选填）';
+
+  @override
+  String get feedbackSend => '提交反馈';
+
+  @override
+  String get feedbackLater => '以后再说';
+
+  @override
+  String get feedbackThanks => '感谢你的反馈！';
+
+  @override
+  String feedbackThanksPoints(int points) {
+    return '感谢你的反馈！+$points 积分';
+  }
+
+  @override
+  String get feedbackAlreadyToday => '你今天已经提交过反馈了，明天可以再提交。';
+
+  @override
+  String get sendFeedbackSubtitle => '告诉团队你的想法';
+
+  @override
+  String get rateCodaMi => '为 CodaMi 评分';
+
+  @override
+  String get rateCodaMiSubtitle => '在 Google Play 上留下评价';
+
+  @override
+  String get adminFeedback => '用户反馈';
+
+  @override
+  String get adminFeedbackSubtitle => '用户对应用的看法';
+
+  @override
+  String get adminFeedbackEmpty => '暂无反馈。';
+
+  @override
+  String feedbackRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 个评分',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get feedbackNoComment => '无评论';
+
+  @override
+  String get adminWhatsNewSubtitle => '每次更新后向用户显示的说明';
+
+  @override
+  String get releaseAdd => '添加版本';
+
+  @override
+  String get releaseEdit => '编辑说明';
+
+  @override
+  String get releaseVersion => '版本号';
+
+  @override
+  String get releaseVersionHelp => '例如 1.1.0。必须与应用商店中的应用版本名称一致。';
+
+  @override
+  String get releaseVersionInvalid => '请使用数字和点，例如 1.1.0。';
+
+  @override
+  String get releaseVersionExists => '该版本已有说明。';
+
+  @override
+  String get releasePublishedHelp => '用户只能看到已发布的说明。';
+
+  @override
+  String get releaseDraft => '草稿';
+
+  @override
+  String get releaseLinesHelp => '每行一项更改。';
+
+  @override
+  String get releaseLanguageHelp => '留空的语言将显示英文说明。';
+
+  @override
+  String get releaseEnglishRequired => '请先填写英文说明：其他语言缺失时会使用英文。';
+
+  @override
+  String get releaseDeleteTitle => '删除这些说明？';
+
+  @override
+  String releaseDeleteBody(String version) {
+    return '版本 $version 的说明将对所有人删除。';
+  }
+
+  @override
+  String get releaseNone => '暂无版本。请添加下次更新的说明。';
+
+  @override
+  String releaseThisApp(String version) {
+    return '本应用：版本 $version';
+  }
+
+  @override
+  String get feedbackAndReviews => '反馈和评价';
+
+  @override
+  String get settingsFeedbackPoints => '首次反馈的积分';
+
+  @override
+  String get settingsFeedbackAfterDays => '注册后多少天请求反馈';
+
+  @override
+  String get settingsReviewActiveDays => '使用多少天后请求';
+
+  @override
+  String get settingsReviewAfterDays => '注册后多少天显示商店评分窗口';
+
+  @override
+  String get settingsReviewEveryDays => '商店评分请求的间隔天数';
+
+  @override
+  String get settingsReviewHelp =>
+      '商店评分窗口从不奖励积分：Google Play 和 App Store 不允许这样做。';
 }

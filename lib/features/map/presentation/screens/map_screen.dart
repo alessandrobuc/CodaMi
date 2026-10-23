@@ -9,7 +9,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../emergency/domain/emergency.dart';
+import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../emergency/presentation/widgets/emergency_widgets.dart';
 import '../../../reports/domain/entities/reports_entity.dart';
 import '../../../reports/presentation/screens/report_detail_screen.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
@@ -80,6 +84,7 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
   GoogleMapController? _map;
   late ReportType? _type = widget.initialType;
   Report? _selected;
+  String? _selectedEmergencyId;
   bool _showMyLocation = false;
   bool _centeredOnHome = false;
   bool _showAreas = false;
@@ -91,6 +96,8 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
   Set<Marker> _markers = const {};
   Object? _circlesKey;
   Set<Circle> _circles = const {};
+  Object? _emergencyKey;
+  Set<Marker> _allMarkers = const {};
 
   @override
   void dispose() {
@@ -127,6 +134,7 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
     setState(() {
       _type = null;
       _selected = report;
+      _selectedEmergencyId = null;
     });
     _moveTo(_point(report), _reportZoom);
     Future.microtask(() => ref.read(mapFocusProvider.notifier).clear());
@@ -141,9 +149,91 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
 
   Future<void> _select(Report report) async {
     HapticFeedback.selectionClick();
-    setState(() => _selected = report);
+    setState(() {
+      _selected = report;
+      _selectedEmergencyId = null;
+    });
     final zoom = await _map?.getZoomLevel() ?? _cityZoom;
     _moveTo(_point(report), zoom < 14 ? 14 : zoom);
+  }
+
+  Future<void> _selectEmergency(Emergency emergency) async {
+    HapticFeedback.selectionClick();
+    setState(() {
+      _selectedEmergencyId = emergency.id;
+      _selected = null;
+    });
+    final zoom = await _map?.getZoomLevel() ?? _cityZoom;
+    _moveTo(LatLng(emergency.lat, emergency.lng), zoom < 14 ? 14 : zoom);
+  }
+
+  void _openEmergency(Emergency emergency) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => EmergencyScreen(emergencyId: emergency.id),
+      ),
+    );
+  }
+
+  Set<Marker> _withEmergencies(
+    Set<Marker> reportMarkers,
+    List<Emergency> emergencies,
+  ) {
+    final selectedId = _selectedEmergencyId;
+    final ratio = MediaQuery.devicePixelRatioOf(context);
+    final jobs = <Future<void>>[];
+    final keys = <String>[];
+    for (final e in emergencies) {
+      final selected = e.id == selectedId;
+      final key = 'emergency|${e.type.value}|$selected';
+      if (_icons.cachedEmergency(e.type, selected: selected) != null ||
+          !_loadingIcons.add(key)) {
+        continue;
+      }
+      keys.add(key);
+      jobs.add(
+        _icons.loadEmergency(e.type, selected: selected, pixelRatio: ratio),
+      );
+    }
+    if (jobs.isNotEmpty) {
+      Future.wait(jobs).whenComplete(() {
+        _loadingIcons.removeAll(keys);
+        if (mounted) setState(() => _iconsVersion++);
+      });
+    }
+
+    final key = (
+      reportMarkers,
+      [for (final e in emergencies) '${e.id}${e.lat}${e.lng}${e.type}'],
+      selectedId,
+      _iconsVersion,
+    );
+    if (_emergencyKey is (Set<Marker>, List<String>, String?, int)) {
+      final old = _emergencyKey as (Set<Marker>, List<String>, String?, int);
+      if (identical(old.$1, key.$1) &&
+          listEquals(old.$2, key.$2) &&
+          old.$3 == key.$3 &&
+          old.$4 == key.$4) {
+        return _allMarkers;
+      }
+    }
+    _emergencyKey = key;
+    return _allMarkers = {
+      ...reportMarkers,
+      for (final e in emergencies)
+        if (_icons.cachedEmergency(e.type, selected: e.id == selectedId) ??
+                _icons.cachedEmergency(e.type, selected: false)
+            case final icon?)
+          Marker(
+            markerId: MarkerId('emergency-${e.id}'),
+            position: LatLng(e.lat, e.lng),
+            icon: icon,
+            anchor: const Offset(0.5, 1),
+            zIndexInt: e.id == selectedId ? 5 : 4,
+            consumeTapEvents: true,
+            onTap: () => _selectEmergency(e),
+          ),
+    };
   }
 
   void _goHome() {
@@ -394,6 +484,10 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
 
     final home = ref.watch(homeCenterProvider);
     final km = ref.watch(areaRadiusProvider);
+    final emergencies = ref.watch(mapEmergenciesProvider);
+    final selectedEmergency = emergencies
+        .where((e) => e.id == _selectedEmergencyId)
+        .firstOrNull;
 
     final visible = switch (_type) {
       ReportType.lost => lost,
@@ -415,7 +509,8 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
     final padding = MediaQuery.paddingOf(context);
     final top = widget.fullscreen ? padding.top + 12 : 12.0;
     final bottom = widget.fullscreen ? padding.bottom + 20 : 84.0;
-    const cardHeight = 128.0;
+    final cardHeight = selectedEmergency != null ? 70.0 : 128.0;
+    final hasCard = selected != null || selectedEmergency != null;
 
     final map = GoogleMap(
       initialCameraPosition: CameraPosition(
@@ -423,12 +518,20 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
         zoom: home == null ? _italyZoom : _cityZoom,
       ),
       style: codamiMapStyle,
-      markers: _buildMarkers(pins, selected?.id),
+      markers: _withEmergencies(
+        _buildMarkers(pins, selected?.id),
+        emergencies,
+      ),
       circles: _buildCircles(pins, home, km),
       onMapCreated: _onCreated,
       onCameraIdle: _onCameraIdle,
       onTap: (_) {
-        if (_selected != null) setState(() => _selected = null);
+        if (_selected != null || _selectedEmergencyId != null) {
+          setState(() {
+            _selected = null;
+            _selectedEmergencyId = null;
+          });
+        }
       },
       myLocationEnabled: _showMyLocation,
       myLocationButtonEnabled: false,
@@ -514,7 +617,7 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
           duration: const Duration(milliseconds: 280),
           curve: Curves.easeOutCubic,
           end: 12,
-          bottom: selected == null ? bottom : bottom + cardHeight + 12,
+          bottom: hasCard ? bottom + cardHeight + 12 : bottom,
           child: MapControlPill(
             locating: _locating,
             onZoomIn: () => _map?.animateCamera(CameraUpdate.zoomIn()),
@@ -523,7 +626,9 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
             onHome: _goHome,
           ),
         ),
-        if (loading || failed || (visible.isEmpty && selected == null))
+        if (loading ||
+            failed ||
+            (visible.isEmpty && !hasCard && emergencies.isEmpty))
           Positioned(
             top: top + 56,
             left: 0,
@@ -563,7 +668,13 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
                 child: child,
               ),
             ),
-            child: selected == null
+            child: selectedEmergency != null
+                ? _EmergencyMapCard(
+                    key: ValueKey('emergency-${selectedEmergency.id}'),
+                    emergency: selectedEmergency,
+                    onTap: () => _openEmergency(selectedEmergency),
+                  )
+                : selected == null
                 ? const SizedBox.shrink()
                 : ReportCard(
                     key: ValueKey(selected.id),
@@ -577,6 +688,43 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
 
     if (widget.fullscreen) return content;
     return ClipRRect(borderRadius: BorderRadius.circular(26), child: content);
+  }
+}
+
+class _EmergencyMapCard extends StatelessWidget {
+  final Emergency emergency;
+  final VoidCallback onTap;
+
+  const _EmergencyMapCard({
+    super.key,
+    required this.emergency,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final place = emergency.placeLabel ?? emergency.city;
+    final time = emergency.createdAt;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primaryDark.withValues(alpha: 0.08),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: EmergencyTile(
+        emergency: emergency,
+        onTap: onTap,
+        subtitle: [
+          ?place,
+          if (time != null) timeAgo(context.l10n, time),
+        ].join(' · '),
+      ),
+    );
   }
 }
 

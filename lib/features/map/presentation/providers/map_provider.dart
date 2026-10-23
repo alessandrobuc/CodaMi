@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 
 import '../../../../core/utils/geo.dart';
+import '../../../emergency/domain/emergency.dart';
+import '../../../emergency/presentation/providers/emergency_provider.dart';
 import '../../../moderation/presentation/providers/moderation_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../reports/domain/entities/reports_entity.dart';
@@ -83,4 +85,20 @@ final areaResolvedReportsProvider = Provider<AsyncValue<List<Report>>>((ref) {
       .whenData(
         (reports) => filterByArea(withoutBlocked(reports, blocked), center, km),
       );
+});
+
+final mapEmergenciesProvider = Provider<List<Emergency>>((ref) {
+  final center = ref.watch(homeCenterProvider);
+  final km = ref.watch(areaRadiusProvider);
+  final blocked = ref.watch(blockedUsersProvider);
+  final all = ref.watch(activeEmergenciesProvider).value ?? const [];
+  return [
+    for (final e in all)
+      if (!blocked.containsKey(e.ownerId) &&
+          (center == null ||
+              km == null ||
+              metersBetween(center.latitude, center.longitude, e.lat, e.lng) <=
+                  km * 1000))
+        e,
+  ];
 });

@@ -69,6 +69,23 @@ class PointsRepository {
     return (result as Map)['inviterName'] as String? ?? '';
   }
 
+  // Returns the points given (0 after the first time).
+  Future<int> submitFeedback({
+    required int rating,
+    required String comment,
+    required String appVersion,
+    required String lang,
+  }) async {
+    final result = await _call('submitFeedback', {
+      'rating': rating,
+      'comment': comment,
+      'appVersion': appVersion,
+      'platform': defaultTargetPlatform.name,
+      'lang': lang,
+    });
+    return ((result as Map)['points'] as num?)?.toInt() ?? 0;
+  }
+
   Stream<PointsConfig> watchConfig() => _db
       .collection('config')
       .doc('points')

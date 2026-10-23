@@ -14,6 +14,8 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.view.WindowManager
+import com.android.installreferrer.api.InstallReferrerClient
+import com.android.installreferrer.api.InstallReferrerStateListener
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
@@ -49,6 +51,46 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/notification_sounds")
             .setMethodCallHandler(::onSoundCall)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/install_referrer")
+            .setMethodCallHandler { call, result ->
+                if (call.method == "get") readInstallReferrer(result) else result.notImplemented()
+            }
+    }
+
+    // The text after "referrer=" in the Play Store link this app was installed from.
+    private fun readInstallReferrer(result: MethodChannel.Result) {
+        val client = InstallReferrerClient.newBuilder(this).build()
+        var answered = false
+        fun answer(value: String?) {
+            if (answered) return
+            answered = true
+            runOnUiThread { result.success(value) }
+            try {
+                client.endConnection()
+            } catch (_: Exception) {
+            }
+        }
+        try {
+            client.startConnection(object : InstallReferrerStateListener {
+                override fun onInstallReferrerSetupFinished(code: Int) {
+                    answer(
+                        if (code == InstallReferrerClient.InstallReferrerResponse.OK) {
+                            try {
+                                client.installReferrer.installReferrer
+                            } catch (_: Exception) {
+                                null
+                            }
+                        } else {
+                            null
+                        },
+                    )
+                }
+
+                override fun onInstallReferrerServiceDisconnected() = answer(null)
+            })
+        } catch (_: Exception) {
+            answer(null)
+        }
     }
 
     override fun onDestroy() {

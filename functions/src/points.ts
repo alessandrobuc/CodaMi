@@ -10,6 +10,7 @@ export const POINT_ACTIONS = [
   "referral_qualified",
   "referral_welcome",
   "level_bonus",
+  "feedback",
   "manual",
 ] as const;
 export type PointAction = (typeof POINT_ACTIONS)[number];
@@ -38,6 +39,11 @@ export interface PointsConfig {
   qualifyWithinDays: number;
   codeEntryDays: number;
   maxQualifiedPerDay: number;
+  feedbackPoints: number;
+  feedbackAfterDays: number;
+  reviewAfterDays: number;
+  reviewMinActiveDays: number;
+  reviewEveryDays: number;
   levels: Level[];
 }
 
@@ -53,6 +59,11 @@ export const DEFAULT_POINTS_CONFIG: PointsConfig = {
   qualifyWithinDays: 14,
   codeEntryDays: 7,
   maxQualifiedPerDay: 10,
+  feedbackPoints: 20,
+  feedbackAfterDays: 5,
+  reviewAfterDays: 10,
+  reviewMinActiveDays: 5,
+  reviewEveryDays: 120,
   levels: [
     {id: "supporter", minFriends: 1, bonus: 10},
     {id: "ambassador", minFriends: 5, bonus: 50},
@@ -74,6 +85,11 @@ const LIMITS: Record<Exclude<keyof PointsConfig, "levels">, [number, number]> = 
   qualifyWithinDays: [1, 365],
   codeEntryDays: [1, 365],
   maxQualifiedPerDay: [1, 1000],
+  feedbackPoints: [0, 1000],
+  feedbackAfterDays: [0, 365],
+  reviewAfterDays: [0, 365],
+  reviewMinActiveDays: [0, 365],
+  reviewEveryDays: [30, 365],
 };
 
 function intIn(value: unknown, [min, max]: [number, number]): number | null {
@@ -196,4 +212,24 @@ export function referralOutcome(
     return progress.now <= deadline ? "qualify" : "expire";
   }
   return progress.now > deadline ? "expire" : "wait";
+}
+
+export const FEEDBACK_COMMENT_MAX = 1000;
+
+export interface Feedback {
+  rating: number;
+  comment: string;
+}
+
+export function feedbackOf(data: unknown): Feedback | null {
+  const input = typeof data === "object" && data !== null ? data as Json : {};
+  const rating = intIn(input.rating, [1, 5]);
+  const comment = typeof input.comment === "string" ? input.comment.trim() : "";
+  if (rating === null || comment.length > FEEDBACK_COMMENT_MAX) return null;
+  return {rating, comment};
+}
+
+// Points for feedback come once per account, and only after some real use.
+export function feedbackEarnsPoints(joinedAt: number, now: number, config: PointsConfig): boolean {
+  return config.feedbackPoints > 0 && now - joinedAt >= config.feedbackAfterDays * 86_400_000;
 }

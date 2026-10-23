@@ -543,5 +543,6 @@ export {
   pointsSweep,
   redeemInviteCode,
   registerVisit,
+  submitFeedback,
 } from "./pointsFunctions";
 export {emergencySweep, onEmergencyCreated, seedTestContacts, updateEmergency} from "./emergencyFunctions";

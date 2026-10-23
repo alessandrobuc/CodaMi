@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +23,9 @@ import '../../../emergency/presentation/screens/emergency_contacts_screen.dart';
 import '../../../points/presentation/screens/invite_screen.dart';
 import '../../../points/presentation/screens/points_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
+import '../../../feedback/presentation/widgets/feedback_sheet.dart';
+import '../../../whats_new/presentation/screens/whats_new_screen.dart';
+import 'package:in_app_review/in_app_review.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -299,6 +303,30 @@ class ProfileScreen extends ConsumerWidget {
                     MaterialPageRoute(
                       builder: (_) => const HelpSupportScreen(),
                     ),
+                  ),
+                ),
+                _ProfileTile(
+                  icon: Icons.rate_review_rounded,
+                  color: pointsColor,
+                  title: l10n.feedbackSend,
+                  subtitle: l10n.sendFeedbackSubtitle,
+                  onTap: () => showFeedbackSheet(context),
+                ),
+                if (defaultTargetPlatform == TargetPlatform.android)
+                  _ProfileTile(
+                    icon: Icons.star_rounded,
+                    color: AppColors.accent,
+                    title: l10n.rateCodaMi,
+                    subtitle: l10n.rateCodaMiSubtitle,
+                    onTap: () => InAppReview.instance.openStoreListing(),
+                  ),
+                _ProfileTile(
+                  icon: Icons.auto_awesome_rounded,
+                  color: AppColors.primary,
+                  title: l10n.whatsNew,
+                  subtitle: l10n.whatsNewSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const WhatsNewScreen()),
                   ),
                 ),
                 _ProfileTile(

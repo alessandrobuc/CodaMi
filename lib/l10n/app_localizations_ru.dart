@@ -2741,6 +2741,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get inviteCodeLabel => 'Код приглашения';
 
   @override
+  String get inviteCodeFromLink =>
+      'Заполнено из вашей ссылки-приглашения. Нажмите «Применить», чтобы подтвердить.';
+
+  @override
   String get inviteCodeFormat =>
       'Код приглашения состоит из 6 букв и цифр, например ABC234.';
 
@@ -3227,4 +3231,194 @@ class AppLocalizationsRu extends AppLocalizations {
   String streakLine(int streak, int days, int bonus) {
     return 'Серия: $streak дн. · бонус +$bonus каждые $days дн.';
   }
+
+  @override
+  String get pointsFeedback => 'Отзыв отправлен';
+
+  @override
+  String get whatsNew => 'Что нового';
+
+  @override
+  String get whatsNewSubtitle => 'Изменения в каждой версии';
+
+  @override
+  String get whatsNewTitle => 'Что нового в CodaMi';
+
+  @override
+  String get whatsNewIntro => 'Вот что изменилось в последнем обновлении.';
+
+  @override
+  String whatsNewVersion(String version) {
+    return 'Версия $version';
+  }
+
+  @override
+  String get whatsNewSectionNew => 'Новое';
+
+  @override
+  String get whatsNewSectionImproved => 'Улучшено';
+
+  @override
+  String get whatsNewSectionFixed => 'Исправлено';
+
+  @override
+  String get whatsNewEmpty => 'Заметок об обновлениях пока нет.';
+
+  @override
+  String get whatsNewDone => 'Понятно';
+
+  @override
+  String get feedbackTitle => 'Как вам CodaMi?';
+
+  @override
+  String get feedbackBody =>
+      'Ваш отзыв попадает прямо к команде CodaMi и помогает нам сделать приложение лучше.';
+
+  @override
+  String feedbackPointsOffer(int points) {
+    return '+$points баллов за ваш первый отзыв';
+  }
+
+  @override
+  String get feedbackStarsHint => 'Нажмите на звезду, чтобы оценить';
+
+  @override
+  String get feedbackCommentHint =>
+      'Что вам нравится или что можно улучшить? (необязательно)';
+
+  @override
+  String get feedbackSend => 'Отправить отзыв';
+
+  @override
+  String get feedbackLater => 'Не сейчас';
+
+  @override
+  String get feedbackThanks => 'Спасибо за отзыв!';
+
+  @override
+  String feedbackThanksPoints(int points) {
+    return 'Спасибо за отзыв! +$points баллов';
+  }
+
+  @override
+  String get feedbackAlreadyToday =>
+      'Вы уже отправили отзыв сегодня. Следующий можно отправить завтра.';
+
+  @override
+  String get sendFeedbackSubtitle => 'Расскажите команде, что вы думаете';
+
+  @override
+  String get rateCodaMi => 'Оценить CodaMi';
+
+  @override
+  String get rateCodaMiSubtitle => 'Оставьте отзыв в Google Play';
+
+  @override
+  String get adminFeedback => 'Отзывы';
+
+  @override
+  String get adminFeedbackSubtitle => 'Что пользователи думают о приложении';
+
+  @override
+  String get adminFeedbackEmpty => 'Отзывов пока нет.';
+
+  @override
+  String feedbackRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count оценки',
+      many: '$count оценок',
+      few: '$count оценки',
+      one: '$count оценка',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get feedbackNoComment => 'Без комментария';
+
+  @override
+  String get adminWhatsNewSubtitle =>
+      'Заметки, которые пользователи видят после каждого обновления';
+
+  @override
+  String get releaseAdd => 'Добавить версию';
+
+  @override
+  String get releaseEdit => 'Изменить заметки';
+
+  @override
+  String get releaseVersion => 'Номер версии';
+
+  @override
+  String get releaseVersionHelp =>
+      'Например, 1.1.0. Должен совпадать с названием версии приложения в магазине.';
+
+  @override
+  String get releaseVersionInvalid =>
+      'Используйте цифры и точки, например 1.1.0.';
+
+  @override
+  String get releaseVersionExists => 'Для этой версии уже есть заметки.';
+
+  @override
+  String get releasePublishedHelp =>
+      'Пользователи видят только опубликованные заметки.';
+
+  @override
+  String get releaseDraft => 'Черновик';
+
+  @override
+  String get releaseLinesHelp => 'Одно изменение на строку.';
+
+  @override
+  String get releaseLanguageHelp =>
+      'Для незаполненных языков показываются заметки на английском.';
+
+  @override
+  String get releaseEnglishRequired =>
+      'Сначала напишите заметки на английском: другие языки используют их по умолчанию.';
+
+  @override
+  String get releaseDeleteTitle => 'Удалить эти заметки?';
+
+  @override
+  String releaseDeleteBody(String version) {
+    return 'Заметки к версии $version будут удалены для всех.';
+  }
+
+  @override
+  String get releaseNone =>
+      'Версий пока нет. Добавьте заметки к следующему обновлению.';
+
+  @override
+  String releaseThisApp(String version) {
+    return 'Это приложение: версия $version';
+  }
+
+  @override
+  String get feedbackAndReviews => 'Отзывы и оценки';
+
+  @override
+  String get settingsFeedbackPoints => 'Баллы за первый отзыв';
+
+  @override
+  String get settingsFeedbackAfterDays =>
+      'Дней после регистрации до запроса отзыва';
+
+  @override
+  String get settingsReviewActiveDays => 'Дней использования до запроса';
+
+  @override
+  String get settingsReviewAfterDays =>
+      'Дней после регистрации до окна оценки в магазине';
+
+  @override
+  String get settingsReviewEveryDays =>
+      'Дней между запросами оценки в магазине';
+
+  @override
+  String get settingsReviewHelp =>
+      'Окно оценки в магазине никогда не даёт баллов: Google Play и App Store это запрещают.';
 }

@@ -8,6 +8,8 @@ import {
   dayKey,
   deviceFlags,
   earnsStreakBonus,
+  feedbackEarnsPoints,
+  feedbackOf,
   levelFor,
   levelsReached,
   newInviteCode,
@@ -109,4 +111,22 @@ test("points pushes exist in every language", () => {
   }
   for (const level of LEVEL_IDS) assert.ok(keys.includes(`level_${level}`));
   assert.equal(pointsText("it", "referralBody", {points: "50"}), "+50 punti. Grazie per aiutare CodaMi a crescere!");
+});
+
+test("feedback needs 1 to 5 stars and a short comment", () => {
+  assert.deepEqual(feedbackOf({rating: 4, comment: "  Great app "}), {rating: 4, comment: "Great app"});
+  assert.deepEqual(feedbackOf({rating: 5}), {rating: 5, comment: ""});
+  assert.equal(feedbackOf({rating: 0}), null);
+  assert.equal(feedbackOf({rating: 6}), null);
+  assert.equal(feedbackOf({rating: 3.5}), null);
+  assert.equal(feedbackOf({rating: 3, comment: "x".repeat(1001)}), null);
+  assert.equal(feedbackOf(null), null);
+});
+
+test("feedback earns points only after some days of use", () => {
+  const config = pointsConfigOf({feedbackAfterDays: 5});
+  assert.equal(feedbackEarnsPoints(0, 5 * DAY, config), true);
+  assert.equal(feedbackEarnsPoints(0, 4 * DAY, config), false);
+  assert.equal(feedbackEarnsPoints(0, 9 * DAY, pointsConfigOf({feedbackPoints: 0})), false);
+  assert.equal(pointsConfigOf({reviewEveryDays: 5}).reviewEveryDays, 120);
 });

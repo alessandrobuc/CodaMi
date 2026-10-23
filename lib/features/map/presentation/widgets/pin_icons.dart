@@ -8,6 +8,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/number_format.dart';
+import '../../../emergency/domain/emergency.dart';
+import '../../../emergency/presentation/widgets/emergency_widgets.dart';
 import '../../../reports/domain/entities/reports_entity.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
 
@@ -39,6 +41,37 @@ class PinIcons {
       color: pinColor(report),
       home: !report.isOpen,
       photo: photo,
+      scale: scale,
+      pixelRatio: pixelRatio,
+    );
+    return _icons[key] = BitmapDescriptor.bytes(
+      bytes,
+      width: _width * scale,
+      height: _height * scale,
+    );
+  }
+
+  BitmapDescriptor? cachedEmergency(
+    EmergencyType type, {
+    required bool selected,
+  }) => _icons['emergency|${type.value}|$selected'];
+
+  Future<BitmapDescriptor> loadEmergency(
+    EmergencyType type, {
+    required bool selected,
+    required double pixelRatio,
+  }) async {
+    final key = 'emergency|${type.value}|$selected';
+    final existing = _icons[key];
+    if (existing != null) return existing;
+    final scale = selected ? 1.2 : 1.0;
+    final bytes = await _draw(
+      color: emergencyColor,
+      home: false,
+      photo: null,
+      icon: type.icon,
+      fill: const Color(0xFFFDECEA),
+      iconColor: emergencyColor,
       scale: scale,
       pixelRatio: pixelRatio,
     );
@@ -173,6 +206,9 @@ class PinIcons {
     required ui.Image? photo,
     required double scale,
     required double pixelRatio,
+    IconData icon = Icons.pets_rounded,
+    Color fill = const Color(0xFFE8EFEC),
+    Color? iconColor,
   }) async {
     final factor = scale * pixelRatio;
     final recorder = ui.PictureRecorder();
@@ -212,20 +248,20 @@ class PinIcons {
         filterQuality: FilterQuality.medium,
       );
     } else {
-      canvas.drawRect(photoRect, Paint()..color = const Color(0xFFE8EFEC));
-      final icon = TextPainter(
+      canvas.drawRect(photoRect, Paint()..color = fill);
+      final glyph = TextPainter(
         textDirection: TextDirection.ltr,
         text: TextSpan(
-          text: String.fromCharCode(Icons.pets_rounded.codePoint),
+          text: String.fromCharCode(icon.codePoint),
           style: TextStyle(
             fontSize: 22,
-            fontFamily: Icons.pets_rounded.fontFamily,
-            package: Icons.pets_rounded.fontPackage,
-            color: color.withValues(alpha: 0.75),
+            fontFamily: icon.fontFamily,
+            package: icon.fontPackage,
+            color: iconColor ?? color.withValues(alpha: 0.75),
           ),
         ),
       )..layout();
-      icon.paint(canvas, center - Offset(icon.width / 2, icon.height / 2));
+      glyph.paint(canvas, center - Offset(glyph.width / 2, glyph.height / 2));
     }
     canvas.restore();
 

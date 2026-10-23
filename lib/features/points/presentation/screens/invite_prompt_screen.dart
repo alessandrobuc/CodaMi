@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../data/install_referrer.dart';
 import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/invite_code_input.dart';
@@ -25,11 +26,21 @@ class _InvitePromptScreenState extends ConsumerState<InvitePromptScreen> {
   bool _busy = false;
   String? _error;
   String? _inviter;
+  bool _fromLink = false;
 
   @override
   void initState() {
     super.initState();
     _code.addListener(() => setState(() {}));
+    _fillFromInstall();
+  }
+
+  Future<void> _fillFromInstall() async {
+    final code = await installInviteCode();
+    if (!mounted || code == null || _code.text.isNotEmpty) return;
+    if (code == ref.read(userProfileProvider).value?.inviteCode) return;
+    _code.text = code;
+    setState(() => _fromLink = true);
   }
 
   @override
@@ -149,10 +160,38 @@ class _InvitePromptScreenState extends ConsumerState<InvitePromptScreen> {
                           enabled: !_busy,
                           errorText: _error,
                           onChanged: (_) {
-                            if (_error != null) setState(() => _error = null);
+                            if (_error != null || _fromLink) {
+                              setState(() {
+                                _error = null;
+                                _fromLink = false;
+                              });
+                            }
                           },
                           onSubmitted: _redeem,
                         ),
+                        if (_fromLink && _error == null) ...[
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.link_rounded,
+                                size: 18,
+                                color: AppColors.primary,
+                              ),
+                              const SizedBox(width: 6),
+                              Expanded(
+                                child: Text(
+                                  l10n.inviteCodeFromLink,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                         const SizedBox(height: 20),
                         FilledButton(
                           onPressed: _busy || _code.text.isEmpty

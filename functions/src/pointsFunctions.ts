@@ -14,6 +14,8 @@ import {
   dayKey,
   deviceFlags,
   earnsStreakBonus,
+  feedbackEarnsPoints,
+  feedbackOf,
   levelFor,
   levelsReached,
   newInviteCode,
@@ -348,6 +350,50 @@ export const adminAdjustPoints = onCall(async (request) => {
   return {ok: true};
 });
 
+// In-app feedback for the team. This is not a store review: stores forbid rewarding those.
+export const submitFeedback = onCall(async (request) => {
+  const uid = requireUid(request);
+  const feedback = feedbackOf(request.data);
+  if (!feedback) throw new HttpsError("invalid-argument", "Choose from 1 to 5 stars.");
+  const input = request.data as {appVersion?: unknown; platform?: unknown; lang?: unknown};
+  const short = (value: unknown, max: number) =>
+    typeof value === "string" ? value.trim().slice(0, max) : null;
+  const config = await loadConfig();
+  const joinedAt = Date.parse((await getAuth().getUser(uid)).metadata.creationTime);
+  const today = dayKey(Date.now());
+
+  const points = await db().runTransaction(async (tx) => {
+    const user = await tx.get(usersRef().doc(uid));
+    if (!user.exists || user.get("disabled") === true) {
+      throw new HttpsError("permission-denied", "This account can't send feedback.");
+    }
+    if (user.get("feedbackDay") === today) {
+      throw new HttpsError("resource-exhausted", "Feedback already sent today.");
+    }
+    const given = await awardInTx(tx, [{
+      uid,
+      action: "feedback",
+      key: "first",
+      points: feedbackEarnsPoints(joinedAt, Date.now(), config) ? config.feedbackPoints : 0,
+    }]);
+    tx.set(db().collection("feedback").doc(), {
+      uid,
+      name: String(user.get("name") ?? "").trim().slice(0, 80),
+      email: String(user.get("email") ?? "").slice(0, 200),
+      rating: feedback.rating,
+      comment: feedback.comment,
+      appVersion: short(input.appVersion, 20),
+      platform: short(input.platform, 10),
+      lang: short(input.lang, 5),
+      createdAt: FieldValue.serverTimestamp(),
+    });
+    tx.update(user.ref, {feedbackDay: today});
+    return given.reduce((sum, award) => sum + award.points, 0);
+  });
+  logger.info("Feedback received", {uid, rating: feedback.rating, points});
+  return {points};
+});
+
 // Invites whose friend never became active in time are closed once a day.
 export const pointsSweep = onSchedule("every day 04:00", async () => {
   const config = await loadConfig();
@@ -359,13 +405,15 @@ export const pointsSweep = onSchedule("every day 04:00", async () => {
 
 // Used by account deletion. The ledger goes with the user document.
 export async function deletePointsData(uid: string): Promise<void> {
-  const [asInviter, codes] = await Promise.all([
+  const [asInviter, codes, feedback] = await Promise.all([
     referralsRef().where("inviterId", "==", uid).get(),
     db().collection("inviteCodes").where("uid", "==", uid).get(),
+    db().collection("feedback").where("uid", "==", uid).get(),
   ]);
   await Promise.all([
     referralsRef().doc(uid).delete(),
     ...asInviter.docs.map((d) => d.ref.delete()),
     ...codes.docs.map((d) => d.ref.delete()),
+    ...feedback.docs.map((d) => d.ref.delete()),
   ]);
 }

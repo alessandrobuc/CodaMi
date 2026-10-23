@@ -44,6 +44,11 @@ class PointsConfig {
   final int qualifyWithinDays;
   final int codeEntryDays;
   final int maxQualifiedPerDay;
+  final int feedbackPoints;
+  final int feedbackAfterDays;
+  final int reviewAfterDays;
+  final int reviewMinActiveDays;
+  final int reviewEveryDays;
   final List<LevelRule> levels;
 
   const PointsConfig({
@@ -58,6 +63,11 @@ class PointsConfig {
     this.qualifyWithinDays = 14,
     this.codeEntryDays = 7,
     this.maxQualifiedPerDay = 10,
+    this.feedbackPoints = 20,
+    this.feedbackAfterDays = 5,
+    this.reviewAfterDays = 10,
+    this.reviewMinActiveDays = 5,
+    this.reviewEveryDays = 120,
     this.levels = const [
       LevelRule(AmbassadorLevel.supporter, 1, 10),
       LevelRule(AmbassadorLevel.ambassador, 5, 50),
@@ -83,6 +93,11 @@ class PointsConfig {
       qualifyWithinDays: read('qualifyWithinDays', d.qualifyWithinDays),
       codeEntryDays: read('codeEntryDays', d.codeEntryDays),
       maxQualifiedPerDay: read('maxQualifiedPerDay', d.maxQualifiedPerDay),
+      feedbackPoints: read('feedbackPoints', d.feedbackPoints),
+      feedbackAfterDays: read('feedbackAfterDays', d.feedbackAfterDays),
+      reviewAfterDays: read('reviewAfterDays', d.reviewAfterDays),
+      reviewMinActiveDays: read('reviewMinActiveDays', d.reviewMinActiveDays),
+      reviewEveryDays: read('reviewEveryDays', d.reviewEveryDays),
       levels: [
         for (final rule in d.levels)
           if (levels is Map && levels[rule.level.value] is Map)
@@ -111,6 +126,11 @@ class PointsConfig {
     'qualifyWithinDays': qualifyWithinDays,
     'codeEntryDays': codeEntryDays,
     'maxQualifiedPerDay': maxQualifiedPerDay,
+    'feedbackPoints': feedbackPoints,
+    'feedbackAfterDays': feedbackAfterDays,
+    'reviewAfterDays': reviewAfterDays,
+    'reviewMinActiveDays': reviewMinActiveDays,
+    'reviewEveryDays': reviewEveryDays,
     'levels': {
       for (final rule in levels)
         rule.level.value: {'minFriends': rule.minFriends, 'bonus': rule.bonus},

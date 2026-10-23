@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import '../../../location/data/datasources/places_service.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -223,6 +224,7 @@ class AuthNotifier extends AsyncNotifier<void> {
   Future<void> build() async {}
 
   void _fail(Object error) {
+    debugPrint('Auth failed: $error');
     final message = authErrorMessage(error);
     state = message == null
         ? const AsyncValue.data(null)

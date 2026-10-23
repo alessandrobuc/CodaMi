@@ -174,8 +174,39 @@ _Last updated: Thu 22 Oct 2026 (points, referrals and emergencies built)_
 - Store forms: approximate location for nearby alerts is optional and only used for alerts (update the privacy policy and Data safety form).
 - Partner organizations with their own accounts (receiving and answering cases in the app) would be a later expansion; the directory is designed so contacts can later be linked to accounts.
 
+## 4. App review popup with reward points (Fri 23 Oct)
+
+**Request:** after the user has used the app for a while (not right after sign-up), a popup invites them to rate and review CodaMi, and they get points for it. It must not get in the way, and points must not be given twice for the same review.
+
+**Problem:** Google Play and the App Store both forbid giving rewards for ratings or reviews. An app doing this can be removed and its reviews deleted. Their in-app review windows also never tell the app whether the user actually left a review, so "points for a review" can't be checked anyway.
+
+**Built Fri 23 Oct as proposed (the developer is telling the client):**
+- A rating prompt with **no points**, using the official Google Play / Apple review window: only after about 7 days and a few days of real use, after a good moment (for example a pet back home), never during a form, and at most a few times a year. Settings in the admin side.
+- **Points for in-app feedback instead:** a short "How do you like CodaMi?" card (1 to 5 stars and a comment) sent to the team and readable in the admin side. Points once per user. This is allowed because it isn't a store review.
+
+## 5. Patch notes after app updates (Fri 23 Oct)
+
+**Request:** after each update, show a page with the changes and new features of that version. Only once per version, and viewable again later from settings.
+
+**Built Fri 23 Oct:**
+- A "What's new" screen shown once after the app is updated to a version with notes (not on a first install).
+- Profile → **What's new** to see it again, with earlier versions below.
+- Notes written in the admin side per version, in each language, falling back to English, so no new build is needed to fix a typo.
+
+**How it was built (both features):**
+- **What's new:** Admin → More → What's new. Each version has a number (must match the app's version name, for example 1.1.0), a Published switch and, for each language, three boxes: New, Improved, Fixed (one change per line). English is required; other languages fall back to it. Drafts are only visible to admins.
+- Profile → What's new: expandable cards, newest open, older ones closed with a summary ("2 New · 1 Fixed"); 10 versions per page with Load more.
+- Firestore reads: each version is one document with every language inside. At start the app only asks for versions it hasn't shown yet (by a sortable `code` field), and once the current version is handled it doesn't ask at all until the next update.
+- After an update, the app shows the published notes of the new version(s) once (at most the 3 newest), with a "Got it" button. A fresh install never shows notes. Users who had the app before this feature see the notes of the version that adds it. Notes published after the user updated still show on their next start.
+- **Feedback card:** after at least 5 days since sign-up and 5 days of use, 25 seconds after the app opens on Home with nothing else open, a card asks for 1 to 5 stars and an optional comment. "Not now" closes it; it comes back at most every 30 days, 3 times. Also available any time from Profile → Send feedback.
+- The first feedback gives 20 points (once per account, only after the 5 days, checked by the server); one feedback per day. Feedback is saved with the user's name, email, app version and phone type, and readable by admins and support staff in Admin → More → Feedback (average, stars filter). It is deleted with the account.
+- **Store rating window:** the official Google Play / Apple window, no points, after 10 days since sign-up and 5 days of use, at most every 120 days, never in the same session or within a day of the feedback card. Profile → Rate CodaMi (Android) opens the store page.
+- All numbers are in Admin → More → Points and rewards → Feedback and reviews.
+
 ## Suggested order
 
 1. **Emergency management**: the client wants it before launch, and it's the larger piece.
 2. **Points engine and daily rewards**.
 3. **Referrals and ambassador levels** (builds on the points engine).
+4. **Patch notes**, no open questions.
+5. **Review prompt and feedback points**, once the client agrees to the proposal.

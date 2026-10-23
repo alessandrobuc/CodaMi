@@ -2771,6 +2771,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get inviteCodeLabel => 'Einladungscode';
 
   @override
+  String get inviteCodeFromLink =>
+      'Aus deinem Einladungslink übernommen. Tippe auf Einlösen, um zu bestätigen.';
+
+  @override
   String get inviteCodeFormat =>
       'Einladungscodes haben 6 Buchstaben und Zahlen, z. B. ABC234.';
 
@@ -3246,4 +3250,193 @@ class AppLocalizationsDe extends AppLocalizations {
   String streakLine(int streak, int days, int bonus) {
     return '$streak-Tage-Serie · +$bonus Bonus alle $days Tage';
   }
+
+  @override
+  String get pointsFeedback => 'Feedback gesendet';
+
+  @override
+  String get whatsNew => 'Neuigkeiten';
+
+  @override
+  String get whatsNewSubtitle => 'Änderungen in jeder Version';
+
+  @override
+  String get whatsNewTitle => 'Neu in CodaMi';
+
+  @override
+  String get whatsNewIntro => 'Das hat sich mit dem letzten Update geändert.';
+
+  @override
+  String whatsNewVersion(String version) {
+    return 'Version $version';
+  }
+
+  @override
+  String get whatsNewSectionNew => 'Neu';
+
+  @override
+  String get whatsNewSectionImproved => 'Verbessert';
+
+  @override
+  String get whatsNewSectionFixed => 'Behoben';
+
+  @override
+  String get whatsNewEmpty => 'Noch keine Update-Hinweise.';
+
+  @override
+  String get whatsNewDone => 'Verstanden';
+
+  @override
+  String get feedbackTitle => 'Wie gefällt dir CodaMi?';
+
+  @override
+  String get feedbackBody =>
+      'Dein Feedback geht direkt an das CodaMi-Team und hilft uns, die App besser zu machen.';
+
+  @override
+  String feedbackPointsOffer(int points) {
+    return '+$points Punkte für dein erstes Feedback';
+  }
+
+  @override
+  String get feedbackStarsHint => 'Tippe auf einen Stern, um zu bewerten';
+
+  @override
+  String get feedbackCommentHint =>
+      'Was gefällt dir, oder was könnte besser sein? (optional)';
+
+  @override
+  String get feedbackSend => 'Feedback senden';
+
+  @override
+  String get feedbackLater => 'Nicht jetzt';
+
+  @override
+  String get feedbackThanks => 'Danke für dein Feedback!';
+
+  @override
+  String feedbackThanksPoints(int points) {
+    return 'Danke für dein Feedback! +$points Punkte';
+  }
+
+  @override
+  String get feedbackAlreadyToday =>
+      'Du hast heute schon Feedback gesendet. Morgen kannst du wieder welches senden.';
+
+  @override
+  String get sendFeedbackSubtitle => 'Sag dem Team, was du denkst';
+
+  @override
+  String get rateCodaMi => 'CodaMi bewerten';
+
+  @override
+  String get rateCodaMiSubtitle => 'Hinterlasse eine Bewertung bei Google Play';
+
+  @override
+  String get adminFeedback => 'Feedback';
+
+  @override
+  String get adminFeedbackSubtitle => 'Was Nutzer von der App halten';
+
+  @override
+  String get adminFeedbackEmpty => 'Noch kein Feedback.';
+
+  @override
+  String feedbackRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Bewertungen',
+      one: '1 Bewertung',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get feedbackNoComment => 'Kein Kommentar';
+
+  @override
+  String get adminWhatsNewSubtitle =>
+      'Hinweise, die Nutzer nach jedem Update sehen';
+
+  @override
+  String get releaseAdd => 'Version hinzufügen';
+
+  @override
+  String get releaseEdit => 'Hinweise bearbeiten';
+
+  @override
+  String get releaseVersion => 'Versionsnummer';
+
+  @override
+  String get releaseVersionHelp =>
+      'Zum Beispiel 1.1.0. Sie muss mit dem Versionsnamen der App im Store übereinstimmen.';
+
+  @override
+  String get releaseVersionInvalid =>
+      'Verwende Zahlen und Punkte, zum Beispiel 1.1.0.';
+
+  @override
+  String get releaseVersionExists =>
+      'Für diese Version gibt es schon Hinweise.';
+
+  @override
+  String get releasePublishedHelp =>
+      'Nutzer sehen nur veröffentlichte Hinweise.';
+
+  @override
+  String get releaseDraft => 'Entwurf';
+
+  @override
+  String get releaseLinesHelp => 'Eine Änderung pro Zeile.';
+
+  @override
+  String get releaseLanguageHelp =>
+      'Leer gelassene Sprachen zeigen die englischen Hinweise.';
+
+  @override
+  String get releaseEnglishRequired =>
+      'Schreibe zuerst die englischen Hinweise: Andere Sprachen greifen darauf zurück.';
+
+  @override
+  String get releaseDeleteTitle => 'Diese Hinweise löschen?';
+
+  @override
+  String releaseDeleteBody(String version) {
+    return 'Die Hinweise für Version $version werden für alle entfernt.';
+  }
+
+  @override
+  String get releaseNone =>
+      'Noch keine Versionen. Füge die Hinweise für dein nächstes Update hinzu.';
+
+  @override
+  String releaseThisApp(String version) {
+    return 'Diese App: Version $version';
+  }
+
+  @override
+  String get feedbackAndReviews => 'Feedback und Bewertungen';
+
+  @override
+  String get settingsFeedbackPoints => 'Punkte für das erste Feedback';
+
+  @override
+  String get settingsFeedbackAfterDays =>
+      'Tage nach der Registrierung, bevor um Feedback gebeten wird';
+
+  @override
+  String get settingsReviewActiveDays => 'Nutzungstage vor der Anfrage';
+
+  @override
+  String get settingsReviewAfterDays =>
+      'Tage nach der Registrierung bis zum Store-Bewertungsfenster';
+
+  @override
+  String get settingsReviewEveryDays =>
+      'Tage zwischen Store-Bewertungsanfragen';
+
+  @override
+  String get settingsReviewHelp =>
+      'Das Store-Bewertungsfenster gibt nie Punkte: Google Play und der App Store erlauben das nicht.';
 }

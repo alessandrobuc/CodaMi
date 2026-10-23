@@ -18,6 +18,7 @@ import '../../../videos/presentation/screens/videos_screen.dart';
 import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
 import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../feedback/presentation/startup_prompts.dart';
 import '../../../points/data/points_repository.dart';
 import '../../../points/presentation/providers/points_provider.dart';
 
@@ -89,7 +90,15 @@ class _MainShellState extends ConsumerState<MainShell>
     ref.read(notificationSettingsProvider).restoreChannels();
     ref.read(pointsRepositoryProvider).registerVisit();
     ref.read(activeTimeProvider);
+    runStartupPrompts(context, ref, isIdle: _isIdle);
   }
+
+  // On Home, with nothing opened on top and the app on screen.
+  bool _isIdle() =>
+      mounted &&
+      _index == 0 &&
+      (ModalRoute.of(context)?.isCurrent ?? false) &&
+      WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
 
   @override
   void dispose() {

@@ -20,6 +20,8 @@ import '../../../emergency/presentation/screens/admin_emergency_settings_screen.
 import '../../../points/presentation/screens/admin_points_settings_screen.dart';
 import '../../../points/presentation/screens/admin_referrals_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
+import '../../../feedback/presentation/screens/admin_feedback_screen.dart';
+import '../../../whats_new/presentation/screens/admin_release_notes_screen.dart';
 
 class AdminMoreTab extends ConsumerWidget {
   const AdminMoreTab({super.key});
@@ -242,6 +244,34 @@ class AdminMoreTab extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
             ],
+            _Group(
+              children: [
+                _Tile(
+                  icon: Icons.rate_review_rounded,
+                  color: AppColors.accent,
+                  title: l10n.adminFeedback,
+                  subtitle: l10n.adminFeedbackSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const AdminFeedbackScreen(),
+                    ),
+                  ),
+                ),
+                if (isAdmin)
+                  _Tile(
+                    icon: Icons.auto_awesome_rounded,
+                    color: AppColors.primary,
+                    title: l10n.whatsNew,
+                    subtitle: l10n.adminWhatsNewSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminReleaseNotesScreen(),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 16),
             _Group(
               children: [
                 _Tile(

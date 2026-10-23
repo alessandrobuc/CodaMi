@@ -27,3 +27,20 @@ String? extractInviteCode(String input) {
   final found = _codePattern.allMatches(text).map((m) => m.group(0)!).toSet();
   return found.length == 1 ? found.single : null;
 }
+
+// Reads the Play Store install referrer: just the code, or a "referrer=CODE"
+// parameter. Anything else (like organic installs) gives null.
+String? inviteCodeFromReferrer(String? raw) {
+  if (raw == null) return null;
+  var text = raw;
+  try {
+    text = Uri.decodeComponent(raw);
+  } catch (_) {}
+  text = text.trim().toUpperCase();
+  if (isInviteCode(text)) return text;
+  final param = RegExp(
+    r'(?:^|&)(?:REFERRER|CODE)=([A-Z0-9]+)(?:&|$)',
+  ).firstMatch(text);
+  final code = param?.group(1);
+  return code != null && isInviteCode(code) ? code : null;
+}

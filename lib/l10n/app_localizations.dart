@@ -4932,6 +4932,12 @@ abstract class AppLocalizations {
   /// **'Invite code'**
   String get inviteCodeLabel;
 
+  /// No description provided for @inviteCodeFromLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Filled in from your invite link. Tap Use to confirm.'**
+  String get inviteCodeFromLink;
+
   /// No description provided for @inviteCodeFormat.
   ///
   /// In en, this message translates to:
@@ -5663,6 +5669,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{streak}-day streak · +{bonus} bonus every {days} days'**
   String streakLine(int streak, int days, int bonus);
+
+  /// No description provided for @pointsFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback sent'**
+  String get pointsFeedback;
+
+  /// No description provided for @whatsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s new'**
+  String get whatsNew;
+
+  /// No description provided for @whatsNewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes in each version'**
+  String get whatsNewSubtitle;
+
+  /// No description provided for @whatsNewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s new in CodaMi'**
+  String get whatsNewTitle;
+
+  /// No description provided for @whatsNewIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s what changed in the latest update.'**
+  String get whatsNewIntro;
+
+  /// No description provided for @whatsNewVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String whatsNewVersion(String version);
+
+  /// No description provided for @whatsNewSectionNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get whatsNewSectionNew;
+
+  /// No description provided for @whatsNewSectionImproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Improved'**
+  String get whatsNewSectionImproved;
+
+  /// No description provided for @whatsNewSectionFixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed'**
+  String get whatsNewSectionFixed;
+
+  /// No description provided for @whatsNewEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No update notes yet.'**
+  String get whatsNewEmpty;
+
+  /// No description provided for @whatsNewDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get whatsNewDone;
+
+  /// No description provided for @feedbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How do you like CodaMi?'**
+  String get feedbackTitle;
+
+  /// No description provided for @feedbackBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your feedback goes straight to the CodaMi team and helps us make the app better.'**
+  String get feedbackBody;
+
+  /// No description provided for @feedbackPointsOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} points for your first feedback'**
+  String feedbackPointsOffer(int points);
+
+  /// No description provided for @feedbackStarsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a star to rate'**
+  String get feedbackStarsHint;
+
+  /// No description provided for @feedbackCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you like, or what could be better? (optional)'**
+  String get feedbackCommentHint;
+
+  /// No description provided for @feedbackSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get feedbackSend;
+
+  /// No description provided for @feedbackLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get feedbackLater;
+
+  /// No description provided for @feedbackThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for your feedback!'**
+  String get feedbackThanks;
+
+  /// No description provided for @feedbackThanksPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for your feedback! +{points} points'**
+  String feedbackThanksPoints(int points);
+
+  /// No description provided for @feedbackAlreadyToday.
+  ///
+  /// In en, this message translates to:
+  /// **'You already sent feedback today. You can send more tomorrow.'**
+  String get feedbackAlreadyToday;
+
+  /// No description provided for @sendFeedbackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell the team what you think'**
+  String get sendFeedbackSubtitle;
+
+  /// No description provided for @rateCodaMi.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate CodaMi'**
+  String get rateCodaMi;
+
+  /// No description provided for @rateCodaMiSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave a review on Google Play'**
+  String get rateCodaMiSubtitle;
+
+  /// No description provided for @adminFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get adminFeedback;
+
+  /// No description provided for @adminFeedbackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What users think of the app'**
+  String get adminFeedbackSubtitle;
+
+  /// No description provided for @adminFeedbackEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No feedback yet.'**
+  String get adminFeedbackEmpty;
+
+  /// No description provided for @feedbackRatingsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 rating} other{{count} ratings}}'**
+  String feedbackRatingsCount(int count);
+
+  /// No description provided for @feedbackNoComment.
+  ///
+  /// In en, this message translates to:
+  /// **'No comment'**
+  String get feedbackNoComment;
+
+  /// No description provided for @adminWhatsNewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes shown to users after each update'**
+  String get adminWhatsNewSubtitle;
+
+  /// No description provided for @releaseAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add version'**
+  String get releaseAdd;
+
+  /// No description provided for @releaseEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit notes'**
+  String get releaseEdit;
+
+  /// No description provided for @releaseVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version number'**
+  String get releaseVersion;
+
+  /// No description provided for @releaseVersionHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Like 1.1.0. It must match the version name of the app in the store.'**
+  String get releaseVersionHelp;
+
+  /// No description provided for @releaseVersionInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Use numbers and dots, like 1.1.0.'**
+  String get releaseVersionInvalid;
+
+  /// No description provided for @releaseVersionExists.
+  ///
+  /// In en, this message translates to:
+  /// **'This version already has notes.'**
+  String get releaseVersionExists;
+
+  /// No description provided for @releasePublishedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Users only see published notes.'**
+  String get releasePublishedHelp;
+
+  /// No description provided for @releaseDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get releaseDraft;
+
+  /// No description provided for @releaseLinesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'One change per line.'**
+  String get releaseLinesHelp;
+
+  /// No description provided for @releaseLanguageHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages left empty show the English notes.'**
+  String get releaseLanguageHelp;
+
+  /// No description provided for @releaseEnglishRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the English notes first: other languages fall back to them.'**
+  String get releaseEnglishRequired;
+
+  /// No description provided for @releaseDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete these notes?'**
+  String get releaseDeleteTitle;
+
+  /// No description provided for @releaseDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The notes for version {version} will be removed for everyone.'**
+  String releaseDeleteBody(String version);
+
+  /// No description provided for @releaseNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No versions yet. Add the notes for your next update.'**
+  String get releaseNone;
+
+  /// No description provided for @releaseThisApp.
+  ///
+  /// In en, this message translates to:
+  /// **'This app: version {version}'**
+  String releaseThisApp(String version);
+
+  /// No description provided for @feedbackAndReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback and reviews'**
+  String get feedbackAndReviews;
+
+  /// No description provided for @settingsFeedbackPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points for the first feedback'**
+  String get settingsFeedbackPoints;
+
+  /// No description provided for @settingsFeedbackAfterDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days after sign-up before asking for feedback'**
+  String get settingsFeedbackAfterDays;
+
+  /// No description provided for @settingsReviewActiveDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days of use before asking'**
+  String get settingsReviewActiveDays;
+
+  /// No description provided for @settingsReviewAfterDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days after sign-up before the store rating window'**
+  String get settingsReviewAfterDays;
+
+  /// No description provided for @settingsReviewEveryDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days between store rating requests'**
+  String get settingsReviewEveryDays;
+
+  /// No description provided for @settingsReviewHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The store rating window never gives points: Google Play and the App Store don\'t allow it.'**
+  String get settingsReviewHelp;
 }
 
 class _AppLocalizationsDelegate

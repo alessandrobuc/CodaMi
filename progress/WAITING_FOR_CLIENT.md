@@ -39,6 +39,10 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 - [ ] **Emails to organizations:** emergency alerts to vets and associations by email need an email sending service (for example Brevo or SendGrid, free tiers exist). OK to set one up, and which sender address? Until then, organizations are shown in the app for users to call or email directly.
 - [ ] **Real contacts:** the list of real vets, associations and services, with phone, email, address and area covered (test placeholders are used until then)
 
+**Review popup (Fri 23 Oct)**
+- [ ] **Reward for reviews:** stores forbid points for ratings and reviews. Built as proposed (review prompt without points, points for in-app feedback); the developer is telling the client. (See `PHASE_3_REQUESTS.md` §4)
+- [ ] **Patch notes:** who writes them each version, and in which languages (English at least, the others fall back to English)
+
 ---
 
 ## Answered

@@ -75,5 +75,6 @@ flutter {
 dependencies {
     // ...
     implementation("com.google.android.material:material:1.14.0")
+    implementation("com.android.installreferrer:installreferrer:2.2")
     // ...
 }

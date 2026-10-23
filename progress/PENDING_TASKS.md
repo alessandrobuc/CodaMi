@@ -2,24 +2,21 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Thu 22 Oct 2026_
+_Last updated: Fri 23 Oct 2026_
 
 ---
 
-## 1. Testing now (Thu 22 Oct build)
+## 1. Testing now
 
-- [ ] **Deploy:** `firebase deploy --only firestore:rules,firestore:indexes,storage,functions`, then wait for the 7 new indexes (Firestore → Indexes)
-- [ ] Build and install the new app on two phones
-- [ ] Admin → More → Emergency contacts → **Add test contacts**
-- [ ] **Daily rewards:** claim check-in, wait 3 minutes and claim "Active today", check the points chip, My points and the history
-- [ ] **Invites:** phone A shares its code, phone B (new account) enters it on the new "Did a friend invite you?" screen right after choosing the city (or later in Invite friends, within 7 days); check the invite shows as "Joined, not active yet" on phone A
-- [ ] **Emergency:** phone B reports one near phone A's city (with and without a photo); phone A gets the alert, opens it, taps "I'm going to help"; phone B gets "Someone is going to help" and marks it resolved
-- [ ] Check the suggested contacts (TEST labels, Call / Email / Directions) and the Emergencies list and banner on Home
-- [ ] Admin: Emergencies list, false alarm, contact add / edit / verify / hide, Emergency settings and Points settings save, Adjust points on a user's page
-- [ ] Turn emergency alerts off in Profile → Notifications and confirm no alert arrives
-- [ ] **AI moderation** with real photos: normal pet photo, swimwear stock photo, injured-animal photo; approve and remove from Reported → AI photos (needs the build with the photo-save fix)
-- [ ] **Support** on two phones (chat, requests, take / reply / resolve / reopen, reassign, notifications) and the Operators screen
-- [ ] Videos tab with no pets, a dog and a cat
+- [ ] Emergency pins on the map (Fri 23 Oct): a red pin for each active emergency, tap it to see the card, tap the card to open the emergency; the pin disappears once it is resolved
+- [ ] **Deploy again (What's new paging):** `firebase deploy --only firestore:rules,firestore:indexes` (new `code` field and index for release notes); delete and re-add the 1.1.0 test notes (saved before `code` existed)
+- [x] **Deploy (Fri 23 Oct build):** `firebase deploy --only firestore:rules,functions` (new `submitFeedback`, feedback and release notes rules, new points settings)
+- [x] Admin side tested on the phone: add version, wrong / duplicate version refused, English required, publish, Feedback and reviews settings save, Feedback screen empty state
+- [ ] Full real-phone test: follow `TEST_SCENARIO_2026-10-23.md`
+- [ ] **What's new:** raise the version name in `pubspec.yaml` (for example `1.1.0+11`), write and publish the notes for 1.1.0 in Admin → More → What's new, install the update over the old app: the notes show once; Profile → What's new shows them again; a fresh install shows nothing
+- [ ] **Feedback:** Profile → Send feedback, pick stars and send; the points show only after 5 days since sign-up (set "Days after sign-up before asking for feedback" to 0 to test), a second send the same day is refused; read it in Admin → More → Feedback
+- [ ] **Review window:** only from a Play Store install; set the review days to 0 in Points and rewards to see it 25 seconds after opening the app on Home (Google may not show it every time; that's normal)
+- [ ] Automatic invite code (Fri 23 Oct, needs the Play Store build): on phone B, uninstall CodaMi, open phone A's invite link (Profile → Invite friends → Share), install from the Play Store (closed testing), sign up and choose the city; the "Did a friend invite you?" screen should already show A's code with a note, then tap Use. Installing from a cable or APK can't test this
 
 Fixes found while testing go here:
 
@@ -28,12 +25,10 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] Red emergency pins on the map
-- [ ] Android: fill in the invite code automatically from the Play Store install (Play Install Referrer); the share link already carries `referrer=CODE`
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
 - [ ] Move the Places key to Secret Manager and restrict the Google Cloud keys (see `LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
-- [ ] Privacy policy and Data safety: install ID, exact emergency location shown to signed-in users, city position used for nearby alerts, support email (`LAUNCH_CHECKLIST.md` §6)
+- [ ] Privacy policy and Data safety: feedback (stars, comment, name, email, app version) readable by the team, install ID, exact emergency location shown to signed-in users, city position used for nearby alerts, support email (`LAUNCH_CHECKLIST.md` §6)
 - [ ] Remove test data (reports, users including invite.test.cm1@codami.test, pets, test contacts) and retake store screenshots before release
 - [ ] Raise the build number in `pubspec.yaml` and upload to Play closed testing
 - [ ] Donations, if the client says yes (RevenueCat, store products)
@@ -50,6 +45,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] Support team, hours, languages and time limits; photos in support chat
 - [ ] Videos with the rights to use them; YouTube links or not
 - [ ] iPhone sound limits OK
+- [ ] Review popup: client being told it's built without points for store reviews (points for in-app feedback instead)
+- [ ] iPhone "Rate CodaMi" in Profile needs the App Store ID once the app is on the App Store (Android only for now)
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
 
@@ -71,6 +68,14 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 
 ## Done recently
 
+- Fri 23 Oct: "What's new" after updates (admin-written notes in 10 languages) and the feedback card with points, plus the store rating window without points. 15 new server and app tests, 25 emulator checks
+- Fri 23 Oct (evening): What's new uses expandable cards and loads 10 versions per page; the app checks for notes only once after each update (fewer Firestore reads). Admin side tested on the phone
+- Fri 23 Oct: `TEST_SCENARIO_2026-10-23.md`, step-by-step test on real phones
+- Fri 23 Oct: fixed Google sign-in on Play Store builds (the release build removed the Google client ID; now kept in `android/app/src/main/res/raw/keep.xml`). Goes out with build 11
+- Fri 23 Oct: Android fills in the invite code from the Play Store install (needs a Play Store test)
+- Fri 23 Oct: red emergency pins on the map (needs a phone check)
+- Fri 23 Oct: deployed the Thu 22 Oct build and tested on two phones: daily rewards, invites, emergencies, admin screens, alerts off, AI moderation with real photos, support on two phones, Videos tab
+- Fri 23 Oct: `NEEDED_FROM_CLIENT.md`, a list ready to send to the client
 - Thu 22 Oct: invite code screen after sign-up (once, skippable), smarter code box (pasted message or link works, clear error for each case), limit of 10 wrong codes a day (server, needs the deploy)
 
 - Disclaimer wording approved by the client; already in the app in all 10 languages
