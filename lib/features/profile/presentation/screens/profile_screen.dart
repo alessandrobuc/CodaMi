@@ -24,6 +24,8 @@ import '../../../points/presentation/screens/invite_screen.dart';
 import '../../../points/presentation/screens/points_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../feedback/presentation/widgets/feedback_sheet.dart';
+import '../../../petitions/presentation/screens/petitions_screen.dart';
+import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../whats_new/presentation/screens/whats_new_screen.dart';
 import 'package:in_app_review/in_app_review.dart';
 
@@ -294,6 +296,15 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             _SectionCard(
               children: [
+                _ProfileTile(
+                  icon: Icons.campaign_rounded,
+                  color: petitionColor,
+                  title: l10n.petitions,
+                  subtitle: l10n.petitionsSubtitle,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const PetitionsScreen()),
+                  ),
+                ),
                 _ProfileTile(
                   icon: Icons.support_agent_rounded,
                   color: AppColors.primary,

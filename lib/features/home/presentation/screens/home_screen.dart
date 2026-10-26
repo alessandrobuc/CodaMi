@@ -9,6 +9,9 @@ import '../../../emergency/presentation/screens/create_emergency_screen.dart';
 import '../../../emergency/presentation/screens/emergencies_screen.dart';
 import '../../../emergency/presentation/widgets/emergency_widgets.dart';
 import '../../../map/presentation/providers/map_provider.dart';
+import '../../../petitions/presentation/providers/petitions_provider.dart';
+import '../../../petitions/presentation/screens/petitions_screen.dart';
+import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 import '../../../notifications/presentation/screens/notifications_screen.dart';
@@ -126,6 +129,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     MaterialPageRoute(
                       builder: (_) => const EmergenciesScreen(),
                     ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
+              if (ref.watch(activePetitionCountProvider) case final count
+                  when count > 0) ...[
+                PetitionsBanner(
+                  count: count,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const PetitionsScreen()),
                   ),
                 ),
                 const SizedBox(height: 12),

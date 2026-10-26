@@ -153,6 +153,14 @@
         {"fieldPath": "status", "order": "ASCENDING"},
         {"fieldPath": "resolvedAt", "order": "ASCENDING"}
       ]
+    },
+    {
+      "collectionGroup": "petitions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "review", "order": "ASCENDING"},
+        {"fieldPath": "publishedAt", "order": "DESCENDING"}
+      ]
     }
   ],
   "fieldOverrides": []

@@ -22,6 +22,8 @@ import '../../../points/presentation/screens/admin_referrals_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../feedback/presentation/screens/admin_feedback_screen.dart';
 import '../../../whats_new/presentation/screens/admin_release_notes_screen.dart';
+import '../../../petitions/presentation/screens/admin_petitions_screen.dart';
+import '../../../petitions/presentation/widgets/petition_widgets.dart';
 
 class AdminMoreTab extends ConsumerWidget {
   const AdminMoreTab({super.key});
@@ -168,6 +170,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminVideosScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.campaign_rounded,
+                    color: petitionColor,
+                    title: l10n.petitions,
+                    subtitle: l10n.adminPetitionsSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminPetitionsScreen(),
                       ),
                     ),
                   ),

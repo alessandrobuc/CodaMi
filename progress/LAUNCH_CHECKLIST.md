@@ -58,6 +58,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **AI photo moderation (Wed 21 Oct), same deploy:** the trigger runs in the bucket's region, `us-east1` (confirmed). Cloud Vision API is already enabled. New rules (`photoChecks`, `config/moderation`, `quarantine/` in Storage), 1 new index, and the functions `onPhotoUploaded`, `moderatePhoto`, `moderationSweep`. The first Storage trigger deploy may ask to grant permissions (Eventarc / Pub/Sub): answer yes.
 - [x] **Feedback and What's new (Fri 23 Oct):** deploy rules and functions: new `submitFeedback`, rules for `feedback`, `releaseNotes`, new `config/points` keys and the `feedbackDay` user field
 - [ ] **What's new paging (Fri 23 Oct, evening):** deploy rules and indexes again (`code` field and the `releaseNotes` index: published + code)
+- [x] **Petitions (Mon 26 Oct):** deploy `firestore:rules,firestore:indexes,storage` (new `petitions` rules, index review + publishedAt, `petitions/` image folder). Can go together with the What's new paging deploy above
 - [ ] Raise the version name (not only the build number) for every release that has notes, and publish its notes in Admin → More → What's new
 - [x] **Points, invites and emergencies (Thu 22 Oct, deployed and tested on phones by Fri 23 Oct):** deploy rules, indexes (7 new) and functions: `registerVisit`, `claimDailyTask`, `getInviteCode`, `redeemInviteCode`, `adminReviewReferral`, `adminAdjustPoints`, `pointsSweep`, `onEmergencyCreated`, `updateEmergency`, `emergencySweep`, `seedTestContacts`, plus the updated `onUserWritten`, `onPhotoUploaded` and `deleteAccount`. Then add the test contacts from Admin → More → Emergency contacts
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
@@ -92,6 +93,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **Report / block users** in the app (Apple guideline 1.2, Google Play UGC policy)
   - [ ] Update the content rating answers to "Yes"
 - [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
+- [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

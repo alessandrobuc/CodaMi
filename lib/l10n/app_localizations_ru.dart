@@ -3421,4 +3421,258 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get settingsReviewHelp =>
       'Окно оценки в магазине никогда не даёт баллов: Google Play и App Store это запрещают.';
+
+  @override
+  String get petitions => 'Петиции';
+
+  @override
+  String get petition => 'Петиция';
+
+  @override
+  String get petitionsSubtitle =>
+      'Кампании в защиту животных, отобранные нашей командой';
+
+  @override
+  String get adminPetitionsSubtitle =>
+      'Добавляйте, проверяйте и публикуйте петиции в защиту животных';
+
+  @override
+  String petitionsBanner(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count петиции в защиту животных ждут подписи',
+      many: '$count петиций в защиту животных ждут подписи',
+      few: '$count петиции в защиту животных ждут подписи',
+      one: '$count петиция в защиту животных ждёт подписи',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get petitionsIntro =>
+      'Команда CodaMi проверяет каждую петицию, прежде чем она появится здесь. Вы читаете и подписываете её на исходном сайте.';
+
+  @override
+  String get petitionsEmpty =>
+      'Петиций пока нет. Команда добавит сюда кампании в защиту животных.';
+
+  @override
+  String get petitionAdminEmpty =>
+      'Здесь нет петиций. Нажмите «Добавить петицию», чтобы добавить петицию с Change.org, Care2, Avaaz или от проверенной организации.';
+
+  @override
+  String get petitionView => 'Открыть петицию';
+
+  @override
+  String get petitionSignOnSite => 'Прочитать и подписать на исходном сайте';
+
+  @override
+  String get petitionOpenFailed => 'Не удалось открыть страницу петиции.';
+
+  @override
+  String get petitionIssue => 'Проблема';
+
+  @override
+  String get petitionAction => 'Чего требует петиция';
+
+  @override
+  String get petitionWhy => 'Почему это важно для животных';
+
+  @override
+  String get petitionWhere => 'Исходная петиция';
+
+  @override
+  String petitionStartedOn(String date) {
+    return 'Начата $date';
+  }
+
+  @override
+  String get petitionDisclaimer =>
+      'Эта петиция размещена на стороннем сайте. CodaMi не собирает подписи и не несёт ответственности за содержание исходной страницы.';
+
+  @override
+  String get petitionEndedNote =>
+      'Эта кампания завершена. Исходную страницу всё ещё можно прочитать.';
+
+  @override
+  String get petitionUnavailableNote => 'Исходная петиция больше недоступна.';
+
+  @override
+  String get petitionTopicPets => 'Домашние животные';
+
+  @override
+  String get petitionTopicWildlife => 'Дикая природа';
+
+  @override
+  String get petitionTopicFarm => 'Сельскохозяйственные животные';
+
+  @override
+  String get petitionTopicTesting => 'Опыты на животных';
+
+  @override
+  String get petitionTopicEntertainment => 'Цирки и зоопарки';
+
+  @override
+  String get petitionTopicMarine => 'Морские обитатели';
+
+  @override
+  String get petitionTopicOther => 'Другое';
+
+  @override
+  String get petitionStatusActive => 'Активна';
+
+  @override
+  String get petitionStatusCompleted => 'Завершена';
+
+  @override
+  String get petitionStatusClosed => 'Закрыта';
+
+  @override
+  String get petitionStatusUnavailable => 'Больше недоступна';
+
+  @override
+  String get petitionReviewPending => 'На проверке';
+
+  @override
+  String get petitionReviewApproved => 'Одобрена';
+
+  @override
+  String get petitionReviewRejected => 'Отклонена';
+
+  @override
+  String get petitionAdd => 'Добавить петицию';
+
+  @override
+  String get petitionEdit => 'Изменить петицию';
+
+  @override
+  String get petitionSectionSource => 'Исходная петиция';
+
+  @override
+  String get petitionUrl => 'Ссылка на петицию';
+
+  @override
+  String get petitionUrlInvalid => 'Вставьте полную ссылку, начиная с https://';
+
+  @override
+  String get petitionTitle => 'Название';
+
+  @override
+  String get petitionSource => 'Платформа или организация';
+
+  @override
+  String get petitionCountry => 'Страна или регион';
+
+  @override
+  String get petitionCountryHelp =>
+      'Оставьте пустым для международных кампаний.';
+
+  @override
+  String get petitionStartedOnPick => 'Дата начала петиции (необязательно)';
+
+  @override
+  String get petitionTopic => 'Тема';
+
+  @override
+  String get petitionSectionText => 'Наше описание';
+
+  @override
+  String get petitionOwnWordsHelp =>
+      'Пишите своими словами. Не копируйте текст с исходной страницы.';
+
+  @override
+  String get petitionSummary => 'Краткое описание';
+
+  @override
+  String get petitionImage => 'Изображение';
+
+  @override
+  String get petitionImageAdd => 'Добавить изображение';
+
+  @override
+  String get petitionImageChange => 'Изменить изображение';
+
+  @override
+  String get petitionImageHelp =>
+      'Необязательно. Без изображения на карточке показывается значок темы.';
+
+  @override
+  String get petitionImagePermission =>
+      'У нас есть разрешение на использование этого изображения';
+
+  @override
+  String get petitionImagePermissionNeeded =>
+      'Подтвердите, что у вас есть разрешение на использование изображения, или удалите его.';
+
+  @override
+  String get petitionImageTooBig =>
+      'Изображение слишком большое. Выберите файл меньше 5 МБ.';
+
+  @override
+  String get petitionChecks => 'Проверка';
+
+  @override
+  String get petitionChecksHelp =>
+      'Для одобрения или публикации нужны все четыре пункта.';
+
+  @override
+  String get petitionCheckExists =>
+      'Исходная страница существует и открывается';
+
+  @override
+  String get petitionCheckGenuine =>
+      'Речь идёт о реальной проблеме защиты животных';
+
+  @override
+  String get petitionCheckGoal => 'У петиции есть чёткая цель';
+
+  @override
+  String get petitionCheckHonest =>
+      'Нет вводящих в заблуждение или мошеннических заявлений';
+
+  @override
+  String get petitionChecksNeeded =>
+      'Отметьте все пункты проверки перед одобрением или публикацией.';
+
+  @override
+  String get petitionReview => 'Модерация';
+
+  @override
+  String get petitionReviewHelp =>
+      'Пользователям показываются только опубликованные петиции.';
+
+  @override
+  String get petitionRejectReason => 'Причина (видна только администраторам)';
+
+  @override
+  String get petitionStatus => 'Статус петиции';
+
+  @override
+  String get petitionStatusHelp =>
+      'Обновите его, когда кампания завершится или страница будет удалена.';
+
+  @override
+  String get petitionFixFields => 'Заполните поля, отмеченные красным.';
+
+  @override
+  String get petitionDeleteTitle => 'Удалить эту петицию?';
+
+  @override
+  String get petitionDeleteBody => 'Она будет удалена из приложения для всех.';
+
+  @override
+  String petitionAddedOn(String date) {
+    return 'Добавлена $date';
+  }
+
+  @override
+  String petitionPublishedOn(String date) {
+    return 'Опубликована $date';
+  }
+
+  @override
+  String petitionUpdatedOn(String date) {
+    return 'Обновлена $date';
+  }
 }

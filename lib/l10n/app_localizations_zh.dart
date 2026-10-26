@@ -3225,4 +3225,237 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get settingsReviewHelp =>
       '商店评分窗口从不奖励积分：Google Play 和 App Store 不允许这样做。';
+
+  @override
+  String get petitions => '请愿';
+
+  @override
+  String get petition => '请愿';
+
+  @override
+  String get petitionsSubtitle => '由我们团队精选的动物福利活动';
+
+  @override
+  String get adminPetitionsSubtitle => '添加、审核并发布动物福利请愿';
+
+  @override
+  String petitionsBanner(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 份动物福利请愿等你签署',
+      one: '1 份动物福利请愿等你签署',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get petitionsIntro => 'CodaMi 团队会在每份请愿展示前进行核实。你可以在原网站阅读并签署。';
+
+  @override
+  String get petitionsEmpty => '暂无请愿。团队会在这里添加动物福利活动。';
+
+  @override
+  String get petitionAdminEmpty =>
+      '这里还没有请愿。点击“添加请愿”，从 Change.org、Care2、Avaaz 或可信机构添加一份。';
+
+  @override
+  String get petitionView => '查看请愿';
+
+  @override
+  String get petitionSignOnSite => '在原网站阅读并签署';
+
+  @override
+  String get petitionOpenFailed => '无法打开请愿页面。';
+
+  @override
+  String get petitionIssue => '问题';
+
+  @override
+  String get petitionAction => '请愿诉求';
+
+  @override
+  String get petitionWhy => '为什么这对动物很重要';
+
+  @override
+  String get petitionWhere => '原始请愿';
+
+  @override
+  String petitionStartedOn(String date) {
+    return '发起于 $date';
+  }
+
+  @override
+  String get petitionDisclaimer => '此请愿由外部网站托管。CodaMi 不收集签名，也不对原页面的内容负责。';
+
+  @override
+  String get petitionEndedNote => '此活动已结束。你仍可以阅读原页面。';
+
+  @override
+  String get petitionUnavailableNote => '原始请愿已无法访问。';
+
+  @override
+  String get petitionTopicPets => '宠物';
+
+  @override
+  String get petitionTopicWildlife => '野生动物';
+
+  @override
+  String get petitionTopicFarm => '农场动物';
+
+  @override
+  String get petitionTopicTesting => '动物实验';
+
+  @override
+  String get petitionTopicEntertainment => '马戏团和动物园';
+
+  @override
+  String get petitionTopicMarine => '海洋生物';
+
+  @override
+  String get petitionTopicOther => '其他';
+
+  @override
+  String get petitionStatusActive => '进行中';
+
+  @override
+  String get petitionStatusCompleted => '已完成';
+
+  @override
+  String get petitionStatusClosed => '已关闭';
+
+  @override
+  String get petitionStatusUnavailable => '已失效';
+
+  @override
+  String get petitionReviewPending => '待审核';
+
+  @override
+  String get petitionReviewApproved => '已通过';
+
+  @override
+  String get petitionReviewRejected => '已拒绝';
+
+  @override
+  String get petitionAdd => '添加请愿';
+
+  @override
+  String get petitionEdit => '编辑请愿';
+
+  @override
+  String get petitionSectionSource => '原始请愿';
+
+  @override
+  String get petitionUrl => '请愿链接';
+
+  @override
+  String get petitionUrlInvalid => '请粘贴以 https:// 开头的完整链接';
+
+  @override
+  String get petitionTitle => '标题';
+
+  @override
+  String get petitionSource => '平台或机构';
+
+  @override
+  String get petitionCountry => '国家或地区';
+
+  @override
+  String get petitionCountryHelp => '国际性活动请留空。';
+
+  @override
+  String get petitionStartedOnPick => '请愿发起日期（选填）';
+
+  @override
+  String get petitionTopic => '主题';
+
+  @override
+  String get petitionSectionText => '我们的描述';
+
+  @override
+  String get petitionOwnWordsHelp => '请用自己的话撰写，不要复制原页面的文字。';
+
+  @override
+  String get petitionSummary => '简短摘要';
+
+  @override
+  String get petitionImage => '图片';
+
+  @override
+  String get petitionImageAdd => '添加图片';
+
+  @override
+  String get petitionImageChange => '更换图片';
+
+  @override
+  String get petitionImageHelp => '选填。没有图片时，卡片会显示主题图标。';
+
+  @override
+  String get petitionImagePermission => '我们已获得使用此图片的许可';
+
+  @override
+  String get petitionImagePermissionNeeded => '请确认你有权使用该图片，或将其移除。';
+
+  @override
+  String get petitionImageTooBig => '图片太大。请选择小于 5 MB 的图片。';
+
+  @override
+  String get petitionChecks => '核实';
+
+  @override
+  String get petitionChecksHelp => '四项全部勾选后才能通过或发布。';
+
+  @override
+  String get petitionCheckExists => '原页面存在且可以打开';
+
+  @override
+  String get petitionCheckGenuine => '涉及真实的动物福利问题';
+
+  @override
+  String get petitionCheckGoal => '目标明确';
+
+  @override
+  String get petitionCheckHonest => '没有误导性或欺诈性内容';
+
+  @override
+  String get petitionChecksNeeded => '请先勾选所有核实项，再通过或发布。';
+
+  @override
+  String get petitionReview => '审核';
+
+  @override
+  String get petitionReviewHelp => '只有已发布的请愿才会向用户显示。';
+
+  @override
+  String get petitionRejectReason => '原因（仅管理员可见）';
+
+  @override
+  String get petitionStatus => '请愿状态';
+
+  @override
+  String get petitionStatusHelp => '活动结束或页面被删除时请更新状态。';
+
+  @override
+  String get petitionFixFields => '请填写标红的字段。';
+
+  @override
+  String get petitionDeleteTitle => '确定删除这份请愿？';
+
+  @override
+  String get petitionDeleteBody => '它将从应用中对所有人移除。';
+
+  @override
+  String petitionAddedOn(String date) {
+    return '添加于 $date';
+  }
+
+  @override
+  String petitionPublishedOn(String date) {
+    return '发布于 $date';
+  }
+
+  @override
+  String petitionUpdatedOn(String date) {
+    return '更新于 $date';
+  }
 }

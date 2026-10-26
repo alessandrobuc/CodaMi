@@ -3379,4 +3379,253 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsReviewHelp =>
       'The store rating window never gives points: Google Play and the App Store don\'t allow it.';
+
+  @override
+  String get petitions => 'Petitions';
+
+  @override
+  String get petition => 'Petition';
+
+  @override
+  String get petitionsSubtitle => 'Animal welfare campaigns picked by our team';
+
+  @override
+  String get adminPetitionsSubtitle =>
+      'Add, review and publish animal welfare petitions';
+
+  @override
+  String petitionsBanner(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count animal welfare petitions to sign',
+      one: '1 animal welfare petition to sign',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get petitionsIntro =>
+      'The CodaMi team checks every petition before it appears here. You read and sign it on the original site.';
+
+  @override
+  String get petitionsEmpty =>
+      'No petitions yet. The team will add animal welfare campaigns here.';
+
+  @override
+  String get petitionAdminEmpty =>
+      'No petitions here. Tap Add petition to add one from Change.org, Care2, Avaaz or a trusted organization.';
+
+  @override
+  String get petitionView => 'View petition';
+
+  @override
+  String get petitionSignOnSite => 'Read and sign on the original site';
+
+  @override
+  String get petitionOpenFailed => 'Couldn\'t open the petition page.';
+
+  @override
+  String get petitionIssue => 'The issue';
+
+  @override
+  String get petitionAction => 'What the petition asks for';
+
+  @override
+  String get petitionWhy => 'Why it matters for animals';
+
+  @override
+  String get petitionWhere => 'Original petition';
+
+  @override
+  String petitionStartedOn(String date) {
+    return 'Started $date';
+  }
+
+  @override
+  String get petitionDisclaimer =>
+      'This petition is hosted by an external site. CodaMi does not collect signatures and is not responsible for the content of the original page.';
+
+  @override
+  String get petitionEndedNote =>
+      'This campaign has ended. You can still read the original page.';
+
+  @override
+  String get petitionUnavailableNote =>
+      'The original petition is no longer available.';
+
+  @override
+  String get petitionTopicPets => 'Pets';
+
+  @override
+  String get petitionTopicWildlife => 'Wildlife';
+
+  @override
+  String get petitionTopicFarm => 'Farm animals';
+
+  @override
+  String get petitionTopicTesting => 'Animal testing';
+
+  @override
+  String get petitionTopicEntertainment => 'Circuses and zoos';
+
+  @override
+  String get petitionTopicMarine => 'Marine life';
+
+  @override
+  String get petitionTopicOther => 'Other';
+
+  @override
+  String get petitionStatusActive => 'Active';
+
+  @override
+  String get petitionStatusCompleted => 'Completed';
+
+  @override
+  String get petitionStatusClosed => 'Closed';
+
+  @override
+  String get petitionStatusUnavailable => 'No longer available';
+
+  @override
+  String get petitionReviewPending => 'To review';
+
+  @override
+  String get petitionReviewApproved => 'Approved';
+
+  @override
+  String get petitionReviewRejected => 'Rejected';
+
+  @override
+  String get petitionAdd => 'Add petition';
+
+  @override
+  String get petitionEdit => 'Edit petition';
+
+  @override
+  String get petitionSectionSource => 'Original petition';
+
+  @override
+  String get petitionUrl => 'Petition link';
+
+  @override
+  String get petitionUrlInvalid =>
+      'Paste the full link, starting with https://';
+
+  @override
+  String get petitionTitle => 'Title';
+
+  @override
+  String get petitionSource => 'Platform or organization';
+
+  @override
+  String get petitionCountry => 'Country or area';
+
+  @override
+  String get petitionCountryHelp => 'Leave empty for international campaigns.';
+
+  @override
+  String get petitionStartedOnPick => 'Petition start date (optional)';
+
+  @override
+  String get petitionTopic => 'Topic';
+
+  @override
+  String get petitionSectionText => 'Our description';
+
+  @override
+  String get petitionOwnWordsHelp =>
+      'Write in your own words. Don\'t copy text from the original page.';
+
+  @override
+  String get petitionSummary => 'Short summary';
+
+  @override
+  String get petitionImage => 'Image';
+
+  @override
+  String get petitionImageAdd => 'Add image';
+
+  @override
+  String get petitionImageChange => 'Change image';
+
+  @override
+  String get petitionImageHelp =>
+      'Optional. Without an image, the card shows the topic icon.';
+
+  @override
+  String get petitionImagePermission => 'We have permission to use this image';
+
+  @override
+  String get petitionImagePermissionNeeded =>
+      'Confirm you have permission to use the image, or remove it.';
+
+  @override
+  String get petitionImageTooBig =>
+      'The image is too large. Choose one under 5 MB.';
+
+  @override
+  String get petitionChecks => 'Verification';
+
+  @override
+  String get petitionChecksHelp => 'All four are needed to approve or publish.';
+
+  @override
+  String get petitionCheckExists => 'The original page exists and opens';
+
+  @override
+  String get petitionCheckGenuine =>
+      'It is about a genuine animal welfare issue';
+
+  @override
+  String get petitionCheckGoal => 'It has a clear goal';
+
+  @override
+  String get petitionCheckHonest => 'No misleading or fraudulent claims';
+
+  @override
+  String get petitionChecksNeeded =>
+      'Tick all verification checks before approving or publishing.';
+
+  @override
+  String get petitionReview => 'Review';
+
+  @override
+  String get petitionReviewHelp =>
+      'Only published petitions are shown to users.';
+
+  @override
+  String get petitionRejectReason => 'Reason (only seen by admins)';
+
+  @override
+  String get petitionStatus => 'Petition status';
+
+  @override
+  String get petitionStatusHelp =>
+      'Update it when the campaign ends or the page is removed.';
+
+  @override
+  String get petitionFixFields => 'Fill in the fields marked in red.';
+
+  @override
+  String get petitionDeleteTitle => 'Delete this petition?';
+
+  @override
+  String get petitionDeleteBody =>
+      'It will be removed from the app for everyone.';
+
+  @override
+  String petitionAddedOn(String date) {
+    return 'Added $date';
+  }
+
+  @override
+  String petitionPublishedOn(String date) {
+    return 'Published $date';
+  }
+
+  @override
+  String petitionUpdatedOn(String date) {
+    return 'Updated $date';
+  }
 }

@@ -5981,6 +5981,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The store rating window never gives points: Google Play and the App Store don\'t allow it.'**
   String get settingsReviewHelp;
+
+  /// No description provided for @petitions.
+  ///
+  /// In en, this message translates to:
+  /// **'Petitions'**
+  String get petitions;
+
+  /// No description provided for @petition.
+  ///
+  /// In en, this message translates to:
+  /// **'Petition'**
+  String get petition;
+
+  /// No description provided for @petitionsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal welfare campaigns picked by our team'**
+  String get petitionsSubtitle;
+
+  /// No description provided for @adminPetitionsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add, review and publish animal welfare petitions'**
+  String get adminPetitionsSubtitle;
+
+  /// No description provided for @petitionsBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 animal welfare petition to sign} other{{count} animal welfare petitions to sign}}'**
+  String petitionsBanner(int count);
+
+  /// No description provided for @petitionsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'The CodaMi team checks every petition before it appears here. You read and sign it on the original site.'**
+  String get petitionsIntro;
+
+  /// No description provided for @petitionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No petitions yet. The team will add animal welfare campaigns here.'**
+  String get petitionsEmpty;
+
+  /// No description provided for @petitionAdminEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No petitions here. Tap Add petition to add one from Change.org, Care2, Avaaz or a trusted organization.'**
+  String get petitionAdminEmpty;
+
+  /// No description provided for @petitionView.
+  ///
+  /// In en, this message translates to:
+  /// **'View petition'**
+  String get petitionView;
+
+  /// No description provided for @petitionSignOnSite.
+  ///
+  /// In en, this message translates to:
+  /// **'Read and sign on the original site'**
+  String get petitionSignOnSite;
+
+  /// No description provided for @petitionOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the petition page.'**
+  String get petitionOpenFailed;
+
+  /// No description provided for @petitionIssue.
+  ///
+  /// In en, this message translates to:
+  /// **'The issue'**
+  String get petitionIssue;
+
+  /// No description provided for @petitionAction.
+  ///
+  /// In en, this message translates to:
+  /// **'What the petition asks for'**
+  String get petitionAction;
+
+  /// No description provided for @petitionWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why it matters for animals'**
+  String get petitionWhy;
+
+  /// No description provided for @petitionWhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Original petition'**
+  String get petitionWhere;
+
+  /// No description provided for @petitionStartedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Started {date}'**
+  String petitionStartedOn(String date);
+
+  /// No description provided for @petitionDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'This petition is hosted by an external site. CodaMi does not collect signatures and is not responsible for the content of the original page.'**
+  String get petitionDisclaimer;
+
+  /// No description provided for @petitionEndedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This campaign has ended. You can still read the original page.'**
+  String get petitionEndedNote;
+
+  /// No description provided for @petitionUnavailableNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The original petition is no longer available.'**
+  String get petitionUnavailableNote;
+
+  /// No description provided for @petitionTopicPets.
+  ///
+  /// In en, this message translates to:
+  /// **'Pets'**
+  String get petitionTopicPets;
+
+  /// No description provided for @petitionTopicWildlife.
+  ///
+  /// In en, this message translates to:
+  /// **'Wildlife'**
+  String get petitionTopicWildlife;
+
+  /// No description provided for @petitionTopicFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm animals'**
+  String get petitionTopicFarm;
+
+  /// No description provided for @petitionTopicTesting.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal testing'**
+  String get petitionTopicTesting;
+
+  /// No description provided for @petitionTopicEntertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Circuses and zoos'**
+  String get petitionTopicEntertainment;
+
+  /// No description provided for @petitionTopicMarine.
+  ///
+  /// In en, this message translates to:
+  /// **'Marine life'**
+  String get petitionTopicMarine;
+
+  /// No description provided for @petitionTopicOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get petitionTopicOther;
+
+  /// No description provided for @petitionStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get petitionStatusActive;
+
+  /// No description provided for @petitionStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get petitionStatusCompleted;
+
+  /// No description provided for @petitionStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get petitionStatusClosed;
+
+  /// No description provided for @petitionStatusUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No longer available'**
+  String get petitionStatusUnavailable;
+
+  /// No description provided for @petitionReviewPending.
+  ///
+  /// In en, this message translates to:
+  /// **'To review'**
+  String get petitionReviewPending;
+
+  /// No description provided for @petitionReviewApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get petitionReviewApproved;
+
+  /// No description provided for @petitionReviewRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get petitionReviewRejected;
+
+  /// No description provided for @petitionAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add petition'**
+  String get petitionAdd;
+
+  /// No description provided for @petitionEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit petition'**
+  String get petitionEdit;
+
+  /// No description provided for @petitionSectionSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Original petition'**
+  String get petitionSectionSource;
+
+  /// No description provided for @petitionUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Petition link'**
+  String get petitionUrl;
+
+  /// No description provided for @petitionUrlInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste the full link, starting with https://'**
+  String get petitionUrlInvalid;
+
+  /// No description provided for @petitionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get petitionTitle;
+
+  /// No description provided for @petitionSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform or organization'**
+  String get petitionSource;
+
+  /// No description provided for @petitionCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Country or area'**
+  String get petitionCountry;
+
+  /// No description provided for @petitionCountryHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty for international campaigns.'**
+  String get petitionCountryHelp;
+
+  /// No description provided for @petitionStartedOnPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Petition start date (optional)'**
+  String get petitionStartedOnPick;
+
+  /// No description provided for @petitionTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic'**
+  String get petitionTopic;
+
+  /// No description provided for @petitionSectionText.
+  ///
+  /// In en, this message translates to:
+  /// **'Our description'**
+  String get petitionSectionText;
+
+  /// No description provided for @petitionOwnWordsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Write in your own words. Don\'t copy text from the original page.'**
+  String get petitionOwnWordsHelp;
+
+  /// No description provided for @petitionSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Short summary'**
+  String get petitionSummary;
+
+  /// No description provided for @petitionImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get petitionImage;
+
+  /// No description provided for @petitionImageAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add image'**
+  String get petitionImageAdd;
+
+  /// No description provided for @petitionImageChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change image'**
+  String get petitionImageChange;
+
+  /// No description provided for @petitionImageHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Without an image, the card shows the topic icon.'**
+  String get petitionImageHelp;
+
+  /// No description provided for @petitionImagePermission.
+  ///
+  /// In en, this message translates to:
+  /// **'We have permission to use this image'**
+  String get petitionImagePermission;
+
+  /// No description provided for @petitionImagePermissionNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm you have permission to use the image, or remove it.'**
+  String get petitionImagePermissionNeeded;
+
+  /// No description provided for @petitionImageTooBig.
+  ///
+  /// In en, this message translates to:
+  /// **'The image is too large. Choose one under 5 MB.'**
+  String get petitionImageTooBig;
+
+  /// No description provided for @petitionChecks.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification'**
+  String get petitionChecks;
+
+  /// No description provided for @petitionChecksHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'All four are needed to approve or publish.'**
+  String get petitionChecksHelp;
+
+  /// No description provided for @petitionCheckExists.
+  ///
+  /// In en, this message translates to:
+  /// **'The original page exists and opens'**
+  String get petitionCheckExists;
+
+  /// No description provided for @petitionCheckGenuine.
+  ///
+  /// In en, this message translates to:
+  /// **'It is about a genuine animal welfare issue'**
+  String get petitionCheckGenuine;
+
+  /// No description provided for @petitionCheckGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'It has a clear goal'**
+  String get petitionCheckGoal;
+
+  /// No description provided for @petitionCheckHonest.
+  ///
+  /// In en, this message translates to:
+  /// **'No misleading or fraudulent claims'**
+  String get petitionCheckHonest;
+
+  /// No description provided for @petitionChecksNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Tick all verification checks before approving or publishing.'**
+  String get petitionChecksNeeded;
+
+  /// No description provided for @petitionReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get petitionReview;
+
+  /// No description provided for @petitionReviewHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Only published petitions are shown to users.'**
+  String get petitionReviewHelp;
+
+  /// No description provided for @petitionRejectReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (only seen by admins)'**
+  String get petitionRejectReason;
+
+  /// No description provided for @petitionStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Petition status'**
+  String get petitionStatus;
+
+  /// No description provided for @petitionStatusHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Update it when the campaign ends or the page is removed.'**
+  String get petitionStatusHelp;
+
+  /// No description provided for @petitionFixFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the fields marked in red.'**
+  String get petitionFixFields;
+
+  /// No description provided for @petitionDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this petition?'**
+  String get petitionDeleteTitle;
+
+  /// No description provided for @petitionDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed from the app for everyone.'**
+  String get petitionDeleteBody;
+
+  /// No description provided for @petitionAddedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Added {date}'**
+  String petitionAddedOn(String date);
+
+  /// No description provided for @petitionPublishedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Published {date}'**
+  String petitionPublishedOn(String date);
+
+  /// No description provided for @petitionUpdatedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated {date}'**
+  String petitionUpdatedOn(String date);
 }
 
 class _AppLocalizationsDelegate

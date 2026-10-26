@@ -3353,4 +3353,252 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settingsReviewHelp =>
       'نافذة التقييم في المتجر لا تمنح نقاطًا أبدًا: لا يسمح Google Play وApp Store بذلك.';
+
+  @override
+  String get petitions => 'العرائض';
+
+  @override
+  String get petition => 'عريضة';
+
+  @override
+  String get petitionsSubtitle => 'حملات للرفق بالحيوان يختارها فريقنا';
+
+  @override
+  String get adminPetitionsSubtitle =>
+      'أضف عرائض الرفق بالحيوان وراجعها وانشرها';
+
+  @override
+  String petitionsBanner(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count عريضة للرفق بالحيوان بانتظار توقيعك',
+      many: '$count عريضة للرفق بالحيوان بانتظار توقيعك',
+      few: '$count عرائض للرفق بالحيوان بانتظار توقيعك',
+      two: 'عريضتان للرفق بالحيوان بانتظار توقيعك',
+      one: 'عريضة واحدة للرفق بالحيوان بانتظار توقيعك',
+      zero: 'لا توجد عرائض للرفق بالحيوان بانتظار توقيعك',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get petitionsIntro =>
+      'يتحقق فريق CodaMi من كل عريضة قبل ظهورها هنا. تقرأها وتوقّعها على الموقع الأصلي.';
+
+  @override
+  String get petitionsEmpty =>
+      'لا توجد عرائض بعد. سيضيف الفريق هنا حملات للرفق بالحيوان.';
+
+  @override
+  String get petitionAdminEmpty =>
+      'لا توجد عرائض هنا. اضغط على إضافة عريضة لإضافة واحدة من Change.org أو Care2 أو Avaaz أو من منظمة موثوقة.';
+
+  @override
+  String get petitionView => 'عرض العريضة';
+
+  @override
+  String get petitionSignOnSite => 'اقرأ ووقّع على الموقع الأصلي';
+
+  @override
+  String get petitionOpenFailed => 'تعذّر فتح صفحة العريضة.';
+
+  @override
+  String get petitionIssue => 'القضية';
+
+  @override
+  String get petitionAction => 'ما تطالب به العريضة';
+
+  @override
+  String get petitionWhy => 'لماذا يهم ذلك الحيوانات';
+
+  @override
+  String get petitionWhere => 'العريضة الأصلية';
+
+  @override
+  String petitionStartedOn(String date) {
+    return 'بدأت في $date';
+  }
+
+  @override
+  String get petitionDisclaimer =>
+      'هذه العريضة مستضافة على موقع خارجي. لا يجمع CodaMi التوقيعات وليس مسؤولًا عن محتوى الصفحة الأصلية.';
+
+  @override
+  String get petitionEndedNote =>
+      'انتهت هذه الحملة. لا يزال بإمكانك قراءة الصفحة الأصلية.';
+
+  @override
+  String get petitionUnavailableNote => 'العريضة الأصلية لم تعد متاحة.';
+
+  @override
+  String get petitionTopicPets => 'الحيوانات الأليفة';
+
+  @override
+  String get petitionTopicWildlife => 'الحياة البرية';
+
+  @override
+  String get petitionTopicFarm => 'حيوانات المزارع';
+
+  @override
+  String get petitionTopicTesting => 'التجارب على الحيوانات';
+
+  @override
+  String get petitionTopicEntertainment => 'السيرك وحدائق الحيوان';
+
+  @override
+  String get petitionTopicMarine => 'الحياة البحرية';
+
+  @override
+  String get petitionTopicOther => 'أخرى';
+
+  @override
+  String get petitionStatusActive => 'نشطة';
+
+  @override
+  String get petitionStatusCompleted => 'مكتملة';
+
+  @override
+  String get petitionStatusClosed => 'مغلقة';
+
+  @override
+  String get petitionStatusUnavailable => 'لم تعد متاحة';
+
+  @override
+  String get petitionReviewPending => 'بانتظار المراجعة';
+
+  @override
+  String get petitionReviewApproved => 'مقبولة';
+
+  @override
+  String get petitionReviewRejected => 'مرفوضة';
+
+  @override
+  String get petitionAdd => 'إضافة عريضة';
+
+  @override
+  String get petitionEdit => 'تعديل العريضة';
+
+  @override
+  String get petitionSectionSource => 'العريضة الأصلية';
+
+  @override
+  String get petitionUrl => 'رابط العريضة';
+
+  @override
+  String get petitionUrlInvalid => 'الصق الرابط كاملًا بدءًا من https://';
+
+  @override
+  String get petitionTitle => 'العنوان';
+
+  @override
+  String get petitionSource => 'المنصة أو المنظمة';
+
+  @override
+  String get petitionCountry => 'الدولة أو المنطقة';
+
+  @override
+  String get petitionCountryHelp => 'اتركه فارغًا للحملات الدولية.';
+
+  @override
+  String get petitionStartedOnPick => 'تاريخ بدء العريضة (اختياري)';
+
+  @override
+  String get petitionTopic => 'الموضوع';
+
+  @override
+  String get petitionSectionText => 'وصفنا';
+
+  @override
+  String get petitionOwnWordsHelp =>
+      'اكتب بكلماتك الخاصة. لا تنسخ نصًا من الصفحة الأصلية.';
+
+  @override
+  String get petitionSummary => 'ملخص قصير';
+
+  @override
+  String get petitionImage => 'الصورة';
+
+  @override
+  String get petitionImageAdd => 'إضافة صورة';
+
+  @override
+  String get petitionImageChange => 'تغيير الصورة';
+
+  @override
+  String get petitionImageHelp =>
+      'اختياري. بدون صورة، تعرض البطاقة أيقونة الموضوع.';
+
+  @override
+  String get petitionImagePermission => 'لدينا إذن باستخدام هذه الصورة';
+
+  @override
+  String get petitionImagePermissionNeeded =>
+      'أكّد أن لديك إذنًا باستخدام الصورة، أو أزلها.';
+
+  @override
+  String get petitionImageTooBig =>
+      'الصورة كبيرة جدًا. اختر صورة أصغر من 5 ميغابايت.';
+
+  @override
+  String get petitionChecks => 'التحقق';
+
+  @override
+  String get petitionChecksHelp =>
+      'يلزم استيفاء البنود الأربعة للقبول أو النشر.';
+
+  @override
+  String get petitionCheckExists => 'الصفحة الأصلية موجودة وتفتح';
+
+  @override
+  String get petitionCheckGenuine => 'تتناول قضية حقيقية تخص الرفق بالحيوان';
+
+  @override
+  String get petitionCheckGoal => 'لها هدف واضح';
+
+  @override
+  String get petitionCheckHonest => 'لا تتضمن ادعاءات مضللة أو احتيالية';
+
+  @override
+  String get petitionChecksNeeded =>
+      'حدّد جميع بنود التحقق قبل القبول أو النشر.';
+
+  @override
+  String get petitionReview => 'المراجعة';
+
+  @override
+  String get petitionReviewHelp => 'لا تظهر للمستخدمين إلا العرائض المنشورة.';
+
+  @override
+  String get petitionRejectReason => 'السبب (يراه المسؤولون فقط)';
+
+  @override
+  String get petitionStatus => 'حالة العريضة';
+
+  @override
+  String get petitionStatusHelp => 'حدّثها عند انتهاء الحملة أو حذف الصفحة.';
+
+  @override
+  String get petitionFixFields => 'املأ الحقول المحددة باللون الأحمر.';
+
+  @override
+  String get petitionDeleteTitle => 'حذف هذه العريضة؟';
+
+  @override
+  String get petitionDeleteBody => 'ستُزال من التطبيق لدى الجميع.';
+
+  @override
+  String petitionAddedOn(String date) {
+    return 'أُضيفت في $date';
+  }
+
+  @override
+  String petitionPublishedOn(String date) {
+    return 'نُشرت في $date';
+  }
+
+  @override
+  String petitionUpdatedOn(String date) {
+    return 'حُدّثت في $date';
+  }
 }

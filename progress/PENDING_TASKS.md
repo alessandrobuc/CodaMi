@@ -2,13 +2,17 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Fri 23 Oct 2026_
+_Last updated: Mon 26 Oct 2026_
 
 ---
 
 ## 1. Testing now
 
 - [ ] Emergency pins on the map (Fri 23 Oct): a red pin for each active emergency, tap it to see the card, tap the card to open the emergency; the pin disappears once it is resolved
+- [x] **Deploy (petitions, Mon 26 Oct):** rules and index are live (the app reads and writes petitions on the real project). Check in Firestore → Indexes that the What's new index (published + code) is also there
+- [x] **Petitions on the Oppo (Mon 26 Oct):** empty save refused, bad link refused, publishing without the four checks refused, saved and published on the live project; user: Home banner, Profile → Petitions, card, detail page, "View petition" opens the browser; "No longer available" hides the banner, shows a red badge and turns the button off; deleted. Fixed: red marks now clear while typing, long error text wraps
+- [ ] Petitions: full phone test with `TEST_SCENARIO_PETITIONS_2026-10-26.md` (images and several petitions not tested yet)
+- [ ] Reset the store rating test: it popped up on the Oppo, so the review days are probably still 0 (Admin → More → Points and rewards)
 - [ ] **Deploy again (What's new paging):** `firebase deploy --only firestore:rules,firestore:indexes` (new `code` field and index for release notes); delete and re-add the 1.1.0 test notes (saved before `code` existed)
 - [x] **Deploy (Fri 23 Oct build):** `firebase deploy --only firestore:rules,functions` (new `submitFeedback`, feedback and release notes rules, new points settings)
 - [x] Admin side tested on the phone: add version, wrong / duplicate version refused, English required, publish, Feedback and reviews settings save, Feedback screen empty state
@@ -33,6 +37,8 @@ Fixes found while testing go here:
 - [ ] Raise the build number in `pubspec.yaml` and upload to Play closed testing
 - [ ] Donations, if the client says yes (RevenueCat, store products)
 
+- [ ] Petitions extras, only if the client asks: daily check of broken petition links, summaries in several languages, notification for new petitions, second-admin approval (`PETITIONS_FEATURE.md`)
+
 ## 3. Waiting for the client
 
 Full list with context in `WAITING_FOR_CLIENT.md`.
@@ -49,6 +55,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] iPhone "Rate CodaMi" in Profile needs the App Store ID once the app is on the App Store (Android only for now)
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
+- [ ] Petitions: where in the app (Home banner + Profile for now), one or several languages for summaries, second-admin approval, notifications
 
 ## 4. Later (after launch)
 
@@ -67,6 +74,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Mon 26 Oct: animal welfare petitions (client request of the same day): Admin → More → Petitions (add, edit, verify, approve / reject, publish, status, delete), Home banner and Profile → Petitions for users, detail page, "View petition" opens the original site. Server rules: admins only, published-only for users, checks required to approve. 10 languages, 7 new app tests, 37 new emulator checks. Not deployed yet
 
 - Fri 23 Oct: "What's new" after updates (admin-written notes in 10 languages) and the feedback card with points, plus the store rating window without points. 15 new server and app tests, 25 emulator checks
 - Fri 23 Oct (evening): What's new uses expandable cards and loads 10 versions per page; the app checks for notes only once after each update (fewer Firestore reads). Admin side tested on the phone

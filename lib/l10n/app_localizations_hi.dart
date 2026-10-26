@@ -3385,4 +3385,253 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get settingsReviewHelp =>
       'स्टोर रेटिंग विंडो कभी पॉइंट नहीं देती: Google Play और App Store इसकी अनुमति नहीं देते।';
+
+  @override
+  String get petitions => 'याचिकाएँ';
+
+  @override
+  String get petition => 'याचिका';
+
+  @override
+  String get petitionsSubtitle => 'हमारी टीम द्वारा चुने गए पशु कल्याण अभियान';
+
+  @override
+  String get adminPetitionsSubtitle =>
+      'पशु कल्याण याचिकाएँ जोड़ें, समीक्षा करें और प्रकाशित करें';
+
+  @override
+  String petitionsBanner(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हस्ताक्षर के लिए $count पशु कल्याण याचिकाएँ',
+      one: 'हस्ताक्षर के लिए 1 पशु कल्याण याचिका',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get petitionsIntro =>
+      'CodaMi टीम हर याचिका को यहाँ दिखाने से पहले जाँचती है। आप उसे मूल साइट पर पढ़ते और साइन करते हैं।';
+
+  @override
+  String get petitionsEmpty =>
+      'अभी कोई याचिका नहीं है। टीम यहाँ पशु कल्याण अभियान जोड़ेगी।';
+
+  @override
+  String get petitionAdminEmpty =>
+      'यहाँ कोई याचिका नहीं है। Change.org, Care2, Avaaz या किसी भरोसेमंद संगठन से याचिका जोड़ने के लिए याचिका जोड़ें पर टैप करें।';
+
+  @override
+  String get petitionView => 'याचिका देखें';
+
+  @override
+  String get petitionSignOnSite => 'मूल साइट पर पढ़ें और साइन करें';
+
+  @override
+  String get petitionOpenFailed => 'याचिका का पेज नहीं खुल सका।';
+
+  @override
+  String get petitionIssue => 'मुद्दा';
+
+  @override
+  String get petitionAction => 'याचिका की माँग';
+
+  @override
+  String get petitionWhy => 'यह जानवरों के लिए क्यों ज़रूरी है';
+
+  @override
+  String get petitionWhere => 'मूल याचिका';
+
+  @override
+  String petitionStartedOn(String date) {
+    return '$date को शुरू हुई';
+  }
+
+  @override
+  String get petitionDisclaimer =>
+      'यह याचिका एक बाहरी साइट पर है। CodaMi हस्ताक्षर इकट्ठा नहीं करता और मूल पेज की सामग्री के लिए ज़िम्मेदार नहीं है।';
+
+  @override
+  String get petitionEndedNote =>
+      'यह अभियान समाप्त हो गया है। आप अब भी मूल पेज पढ़ सकते हैं।';
+
+  @override
+  String get petitionUnavailableNote => 'मूल याचिका अब उपलब्ध नहीं है।';
+
+  @override
+  String get petitionTopicPets => 'पालतू जानवर';
+
+  @override
+  String get petitionTopicWildlife => 'वन्यजीव';
+
+  @override
+  String get petitionTopicFarm => 'फ़ार्म के जानवर';
+
+  @override
+  String get petitionTopicTesting => 'जानवरों पर परीक्षण';
+
+  @override
+  String get petitionTopicEntertainment => 'सर्कस और चिड़ियाघर';
+
+  @override
+  String get petitionTopicMarine => 'समुद्री जीव';
+
+  @override
+  String get petitionTopicOther => 'अन्य';
+
+  @override
+  String get petitionStatusActive => 'सक्रिय';
+
+  @override
+  String get petitionStatusCompleted => 'पूरी हुई';
+
+  @override
+  String get petitionStatusClosed => 'बंद';
+
+  @override
+  String get petitionStatusUnavailable => 'अब उपलब्ध नहीं';
+
+  @override
+  String get petitionReviewPending => 'समीक्षा बाकी';
+
+  @override
+  String get petitionReviewApproved => 'स्वीकृत';
+
+  @override
+  String get petitionReviewRejected => 'अस्वीकृत';
+
+  @override
+  String get petitionAdd => 'याचिका जोड़ें';
+
+  @override
+  String get petitionEdit => 'याचिका संपादित करें';
+
+  @override
+  String get petitionSectionSource => 'मूल याचिका';
+
+  @override
+  String get petitionUrl => 'याचिका लिंक';
+
+  @override
+  String get petitionUrlInvalid =>
+      'https:// से शुरू होने वाला पूरा लिंक पेस्ट करें';
+
+  @override
+  String get petitionTitle => 'शीर्षक';
+
+  @override
+  String get petitionSource => 'प्लेटफ़ॉर्म या संगठन';
+
+  @override
+  String get petitionCountry => 'देश या क्षेत्र';
+
+  @override
+  String get petitionCountryHelp =>
+      'अंतरराष्ट्रीय अभियानों के लिए खाली छोड़ें।';
+
+  @override
+  String get petitionStartedOnPick => 'याचिका शुरू होने की तारीख (वैकल्पिक)';
+
+  @override
+  String get petitionTopic => 'विषय';
+
+  @override
+  String get petitionSectionText => 'हमारा विवरण';
+
+  @override
+  String get petitionOwnWordsHelp =>
+      'अपने शब्दों में लिखें। मूल पेज से टेक्स्ट कॉपी न करें।';
+
+  @override
+  String get petitionSummary => 'छोटा सारांश';
+
+  @override
+  String get petitionImage => 'इमेज';
+
+  @override
+  String get petitionImageAdd => 'इमेज जोड़ें';
+
+  @override
+  String get petitionImageChange => 'इमेज बदलें';
+
+  @override
+  String get petitionImageHelp =>
+      'वैकल्पिक। इमेज न होने पर कार्ड में विषय का आइकन दिखता है।';
+
+  @override
+  String get petitionImagePermission => 'हमें इस इमेज के उपयोग की अनुमति है';
+
+  @override
+  String get petitionImagePermissionNeeded =>
+      'पुष्टि करें कि आपके पास इमेज के उपयोग की अनुमति है, या उसे हटा दें।';
+
+  @override
+  String get petitionImageTooBig =>
+      'इमेज बहुत बड़ी है। 5 MB से छोटी इमेज चुनें।';
+
+  @override
+  String get petitionChecks => 'सत्यापन';
+
+  @override
+  String get petitionChecksHelp =>
+      'स्वीकृत या प्रकाशित करने के लिए चारों ज़रूरी हैं।';
+
+  @override
+  String get petitionCheckExists => 'मूल पेज मौजूद है और खुलता है';
+
+  @override
+  String get petitionCheckGenuine =>
+      'यह पशु कल्याण के किसी वास्तविक मुद्दे से जुड़ी है';
+
+  @override
+  String get petitionCheckGoal => 'इसका लक्ष्य स्पष्ट है';
+
+  @override
+  String get petitionCheckHonest => 'कोई भ्रामक या धोखाधड़ी वाला दावा नहीं';
+
+  @override
+  String get petitionChecksNeeded =>
+      'स्वीकृत या प्रकाशित करने से पहले सभी सत्यापन जाँचों पर टिक करें।';
+
+  @override
+  String get petitionReview => 'समीक्षा';
+
+  @override
+  String get petitionReviewHelp =>
+      'उपयोगकर्ताओं को केवल प्रकाशित याचिकाएँ दिखाई जाती हैं।';
+
+  @override
+  String get petitionRejectReason => 'कारण (केवल एडमिन को दिखता है)';
+
+  @override
+  String get petitionStatus => 'याचिका की स्थिति';
+
+  @override
+  String get petitionStatusHelp =>
+      'अभियान खत्म होने या पेज हटाए जाने पर इसे अपडेट करें।';
+
+  @override
+  String get petitionFixFields => 'लाल रंग से चिह्नित फ़ील्ड भरें।';
+
+  @override
+  String get petitionDeleteTitle => 'यह याचिका हटाएँ?';
+
+  @override
+  String get petitionDeleteBody => 'इसे सभी के लिए ऐप से हटा दिया जाएगा।';
+
+  @override
+  String petitionAddedOn(String date) {
+    return '$date को जोड़ी गई';
+  }
+
+  @override
+  String petitionPublishedOn(String date) {
+    return '$date को प्रकाशित';
+  }
+
+  @override
+  String petitionUpdatedOn(String date) {
+    return '$date को अपडेट की गई';
+  }
 }
