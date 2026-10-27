@@ -5,7 +5,7 @@ End-to-end checks of the Cloud Functions and the Firestore and Storage rules, ru
 ```sh
 (cd functions && npm run build)
 firebase emulators:exec --only auth,functions,firestore,storage --project demo-codami \
-  "node emulator_tests/moderation.cjs && node emulator_tests/points_emergency.cjs && node emulator_tests/feedback_notes.cjs && node emulator_tests/petitions.cjs"
+  "node emulator_tests/moderation.cjs && node emulator_tests/points_emergency.cjs && node emulator_tests/feedback_notes.cjs && node emulator_tests/petitions.cjs && node emulator_tests/app_version.cjs"
 ```
 
 Each script prints one PASS or FAIL line per check and exits with an error if anything fails.
@@ -14,3 +14,4 @@ Each script prints one PASS or FAIL line per check and exits with an error if an
 - `points_emergency.cjs`: daily rewards, streaks, invite codes, referral checks and admin review, emergencies, nearby alerts, contacts and their rules
 - `feedback_notes.cjs`: feedback points (once per account, one feedback a day), who can read feedback, the feedback and review settings, "What's new" notes and their rules, feedback removed with the account
 - `petitions.cjs`: petitions: only admins write, users see only published ones, link and field checks, verification checks needed to approve or publish, image upload rules
+- `app_version.cjs`: app update settings: readable before sign-in, only admins write, version and App Store ID checks, unknown fields refused

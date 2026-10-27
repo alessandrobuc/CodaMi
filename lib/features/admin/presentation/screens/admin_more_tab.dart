@@ -22,6 +22,7 @@ import '../../../points/presentation/screens/admin_referrals_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../feedback/presentation/screens/admin_feedback_screen.dart';
 import '../../../whats_new/presentation/screens/admin_release_notes_screen.dart';
+import '../../../app_update/presentation/admin_app_update_screen.dart';
 import '../../../petitions/presentation/screens/admin_petitions_screen.dart';
 import '../../../petitions/presentation/widgets/petition_widgets.dart';
 
@@ -270,7 +271,7 @@ class AdminMoreTab extends ConsumerWidget {
                     ),
                   ),
                 ),
-                if (isAdmin)
+                if (isAdmin) ...[
                   _Tile(
                     icon: Icons.auto_awesome_rounded,
                     color: AppColors.primary,
@@ -282,6 +283,18 @@ class AdminMoreTab extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  _Tile(
+                    icon: Icons.system_update_rounded,
+                    color: AppColors.primary,
+                    title: l10n.appUpdates,
+                    subtitle: l10n.adminAppUpdatesSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminAppUpdateScreen(),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
             const SizedBox(height: 16),

@@ -2,7 +2,7 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Mon 26 Oct 2026_
+_Last updated: Tue 27 Oct 2026_
 
 ---
 
@@ -22,7 +22,13 @@ _Last updated: Mon 26 Oct 2026_
 - [ ] **Review window:** only from a Play Store install; set the review days to 0 in Points and rewards to see it 25 seconds after opening the app on Home (Google may not show it every time; that's normal)
 - [ ] Automatic invite code (Fri 23 Oct, needs the Play Store build): on phone B, uninstall CodaMi, open phone A's invite link (Profile → Invite friends → Share), install from the Play Store (closed testing), sign up and choose the city; the "Did a friend invite you?" screen should already show A's code with a note, then tap Use. Installing from a cable or APK can't test this
 
+- [x] **Deploy (app updates, Tue 27 Oct):** rules are live (`config/appVersion`)
+- [x] **App updates, admin side on the Oppo (Tue 27 Oct):** form checks, notes status (missing / draft / published), update sheet once per version with the notes, "Update now" opens Google Play, confirm dialog, "Update required" covers the app straight away
+- [ ] **App updates:** full phone test and client video with `TEST_SCENARIO_APP_UPDATES_2026-10-27.md` (user side: banner, Profile row, required update as a user, undo from the Firebase console)
+
 Fixes found while testing go here:
+
+- Tue 27 Oct, app updates on the Oppo: admins were locked out by "Update required" (could only be undone in the Firebase console), now a "Continue as admin" button for admins only, until the app is closed; the keyboard stayed open over the "Update required" screen, now closed; red errors in App updates now clear while typing
 
 - Thu 22 Oct, emulator test as a support account: dashboard card, Reported tabs (AI photos / User reports) and Emergencies list work with no errors in the log. Fixed: emergency filter chips were square, now rounded like the other tabs
 - Thu 22 Oct, emulator test continued (support account): Tickets, request Chat / Details / Timeline and More work with no errors. Fixed: a large empty gap under the time cards in a request's Details (same fix on the new emergency, new report and video form screens), and a two-line user name and email in Details were misaligned. Also fixed: signing out of the admin side caused an error and might not set the operator offline (now set offline before signing out); support staff saw another operator's chat messages labelled "Admin" (now "Support team", only admins see names). Redesigned Admin → Emergency settings and Points and rewards (header, section cards, one row per setting, extra space at the end); emergency settings now show the defaults if they can't be loaded
@@ -52,7 +58,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] Videos with the rights to use them; YouTube links or not
 - [ ] iPhone sound limits OK
 - [ ] Review popup: client being told it's built without points for store reviews (points for in-app feedback instead)
-- [ ] iPhone "Rate CodaMi" in Profile needs the App Store ID once the app is on the App Store (Android only for now)
+- [ ] App Store ID once the app is on the App Store: goes in Admin → More → App updates (no new build); turns on the iPhone Update button and "Rate CodaMi"
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
 - [ ] Petitions: where in the app (Home banner + Profile for now), one or several languages for summaries, second-admin approval, notifications
@@ -74,6 +80,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Tue 27 Oct: app updates (client request of the same day): the app checks the store version on every start and keeps listening, shows an update sheet with that version's What's new notes (once per version), a Home banner and a Profile row, "Update now" opens Google Play or the App Store, and a blocking "Update required" screen below the minimum version. Versions, minimums and App Store ID are set in Admin → More → App updates, no new build needed. 10 languages, 6 new app tests, 15 new emulator checks. Rules deployed, admin side tested on the Oppo
 
 - Mon 26 Oct: animal welfare petitions (client request of the same day): Admin → More → Petitions (add, edit, verify, approve / reject, publish, status, delete), Home banner and Profile → Petitions for users, detail page, "View petition" opens the original site. Server rules: admins only, published-only for users, checks required to approve. 10 languages, 7 new app tests, 37 new emulator checks. Not deployed yet
 

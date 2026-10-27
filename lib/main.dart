@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/navigation/app_navigator.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/system_bars.dart';
+import 'features/app_update/presentation/update_widgets.dart';
 import 'features/auth/presentation/widgets/auth_wrapper.dart';
 import 'l10n/app_languages.dart';
 import 'l10n/l10n.dart';
@@ -43,6 +44,7 @@ class MyApp extends ConsumerWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: ref.watch(localeProvider).locale,
       supportedLocales: supportedAppLocales,
+      builder: (context, child) => UpdateGate(child: child!),
       home: const AuthWrapper(),
     );
   }

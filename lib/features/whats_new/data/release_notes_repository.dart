@@ -55,6 +55,16 @@ class ReleaseNotesRepository {
     return [for (final d in snap.docs) ReleaseNote.fromMap(d.id, d.data())];
   }
 
+  // Null when there's no note for [version], or users can't read it yet.
+  Future<ReleaseNote?> find(String version) async {
+    try {
+      final doc = await _notes.doc(version).get();
+      return doc.exists ? ReleaseNote.fromMap(doc.id, doc.data()!) : null;
+    } on FirebaseException {
+      return null;
+    }
+  }
+
   Future<bool> exists(String version) async =>
       (await _notes.doc(version).get()).exists;
 

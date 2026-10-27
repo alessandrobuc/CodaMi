@@ -3601,4 +3601,122 @@ class AppLocalizationsAr extends AppLocalizations {
   String petitionUpdatedOn(String date) {
     return 'حُدّثت في $date';
   }
+
+  @override
+  String get appUpdates => 'تحديثات التطبيق';
+
+  @override
+  String get adminAppUpdatesSubtitle => 'إصدارات المتاجر والتحديثات الإلزامية';
+
+  @override
+  String get appUpdatesSubtitle => 'الإصدارات في المتاجر';
+
+  @override
+  String get appUpdatesIntro =>
+      'يرى مستخدمو الإصدارات الأقدم رسالة تحديث مع ملاحظات الجديد في أحدث إصدار. تحت الحد الأدنى للإصدار، لا يمكن استخدام التطبيق حتى يتم تحديثه. لا حاجة لإصدار جديد لتغيير ذلك.';
+
+  @override
+  String appUpdatesThisPhone(String version) {
+    return 'إصدار هذا الهاتف $version';
+  }
+
+  @override
+  String get appUpdatesAndroid => 'أندرويد (Google Play)';
+
+  @override
+  String get appUpdatesIos => 'آيفون (App Store)';
+
+  @override
+  String get appUpdatesLatest => 'أحدث إصدار في المتجر';
+
+  @override
+  String get appUpdatesLatestHelp =>
+      'اضبطه بعد توفر التحديث في المتجر. اتركه فارغًا لعدم عرض أي رسالة.';
+
+  @override
+  String get appUpdatesMinimum => 'الحد الأدنى للإصدار';
+
+  @override
+  String get appUpdatesMinimumHelp =>
+      'يجب تحديث الإصدارات الأقدم قبل استخدام التطبيق. اتركه فارغًا لعدم التقييد.';
+
+  @override
+  String get appUpdatesStoreId => 'معرّف App Store';
+
+  @override
+  String get appUpdatesStoreIdHelp =>
+      'الرقم الموجود في رابط App Store ‏(apps.apple.com/app/id…). مطلوب لزر التحديث على آيفون.';
+
+  @override
+  String appUpdatesNotesPublished(String version) {
+    return 'ملاحظات $version منشورة وتظهر مع التحديث';
+  }
+
+  @override
+  String appUpdatesNotesDraft(String version) {
+    return 'ملاحظات $version محفوظة لكنها غير منشورة';
+  }
+
+  @override
+  String appUpdatesNotesMissing(String version) {
+    return 'لا توجد ملاحظات للإصدار $version بعد';
+  }
+
+  @override
+  String get appUpdatesBadVersion => 'استخدم إصدارًا مثل 1.2.0';
+
+  @override
+  String get appUpdatesMinimumAbove =>
+      'لا يمكن أن يكون الحد الأدنى أعلى من أحدث إصدار';
+
+  @override
+  String get appUpdatesBadStoreId => 'معرّف App Store يتكون من أرقام فقط';
+
+  @override
+  String get appUpdatesRequireTitle => 'جعل التحديث إلزاميًا؟';
+
+  @override
+  String appUpdatesRequireBody(String version) {
+    return 'سيتعين على كل من لديه إصدار أقل من $version التحديث قبل استخدام التطبيق.';
+  }
+
+  @override
+  String get appUpdatesRequireConfirm => 'اجعله إلزاميًا';
+
+  @override
+  String get updateAvailableTitle => 'يتوفر تحديث';
+
+  @override
+  String updateAvailableBody(String latest, String installed) {
+    return 'الإصدار $latest من CodaMi جاهز. لديك $installed.';
+  }
+
+  @override
+  String get updateNow => 'حدّث الآن';
+
+  @override
+  String get updateLater => 'لاحقًا';
+
+  @override
+  String get updateRequiredTitle => 'التحديث مطلوب';
+
+  @override
+  String updateRequiredBody(String version) {
+    return 'لم يعد هذا الإصدار من CodaMi مدعومًا. حدّث إلى الإصدار $version لمتابعة استخدام التطبيق.';
+  }
+
+  @override
+  String updateBanner(String version) {
+    return 'الإصدار $version متوفر';
+  }
+
+  @override
+  String get updateStoreFailed =>
+      'تعذر فتح المتجر. يرجى تحديث CodaMi من تطبيق المتجر.';
+
+  @override
+  String get rateCodaMiSubtitleIos => 'اترك تقييمًا على App Store';
+
+  @override
+  String get updateContinueAsAdmin => 'المتابعة كمسؤول';
 }

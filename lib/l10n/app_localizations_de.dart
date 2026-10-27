@@ -3692,4 +3692,122 @@ class AppLocalizationsDe extends AppLocalizations {
   String petitionUpdatedOn(String date) {
     return 'Aktualisiert am $date';
   }
+
+  @override
+  String get appUpdates => 'App-Updates';
+
+  @override
+  String get adminAppUpdatesSubtitle => 'Store-Versionen und Pflicht-Updates';
+
+  @override
+  String get appUpdatesSubtitle => 'Versionen in den Stores';
+
+  @override
+  String get appUpdatesIntro =>
+      'Wer eine ältere Version hat, sieht einen Update-Hinweis mit den Neuigkeiten der neuesten Version. Unter der Mindestversion kann die App erst nach dem Update genutzt werden. Für Änderungen ist kein neuer Build nötig.';
+
+  @override
+  String appUpdatesThisPhone(String version) {
+    return 'Dieses Telefon hat Version $version';
+  }
+
+  @override
+  String get appUpdatesAndroid => 'Android (Google Play)';
+
+  @override
+  String get appUpdatesIos => 'iPhone (App Store)';
+
+  @override
+  String get appUpdatesLatest => 'Neueste Version im Store';
+
+  @override
+  String get appUpdatesLatestHelp =>
+      'Eintragen, sobald das Update im Store verfügbar ist. Leer lassen, um keinen Hinweis zu zeigen.';
+
+  @override
+  String get appUpdatesMinimum => 'Mindestversion';
+
+  @override
+  String get appUpdatesMinimumHelp =>
+      'Ältere Versionen müssen vor der Nutzung aktualisiert werden. Leer lassen für keine.';
+
+  @override
+  String get appUpdatesStoreId => 'App-Store-ID';
+
+  @override
+  String get appUpdatesStoreIdHelp =>
+      'Die Nummer im App-Store-Link (apps.apple.com/app/id…). Nötig für den Update-Button auf dem iPhone.';
+
+  @override
+  String appUpdatesNotesPublished(String version) {
+    return 'Die Neuigkeiten zu $version sind veröffentlicht und werden beim Update gezeigt';
+  }
+
+  @override
+  String appUpdatesNotesDraft(String version) {
+    return 'Die Neuigkeiten zu $version sind gespeichert, aber nicht veröffentlicht';
+  }
+
+  @override
+  String appUpdatesNotesMissing(String version) {
+    return 'Noch keine Neuigkeiten zu $version';
+  }
+
+  @override
+  String get appUpdatesBadVersion => 'Verwende eine Version wie 1.2.0';
+
+  @override
+  String get appUpdatesMinimumAbove =>
+      'Die Mindestversion darf nicht höher als die neueste Version sein';
+
+  @override
+  String get appUpdatesBadStoreId => 'Die App-Store-ID besteht nur aus Ziffern';
+
+  @override
+  String get appUpdatesRequireTitle => 'Update verpflichtend machen?';
+
+  @override
+  String appUpdatesRequireBody(String version) {
+    return 'Alle unter Version $version müssen aktualisieren, bevor sie die App nutzen können.';
+  }
+
+  @override
+  String get appUpdatesRequireConfirm => 'Verpflichtend machen';
+
+  @override
+  String get updateAvailableTitle => 'Update verfügbar';
+
+  @override
+  String updateAvailableBody(String latest, String installed) {
+    return 'Version $latest von CodaMi ist da. Du hast $installed.';
+  }
+
+  @override
+  String get updateNow => 'Jetzt aktualisieren';
+
+  @override
+  String get updateLater => 'Später';
+
+  @override
+  String get updateRequiredTitle => 'Update erforderlich';
+
+  @override
+  String updateRequiredBody(String version) {
+    return 'Diese Version von CodaMi wird nicht mehr unterstützt. Aktualisiere auf Version $version, um die App weiter zu nutzen.';
+  }
+
+  @override
+  String updateBanner(String version) {
+    return 'Version $version ist verfügbar';
+  }
+
+  @override
+  String get updateStoreFailed =>
+      'Der Store konnte nicht geöffnet werden. Bitte aktualisiere CodaMi in der Store-App.';
+
+  @override
+  String get rateCodaMiSubtitleIos => 'Bewerte uns im App Store';
+
+  @override
+  String get updateContinueAsAdmin => 'Als Admin fortfahren';
 }

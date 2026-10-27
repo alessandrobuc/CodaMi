@@ -8,6 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/navigation/app_navigator.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
+import '../../../app_update/presentation/update_widgets.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../moderation/presentation/providers/moderation_provider.dart';
@@ -79,6 +80,10 @@ class _AdminShellState extends ConsumerState<AdminShell>
             ),
           );
       _startHeartbeat();
+      showUpdateIfNeeded(context, ref).catchError((Object e) {
+        debugPrint('Update check skipped: $e');
+        return false;
+      });
     });
   }
 

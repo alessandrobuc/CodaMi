@@ -23,6 +23,10 @@ service cloud.firestore {
       return signedIn() && myRole() == 'admin';
     }
 
+    function validStoreVersion(v) {
+      return v is string && v.matches('^([0-9]{1,3}([.][0-9]{1,3}){1,2})?$');
+    }
+
     function isStaff() {
       return signedIn() && myRole() in ['support', 'admin'];
     }
@@ -396,6 +400,21 @@ service cloud.firestore {
 
     match /config/moderation {
       allow read: if isStaff();
+    }
+
+    // Store versions, read before sign-in too. Empty strings turn a check off.
+    match /config/appVersion {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'androidLatest', 'androidMinimum', 'iosLatest', 'iosMinimum', 'appStoreId', 'updatedAt'
+        ])
+        && validStoreVersion(request.resource.data.get('androidLatest', ''))
+        && validStoreVersion(request.resource.data.get('androidMinimum', ''))
+        && validStoreVersion(request.resource.data.get('iosLatest', ''))
+        && validStoreVersion(request.resource.data.get('iosMinimum', ''))
+        && request.resource.data.get('appStoreId', '') is string
+        && request.resource.data.get('appStoreId', '').matches('^([0-9]{6,12})?$');
     }
 
     match /config/support {

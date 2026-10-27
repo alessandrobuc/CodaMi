@@ -6413,6 +6413,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Updated {date}'**
   String petitionUpdatedOn(String date);
+
+  /// No description provided for @appUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'App updates'**
+  String get appUpdates;
+
+  /// No description provided for @adminAppUpdatesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Store versions and required updates'**
+  String get adminAppUpdatesSubtitle;
+
+  /// No description provided for @appUpdatesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Versions in the stores'**
+  String get appUpdatesSubtitle;
+
+  /// No description provided for @appUpdatesIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Users on an older version see an update message with the What\'s new notes of the latest version. Below the minimum version, the app can\'t be used until it\'s updated. No new build is needed to change these.'**
+  String get appUpdatesIntro;
+
+  /// No description provided for @appUpdatesThisPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone has version {version}'**
+  String appUpdatesThisPhone(String version);
+
+  /// No description provided for @appUpdatesAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'Android (Google Play)'**
+  String get appUpdatesAndroid;
+
+  /// No description provided for @appUpdatesIos.
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone (App Store)'**
+  String get appUpdatesIos;
+
+  /// No description provided for @appUpdatesLatest.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest version in the store'**
+  String get appUpdatesLatest;
+
+  /// No description provided for @appUpdatesLatestHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Set it once the update is live in the store. Leave empty to show no update message.'**
+  String get appUpdatesLatestHelp;
+
+  /// No description provided for @appUpdatesMinimum.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum version'**
+  String get appUpdatesMinimum;
+
+  /// No description provided for @appUpdatesMinimumHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Older versions must update before using the app. Leave empty for none.'**
+  String get appUpdatesMinimumHelp;
+
+  /// No description provided for @appUpdatesStoreId.
+  ///
+  /// In en, this message translates to:
+  /// **'App Store ID'**
+  String get appUpdatesStoreId;
+
+  /// No description provided for @appUpdatesStoreIdHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The number in the App Store link (apps.apple.com/app/id…). Needed for the Update button on iPhone.'**
+  String get appUpdatesStoreIdHelp;
+
+  /// No description provided for @appUpdatesNotesPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'The notes for {version} are published and shown with the update'**
+  String appUpdatesNotesPublished(String version);
+
+  /// No description provided for @appUpdatesNotesDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'The notes for {version} are saved but not published'**
+  String appUpdatesNotesDraft(String version);
+
+  /// No description provided for @appUpdatesNotesMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'No What\'s new notes for {version} yet'**
+  String appUpdatesNotesMissing(String version);
+
+  /// No description provided for @appUpdatesBadVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a version like 1.2.0'**
+  String get appUpdatesBadVersion;
+
+  /// No description provided for @appUpdatesMinimumAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'The minimum can\'t be higher than the latest version'**
+  String get appUpdatesMinimumAbove;
+
+  /// No description provided for @appUpdatesBadStoreId.
+  ///
+  /// In en, this message translates to:
+  /// **'The App Store ID has only digits'**
+  String get appUpdatesBadStoreId;
+
+  /// No description provided for @appUpdatesRequireTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Require the update?'**
+  String get appUpdatesRequireTitle;
+
+  /// No description provided for @appUpdatesRequireBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone below version {version} will have to update before they can use the app.'**
+  String appUpdatesRequireBody(String version);
+
+  /// No description provided for @appUpdatesRequireConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Require'**
+  String get appUpdatesRequireConfirm;
+
+  /// No description provided for @updateAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update available'**
+  String get updateAvailableTitle;
+
+  /// No description provided for @updateAvailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {latest} of CodaMi is ready. You have {installed}.'**
+  String updateAvailableBody(String latest, String installed);
+
+  /// No description provided for @updateNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Update now'**
+  String get updateNow;
+
+  /// No description provided for @updateLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get updateLater;
+
+  /// No description provided for @updateRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update required'**
+  String get updateRequiredTitle;
+
+  /// No description provided for @updateRequiredBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This version of CodaMi is no longer supported. Update to version {version} to keep using the app.'**
+  String updateRequiredBody(String version);
+
+  /// No description provided for @updateBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} is available'**
+  String updateBanner(String version);
+
+  /// No description provided for @updateStoreFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the store. Please update CodaMi from the store app.'**
+  String get updateStoreFailed;
+
+  /// No description provided for @rateCodaMiSubtitleIos.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave a review on the App Store'**
+  String get rateCodaMiSubtitleIos;
+
+  /// No description provided for @updateContinueAsAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as admin'**
+  String get updateContinueAsAdmin;
 }
 
 class _AppLocalizationsDelegate

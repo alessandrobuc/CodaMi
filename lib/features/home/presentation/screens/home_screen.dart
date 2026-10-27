@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../app_update/presentation/update_widgets.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../emergency/presentation/providers/emergency_provider.dart';
 import '../../../emergency/presentation/screens/create_emergency_screen.dart';
@@ -133,6 +134,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 const SizedBox(height: 12),
               ],
+              const UpdateBanner(),
               if (ref.watch(activePetitionCountProvider) case final count
                   when count > 0) ...[
                 PetitionsBanner(

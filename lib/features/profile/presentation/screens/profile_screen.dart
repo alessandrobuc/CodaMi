@@ -27,6 +27,8 @@ import '../../../feedback/presentation/widgets/feedback_sheet.dart';
 import '../../../petitions/presentation/screens/petitions_screen.dart';
 import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../whats_new/presentation/screens/whats_new_screen.dart';
+import '../../../app_update/data/app_update_repository.dart';
+import '../../../app_update/presentation/update_widgets.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -330,6 +332,25 @@ class ProfileScreen extends ConsumerWidget {
                     title: l10n.rateCodaMi,
                     subtitle: l10n.rateCodaMiSubtitle,
                     onTap: () => InAppReview.instance.openStoreListing(),
+                  )
+                else if (ref.watch(appVersionConfigProvider).value?.appStoreId
+                    case final id? when id.isNotEmpty)
+                  _ProfileTile(
+                    icon: Icons.star_rounded,
+                    color: AppColors.accent,
+                    title: l10n.rateCodaMi,
+                    subtitle: l10n.rateCodaMiSubtitleIos,
+                    onTap: () =>
+                        InAppReview.instance.openStoreListing(appStoreId: id),
+                  ),
+                if (ref.watch(appUpdateProvider) case final update
+                    when update.outdated)
+                  _ProfileTile(
+                    icon: Icons.system_update_rounded,
+                    color: AppColors.primary,
+                    title: l10n.updateAvailableTitle,
+                    subtitle: l10n.updateBanner(update.latest),
+                    onTap: () => showUpdateSheet(context),
                   ),
                 _ProfileTile(
                   icon: Icons.auto_awesome_rounded,

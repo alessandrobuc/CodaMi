@@ -3675,4 +3675,123 @@ class AppLocalizationsRu extends AppLocalizations {
   String petitionUpdatedOn(String date) {
     return 'Обновлена $date';
   }
+
+  @override
+  String get appUpdates => 'Обновления приложения';
+
+  @override
+  String get adminAppUpdatesSubtitle =>
+      'Версии в магазинах и обязательные обновления';
+
+  @override
+  String get appUpdatesSubtitle => 'Версии в магазинах';
+
+  @override
+  String get appUpdatesIntro =>
+      'Пользователи старой версии увидят сообщение об обновлении с описанием новой версии. Ниже минимальной версии приложением нельзя пользоваться, пока его не обновят. Для изменения новая сборка не нужна.';
+
+  @override
+  String appUpdatesThisPhone(String version) {
+    return 'На этом телефоне версия $version';
+  }
+
+  @override
+  String get appUpdatesAndroid => 'Android (Google Play)';
+
+  @override
+  String get appUpdatesIos => 'iPhone (App Store)';
+
+  @override
+  String get appUpdatesLatest => 'Последняя версия в магазине';
+
+  @override
+  String get appUpdatesLatestHelp =>
+      'Укажите, когда обновление появится в магазине. Оставьте пустым, чтобы не показывать сообщение.';
+
+  @override
+  String get appUpdatesMinimum => 'Минимальная версия';
+
+  @override
+  String get appUpdatesMinimumHelp =>
+      'Более старые версии должны обновиться перед использованием. Оставьте пустым, если ограничения нет.';
+
+  @override
+  String get appUpdatesStoreId => 'ID в App Store';
+
+  @override
+  String get appUpdatesStoreIdHelp =>
+      'Число в ссылке App Store (apps.apple.com/app/id…). Нужно для кнопки «Обновить» на iPhone.';
+
+  @override
+  String appUpdatesNotesPublished(String version) {
+    return 'Описание $version опубликовано и показывается с обновлением';
+  }
+
+  @override
+  String appUpdatesNotesDraft(String version) {
+    return 'Описание $version сохранено, но не опубликовано';
+  }
+
+  @override
+  String appUpdatesNotesMissing(String version) {
+    return 'Описания для $version пока нет';
+  }
+
+  @override
+  String get appUpdatesBadVersion => 'Укажите версию вида 1.2.0';
+
+  @override
+  String get appUpdatesMinimumAbove =>
+      'Минимальная версия не может быть выше последней';
+
+  @override
+  String get appUpdatesBadStoreId => 'ID в App Store состоит только из цифр';
+
+  @override
+  String get appUpdatesRequireTitle => 'Сделать обновление обязательным?';
+
+  @override
+  String appUpdatesRequireBody(String version) {
+    return 'Все, у кого версия ниже $version, должны будут обновиться, чтобы пользоваться приложением.';
+  }
+
+  @override
+  String get appUpdatesRequireConfirm => 'Сделать обязательным';
+
+  @override
+  String get updateAvailableTitle => 'Доступно обновление';
+
+  @override
+  String updateAvailableBody(String latest, String installed) {
+    return 'Версия $latest CodaMi готова. У вас $installed.';
+  }
+
+  @override
+  String get updateNow => 'Обновить';
+
+  @override
+  String get updateLater => 'Позже';
+
+  @override
+  String get updateRequiredTitle => 'Требуется обновление';
+
+  @override
+  String updateRequiredBody(String version) {
+    return 'Эта версия CodaMi больше не поддерживается. Обновитесь до версии $version, чтобы продолжить.';
+  }
+
+  @override
+  String updateBanner(String version) {
+    return 'Доступна версия $version';
+  }
+
+  @override
+  String get updateStoreFailed =>
+      'Не удалось открыть магазин. Обновите CodaMi через приложение магазина.';
+
+  @override
+  String get rateCodaMiSubtitleIos => 'Оставьте отзыв в App Store';
+
+  @override
+  String get updateContinueAsAdmin => 'Продолжить как администратор';
 }

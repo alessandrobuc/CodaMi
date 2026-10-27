@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 import '../../../l10n/locale_provider.dart';
+import '../../app_update/presentation/update_widgets.dart';
 import '../../points/domain/points.dart';
 import '../../points/presentation/providers/points_provider.dart';
 import '../../profile/presentation/providers/profile_provider.dart';
@@ -19,15 +20,16 @@ import 'widgets/feedback_sheet.dart';
 // Waits so nothing pops up while the user is starting to do something.
 const _calmDelay = Duration(seconds: 25);
 
-// At most one of these per app start: the notes of a new version, the
-// feedback card, or the store rating window.
+// At most one of these per app start: the update message, the notes of a
+// new version, the feedback card, or the store rating window.
 Future<void> runStartupPrompts(
   BuildContext context,
   WidgetRef ref, {
   required bool Function() isIdle,
 }) async {
   try {
-    if (await _showWhatsNew(context, ref)) return;
+    if (await showUpdateIfNeeded(context, ref)) return;
+    if (!context.mounted || await _showWhatsNew(context, ref)) return;
     await Future<void>.delayed(_calmDelay);
     if (!context.mounted || !isIdle()) return;
     await _askFeedbackOrReview(context, ref);

@@ -353,18 +353,7 @@ class _VersionCardState extends State<_VersionCard> {
                 curve: Curves.easeOutCubic,
                 alignment: Alignment.topCenter,
                 child: _open
-                    ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          for (final section in sections) ...[
-                            const SizedBox(height: 12),
-                            _SectionChip(section: section),
-                            const SizedBox(height: 6),
-                            for (final line in items.of(section))
-                              _Bullet(text: line),
-                          ],
-                        ],
-                      )
+                    ? NoteItemsView(items: items)
                     : Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: Wrap(
@@ -384,6 +373,28 @@ class _VersionCardState extends State<_VersionCard> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class NoteItemsView extends StatelessWidget {
+  final NoteItems items;
+
+  const NoteItemsView({super.key, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final section in NoteSection.values)
+          if (items.of(section).isNotEmpty) ...[
+            const SizedBox(height: 12),
+            _SectionChip(section: section),
+            const SizedBox(height: 6),
+            for (final line in items.of(section)) _Bullet(text: line),
+          ],
+      ],
     );
   }
 }

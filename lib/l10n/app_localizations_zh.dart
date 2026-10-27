@@ -3458,4 +3458,118 @@ class AppLocalizationsZh extends AppLocalizations {
   String petitionUpdatedOn(String date) {
     return '更新于 $date';
   }
+
+  @override
+  String get appUpdates => '应用更新';
+
+  @override
+  String get adminAppUpdatesSubtitle => '商店版本与强制更新';
+
+  @override
+  String get appUpdatesSubtitle => '商店中的版本';
+
+  @override
+  String get appUpdatesIntro =>
+      '使用旧版本的用户会看到更新提示，并附带最新版本的更新内容。低于最低版本时，必须更新后才能使用应用。修改这些设置无需发布新版本。';
+
+  @override
+  String appUpdatesThisPhone(String version) {
+    return '此手机的版本为 $version';
+  }
+
+  @override
+  String get appUpdatesAndroid => 'Android（Google Play）';
+
+  @override
+  String get appUpdatesIos => 'iPhone（App Store）';
+
+  @override
+  String get appUpdatesLatest => '商店中的最新版本';
+
+  @override
+  String get appUpdatesLatestHelp => '更新在商店上线后再填写。留空则不显示更新提示。';
+
+  @override
+  String get appUpdatesMinimum => '最低版本';
+
+  @override
+  String get appUpdatesMinimumHelp => '更旧的版本必须先更新才能使用应用。留空表示不限制。';
+
+  @override
+  String get appUpdatesStoreId => 'App Store ID';
+
+  @override
+  String get appUpdatesStoreIdHelp =>
+      'App Store 链接中的数字（apps.apple.com/app/id…）。iPhone 上的更新按钮需要它。';
+
+  @override
+  String appUpdatesNotesPublished(String version) {
+    return '$version 的更新内容已发布，会随更新提示显示';
+  }
+
+  @override
+  String appUpdatesNotesDraft(String version) {
+    return '$version 的更新内容已保存但未发布';
+  }
+
+  @override
+  String appUpdatesNotesMissing(String version) {
+    return '$version 还没有更新内容';
+  }
+
+  @override
+  String get appUpdatesBadVersion => '请使用类似 1.2.0 的版本号';
+
+  @override
+  String get appUpdatesMinimumAbove => '最低版本不能高于最新版本';
+
+  @override
+  String get appUpdatesBadStoreId => 'App Store ID 只能包含数字';
+
+  @override
+  String get appUpdatesRequireTitle => '要强制更新吗？';
+
+  @override
+  String appUpdatesRequireBody(String version) {
+    return '所有低于 $version 的用户都必须更新后才能使用应用。';
+  }
+
+  @override
+  String get appUpdatesRequireConfirm => '强制更新';
+
+  @override
+  String get updateAvailableTitle => '有可用更新';
+
+  @override
+  String updateAvailableBody(String latest, String installed) {
+    return 'CodaMi $latest 版已推出。您当前是 $installed。';
+  }
+
+  @override
+  String get updateNow => '立即更新';
+
+  @override
+  String get updateLater => '稍后';
+
+  @override
+  String get updateRequiredTitle => '需要更新';
+
+  @override
+  String updateRequiredBody(String version) {
+    return '此版本的 CodaMi 已不再支持。请更新到 $version 版以继续使用。';
+  }
+
+  @override
+  String updateBanner(String version) {
+    return '$version 版现已推出';
+  }
+
+  @override
+  String get updateStoreFailed => '无法打开应用商店。请在商店应用中更新 CodaMi。';
+
+  @override
+  String get rateCodaMiSubtitleIos => '在 App Store 上评分';
+
+  @override
+  String get updateContinueAsAdmin => '以管理员身份继续';
 }

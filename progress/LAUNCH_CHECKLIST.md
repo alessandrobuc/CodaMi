@@ -48,6 +48,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Full iOS build and test on a real iPhone (map, location permission, push, sign-in)
 - [x] Check `Info.plist` permission texts (location, camera, photos) are clear and translated (all 10 languages in `InfoPlist.strings`)
 - [x] Sign in with Apple, if Google sign-in is offered on iOS (App Store rule). Built; still to test on a real iPhone
+- [ ] Once the app is on the App Store, put its App Store ID in Admin → More → App updates (turns on the Update button and "Rate CodaMi" on iPhone)
 
 ## 4. Firebase
 
@@ -60,6 +61,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] **What's new paging (Fri 23 Oct, evening):** deploy rules and indexes again (`code` field and the `releaseNotes` index: published + code)
 - [x] **Petitions (Mon 26 Oct):** deploy `firestore:rules,firestore:indexes,storage` (new `petitions` rules, index review + publishedAt, `petitions/` image folder). Can go together with the What's new paging deploy above
 - [ ] Raise the version name (not only the build number) for every release that has notes, and publish its notes in Admin → More → What's new
+- [ ] **App updates (Tue 27 Oct):** deploy `firestore:rules` (new `config/appVersion`, readable before sign-in, admin-only writes). Can go together with the What's new paging deploy above
+- [ ] **Every release:** once the update is live in the store, set Admin → More → App updates → Latest version for that platform. Only set a Minimum version for a release that old versions can't work with (it blocks the app until updated)
 - [x] **Points, invites and emergencies (Thu 22 Oct, deployed and tested on phones by Fri 23 Oct):** deploy rules, indexes (7 new) and functions: `registerVisit`, `claimDailyTask`, `getInviteCode`, `redeemInviteCode`, `adminReviewReferral`, `adminAdjustPoints`, `pointsSweep`, `onEmergencyCreated`, `updateEmergency`, `emergencySweep`, `seedTestContacts`, plus the updated `onUserWritten`, `onPhotoUploaded` and `deleteAccount`. Then add the test contacts from Admin → More → Emergency contacts
 - [ ] Create the first admin in the console: `users/{your user ID}` → field `role` = `admin`
 - [ ] Wait for composite indexes to finish building (Firestore → Indexes)
