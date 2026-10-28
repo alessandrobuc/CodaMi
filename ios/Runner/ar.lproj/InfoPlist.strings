@@ -1,3 +1,4 @@
 "NSCameraUsageDescription" = "يستخدم CodaMi الكاميرا لتتمكن من التقاط صور لحيواناتك الأليفة.";
 "NSPhotoLibraryUsageDescription" = "يحتاج CodaMi إلى الوصول إلى صورك لتتمكن من إضافة صور لحيواناتك الأليفة.";
 "NSLocationWhenInUseUsageDescription" = "يستخدم CodaMi موقعك ليعرض لك على الخريطة الحيوانات الأليفة المفقودة والتي عُثر عليها بالقرب منك.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "يستخدم CodaMi موقعك ليعرض لك على الخريطة الحيوانات الأليفة المفقودة والتي عُثر عليها بالقرب منك.";

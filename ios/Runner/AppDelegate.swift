@@ -12,9 +12,7 @@ import UIKit
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    if let key = Bundle.main.object(forInfoDictionaryKey: "GMSApiKey") as? String, !key.isEmpty {
-      GMSServices.provideAPIKey(key)
-    }
+    GMSServices.provideAPIKey("AIzaSyDBbBJO8zi-RRp50z1osTxlHIJExb7LXbA")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 

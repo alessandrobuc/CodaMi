@@ -1,3 +1,4 @@
 "NSCameraUsageDescription" = "CodaMi कैमरे का इस्तेमाल करता है ताकि आप अपने पालतू जानवरों की फ़ोटो ले सकें।";
 "NSPhotoLibraryUsageDescription" = "CodaMi को आपकी फ़ोटो तक पहुँच चाहिए ताकि आप अपने पालतू जानवरों की तस्वीरें जोड़ सकें।";
 "NSLocationWhenInUseUsageDescription" = "CodaMi आपकी लोकेशन का इस्तेमाल करके मैप पर आपके आस-पास खोए और मिले पालतू जानवर दिखाता है।";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "CodaMi आपकी लोकेशन का इस्तेमाल करके मैप पर आपके आस-पास खोए और मिले पालतू जानवर दिखाता है।";

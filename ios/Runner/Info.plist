@@ -102,6 +102,8 @@
 	<string>CodaMi needs access to your photos so you can add pictures of your pets.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>CodaMi uses your location to show lost and found pets near you on the map.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>CodaMi uses your location to show lost and found pets near you on the map.</string>
 	<key>GMSApiKey</key>
 	<string>$(MAPS_API_KEY_IOS)</string>
 </dict>

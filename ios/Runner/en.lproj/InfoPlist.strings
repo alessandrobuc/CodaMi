@@ -1,3 +1,4 @@
 "NSCameraUsageDescription" = "CodaMi uses the camera so you can take photos of your pets.";
 "NSPhotoLibraryUsageDescription" = "CodaMi needs access to your photos so you can add pictures of your pets.";
 "NSLocationWhenInUseUsageDescription" = "CodaMi uses your location to show lost and found pets near you on the map.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "CodaMi uses your location to show lost and found pets near you on the map.";
