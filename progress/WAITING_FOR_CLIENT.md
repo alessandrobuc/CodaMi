@@ -2,7 +2,7 @@
 
 Questions sent to the client that still need an answer. Move an item to **Answered** with the date and the answer when it comes back.
 
-_Last updated: Thu 22 Oct 2026_
+_Last updated: Thu 29 Oct 2026_
 
 ---
 
@@ -42,6 +42,15 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 **Review popup (Fri 23 Oct)**
 - [ ] **Reward for reviews:** stores forbid points for ratings and reviews. Built as proposed (review prompt without points, points for in-app feedback); the developer is telling the client. (See `PHASE_3_REQUESTS.md` §4)
 - [ ] **Patch notes:** who writes them each version, and in which languages (English at least, the others fall back to English)
+
+**Shop (request 18, Thu 29 Oct)**: plan and details in `SHOP_FEATURE.md`. Phase 1 approved Thu 29 Oct
+- [ ] Countries we sell to at the start (Italy only?)
+- [ ] Company name and VAT number for the shop; Stripe account in CodaMi's name
+- [ ] First brands, suppliers or affiliate programmes (otherwise sample products)
+- [ ] Languages for product texts (suggested: Italian and English, the others fall back to English)
+- [ ] Shop as a new tab in the bottom bar
+- [ ] Admin panel on the computer as well
+- [ ] Who prepares the terms of sale and the return policy
 
 ---
 

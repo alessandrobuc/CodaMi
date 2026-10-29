@@ -6605,6 +6605,774 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue as admin'**
   String get updateContinueAsAdmin;
+
+  /// No description provided for @navShop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get navShop;
+
+  /// No description provided for @shop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get shop;
+
+  /// No description provided for @adminShopSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Products, brands, suppliers and the on/off switch'**
+  String get adminShopSubtitle;
+
+  /// No description provided for @shopSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Products for your pets'**
+  String get shopSubtitle;
+
+  /// No description provided for @shopSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search products'**
+  String get shopSearchHint;
+
+  /// No description provided for @shopEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Products are coming soon. Check back later!'**
+  String get shopEmpty;
+
+  /// No description provided for @shopNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No products match.'**
+  String get shopNoResults;
+
+  /// No description provided for @shopInStock.
+  ///
+  /// In en, this message translates to:
+  /// **'In stock'**
+  String get shopInStock;
+
+  /// No description provided for @shopLowStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Only a few left'**
+  String get shopLowStock;
+
+  /// No description provided for @shopOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get shopOutOfStock;
+
+  /// No description provided for @shopComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get shopComingSoon;
+
+  /// No description provided for @shopModelOwnStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Our stock'**
+  String get shopModelOwnStock;
+
+  /// No description provided for @shopModelBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand partner'**
+  String get shopModelBrand;
+
+  /// No description provided for @shopModelDropship.
+  ///
+  /// In en, this message translates to:
+  /// **'Dropshipping'**
+  String get shopModelDropship;
+
+  /// No description provided for @shopModelAffiliate.
+  ///
+  /// In en, this message translates to:
+  /// **'Affiliate link'**
+  String get shopModelAffiliate;
+
+  /// No description provided for @shopModelOwnStockHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi holds the stock and ships it.'**
+  String get shopModelOwnStockHelp;
+
+  /// No description provided for @shopModelBrandHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The brand sells through CodaMi and ships the order.'**
+  String get shopModelBrandHelp;
+
+  /// No description provided for @shopModelDropshipHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'A supplier ships the order straight to the customer.'**
+  String get shopModelDropshipHelp;
+
+  /// No description provided for @shopModelAffiliateHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Bought on the partner\'s site through our link; CodaMi earns a commission.'**
+  String get shopModelAffiliateHelp;
+
+  /// No description provided for @shopBuyOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy on {partner}'**
+  String shopBuyOn(String partner);
+
+  /// No description provided for @shopAffiliateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold and shipped by {partner}. CodaMi may earn a commission on this purchase.'**
+  String shopAffiliateNote(String partner);
+
+  /// No description provided for @shopPriceOnPartner.
+  ///
+  /// In en, this message translates to:
+  /// **'Price on {partner}'**
+  String shopPriceOnPartner(String partner);
+
+  /// No description provided for @shopAddToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get shopAddToCart;
+
+  /// No description provided for @shopCheckoutSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Buying in the app is coming soon.'**
+  String get shopCheckoutSoon;
+
+  /// No description provided for @shopAllAnimals.
+  ///
+  /// In en, this message translates to:
+  /// **'For all animals'**
+  String get shopAllAnimals;
+
+  /// No description provided for @shopDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get shopDescription;
+
+  /// No description provided for @shopOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the link.'**
+  String get shopOpenFailed;
+
+  /// No description provided for @shopPreviewOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview: the shop is off, users can\'t see it.'**
+  String get shopPreviewOff;
+
+  /// No description provided for @shopAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage the CodaMi Shop. Users only see it while it\'s on.'**
+  String get shopAdminIntro;
+
+  /// No description provided for @shopOpenSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop open to users'**
+  String get shopOpenSwitch;
+
+  /// No description provided for @shopOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: everyone sees the Shop tab.'**
+  String get shopOnHelp;
+
+  /// No description provided for @shopOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: users don\'t see the shop. Admins can still prepare it.'**
+  String get shopOffHelp;
+
+  /// No description provided for @shopTurnOnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the shop?'**
+  String get shopTurnOnTitle;
+
+  /// No description provided for @shopTurnOnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Every user will see the Shop tab and the active products straight away.'**
+  String get shopTurnOnBody;
+
+  /// No description provided for @shopTurnOffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close the shop?'**
+  String get shopTurnOffTitle;
+
+  /// No description provided for @shopTurnOffBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The Shop tab disappears for every user straight away. Products and settings are kept.'**
+  String get shopTurnOffBody;
+
+  /// No description provided for @shopTurnOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get shopTurnOn;
+
+  /// No description provided for @shopTurnOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get shopTurnOff;
+
+  /// No description provided for @shopSalesModels.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales models'**
+  String get shopSalesModels;
+
+  /// No description provided for @shopSalesModelsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Turning a model off hides all its products from users.'**
+  String get shopSalesModelsHelp;
+
+  /// No description provided for @shopCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue'**
+  String get shopCatalog;
+
+  /// No description provided for @shopProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get shopProducts;
+
+  /// No description provided for @shopCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get shopCategories;
+
+  /// No description provided for @shopBrands.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands'**
+  String get shopBrands;
+
+  /// No description provided for @shopSuppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get shopSuppliers;
+
+  /// No description provided for @shopPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview the shop'**
+  String get shopPreview;
+
+  /// No description provided for @shopPreviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'See the shop as users will'**
+  String get shopPreviewSubtitle;
+
+  /// No description provided for @shopProductsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{active} active · {total} in total'**
+  String shopProductsCount(int active, int total);
+
+  /// No description provided for @shopAddProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add product'**
+  String get shopAddProduct;
+
+  /// No description provided for @shopEditProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit product'**
+  String get shopEditProduct;
+
+  /// No description provided for @shopProductsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No products yet. Add the first one.'**
+  String get shopProductsEmpty;
+
+  /// No description provided for @shopActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get shopActive;
+
+  /// No description provided for @shopHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get shopHidden;
+
+  /// No description provided for @shopNeedCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a category first (Shop → Categories).'**
+  String get shopNeedCategory;
+
+  /// No description provided for @shopPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos'**
+  String get shopPhotos;
+
+  /// No description provided for @shopPhotosHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 6 photos. The first one is the cover; hold and drag to reorder.'**
+  String get shopPhotosHelp;
+
+  /// No description provided for @shopAddPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photo'**
+  String get shopAddPhoto;
+
+  /// No description provided for @shopImageTooBig.
+  ///
+  /// In en, this message translates to:
+  /// **'Images must be smaller than 5 MB.'**
+  String get shopImageTooBig;
+
+  /// No description provided for @shopDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get shopDetails;
+
+  /// No description provided for @shopName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get shopName;
+
+  /// No description provided for @shopCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get shopCategory;
+
+  /// No description provided for @shopPickCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a category'**
+  String get shopPickCategory;
+
+  /// No description provided for @shopAnimals.
+  ///
+  /// In en, this message translates to:
+  /// **'Animals'**
+  String get shopAnimals;
+
+  /// No description provided for @shopAnimalsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'None selected means for every animal. Users see products for their own pets first.'**
+  String get shopAnimalsHelp;
+
+  /// No description provided for @shopSalesModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales model'**
+  String get shopSalesModel;
+
+  /// No description provided for @shopPartnerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner shop'**
+  String get shopPartnerName;
+
+  /// No description provided for @shopAffiliateUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Affiliate link'**
+  String get shopAffiliateUrl;
+
+  /// No description provided for @shopBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get shopBrand;
+
+  /// No description provided for @shopNoBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'No brand'**
+  String get shopNoBrand;
+
+  /// No description provided for @shopSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier'**
+  String get shopSupplier;
+
+  /// No description provided for @shopNoSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'No supplier'**
+  String get shopNoSupplier;
+
+  /// No description provided for @shopPriceSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get shopPriceSection;
+
+  /// No description provided for @shopPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (€)'**
+  String get shopPrice;
+
+  /// No description provided for @shopPriceAffiliateHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: prices change on the partner\'s site.'**
+  String get shopPriceAffiliateHelp;
+
+  /// No description provided for @shopPriceInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a price, for example 12.90'**
+  String get shopPriceInvalid;
+
+  /// No description provided for @shopCompareAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Price before discount (€)'**
+  String get shopCompareAt;
+
+  /// No description provided for @shopCompareAtHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Shown crossed out next to the price.'**
+  String get shopCompareAtHelp;
+
+  /// No description provided for @shopCompareAtInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Must be higher than the price.'**
+  String get shopCompareAtInvalid;
+
+  /// No description provided for @shopAvailability.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability'**
+  String get shopAvailability;
+
+  /// No description provided for @shopVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible to users'**
+  String get shopVisible;
+
+  /// No description provided for @shopVisibleHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden products are only seen by admins.'**
+  String get shopVisibleHelp;
+
+  /// No description provided for @shopCategoryVisibleHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'When hidden, the category and all its products are hidden from users.'**
+  String get shopCategoryVisibleHelp;
+
+  /// No description provided for @shopBrandVisibleHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'When hidden, all of the brand\'s products are hidden from users.'**
+  String get shopBrandVisibleHelp;
+
+  /// No description provided for @shopSupplierActiveHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'When off, all of this supplier\'s products are hidden from users.'**
+  String get shopSupplierActiveHelp;
+
+  /// No description provided for @shopDeleteProductTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this product?'**
+  String get shopDeleteProductTitle;
+
+  /// No description provided for @shopDeleteProductBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It is removed from the shop with its photos. This can\'t be undone.'**
+  String get shopDeleteProductBody;
+
+  /// No description provided for @shopDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}?'**
+  String shopDeleteTitle(String name);
+
+  /// No description provided for @shopDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone.'**
+  String get shopDeleteBody;
+
+  /// No description provided for @shopInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Still used by products or sub-categories, so it can\'t be deleted. Hide it instead.'**
+  String get shopInUse;
+
+  /// No description provided for @shopFixFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the fields marked in red.'**
+  String get shopFixFields;
+
+  /// No description provided for @shopLinkInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a full link starting with https://'**
+  String get shopLinkInvalid;
+
+  /// No description provided for @shopAddCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Add category'**
+  String get shopAddCategory;
+
+  /// No description provided for @shopEditCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit category'**
+  String get shopEditCategory;
+
+  /// No description provided for @shopAddStarting.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the starting categories'**
+  String get shopAddStarting;
+
+  /// No description provided for @shopStartingHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with food, accessories, care, toys, beds, carriers, tech and other. You can rename, hide or remove them later.'**
+  String get shopStartingHelp;
+
+  /// No description provided for @shopParent.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside category'**
+  String get shopParent;
+
+  /// No description provided for @shopNoParent.
+  ///
+  /// In en, this message translates to:
+  /// **'None (main category)'**
+  String get shopNoParent;
+
+  /// No description provided for @shopIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get shopIcon;
+
+  /// No description provided for @shopOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get shopOrder;
+
+  /// No description provided for @shopOrderHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Lower numbers come first.'**
+  String get shopOrderHelp;
+
+  /// No description provided for @shopCatFood.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet food'**
+  String get shopCatFood;
+
+  /// No description provided for @shopCatAccessories.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessories'**
+  String get shopCatAccessories;
+
+  /// No description provided for @shopCatCare.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet care'**
+  String get shopCatCare;
+
+  /// No description provided for @shopCatToys.
+  ///
+  /// In en, this message translates to:
+  /// **'Toys'**
+  String get shopCatToys;
+
+  /// No description provided for @shopCatBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds'**
+  String get shopCatBeds;
+
+  /// No description provided for @shopCatCarriers.
+  ///
+  /// In en, this message translates to:
+  /// **'Carriers'**
+  String get shopCatCarriers;
+
+  /// No description provided for @shopCatTech.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet tech'**
+  String get shopCatTech;
+
+  /// No description provided for @shopCatOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get shopCatOther;
+
+  /// No description provided for @shopAddBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Add brand'**
+  String get shopAddBrand;
+
+  /// No description provided for @shopEditBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit brand'**
+  String get shopEditBrand;
+
+  /// No description provided for @shopBrandsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No brands yet. Brands are optional; add them when you have partners.'**
+  String get shopBrandsEmpty;
+
+  /// No description provided for @shopWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get shopWebsite;
+
+  /// No description provided for @shopLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo'**
+  String get shopLogo;
+
+  /// No description provided for @shopAddLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose logo'**
+  String get shopAddLogo;
+
+  /// No description provided for @shopAddSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Add supplier'**
+  String get shopAddSupplier;
+
+  /// No description provided for @shopEditSupplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit supplier'**
+  String get shopEditSupplier;
+
+  /// No description provided for @shopSuppliersEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No suppliers yet.'**
+  String get shopSuppliersEmpty;
+
+  /// No description provided for @shopSuppliersHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Only admins see suppliers and their details. Turning a supplier off hides its products.'**
+  String get shopSuppliersHelp;
+
+  /// No description provided for @shopContactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact person'**
+  String get shopContactName;
+
+  /// No description provided for @shopEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get shopEmail;
+
+  /// No description provided for @shopEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address.'**
+  String get shopEmailInvalid;
+
+  /// No description provided for @shopPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get shopPhone;
+
+  /// No description provided for @shopOrderMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'How orders reach them'**
+  String get shopOrderMethod;
+
+  /// No description provided for @shopOrderManual.
+  ///
+  /// In en, this message translates to:
+  /// **'By hand'**
+  String get shopOrderManual;
+
+  /// No description provided for @shopOrderManualHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The team forwards each order to the supplier.'**
+  String get shopOrderManualHelp;
+
+  /// No description provided for @shopOrderEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic email'**
+  String get shopOrderEmail;
+
+  /// No description provided for @shopOrderEmailHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Each paid order is emailed to the supplier (starts with checkout).'**
+  String get shopOrderEmailHelp;
+
+  /// No description provided for @shopNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (admins only)'**
+  String get shopNotes;
 }
 
 class _AppLocalizationsDelegate

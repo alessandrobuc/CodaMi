@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Fri 23 Oct 2026_
+_Last updated: Thu 29 Oct 2026_
 
 ---
 
@@ -60,6 +60,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **Feedback and What's new (Fri 23 Oct):** deploy rules and functions: new `submitFeedback`, rules for `feedback`, `releaseNotes`, new `config/points` keys and the `feedbackDay` user field
 - [ ] **What's new paging (Fri 23 Oct, evening):** deploy rules and indexes again (`code` field and the `releaseNotes` index: published + code)
 - [x] **Petitions (Mon 26 Oct):** deploy `firestore:rules,firestore:indexes,storage` (new `petitions` rules, index review + publishedAt, `petitions/` image folder). Can go together with the What's new paging deploy above
+- [x] **Shop (Thu 29 Oct):** deploy `firestore:rules,storage` (new `config/shop`, `shopCategories`, `brands`, `suppliers`, `products` rules and the `shop/` image folder). The shop stays off until an admin opens it
 - [ ] Raise the version name (not only the build number) for every release that has notes, and publish its notes in Admin → More → What's new
 - [ ] **App updates (Tue 27 Oct):** deploy `firestore:rules` (new `config/appVersion`, readable before sign-in, admin-only writes). Can go together with the What's new paging deploy above
 - [ ] **Every release:** once the update is live in the store, set Admin → More → App updates → Latest version for that platform. Only set a Minimum version for a release that old versions can't work with (it blocks the app until updated)
@@ -97,6 +98,7 @@ Add SHA-1s to the existing key. Never replace them.
   - [ ] Update the content rating answers to "Yes"
 - [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
+- [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

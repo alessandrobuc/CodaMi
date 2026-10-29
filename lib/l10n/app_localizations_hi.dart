@@ -3752,4 +3752,418 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => 'एडमिन के रूप में जारी रखें';
+
+  @override
+  String get navShop => 'दुकान';
+
+  @override
+  String get shop => 'दुकान';
+
+  @override
+  String get adminShopSubtitle => 'उत्पाद, ब्रांड, सप्लायर और चालू/बंद स्विच';
+
+  @override
+  String get shopSubtitle => 'आपके पालतू जानवरों के लिए उत्पाद';
+
+  @override
+  String get shopSearchHint => 'उत्पाद खोजें';
+
+  @override
+  String get shopEmpty => 'उत्पाद जल्द आ रहे हैं। बाद में फिर देखें!';
+
+  @override
+  String get shopNoResults => 'कोई मेल खाता उत्पाद नहीं।';
+
+  @override
+  String get shopInStock => 'स्टॉक में';
+
+  @override
+  String get shopLowStock => 'कुछ ही बचे हैं';
+
+  @override
+  String get shopOutOfStock => 'स्टॉक खत्म';
+
+  @override
+  String get shopComingSoon => 'जल्द आ रहा है';
+
+  @override
+  String get shopModelOwnStock => 'हमारा स्टॉक';
+
+  @override
+  String get shopModelBrand => 'ब्रांड पार्टनर';
+
+  @override
+  String get shopModelDropship => 'ड्रॉपशिपिंग';
+
+  @override
+  String get shopModelAffiliate => 'एफ़िलिएट लिंक';
+
+  @override
+  String get shopModelOwnStockHelp => 'CodaMi स्टॉक रखता है और भेजता है।';
+
+  @override
+  String get shopModelBrandHelp =>
+      'ब्रांड CodaMi के ज़रिए बेचता है और ऑर्डर भेजता है।';
+
+  @override
+  String get shopModelDropshipHelp => 'सप्लायर ऑर्डर सीधे ग्राहक को भेजता है।';
+
+  @override
+  String get shopModelAffiliateHelp =>
+      'हमारे लिंक से पार्टनर की साइट पर खरीदा जाता है; CodaMi को कमीशन मिलता है।';
+
+  @override
+  String shopBuyOn(String partner) {
+    return '$partner पर खरीदें';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return '$partner द्वारा बेचा और भेजा जाता है। इस खरीद पर CodaMi को कमीशन मिल सकता है।';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return 'कीमत $partner पर';
+  }
+
+  @override
+  String get shopAddToCart => 'कार्ट में जोड़ें';
+
+  @override
+  String get shopCheckoutSoon => 'ऐप में खरीदारी जल्द आ रही है।';
+
+  @override
+  String get shopAllAnimals => 'सभी जानवरों के लिए';
+
+  @override
+  String get shopDescription => 'विवरण';
+
+  @override
+  String get shopOpenFailed => 'लिंक नहीं खुल सका।';
+
+  @override
+  String get shopPreviewOff =>
+      'पूर्वावलोकन: दुकान बंद है, उपयोगकर्ता इसे नहीं देख सकते।';
+
+  @override
+  String get shopAdminIntro =>
+      'CodaMi दुकान संभालें। चालू होने पर ही उपयोगकर्ता इसे देखते हैं।';
+
+  @override
+  String get shopOpenSwitch => 'उपयोगकर्ताओं के लिए दुकान खुली';
+
+  @override
+  String get shopOnHelp => 'चालू: सभी को दुकान टैब दिखता है।';
+
+  @override
+  String get shopOffHelp =>
+      'बंद: उपयोगकर्ता दुकान नहीं देखते। एडमिन इसे तैयार कर सकते हैं।';
+
+  @override
+  String get shopTurnOnTitle => 'दुकान खोलें?';
+
+  @override
+  String get shopTurnOnBody =>
+      'सभी उपयोगकर्ताओं को तुरंत दुकान टैब और सक्रिय उत्पाद दिखेंगे।';
+
+  @override
+  String get shopTurnOffTitle => 'दुकान बंद करें?';
+
+  @override
+  String get shopTurnOffBody =>
+      'दुकान टैब सभी के लिए तुरंत गायब हो जाएगा। उत्पाद और सेटिंग्स सुरक्षित रहेंगी।';
+
+  @override
+  String get shopTurnOn => 'खोलें';
+
+  @override
+  String get shopTurnOff => 'बंद करें';
+
+  @override
+  String get shopSalesModels => 'बिक्री मॉडल';
+
+  @override
+  String get shopSalesModelsHelp =>
+      'किसी मॉडल को बंद करने से उसके सभी उत्पाद छिप जाते हैं।';
+
+  @override
+  String get shopCatalog => 'कैटलॉग';
+
+  @override
+  String get shopProducts => 'उत्पाद';
+
+  @override
+  String get shopCategories => 'श्रेणियाँ';
+
+  @override
+  String get shopBrands => 'ब्रांड';
+
+  @override
+  String get shopSuppliers => 'सप्लायर';
+
+  @override
+  String get shopPreview => 'दुकान का पूर्वावलोकन';
+
+  @override
+  String get shopPreviewSubtitle => 'दुकान को उपयोगकर्ताओं की तरह देखें';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active सक्रिय · कुल $total';
+  }
+
+  @override
+  String get shopAddProduct => 'उत्पाद जोड़ें';
+
+  @override
+  String get shopEditProduct => 'उत्पाद संपादित करें';
+
+  @override
+  String get shopProductsEmpty => 'अभी कोई उत्पाद नहीं। पहला जोड़ें।';
+
+  @override
+  String get shopActive => 'सक्रिय';
+
+  @override
+  String get shopHidden => 'छिपा हुआ';
+
+  @override
+  String get shopNeedCategory => 'पहले एक श्रेणी जोड़ें (दुकान → श्रेणियाँ)।';
+
+  @override
+  String get shopPhotos => 'फ़ोटो';
+
+  @override
+  String get shopPhotosHelp =>
+      'अधिकतम 6 फ़ोटो। पहली कवर होगी; क्रम बदलने के लिए दबाकर खींचें।';
+
+  @override
+  String get shopAddPhoto => 'फ़ोटो जोड़ें';
+
+  @override
+  String get shopImageTooBig => 'इमेज 5 MB से छोटी होनी चाहिए।';
+
+  @override
+  String get shopDetails => 'विवरण';
+
+  @override
+  String get shopName => 'नाम';
+
+  @override
+  String get shopCategory => 'श्रेणी';
+
+  @override
+  String get shopPickCategory => 'एक श्रेणी चुनें';
+
+  @override
+  String get shopAnimals => 'जानवर';
+
+  @override
+  String get shopAnimalsHelp =>
+      'कुछ न चुनने का मतलब सभी जानवरों के लिए। उपयोगकर्ता पहले अपने पालतू के उत्पाद देखते हैं।';
+
+  @override
+  String get shopSalesModel => 'बिक्री मॉडल';
+
+  @override
+  String get shopPartnerName => 'पार्टनर दुकान';
+
+  @override
+  String get shopAffiliateUrl => 'एफ़िलिएट लिंक';
+
+  @override
+  String get shopBrand => 'ब्रांड';
+
+  @override
+  String get shopNoBrand => 'कोई ब्रांड नहीं';
+
+  @override
+  String get shopSupplier => 'सप्लायर';
+
+  @override
+  String get shopNoSupplier => 'कोई सप्लायर नहीं';
+
+  @override
+  String get shopPriceSection => 'कीमत';
+
+  @override
+  String get shopPrice => 'कीमत (€)';
+
+  @override
+  String get shopPriceAffiliateHelp =>
+      'वैकल्पिक: कीमतें पार्टनर की साइट पर बदलती हैं।';
+
+  @override
+  String get shopPriceInvalid => 'कीमत डालें, जैसे 12.90';
+
+  @override
+  String get shopCompareAt => 'छूट से पहले की कीमत (€)';
+
+  @override
+  String get shopCompareAtHelp => 'वैकल्पिक। कीमत के पास कटा हुआ दिखेगा।';
+
+  @override
+  String get shopCompareAtInvalid => 'कीमत से ज़्यादा होनी चाहिए।';
+
+  @override
+  String get shopAvailability => 'उपलब्धता';
+
+  @override
+  String get shopVisible => 'उपयोगकर्ताओं को दिखे';
+
+  @override
+  String get shopVisibleHelp => 'छिपे उत्पाद केवल एडमिन देखते हैं।';
+
+  @override
+  String get shopCategoryVisibleHelp =>
+      'छिपाने पर श्रेणी और उसके सभी उत्पाद छिप जाते हैं।';
+
+  @override
+  String get shopBrandVisibleHelp =>
+      'छिपाने पर ब्रांड के सभी उत्पाद छिप जाते हैं।';
+
+  @override
+  String get shopSupplierActiveHelp =>
+      'बंद करने पर इस सप्लायर के सभी उत्पाद छिप जाते हैं।';
+
+  @override
+  String get shopDeleteProductTitle => 'यह उत्पाद हटाएँ?';
+
+  @override
+  String get shopDeleteProductBody =>
+      'यह फ़ोटो सहित दुकान से हट जाएगा। इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return '$name हटाएँ?';
+  }
+
+  @override
+  String get shopDeleteBody => 'इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String get shopInUse =>
+      'अभी उत्पादों या उप-श्रेणियों में उपयोग हो रहा है, इसलिए हटा नहीं सकते। इसे छिपा दें।';
+
+  @override
+  String get shopFixFields => 'लाल रंग वाले फ़ील्ड जाँचें।';
+
+  @override
+  String get shopLinkInvalid => 'https:// से शुरू होने वाला पूरा लिंक डालें';
+
+  @override
+  String get shopAddCategory => 'श्रेणी जोड़ें';
+
+  @override
+  String get shopEditCategory => 'श्रेणी संपादित करें';
+
+  @override
+  String get shopAddStarting => 'शुरुआती श्रेणियाँ जोड़ें';
+
+  @override
+  String get shopStartingHelp =>
+      'भोजन, एक्सेसरीज़, देखभाल, खिलौने, बिस्तर, कैरियर, टेक और अन्य से शुरू करें। बाद में बदल सकते हैं।';
+
+  @override
+  String get shopParent => 'किस श्रेणी के अंदर';
+
+  @override
+  String get shopNoParent => 'कोई नहीं (मुख्य श्रेणी)';
+
+  @override
+  String get shopIcon => 'आइकन';
+
+  @override
+  String get shopOrder => 'क्रम';
+
+  @override
+  String get shopOrderHelp => 'छोटी संख्या पहले आती है।';
+
+  @override
+  String get shopCatFood => 'भोजन';
+
+  @override
+  String get shopCatAccessories => 'एक्सेसरीज़';
+
+  @override
+  String get shopCatCare => 'देखभाल';
+
+  @override
+  String get shopCatToys => 'खिलौने';
+
+  @override
+  String get shopCatBeds => 'बिस्तर';
+
+  @override
+  String get shopCatCarriers => 'कैरियर';
+
+  @override
+  String get shopCatTech => 'टेक';
+
+  @override
+  String get shopCatOther => 'अन्य';
+
+  @override
+  String get shopAddBrand => 'ब्रांड जोड़ें';
+
+  @override
+  String get shopEditBrand => 'ब्रांड संपादित करें';
+
+  @override
+  String get shopBrandsEmpty =>
+      'अभी कोई ब्रांड नहीं। ये वैकल्पिक हैं; पार्टनर होने पर जोड़ें।';
+
+  @override
+  String get shopWebsite => 'वेबसाइट';
+
+  @override
+  String get shopLogo => 'लोगो';
+
+  @override
+  String get shopAddLogo => 'लोगो चुनें';
+
+  @override
+  String get shopAddSupplier => 'सप्लायर जोड़ें';
+
+  @override
+  String get shopEditSupplier => 'सप्लायर संपादित करें';
+
+  @override
+  String get shopSuppliersEmpty => 'अभी कोई सप्लायर नहीं।';
+
+  @override
+  String get shopSuppliersHelp =>
+      'सप्लायर और उनकी जानकारी केवल एडमिन देखते हैं। सप्लायर बंद करने से उसके उत्पाद छिप जाते हैं।';
+
+  @override
+  String get shopContactName => 'संपर्क व्यक्ति';
+
+  @override
+  String get shopEmail => 'ईमेल';
+
+  @override
+  String get shopEmailInvalid => 'सही ईमेल पता डालें।';
+
+  @override
+  String get shopPhone => 'फ़ोन';
+
+  @override
+  String get shopOrderMethod => 'ऑर्डर उन तक कैसे पहुँचते हैं';
+
+  @override
+  String get shopOrderManual => 'हाथ से';
+
+  @override
+  String get shopOrderManualHelp => 'टीम हर ऑर्डर सप्लायर को भेजती है।';
+
+  @override
+  String get shopOrderEmail => 'स्वचालित ईमेल';
+
+  @override
+  String get shopOrderEmailHelp =>
+      'हर भुगतान वाला ऑर्डर सप्लायर को ईमेल होता है (चेकआउट के साथ)।';
+
+  @override
+  String get shopNotes => 'नोट्स (केवल एडमिन)';
 }

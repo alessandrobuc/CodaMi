@@ -3792,4 +3792,425 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => 'Continua come admin';
+
+  @override
+  String get navShop => 'Shop';
+
+  @override
+  String get shop => 'Shop';
+
+  @override
+  String get adminShopSubtitle =>
+      'Prodotti, marchi, fornitori e interruttore on/off';
+
+  @override
+  String get shopSubtitle => 'Prodotti per i tuoi animali';
+
+  @override
+  String get shopSearchHint => 'Cerca prodotti';
+
+  @override
+  String get shopEmpty => 'I prodotti arriveranno presto. Torna a trovarci!';
+
+  @override
+  String get shopNoResults => 'Nessun prodotto corrisponde.';
+
+  @override
+  String get shopInStock => 'Disponibile';
+
+  @override
+  String get shopLowStock => 'Ultimi pezzi';
+
+  @override
+  String get shopOutOfStock => 'Esaurito';
+
+  @override
+  String get shopComingSoon => 'Presto disponibile';
+
+  @override
+  String get shopModelOwnStock => 'Magazzino nostro';
+
+  @override
+  String get shopModelBrand => 'Partner del marchio';
+
+  @override
+  String get shopModelDropship => 'Dropshipping';
+
+  @override
+  String get shopModelAffiliate => 'Link di affiliazione';
+
+  @override
+  String get shopModelOwnStockHelp => 'CodaMi tiene il magazzino e spedisce.';
+
+  @override
+  String get shopModelBrandHelp =>
+      'Il marchio vende tramite CodaMi e spedisce l\'ordine.';
+
+  @override
+  String get shopModelDropshipHelp =>
+      'Un fornitore spedisce l\'ordine direttamente al cliente.';
+
+  @override
+  String get shopModelAffiliateHelp =>
+      'Acquistato sul sito del partner tramite il nostro link; CodaMi riceve una commissione.';
+
+  @override
+  String shopBuyOn(String partner) {
+    return 'Acquista su $partner';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return 'Venduto e spedito da $partner. CodaMi può ricevere una commissione su questo acquisto.';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return 'Prezzo su $partner';
+  }
+
+  @override
+  String get shopAddToCart => 'Aggiungi al carrello';
+
+  @override
+  String get shopCheckoutSoon => 'L\'acquisto nell\'app arriverà presto.';
+
+  @override
+  String get shopAllAnimals => 'Per tutti gli animali';
+
+  @override
+  String get shopDescription => 'Descrizione';
+
+  @override
+  String get shopOpenFailed => 'Impossibile aprire il link.';
+
+  @override
+  String get shopPreviewOff =>
+      'Anteprima: lo shop è spento, gli utenti non lo vedono.';
+
+  @override
+  String get shopAdminIntro =>
+      'Gestisci lo Shop CodaMi. Gli utenti lo vedono solo quando è acceso.';
+
+  @override
+  String get shopOpenSwitch => 'Shop aperto agli utenti';
+
+  @override
+  String get shopOnHelp => 'Acceso: tutti vedono la scheda Shop.';
+
+  @override
+  String get shopOffHelp =>
+      'Spento: gli utenti non vedono lo shop. Gli admin possono prepararlo.';
+
+  @override
+  String get shopTurnOnTitle => 'Aprire lo shop?';
+
+  @override
+  String get shopTurnOnBody =>
+      'Tutti gli utenti vedranno subito la scheda Shop e i prodotti attivi.';
+
+  @override
+  String get shopTurnOffTitle => 'Chiudere lo shop?';
+
+  @override
+  String get shopTurnOffBody =>
+      'La scheda Shop sparisce subito per tutti. Prodotti e impostazioni restano salvati.';
+
+  @override
+  String get shopTurnOn => 'Apri';
+
+  @override
+  String get shopTurnOff => 'Chiudi';
+
+  @override
+  String get shopSalesModels => 'Modelli di vendita';
+
+  @override
+  String get shopSalesModelsHelp =>
+      'Spegnere un modello nasconde tutti i suoi prodotti agli utenti.';
+
+  @override
+  String get shopCatalog => 'Catalogo';
+
+  @override
+  String get shopProducts => 'Prodotti';
+
+  @override
+  String get shopCategories => 'Categorie';
+
+  @override
+  String get shopBrands => 'Marchi';
+
+  @override
+  String get shopSuppliers => 'Fornitori';
+
+  @override
+  String get shopPreview => 'Anteprima dello shop';
+
+  @override
+  String get shopPreviewSubtitle =>
+      'Guarda lo shop come lo vedranno gli utenti';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active attivi · $total in totale';
+  }
+
+  @override
+  String get shopAddProduct => 'Aggiungi prodotto';
+
+  @override
+  String get shopEditProduct => 'Modifica prodotto';
+
+  @override
+  String get shopProductsEmpty => 'Ancora nessun prodotto. Aggiungi il primo.';
+
+  @override
+  String get shopActive => 'Attivo';
+
+  @override
+  String get shopHidden => 'Nascosto';
+
+  @override
+  String get shopNeedCategory =>
+      'Aggiungi prima una categoria (Shop → Categorie).';
+
+  @override
+  String get shopPhotos => 'Foto';
+
+  @override
+  String get shopPhotosHelp =>
+      'Fino a 6 foto. La prima è la copertina; tieni premuto e trascina per riordinare.';
+
+  @override
+  String get shopAddPhoto => 'Aggiungi foto';
+
+  @override
+  String get shopImageTooBig => 'Le immagini devono essere inferiori a 5 MB.';
+
+  @override
+  String get shopDetails => 'Dettagli';
+
+  @override
+  String get shopName => 'Nome';
+
+  @override
+  String get shopCategory => 'Categoria';
+
+  @override
+  String get shopPickCategory => 'Scegli una categoria';
+
+  @override
+  String get shopAnimals => 'Animali';
+
+  @override
+  String get shopAnimalsHelp =>
+      'Nessuna scelta significa per tutti gli animali. Gli utenti vedono prima i prodotti per i loro animali.';
+
+  @override
+  String get shopSalesModel => 'Modello di vendita';
+
+  @override
+  String get shopPartnerName => 'Negozio partner';
+
+  @override
+  String get shopAffiliateUrl => 'Link di affiliazione';
+
+  @override
+  String get shopBrand => 'Marchio';
+
+  @override
+  String get shopNoBrand => 'Nessun marchio';
+
+  @override
+  String get shopSupplier => 'Fornitore';
+
+  @override
+  String get shopNoSupplier => 'Nessun fornitore';
+
+  @override
+  String get shopPriceSection => 'Prezzo';
+
+  @override
+  String get shopPrice => 'Prezzo (€)';
+
+  @override
+  String get shopPriceAffiliateHelp =>
+      'Facoltativo: i prezzi cambiano sul sito del partner.';
+
+  @override
+  String get shopPriceInvalid => 'Inserisci un prezzo, ad esempio 12,90';
+
+  @override
+  String get shopCompareAt => 'Prezzo prima dello sconto (€)';
+
+  @override
+  String get shopCompareAtHelp =>
+      'Facoltativo. Mostrato barrato accanto al prezzo.';
+
+  @override
+  String get shopCompareAtInvalid => 'Deve essere più alto del prezzo.';
+
+  @override
+  String get shopAvailability => 'Disponibilità';
+
+  @override
+  String get shopVisible => 'Visibile agli utenti';
+
+  @override
+  String get shopVisibleHelp =>
+      'I prodotti nascosti sono visibili solo agli admin.';
+
+  @override
+  String get shopCategoryVisibleHelp =>
+      'Se nascosta, la categoria e tutti i suoi prodotti sono nascosti agli utenti.';
+
+  @override
+  String get shopBrandVisibleHelp =>
+      'Se nascosto, tutti i prodotti del marchio sono nascosti agli utenti.';
+
+  @override
+  String get shopSupplierActiveHelp =>
+      'Se spento, tutti i prodotti di questo fornitore sono nascosti agli utenti.';
+
+  @override
+  String get shopDeleteProductTitle => 'Eliminare questo prodotto?';
+
+  @override
+  String get shopDeleteProductBody =>
+      'Viene rimosso dallo shop con le sue foto. Non si può annullare.';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return 'Eliminare $name?';
+  }
+
+  @override
+  String get shopDeleteBody => 'Non si può annullare.';
+
+  @override
+  String get shopInUse =>
+      'È ancora usato da prodotti o sottocategorie e non può essere eliminato. Nascondilo.';
+
+  @override
+  String get shopFixFields => 'Controlla i campi in rosso.';
+
+  @override
+  String get shopLinkInvalid =>
+      'Inserisci un link completo che inizi con https://';
+
+  @override
+  String get shopAddCategory => 'Aggiungi categoria';
+
+  @override
+  String get shopEditCategory => 'Modifica categoria';
+
+  @override
+  String get shopAddStarting => 'Aggiungi le categorie iniziali';
+
+  @override
+  String get shopStartingHelp =>
+      'Inizia con cibo, accessori, cura, giochi, cucce, trasportini, tecnologia e altro. Potrai rinominarle, nasconderle o eliminarle.';
+
+  @override
+  String get shopParent => 'Dentro la categoria';
+
+  @override
+  String get shopNoParent => 'Nessuna (categoria principale)';
+
+  @override
+  String get shopIcon => 'Icona';
+
+  @override
+  String get shopOrder => 'Posizione';
+
+  @override
+  String get shopOrderHelp => 'I numeri più bassi vengono prima.';
+
+  @override
+  String get shopCatFood => 'Cibo';
+
+  @override
+  String get shopCatAccessories => 'Accessori';
+
+  @override
+  String get shopCatCare => 'Cura';
+
+  @override
+  String get shopCatToys => 'Giochi';
+
+  @override
+  String get shopCatBeds => 'Cucce';
+
+  @override
+  String get shopCatCarriers => 'Trasportini';
+
+  @override
+  String get shopCatTech => 'Tecnologia';
+
+  @override
+  String get shopCatOther => 'Altro';
+
+  @override
+  String get shopAddBrand => 'Aggiungi marchio';
+
+  @override
+  String get shopEditBrand => 'Modifica marchio';
+
+  @override
+  String get shopBrandsEmpty =>
+      'Ancora nessun marchio. Sono facoltativi; aggiungili quando hai dei partner.';
+
+  @override
+  String get shopWebsite => 'Sito web';
+
+  @override
+  String get shopLogo => 'Logo';
+
+  @override
+  String get shopAddLogo => 'Scegli logo';
+
+  @override
+  String get shopAddSupplier => 'Aggiungi fornitore';
+
+  @override
+  String get shopEditSupplier => 'Modifica fornitore';
+
+  @override
+  String get shopSuppliersEmpty => 'Ancora nessun fornitore.';
+
+  @override
+  String get shopSuppliersHelp =>
+      'Solo gli admin vedono i fornitori e i loro dati. Spegnere un fornitore nasconde i suoi prodotti.';
+
+  @override
+  String get shopContactName => 'Referente';
+
+  @override
+  String get shopEmail => 'Email';
+
+  @override
+  String get shopEmailInvalid => 'Inserisci un indirizzo email valido.';
+
+  @override
+  String get shopPhone => 'Telefono';
+
+  @override
+  String get shopOrderMethod => 'Come ricevono gli ordini';
+
+  @override
+  String get shopOrderManual => 'A mano';
+
+  @override
+  String get shopOrderManualHelp => 'Il team inoltra ogni ordine al fornitore.';
+
+  @override
+  String get shopOrderEmail => 'Email automatica';
+
+  @override
+  String get shopOrderEmailHelp =>
+      'Ogni ordine pagato viene inviato via email al fornitore (con il checkout).';
+
+  @override
+  String get shopNotes => 'Note (solo admin)';
 }

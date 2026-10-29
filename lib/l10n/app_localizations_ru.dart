@@ -3794,4 +3794,423 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => 'Продолжить как администратор';
+
+  @override
+  String get navShop => 'Магазин';
+
+  @override
+  String get shop => 'Магазин';
+
+  @override
+  String get adminShopSubtitle => 'Товары, бренды, поставщики и переключатель';
+
+  @override
+  String get shopSubtitle => 'Товары для ваших питомцев';
+
+  @override
+  String get shopSearchHint => 'Поиск товаров';
+
+  @override
+  String get shopEmpty => 'Товары скоро появятся. Загляните позже!';
+
+  @override
+  String get shopNoResults => 'Ничего не найдено.';
+
+  @override
+  String get shopInStock => 'В наличии';
+
+  @override
+  String get shopLowStock => 'Осталось мало';
+
+  @override
+  String get shopOutOfStock => 'Нет в наличии';
+
+  @override
+  String get shopComingSoon => 'Скоро в продаже';
+
+  @override
+  String get shopModelOwnStock => 'Свой склад';
+
+  @override
+  String get shopModelBrand => 'Бренд-партнёр';
+
+  @override
+  String get shopModelDropship => 'Дропшиппинг';
+
+  @override
+  String get shopModelAffiliate => 'Партнёрская ссылка';
+
+  @override
+  String get shopModelOwnStockHelp => 'CodaMi хранит товар и отправляет его.';
+
+  @override
+  String get shopModelBrandHelp =>
+      'Бренд продаёт через CodaMi и сам отправляет заказ.';
+
+  @override
+  String get shopModelDropshipHelp =>
+      'Поставщик отправляет заказ прямо покупателю.';
+
+  @override
+  String get shopModelAffiliateHelp =>
+      'Покупка на сайте партнёра по нашей ссылке; CodaMi получает комиссию.';
+
+  @override
+  String shopBuyOn(String partner) {
+    return 'Купить на $partner';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return 'Продаёт и отправляет $partner. CodaMi может получить комиссию с этой покупки.';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return 'Цена на $partner';
+  }
+
+  @override
+  String get shopAddToCart => 'В корзину';
+
+  @override
+  String get shopCheckoutSoon => 'Покупка в приложении скоро появится.';
+
+  @override
+  String get shopAllAnimals => 'Для всех животных';
+
+  @override
+  String get shopDescription => 'Описание';
+
+  @override
+  String get shopOpenFailed => 'Не удалось открыть ссылку.';
+
+  @override
+  String get shopPreviewOff =>
+      'Предпросмотр: магазин выключен, пользователи его не видят.';
+
+  @override
+  String get shopAdminIntro =>
+      'Управляйте магазином CodaMi. Пользователи видят его, только когда он включён.';
+
+  @override
+  String get shopOpenSwitch => 'Магазин открыт для пользователей';
+
+  @override
+  String get shopOnHelp => 'Включён: все видят вкладку «Магазин».';
+
+  @override
+  String get shopOffHelp =>
+      'Выключен: пользователи не видят магазин. Админы могут его готовить.';
+
+  @override
+  String get shopTurnOnTitle => 'Открыть магазин?';
+
+  @override
+  String get shopTurnOnBody =>
+      'Все пользователи сразу увидят вкладку «Магазин» и активные товары.';
+
+  @override
+  String get shopTurnOffTitle => 'Закрыть магазин?';
+
+  @override
+  String get shopTurnOffBody =>
+      'Вкладка «Магазин» сразу исчезнет у всех. Товары и настройки сохранятся.';
+
+  @override
+  String get shopTurnOn => 'Открыть';
+
+  @override
+  String get shopTurnOff => 'Закрыть';
+
+  @override
+  String get shopSalesModels => 'Модели продаж';
+
+  @override
+  String get shopSalesModelsHelp =>
+      'Отключение модели скрывает все её товары от пользователей.';
+
+  @override
+  String get shopCatalog => 'Каталог';
+
+  @override
+  String get shopProducts => 'Товары';
+
+  @override
+  String get shopCategories => 'Категории';
+
+  @override
+  String get shopBrands => 'Бренды';
+
+  @override
+  String get shopSuppliers => 'Поставщики';
+
+  @override
+  String get shopPreview => 'Предпросмотр магазина';
+
+  @override
+  String get shopPreviewSubtitle => 'Магазин глазами пользователей';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active активных · всего $total';
+  }
+
+  @override
+  String get shopAddProduct => 'Добавить товар';
+
+  @override
+  String get shopEditProduct => 'Изменить товар';
+
+  @override
+  String get shopProductsEmpty => 'Товаров пока нет. Добавьте первый.';
+
+  @override
+  String get shopActive => 'Активен';
+
+  @override
+  String get shopHidden => 'Скрыт';
+
+  @override
+  String get shopNeedCategory =>
+      'Сначала добавьте категорию (Магазин → Категории).';
+
+  @override
+  String get shopPhotos => 'Фото';
+
+  @override
+  String get shopPhotosHelp =>
+      'До 6 фото. Первое — обложка; удерживайте и перетаскивайте, чтобы изменить порядок.';
+
+  @override
+  String get shopAddPhoto => 'Добавить фото';
+
+  @override
+  String get shopImageTooBig => 'Изображения должны быть меньше 5 МБ.';
+
+  @override
+  String get shopDetails => 'Подробности';
+
+  @override
+  String get shopName => 'Название';
+
+  @override
+  String get shopCategory => 'Категория';
+
+  @override
+  String get shopPickCategory => 'Выберите категорию';
+
+  @override
+  String get shopAnimals => 'Животные';
+
+  @override
+  String get shopAnimalsHelp =>
+      'Если ничего не выбрано — для всех животных. Пользователи сначала видят товары для своих питомцев.';
+
+  @override
+  String get shopSalesModel => 'Модель продажи';
+
+  @override
+  String get shopPartnerName => 'Магазин-партнёр';
+
+  @override
+  String get shopAffiliateUrl => 'Партнёрская ссылка';
+
+  @override
+  String get shopBrand => 'Бренд';
+
+  @override
+  String get shopNoBrand => 'Без бренда';
+
+  @override
+  String get shopSupplier => 'Поставщик';
+
+  @override
+  String get shopNoSupplier => 'Без поставщика';
+
+  @override
+  String get shopPriceSection => 'Цена';
+
+  @override
+  String get shopPrice => 'Цена (€)';
+
+  @override
+  String get shopPriceAffiliateHelp =>
+      'Необязательно: цены меняются на сайте партнёра.';
+
+  @override
+  String get shopPriceInvalid => 'Введите цену, например 12,90';
+
+  @override
+  String get shopCompareAt => 'Цена до скидки (€)';
+
+  @override
+  String get shopCompareAtHelp =>
+      'Необязательно. Показывается зачёркнутой рядом с ценой.';
+
+  @override
+  String get shopCompareAtInvalid => 'Должна быть выше цены.';
+
+  @override
+  String get shopAvailability => 'Наличие';
+
+  @override
+  String get shopVisible => 'Видно пользователям';
+
+  @override
+  String get shopVisibleHelp => 'Скрытые товары видят только админы.';
+
+  @override
+  String get shopCategoryVisibleHelp =>
+      'Если скрыть, категория и все её товары не видны пользователям.';
+
+  @override
+  String get shopBrandVisibleHelp =>
+      'Если скрыть, все товары бренда не видны пользователям.';
+
+  @override
+  String get shopSupplierActiveHelp =>
+      'Если выключить, все товары поставщика не видны пользователям.';
+
+  @override
+  String get shopDeleteProductTitle => 'Удалить этот товар?';
+
+  @override
+  String get shopDeleteProductBody =>
+      'Товар удаляется из магазина вместе с фото. Это необратимо.';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return 'Удалить «$name»?';
+  }
+
+  @override
+  String get shopDeleteBody => 'Это необратимо.';
+
+  @override
+  String get shopInUse =>
+      'Используется товарами или подкатегориями, удалить нельзя. Скройте вместо этого.';
+
+  @override
+  String get shopFixFields => 'Проверьте поля, отмеченные красным.';
+
+  @override
+  String get shopLinkInvalid =>
+      'Введите полную ссылку, начинающуюся с https://';
+
+  @override
+  String get shopAddCategory => 'Добавить категорию';
+
+  @override
+  String get shopEditCategory => 'Изменить категорию';
+
+  @override
+  String get shopAddStarting => 'Добавить базовые категории';
+
+  @override
+  String get shopStartingHelp =>
+      'Начните с корма, аксессуаров, ухода, игрушек, лежанок, переносок, техники и прочего. Позже их можно изменить.';
+
+  @override
+  String get shopParent => 'Внутри категории';
+
+  @override
+  String get shopNoParent => 'Нет (основная категория)';
+
+  @override
+  String get shopIcon => 'Значок';
+
+  @override
+  String get shopOrder => 'Позиция';
+
+  @override
+  String get shopOrderHelp => 'Меньшие числа идут первыми.';
+
+  @override
+  String get shopCatFood => 'Корм';
+
+  @override
+  String get shopCatAccessories => 'Аксессуары';
+
+  @override
+  String get shopCatCare => 'Уход';
+
+  @override
+  String get shopCatToys => 'Игрушки';
+
+  @override
+  String get shopCatBeds => 'Лежанки';
+
+  @override
+  String get shopCatCarriers => 'Переноски';
+
+  @override
+  String get shopCatTech => 'Техника';
+
+  @override
+  String get shopCatOther => 'Другое';
+
+  @override
+  String get shopAddBrand => 'Добавить бренд';
+
+  @override
+  String get shopEditBrand => 'Изменить бренд';
+
+  @override
+  String get shopBrandsEmpty =>
+      'Брендов пока нет. Они необязательны; добавьте, когда появятся партнёры.';
+
+  @override
+  String get shopWebsite => 'Сайт';
+
+  @override
+  String get shopLogo => 'Логотип';
+
+  @override
+  String get shopAddLogo => 'Выбрать логотип';
+
+  @override
+  String get shopAddSupplier => 'Добавить поставщика';
+
+  @override
+  String get shopEditSupplier => 'Изменить поставщика';
+
+  @override
+  String get shopSuppliersEmpty => 'Поставщиков пока нет.';
+
+  @override
+  String get shopSuppliersHelp =>
+      'Поставщиков и их данные видят только админы. Отключение поставщика скрывает его товары.';
+
+  @override
+  String get shopContactName => 'Контактное лицо';
+
+  @override
+  String get shopEmail => 'Эл. почта';
+
+  @override
+  String get shopEmailInvalid => 'Введите корректный адрес эл. почты.';
+
+  @override
+  String get shopPhone => 'Телефон';
+
+  @override
+  String get shopOrderMethod => 'Как передаются заказы';
+
+  @override
+  String get shopOrderManual => 'Вручную';
+
+  @override
+  String get shopOrderManualHelp =>
+      'Команда пересылает каждый заказ поставщику.';
+
+  @override
+  String get shopOrderEmail => 'Автоматическое письмо';
+
+  @override
+  String get shopOrderEmailHelp =>
+      'Каждый оплаченный заказ отправляется поставщику по почте (с запуском оплаты).';
+
+  @override
+  String get shopNotes => 'Заметки (только админы)';
 }

@@ -3572,4 +3572,398 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => '以管理员身份继续';
+
+  @override
+  String get navShop => '商店';
+
+  @override
+  String get shop => '商店';
+
+  @override
+  String get adminShopSubtitle => '商品、品牌、供应商和开关';
+
+  @override
+  String get shopSubtitle => '为您的宠物精选商品';
+
+  @override
+  String get shopSearchHint => '搜索商品';
+
+  @override
+  String get shopEmpty => '商品即将上架，敬请期待！';
+
+  @override
+  String get shopNoResults => '没有匹配的商品。';
+
+  @override
+  String get shopInStock => '有货';
+
+  @override
+  String get shopLowStock => '仅剩少量';
+
+  @override
+  String get shopOutOfStock => '缺货';
+
+  @override
+  String get shopComingSoon => '即将上架';
+
+  @override
+  String get shopModelOwnStock => '自有库存';
+
+  @override
+  String get shopModelBrand => '品牌合作';
+
+  @override
+  String get shopModelDropship => '代发货';
+
+  @override
+  String get shopModelAffiliate => '联盟链接';
+
+  @override
+  String get shopModelOwnStockHelp => '由 CodaMi 备货并发货。';
+
+  @override
+  String get shopModelBrandHelp => '品牌通过 CodaMi 销售并负责发货。';
+
+  @override
+  String get shopModelDropshipHelp => '由供应商直接发货给顾客。';
+
+  @override
+  String get shopModelAffiliateHelp => '通过我们的链接在合作方网站购买，CodaMi 获得佣金。';
+
+  @override
+  String shopBuyOn(String partner) {
+    return '在 $partner 购买';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return '由 $partner 销售并发货。CodaMi 可能从此次购买中获得佣金。';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return '价格见 $partner';
+  }
+
+  @override
+  String get shopAddToCart => '加入购物车';
+
+  @override
+  String get shopCheckoutSoon => '应用内购买即将推出。';
+
+  @override
+  String get shopAllAnimals => '适合所有动物';
+
+  @override
+  String get shopDescription => '描述';
+
+  @override
+  String get shopOpenFailed => '无法打开链接。';
+
+  @override
+  String get shopPreviewOff => '预览：商店已关闭，用户看不到。';
+
+  @override
+  String get shopAdminIntro => '管理 CodaMi 商店。只有开启时用户才能看到。';
+
+  @override
+  String get shopOpenSwitch => '向用户开放商店';
+
+  @override
+  String get shopOnHelp => '开启：所有人都能看到商店标签。';
+
+  @override
+  String get shopOffHelp => '关闭：用户看不到商店，管理员仍可准备内容。';
+
+  @override
+  String get shopTurnOnTitle => '开启商店？';
+
+  @override
+  String get shopTurnOnBody => '所有用户将立即看到商店标签和上架商品。';
+
+  @override
+  String get shopTurnOffTitle => '关闭商店？';
+
+  @override
+  String get shopTurnOffBody => '商店标签将立即对所有用户隐藏，商品和设置会保留。';
+
+  @override
+  String get shopTurnOn => '开启';
+
+  @override
+  String get shopTurnOff => '关闭';
+
+  @override
+  String get shopSalesModels => '销售模式';
+
+  @override
+  String get shopSalesModelsHelp => '关闭某个模式会对用户隐藏其全部商品。';
+
+  @override
+  String get shopCatalog => '商品目录';
+
+  @override
+  String get shopProducts => '商品';
+
+  @override
+  String get shopCategories => '分类';
+
+  @override
+  String get shopBrands => '品牌';
+
+  @override
+  String get shopSuppliers => '供应商';
+
+  @override
+  String get shopPreview => '预览商店';
+
+  @override
+  String get shopPreviewSubtitle => '以用户视角查看商店';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active 个上架 · 共 $total 个';
+  }
+
+  @override
+  String get shopAddProduct => '添加商品';
+
+  @override
+  String get shopEditProduct => '编辑商品';
+
+  @override
+  String get shopProductsEmpty => '还没有商品，添加第一个吧。';
+
+  @override
+  String get shopActive => '上架';
+
+  @override
+  String get shopHidden => '隐藏';
+
+  @override
+  String get shopNeedCategory => '请先添加分类（商店 → 分类）。';
+
+  @override
+  String get shopPhotos => '照片';
+
+  @override
+  String get shopPhotosHelp => '最多 6 张照片，第一张为封面；长按拖动可调整顺序。';
+
+  @override
+  String get shopAddPhoto => '添加照片';
+
+  @override
+  String get shopImageTooBig => '图片必须小于 5 MB。';
+
+  @override
+  String get shopDetails => '详情';
+
+  @override
+  String get shopName => '名称';
+
+  @override
+  String get shopCategory => '分类';
+
+  @override
+  String get shopPickCategory => '请选择分类';
+
+  @override
+  String get shopAnimals => '适用动物';
+
+  @override
+  String get shopAnimalsHelp => '不选表示适合所有动物。用户会优先看到适合自己宠物的商品。';
+
+  @override
+  String get shopSalesModel => '销售模式';
+
+  @override
+  String get shopPartnerName => '合作商店';
+
+  @override
+  String get shopAffiliateUrl => '联盟链接';
+
+  @override
+  String get shopBrand => '品牌';
+
+  @override
+  String get shopNoBrand => '无品牌';
+
+  @override
+  String get shopSupplier => '供应商';
+
+  @override
+  String get shopNoSupplier => '无供应商';
+
+  @override
+  String get shopPriceSection => '价格';
+
+  @override
+  String get shopPrice => '价格（€）';
+
+  @override
+  String get shopPriceAffiliateHelp => '可选：价格以合作方网站为准。';
+
+  @override
+  String get shopPriceInvalid => '请输入价格，例如 12.90';
+
+  @override
+  String get shopCompareAt => '折前价格（€）';
+
+  @override
+  String get shopCompareAtHelp => '可选，以删除线显示在价格旁。';
+
+  @override
+  String get shopCompareAtInvalid => '必须高于售价。';
+
+  @override
+  String get shopAvailability => '库存状态';
+
+  @override
+  String get shopVisible => '对用户可见';
+
+  @override
+  String get shopVisibleHelp => '隐藏的商品只有管理员可见。';
+
+  @override
+  String get shopCategoryVisibleHelp => '隐藏后，该分类及其全部商品对用户不可见。';
+
+  @override
+  String get shopBrandVisibleHelp => '隐藏后，该品牌的全部商品对用户不可见。';
+
+  @override
+  String get shopSupplierActiveHelp => '关闭后，该供应商的全部商品对用户不可见。';
+
+  @override
+  String get shopDeleteProductTitle => '删除此商品？';
+
+  @override
+  String get shopDeleteProductBody => '商品及其照片将被删除，无法撤销。';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return '删除 $name？';
+  }
+
+  @override
+  String get shopDeleteBody => '此操作无法撤销。';
+
+  @override
+  String get shopInUse => '仍被商品或子分类使用，无法删除。请改为隐藏。';
+
+  @override
+  String get shopFixFields => '请检查标红的字段。';
+
+  @override
+  String get shopLinkInvalid => '请输入以 https:// 开头的完整链接';
+
+  @override
+  String get shopAddCategory => '添加分类';
+
+  @override
+  String get shopEditCategory => '编辑分类';
+
+  @override
+  String get shopAddStarting => '添加初始分类';
+
+  @override
+  String get shopStartingHelp => '从食品、配件、护理、玩具、窝垫、外出箱、科技和其他开始，之后可重命名、隐藏或删除。';
+
+  @override
+  String get shopParent => '所属分类';
+
+  @override
+  String get shopNoParent => '无（主分类）';
+
+  @override
+  String get shopIcon => '图标';
+
+  @override
+  String get shopOrder => '排序';
+
+  @override
+  String get shopOrderHelp => '数字越小越靠前。';
+
+  @override
+  String get shopCatFood => '宠物食品';
+
+  @override
+  String get shopCatAccessories => '配件';
+
+  @override
+  String get shopCatCare => '护理用品';
+
+  @override
+  String get shopCatToys => '玩具';
+
+  @override
+  String get shopCatBeds => '窝垫';
+
+  @override
+  String get shopCatCarriers => '外出箱包';
+
+  @override
+  String get shopCatTech => '智能设备';
+
+  @override
+  String get shopCatOther => '其他';
+
+  @override
+  String get shopAddBrand => '添加品牌';
+
+  @override
+  String get shopEditBrand => '编辑品牌';
+
+  @override
+  String get shopBrandsEmpty => '还没有品牌。品牌可选，有合作伙伴时再添加。';
+
+  @override
+  String get shopWebsite => '网站';
+
+  @override
+  String get shopLogo => '标志';
+
+  @override
+  String get shopAddLogo => '选择标志';
+
+  @override
+  String get shopAddSupplier => '添加供应商';
+
+  @override
+  String get shopEditSupplier => '编辑供应商';
+
+  @override
+  String get shopSuppliersEmpty => '还没有供应商。';
+
+  @override
+  String get shopSuppliersHelp => '只有管理员能看到供应商及其信息。关闭供应商会隐藏其商品。';
+
+  @override
+  String get shopContactName => '联系人';
+
+  @override
+  String get shopEmail => '邮箱';
+
+  @override
+  String get shopEmailInvalid => '请输入有效的邮箱地址。';
+
+  @override
+  String get shopPhone => '电话';
+
+  @override
+  String get shopOrderMethod => '订单如何发送';
+
+  @override
+  String get shopOrderManual => '手动';
+
+  @override
+  String get shopOrderManualHelp => '由团队将每个订单转给供应商。';
+
+  @override
+  String get shopOrderEmail => '自动邮件';
+
+  @override
+  String get shopOrderEmailHelp => '每笔已付款订单会通过邮件发给供应商（随结账功能上线）。';
+
+  @override
+  String get shopNotes => '备注（仅管理员）';
 }

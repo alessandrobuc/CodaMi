@@ -3719,4 +3719,416 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => 'المتابعة كمسؤول';
+
+  @override
+  String get navShop => 'المتجر';
+
+  @override
+  String get shop => 'المتجر';
+
+  @override
+  String get adminShopSubtitle => 'المنتجات والعلامات والموردون ومفتاح التشغيل';
+
+  @override
+  String get shopSubtitle => 'منتجات لحيواناتك الأليفة';
+
+  @override
+  String get shopSearchHint => 'ابحث عن منتجات';
+
+  @override
+  String get shopEmpty => 'المنتجات قادمة قريبًا. عد لاحقًا!';
+
+  @override
+  String get shopNoResults => 'لا توجد منتجات مطابقة.';
+
+  @override
+  String get shopInStock => 'متوفر';
+
+  @override
+  String get shopLowStock => 'كمية محدودة';
+
+  @override
+  String get shopOutOfStock => 'نفد المخزون';
+
+  @override
+  String get shopComingSoon => 'قريبًا';
+
+  @override
+  String get shopModelOwnStock => 'مخزوننا';
+
+  @override
+  String get shopModelBrand => 'علامة شريكة';
+
+  @override
+  String get shopModelDropship => 'الشحن المباشر';
+
+  @override
+  String get shopModelAffiliate => 'رابط تسويق بالعمولة';
+
+  @override
+  String get shopModelOwnStockHelp => 'تحتفظ CodaMi بالمخزون وتشحنه.';
+
+  @override
+  String get shopModelBrandHelp => 'تبيع العلامة عبر CodaMi وتشحن الطلب.';
+
+  @override
+  String get shopModelDropshipHelp => 'يشحن المورد الطلب مباشرة إلى العميل.';
+
+  @override
+  String get shopModelAffiliateHelp =>
+      'يتم الشراء من موقع الشريك عبر رابطنا وتحصل CodaMi على عمولة.';
+
+  @override
+  String shopBuyOn(String partner) {
+    return 'اشترِ من $partner';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return 'يبيعه ويشحنه $partner. قد تحصل CodaMi على عمولة من هذه العملية.';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return 'السعر على $partner';
+  }
+
+  @override
+  String get shopAddToCart => 'أضف إلى السلة';
+
+  @override
+  String get shopCheckoutSoon => 'الشراء داخل التطبيق قادم قريبًا.';
+
+  @override
+  String get shopAllAnimals => 'لجميع الحيوانات';
+
+  @override
+  String get shopDescription => 'الوصف';
+
+  @override
+  String get shopOpenFailed => 'تعذر فتح الرابط.';
+
+  @override
+  String get shopPreviewOff => 'معاينة: المتجر مغلق ولا يراه المستخدمون.';
+
+  @override
+  String get shopAdminIntro =>
+      'أدر متجر CodaMi. لا يراه المستخدمون إلا عند تشغيله.';
+
+  @override
+  String get shopOpenSwitch => 'المتجر مفتوح للمستخدمين';
+
+  @override
+  String get shopOnHelp => 'مفعّل: يرى الجميع تبويب المتجر.';
+
+  @override
+  String get shopOffHelp =>
+      'معطّل: لا يرى المستخدمون المتجر، ويمكن للمشرفين تجهيزه.';
+
+  @override
+  String get shopTurnOnTitle => 'فتح المتجر؟';
+
+  @override
+  String get shopTurnOnBody =>
+      'سيرى جميع المستخدمين تبويب المتجر والمنتجات النشطة فورًا.';
+
+  @override
+  String get shopTurnOffTitle => 'إغلاق المتجر؟';
+
+  @override
+  String get shopTurnOffBody =>
+      'سيختفي تبويب المتجر فورًا لدى الجميع، مع الاحتفاظ بالمنتجات والإعدادات.';
+
+  @override
+  String get shopTurnOn => 'فتح';
+
+  @override
+  String get shopTurnOff => 'إغلاق';
+
+  @override
+  String get shopSalesModels => 'نماذج البيع';
+
+  @override
+  String get shopSalesModelsHelp =>
+      'إيقاف نموذج يخفي كل منتجاته عن المستخدمين.';
+
+  @override
+  String get shopCatalog => 'الكتالوج';
+
+  @override
+  String get shopProducts => 'المنتجات';
+
+  @override
+  String get shopCategories => 'الفئات';
+
+  @override
+  String get shopBrands => 'العلامات التجارية';
+
+  @override
+  String get shopSuppliers => 'الموردون';
+
+  @override
+  String get shopPreview => 'معاينة المتجر';
+
+  @override
+  String get shopPreviewSubtitle => 'شاهد المتجر كما سيراه المستخدمون';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active نشط · $total إجمالًا';
+  }
+
+  @override
+  String get shopAddProduct => 'إضافة منتج';
+
+  @override
+  String get shopEditProduct => 'تعديل المنتج';
+
+  @override
+  String get shopProductsEmpty => 'لا توجد منتجات بعد. أضف أول منتج.';
+
+  @override
+  String get shopActive => 'نشط';
+
+  @override
+  String get shopHidden => 'مخفي';
+
+  @override
+  String get shopNeedCategory => 'أضف فئة أولًا (المتجر ← الفئات).';
+
+  @override
+  String get shopPhotos => 'الصور';
+
+  @override
+  String get shopPhotosHelp =>
+      'حتى 6 صور. الأولى هي الغلاف؛ اضغط مطولًا واسحب لإعادة الترتيب.';
+
+  @override
+  String get shopAddPhoto => 'إضافة صورة';
+
+  @override
+  String get shopImageTooBig => 'يجب أن تكون الصور أصغر من 5 ميغابايت.';
+
+  @override
+  String get shopDetails => 'التفاصيل';
+
+  @override
+  String get shopName => 'الاسم';
+
+  @override
+  String get shopCategory => 'الفئة';
+
+  @override
+  String get shopPickCategory => 'اختر فئة';
+
+  @override
+  String get shopAnimals => 'الحيوانات';
+
+  @override
+  String get shopAnimalsHelp =>
+      'عدم الاختيار يعني لكل الحيوانات. يرى المستخدمون منتجات حيواناتهم أولًا.';
+
+  @override
+  String get shopSalesModel => 'نموذج البيع';
+
+  @override
+  String get shopPartnerName => 'المتجر الشريك';
+
+  @override
+  String get shopAffiliateUrl => 'رابط العمولة';
+
+  @override
+  String get shopBrand => 'العلامة التجارية';
+
+  @override
+  String get shopNoBrand => 'بدون علامة';
+
+  @override
+  String get shopSupplier => 'المورد';
+
+  @override
+  String get shopNoSupplier => 'بدون مورد';
+
+  @override
+  String get shopPriceSection => 'السعر';
+
+  @override
+  String get shopPrice => 'السعر (€)';
+
+  @override
+  String get shopPriceAffiliateHelp =>
+      'اختياري: تتغير الأسعار على موقع الشريك.';
+
+  @override
+  String get shopPriceInvalid => 'أدخل سعرًا، مثل 12.90';
+
+  @override
+  String get shopCompareAt => 'السعر قبل الخصم (€)';
+
+  @override
+  String get shopCompareAtHelp => 'اختياري. يظهر مشطوبًا بجانب السعر.';
+
+  @override
+  String get shopCompareAtInvalid => 'يجب أن يكون أعلى من السعر.';
+
+  @override
+  String get shopAvailability => 'التوفر';
+
+  @override
+  String get shopVisible => 'مرئي للمستخدمين';
+
+  @override
+  String get shopVisibleHelp => 'المنتجات المخفية يراها المشرفون فقط.';
+
+  @override
+  String get shopCategoryVisibleHelp =>
+      'عند الإخفاء تُخفى الفئة وكل منتجاتها عن المستخدمين.';
+
+  @override
+  String get shopBrandVisibleHelp =>
+      'عند الإخفاء تُخفى كل منتجات العلامة عن المستخدمين.';
+
+  @override
+  String get shopSupplierActiveHelp =>
+      'عند الإيقاف تُخفى كل منتجات هذا المورد عن المستخدمين.';
+
+  @override
+  String get shopDeleteProductTitle => 'حذف هذا المنتج؟';
+
+  @override
+  String get shopDeleteProductBody =>
+      'سيُزال من المتجر مع صوره. لا يمكن التراجع.';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return 'حذف $name؟';
+  }
+
+  @override
+  String get shopDeleteBody => 'لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get shopInUse =>
+      'لا يزال مستخدمًا في منتجات أو فئات فرعية، لذا لا يمكن حذفه. أخفِه بدلًا من ذلك.';
+
+  @override
+  String get shopFixFields => 'تحقق من الحقول المميزة بالأحمر.';
+
+  @override
+  String get shopLinkInvalid => 'أدخل رابطًا كاملًا يبدأ بـ https://';
+
+  @override
+  String get shopAddCategory => 'إضافة فئة';
+
+  @override
+  String get shopEditCategory => 'تعديل الفئة';
+
+  @override
+  String get shopAddStarting => 'إضافة الفئات الأساسية';
+
+  @override
+  String get shopStartingHelp =>
+      'ابدأ بالطعام والإكسسوارات والعناية والألعاب والأسرّة وحقائب النقل والتقنية وغيرها. يمكنك تعديلها لاحقًا.';
+
+  @override
+  String get shopParent => 'ضمن الفئة';
+
+  @override
+  String get shopNoParent => 'لا شيء (فئة رئيسية)';
+
+  @override
+  String get shopIcon => 'الأيقونة';
+
+  @override
+  String get shopOrder => 'الترتيب';
+
+  @override
+  String get shopOrderHelp => 'الأرقام الأصغر تأتي أولًا.';
+
+  @override
+  String get shopCatFood => 'طعام';
+
+  @override
+  String get shopCatAccessories => 'إكسسوارات';
+
+  @override
+  String get shopCatCare => 'العناية';
+
+  @override
+  String get shopCatToys => 'ألعاب';
+
+  @override
+  String get shopCatBeds => 'أسرّة';
+
+  @override
+  String get shopCatCarriers => 'حقائب النقل';
+
+  @override
+  String get shopCatTech => 'تقنية';
+
+  @override
+  String get shopCatOther => 'أخرى';
+
+  @override
+  String get shopAddBrand => 'إضافة علامة';
+
+  @override
+  String get shopEditBrand => 'تعديل العلامة';
+
+  @override
+  String get shopBrandsEmpty =>
+      'لا توجد علامات بعد. وهي اختيارية؛ أضفها عند وجود شركاء.';
+
+  @override
+  String get shopWebsite => 'الموقع الإلكتروني';
+
+  @override
+  String get shopLogo => 'الشعار';
+
+  @override
+  String get shopAddLogo => 'اختر الشعار';
+
+  @override
+  String get shopAddSupplier => 'إضافة مورد';
+
+  @override
+  String get shopEditSupplier => 'تعديل المورد';
+
+  @override
+  String get shopSuppliersEmpty => 'لا يوجد موردون بعد.';
+
+  @override
+  String get shopSuppliersHelp =>
+      'يرى المشرفون فقط الموردين وبياناتهم. إيقاف مورد يخفي منتجاته.';
+
+  @override
+  String get shopContactName => 'جهة الاتصال';
+
+  @override
+  String get shopEmail => 'البريد الإلكتروني';
+
+  @override
+  String get shopEmailInvalid => 'أدخل بريدًا إلكترونيًا صالحًا.';
+
+  @override
+  String get shopPhone => 'الهاتف';
+
+  @override
+  String get shopOrderMethod => 'كيف تصلهم الطلبات';
+
+  @override
+  String get shopOrderManual => 'يدويًا';
+
+  @override
+  String get shopOrderManualHelp => 'يحوّل الفريق كل طلب إلى المورد.';
+
+  @override
+  String get shopOrderEmail => 'بريد تلقائي';
+
+  @override
+  String get shopOrderEmailHelp =>
+      'يُرسل كل طلب مدفوع إلى المورد بالبريد (مع بدء الدفع).';
+
+  @override
+  String get shopNotes => 'ملاحظات (للمشرفين فقط)';
 }

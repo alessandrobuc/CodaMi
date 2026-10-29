@@ -2,11 +2,14 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Tue 27 Oct 2026_
+_Last updated: Thu 29 Oct 2026 (shop day 1)_
 
 ---
 
 ## 1. Testing now
+
+- [x] **Deploy (shop, Thu 29 Oct):** rules and storage are live
+- [ ] **Shop on the phone:** follow `TEST_SCENARIO_SHOP_2026-10-29.md`. Admin → More → Shop: add the starting categories, a brand with a logo, a supplier, a few products with photos (one affiliate, one with a discount); Preview the shop; open the shop and check the Shop tab as a user (search, animal filter, categories, product page, "Buy on…" opens the link); hide a brand and a supplier and check their products disappear; close the shop and check the tab disappears
 
 - [ ] Emergency pins on the map (Fri 23 Oct): a red pin for each active emergency, tap it to see the card, tap the card to open the emergency; the pin disappears once it is resolved
 - [x] **Deploy (petitions, Mon 26 Oct):** rules and index are live (the app reads and writes petitions on the real project). Check in Firestore → Indexes that the What's new index (published + code) is also there
@@ -35,6 +38,7 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
+- [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 built (on/off switch, sales model switches, categories, brands, suppliers, products, Shop tab, preview, rules); next: affiliate click counting, cost and margin, cart, shipping, Stripe checkout, orders, refunds, sponsored, reports (`SHOP_FEATURE.md`)
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
 - [ ] Move the Places key to Secret Manager and restrict the Google Cloud keys (see `LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
@@ -62,6 +66,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
 - [ ] Petitions: where in the app (Home banner + Profile for now), one or several languages for summaries, second-admin approval, notifications
+- [ ] **Shop (request 18):** Phase 1 approved Thu 29 Oct; still need countries, company / VAT, Stripe account, first partners, product text languages, bottom-bar tab, computer admin, terms of sale (`SHOP_FEATURE.md`)
 
 ## 4. Later (after launch)
 
@@ -80,6 +85,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Thu 29 Oct: shop Phase 1, day 1 (client request 18): on/off switch (starts off), switches per sales model, categories, brands, suppliers and products in Admin → More → Shop, Shop tab for users only while it's on, admin preview, affiliate "Buy on…" button. Server rules: users read the catalogue only while the shop is on, suppliers admin only. 10 languages, 8 new app tests (104 in total), 76 new emulator checks. Rules deployed Thu 29 Oct
 
 - Tue 27 Oct: app updates (client request of the same day): the app checks the store version on every start and keeps listening, shows an update sheet with that version's What's new notes (once per version), a Home banner and a Profile row, "Update now" opens Google Play or the App Store, and a blocking "Update required" screen below the minimum version. Versions, minimums and App Store ID are set in Admin → More → App updates, no new build needed. 10 languages, 6 new app tests, 15 new emulator checks. Rules deployed, admin side tested on the Oppo
 

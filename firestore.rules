@@ -157,6 +157,98 @@ service cloud.firestore {
         && data.updatedAt == request.time;
     }
 
+    // Users only reach the shop while an admin has it switched on.
+    function shopOpen() {
+      return get(/databases/$(database)/documents/config/shop).data.get('enabled', false) == true;
+    }
+
+    function shopReadable(data) {
+      return isAdmin() || (signedIn() && data.active == true && shopOpen());
+    }
+
+    function shopName(data, maxLength) {
+      return data.name is string && data.name.trim().size() > 0 && data.name.size() <= maxLength;
+    }
+
+    function shopLink(data, field) {
+      return data[field] is string
+        && (data[field] == '' || (data[field].size() <= 500
+          && data[field].matches('^https://[^\\s/@]+[.][^\\s/@]+(/[^\\s]*)?$')));
+    }
+
+    function shopStamped(data) {
+      return data.updatedBy == request.auth.uid && data.updatedAt == request.time;
+    }
+
+    function optionalCents(data, field) {
+      return data[field] == null || (data[field] is int && data[field] > 0 && data[field] <= 1000000);
+    }
+
+    function validShopCategory(data) {
+      return data.keys().hasOnly(['name', 'parentId', 'icon', 'order', 'active', 'updatedBy', 'updatedAt'])
+        && shopName(data, 80)
+        && data.parentId is string && data.parentId.size() <= 64
+        && data.icon in ['food', 'accessories', 'care', 'toys', 'beds', 'carriers', 'tech', 'other']
+        && data.order is int && data.order >= 0 && data.order <= 9999
+        && data.active is bool
+        && shopStamped(data);
+    }
+
+    function validBrand(data, brandId) {
+      return data.keys().hasOnly(['name', 'description', 'website', 'logoUrl', 'logoPath', 'active', 'updatedBy', 'updatedAt'])
+        && shopName(data, 80)
+        && data.description is string && data.description.size() <= 1000
+        && shopLink(data, 'website')
+        && data.active is bool
+        && (('logoUrl' in data) == ('logoPath' in data))
+        && (!('logoPath' in data)
+          || (data.logoUrl is string
+            && data.logoPath.matches('^shop/brands/' + brandId + '/logo_[0-9]+[.](jpg|jpeg|png|webp)$')))
+        && shopStamped(data);
+    }
+
+    function validSupplier(data) {
+      return data.keys().hasOnly(['name', 'contactName', 'email', 'phone', 'website', 'orderMethod', 'notes', 'active', 'updatedBy', 'updatedAt'])
+        && shopName(data, 80)
+        && data.contactName is string && data.contactName.size() <= 80
+        && data.email is string && data.email.size() <= 80
+        && data.phone is string && data.phone.size() <= 30
+        && shopLink(data, 'website')
+        && data.orderMethod in ['manual', 'email']
+        && (data.orderMethod != 'email' || data.email.matches('^[^\\s@]+@[^\\s@]+[.][^\\s@]+$'))
+        && data.notes is string && data.notes.size() <= 1000
+        && data.active is bool
+        && shopStamped(data);
+    }
+
+    // Affiliate products may leave the price empty; every other product needs one.
+    function validProduct(data) {
+      return data.keys().hasOnly([
+          'name', 'description', 'categoryId', 'brandId', 'supplierId', 'salesModel', 'animals',
+          'priceCents', 'compareAtCents', 'availability', 'affiliateUrl', 'partnerName', 'active',
+          'images', 'createdBy', 'createdAt', 'updatedBy', 'updatedAt'
+        ])
+        && shopName(data, 120)
+        && data.description is string && data.description.size() <= 4000
+        && data.categoryId is string && data.categoryId.size() > 0 && data.categoryId.size() <= 64
+        && data.brandId is string && data.brandId.size() <= 64
+        && data.supplierId is string && data.supplierId.size() <= 64
+        && data.salesModel in ['ownStock', 'brandPartner', 'dropship', 'affiliate']
+        && data.animals is list && data.animals.size() <= 3 && data.animals.hasOnly(['dog', 'cat', 'other'])
+        && optionalCents(data, 'priceCents')
+        && optionalCents(data, 'compareAtCents')
+        && (data.salesModel == 'affiliate' || data.priceCents != null)
+        && (data.compareAtCents == null || (data.priceCents != null && data.compareAtCents > data.priceCents))
+        && data.availability in ['inStock', 'lowStock', 'outOfStock', 'comingSoon']
+        && shopLink(data, 'affiliateUrl')
+        && data.partnerName is string && data.partnerName.size() <= 80
+        && (data.salesModel != 'affiliate'
+          || (data.affiliateUrl != '' && data.partnerName.trim().size() > 0 && data.supplierId == ''))
+        && data.active is bool
+        && data.images is list && data.images.size() <= 6
+        && shopStamped(data);
+    }
+
     function supportCase(caseId) {
       return get(/databases/$(database)/documents/supportCases/$(caseId)).data;
     }
@@ -378,6 +470,49 @@ service cloud.firestore {
         && request.resource.data.createdAt == request.time;
       allow update: if isAdmin()
         && validPetition(request.resource.data, petitionId)
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if isAdmin();
+    }
+
+    match /config/shop {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'disabledSuppliers', 'disabledModels', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.disabledSuppliers is list
+        && request.resource.data.disabledSuppliers.size() <= 500
+        && request.resource.data.disabledModels is list
+        && request.resource.data.disabledModels.hasOnly(['ownStock', 'brandPartner', 'dropship', 'affiliate'])
+        && shopStamped(request.resource.data);
+    }
+
+    match /shopCategories/{categoryId} {
+      allow read: if shopReadable(resource.data);
+      allow create, update: if isAdmin() && validShopCategory(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /brands/{brandId} {
+      allow read: if shopReadable(resource.data);
+      allow create, update: if isAdmin() && validBrand(request.resource.data, brandId);
+      allow delete: if isAdmin();
+    }
+
+    // Contact details and notes: admins only.
+    match /suppliers/{supplierId} {
+      allow read, delete: if isAdmin();
+      allow create, update: if isAdmin() && validSupplier(request.resource.data);
+    }
+
+    match /products/{productId} {
+      allow read: if shopReadable(resource.data);
+      allow create: if isAdmin()
+        && validProduct(request.resource.data)
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.createdAt == request.time;
+      allow update: if isAdmin()
+        && validProduct(request.resource.data)
         && request.resource.data.createdBy == resource.data.createdBy
         && request.resource.data.createdAt == resource.data.createdAt;
       allow delete: if isAdmin();

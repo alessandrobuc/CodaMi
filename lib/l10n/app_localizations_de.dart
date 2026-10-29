@@ -3810,4 +3810,424 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get updateContinueAsAdmin => 'Als Admin fortfahren';
+
+  @override
+  String get navShop => 'Shop';
+
+  @override
+  String get shop => 'Shop';
+
+  @override
+  String get adminShopSubtitle =>
+      'Produkte, Marken, Lieferanten und Ein/Aus-Schalter';
+
+  @override
+  String get shopSubtitle => 'Produkte für deine Tiere';
+
+  @override
+  String get shopSearchHint => 'Produkte suchen';
+
+  @override
+  String get shopEmpty => 'Produkte kommen bald. Schau später wieder vorbei!';
+
+  @override
+  String get shopNoResults => 'Keine passenden Produkte.';
+
+  @override
+  String get shopInStock => 'Auf Lager';
+
+  @override
+  String get shopLowStock => 'Nur noch wenige';
+
+  @override
+  String get shopOutOfStock => 'Ausverkauft';
+
+  @override
+  String get shopComingSoon => 'Bald verfügbar';
+
+  @override
+  String get shopModelOwnStock => 'Eigenes Lager';
+
+  @override
+  String get shopModelBrand => 'Markenpartner';
+
+  @override
+  String get shopModelDropship => 'Dropshipping';
+
+  @override
+  String get shopModelAffiliate => 'Partnerlink';
+
+  @override
+  String get shopModelOwnStockHelp =>
+      'CodaMi lagert die Ware und versendet sie.';
+
+  @override
+  String get shopModelBrandHelp =>
+      'Die Marke verkauft über CodaMi und versendet die Bestellung.';
+
+  @override
+  String get shopModelDropshipHelp =>
+      'Ein Lieferant versendet direkt an den Kunden.';
+
+  @override
+  String get shopModelAffiliateHelp =>
+      'Gekauft auf der Partnerseite über unseren Link; CodaMi erhält eine Provision.';
+
+  @override
+  String shopBuyOn(String partner) {
+    return 'Bei $partner kaufen';
+  }
+
+  @override
+  String shopAffiliateNote(String partner) {
+    return 'Verkauft und versendet von $partner. CodaMi erhält ggf. eine Provision für diesen Kauf.';
+  }
+
+  @override
+  String shopPriceOnPartner(String partner) {
+    return 'Preis bei $partner';
+  }
+
+  @override
+  String get shopAddToCart => 'In den Warenkorb';
+
+  @override
+  String get shopCheckoutSoon => 'Kaufen in der App kommt bald.';
+
+  @override
+  String get shopAllAnimals => 'Für alle Tiere';
+
+  @override
+  String get shopDescription => 'Beschreibung';
+
+  @override
+  String get shopOpenFailed => 'Link konnte nicht geöffnet werden.';
+
+  @override
+  String get shopPreviewOff =>
+      'Vorschau: Der Shop ist aus, Nutzer sehen ihn nicht.';
+
+  @override
+  String get shopAdminIntro =>
+      'Verwalte den CodaMi Shop. Nutzer sehen ihn nur, wenn er an ist.';
+
+  @override
+  String get shopOpenSwitch => 'Shop für Nutzer geöffnet';
+
+  @override
+  String get shopOnHelp => 'An: Alle sehen den Shop-Tab.';
+
+  @override
+  String get shopOffHelp =>
+      'Aus: Nutzer sehen den Shop nicht. Admins können ihn vorbereiten.';
+
+  @override
+  String get shopTurnOnTitle => 'Shop öffnen?';
+
+  @override
+  String get shopTurnOnBody =>
+      'Alle Nutzer sehen sofort den Shop-Tab und die aktiven Produkte.';
+
+  @override
+  String get shopTurnOffTitle => 'Shop schließen?';
+
+  @override
+  String get shopTurnOffBody =>
+      'Der Shop-Tab verschwindet sofort für alle. Produkte und Einstellungen bleiben erhalten.';
+
+  @override
+  String get shopTurnOn => 'Öffnen';
+
+  @override
+  String get shopTurnOff => 'Schließen';
+
+  @override
+  String get shopSalesModels => 'Verkaufsmodelle';
+
+  @override
+  String get shopSalesModelsHelp =>
+      'Ein ausgeschaltetes Modell blendet alle seine Produkte aus.';
+
+  @override
+  String get shopCatalog => 'Katalog';
+
+  @override
+  String get shopProducts => 'Produkte';
+
+  @override
+  String get shopCategories => 'Kategorien';
+
+  @override
+  String get shopBrands => 'Marken';
+
+  @override
+  String get shopSuppliers => 'Lieferanten';
+
+  @override
+  String get shopPreview => 'Shop-Vorschau';
+
+  @override
+  String get shopPreviewSubtitle => 'Den Shop so sehen wie die Nutzer';
+
+  @override
+  String shopProductsCount(int active, int total) {
+    return '$active aktiv · $total insgesamt';
+  }
+
+  @override
+  String get shopAddProduct => 'Produkt hinzufügen';
+
+  @override
+  String get shopEditProduct => 'Produkt bearbeiten';
+
+  @override
+  String get shopProductsEmpty => 'Noch keine Produkte. Füge das erste hinzu.';
+
+  @override
+  String get shopActive => 'Aktiv';
+
+  @override
+  String get shopHidden => 'Ausgeblendet';
+
+  @override
+  String get shopNeedCategory =>
+      'Füge zuerst eine Kategorie hinzu (Shop → Kategorien).';
+
+  @override
+  String get shopPhotos => 'Fotos';
+
+  @override
+  String get shopPhotosHelp =>
+      'Bis zu 6 Fotos. Das erste ist das Titelbild; gedrückt halten und ziehen zum Sortieren.';
+
+  @override
+  String get shopAddPhoto => 'Foto hinzufügen';
+
+  @override
+  String get shopImageTooBig => 'Bilder müssen kleiner als 5 MB sein.';
+
+  @override
+  String get shopDetails => 'Details';
+
+  @override
+  String get shopName => 'Name';
+
+  @override
+  String get shopCategory => 'Kategorie';
+
+  @override
+  String get shopPickCategory => 'Wähle eine Kategorie';
+
+  @override
+  String get shopAnimals => 'Tiere';
+
+  @override
+  String get shopAnimalsHelp =>
+      'Keine Auswahl bedeutet für alle Tiere. Nutzer sehen zuerst Produkte für ihre eigenen Tiere.';
+
+  @override
+  String get shopSalesModel => 'Verkaufsmodell';
+
+  @override
+  String get shopPartnerName => 'Partnershop';
+
+  @override
+  String get shopAffiliateUrl => 'Partnerlink';
+
+  @override
+  String get shopBrand => 'Marke';
+
+  @override
+  String get shopNoBrand => 'Keine Marke';
+
+  @override
+  String get shopSupplier => 'Lieferant';
+
+  @override
+  String get shopNoSupplier => 'Kein Lieferant';
+
+  @override
+  String get shopPriceSection => 'Preis';
+
+  @override
+  String get shopPrice => 'Preis (€)';
+
+  @override
+  String get shopPriceAffiliateHelp =>
+      'Optional: Preise ändern sich auf der Partnerseite.';
+
+  @override
+  String get shopPriceInvalid => 'Gib einen Preis ein, z. B. 12,90';
+
+  @override
+  String get shopCompareAt => 'Preis vor Rabatt (€)';
+
+  @override
+  String get shopCompareAtHelp =>
+      'Optional. Wird durchgestrichen neben dem Preis gezeigt.';
+
+  @override
+  String get shopCompareAtInvalid => 'Muss höher als der Preis sein.';
+
+  @override
+  String get shopAvailability => 'Verfügbarkeit';
+
+  @override
+  String get shopVisible => 'Für Nutzer sichtbar';
+
+  @override
+  String get shopVisibleHelp => 'Ausgeblendete Produkte sehen nur Admins.';
+
+  @override
+  String get shopCategoryVisibleHelp =>
+      'Ausgeblendet sind die Kategorie und alle ihre Produkte unsichtbar.';
+
+  @override
+  String get shopBrandVisibleHelp =>
+      'Ausgeblendet sind alle Produkte der Marke unsichtbar.';
+
+  @override
+  String get shopSupplierActiveHelp =>
+      'Ausgeschaltet sind alle Produkte dieses Lieferanten unsichtbar.';
+
+  @override
+  String get shopDeleteProductTitle => 'Dieses Produkt löschen?';
+
+  @override
+  String get shopDeleteProductBody =>
+      'Es wird mit seinen Fotos aus dem Shop entfernt. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String shopDeleteTitle(String name) {
+    return '$name löschen?';
+  }
+
+  @override
+  String get shopDeleteBody => 'Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get shopInUse =>
+      'Wird noch von Produkten oder Unterkategorien genutzt und kann nicht gelöscht werden. Blende es stattdessen aus.';
+
+  @override
+  String get shopFixFields => 'Prüfe die rot markierten Felder.';
+
+  @override
+  String get shopLinkInvalid => 'Gib einen vollständigen Link mit https:// ein';
+
+  @override
+  String get shopAddCategory => 'Kategorie hinzufügen';
+
+  @override
+  String get shopEditCategory => 'Kategorie bearbeiten';
+
+  @override
+  String get shopAddStarting => 'Startkategorien hinzufügen';
+
+  @override
+  String get shopStartingHelp =>
+      'Starte mit Futter, Zubehör, Pflege, Spielzeug, Betten, Transportboxen, Technik und Sonstigem. Später umbenennen, ausblenden oder löschen.';
+
+  @override
+  String get shopParent => 'In Kategorie';
+
+  @override
+  String get shopNoParent => 'Keine (Hauptkategorie)';
+
+  @override
+  String get shopIcon => 'Symbol';
+
+  @override
+  String get shopOrder => 'Position';
+
+  @override
+  String get shopOrderHelp => 'Kleinere Zahlen stehen vorne.';
+
+  @override
+  String get shopCatFood => 'Futter';
+
+  @override
+  String get shopCatAccessories => 'Zubehör';
+
+  @override
+  String get shopCatCare => 'Pflege';
+
+  @override
+  String get shopCatToys => 'Spielzeug';
+
+  @override
+  String get shopCatBeds => 'Betten';
+
+  @override
+  String get shopCatCarriers => 'Transportboxen';
+
+  @override
+  String get shopCatTech => 'Technik';
+
+  @override
+  String get shopCatOther => 'Sonstiges';
+
+  @override
+  String get shopAddBrand => 'Marke hinzufügen';
+
+  @override
+  String get shopEditBrand => 'Marke bearbeiten';
+
+  @override
+  String get shopBrandsEmpty =>
+      'Noch keine Marken. Marken sind optional; füge sie hinzu, sobald es Partner gibt.';
+
+  @override
+  String get shopWebsite => 'Website';
+
+  @override
+  String get shopLogo => 'Logo';
+
+  @override
+  String get shopAddLogo => 'Logo wählen';
+
+  @override
+  String get shopAddSupplier => 'Lieferant hinzufügen';
+
+  @override
+  String get shopEditSupplier => 'Lieferant bearbeiten';
+
+  @override
+  String get shopSuppliersEmpty => 'Noch keine Lieferanten.';
+
+  @override
+  String get shopSuppliersHelp =>
+      'Nur Admins sehen Lieferanten und ihre Daten. Ein ausgeschalteter Lieferant blendet seine Produkte aus.';
+
+  @override
+  String get shopContactName => 'Ansprechpartner';
+
+  @override
+  String get shopEmail => 'E-Mail';
+
+  @override
+  String get shopEmailInvalid => 'Gib eine gültige E-Mail-Adresse ein.';
+
+  @override
+  String get shopPhone => 'Telefon';
+
+  @override
+  String get shopOrderMethod => 'Wie Bestellungen ankommen';
+
+  @override
+  String get shopOrderManual => 'Manuell';
+
+  @override
+  String get shopOrderManualHelp =>
+      'Das Team leitet jede Bestellung an den Lieferanten weiter.';
+
+  @override
+  String get shopOrderEmail => 'Automatische E-Mail';
+
+  @override
+  String get shopOrderEmailHelp =>
+      'Jede bezahlte Bestellung wird per E-Mail an den Lieferanten geschickt (mit dem Checkout).';
+
+  @override
+  String get shopNotes => 'Notizen (nur Admins)';
 }

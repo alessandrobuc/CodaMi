@@ -21,6 +21,8 @@ import '../../../emergency/presentation/screens/emergency_screen.dart';
 import '../../../feedback/presentation/startup_prompts.dart';
 import '../../../points/data/points_repository.dart';
 import '../../../points/presentation/providers/points_provider.dart';
+import '../../../shop/presentation/providers/shop_provider.dart';
+import '../../../shop/presentation/screens/shop_screen.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -31,7 +33,9 @@ class MainShell extends ConsumerStatefulWidget {
 
 class _MainShellState extends ConsumerState<MainShell>
     with SingleTickerProviderStateMixin {
-  static List<NavItem> _items(BuildContext context) => [
+  static const _shopIndex = 3;
+
+  static List<NavItem> _items(BuildContext context, {required bool shop}) => [
     NavItem(
       label: context.l10n.navHome,
       icon: Icons.home_outlined,
@@ -47,6 +51,12 @@ class _MainShellState extends ConsumerState<MainShell>
       icon: Icons.smart_display_outlined,
       activeIcon: Icons.smart_display_rounded,
     ),
+    if (shop)
+      NavItem(
+        label: context.l10n.navShop,
+        icon: Icons.storefront_outlined,
+        activeIcon: Icons.storefront_rounded,
+      ),
     NavItem(
       label: context.l10n.navProfile,
       icon: Icons.person_outline_rounded,
@@ -119,6 +129,18 @@ class _MainShellState extends ConsumerState<MainShell>
   @override
   Widget build(BuildContext context) {
     ref.listen(shellTabProvider, (_, index) => _select(index));
+    // Keeps the same tab selected when the Shop tab appears or disappears.
+    ref.listen(shopEnabledProvider, (was, now) {
+      if (was == now || _index < _shopIndex) return;
+      setState(() {
+        _index = now
+            ? _index + 1
+            : _index == _shopIndex
+            ? 0
+            : _index - 1;
+      });
+    });
+    final shop = ref.watch(shopEnabledProvider);
 
     return PopScope(
       canPop: _index == 0,
@@ -143,15 +165,19 @@ class _MainShellState extends ConsumerState<MainShell>
           child: IndexedStack(
             index: _index,
             children: [
-              const HomeScreen(),
-              const PetsScreen(),
-              const VideosScreen(),
-              ProfileScreen(onOpenPets: () => _select(1)),
+              const HomeScreen(key: ValueKey('home')),
+              const PetsScreen(key: ValueKey('pets')),
+              const VideosScreen(key: ValueKey('videos')),
+              if (shop) const ShopScreen(key: ValueKey('shop')),
+              ProfileScreen(
+                key: const ValueKey('profile'),
+                onOpenPets: () => _select(1),
+              ),
             ],
           ),
         ),
         bottomNavigationBar: AnimatedNavBar(
-          items: _items(context),
+          items: _items(context, shop: shop),
           currentIndex: _index,
           onTap: _select,
         ),
