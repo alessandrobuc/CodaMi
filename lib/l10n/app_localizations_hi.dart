@@ -4166,4 +4166,32 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get shopNotes => 'नोट्स (केवल एडमिन)';
+
+  @override
+  String get shopForYourPets => 'आपके पालतू के लिए';
+
+  @override
+  String get shopOnSale => 'सेल में';
+
+  @override
+  String get shopAllProducts => 'सभी उत्पाद';
+
+  @override
+  String get shopResults => 'परिणाम';
+
+  @override
+  String shopProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count उत्पाद',
+      one: '1 उत्पाद',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shopYouSave(String amount) {
+    return 'आप $amount बचाते हैं';
+  }
 }

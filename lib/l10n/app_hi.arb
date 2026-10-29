@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "टीम हर ऑर्डर सप्लायर को भेजती है।",
   "shopOrderEmail": "स्वचालित ईमेल",
   "shopOrderEmailHelp": "हर भुगतान वाला ऑर्डर सप्लायर को ईमेल होता है (चेकआउट के साथ)।",
-  "shopNotes": "नोट्स (केवल एडमिन)"
+  "shopNotes": "नोट्स (केवल एडमिन)",
+  "shopForYourPets": "आपके पालतू के लिए",
+  "shopOnSale": "सेल में",
+  "shopAllProducts": "सभी उत्पाद",
+  "shopResults": "परिणाम",
+  "shopProductCount": "{count, plural, =1{1 उत्पाद} other{{count} उत्पाद}}",
+  "shopYouSave": "आप {amount} बचाते हैं"
 }

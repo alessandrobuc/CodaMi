@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "El equipo reenvía cada pedido al proveedor.",
   "shopOrderEmail": "Correo automático",
   "shopOrderEmailHelp": "Cada pedido pagado se envía por correo al proveedor (con el pago).",
-  "shopNotes": "Notas (solo admins)"
+  "shopNotes": "Notas (solo admins)",
+  "shopForYourPets": "Para tus mascotas",
+  "shopOnSale": "En oferta",
+  "shopAllProducts": "Todos los productos",
+  "shopResults": "Resultados",
+  "shopProductCount": "{count, plural, =1{1 producto} other{{count} productos}}",
+  "shopYouSave": "Ahorras {amount}"
 }

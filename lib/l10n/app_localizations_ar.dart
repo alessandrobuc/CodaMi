@@ -4131,4 +4131,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shopNotes => 'ملاحظات (للمشرفين فقط)';
+
+  @override
+  String get shopForYourPets => 'لحيواناتك الأليفة';
+
+  @override
+  String get shopOnSale => 'تخفيضات';
+
+  @override
+  String get shopAllProducts => 'كل المنتجات';
+
+  @override
+  String get shopResults => 'النتائج';
+
+  @override
+  String shopProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count منتجات',
+      one: 'منتج واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shopYouSave(String amount) {
+    return 'توفّر $amount';
+  }
 }

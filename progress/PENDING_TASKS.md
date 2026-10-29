@@ -31,6 +31,9 @@ _Last updated: Thu 29 Oct 2026 (shop day 1)_
 
 Fixes found while testing go here:
 
+- Thu 29 Oct, new Shop look: check the Shop tab and product page on a small and a large phone (category cards, rows scroll sideways, thumbnails switch the photo, preview back button)
+- Thu 29 Oct, form design: check the new text fields in Admin → Petitions and every Shop form (label above, no gap in the border, red errors)
+
 - Tue 27 Oct, app updates on the Oppo: admins were locked out by "Update required" (could only be undone in the Firebase console), now a "Continue as admin" button for admins only, until the app is closed; the keyboard stayed open over the "Update required" screen, now closed; red errors in App updates now clear while typing
 
 - Thu 22 Oct, emulator test as a support account: dashboard card, Reported tabs (AI photos / User reports) and Emergencies list work with no errors in the log. Fixed: emergency filter chips were square, now rounded like the other tabs
@@ -86,6 +89,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 
 ## Done recently
 
+- Thu 29 Oct: new Shop look for users (header kept the same as the other tabs): category pills (icon and name, "All" first), "For your pets" and "On sale" rows, smaller product cards (still 2 per row) with shadow, sale and partner tags, product page with a large photo, thumbnails, "You save", availability dot and description card. 6 new labels in 10 languages
+- Thu 29 Oct: new text field design in the petition and shop forms: the label sits above the box (it no longer jumps into the border and cuts the top line when tapped), rounded filled boxes, coloured border while typing, red border and label on errors; dropdowns match. Shared in `lib/core/widgets/form_fields.dart`, so other forms can use it
 - Thu 29 Oct: shop Phase 1, day 1 (client request 18): on/off switch (starts off), switches per sales model, categories, brands, suppliers and products in Admin → More → Shop, Shop tab for users only while it's on, admin preview, affiliate "Buy on…" button. Server rules: users read the catalogue only while the shop is on, suppliers admin only. 10 languages, 8 new app tests (104 in total), 76 new emulator checks. Rules deployed Thu 29 Oct
 
 - Tue 27 Oct: app updates (client request of the same day): the app checks the store version on every start and keeps listening, shows an update sheet with that version's What's new notes (once per version), a Home banner and a Profile row, "Update now" opens Google Play or the App Store, and a blocking "Update required" screen below the minimum version. Versions, minimums and App Store ID are set in Admin → More → App updates, no new build needed. 10 languages, 6 new app tests, 15 new emulator checks. Rules deployed, admin side tested on the Oppo

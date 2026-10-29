@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "A equipa encaminha cada encomenda ao fornecedor.",
   "shopOrderEmail": "Email automático",
   "shopOrderEmailHelp": "Cada encomenda paga é enviada por email ao fornecedor (com o checkout).",
-  "shopNotes": "Notas (só admins)"
+  "shopNotes": "Notas (só admins)",
+  "shopForYourPets": "Para os seus animais",
+  "shopOnSale": "Em promoção",
+  "shopAllProducts": "Todos os produtos",
+  "shopResults": "Resultados",
+  "shopProductCount": "{count, plural, =1{1 produto} other{{count} produtos}}",
+  "shopYouSave": "Poupa {amount}"
 }

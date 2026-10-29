@@ -7373,6 +7373,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notes (admins only)'**
   String get shopNotes;
+
+  /// No description provided for @shopForYourPets.
+  ///
+  /// In en, this message translates to:
+  /// **'For your pets'**
+  String get shopForYourPets;
+
+  /// No description provided for @shopOnSale.
+  ///
+  /// In en, this message translates to:
+  /// **'On sale'**
+  String get shopOnSale;
+
+  /// No description provided for @shopAllProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'All products'**
+  String get shopAllProducts;
+
+  /// No description provided for @shopResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get shopResults;
+
+  /// No description provided for @shopProductCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product} other{{count} products}}'**
+  String shopProductCount(int count);
+
+  /// No description provided for @shopYouSave.
+  ///
+  /// In en, this message translates to:
+  /// **'You save {amount}'**
+  String shopYouSave(String amount);
 }
 
 class _AppLocalizationsDelegate

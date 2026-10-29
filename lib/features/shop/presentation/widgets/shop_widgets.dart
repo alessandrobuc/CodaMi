@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../../core/widgets/form_fields.dart';
 import '../../../../l10n/app_languages.dart';
 import '../../../../l10n/l10n.dart';
 import '../../domain/shop.dart';
@@ -237,79 +238,146 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final availability = product.draft.availability;
+    final d = product.draft;
+    final soldOut = !d.isAffiliate && !d.availability.canBuy;
 
-    return Material(
-      color: AppColors.surface,
-      shape: RoundedRectangleBorder(
+    return DecoratedBox(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: AppColors.border),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.text.withValues(alpha: 0.06),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+          ),
+        ],
       ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  ShopNetworkImage(url: product.cover),
-                  if (product.onSale)
-                    PositionedDirectional(
-                      top: 8,
-                      start: 8,
-                      child: ShopBadge(
-                        label: '-${product.discountPercent}%',
-                        color: AppColors.danger,
-                        filled: true,
+      child: Material(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(18),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Opacity(
+                        opacity: soldOut ? 0.55 : 1,
+                        child: ShopNetworkImage(
+                          url: product.cover,
+                          borderRadius: BorderRadius.circular(14),
+                        ),
                       ),
-                    ),
-                ],
+                      if (product.onSale)
+                        PositionedDirectional(
+                          top: 6,
+                          start: 6,
+                          child: ShopBadge(
+                            label: '-${product.discountPercent}%',
+                            color: AppColors.danger,
+                            filled: true,
+                          ),
+                        ),
+                      if (d.isAffiliate)
+                        PositionedDirectional(
+                          top: 6,
+                          end: 6,
+                          child: _PartnerTag(name: d.partnerName),
+                        ),
+                      if (soldOut || d.availability == Availability.lowStock)
+                        PositionedDirectional(
+                          bottom: 6,
+                          start: 6,
+                          child: ShopBadge(
+                            label: d.availability.label(l10n),
+                            color: d.availability.color,
+                            filled: true,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (brandName.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (brandName.isNotEmpty)
+                      Text(
+                        brandName.toUpperCase(),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 10.5,
+                          letterSpacing: 0.6,
+                          fontWeight: FontWeight.w700,
+                          color: shopColor,
+                        ),
+                      ),
+                    const SizedBox(height: 2),
                     Text(
-                      brandName,
-                      maxLines: 1,
+                      product.name,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textMuted,
+                        fontSize: 13,
+                        height: 1.2,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.text,
                       ),
                     ),
-                  Text(
-                    product.name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 13.5,
-                      height: 1.25,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.text,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  PriceTag(product: product, size: 14.5),
-                  if (!availability.canBuy) ...[
                     const SizedBox(height: 4),
-                    ShopBadge(
-                      label: availability.label(l10n),
-                      color: availability.color,
-                    ),
+                    PriceTag(product: product, size: 14),
                   ],
-                ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PartnerTag extends StatelessWidget {
+  final String name;
+
+  const _PartnerTag({required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 110),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.92),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.open_in_new_rounded, size: 11, color: shopColor),
+          const SizedBox(width: 3),
+          Flexible(
+            child: Text(
+              name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 10.5,
+                fontWeight: FontWeight.w700,
+                color: shopColor,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -339,33 +407,16 @@ class ShopTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final plain =
-        keyboard == TextInputType.url || keyboard == TextInputType.emailAddress;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TextField(
-        controller: controller,
-        minLines: lines,
-        maxLines: lines == 1 ? 1 : lines + 4,
-        maxLength: maxLength,
-        keyboardType: keyboard ?? (lines > 1 ? TextInputType.multiline : null),
-        autocorrect: !plain,
-        textCapitalization: plain
-            ? TextCapitalization.none
-            : TextCapitalization.sentences,
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          helperText: help,
-          helperMaxLines: 3,
-          errorText: error,
-          errorMaxLines: 2,
-          alignLabelWithHint: lines > 1,
-          filled: true,
-          fillColor: AppColors.background,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-        ),
-      ),
+    return AppTextField(
+      controller: controller,
+      label: label,
+      hint: hint,
+      help: help,
+      error: error,
+      lines: lines,
+      maxLength: maxLength,
+      keyboard: keyboard,
+      focusColor: shopColor,
     );
   }
 }

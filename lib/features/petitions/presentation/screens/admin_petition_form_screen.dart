@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../../core/widgets/form_fields.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../admin/presentation/widgets/settings_fields.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
@@ -246,7 +247,6 @@ class _AdminPetitionFormScreenState
               icon: Icons.link_rounded,
               color: petitionColor,
               children: [
-                const SizedBox(height: 12),
                 _Field(
                   controller: _url,
                   label: l10n.petitionUrl,
@@ -405,72 +405,79 @@ class _AdminPetitionFormScreenState
               icon: Icons.image_rounded,
               color: petitionColor,
               children: [
-                const SizedBox(height: 12),
-                _ImagePreview(
-                  file: _newImage,
-                  url: _removeImage ? null : widget.petition?.imageUrl,
-                ),
-                const SizedBox(height: 10),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: _pickImage,
-                        icon: const Icon(Icons.photo_library_rounded),
-                        label: Text(
-                          _hasImage
-                              ? l10n.petitionImageChange
-                              : l10n.petitionImageAdd,
-                        ),
-                      ),
+                    const SizedBox(height: 12),
+                    _ImagePreview(
+                      file: _newImage,
+                      url: _removeImage ? null : widget.petition?.imageUrl,
                     ),
-                    if (_hasImage) ...[
-                      const SizedBox(width: 10),
-                      OutlinedButton.icon(
-                        onPressed: () => setState(() {
-                          _newImage = null;
-                          _removeImage = true;
-                          _imagePermission = false;
-                        }),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.danger,
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: _pickImage,
+                            icon: const Icon(Icons.photo_library_rounded),
+                            label: Text(
+                              _hasImage
+                                  ? l10n.petitionImageChange
+                                  : l10n.petitionImageAdd,
+                            ),
+                          ),
                         ),
-                        icon: const Icon(Icons.delete_outline_rounded),
-                        label: Text(l10n.remove),
+                        if (_hasImage) ...[
+                          const SizedBox(width: 10),
+                          OutlinedButton.icon(
+                            onPressed: () => setState(() {
+                              _newImage = null;
+                              _removeImage = true;
+                              _imagePermission = false;
+                            }),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppColors.danger,
+                            ),
+                            icon: const Icon(Icons.delete_outline_rounded),
+                            label: Text(l10n.remove),
+                          ),
+                        ],
+                      ],
+                    ),
+                    if (_hasImage)
+                      CheckboxListTile(
+                        contentPadding: EdgeInsets.zero,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: _imagePermission,
+                        onChanged: (v) =>
+                            setState(() => _imagePermission = v ?? false),
+                        title: Text(
+                          l10n.petitionImagePermission,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color:
+                                problems.contains(
+                                  PetitionProblem.imagePermission,
+                                )
+                                ? AppColors.danger
+                                : AppColors.text,
+                          ),
+                        ),
+                      )
+                    else
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          l10n.petitionImageHelp,
+                          style: const TextStyle(
+                            fontSize: 12.5,
+                            color: AppColors.textMuted,
+                          ),
+                        ),
                       ),
-                    ],
                   ],
                 ),
-                if (_hasImage)
-                  CheckboxListTile(
-                    contentPadding: EdgeInsets.zero,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: _imagePermission,
-                    onChanged: (v) =>
-                        setState(() => _imagePermission = v ?? false),
-                    title: Text(
-                      l10n.petitionImagePermission,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color:
-                            problems.contains(PetitionProblem.imagePermission)
-                            ? AppColors.danger
-                            : AppColors.text,
-                      ),
-                    ),
-                  )
-                else
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      l10n.petitionImageHelp,
-                      style: const TextStyle(
-                        fontSize: 12.5,
-                        color: AppColors.textMuted,
-                      ),
-                    ),
-                  ),
               ],
             ),
             SettingsSection(
@@ -522,33 +529,38 @@ class _AdminPetitionFormScreenState
               title: l10n.petitionReview,
               icon: Icons.gavel_rounded,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12, bottom: 8),
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final review in PetitionReview.values)
-                        _Choice(
-                          label: review.label(l10n),
-                          icon: review.icon,
-                          selected: _review == review,
-                          color: review.color,
-                          onTap: () => setState(() => _review = review),
-                        ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Text(
-                    l10n.petitionReviewHelp,
-                    style: const TextStyle(
-                      fontSize: 12.5,
-                      height: 1.35,
-                      color: AppColors.textMuted,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12, bottom: 8),
+                      child: Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          for (final review in PetitionReview.values)
+                            _Choice(
+                              label: review.label(l10n),
+                              icon: review.icon,
+                              selected: _review == review,
+                              color: review.color,
+                              onTap: () => setState(() => _review = review),
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        l10n.petitionReviewHelp,
+                        style: const TextStyle(
+                          fontSize: 12.5,
+                          height: 1.35,
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 if (_review == PetitionReview.rejected)
                   _Field(
@@ -563,32 +575,37 @@ class _AdminPetitionFormScreenState
               title: l10n.petitionStatus,
               icon: Icons.flag_rounded,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12, bottom: 8),
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final status in PetitionStatus.values)
-                        _Choice(
-                          label: status.label(l10n),
-                          selected: _status == status,
-                          color: status.color,
-                          onTap: () => setState(() => _status = status),
-                        ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Text(
-                    l10n.petitionStatusHelp,
-                    style: const TextStyle(
-                      fontSize: 12.5,
-                      height: 1.35,
-                      color: AppColors.textMuted,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12, bottom: 8),
+                      child: Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          for (final status in PetitionStatus.values)
+                            _Choice(
+                              label: status.label(l10n),
+                              selected: _status == status,
+                              color: status.color,
+                              onTap: () => setState(() => _status = status),
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        l10n.petitionStatusHelp,
+                        style: const TextStyle(
+                          fontSize: 12.5,
+                          height: 1.35,
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -650,32 +667,17 @@ class _Field extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TextField(
-        controller: controller,
-        minLines: lines,
-        maxLines: lines == 1 ? 1 : lines + 4,
-        maxLength: maxLength,
-        keyboardType: keyboard ?? (lines > 1 ? TextInputType.multiline : null),
-        autocorrect: keyboard != TextInputType.url,
-        textCapitalization: keyboard == TextInputType.url
-            ? TextCapitalization.none
-            : TextCapitalization.sentences,
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          helperText: help,
-          helperMaxLines: 2,
-          errorText: error,
-          errorMaxLines: 2,
-          alignLabelWithHint: lines > 1,
-          suffixIcon: suffix,
-          filled: true,
-          fillColor: AppColors.background,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-        ),
-      ),
+    return AppTextField(
+      controller: controller,
+      label: label,
+      hint: hint,
+      help: help,
+      error: error,
+      lines: lines,
+      maxLength: maxLength,
+      keyboard: keyboard,
+      suffix: suffix,
+      focusColor: petitionColor,
     );
   }
 }

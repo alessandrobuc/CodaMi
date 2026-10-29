@@ -2021,5 +2021,13 @@
   "shopOrderManualHelp": "The team forwards each order to the supplier.",
   "shopOrderEmail": "Automatic email",
   "shopOrderEmailHelp": "Each paid order is emailed to the supplier (starts with checkout).",
-  "shopNotes": "Notes (admins only)"
+  "shopNotes": "Notes (admins only)",
+  "shopForYourPets": "For your pets",
+  "shopOnSale": "On sale",
+  "shopAllProducts": "All products",
+  "shopResults": "Results",
+  "shopProductCount": "{count, plural, =1{1 product} other{{count} products}}",
+  "@shopProductCount": {"placeholders": {"count": {"type": "int"}}},
+  "shopYouSave": "You save {amount}",
+  "@shopYouSave": {"placeholders": {"amount": {"type": "String"}}}
 }

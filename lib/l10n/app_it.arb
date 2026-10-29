@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "Il team inoltra ogni ordine al fornitore.",
   "shopOrderEmail": "Email automatica",
   "shopOrderEmailHelp": "Ogni ordine pagato viene inviato via email al fornitore (con il checkout).",
-  "shopNotes": "Note (solo admin)"
+  "shopNotes": "Note (solo admin)",
+  "shopForYourPets": "Per i tuoi animali",
+  "shopOnSale": "In offerta",
+  "shopAllProducts": "Tutti i prodotti",
+  "shopResults": "Risultati",
+  "shopProductCount": "{count, plural, =1{1 prodotto} other{{count} prodotti}}",
+  "shopYouSave": "Risparmi {amount}"
 }

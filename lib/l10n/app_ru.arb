@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "Команда пересылает каждый заказ поставщику.",
   "shopOrderEmail": "Автоматическое письмо",
   "shopOrderEmailHelp": "Каждый оплаченный заказ отправляется поставщику по почте (с запуском оплаты).",
-  "shopNotes": "Заметки (только админы)"
+  "shopNotes": "Заметки (только админы)",
+  "shopForYourPets": "Для ваших питомцев",
+  "shopOnSale": "Со скидкой",
+  "shopAllProducts": "Все товары",
+  "shopResults": "Результаты",
+  "shopProductCount": "{count, plural, =1{1 товар} few{{count} товара} other{{count} товаров}}",
+  "shopYouSave": "Ваша экономия {amount}"
 }

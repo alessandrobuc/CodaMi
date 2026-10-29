@@ -4214,4 +4214,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get shopNotes => 'Notas (solo admins)';
+
+  @override
+  String get shopForYourPets => 'Para tus mascotas';
+
+  @override
+  String get shopOnSale => 'En oferta';
+
+  @override
+  String get shopAllProducts => 'Todos los productos';
+
+  @override
+  String get shopResults => 'Resultados';
+
+  @override
+  String shopProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count productos',
+      one: '1 producto',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shopYouSave(String amount) {
+    return 'Ahorras $amount';
+  }
 }

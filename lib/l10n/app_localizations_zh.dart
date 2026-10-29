@@ -3966,4 +3966,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shopNotes => '备注（仅管理员）';
+
+  @override
+  String get shopForYourPets => '适合您的宠物';
+
+  @override
+  String get shopOnSale => '特价';
+
+  @override
+  String get shopAllProducts => '全部商品';
+
+  @override
+  String get shopResults => '搜索结果';
+
+  @override
+  String shopProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 件商品',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shopYouSave(String amount) {
+    return '立省 $amount';
+  }
 }

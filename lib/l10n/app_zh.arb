@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "由团队将每个订单转给供应商。",
   "shopOrderEmail": "自动邮件",
   "shopOrderEmailHelp": "每笔已付款订单会通过邮件发给供应商（随结账功能上线）。",
-  "shopNotes": "备注（仅管理员）"
+  "shopNotes": "备注（仅管理员）",
+  "shopForYourPets": "适合您的宠物",
+  "shopOnSale": "特价",
+  "shopAllProducts": "全部商品",
+  "shopResults": "搜索结果",
+  "shopProductCount": "{count, plural, other{{count} 件商品}}",
+  "shopYouSave": "立省 {amount}"
 }

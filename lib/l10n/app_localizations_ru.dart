@@ -4213,4 +4213,33 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shopNotes => 'Заметки (только админы)';
+
+  @override
+  String get shopForYourPets => 'Для ваших питомцев';
+
+  @override
+  String get shopOnSale => 'Со скидкой';
+
+  @override
+  String get shopAllProducts => 'Все товары';
+
+  @override
+  String get shopResults => 'Результаты';
+
+  @override
+  String shopProductCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count товаров',
+      few: '$count товара',
+      one: '1 товар',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String shopYouSave(String amount) {
+    return 'Ваша экономия $amount';
+  }
 }

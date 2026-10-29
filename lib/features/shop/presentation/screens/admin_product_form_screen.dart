@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
+import '../../../../core/widgets/form_fields.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/labels.dart';
 import '../../../admin/presentation/widgets/settings_fields.dart';
@@ -218,33 +219,39 @@ class _AdminProductFormScreenState
               icon: Icons.photo_library_rounded,
               color: shopColor,
               children: [
-                ShopHelpText(l10n.shopPhotosHelp),
-                SizedBox(
-                  height: 96,
-                  child: ReorderableListView(
-                    scrollDirection: Axis.horizontal,
-                    buildDefaultDragHandles: false,
-                    onReorderItem: (from, to) => setState(
-                      () => _images.insert(to, _images.removeAt(from)),
-                    ),
-                    footer: _images.length < ShopLimits.images
-                        ? _AddPhoto(onTap: _pickImages)
-                        : null,
-                    children: [
-                      for (final (i, slot) in _images.indexed)
-                        ReorderableDelayedDragStartListener(
-                          key: ObjectKey(slot),
-                          index: i,
-                          child: _Thumb(
-                            slot: slot,
-                            cover: i == 0,
-                            onRemove: () => setState(() => _images.removeAt(i)),
-                          ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ShopHelpText(l10n.shopPhotosHelp),
+                    SizedBox(
+                      height: 96,
+                      child: ReorderableListView(
+                        scrollDirection: Axis.horizontal,
+                        buildDefaultDragHandles: false,
+                        onReorderItem: (from, to) => setState(
+                          () => _images.insert(to, _images.removeAt(from)),
                         ),
-                    ],
-                  ),
+                        footer: _images.length < ShopLimits.images
+                            ? _AddPhoto(onTap: _pickImages)
+                            : null,
+                        children: [
+                          for (final (i, slot) in _images.indexed)
+                            ReorderableDelayedDragStartListener(
+                              key: ObjectKey(slot),
+                              index: i,
+                              child: _Thumb(
+                                slot: slot,
+                                cover: i == 0,
+                                onRemove: () =>
+                                    setState(() => _images.removeAt(i)),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                 ),
-                const SizedBox(height: 12),
               ],
             ),
             SettingsSection(
@@ -252,7 +259,6 @@ class _AdminProductFormScreenState
               icon: Icons.edit_note_rounded,
               color: shopColor,
               children: [
-                const SizedBox(height: 12),
                 ShopTextField(
                   controller: _name,
                   label: l10n.shopName,
@@ -267,23 +273,21 @@ class _AdminProductFormScreenState
                   lines: 5,
                   maxLength: ShopLimits.description,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
+                LabeledField(
+                  label: l10n.shopCategory,
+                  hasError: problems.contains(ProductProblem.category),
                   child: DropdownButtonFormField<String>(
                     initialValue: byId.containsKey(_categoryId)
                         ? _categoryId
                         : null,
                     isExpanded: true,
-                    decoration: InputDecoration(
-                      labelText: l10n.shopCategory,
-                      errorText: problems.contains(ProductProblem.category)
+                    borderRadius: BorderRadius.circular(14),
+                    hint: Text(l10n.shopPickCategory),
+                    decoration: fieldDecoration(
+                      error: problems.contains(ProductProblem.category)
                           ? l10n.shopPickCategory
                           : null,
-                      filled: true,
-                      fillColor: AppColors.background,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
+                      focusColor: shopColor,
                     ),
                     items: [
                       for (final top in categories.where((c) => c.isTop)) ...[
@@ -298,32 +302,38 @@ class _AdminProductFormScreenState
                     onChanged: (id) => setState(() => _categoryId = id ?? ''),
                   ),
                 ),
-                Text(
-                  l10n.shopAnimals,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.text,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    for (final a in PetSpecies.values)
-                      FilterChip(
-                        label: Text(a.label(l10n)),
-                        selected: _animals.contains(a),
-                        selectedColor: shopColor.withValues(alpha: 0.15),
-                        checkmarkColor: shopColor,
-                        shape: const StadiumBorder(),
-                        onSelected: (on) => setState(
-                          () => on ? _animals.add(a) : _animals.remove(a),
-                        ),
+                    const SizedBox(height: 12),
+                    Text(
+                      l10n.shopAnimals,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.text,
                       ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final a in PetSpecies.values)
+                          FilterChip(
+                            label: Text(a.label(l10n)),
+                            selected: _animals.contains(a),
+                            selectedColor: shopColor.withValues(alpha: 0.15),
+                            checkmarkColor: shopColor,
+                            shape: const StadiumBorder(),
+                            onSelected: (on) => setState(
+                              () => on ? _animals.add(a) : _animals.remove(a),
+                            ),
+                          ),
+                      ],
+                    ),
+                    ShopHelpText(l10n.shopAnimalsHelp),
                   ],
                 ),
-                ShopHelpText(l10n.shopAnimalsHelp),
               ],
             ),
             SettingsSection(
@@ -331,23 +341,28 @@ class _AdminProductFormScreenState
               icon: Icons.handshake_rounded,
               color: shopColor,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final m in SalesModel.values)
-                        ShopChoice(
-                          label: m.label(l10n),
-                          icon: m.icon,
-                          selected: _model == m,
-                          onTap: () => setState(() => _model = m),
-                        ),
-                    ],
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          for (final m in SalesModel.values)
+                            ShopChoice(
+                              label: m.label(l10n),
+                              icon: m.icon,
+                              selected: _model == m,
+                              onTap: () => setState(() => _model = m),
+                            ),
+                        ],
+                      ),
+                    ),
+                    ShopHelpText(_model.help(l10n)),
+                  ],
                 ),
-                ShopHelpText(_model.help(l10n)),
                 if (affiliate) ...[
                   ShopTextField(
                     controller: _partner,
@@ -391,7 +406,6 @@ class _AdminProductFormScreenState
               icon: Icons.euro_rounded,
               color: shopColor,
               children: [
-                const SizedBox(height: 12),
                 ShopTextField(
                   controller: _price,
                   label: l10n.shopPrice,
@@ -489,17 +503,13 @@ class _Picker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+    return LabeledField(
+      label: label,
       child: DropdownButtonFormField<String>(
         initialValue: items.containsKey(value) ? value : '',
         isExpanded: true,
-        decoration: InputDecoration(
-          labelText: label,
-          filled: true,
-          fillColor: AppColors.background,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-        ),
+        borderRadius: BorderRadius.circular(14),
+        decoration: fieldDecoration(focusColor: shopColor),
         items: [
           DropdownMenuItem(value: '', child: Text(none)),
           for (final e in items.entries)

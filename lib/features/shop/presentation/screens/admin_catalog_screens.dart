@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/empty_state.dart';
+import '../../../../core/widgets/form_fields.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../admin/presentation/widgets/settings_fields.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
@@ -462,7 +463,6 @@ class _CategoryFormState extends ConsumerState<_CategoryForm> {
           icon: Icons.category_rounded,
           color: shopColor,
           children: [
-            const SizedBox(height: 12),
             ShopTextField(
               controller: _name,
               label: l10n.shopName,
@@ -472,21 +472,15 @@ class _CategoryFormState extends ConsumerState<_CategoryForm> {
                   : null,
             ),
             if (!hasChildren)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+              LabeledField(
+                label: l10n.shopParent,
                 child: DropdownButtonFormField<String>(
                   initialValue: parents.any((p) => p.id == _parentId)
                       ? _parentId
                       : '',
                   isExpanded: true,
-                  decoration: InputDecoration(
-                    labelText: l10n.shopParent,
-                    filled: true,
-                    fillColor: AppColors.background,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                  borderRadius: BorderRadius.circular(14),
+                  decoration: fieldDecoration(focusColor: shopColor),
                   items: [
                     DropdownMenuItem(value: '', child: Text(l10n.shopNoParent)),
                     for (final p in parents)
@@ -723,7 +717,6 @@ class _BrandFormState extends ConsumerState<_BrandForm> {
           icon: Icons.verified_rounded,
           color: shopColor,
           children: [
-            const SizedBox(height: 12),
             ShopTextField(
               controller: _name,
               label: l10n.shopName,
@@ -753,53 +746,54 @@ class _BrandFormState extends ConsumerState<_BrandForm> {
           icon: Icons.image_rounded,
           color: shopColor,
           children: [
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                SizedBox(
-                  width: 72,
-                  height: 72,
-                  child: _newLogo != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.file(_newLogo!, fit: BoxFit.cover),
-                        )
-                      : ShopNetworkImage(
-                          url: _logoUrl,
-                          height: 72,
-                          borderRadius: BorderRadius.circular(16),
-                          placeholder: Icons.verified_rounded,
-                        ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      OutlinedButton.icon(
-                        onPressed: _pickLogo,
-                        icon: const Icon(Icons.photo_library_rounded),
-                        label: Text(l10n.shopAddLogo),
-                      ),
-                      if (hasLogo)
-                        OutlinedButton.icon(
-                          onPressed: () => setState(() {
-                            _newLogo = null;
-                            _logoUrl = null;
-                          }),
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: AppColors.danger,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 72,
+                    height: 72,
+                    child: _newLogo != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.file(_newLogo!, fit: BoxFit.cover),
+                          )
+                        : ShopNetworkImage(
+                            url: _logoUrl,
+                            height: 72,
+                            borderRadius: BorderRadius.circular(16),
+                            placeholder: Icons.verified_rounded,
                           ),
-                          icon: const Icon(Icons.delete_outline_rounded),
-                          label: Text(l10n.remove),
-                        ),
-                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        OutlinedButton.icon(
+                          onPressed: _pickLogo,
+                          icon: const Icon(Icons.photo_library_rounded),
+                          label: Text(l10n.shopAddLogo),
+                        ),
+                        if (hasLogo)
+                          OutlinedButton.icon(
+                            onPressed: () => setState(() {
+                              _newLogo = null;
+                              _logoUrl = null;
+                            }),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppColors.danger,
+                            ),
+                            icon: const Icon(Icons.delete_outline_rounded),
+                            label: Text(l10n.remove),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 12),
           ],
         ),
         _ActiveSwitch(
@@ -973,7 +967,6 @@ class _SupplierFormState extends ConsumerState<_SupplierForm> {
           icon: Icons.local_shipping_rounded,
           color: shopColor,
           children: [
-            const SizedBox(height: 12),
             ShopTextField(
               controller: _name,
               label: l10n.shopName,
@@ -1015,22 +1008,27 @@ class _SupplierFormState extends ConsumerState<_SupplierForm> {
           icon: Icons.outgoing_mail,
           color: shopColor,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  for (final m in OrderMethod.values)
-                    ShopChoice(
-                      label: m.label(l10n),
-                      selected: _method == m,
-                      onTap: () => setState(() => _method = m),
-                    ),
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      for (final m in OrderMethod.values)
+                        ShopChoice(
+                          label: m.label(l10n),
+                          selected: _method == m,
+                          onTap: () => setState(() => _method = m),
+                        ),
+                    ],
+                  ),
+                ),
+                ShopHelpText(_method.help(l10n)),
+              ],
             ),
-            ShopHelpText(_method.help(l10n)),
           ],
         ),
         SettingsSection(
@@ -1038,7 +1036,6 @@ class _SupplierFormState extends ConsumerState<_SupplierForm> {
           icon: Icons.sticky_note_2_rounded,
           color: shopColor,
           children: [
-            const SizedBox(height: 12),
             ShopTextField(
               controller: _notes,
               label: l10n.shopNotes,

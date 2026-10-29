@@ -1209,5 +1209,11 @@
   "shopOrderManualHelp": "يحوّل الفريق كل طلب إلى المورد.",
   "shopOrderEmail": "بريد تلقائي",
   "shopOrderEmailHelp": "يُرسل كل طلب مدفوع إلى المورد بالبريد (مع بدء الدفع).",
-  "shopNotes": "ملاحظات (للمشرفين فقط)"
+  "shopNotes": "ملاحظات (للمشرفين فقط)",
+  "shopForYourPets": "لحيواناتك الأليفة",
+  "shopOnSale": "تخفيضات",
+  "shopAllProducts": "كل المنتجات",
+  "shopResults": "النتائج",
+  "shopProductCount": "{count, plural, =1{منتج واحد} other{{count} منتجات}}",
+  "shopYouSave": "توفّر {amount}"
 }
