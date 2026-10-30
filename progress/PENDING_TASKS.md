@@ -2,12 +2,14 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Thu 29 Oct 2026 (shop day 1)_
+_Last updated: Fri 30 Oct 2026 (shop day 2)_
 
 ---
 
 ## 1. Testing now
 
+- [ ] **Deploy (shop day 2, Fri 30 Oct):** `firebase deploy --only firestore:rules` (shipping settings, cost prices, affiliate clicks, sponsored fields; without it these can't be saved)
+- [ ] **Shop day 2 on the phone:** follow part 11 of `TEST_SCENARIO_SHOP_2026-10-29.md` (shipping setup, cart, totals, cost and margin, affiliate clicks, sponsored)
 - [x] **Deploy (shop, Thu 29 Oct):** rules and storage are live
 - [ ] **Shop on the phone:** follow `TEST_SCENARIO_SHOP_2026-10-29.md`. Admin → More → Shop: add the starting categories, a brand with a logo, a supplier, a few products with photos (one affiliate, one with a discount); Preview the shop; open the shop and check the Shop tab as a user (search, animal filter, categories, product page, "Buy on…" opens the link); hide a brand and a supplier and check their products disappear; close the shop and check the tab disappears
 
@@ -41,7 +43,7 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 built (on/off switch, sales model switches, categories, brands, suppliers, products, Shop tab, preview, rules); next: affiliate click counting, cost and margin, cart, shipping, Stripe checkout, orders, refunds, sponsored, reports (`SHOP_FEATURE.md`)
+- [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); next: Stripe checkout, orders, My orders, refunds, supplier emails, reports (`SHOP_FEATURE.md`)
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
 - [ ] Move the Places key to Secret Manager and restrict the Google Cloud keys (see `LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
@@ -88,6 +90,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Fri 30 Oct: shop day 2: cart (saved per account, cart icon with count), shipping settings in Admin → Shop → Shipping (zones, methods, price per zone, free above), totals with VAT included and the free-shipping hint, cost price and margin (admin only), affiliate click counting, sponsored products with dates. 52 labels in 10 languages, 4 new app tests (108), 21 new emulator checks. Rules not deployed yet
 
 - Thu 29 Oct: new Shop look for users (header kept the same as the other tabs): category pills (icon and name, "All" first), "For your pets" and "On sale" rows, smaller product cards (still 2 per row) with shadow, sale and partner tags, product page with a large photo, thumbnails, "You save", availability dot and description card. 6 new labels in 10 languages
 - Thu 29 Oct: new text field design in the petition and shop forms: the label sits above the box (it no longer jumps into the border and cuts the top line when tapped), rounded filled boxes, coloured border while typing, red border and label on errors; dropdowns match. Shared in `lib/core/widgets/form_fields.dart`, so other forms can use it

@@ -4242,4 +4242,191 @@ class AppLocalizationsRu extends AppLocalizations {
   String shopYouSave(String amount) {
     return 'Ваша экономия $amount';
   }
+
+  @override
+  String get shopCart => 'Корзина';
+
+  @override
+  String get shopCartClear => 'Очистить';
+
+  @override
+  String get shopCartEmpty => 'Корзина пуста. Добавьте товары из магазина.';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count товаров больше недоступны',
+      few: '$count товара больше недоступны',
+      one: '1 товар больше недоступен',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => 'Оформить';
+
+  @override
+  String get shopPaymentSoon => 'Оплата в приложении скоро появится.';
+
+  @override
+  String get shopViewCart => 'В корзину';
+
+  @override
+  String get shopShipping => 'Доставка';
+
+  @override
+  String get shopShipTo => 'Доставка в';
+
+  @override
+  String get shopShippingNotSet => 'Варианты доставки скоро появятся здесь.';
+
+  @override
+  String get shopFree => 'Бесплатно';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return 'Бесплатно от $amount';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return 'Добавьте ещё $amount для бесплатной доставки';
+  }
+
+  @override
+  String get shopSummary => 'Итого';
+
+  @override
+  String get shopSubtotal => 'Подытог';
+
+  @override
+  String get shopTotal => 'Всего';
+
+  @override
+  String get shopVatIncluded => 'НДС включён';
+
+  @override
+  String get shopSponsored => 'Реклама';
+
+  @override
+  String get shopSponsoredSection => 'Реклама';
+
+  @override
+  String get shopSponsoredHelp =>
+      'Показывать первым в магазине и категории с пометкой «Реклама».';
+
+  @override
+  String get shopSponsorFrom => 'С';
+
+  @override
+  String get shopSponsorUntil => 'По';
+
+  @override
+  String get shopSponsorDatesHelp =>
+      'Оставьте пустым, чтобы начать сразу и показывать до отключения.';
+
+  @override
+  String get shopSponsorDatesInvalid => 'Дата окончания раньше даты начала.';
+
+  @override
+  String get shopNoDate => 'Без даты';
+
+  @override
+  String get shopCost => 'Себестоимость (€, только админы)';
+
+  @override
+  String get shopCostHelp =>
+      'Сколько CodaMi платит поставщику или бренду. Пользователи этого не видят.';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return 'Маржа: $amount ($percent%)';
+  }
+
+  @override
+  String get shopAffiliateClicks => 'Переходы по ссылкам';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count нажатий «Купить»',
+      few: '$count нажатия «Купить»',
+      one: '1 нажатие «Купить»',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => 'За 30 дней · нажмите, чтобы обновить';
+
+  @override
+  String get shopShippingIntro =>
+      'Куда, как и за сколько доставлять. Цены с НДС. Сразу для всех пользователей.';
+
+  @override
+  String get shopShippingStarting => 'Добавить базовую настройку';
+
+  @override
+  String get shopZones => 'Зоны';
+
+  @override
+  String get shopZonesHelp =>
+      'Куда вы доставляете. Выключите зону, чтобы не доставлять туда.';
+
+  @override
+  String get shopZoneName => 'Название зоны';
+
+  @override
+  String get shopAddZone => 'Добавить зону';
+
+  @override
+  String get shopZoneItaly => 'Италия';
+
+  @override
+  String get shopZoneIslands => 'Сицилия и Сардиния';
+
+  @override
+  String get shopZoneEurope => 'Евросоюз';
+
+  @override
+  String get shopMethod => 'Способ доставки';
+
+  @override
+  String get shopAddMethod => 'Добавить способ доставки';
+
+  @override
+  String get shopMethodActive => 'Доступен пользователям';
+
+  @override
+  String get shopMethodStandard => 'Стандартная';
+
+  @override
+  String get shopMethodExpress => 'Экспресс';
+
+  @override
+  String get shopMethodStandardTime => '3–5 рабочих дней';
+
+  @override
+  String get shopMethodExpressTime => '1–2 рабочих дня';
+
+  @override
+  String get shopDeliveryTime => 'Срок доставки для пользователей';
+
+  @override
+  String get shopPricePerZone => 'Цена по зонам';
+
+  @override
+  String get shopPricePerZoneHelp =>
+      'Оставьте пустым, где способ недоступен. 0 — бесплатно.';
+
+  @override
+  String get shopFreeAboveLabel => 'Бесплатная доставка от (€)';
+
+  @override
+  String get shopFreeAboveHelp =>
+      'Необязательно. Пусто — доставка всегда платная.';
 }

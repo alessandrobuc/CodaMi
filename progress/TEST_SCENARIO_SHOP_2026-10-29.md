@@ -96,3 +96,46 @@ Switch **Visible to users** on for all four. Then check:
 ---
 
 **Expected results:** every step behaves as written, no red error screens, nothing visible to users while the shop is off.
+
+---
+
+# Day 2 (Fri 30 Oct): cart, shipping, cost, clicks, sponsored
+
+Deploy the rules first: `firebase deploy --only firestore:rules`. The shop can stay off; use Admin → Shop → **Preview the shop** for the user side, or open it for a test.
+
+## 11. Shipping settings (admin)
+
+1. Admin → Shop → **Shipping** → **Add the starting setup** → Italy, Sicily and Sardinia, European Union (switched off); Standard (3–5 working days, €5.90 / €9.90 / €14.90, free above €49) and Express (1–2 working days, €9.90 / €14.90, none for the EU).
+2. Type `abc` in a price → Save → red marks and "Check the fields marked in red". Fix it.
+3. Save → "Saved". Open Shipping again: everything is still there.
+
+## 12. Cost price and margin (admin)
+
+1. Edit product A (price 12,90) → Price section → **Cost price** `8.50` → the help text shows **Margin: €4.40 (34%)**.
+2. Save, open again → 8.50 is still there.
+3. Affiliate product C has no cost field.
+
+## 13. Cart (user or preview)
+
+1. Shop tab: a **cart icon** top right (in preview, in the app bar).
+2. Open A → **Add to cart** → the bar becomes **[− 1 +] View cart**, the cart icon shows **1**. Press + → 2.
+3. Open B → Add to cart. Out-of-stock products: the button is grey. Affiliate C: "Buy on Amazon" as before, no cart.
+4. **View cart:** A ×2 (€25.80) and B; change quantities with − / +, remove one with the bin, tap a row to open the product.
+5. **Ship to:** Italy / Sicily and Sardinia chips (EU hidden because it's off). Standard €5.90, Express €9.90; choosing Sicily changes the prices.
+6. Summary: subtotal, shipping, **total**, "VAT included", and "Add €x more for free shipping" under Standard. Raise quantities above €49 → Standard shows **Free**.
+7. The Checkout button shows the total but is grey, with "Payment in the app is coming soon".
+8. Close and reopen the app → the cart is still there. Sign in with another account → its own (empty) cart.
+9. Admin hides product B → in the cart: "1 product is no longer available" with **Remove**; the total leaves it out.
+
+## 14. Affiliate clicks
+
+1. As a user, open C and tap **Buy on Amazon** two or three times.
+2. Admin → edit C → **Affiliate clicks** shows the count.
+3. Admin → Shop → **Affiliate clicks** (last 30 days) shows the total; tap it to refresh.
+
+## 15. Sponsored
+
+1. Edit B → **Sponsored** on, no dates → Save. In the shop, B comes first and shows "Sponsored" above the brand; the product page shows a "Sponsored" tag.
+2. Set **Until** before **From** → red, save refused.
+3. Set **From** to next week → B is no longer first and has no label until then.
+4. Turn Sponsored off at the end.

@@ -9,6 +9,7 @@ import '../../../pets/domain/entities/pets_entity.dart';
 import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
+import 'cart_screen.dart';
 import 'product_detail_screen.dart';
 
 const _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
@@ -95,6 +96,7 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
               title: Text(l10n.shop),
               backgroundColor: AppColors.background,
               surfaceTintColor: Colors.transparent,
+              actions: const [CartButton()],
             )
           : null,
       body: SafeArea(
@@ -275,16 +277,29 @@ class _Header extends StatelessWidget {
               ),
             ),
           if (!preview) ...[
-            Text(
-              l10n.shop,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w800,
-                color: AppColors.text,
-              ),
-            ),
-            Text(
-              l10n.shopSubtitle,
-              style: const TextStyle(color: AppColors.textMuted),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.shop,
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              color: AppColors.text,
+                            ),
+                      ),
+                      Text(
+                        l10n.shopSubtitle,
+                        style: const TextStyle(color: AppColors.textMuted),
+                      ),
+                    ],
+                  ),
+                ),
+                const CartButton(),
+              ],
             ),
             const SizedBox(height: 14),
           ],

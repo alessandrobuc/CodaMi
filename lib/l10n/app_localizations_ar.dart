@@ -4159,4 +4159,188 @@ class AppLocalizationsAr extends AppLocalizations {
   String shopYouSave(String amount) {
     return 'توفّر $amount';
   }
+
+  @override
+  String get shopCart => 'السلة';
+
+  @override
+  String get shopCartClear => 'إفراغ';
+
+  @override
+  String get shopCartEmpty => 'سلتك فارغة. أضف منتجات من المتجر.';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count منتجات لم تعد متاحة',
+      one: 'منتج واحد لم يعد متاحًا',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => 'الدفع';
+
+  @override
+  String get shopPaymentSoon => 'الدفع داخل التطبيق قادم قريبًا.';
+
+  @override
+  String get shopViewCart => 'عرض السلة';
+
+  @override
+  String get shopShipping => 'الشحن';
+
+  @override
+  String get shopShipTo => 'الشحن إلى';
+
+  @override
+  String get shopShippingNotSet => 'ستظهر خيارات الشحن هنا قريبًا.';
+
+  @override
+  String get shopFree => 'مجاني';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return 'مجاني فوق $amount';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return 'أضف $amount للحصول على شحن مجاني';
+  }
+
+  @override
+  String get shopSummary => 'الملخص';
+
+  @override
+  String get shopSubtotal => 'المجموع الفرعي';
+
+  @override
+  String get shopTotal => 'الإجمالي';
+
+  @override
+  String get shopVatIncluded => 'شامل ضريبة القيمة المضافة';
+
+  @override
+  String get shopSponsored => 'مُموَّل';
+
+  @override
+  String get shopSponsoredSection => 'مُموَّل';
+
+  @override
+  String get shopSponsoredHelp =>
+      'يظهر أولًا في المتجر وفئته مع علامة \"مُموَّل\".';
+
+  @override
+  String get shopSponsorFrom => 'من';
+
+  @override
+  String get shopSponsorUntil => 'حتى';
+
+  @override
+  String get shopSponsorDatesHelp =>
+      'اتركه فارغًا للبدء الآن والاستمرار حتى الإيقاف.';
+
+  @override
+  String get shopSponsorDatesInvalid => 'تاريخ الانتهاء قبل تاريخ البدء.';
+
+  @override
+  String get shopNoDate => 'بدون تاريخ';
+
+  @override
+  String get shopCost => 'سعر التكلفة (€، للمشرفين فقط)';
+
+  @override
+  String get shopCostHelp =>
+      'ما تدفعه CodaMi للمورد أو العلامة. لا يراه المستخدمون أبدًا.';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return 'الهامش: $amount ($percent%)';
+  }
+
+  @override
+  String get shopAffiliateClicks => 'نقرات الروابط';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count نقرات على \"شراء\"',
+      one: 'نقرة واحدة على \"شراء\"',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => 'آخر 30 يومًا · اضغط للتحديث';
+
+  @override
+  String get shopShippingIntro =>
+      'إلى أين وكيف وبكم تشحن. الأسعار شاملة الضريبة. تُطبَّق على الجميع فورًا.';
+
+  @override
+  String get shopShippingStarting => 'إضافة الإعداد الأساسي';
+
+  @override
+  String get shopZones => 'المناطق';
+
+  @override
+  String get shopZonesHelp =>
+      'المناطق التي تشحن إليها. أوقف منطقة لإيقاف الشحن إليها.';
+
+  @override
+  String get shopZoneName => 'اسم المنطقة';
+
+  @override
+  String get shopAddZone => 'إضافة منطقة';
+
+  @override
+  String get shopZoneItaly => 'إيطاليا';
+
+  @override
+  String get shopZoneIslands => 'صقلية وسردينيا';
+
+  @override
+  String get shopZoneEurope => 'الاتحاد الأوروبي';
+
+  @override
+  String get shopMethod => 'طريقة الشحن';
+
+  @override
+  String get shopAddMethod => 'إضافة طريقة شحن';
+
+  @override
+  String get shopMethodActive => 'متاح للمستخدمين';
+
+  @override
+  String get shopMethodStandard => 'عادي';
+
+  @override
+  String get shopMethodExpress => 'سريع';
+
+  @override
+  String get shopMethodStandardTime => '3–5 أيام عمل';
+
+  @override
+  String get shopMethodExpressTime => '1–2 يوم عمل';
+
+  @override
+  String get shopDeliveryTime => 'مدة التوصيل المعروضة';
+
+  @override
+  String get shopPricePerZone => 'السعر لكل منطقة';
+
+  @override
+  String get shopPricePerZoneHelp =>
+      'اتركه فارغًا حيث لا تتوفر الطريقة. 0 تعني مجانًا.';
+
+  @override
+  String get shopFreeAboveLabel => 'شحن مجاني فوق (€)';
+
+  @override
+  String get shopFreeAboveHelp => 'اختياري. اتركه فارغًا لتحصيل الشحن دائمًا.';
 }

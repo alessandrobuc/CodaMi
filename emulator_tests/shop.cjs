@@ -220,6 +220,45 @@ const product = (uid, extra = {}) => ({
   ok(await remove(admin.token, "products/p2") === 200, "admin deletes a product");
   ok(await remove(admin.token, "suppliers/s2") === 200, "admin deletes a supplier");
 
+  // Sponsored products
+  const day = new Date("2026-11-01T00:00:00Z");
+  ok(await write(admin.token, "products/sp", product(admin.uid, {sponsored: true, sponsorStart: day, sponsorEnd: null}), create) === 200,
+    "sponsored product with a start date saved");
+  await bad({sponsored: "yes"}, "sponsored must be true or false");
+  await bad({sponsored: true, sponsorEnd: "tomorrow"}, "sponsor end must be a date");
+
+  // Cost prices
+  const cost = (uid, extra = {}) => ({costCents: 990, updatedBy: uid, ...extra});
+  ok(await write(admin.token, "productCosts/p1", cost(admin.uid)) === 200, "admin saves a cost price");
+  ok(await get(user.token, "productCosts/p1") === 403, "users can't read cost prices");
+  ok(await get(support.token, "productCosts/p1") === 403, "support staff can't read cost prices");
+  ok(await listAll(user.token, "productCosts") === 403, "users can't list cost prices");
+  ok(await write(user.token, "productCosts/p1", cost(user.uid)) === 403, "users can't write cost prices");
+  ok(await write(admin.token, "productCosts/p1", cost(admin.uid, {costCents: -5})) === 403, "negative cost refused");
+  ok(await write(admin.token, "productCosts/p1", cost(admin.uid, {note: "x"})) === 403, "extra cost fields refused");
+
+  // Shipping settings
+  const shipping = (uid, extra = {}) => ({
+    zones: [{id: "it", name: "Italy", active: true}],
+    methods: [{id: "standard", name: "Standard", deliveryTime: "3-5 days", prices: {it: 590}, freeAboveCents: 4900, active: true}],
+    updatedBy: uid, ...extra,
+  });
+  ok(await write(admin.token, "config/shipping", shipping(admin.uid)) === 200, "admin saves shipping settings");
+  ok(await get(user.token, "config/shipping") === 200, "users read shipping settings");
+  ok(await write(user.token, "config/shipping", shipping(user.uid)) === 403, "users can't change shipping");
+  ok(await write(admin.token, "config/shipping", shipping(admin.uid, {coupon: 1})) === 403, "extra shipping fields refused");
+
+  // Affiliate clicks
+  const click = (uid, extra = {}) => ({productId: "aff", partner: "Amazon", uid, ...extra});
+  const clickStamp = {stamps: ["at"]};
+  ok(await write(user.token, "affiliateClicks/c1", click(user.uid), clickStamp) === 200, "users record a click");
+  ok(await write(user.token, "affiliateClicks/c2", click(admin.uid), clickStamp) === 403, "a click can't be saved for someone else");
+  ok(await write(user.token, "affiliateClicks/c3", click(user.uid), {stamps: []}) === 403, "a click needs the server time");
+  ok(await write(user.token, "affiliateClicks/c4", click(user.uid, {amount: 99}), clickStamp) === 403, "extra click fields refused");
+  ok(await get(user.token, "affiliateClicks/c1") === 403, "users can't read clicks");
+  ok(await listAll(admin.token, "affiliateClicks") === 200, "admin reads clicks");
+  ok(await remove(user.token, "affiliateClicks/c1") === 403, "users can't delete clicks");
+
   // Switching off again
   ok(await write(admin.token, "config/shop", config(admin.uid, {enabled: false})) === 200, "admin closes the shop");
   ok(await get(user.token, "products/p1") === 403, "users lose access as soon as the shop is closed");

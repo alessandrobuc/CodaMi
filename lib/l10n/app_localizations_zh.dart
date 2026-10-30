@@ -3993,4 +3993,180 @@ class AppLocalizationsZh extends AppLocalizations {
   String shopYouSave(String amount) {
     return '立省 $amount';
   }
+
+  @override
+  String get shopCart => '购物车';
+
+  @override
+  String get shopCartClear => '清空';
+
+  @override
+  String get shopCartEmpty => '购物车是空的，去商店添加商品吧。';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 件商品已无法购买',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => '结账';
+
+  @override
+  String get shopPaymentSoon => '应用内支付即将推出。';
+
+  @override
+  String get shopViewCart => '查看购物车';
+
+  @override
+  String get shopShipping => '配送';
+
+  @override
+  String get shopShipTo => '配送至';
+
+  @override
+  String get shopShippingNotSet => '配送方式即将在此显示。';
+
+  @override
+  String get shopFree => '免费';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return '满 $amount 免运费';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return '再买 $amount 即可免运费';
+  }
+
+  @override
+  String get shopSummary => '订单摘要';
+
+  @override
+  String get shopSubtotal => '小计';
+
+  @override
+  String get shopTotal => '合计';
+
+  @override
+  String get shopVatIncluded => '含增值税';
+
+  @override
+  String get shopSponsored => '赞助';
+
+  @override
+  String get shopSponsoredSection => '赞助推广';
+
+  @override
+  String get shopSponsoredHelp => '在商店及其分类中置顶显示，并带有“赞助”标签。';
+
+  @override
+  String get shopSponsorFrom => '开始';
+
+  @override
+  String get shopSponsorUntil => '结束';
+
+  @override
+  String get shopSponsorDatesHelp => '留空表示立即开始，直到关闭为止。';
+
+  @override
+  String get shopSponsorDatesInvalid => '结束日期早于开始日期。';
+
+  @override
+  String get shopNoDate => '无日期';
+
+  @override
+  String get shopCost => '成本价（€，仅管理员）';
+
+  @override
+  String get shopCostHelp => 'CodaMi 支付给供应商或品牌的价格，用户永远看不到。';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return '利润：$amount（$percent%）';
+  }
+
+  @override
+  String get shopAffiliateClicks => '联盟点击';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '“购买”点击 $count 次',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => '最近 30 天 · 点击刷新';
+
+  @override
+  String get shopShippingIntro => '配送地区、方式和价格（含增值税），保存后立即对所有用户生效。';
+
+  @override
+  String get shopShippingStarting => '添加初始设置';
+
+  @override
+  String get shopZones => '配送地区';
+
+  @override
+  String get shopZonesHelp => '您配送的地区，关闭后将不再配送到该地区。';
+
+  @override
+  String get shopZoneName => '地区名称';
+
+  @override
+  String get shopAddZone => '添加地区';
+
+  @override
+  String get shopZoneItaly => '意大利';
+
+  @override
+  String get shopZoneIslands => '西西里和撒丁岛';
+
+  @override
+  String get shopZoneEurope => '欧盟';
+
+  @override
+  String get shopMethod => '配送方式';
+
+  @override
+  String get shopAddMethod => '添加配送方式';
+
+  @override
+  String get shopMethodActive => '向用户提供';
+
+  @override
+  String get shopMethodStandard => '标准配送';
+
+  @override
+  String get shopMethodExpress => '快速配送';
+
+  @override
+  String get shopMethodStandardTime => '3–5 个工作日';
+
+  @override
+  String get shopMethodExpressTime => '1–2 个工作日';
+
+  @override
+  String get shopDeliveryTime => '向用户显示的配送时间';
+
+  @override
+  String get shopPricePerZone => '各地区运费';
+
+  @override
+  String get shopPricePerZoneHelp => '不提供的地区留空，0 表示免费。';
+
+  @override
+  String get shopFreeAboveLabel => '满额免运费（€）';
+
+  @override
+  String get shopFreeAboveHelp => '可选，留空则始终收取运费。';
 }

@@ -6,9 +6,12 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/labels.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../domain/checkout.dart';
 import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
+import 'cart_screen.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   final String productId;
@@ -76,6 +79,12 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               padding: EdgeInsets.all(6),
               child: _RoundButton(),
             ),
+            actions: const [
+              Padding(
+                padding: EdgeInsetsDirectional.only(end: 8),
+                child: CartButton(round: true),
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const [StretchMode.zoomBackground],
               background: Stack(
@@ -147,8 +156,20 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (brand != null) ...[
-                        ShopBadge(label: brand.name, color: shopColor),
+                      if (brand != null || d.sponsoredAt(DateTime.now())) ...[
+                        Wrap(
+                          spacing: 6,
+                          runSpacing: 6,
+                          children: [
+                            if (brand != null)
+                              ShopBadge(label: brand.name, color: shopColor),
+                            if (d.sponsoredAt(DateTime.now()))
+                              ShopBadge(
+                                label: l10n.shopSponsored,
+                                color: AppColors.textMuted,
+                              ),
+                          ],
+                        ),
                         const SizedBox(height: 10),
                       ],
                       Text(
@@ -377,15 +398,43 @@ class _Pill extends StatelessWidget {
   }
 }
 
-class _BuyBar extends StatelessWidget {
+class _BuyBar extends ConsumerWidget {
   final Product product;
 
   const _BuyBar({required this.product});
 
+  void _buyOnPartner(BuildContext context, WidgetRef ref) {
+    final uid = ref.read(authStateProvider).value?.uid;
+    if (uid != null) {
+      ref
+          .read(shopRepositoryProvider)
+          .recordAffiliateClick(product, uid: uid)
+          .catchError((Object e) => debugPrint('Click not saved: $e'));
+    }
+    openShopLink(context, product.draft.affiliateUrl);
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final d = product.draft;
+    final inCart = ref.watch(
+      cartProvider.select(
+        (lines) =>
+            lines
+                .where((l) => l.productId == product.id)
+                .firstOrNull
+                ?.quantity ??
+            0,
+      ),
+    );
+    final buyable = canAddToCart(product);
+    final buttonStyle = FilledButton.styleFrom(
+      backgroundColor: shopColor,
+      minimumSize: const Size.fromHeight(54),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+    );
 
     return Container(
       padding: EdgeInsets.fromLTRB(
@@ -404,49 +453,58 @@ class _BuyBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FilledButton.icon(
-            onPressed: d.isAffiliate
-                ? () => openShopLink(context, d.affiliateUrl)
-                : null,
-            icon: Icon(
-              d.isAffiliate
-                  ? Icons.open_in_new_rounded
-                  : Icons.add_shopping_cart_rounded,
+      child: d.isAffiliate
+          ? FilledButton.icon(
+              onPressed: () => _buyOnPartner(context, ref),
+              icon: const Icon(Icons.open_in_new_rounded),
+              label: Text(l10n.shopBuyOn(d.partnerName)),
+              style: buttonStyle,
+            )
+          : inCart > 0 && buyable
+          ? Row(
+              children: [
+                QuantityStepper(
+                  quantity: inCart,
+                  onChanged: (q) => ref
+                      .read(cartProvider.notifier)
+                      .setQuantity(product.id, q),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CartScreen()),
+                    ),
+                    icon: const Icon(Icons.shopping_cart_rounded),
+                    label: Text(l10n.shopViewCart),
+                    style: buttonStyle,
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FilledButton.icon(
+                  onPressed: buyable
+                      ? () => ref.read(cartProvider.notifier).add(product.id)
+                      : null,
+                  icon: const Icon(Icons.add_shopping_cart_rounded),
+                  label: Text(l10n.shopAddToCart),
+                  style: buttonStyle,
+                ),
+                if (!buyable) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    d.availability.label(l10n),
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                      color: AppColors.textMuted,
+                    ),
+                  ),
+                ],
+              ],
             ),
-            label: Text(
-              d.isAffiliate
-                  ? l10n.shopBuyOn(d.partnerName)
-                  : l10n.shopAddToCart,
-            ),
-            style: FilledButton.styleFrom(
-              backgroundColor: shopColor,
-              minimumSize: const Size.fromHeight(54),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-          if (!d.isAffiliate) ...[
-            const SizedBox(height: 6),
-            Text(
-              d.availability.canBuy
-                  ? l10n.shopCheckoutSoon
-                  : d.availability.label(l10n),
-              style: const TextStyle(
-                fontSize: 12.5,
-                color: AppColors.textMuted,
-              ),
-            ),
-          ],
-        ],
-      ),
     );
   }
 }

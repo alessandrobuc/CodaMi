@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'checkout.dart';
 import 'shop.dart';
 
 sealed class ImageSlot {
@@ -71,7 +72,19 @@ abstract interface class ShopRepository {
     required ProductDraft draft,
     required List<ImageSlot> images,
     required String adminId,
+    int? costCents,
   });
 
   Future<void> deleteProduct(Product product);
+
+  // Admin only: product id → cost price in cents.
+  Stream<Map<String, int>> watchCosts();
+
+  Stream<ShippingConfig> watchShipping();
+
+  Future<void> saveShipping(ShippingConfig config, {required String adminId});
+
+  Future<void> recordAffiliateClick(Product product, {required String uid});
+
+  Future<int> countAffiliateClicks({String? productId, DateTime? since});
 }

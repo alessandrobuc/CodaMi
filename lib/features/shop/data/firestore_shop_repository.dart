@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../pets/domain/entities/pets_entity.dart';
+import '../domain/checkout.dart';
 import '../domain/shop.dart';
 import '../domain/shop_repository.dart';
 
@@ -27,6 +28,12 @@ class FirestoreShopRepository implements ShopRepository {
       _db.collection('suppliers');
   CollectionReference<Map<String, dynamic>> get _products =>
       _db.collection('products');
+  CollectionReference<Map<String, dynamic>> get _costs =>
+      _db.collection('productCosts');
+  CollectionReference<Map<String, dynamic>> get _clicks =>
+      _db.collection('affiliateClicks');
+  DocumentReference<Map<String, dynamic>> get _shipping =>
+      _db.collection('config').doc('shipping');
 
   Query<Map<String, dynamic>> _visible(
     CollectionReference<Map<String, dynamic>> c,
@@ -204,6 +211,7 @@ class FirestoreShopRepository implements ShopRepository {
     required ProductDraft draft,
     required List<ImageSlot> images,
     required String adminId,
+    int? costCents,
   }) async {
     final doc = existing == null ? _products.doc() : _products.doc(existing.id);
     final d = draft.trimmed();
@@ -235,18 +243,29 @@ class FirestoreShopRepository implements ShopRepository {
         'affiliateUrl': d.affiliateUrl,
         'partnerName': d.partnerName,
         'active': d.active,
+        'sponsored': d.sponsored,
+        'sponsorStart': _day(d.sponsorStart),
+        'sponsorEnd': _day(d.sponsorEnd),
         'images': [for (final i in kept) i.toMap()],
         ..._stamp(adminId),
       };
+      final batch = _db.batch();
       if (existing == null) {
-        await doc.set({
+        batch.set(doc, {
           ...data,
           'createdBy': adminId,
           'createdAt': FieldValue.serverTimestamp(),
         });
       } else {
-        await doc.update(data);
+        batch.update(doc, data);
       }
+      final cost = _costs.doc(doc.id);
+      if (costCents == null) {
+        batch.delete(cost);
+      } else {
+        batch.set(cost, {'costCents': costCents, ..._stamp(adminId)});
+      }
+      await batch.commit();
     } catch (_) {
       for (final path in uploaded) {
         await _deleteFile(path);
@@ -262,11 +281,53 @@ class FirestoreShopRepository implements ShopRepository {
 
   @override
   Future<void> deleteProduct(Product product) async {
-    await _products.doc(product.id).delete();
+    await (_db.batch()
+          ..delete(_products.doc(product.id))
+          ..delete(_costs.doc(product.id)))
+        .commit();
     for (final image in product.images) {
       await _deleteFile(image.path);
     }
   }
+
+  @override
+  Stream<Map<String, int>> watchCosts() => _costs.snapshots().map(
+    (s) => {
+      for (final d in s.docs)
+        if (d.data()['costCents'] is num)
+          d.id: (d.data()['costCents'] as num).toInt(),
+    },
+  );
+
+  @override
+  Stream<ShippingConfig> watchShipping() =>
+      _shipping.snapshots().map((d) => ShippingConfig.fromMap(d.data()));
+
+  @override
+  Future<void> saveShipping(ShippingConfig config, {required String adminId}) =>
+      _shipping.set({...config.toMap(), ..._stamp(adminId)});
+
+  @override
+  Future<void> recordAffiliateClick(Product product, {required String uid}) =>
+      _clicks.add({
+        'productId': product.id,
+        'partner': product.draft.partnerName,
+        'uid': uid,
+        'at': FieldValue.serverTimestamp(),
+      });
+
+  @override
+  Future<int> countAffiliateClicks({String? productId, DateTime? since}) async {
+    Query<Map<String, dynamic>> q = _clicks;
+    if (productId != null) q = q.where('productId', isEqualTo: productId);
+    if (since != null) {
+      q = q.where('at', isGreaterThanOrEqualTo: Timestamp.fromDate(since));
+    }
+    return (await q.count().get()).count ?? 0;
+  }
+
+  static Timestamp? _day(DateTime? d) =>
+      d == null ? null : Timestamp.fromDate(DateTime(d.year, d.month, d.day));
 
   Future<String> _upload(String path, File file) async {
     final ref = _storage.ref(path);
@@ -356,6 +417,9 @@ Product productFromMap(String id, Map<String, dynamic> map) => Product(
     affiliateUrl: _text(map, 'affiliateUrl'),
     partnerName: _text(map, 'partnerName'),
     active: map['active'] == true,
+    sponsored: map['sponsored'] == true,
+    sponsorStart: _date(map, 'sponsorStart'),
+    sponsorEnd: _date(map, 'sponsorEnd'),
   ),
   images: [
     for (final i in map['images'] as List? ?? const [])

@@ -309,6 +309,15 @@ class ProductCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (d.sponsoredAt(DateTime.now()))
+                      Text(
+                        l10n.shopSponsored,
+                        style: const TextStyle(
+                          fontSize: 10.5,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textMuted,
+                        ),
+                      ),
                     if (brandName.isNotEmpty)
                       Text(
                         brandName.toUpperCase(),

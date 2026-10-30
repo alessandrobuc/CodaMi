@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/form_fields.dart';
 import '../../../../l10n/l10n.dart';
@@ -38,6 +39,7 @@ class _AdminProductFormScreenState
   );
   late final _affiliateUrl = TextEditingController(text: _old?.affiliateUrl);
   late final _partner = TextEditingController(text: _old?.partnerName);
+  final _cost = TextEditingController();
   late String _categoryId = _old?.categoryId ?? '';
   late String _brandId = _old?.brandId ?? '';
   late String _supplierId = _old?.supplierId ?? '';
@@ -45,6 +47,10 @@ class _AdminProductFormScreenState
   late final Set<PetSpecies> _animals = {...?_old?.animals};
   late Availability _availability = _old?.availability ?? Availability.inStock;
   late bool _active = _old?.active ?? false;
+  late bool _sponsored = _old?.sponsored ?? false;
+  late DateTime? _sponsorStart = _old?.sponsorStart;
+  late DateTime? _sponsorEnd = _old?.sponsorEnd;
+  bool _costTouched = false;
   late final List<ImageSlot> _images = [
     for (final i in widget.product?.images ?? const <ShopImage>[])
       SavedImage(i),
@@ -59,6 +65,7 @@ class _AdminProductFormScreenState
     _compareAt,
     _affiliateUrl,
     _partner,
+    _cost,
   ];
 
   void _onText() {
@@ -70,6 +77,18 @@ class _AdminProductFormScreenState
     super.initState();
     for (final c in _controllers) {
       c.addListener(_onText);
+    }
+    _cost.addListener(() => _costTouched = true);
+    final id = widget.product?.id;
+    if (id != null) {
+      // Fills the saved cost once it arrives, unless the admin already typed.
+      ref.listenManual(productCostsProvider, fireImmediately: true, (_, next) {
+        final cost = next.value?[id];
+        if (cost != null && !_costTouched) {
+          _cost.text = priceInput(cost);
+          _costTouched = false;
+        }
+      });
     }
   }
 
@@ -99,7 +118,28 @@ class _AdminProductFormScreenState
     affiliateUrl: _affiliateUrl.text,
     partnerName: _partner.text,
     active: _active,
+    sponsored: _sponsored,
+    sponsorStart: _sponsorStart,
+    sponsorEnd: _sponsorEnd,
   );
+
+  bool get _costInvalid =>
+      _model != SalesModel.affiliate &&
+      _cost.text.trim().isNotEmpty &&
+      parsePriceCents(_cost.text) == null;
+
+  Future<void> _pickDate({required bool start}) async {
+    final now = DateTime.now();
+    final current = start ? _sponsorStart : _sponsorEnd;
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: current ?? now,
+      firstDate: DateTime(now.year - 1),
+      lastDate: DateTime(now.year + 3),
+    );
+    if (picked == null) return;
+    setState(() => start ? _sponsorStart = picked : _sponsorEnd = picked);
+  }
 
   Set<ProductProblem> get _problems =>
       _showErrors ? productProblems(_draft) : const {};
@@ -131,7 +171,7 @@ class _AdminProductFormScreenState
 
   Future<void> _save() async {
     final l10n = context.l10n;
-    if (productProblems(_draft).isNotEmpty) {
+    if (productProblems(_draft).isNotEmpty || _costInvalid) {
       setState(() => _showErrors = true);
       SnackbarUtils.showError(context, l10n.shopFixFields);
       return;
@@ -147,6 +187,9 @@ class _AdminProductFormScreenState
             draft: _draft,
             images: _images,
             adminId: adminId,
+            costCents: _model == SalesModel.affiliate
+                ? null
+                : parsePriceCents(_cost.text),
           );
       if (!mounted) return;
       SnackbarUtils.showSuccess(context, l10n.settingsSaved);
@@ -189,6 +232,8 @@ class _AdminProductFormScreenState
     final affiliate = _model == SalesModel.affiliate;
     final price = parsePriceCents(_price.text);
     final compare = parsePriceCents(_compareAt.text);
+    final margin = marginOf(price, parsePriceCents(_cost.text));
+    final productId = widget.product?.id;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -431,6 +476,24 @@ class _AdminProductFormScreenState
                       ? l10n.shopCompareAtInvalid
                       : null,
                 ),
+                if (!affiliate)
+                  ShopTextField(
+                    controller: _cost,
+                    label: l10n.shopCost,
+                    hint: '8.50',
+                    help: margin == null
+                        ? l10n.shopCostHelp
+                        : l10n.shopMargin(
+                            formatPrice(margin.cents),
+                            margin.percent,
+                          ),
+                    keyboard: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
+                    error: _showErrors && _costInvalid
+                        ? l10n.shopPriceInvalid
+                        : null,
+                  ),
               ],
             ),
             if (!affiliate)
@@ -458,6 +521,87 @@ class _AdminProductFormScreenState
                 ],
               ),
             SettingsSection(
+              title: l10n.shopSponsoredSection,
+              icon: Icons.campaign_rounded,
+              color: _sponsored ? AppColors.accent : AppColors.textMuted,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _sponsored,
+                      onChanged: (v) => setState(() => _sponsored = v),
+                      title: Text(
+                        l10n.shopSponsoredHelp,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: AppColors.text,
+                        ),
+                      ),
+                    ),
+                    if (_sponsored) ...[
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _DateButton(
+                              label: l10n.shopSponsorFrom,
+                              date: _sponsorStart,
+                              onPick: () => _pickDate(start: true),
+                              onClear: () =>
+                                  setState(() => _sponsorStart = null),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: _DateButton(
+                              label: l10n.shopSponsorUntil,
+                              date: _sponsorEnd,
+                              error: problems.contains(
+                                ProductProblem.sponsorDates,
+                              ),
+                              onPick: () => _pickDate(start: false),
+                              onClear: () => setState(() => _sponsorEnd = null),
+                            ),
+                          ),
+                        ],
+                      ),
+                      ShopHelpText(
+                        problems.contains(ProductProblem.sponsorDates)
+                            ? l10n.shopSponsorDatesInvalid
+                            : l10n.shopSponsorDatesHelp,
+                      ),
+                    ],
+                  ],
+                ),
+              ],
+            ),
+            if (affiliate && productId != null)
+              SettingsSection(
+                title: l10n.shopAffiliateClicks,
+                icon: Icons.ads_click_rounded,
+                color: shopColor,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Text(
+                      switch (ref.watch(affiliateClicksProvider(productId))) {
+                        AsyncValue(:final value?) => l10n.shopClicksCount(
+                          value,
+                        ),
+                        AsyncValue(hasError: true) => l10n.actionFailed,
+                        _ => '…',
+                      },
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.text,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            SettingsSection(
               title: l10n.shopVisible,
               icon: Icons.visibility_rounded,
               color: _active ? AppColors.primary : AppColors.textMuted,
@@ -479,6 +623,63 @@ class _AdminProductFormScreenState
               saving: _saving,
               onPressed: _save,
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _DateButton extends StatelessWidget {
+  final String label;
+  final DateTime? date;
+  final bool error;
+  final VoidCallback onPick;
+  final VoidCallback onClear;
+
+  const _DateButton({
+    required this.label,
+    required this.date,
+    required this.onPick,
+    required this.onClear,
+    this.error = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return LabeledField(
+      label: label,
+      hasError: error,
+      child: OutlinedButton(
+        onPressed: onPick,
+        style: OutlinedButton.styleFrom(
+          minimumSize: const Size.fromHeight(48),
+          alignment: AlignmentDirectional.centerStart,
+          padding: const EdgeInsetsDirectional.only(start: 12, end: 4),
+          side: BorderSide(color: error ? AppColors.danger : AppColors.border),
+          backgroundColor: AppColors.background,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.event_rounded, size: 18, color: shopColor),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                date == null ? l10n.shopNoDate : shortDate(l10n, date!),
+                style: const TextStyle(color: AppColors.text),
+              ),
+            ),
+            if (date != null)
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                iconSize: 18,
+                onPressed: onClear,
+                icon: const Icon(Icons.close_rounded),
+              ),
           ],
         ),
       ),

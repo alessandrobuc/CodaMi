@@ -226,7 +226,7 @@ service cloud.firestore {
       return data.keys().hasOnly([
           'name', 'description', 'categoryId', 'brandId', 'supplierId', 'salesModel', 'animals',
           'priceCents', 'compareAtCents', 'availability', 'affiliateUrl', 'partnerName', 'active',
-          'images', 'createdBy', 'createdAt', 'updatedBy', 'updatedAt'
+          'sponsored', 'sponsorStart', 'sponsorEnd', 'images', 'createdBy', 'createdAt', 'updatedBy', 'updatedAt'
         ])
         && shopName(data, 120)
         && data.description is string && data.description.size() <= 4000
@@ -245,7 +245,17 @@ service cloud.firestore {
         && (data.salesModel != 'affiliate'
           || (data.affiliateUrl != '' && data.partnerName.trim().size() > 0 && data.supplierId == ''))
         && data.active is bool
+        && data.get('sponsored', false) is bool
+        && (data.get('sponsorStart', null) == null || data.sponsorStart is timestamp)
+        && (data.get('sponsorEnd', null) == null || data.sponsorEnd is timestamp)
         && data.images is list && data.images.size() <= 6
+        && shopStamped(data);
+    }
+
+    function validShipping(data) {
+      return data.keys().hasOnly(['zones', 'methods', 'updatedBy', 'updatedAt'])
+        && data.zones is list && data.zones.size() <= 20
+        && data.methods is list && data.methods.size() <= 10
         && shopStamped(data);
     }
 
@@ -485,6 +495,36 @@ service cloud.firestore {
         && request.resource.data.disabledModels is list
         && request.resource.data.disabledModels.hasOnly(['ownStock', 'brandPartner', 'dropship', 'affiliate'])
         && shopStamped(request.resource.data);
+    }
+
+    match /config/shipping {
+      allow read: if signedIn();
+      allow write: if isAdmin() && validShipping(request.resource.data);
+    }
+
+    // Cost prices: admins only, never readable by users.
+    match /productCosts/{productId} {
+      allow read, delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['costCents', 'updatedBy', 'updatedAt'])
+        && request.resource.data.costCents is int
+        && request.resource.data.costCents >= 0
+        && request.resource.data.costCents <= 1000000
+        && shopStamped(request.resource.data);
+    }
+
+    // One line per tap on "Buy on …"; only admins read them.
+    match /affiliateClicks/{clickId} {
+      allow read: if isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['productId', 'partner', 'uid', 'at'])
+        && request.resource.data.productId is string
+        && request.resource.data.productId.size() > 0
+        && request.resource.data.productId.size() <= 64
+        && request.resource.data.partner is string
+        && request.resource.data.partner.size() <= 80
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.at == request.time;
     }
 
     match /shopCategories/{categoryId} {

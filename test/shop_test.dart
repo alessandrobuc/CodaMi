@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:CodaMi/features/pets/domain/entities/pets_entity.dart';
+import 'package:CodaMi/features/shop/domain/checkout.dart';
 import 'package:CodaMi/features/shop/domain/shop.dart';
 
 void main() {
@@ -182,4 +183,144 @@ void main() {
       expect(sorted.map((p) => p.id), ['cat', 'cat-out', 'new', 'old']);
     },
   );
+
+  test('shipping cost by zone, with free shipping above an amount', () {
+    const standard = ShippingMethod(
+      id: 'std',
+      name: 'Standard',
+      prices: {'it': 590, 'islands': 990},
+      freeAboveCents: 4900,
+    );
+    expect(standard.costFor('it', 2000), 590);
+    expect(standard.costFor('islands', 2000), 990);
+    expect(standard.costFor('it', 4900), 0);
+    expect(standard.costFor('eu', 2000), isNull);
+    const off = ShippingMethod(
+      id: 'x',
+      name: 'X',
+      prices: {'it': 100},
+      active: false,
+    );
+    expect(off.costFor('it', 100), isNull);
+
+    const config = ShippingConfig(
+      zones: [
+        ShippingZone(id: 'it', name: 'Italy'),
+        ShippingZone(id: 'islands', name: 'Islands', active: false),
+        ShippingZone(id: 'eu', name: 'EU'),
+      ],
+      methods: [standard],
+    );
+    expect(config.activeZones.map((z) => z.id), ['it']);
+    final again = ShippingConfig.fromMap(
+      config.toMap().cast<String, dynamic>(),
+    );
+    expect(again.methods.single.prices, {'it': 590, 'islands': 990});
+    expect(again.methods.single.freeAboveCents, 4900);
+  });
+
+  test('cart totals skip products that are gone or no longer for sale', () {
+    final products = {
+      'a': product('a', price: 1290),
+      'b': product('b', price: 750),
+      'out': product('out', availability: Availability.outOfStock),
+      'aff': product('aff', model: SalesModel.affiliate, price: null),
+    };
+    const method = ShippingMethod(
+      id: 'std',
+      name: 'Standard',
+      prices: {'it': 590},
+      freeAboveCents: 4900,
+    );
+    final summary = summarizeCart(
+      const [
+        CartLine('a', 2),
+        CartLine('b', 1),
+        CartLine('out', 1),
+        CartLine('aff', 1),
+        CartLine('gone', 3),
+      ],
+      products,
+      method: method,
+      zoneId: 'it',
+    );
+    expect(summary.items.length, 2);
+    expect(summary.unavailable, 3);
+    expect(summary.count, 3);
+    expect(summary.subtotalCents, 3330);
+    expect(summary.shippingCents, 590);
+    expect(summary.totalCents, 3920);
+    expect(summary.freeShippingGapCents, 1570);
+
+    final free = summarizeCart(
+      const [CartLine('a', 4)],
+      products,
+      method: method,
+      zoneId: 'it',
+    );
+    expect(free.shippingCents, 0);
+    expect(free.freeShippingGapCents, isNull);
+  });
+
+  test('sponsored products run between their dates and come first', () {
+    final draft = ProductDraft(
+      name: 'Bed',
+      categoryId: 'beds',
+      sponsored: true,
+      sponsorStart: DateTime(2026, 11, 1),
+      sponsorEnd: DateTime(2026, 11, 30),
+    );
+    expect(draft.sponsoredAt(DateTime(2026, 10, 31, 23)), isFalse);
+    expect(draft.sponsoredAt(DateTime(2026, 11, 1)), isTrue);
+    expect(draft.sponsoredAt(DateTime(2026, 11, 30, 22)), isTrue);
+    expect(draft.sponsoredAt(DateTime(2026, 12, 1)), isFalse);
+    expect(
+      const ProductDraft(
+        name: 'x',
+        categoryId: 'c',
+        sponsored: true,
+      ).sponsoredAt(DateTime(2030)),
+      isTrue,
+    );
+    expect(
+      productProblems(
+        ProductDraft(
+          name: 'x',
+          categoryId: 'c',
+          priceCents: 100,
+          sponsored: true,
+          sponsorStart: DateTime(2026, 11, 2),
+          sponsorEnd: DateTime(2026, 11, 1),
+        ),
+      ),
+      {ProductProblem.sponsorDates},
+    );
+
+    final sponsored = Product(
+      id: 'sp',
+      draft: const ProductDraft(
+        name: 'Ad',
+        categoryId: 'food',
+        priceCents: 100,
+        sponsored: true,
+      ),
+    );
+    final sorted = sortForUser(
+      [
+        product('cat', animals: {PetSpecies.cat}),
+        sponsored,
+      ],
+      {PetSpecies.cat},
+    );
+    expect(sorted.first.id, 'sp');
+  });
+
+  test('margin', () {
+    final m = marginOf(2000, 1200)!;
+    expect(m.cents, 800);
+    expect(m.percent, 40);
+    expect(marginOf(2000, null), isNull);
+    expect(marginOf(null, 500), isNull);
+    expect(marginOf(1000, 1200)!.cents, -200);
+  });
 }

@@ -222,6 +222,9 @@ class ProductDraft {
   final String affiliateUrl;
   final String partnerName;
   final bool active;
+  final bool sponsored;
+  final DateTime? sponsorStart;
+  final DateTime? sponsorEnd;
 
   const ProductDraft({
     required this.name,
@@ -237,9 +240,19 @@ class ProductDraft {
     this.affiliateUrl = '',
     this.partnerName = '',
     this.active = false,
+    this.sponsored = false,
+    this.sponsorStart,
+    this.sponsorEnd,
   });
 
   bool get isAffiliate => salesModel == SalesModel.affiliate;
+
+  // Dates are whole days: the campaign runs to the end of [sponsorEnd].
+  bool sponsoredAt(DateTime now) =>
+      sponsored &&
+      (sponsorStart == null || !now.isBefore(sponsorStart!)) &&
+      (sponsorEnd == null ||
+          now.isBefore(sponsorEnd!.add(const Duration(days: 1))));
 
   ProductDraft trimmed() => ProductDraft(
     name: name.trim(),
@@ -255,10 +268,21 @@ class ProductDraft {
     affiliateUrl: isAffiliate ? affiliateUrl.trim() : '',
     partnerName: isAffiliate ? partnerName.trim() : '',
     active: active,
+    sponsored: sponsored,
+    sponsorStart: sponsored ? sponsorStart : null,
+    sponsorEnd: sponsored ? sponsorEnd : null,
   );
 }
 
-enum ProductProblem { name, category, price, compareAt, affiliateUrl, partner }
+enum ProductProblem {
+  name,
+  category,
+  price,
+  compareAt,
+  affiliateUrl,
+  partner,
+  sponsorDates,
+}
 
 // Affiliate prices change on the partner's site, so they are optional.
 Set<ProductProblem> productProblems(ProductDraft draft) {
@@ -278,6 +302,10 @@ Set<ProductProblem> productProblems(ProductDraft draft) {
     if (d.isAffiliate &&
         (d.partnerName.isEmpty || d.partnerName.length > ShopLimits.shortText))
       ProductProblem.partner,
+    if (d.sponsorStart != null &&
+        d.sponsorEnd != null &&
+        d.sponsorEnd!.isBefore(d.sponsorStart!))
+      ProductProblem.sponsorDates,
   };
 }
 
@@ -359,17 +387,40 @@ bool forAnimal(Product p, PetSpecies? species) =>
     p.draft.animals.isEmpty ||
     p.draft.animals.contains(species);
 
-// Products for the user's own pets first, then ones that can be bought, then newest.
-List<Product> sortForUser(Iterable<Product> products, Set<PetSpecies> myPets) {
+// Sponsored first, then products for the user's own pets, then ones that can
+// be bought, then newest.
+List<Product> sortForUser(
+  Iterable<Product> products,
+  Set<PetSpecies> myPets, {
+  DateTime? now,
+}) {
+  final at = now ?? DateTime.now();
+  int sponsorRank(Product p) => p.draft.sponsoredAt(at) ? 0 : 1;
   int petRank(Product p) =>
       myPets.isNotEmpty && p.draft.animals.any(myPets.contains) ? 0 : 1;
   int stockRank(Product p) => p.draft.availability.canBuy ? 0 : 1;
   final epoch = DateTime.fromMillisecondsSinceEpoch(0);
   return products.toList()..sort((a, b) {
+    final sponsor = sponsorRank(a).compareTo(sponsorRank(b));
+    if (sponsor != 0) return sponsor;
     final pet = petRank(a).compareTo(petRank(b));
     if (pet != 0) return pet;
     final stock = stockRank(a).compareTo(stockRank(b));
     if (stock != 0) return stock;
     return (b.updatedAt ?? epoch).compareTo(a.updatedAt ?? epoch);
   });
+}
+
+class Margin {
+  final int cents;
+  final int percent;
+
+  const Margin(this.cents, this.percent);
+}
+
+// Percent of the selling price that CodaMi keeps.
+Margin? marginOf(int? priceCents, int? costCents) {
+  if (priceCents == null || priceCents <= 0 || costCents == null) return null;
+  final cents = priceCents - costCents;
+  return Margin(cents, (cents * 100 / priceCents).round());
 }

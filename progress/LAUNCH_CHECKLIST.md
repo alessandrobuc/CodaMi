@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Thu 29 Oct 2026_
+_Last updated: Fri 30 Oct 2026_
 
 ---
 
@@ -61,6 +61,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] **What's new paging (Fri 23 Oct, evening):** deploy rules and indexes again (`code` field and the `releaseNotes` index: published + code)
 - [x] **Petitions (Mon 26 Oct):** deploy `firestore:rules,firestore:indexes,storage` (new `petitions` rules, index review + publishedAt, `petitions/` image folder). Can go together with the What's new paging deploy above
 - [x] **Shop (Thu 29 Oct):** deploy `firestore:rules,storage` (new `config/shop`, `shopCategories`, `brands`, `suppliers`, `products` rules and the `shop/` image folder). The shop stays off until an admin opens it
+- [ ] **Shop day 2 (Fri 30 Oct):** deploy `firestore:rules` (`config/shipping`, `productCosts`, `affiliateClicks`, sponsored product fields)
+- [ ] Shop shipping: replace the starting prices with the real ones before opening the shop
 - [ ] Raise the version name (not only the build number) for every release that has notes, and publish its notes in Admin → More → What's new
 - [ ] **App updates (Tue 27 Oct):** deploy `firestore:rules` (new `config/appVersion`, readable before sign-in, admin-only writes). Can go together with the What's new paging deploy above
 - [ ] **Every release:** once the update is live in the store, set Admin → More → App updates → Latest version for that platform. Only set a Minimum version for a release that old versions can't work with (it blocks the app until updated)

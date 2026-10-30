@@ -11,6 +11,7 @@ import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
 import 'admin_catalog_screens.dart';
 import 'admin_products_screen.dart';
+import 'admin_shipping_screen.dart';
 import 'shop_screen.dart';
 
 class AdminShopScreen extends ConsumerStatefulWidget {
@@ -201,6 +202,23 @@ class _AdminShopScreenState extends ConsumerState<AdminShopScreen> {
                 title: l10n.shopSuppliers,
                 trailing: count(suppliers),
                 onTap: () => _push(const AdminSuppliersScreen()),
+              ),
+              _Link(
+                icon: Icons.local_shipping_outlined,
+                title: l10n.shopShipping,
+                onTap: () => _push(const AdminShippingScreen()),
+              ),
+              _Link(
+                icon: Icons.ads_click_rounded,
+                title: l10n.shopAffiliateClicks,
+                subtitle: l10n.shopLast30Days,
+                trailing:
+                    ref
+                        .watch(affiliateClicks30DaysProvider)
+                        .value
+                        ?.toString() ??
+                    '',
+                onTap: () => ref.invalidate(affiliateClicks30DaysProvider),
               ),
               _Link(
                 icon: Icons.visibility_rounded,

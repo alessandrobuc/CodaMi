@@ -4194,4 +4194,189 @@ class AppLocalizationsHi extends AppLocalizations {
   String shopYouSave(String amount) {
     return 'आप $amount बचाते हैं';
   }
+
+  @override
+  String get shopCart => 'कार्ट';
+
+  @override
+  String get shopCartClear => 'खाली करें';
+
+  @override
+  String get shopCartEmpty => 'आपका कार्ट खाली है। दुकान से उत्पाद जोड़ें।';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count उत्पाद अब उपलब्ध नहीं हैं',
+      one: '1 उत्पाद अब उपलब्ध नहीं है',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => 'चेकआउट';
+
+  @override
+  String get shopPaymentSoon => 'ऐप में भुगतान जल्द आ रहा है।';
+
+  @override
+  String get shopViewCart => 'कार्ट देखें';
+
+  @override
+  String get shopShipping => 'शिपिंग';
+
+  @override
+  String get shopShipTo => 'यहाँ भेजें';
+
+  @override
+  String get shopShippingNotSet => 'शिपिंग विकल्प जल्द यहाँ दिखेंगे।';
+
+  @override
+  String get shopFree => 'मुफ़्त';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return '$amount से ऊपर मुफ़्त';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return 'मुफ़्त शिपिंग के लिए $amount और जोड़ें';
+  }
+
+  @override
+  String get shopSummary => 'सारांश';
+
+  @override
+  String get shopSubtotal => 'उप-योग';
+
+  @override
+  String get shopTotal => 'कुल';
+
+  @override
+  String get shopVatIncluded => 'VAT शामिल';
+
+  @override
+  String get shopSponsored => 'प्रायोजित';
+
+  @override
+  String get shopSponsoredSection => 'प्रायोजित';
+
+  @override
+  String get shopSponsoredHelp =>
+      'दुकान और श्रेणी में सबसे पहले, \"प्रायोजित\" लेबल के साथ दिखाएँ।';
+
+  @override
+  String get shopSponsorFrom => 'से';
+
+  @override
+  String get shopSponsorUntil => 'तक';
+
+  @override
+  String get shopSponsorDatesHelp =>
+      'अभी शुरू करने और बंद करने तक चलाने के लिए खाली छोड़ें।';
+
+  @override
+  String get shopSponsorDatesInvalid => 'समाप्ति तिथि शुरुआत से पहले है।';
+
+  @override
+  String get shopNoDate => 'कोई तिथि नहीं';
+
+  @override
+  String get shopCost => 'लागत मूल्य (€, केवल एडमिन)';
+
+  @override
+  String get shopCostHelp =>
+      'CodaMi सप्लायर या ब्रांड को जो देता है। उपयोगकर्ता इसे कभी नहीं देखते।';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return 'मार्जिन: $amount ($percent%)';
+  }
+
+  @override
+  String get shopAffiliateClicks => 'एफ़िलिएट क्लिक';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '\"खरीदें\" पर $count क्लिक',
+      one: '\"खरीदें\" पर 1 क्लिक',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => 'पिछले 30 दिन · रीफ़्रेश के लिए टैप करें';
+
+  @override
+  String get shopShippingIntro =>
+      'कहाँ, कैसे और कितने में भेजना है। कीमतों में VAT शामिल। सभी पर तुरंत लागू।';
+
+  @override
+  String get shopShippingStarting => 'शुरुआती सेटअप जोड़ें';
+
+  @override
+  String get shopZones => 'क्षेत्र';
+
+  @override
+  String get shopZonesHelp =>
+      'जहाँ आप भेजते हैं। किसी को बंद करने से वहाँ शिपिंग रुक जाएगी।';
+
+  @override
+  String get shopZoneName => 'क्षेत्र का नाम';
+
+  @override
+  String get shopAddZone => 'क्षेत्र जोड़ें';
+
+  @override
+  String get shopZoneItaly => 'इटली';
+
+  @override
+  String get shopZoneIslands => 'सिसिली और सार्डिनिया';
+
+  @override
+  String get shopZoneEurope => 'यूरोपीय संघ';
+
+  @override
+  String get shopMethod => 'शिपिंग तरीका';
+
+  @override
+  String get shopAddMethod => 'शिपिंग तरीका जोड़ें';
+
+  @override
+  String get shopMethodActive => 'उपयोगकर्ताओं को उपलब्ध';
+
+  @override
+  String get shopMethodStandard => 'स्टैंडर्ड';
+
+  @override
+  String get shopMethodExpress => 'एक्सप्रेस';
+
+  @override
+  String get shopMethodStandardTime => '3–5 कार्य दिवस';
+
+  @override
+  String get shopMethodExpressTime => '1–2 कार्य दिवस';
+
+  @override
+  String get shopDeliveryTime => 'उपयोगकर्ताओं को दिखने वाला डिलीवरी समय';
+
+  @override
+  String get shopPricePerZone => 'क्षेत्र के अनुसार कीमत';
+
+  @override
+  String get shopPricePerZoneHelp =>
+      'जहाँ यह तरीका नहीं है वहाँ खाली छोड़ें। 0 का मतलब मुफ़्त।';
+
+  @override
+  String get shopFreeAboveLabel => 'इतने से ऊपर मुफ़्त शिपिंग (€)';
+
+  @override
+  String get shopFreeAboveHelp =>
+      'वैकल्पिक। हमेशा शिपिंग लेने के लिए खाली छोड़ें।';
 }

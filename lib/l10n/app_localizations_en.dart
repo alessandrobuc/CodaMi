@@ -4191,4 +4191,190 @@ class AppLocalizationsEn extends AppLocalizations {
   String shopYouSave(String amount) {
     return 'You save $amount';
   }
+
+  @override
+  String get shopCart => 'Cart';
+
+  @override
+  String get shopCartClear => 'Empty';
+
+  @override
+  String get shopCartEmpty => 'Your cart is empty. Add products from the shop.';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products are no longer available',
+      one: '1 product is no longer available',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => 'Checkout';
+
+  @override
+  String get shopPaymentSoon => 'Payment in the app is coming soon.';
+
+  @override
+  String get shopViewCart => 'View cart';
+
+  @override
+  String get shopShipping => 'Shipping';
+
+  @override
+  String get shopShipTo => 'Ship to';
+
+  @override
+  String get shopShippingNotSet => 'Shipping options will be shown here soon.';
+
+  @override
+  String get shopFree => 'Free';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return 'Free above $amount';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return 'Add $amount more for free shipping';
+  }
+
+  @override
+  String get shopSummary => 'Summary';
+
+  @override
+  String get shopSubtotal => 'Subtotal';
+
+  @override
+  String get shopTotal => 'Total';
+
+  @override
+  String get shopVatIncluded => 'VAT included';
+
+  @override
+  String get shopSponsored => 'Sponsored';
+
+  @override
+  String get shopSponsoredSection => 'Sponsored';
+
+  @override
+  String get shopSponsoredHelp =>
+      'Show first in the shop and its category, with a \"Sponsored\" label.';
+
+  @override
+  String get shopSponsorFrom => 'From';
+
+  @override
+  String get shopSponsorUntil => 'Until';
+
+  @override
+  String get shopSponsorDatesHelp =>
+      'Leave empty to start now and run until switched off.';
+
+  @override
+  String get shopSponsorDatesInvalid =>
+      'The end date is before the start date.';
+
+  @override
+  String get shopNoDate => 'No date';
+
+  @override
+  String get shopCost => 'Cost price (€, admins only)';
+
+  @override
+  String get shopCostHelp =>
+      'What CodaMi pays the supplier or brand. Users never see it.';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return 'Margin: $amount ($percent%)';
+  }
+
+  @override
+  String get shopAffiliateClicks => 'Affiliate clicks';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count clicks on \"Buy\"',
+      one: '1 click on \"Buy\"',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => 'Last 30 days · tap to refresh';
+
+  @override
+  String get shopShippingIntro =>
+      'Where you ship, how and for how much. Prices include VAT. Saved for every user at once.';
+
+  @override
+  String get shopShippingStarting => 'Add the starting setup';
+
+  @override
+  String get shopZones => 'Zones';
+
+  @override
+  String get shopZonesHelp =>
+      'Areas you ship to. Switch one off to stop shipping there.';
+
+  @override
+  String get shopZoneName => 'Zone name';
+
+  @override
+  String get shopAddZone => 'Add zone';
+
+  @override
+  String get shopZoneItaly => 'Italy';
+
+  @override
+  String get shopZoneIslands => 'Sicily and Sardinia';
+
+  @override
+  String get shopZoneEurope => 'European Union';
+
+  @override
+  String get shopMethod => 'Shipping method';
+
+  @override
+  String get shopAddMethod => 'Add shipping method';
+
+  @override
+  String get shopMethodActive => 'Offered to users';
+
+  @override
+  String get shopMethodStandard => 'Standard';
+
+  @override
+  String get shopMethodExpress => 'Express';
+
+  @override
+  String get shopMethodStandardTime => '3–5 working days';
+
+  @override
+  String get shopMethodExpressTime => '1–2 working days';
+
+  @override
+  String get shopDeliveryTime => 'Delivery time shown to users';
+
+  @override
+  String get shopPricePerZone => 'Price per zone';
+
+  @override
+  String get shopPricePerZoneHelp =>
+      'Leave empty where this method isn\'t offered. 0 means free.';
+
+  @override
+  String get shopFreeAboveLabel => 'Free shipping above (€)';
+
+  @override
+  String get shopFreeAboveHelp =>
+      'Optional. Leave empty to always charge shipping.';
 }

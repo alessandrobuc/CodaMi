@@ -4241,4 +4241,192 @@ class AppLocalizationsIt extends AppLocalizations {
   String shopYouSave(String amount) {
     return 'Risparmi $amount';
   }
+
+  @override
+  String get shopCart => 'Carrello';
+
+  @override
+  String get shopCartClear => 'Svuota';
+
+  @override
+  String get shopCartEmpty =>
+      'Il carrello è vuoto. Aggiungi prodotti dallo shop.';
+
+  @override
+  String shopCartUnavailable(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count prodotti non sono più disponibili',
+      one: '1 prodotto non è più disponibile',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopCheckout => 'Paga';
+
+  @override
+  String get shopPaymentSoon => 'Il pagamento nell\'app arriverà presto.';
+
+  @override
+  String get shopViewCart => 'Vai al carrello';
+
+  @override
+  String get shopShipping => 'Spedizione';
+
+  @override
+  String get shopShipTo => 'Spedisci in';
+
+  @override
+  String get shopShippingNotSet =>
+      'Le opzioni di spedizione appariranno presto qui.';
+
+  @override
+  String get shopFree => 'Gratis';
+
+  @override
+  String shopFreeAbove(String amount) {
+    return 'Gratis sopra $amount';
+  }
+
+  @override
+  String shopFreeShippingGap(String amount) {
+    return 'Aggiungi altri $amount per la spedizione gratuita';
+  }
+
+  @override
+  String get shopSummary => 'Riepilogo';
+
+  @override
+  String get shopSubtotal => 'Subtotale';
+
+  @override
+  String get shopTotal => 'Totale';
+
+  @override
+  String get shopVatIncluded => 'IVA inclusa';
+
+  @override
+  String get shopSponsored => 'Sponsorizzato';
+
+  @override
+  String get shopSponsoredSection => 'Sponsorizzato';
+
+  @override
+  String get shopSponsoredHelp =>
+      'Mostra per primo nello shop e nella sua categoria, con l\'etichetta \"Sponsorizzato\".';
+
+  @override
+  String get shopSponsorFrom => 'Dal';
+
+  @override
+  String get shopSponsorUntil => 'Al';
+
+  @override
+  String get shopSponsorDatesHelp =>
+      'Lascia vuoto per iniziare subito e continuare finché non lo spegni.';
+
+  @override
+  String get shopSponsorDatesInvalid =>
+      'La data di fine è prima di quella di inizio.';
+
+  @override
+  String get shopNoDate => 'Nessuna data';
+
+  @override
+  String get shopCost => 'Prezzo di costo (€, solo admin)';
+
+  @override
+  String get shopCostHelp =>
+      'Quanto CodaMi paga al fornitore o al marchio. Gli utenti non lo vedono mai.';
+
+  @override
+  String shopMargin(String amount, int percent) {
+    return 'Margine: $amount ($percent%)';
+  }
+
+  @override
+  String get shopAffiliateClicks => 'Clic di affiliazione';
+
+  @override
+  String shopClicksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count clic su \"Acquista\"',
+      one: '1 clic su \"Acquista\"',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shopLast30Days => 'Ultimi 30 giorni · tocca per aggiornare';
+
+  @override
+  String get shopShippingIntro =>
+      'Dove spedisci, come e a che prezzo. I prezzi includono l\'IVA. Valido subito per tutti.';
+
+  @override
+  String get shopShippingStarting => 'Aggiungi la configurazione iniziale';
+
+  @override
+  String get shopZones => 'Zone';
+
+  @override
+  String get shopZonesHelp =>
+      'Aree in cui spedisci. Spegnine una per non spedire più lì.';
+
+  @override
+  String get shopZoneName => 'Nome della zona';
+
+  @override
+  String get shopAddZone => 'Aggiungi zona';
+
+  @override
+  String get shopZoneItaly => 'Italia';
+
+  @override
+  String get shopZoneIslands => 'Sicilia e Sardegna';
+
+  @override
+  String get shopZoneEurope => 'Unione Europea';
+
+  @override
+  String get shopMethod => 'Metodo di spedizione';
+
+  @override
+  String get shopAddMethod => 'Aggiungi metodo di spedizione';
+
+  @override
+  String get shopMethodActive => 'Offerto agli utenti';
+
+  @override
+  String get shopMethodStandard => 'Standard';
+
+  @override
+  String get shopMethodExpress => 'Express';
+
+  @override
+  String get shopMethodStandardTime => '3–5 giorni lavorativi';
+
+  @override
+  String get shopMethodExpressTime => '1–2 giorni lavorativi';
+
+  @override
+  String get shopDeliveryTime => 'Tempi di consegna mostrati agli utenti';
+
+  @override
+  String get shopPricePerZone => 'Prezzo per zona';
+
+  @override
+  String get shopPricePerZoneHelp =>
+      'Lascia vuoto dove il metodo non è offerto. 0 vuol dire gratis.';
+
+  @override
+  String get shopFreeAboveLabel => 'Spedizione gratuita sopra (€)';
+
+  @override
+  String get shopFreeAboveHelp =>
+      'Facoltativo. Lascia vuoto per far pagare sempre la spedizione.';
 }

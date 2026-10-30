@@ -7409,6 +7409,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You save {amount}'**
   String shopYouSave(String amount);
+
+  /// No description provided for @shopCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get shopCart;
+
+  /// No description provided for @shopCartClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get shopCartClear;
+
+  /// No description provided for @shopCartEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty. Add products from the shop.'**
+  String get shopCartEmpty;
+
+  /// No description provided for @shopCartUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product is no longer available} other{{count} products are no longer available}}'**
+  String shopCartUnavailable(int count);
+
+  /// No description provided for @shopCheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get shopCheckout;
+
+  /// No description provided for @shopPaymentSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment in the app is coming soon.'**
+  String get shopPaymentSoon;
+
+  /// No description provided for @shopViewCart.
+  ///
+  /// In en, this message translates to:
+  /// **'View cart'**
+  String get shopViewCart;
+
+  /// No description provided for @shopShipping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping'**
+  String get shopShipping;
+
+  /// No description provided for @shopShipTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Ship to'**
+  String get shopShipTo;
+
+  /// No description provided for @shopShippingNotSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping options will be shown here soon.'**
+  String get shopShippingNotSet;
+
+  /// No description provided for @shopFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get shopFree;
+
+  /// No description provided for @shopFreeAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Free above {amount}'**
+  String shopFreeAbove(String amount);
+
+  /// No description provided for @shopFreeShippingGap.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {amount} more for free shipping'**
+  String shopFreeShippingGap(String amount);
+
+  /// No description provided for @shopSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get shopSummary;
+
+  /// No description provided for @shopSubtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get shopSubtotal;
+
+  /// No description provided for @shopTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get shopTotal;
+
+  /// No description provided for @shopVatIncluded.
+  ///
+  /// In en, this message translates to:
+  /// **'VAT included'**
+  String get shopVatIncluded;
+
+  /// No description provided for @shopSponsored.
+  ///
+  /// In en, this message translates to:
+  /// **'Sponsored'**
+  String get shopSponsored;
+
+  /// No description provided for @shopSponsoredSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Sponsored'**
+  String get shopSponsoredSection;
+
+  /// No description provided for @shopSponsoredHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Show first in the shop and its category, with a \"Sponsored\" label.'**
+  String get shopSponsoredHelp;
+
+  /// No description provided for @shopSponsorFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get shopSponsorFrom;
+
+  /// No description provided for @shopSponsorUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Until'**
+  String get shopSponsorUntil;
+
+  /// No description provided for @shopSponsorDatesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty to start now and run until switched off.'**
+  String get shopSponsorDatesHelp;
+
+  /// No description provided for @shopSponsorDatesInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'The end date is before the start date.'**
+  String get shopSponsorDatesInvalid;
+
+  /// No description provided for @shopNoDate.
+  ///
+  /// In en, this message translates to:
+  /// **'No date'**
+  String get shopNoDate;
+
+  /// No description provided for @shopCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost price (€, admins only)'**
+  String get shopCost;
+
+  /// No description provided for @shopCostHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'What CodaMi pays the supplier or brand. Users never see it.'**
+  String get shopCostHelp;
+
+  /// No description provided for @shopMargin.
+  ///
+  /// In en, this message translates to:
+  /// **'Margin: {amount} ({percent}%)'**
+  String shopMargin(String amount, int percent);
+
+  /// No description provided for @shopAffiliateClicks.
+  ///
+  /// In en, this message translates to:
+  /// **'Affiliate clicks'**
+  String get shopAffiliateClicks;
+
+  /// No description provided for @shopClicksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 click on \"Buy\"} other{{count} clicks on \"Buy\"}}'**
+  String shopClicksCount(int count);
+
+  /// No description provided for @shopLast30Days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days · tap to refresh'**
+  String get shopLast30Days;
+
+  /// No description provided for @shopShippingIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Where you ship, how and for how much. Prices include VAT. Saved for every user at once.'**
+  String get shopShippingIntro;
+
+  /// No description provided for @shopShippingStarting.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the starting setup'**
+  String get shopShippingStarting;
+
+  /// No description provided for @shopZones.
+  ///
+  /// In en, this message translates to:
+  /// **'Zones'**
+  String get shopZones;
+
+  /// No description provided for @shopZonesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas you ship to. Switch one off to stop shipping there.'**
+  String get shopZonesHelp;
+
+  /// No description provided for @shopZoneName.
+  ///
+  /// In en, this message translates to:
+  /// **'Zone name'**
+  String get shopZoneName;
+
+  /// No description provided for @shopAddZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Add zone'**
+  String get shopAddZone;
+
+  /// No description provided for @shopZoneItaly.
+  ///
+  /// In en, this message translates to:
+  /// **'Italy'**
+  String get shopZoneItaly;
+
+  /// No description provided for @shopZoneIslands.
+  ///
+  /// In en, this message translates to:
+  /// **'Sicily and Sardinia'**
+  String get shopZoneIslands;
+
+  /// No description provided for @shopZoneEurope.
+  ///
+  /// In en, this message translates to:
+  /// **'European Union'**
+  String get shopZoneEurope;
+
+  /// No description provided for @shopMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping method'**
+  String get shopMethod;
+
+  /// No description provided for @shopAddMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Add shipping method'**
+  String get shopAddMethod;
+
+  /// No description provided for @shopMethodActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Offered to users'**
+  String get shopMethodActive;
+
+  /// No description provided for @shopMethodStandard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard'**
+  String get shopMethodStandard;
+
+  /// No description provided for @shopMethodExpress.
+  ///
+  /// In en, this message translates to:
+  /// **'Express'**
+  String get shopMethodExpress;
+
+  /// No description provided for @shopMethodStandardTime.
+  ///
+  /// In en, this message translates to:
+  /// **'3–5 working days'**
+  String get shopMethodStandardTime;
+
+  /// No description provided for @shopMethodExpressTime.
+  ///
+  /// In en, this message translates to:
+  /// **'1–2 working days'**
+  String get shopMethodExpressTime;
+
+  /// No description provided for @shopDeliveryTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery time shown to users'**
+  String get shopDeliveryTime;
+
+  /// No description provided for @shopPricePerZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per zone'**
+  String get shopPricePerZone;
+
+  /// No description provided for @shopPricePerZoneHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty where this method isn\'t offered. 0 means free.'**
+  String get shopPricePerZoneHelp;
+
+  /// No description provided for @shopFreeAboveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Free shipping above (€)'**
+  String get shopFreeAboveLabel;
+
+  /// No description provided for @shopFreeAboveHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Leave empty to always charge shipping.'**
+  String get shopFreeAboveHelp;
 }
 
 class _AppLocalizationsDelegate

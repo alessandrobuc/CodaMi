@@ -2,7 +2,7 @@
 
 Request from the client (Thu 29 Oct 2026): a pet products shop inside the app, with brand partnerships, dropshipping, affiliate links, commissions and sponsored products, all managed from the admin panel. Modular, no dependence on one provider, start simple and grow into a multi-brand marketplace without a redesign.
 
-_Last updated: Thu 29 Oct 2026 (Phase 1 day 1 built and deployed; phone test next)_
+_Last updated: Fri 30 Oct 2026 (Phase 1 day 2 built; rules to deploy)_
 
 **Go-ahead (Thu 29 Oct):** start with Phase 1. Added by us: a **Shop on/off switch** in the admin panel (`config/shop.enabled`). Off: users don't see the Shop tab; admins can still prepare the catalogue. On: the shop shows for everyone at once, no new build. Starts off.
 
@@ -118,12 +118,20 @@ Nothing from Phase 1 is rebuilt for Phase 2 or 3: split orders, connectors, sale
 - [x] Deploy: `firebase deploy --only firestore:rules,storage` (Thu 29 Oct)
 - [ ] Phone test with `TEST_SCENARIO_SHOP_2026-10-29.md`: add categories, a brand, a supplier and products with photos; preview; open the shop; check the tab as a user; close it again
 
+**Day 2 (Fri 30 Oct): before payment**
+- [x] Cart: add from the product page, quantity stepper, remove, empty; saved on the phone per account; cart icon with a count in the Shop tab and on the product page; products that are gone, hidden, out of stock or affiliate are flagged and left out of the total
+- [x] Shipping settings (Admin → Shop → Shipping): zones (starting set Italy, Sicily and Sardinia, EU off), methods (Standard 3–5 days €5.90 / €9.90 / €14.90, free above €49; Express 1–2 days €9.90 / €14.90), price per zone, empty = not offered, free above an amount, on/off; saved in `config/shipping`
+- [x] Cart totals: ship-to zone, method with delivery time, subtotal, shipping, total, "VAT included", "Add €x more for free shipping"; the Checkout button is shown but off until Stripe
+- [x] Cost price and margin in the product form (admin only, `productCosts/{id}`), margin shown as € and %
+- [x] Affiliate clicks: each "Buy on…" tap saved in `affiliateClicks`; count per product in the product form, last 30 days in the Shop admin
+- [x] Sponsored products: switch with optional start and end dates; shown first and labelled "Sponsored" on cards and the product page
+- [x] 52 labels in 10 languages; 4 new app tests (108 in total), 21 new emulator checks (97 shop checks)
+- [ ] Deploy: `firebase deploy --only firestore:rules`
+- [ ] Phone test: day 2 part of `TEST_SCENARIO_SHOP_2026-10-29.md`
+
 **Next days**
-- [ ] Click counting for affiliate links
-- [ ] Cost price and margin, kept admin only (a separate document, since users can read the product)
-- [ ] Cart and shipping settings
 - [ ] Stripe checkout (needs the Stripe account), orders, My orders, refunds
-- [ ] Dropshipping orders by email, affiliate clicks, sponsored places, commissions per order line
+- [ ] Dropshipping orders by email, commissions per order line
 - [ ] Basic reports, shop manager role, admin on the computer
 
 ---
@@ -133,6 +141,7 @@ Nothing from Phase 1 is rebuilt for Phase 2 or 3: split orders, connectors, sale
 - Code in `lib/features/shop/`: `domain/shop.dart` (models, checks, filters, no Firebase) and `domain/shop_repository.dart` (interface), `data/firestore_shop_repository.dart` (the only Firebase part). Server code will go in `functions/src/shop/`.
 - Built Thu 29 Oct: `config/shop` {enabled, disabledSuppliers, disabledModels, updatedBy, updatedAt}; `shopCategories` {name, parentId, icon, order, active}; `brands` {name, description, website, logoUrl/logoPath, active}; `suppliers` {name, contactName, email, phone, website, orderMethod, notes, active}; `products` {name, description, categoryId, brandId, supplierId, salesModel, animals, priceCents, compareAtCents, availability, affiliateUrl, partnerName, active, images[{url, path}], created/updated by/at}. Prices in cents. Photos `shop/products/{id}/image_<time>.<ext>`, logos `shop/brands/{id}/logo_<time>.<ext>`.
 - A supplier's on/off is copied into `config/shop.disabledSuppliers`, because users can't read suppliers. Users' lists are filtered in the app (`visibleToUsers`): the rules only let them read active items while the shop is on.
+- Day 2: `config/shipping` {zones[{id, name, active}], methods[{id, name, deliveryTime, prices{zoneId: cents}, freeAboveCents, active}]}; `productCosts/{productId}` {costCents}; `affiliateClicks/{auto}` {productId, partner, uid, at}; products gain `sponsored`, `sponsorStart`, `sponsorEnd` (dates saved at midnight, the campaign runs to the end of the end day). Cart in SharedPreferences `shop_cart_<uid>`. Logic in `domain/checkout.dart`. Variants (size, flavour) are not in the model yet.
 - No composite index needed: users query `active == true` (limit 500) and sort in the app; a search engine comes in Phase 2.
 - Collections: `shopCategories`, `brands`, `suppliers`, `products/{id}` with variants, `shippingMethods`, `campaigns`, `sponsoredSlots`, `commissionRules`, `orders/{id}` with `shipments/{id}` per supplier, `refunds`, `affiliateClicks`, `config/shop` (switches).
 - Each order line keeps a snapshot: price, cost, commission, supplier and sales model at the time of sale.
