@@ -4169,4 +4169,337 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shopFreeAboveHelp => '可选，留空则始终收取运费。';
+
+  @override
+  String get inviteQrTitle => '您的二维码';
+
+  @override
+  String get inviteQrSubtitle => '保存或打印传单，邀请附近的人。';
+
+  @override
+  String get inviteQrScreenTitle => '二维码和传单';
+
+  @override
+  String get inviteQrCode => '二维码';
+
+  @override
+  String get inviteFlyer => '传单';
+
+  @override
+  String get inviteQrHelp => '朋友用手机相机扫描，即可通过您的邀请码获取 CodaMi。';
+
+  @override
+  String get inviteFlyerHelp => '可直接打印并在附近分发的传单。';
+
+  @override
+  String get inviteSaveToPhotos => '保存到相册';
+
+  @override
+  String get inviteSaved => '已保存到相册';
+
+  @override
+  String get inviteSaveDenied => '保存失败，请在手机设置中允许 CodaMi 添加照片。';
+
+  @override
+  String get flyerTitle => '帮助走失的宠物回家';
+
+  @override
+  String get flyerText => '加入 CodaMi，邻居们互相帮助寻找走失和捡到的宠物的免费应用。';
+
+  @override
+  String get flyerScan => '用手机相机扫描';
+
+  @override
+  String flyerCode(String code) {
+    return '邀请码：$code';
+  }
+
+  @override
+  String get flyerFree => '免费应用';
+
+  @override
+  String get walksTitle => '遛宠地点';
+
+  @override
+  String get walksSubtitle => '附近的公园、狗狗乐园和步道';
+
+  @override
+  String get adminWalksSubtitle => 'Google 地点搜索、距离、类型、已隐藏地点';
+
+  @override
+  String get walkDogParks => '狗狗乐园';
+
+  @override
+  String get walkParks => '公园';
+
+  @override
+  String get walkGreen => '绿地';
+
+  @override
+  String get walkTrails => '步道';
+
+  @override
+  String walkNearYou(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '附近 $count 个地点',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String walkNearCity(int count, String city) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$city 附近 $count 个地点',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get walkUseMyLocation => '使用我的位置';
+
+  @override
+  String get walkNeedLocation => '允许定位或在个人资料中设置城市，即可查看附近地点。';
+
+  @override
+  String get walkShowMap => '显示地图';
+
+  @override
+  String get walkShowList => '显示列表';
+
+  @override
+  String get walkSearching => '正在查找地点…';
+
+  @override
+  String get walkNoPlaces => '这里没有找到地点，试试更大的距离。';
+
+  @override
+  String get walkLimitReached => '今日搜索次数已达上限，请明天再试。';
+
+  @override
+  String get walkTurnedOff => '遛宠地点暂时不可用。';
+
+  @override
+  String get walkUnavailable => '无法加载地点，请检查网络后重试。';
+
+  @override
+  String get walkSearchHere => '搜索此区域';
+
+  @override
+  String get walkDataFromGoogle => '地点数据来自 Google';
+
+  @override
+  String walkPhotoBy(String name) {
+    return '照片：$name（Google）';
+  }
+
+  @override
+  String get walkOpenNow => '营业中';
+
+  @override
+  String get walkClosedNow => '已关闭';
+
+  @override
+  String get walkDogsAllowed => '允许带狗';
+
+  @override
+  String get walkDogsNotAllowed => '禁止带狗';
+
+  @override
+  String get walkOpeningHours => '营业时间';
+
+  @override
+  String get walkDirections => '路线';
+
+  @override
+  String get walkCall => '致电';
+
+  @override
+  String get walkWebsite => '网站';
+
+  @override
+  String get walkDetailsFailed => '无法加载更多详情。';
+
+  @override
+  String get walkOpenFailed => '无法打开。';
+
+  @override
+  String get walkHide => '隐藏此地点（管理员）';
+
+  @override
+  String get walkHidden => '已对所有人隐藏';
+
+  @override
+  String get walkAdminIntro =>
+      'Google 会在每位用户周围查找公园、狗狗乐园、绿地和步道。每次搜索都有少量费用，限额可保护预算。';
+
+  @override
+  String get walkShowToUsers => '向用户显示';
+
+  @override
+  String get walkOnHelp => '开启：用户可在个人资料和首页地图中看到。';
+
+  @override
+  String get walkOffHelp => '关闭：只有管理员可通过下方按钮试用。';
+
+  @override
+  String get walkDefaultDistance => '默认距离';
+
+  @override
+  String get walkPlaceTypes => '地点类型';
+
+  @override
+  String get walkLimits => '每位用户每日限额';
+
+  @override
+  String get walkDailySearches => '搜索次数';
+
+  @override
+  String get walkDailySearchesHelp => '每次搜索查找一个区域内的地点。';
+
+  @override
+  String get walkDailyDetails => '地点详情';
+
+  @override
+  String get walkDailyDetailsHelp => '打开地点时会加载照片、评分和营业时间。';
+
+  @override
+  String get walkLimitInvalid => '限额必须在 1 到 1000 之间。';
+
+  @override
+  String get walkHiddenPlaces => '已隐藏地点';
+
+  @override
+  String get walkHiddenEmpty => '暂无。以管理员身份打开地点，点按“隐藏此地点”即可移除不合适的地点。';
+
+  @override
+  String get walkShowAgain => '重新显示';
+
+  @override
+  String get walkOpenScreen => '打开遛宠地点';
+
+  @override
+  String get supportCodami => '支持 CodaMi';
+
+  @override
+  String get supportProfileSubtitle => '自愿支持，帮助 CodaMi 持续运行';
+
+  @override
+  String get adminSupportSubtitle => '自愿支持：显示位置、频率、金额';
+
+  @override
+  String get supportHeaderTitle => 'CodaMi 免费，并将一直免费';
+
+  @override
+  String get supportHeaderText => '如果您认可 CodaMi 为动物所做的事，可以自愿小额支持。完全自愿。';
+
+  @override
+  String get supportUsesTitle => '您的支持用于';
+
+  @override
+  String get supportUseServers => '保持应用运行的服务器';
+
+  @override
+  String get supportUseDevelopment => '应用开发';
+
+  @override
+  String get supportUseModeration => '内容审核';
+
+  @override
+  String get supportUseSupport => '用户支持';
+
+  @override
+  String get supportUseTranslations => '翻译';
+
+  @override
+  String get supportUseFeatures => '新功能与改进';
+
+  @override
+  String get supportUseCampaigns => '动物福利宣传活动';
+
+  @override
+  String get supportChooseAmount => '选择金额';
+
+  @override
+  String supportWith(Object amount) {
+    return '支持 $amount';
+  }
+
+  @override
+  String get supportFinePrint =>
+      '通过 Google Play 或 App Store 付款。您的支持用于运营和改进 CodaMi，不是慈善捐款，也不会在应用中带来任何特权。不支持也可完整使用 CodaMi。';
+
+  @override
+  String get supportThanks => '谢谢！';
+
+  @override
+  String get supportThanksText => '您的支持让 CodaMi 能继续帮助动物。';
+
+  @override
+  String get supportSoon => '应用内支付即将推出，感谢您愿意支持！';
+
+  @override
+  String get supportClose => '关闭';
+
+  @override
+  String get supportPromptReportTitle => '您的发布已上线';
+
+  @override
+  String get supportPromptFoundTitle => '太好了！';
+
+  @override
+  String get supportPromptText => 'CodaMi 对所有人免费。如果您愿意，小额自愿支持可帮助它持续运行。完全自愿。';
+
+  @override
+  String get supportAdminIntro =>
+      '通过 Google Play 和 App Store 的自愿支持。始终自愿，绝不阻止用户使用。';
+
+  @override
+  String get supportPaymentsNotReady =>
+      '应用商店支付尚未接入：用户可看到页面和金额，按钮提示即将推出。需要在 Google Play Console 中设置付款资料，并在两个商店创建商品。';
+
+  @override
+  String get supportShowToUsers => '向用户显示';
+
+  @override
+  String get supportOnHelp => '开启：在下方开启的位置显示。';
+
+  @override
+  String get supportOffHelp => '关闭：用户在任何地方都看不到，您仍可预览页面。';
+
+  @override
+  String get supportWhere => '显示位置';
+
+  @override
+  String get supportWhereProfile => '个人资料 → 支持 CodaMi';
+
+  @override
+  String get supportWhereReport => '发布信息之后';
+
+  @override
+  String get supportWhereFound => '宠物找到或信息已解决时';
+
+  @override
+  String get supportSettings => '设置';
+
+  @override
+  String get supportDaysBetween => '两次提示间隔天数';
+
+  @override
+  String get supportDaysBetweenHelp => '发布信息或宠物找到后的提示，在此天数内最多显示一次。';
+
+  @override
+  String get supportAmounts => '金额（€）';
+
+  @override
+  String get supportAmountsHelp => '最多 6 个，用逗号分隔，每个金额对应商店中的一个商品。';
+
+  @override
+  String get supportAmountsInvalid => '最多输入 6 个金额，例如 1, 3, 5, 10, 25';
+
+  @override
+  String get supportPreview => '预览页面';
 }

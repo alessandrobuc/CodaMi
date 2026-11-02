@@ -497,6 +497,48 @@ service cloud.firestore {
         && shopStamped(request.resource.data);
     }
 
+    // Donation settings. paymentsReady is only set from the console once store products exist.
+    match /config/donations {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'enabled', 'showInProfile', 'afterReport', 'afterFound', 'daysBetweenPrompts',
+          'amountsCents', 'paymentsReady', 'updatedBy', 'updatedAt'
+        ])
+        && request.resource.data.enabled is bool
+        && request.resource.data.showInProfile is bool
+        && request.resource.data.afterReport is bool
+        && request.resource.data.afterFound is bool
+        && request.resource.data.daysBetweenPrompts is int
+        && request.resource.data.daysBetweenPrompts >= 1 && request.resource.data.daysBetweenPrompts <= 365
+        && request.resource.data.amountsCents is list
+        && request.resource.data.amountsCents.size() >= 1 && request.resource.data.amountsCents.size() <= 6
+        && request.resource.data.paymentsReady == (resource == null ? false : resource.data.get('paymentsReady', false))
+        && shopStamped(request.resource.data);
+    }
+
+    // Places to walk settings. Searches go through Cloud Functions only.
+    match /config/walks {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly([
+          'enabled', 'defaultRadiusKm', 'groups', 'hiddenPlaceIds', 'hiddenNames',
+          'dailySearches', 'dailyDetails', 'updatedBy', 'updatedAt'
+        ])
+        && request.resource.data.enabled is bool
+        && request.resource.data.defaultRadiusKm in [1, 3, 5, 10, 25]
+        && request.resource.data.groups is map
+        && request.resource.data.groups.keys().hasOnly(['dogParks', 'parks', 'green', 'trails'])
+        && request.resource.data.hiddenPlaceIds is list
+        && request.resource.data.hiddenPlaceIds.size() <= 500
+        && request.resource.data.hiddenNames is map
+        && request.resource.data.dailySearches is int
+        && request.resource.data.dailySearches >= 1 && request.resource.data.dailySearches <= 1000
+        && request.resource.data.dailyDetails is int
+        && request.resource.data.dailyDetails >= 1 && request.resource.data.dailyDetails <= 1000
+        && shopStamped(request.resource.data);
+    }
+
     match /config/shipping {
       allow read: if signedIn();
       allow write: if isAdmin() && validShipping(request.resource.data);

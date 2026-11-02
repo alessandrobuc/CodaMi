@@ -26,6 +26,10 @@ import '../../../app_update/presentation/admin_app_update_screen.dart';
 import '../../../petitions/presentation/screens/admin_petitions_screen.dart';
 import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../shop/presentation/screens/admin_shop_screen.dart';
+import '../../../donations/presentation/admin_donations_screen.dart';
+import '../../../donations/presentation/support_screen.dart';
+import '../../../walks/presentation/screens/admin_walks_screen.dart';
+import '../../../walks/presentation/widgets/walk_widgets.dart';
 import '../../../shop/presentation/widgets/shop_widgets.dart';
 
 class AdminMoreTab extends ConsumerWidget {
@@ -184,6 +188,28 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminPetitionsScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.volunteer_activism_rounded,
+                    color: supportColor,
+                    title: l10n.supportCodami,
+                    subtitle: l10n.adminSupportSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminDonationsScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.park_rounded,
+                    color: walkColor,
+                    title: l10n.walksTitle,
+                    subtitle: l10n.adminWalksSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminWalksScreen(),
                       ),
                     ),
                   ),

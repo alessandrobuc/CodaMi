@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "CodaMi",
-      "version": "1.0.0+15",
+      "version": "1.0.0+16",
       "dependencies": [
         "cached_network_image",
         "cloud_firestore",
@@ -20,6 +20,7 @@
         "flutter_localizations",
         "flutter_riverpod",
         "font_awesome_flutter",
+        "gal",
         "geolocator",
         "google_fonts",
         "google_maps_flutter",
@@ -30,6 +31,7 @@
         "in_app_review",
         "intl",
         "package_info_plus",
+        "qr_flutter",
         "share_plus",
         "shared_preferences",
         "sign_in_with_apple",
@@ -86,6 +88,21 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "gal",
+      "version": "2.3.3",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "qr_flutter",
+      "version": "4.1.0",
+      "dependencies": [
+        "flutter",
+        "qr"
       ]
     },
     {
@@ -533,6 +550,13 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "qr",
+      "version": "3.0.3",
+      "dependencies": [
+        "meta"
       ]
     },
     {

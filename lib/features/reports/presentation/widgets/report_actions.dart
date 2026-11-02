@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../donations/domain/donations.dart';
+import '../../../donations/presentation/support_screen.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
@@ -49,12 +53,14 @@ Future<bool> resolveReport(
   );
   if (confirmed != true || !context.mounted) return false;
 
-  return _run(
+  final done = await _run(
     context,
     onBusy: onBusy,
     action: () => ref.read(reportsRepositoryProvider).markResolved(r),
     success: context.l10n.reportResolvedSuccess,
   );
+  if (done) unawaited(maybeAskForSupport(ref, DonationTrigger.afterFound));
+  return done;
 }
 
 Future<bool> deleteReport(

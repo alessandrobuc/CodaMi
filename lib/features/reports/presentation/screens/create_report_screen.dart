@@ -13,6 +13,8 @@ import '../../../../core/utils/number_format.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../../donations/domain/donations.dart';
+import '../../../donations/presentation/support_screen.dart';
 import '../../../location/data/datasources/places_service.dart';
 import '../../../location/data/models/city_place.dart';
 import '../../../location/presentation/providers/location_provider.dart';
@@ -332,6 +334,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             : context.l10n.publishedFound(report.petName),
       );
       Navigator.of(context).popUntil((route) => route.isFirst);
+      unawaited(maybeAskForSupport(ref, DonationTrigger.afterReport));
     } on ReportsException catch (e) {
       if (!mounted) return;
       setState(() {

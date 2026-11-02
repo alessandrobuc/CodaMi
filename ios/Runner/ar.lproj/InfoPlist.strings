@@ -2,3 +2,4 @@
 "NSPhotoLibraryUsageDescription" = "يحتاج CodaMi إلى الوصول إلى صورك لتتمكن من إضافة صور لحيواناتك الأليفة.";
 "NSLocationWhenInUseUsageDescription" = "يستخدم CodaMi موقعك ليعرض لك على الخريطة الحيوانات الأليفة المفقودة والتي عُثر عليها بالقرب منك.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "يستخدم CodaMi موقعك ليعرض لك على الخريطة الحيوانات الأليفة المفقودة والتي عُثر عليها بالقرب منك.";
+"NSPhotoLibraryAddUsageDescription" = "يحفظ CodaMi رمز QR الخاص بدعوتك والمنشور في صورك.";

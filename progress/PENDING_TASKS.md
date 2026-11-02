@@ -2,12 +2,15 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Fri 30 Oct 2026 (shop day 2)_
+_Last updated: Mon 2 Nov 2026 (phase 4: QR invites, places to walk, donation screens)_
 
 ---
 
 ## 1. Testing now
 
+- [ ] **Deploy (phase 4, Mon 2 Nov):** `firebase deploy --only hosting,functions,firestore:rules` (invite page, `findWalkPlaces` and `walkPlaceDetails`, rules for `config/walks` and `config/donations`)
+- [ ] **Google Cloud:** check that Places API (New) is enabled for the `PLACES_API_KEY` project (it already is for city search) and set a budget alert
+- [ ] **Phase 4 on the phone:** follow `TEST_SCENARIO_PHASE4_2026-11-02.md` (QR and flyer, invite page on Android and a computer, Places to walk, donation screens)
 - [ ] **Deploy (shop day 2, Fri 30 Oct):** `firebase deploy --only firestore:rules` (shipping settings, cost prices, affiliate clicks, sponsored fields; without it these can't be saved)
 - [ ] **Shop day 2 on the phone:** follow part 11 of `TEST_SCENARIO_SHOP_2026-10-29.md` (shipping setup, cart, totals, cost and margin, affiliate clicks, sponsored)
 - [x] **Deploy (shop, Thu 29 Oct):** rules and storage are live
@@ -43,7 +46,15 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); next: Stripe checkout, orders, My orders, refunds, supplier emails, reports (`SHOP_FEATURE.md`)
+- [ ] **Phase 4 (client request Mon 2 Nov, `PHASE_4_REQUESTS.md`):** built Mon 2 Nov (QR invites and flyer, Places to walk, donation screens switched off); left: store payments for donations once the client sets up the stores, "Scan QR" in the app if the client wants it
+- [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built and committed (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); then Stripe payment, refunds, reports, shop manager role, computer admin (`SHOP_FEATURE.md`)
+- [ ] **Next: shop day 3, the order system together with Stripe payment.** On hold until the client sends the Stripe keys and the other details (asked Mon 2 Nov); aimed for Tue 3 Nov:
+  - [ ] Checkout screen: delivery details (name, address, postcode, city, province, phone, notes) saved for next time, order review
+  - [ ] Orders created on the server: prices, availability and shipping checked again; each line keeps price, cost, margin and commission; split into one shipment per supplier; starts as "awaiting payment"
+  - [ ] My orders for users: list, details, status timeline, tracking link, notification at each step
+  - [ ] Admin → Shop → Orders: filters by status, details and address, status changes, courier and tracking per shipment, internal notes
+  - [ ] Supplier order email for dropshipping (prepared in the `mail` collection, sent once the email service exists)
+  - [ ] Rules, labels in 10 languages, tests, test scenario
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
 - [ ] Move the Places key to Secret Manager and restrict the Google Cloud keys (see `LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
@@ -71,7 +82,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
 - [ ] Petitions: where in the app (Home banner + Profile for now), one or several languages for summaries, second-admin approval, notifications
-- [ ] **Shop (request 18):** Phase 1 approved Thu 29 Oct; still need countries, company / VAT, Stripe account, first partners, product text languages, bottom-bar tab, computer admin, terms of sale (`SHOP_FEATURE.md`)
+- [ ] **Shop (request 18):** Phase 1 approved Thu 29 Oct; still need countries, company / VAT, Stripe account (or OK to use test keys), email service for order and supplier emails, first partners, product text languages, bottom-bar tab, computer admin, terms of sale (`SHOP_FEATURE.md`). Asked again Mon 2 Nov: Stripe, email service, countries, company / VAT
 
 ## 4. Later (after launch)
 
@@ -90,6 +101,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Mon 2 Nov: phase 4 (client request of the same day): QR invites with a printable flyer and an invite page for Android and iPhone; Places to walk with Google Places (map and list, types, distance, details, directions, admin settings and hidden places, daily limits); voluntary donation screens (Support CodaMi page, prompts after a report and a found pet, admin settings), switched off until store payments. 10 languages, 7 new app tests (115), 7 new server tests (75), 23 new emulator checks. Not deployed yet
 
 - Fri 30 Oct: shop day 2: cart (saved per account, cart icon with count), shipping settings in Admin → Shop → Shipping (zones, methods, price per zone, free above), totals with VAT included and the free-shipping hint, cost price and margin (admin only), affiliate click counting, sponsored products with dates. 52 labels in 10 languages, 4 new app tests (108), 21 new emulator checks. Rules not deployed yet
 

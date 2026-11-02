@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # of the product and file versions while build-number is used as the build suffix.
 
 # Android version
-version: 1.0.0+15
+version: 1.0.0+16
 
 # Ios Version
 # version: 1.0.0+1
@@ -67,6 +67,8 @@ dependencies:
   video_player: ^2.14.1
   package_info_plus: ^10.2.2
   in_app_review: ^2.0.12
+  qr_flutter: ^4.1.0
+  gal: ^2.3.3
 
 dependency_overrides:
   # google_maps_flutter still depends on the CocoaPods-only iOS plugin.

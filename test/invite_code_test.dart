@@ -30,6 +30,8 @@ void main() {
       'QWE789',
     );
     expect(extractInviteCode('Mein Code: QWE789'), 'QWE789');
+    expect(extractInviteCode('https://codami-cd91e.web.app/i/qwe789'), 'QWE789');
+    expect(extractInviteCode('Join me: ${inviteLink('QWE789')}'), 'QWE789');
   });
 
   test('unclear text gives no code instead of a guess', () {

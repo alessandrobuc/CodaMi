@@ -98,6 +98,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>CodaMi uses the camera so you can take photos of your pets.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>CodaMi saves your invite QR code and flyer to your photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>CodaMi needs access to your photos so you can add pictures of your pets.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

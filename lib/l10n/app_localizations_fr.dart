@@ -4447,4 +4447,368 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get shopFreeAboveHelp =>
       'Facultatif. Laissez vide pour toujours facturer la livraison.';
+
+  @override
+  String get inviteQrTitle => 'Votre QR code';
+
+  @override
+  String get inviteQrSubtitle =>
+      'Enregistrez-le ou imprimez un flyer pour inviter vos voisins.';
+
+  @override
+  String get inviteQrScreenTitle => 'QR code et flyer';
+
+  @override
+  String get inviteQrCode => 'QR code';
+
+  @override
+  String get inviteFlyer => 'Flyer';
+
+  @override
+  String get inviteQrHelp =>
+      'Vos amis le scannent avec l\'appareil photo pour obtenir CodaMi avec votre code.';
+
+  @override
+  String get inviteFlyerHelp =>
+      'Un flyer prêt à imprimer et à distribuer dans votre quartier.';
+
+  @override
+  String get inviteSaveToPhotos => 'Enregistrer';
+
+  @override
+  String get inviteSaved => 'Enregistré dans vos photos';
+
+  @override
+  String get inviteSaveDenied =>
+      'Échec de l\'enregistrement. Autorisez CodaMi à ajouter des photos dans les réglages.';
+
+  @override
+  String get flyerTitle => 'Aidez les animaux perdus à rentrer';
+
+  @override
+  String get flyerText =>
+      'Rejoignez CodaMi, l\'app gratuite où les voisins aident les animaux perdus et trouvés.';
+
+  @override
+  String get flyerScan => 'Scannez avec l\'appareil photo';
+
+  @override
+  String flyerCode(String code) {
+    return 'Code d\'invitation : $code';
+  }
+
+  @override
+  String get flyerFree => 'Application gratuite';
+
+  @override
+  String get walksTitle => 'Lieux de promenade';
+
+  @override
+  String get walksSubtitle => 'Parcs, espaces chiens et sentiers près de vous';
+
+  @override
+  String get adminWalksSubtitle =>
+      'Recherche Google, distance, types, lieux masqués';
+
+  @override
+  String get walkDogParks => 'Espaces chiens';
+
+  @override
+  String get walkParks => 'Parcs';
+
+  @override
+  String get walkGreen => 'Espaces verts';
+
+  @override
+  String get walkTrails => 'Sentiers';
+
+  @override
+  String walkNearYou(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count lieux près de vous',
+      one: '1 lieu près de vous',
+      zero: 'Aucun lieu près de vous',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String walkNearCity(int count, String city) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count lieux près de $city',
+      one: '1 lieu près de $city',
+      zero: 'Aucun lieu près de $city',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get walkUseMyLocation => 'Ma position';
+
+  @override
+  String get walkNeedLocation =>
+      'Autorisez la localisation ou indiquez votre ville dans le profil pour voir les lieux proches.';
+
+  @override
+  String get walkShowMap => 'Afficher la carte';
+
+  @override
+  String get walkShowList => 'Afficher la liste';
+
+  @override
+  String get walkSearching => 'Recherche de lieux…';
+
+  @override
+  String get walkNoPlaces =>
+      'Aucun lieu ici. Essayez une distance plus grande.';
+
+  @override
+  String get walkLimitReached =>
+      'Limite de recherches du jour atteinte. Réessayez demain.';
+
+  @override
+  String get walkTurnedOff =>
+      'Les lieux de promenade ne sont pas disponibles pour le moment.';
+
+  @override
+  String get walkUnavailable =>
+      'Impossible de charger les lieux. Vérifiez la connexion.';
+
+  @override
+  String get walkSearchHere => 'Rechercher dans cette zone';
+
+  @override
+  String get walkDataFromGoogle => 'Données des lieux : Google';
+
+  @override
+  String walkPhotoBy(String name) {
+    return 'Photo : $name (Google)';
+  }
+
+  @override
+  String get walkOpenNow => 'Ouvert';
+
+  @override
+  String get walkClosedNow => 'Fermé';
+
+  @override
+  String get walkDogsAllowed => 'Chiens acceptés';
+
+  @override
+  String get walkDogsNotAllowed => 'Chiens interdits';
+
+  @override
+  String get walkOpeningHours => 'Horaires';
+
+  @override
+  String get walkDirections => 'Itinéraire';
+
+  @override
+  String get walkCall => 'Appeler';
+
+  @override
+  String get walkWebsite => 'Site web';
+
+  @override
+  String get walkDetailsFailed => 'Impossible de charger plus de détails.';
+
+  @override
+  String get walkOpenFailed => 'Impossible d\'ouvrir.';
+
+  @override
+  String get walkHide => 'Masquer ce lieu (admin)';
+
+  @override
+  String get walkHidden => 'Masqué pour tous';
+
+  @override
+  String get walkAdminIntro =>
+      'Google trouve parcs, espaces chiens, espaces verts et sentiers autour de chaque utilisateur. Chaque recherche a un petit coût : les limites protègent le budget.';
+
+  @override
+  String get walkShowToUsers => 'Afficher aux utilisateurs';
+
+  @override
+  String get walkOnHelp =>
+      'Activé : visible dans le Profil et sur la carte d\'accueil.';
+
+  @override
+  String get walkOffHelp =>
+      'Désactivé : seuls les admins peuvent l\'essayer, via le bouton ci-dessous.';
+
+  @override
+  String get walkDefaultDistance => 'Distance par défaut';
+
+  @override
+  String get walkPlaceTypes => 'Types de lieux';
+
+  @override
+  String get walkLimits => 'Limites quotidiennes par utilisateur';
+
+  @override
+  String get walkDailySearches => 'Recherches';
+
+  @override
+  String get walkDailySearchesHelp => 'Chaque recherche porte sur une zone.';
+
+  @override
+  String get walkDailyDetails => 'Détails de lieux';
+
+  @override
+  String get walkDailyDetailsHelp =>
+      'Ouvrir un lieu charge sa photo, sa note et ses horaires.';
+
+  @override
+  String get walkLimitInvalid => 'Les limites doivent être entre 1 et 1000.';
+
+  @override
+  String get walkHiddenPlaces => 'Lieux masqués';
+
+  @override
+  String get walkHiddenEmpty =>
+      'Aucun. Ouvrez un lieu en tant qu\'admin et touchez « Masquer ce lieu ».';
+
+  @override
+  String get walkShowAgain => 'Réafficher';
+
+  @override
+  String get walkOpenScreen => 'Ouvrir Lieux de promenade';
+
+  @override
+  String get supportCodami => 'Soutenir CodaMi';
+
+  @override
+  String get supportProfileSubtitle => 'Facultatif, pour faire vivre CodaMi';
+
+  @override
+  String get adminSupportSubtitle =>
+      'Soutien volontaire : où, à quelle fréquence, montants';
+
+  @override
+  String get supportHeaderTitle => 'CodaMi est gratuite et le restera';
+
+  @override
+  String get supportHeaderText =>
+      'Si vous aimez ce que CodaMi fait pour les animaux, vous pouvez aider avec une petite contribution volontaire. C\'est entièrement facultatif.';
+
+  @override
+  String get supportUsesTitle => 'À quoi sert votre soutien';
+
+  @override
+  String get supportUseServers => 'Serveurs qui font tourner l\'app';
+
+  @override
+  String get supportUseDevelopment => 'Développement de l\'app';
+
+  @override
+  String get supportUseModeration => 'Modération des contenus';
+
+  @override
+  String get supportUseSupport => 'Support utilisateurs';
+
+  @override
+  String get supportUseTranslations => 'Traductions';
+
+  @override
+  String get supportUseFeatures => 'Nouvelles fonctions et améliorations';
+
+  @override
+  String get supportUseCampaigns =>
+      'Campagnes de sensibilisation au bien-être animal';
+
+  @override
+  String get supportChooseAmount => 'Choisissez un montant';
+
+  @override
+  String supportWith(Object amount) {
+    return 'Soutenir avec $amount';
+  }
+
+  @override
+  String get supportFinePrint =>
+      'Le paiement passe par Google Play ou l\'App Store. Votre soutien sert à faire fonctionner et améliorer CodaMi ; ce n\'est pas un don à une association et il ne donne aucun avantage dans l\'app. CodaMi reste entièrement utilisable sans.';
+
+  @override
+  String get supportThanks => 'Merci !';
+
+  @override
+  String get supportThanksText =>
+      'Votre soutien aide CodaMi à continuer d\'aider les animaux.';
+
+  @override
+  String get supportSoon =>
+      'Les paiements dans l\'app arrivent bientôt. Merci de vouloir aider !';
+
+  @override
+  String get supportClose => 'Fermer';
+
+  @override
+  String get supportPromptReportTitle => 'Votre annonce est en ligne';
+
+  @override
+  String get supportPromptFoundTitle => 'Quelle bonne nouvelle !';
+
+  @override
+  String get supportPromptText =>
+      'CodaMi est gratuite pour tous. Si vous le souhaitez, une petite contribution volontaire aide à la faire vivre. Entièrement facultatif.';
+
+  @override
+  String get supportAdminIntro =>
+      'Soutien volontaire via Google Play et l\'App Store. Toujours facultatif ; personne n\'est bloqué.';
+
+  @override
+  String get supportPaymentsNotReady =>
+      'Les paiements des stores ne sont pas encore connectés : les utilisateurs voient la page et les montants, et le bouton indique « bientôt ». Il faut le profil de paiement dans Google Play Console et les produits dans les deux stores.';
+
+  @override
+  String get supportShowToUsers => 'Afficher aux utilisateurs';
+
+  @override
+  String get supportOnHelp =>
+      'Activé : affiché aux endroits activés ci-dessous.';
+
+  @override
+  String get supportOffHelp =>
+      'Désactivé : invisible pour les utilisateurs. L\'aperçu reste possible.';
+
+  @override
+  String get supportWhere => 'Où l\'afficher';
+
+  @override
+  String get supportWhereProfile => 'Profil → Soutenir CodaMi';
+
+  @override
+  String get supportWhereReport => 'Après la publication d\'une annonce';
+
+  @override
+  String get supportWhereFound =>
+      'Quand un animal est retrouvé ou une annonce résolue';
+
+  @override
+  String get supportSettings => 'Réglages';
+
+  @override
+  String get supportDaysBetween => 'Jours entre deux messages';
+
+  @override
+  String get supportDaysBetweenHelp =>
+      'Le message après une annonce ou un animal retrouvé s\'affiche au plus une fois sur cette période.';
+
+  @override
+  String get supportAmounts => 'Montants (€)';
+
+  @override
+  String get supportAmountsHelp =>
+      'Jusqu\'à 6, séparés par des virgules. Chacun devient un produit dans les stores.';
+
+  @override
+  String get supportAmountsInvalid =>
+      'Saisissez jusqu\'à 6 montants, par exemple 1, 3, 5, 10, 25';
+
+  @override
+  String get supportPreview => 'Aperçu de la page';
 }

@@ -8,13 +8,12 @@ import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../data/points_repository.dart';
+import '../../domain/invite_code.dart';
 import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/invite_code_input.dart';
 import '../widgets/points_widgets.dart';
-
-const _storeLink =
-    'https://play.google.com/store/apps/details?id=com.codami.app';
+import 'invite_qr_screen.dart';
 
 final _inviteCodeProvider = FutureProvider<String>((ref) async {
   final saved = ref.read(userProfileProvider).value?.inviteCode;
@@ -119,7 +118,7 @@ class InviteScreen extends ConsumerWidget {
                                 ShareParams(
                                   text: l10n.inviteShareText(
                                     code.value!,
-                                    '$_storeLink&referrer=${code.value!}',
+                                    inviteLink(code.value!),
                                   ),
                                 ),
                               ),
@@ -129,6 +128,59 @@ class InviteScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
+                if (code.value case final value?) ...[
+                  const Divider(height: 32, color: AppColors.border),
+                  InkWell(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => InviteQrScreen(code: value),
+                      ),
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: InviteQr(code: value, size: 84),
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                l10n.inviteQrTitle,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.text,
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Text(
+                                l10n.inviteQrSubtitle,
+                                style: const TextStyle(
+                                  fontSize: 12.5,
+                                  height: 1.35,
+                                  color: AppColors.textMuted,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Icon(
+                          Icons.chevron_right_rounded,
+                          color: AppColors.textMuted,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

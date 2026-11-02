@@ -7721,6 +7721,624 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Optional. Leave empty to always charge shipping.'**
   String get shopFreeAboveHelp;
+
+  /// No description provided for @inviteQrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your QR code'**
+  String get inviteQrTitle;
+
+  /// No description provided for @inviteQrSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save it or print a flyer to invite people near you.'**
+  String get inviteQrSubtitle;
+
+  /// No description provided for @inviteQrScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code and flyer'**
+  String get inviteQrScreenTitle;
+
+  /// No description provided for @inviteQrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code'**
+  String get inviteQrCode;
+
+  /// No description provided for @inviteFlyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Flyer'**
+  String get inviteFlyer;
+
+  /// No description provided for @inviteQrHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends scan it with their phone camera to get CodaMi with your invite code.'**
+  String get inviteQrHelp;
+
+  /// No description provided for @inviteFlyerHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'A ready flyer to print and share around your area.'**
+  String get inviteFlyerHelp;
+
+  /// No description provided for @inviteSaveToPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to photos'**
+  String get inviteSaveToPhotos;
+
+  /// No description provided for @inviteSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to your photos'**
+  String get inviteSaved;
+
+  /// No description provided for @inviteSaveDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t save. Allow CodaMi to add photos in your phone\'s settings.'**
+  String get inviteSaveDenied;
+
+  /// No description provided for @flyerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help lost pets get back home'**
+  String get flyerTitle;
+
+  /// No description provided for @flyerText.
+  ///
+  /// In en, this message translates to:
+  /// **'Join CodaMi, the free app where neighbours help lost and found pets.'**
+  String get flyerText;
+
+  /// No description provided for @flyerScan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan with your phone camera'**
+  String get flyerScan;
+
+  /// No description provided for @flyerCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code: {code}'**
+  String flyerCode(String code);
+
+  /// No description provided for @flyerFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free app'**
+  String get flyerFree;
+
+  /// No description provided for @walksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Places to walk'**
+  String get walksTitle;
+
+  /// No description provided for @walksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Parks, dog areas and trails near you'**
+  String get walksSubtitle;
+
+  /// No description provided for @adminWalksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Google places search, distance, types, hidden places'**
+  String get adminWalksSubtitle;
+
+  /// No description provided for @walkDogParks.
+  ///
+  /// In en, this message translates to:
+  /// **'Dog parks'**
+  String get walkDogParks;
+
+  /// No description provided for @walkParks.
+  ///
+  /// In en, this message translates to:
+  /// **'Parks'**
+  String get walkParks;
+
+  /// No description provided for @walkGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Green areas'**
+  String get walkGreen;
+
+  /// No description provided for @walkTrails.
+  ///
+  /// In en, this message translates to:
+  /// **'Trails'**
+  String get walkTrails;
+
+  /// No description provided for @walkNearYou.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No places near you} =1{1 place near you} other{{count} places near you}}'**
+  String walkNearYou(int count);
+
+  /// No description provided for @walkNearCity.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No places near {city}} =1{1 place near {city}} other{{count} places near {city}}}'**
+  String walkNearCity(int count, String city);
+
+  /// No description provided for @walkUseMyLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my location'**
+  String get walkUseMyLocation;
+
+  /// No description provided for @walkNeedLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow your location, or set your city in your profile, to see places near you.'**
+  String get walkNeedLocation;
+
+  /// No description provided for @walkShowMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Show map'**
+  String get walkShowMap;
+
+  /// No description provided for @walkShowList.
+  ///
+  /// In en, this message translates to:
+  /// **'Show list'**
+  String get walkShowList;
+
+  /// No description provided for @walkSearching.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for places…'**
+  String get walkSearching;
+
+  /// No description provided for @walkNoPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'No places found here. Try a bigger distance.'**
+  String get walkNoPlaces;
+
+  /// No description provided for @walkLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve reached today\'s search limit. Try again tomorrow.'**
+  String get walkLimitReached;
+
+  /// No description provided for @walkTurnedOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Places to walk is not available right now.'**
+  String get walkTurnedOff;
+
+  /// No description provided for @walkUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load places. Check your connection and try again.'**
+  String get walkUnavailable;
+
+  /// No description provided for @walkSearchHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Search this area'**
+  String get walkSearchHere;
+
+  /// No description provided for @walkDataFromGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Places data from Google'**
+  String get walkDataFromGoogle;
+
+  /// No description provided for @walkPhotoBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo: {name} (Google)'**
+  String walkPhotoBy(String name);
+
+  /// No description provided for @walkOpenNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Open now'**
+  String get walkOpenNow;
+
+  /// No description provided for @walkClosedNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed now'**
+  String get walkClosedNow;
+
+  /// No description provided for @walkDogsAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Dogs allowed'**
+  String get walkDogsAllowed;
+
+  /// No description provided for @walkDogsNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'No dogs'**
+  String get walkDogsNotAllowed;
+
+  /// No description provided for @walkOpeningHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening hours'**
+  String get walkOpeningHours;
+
+  /// No description provided for @walkDirections.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get walkDirections;
+
+  /// No description provided for @walkCall.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get walkCall;
+
+  /// No description provided for @walkWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get walkWebsite;
+
+  /// No description provided for @walkDetailsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'More details couldn\'t be loaded.'**
+  String get walkDetailsFailed;
+
+  /// No description provided for @walkOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open it.'**
+  String get walkOpenFailed;
+
+  /// No description provided for @walkHide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide this place (admin)'**
+  String get walkHide;
+
+  /// No description provided for @walkHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden for everyone'**
+  String get walkHidden;
+
+  /// No description provided for @walkAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Google finds parks, dog areas, green areas and trails around each user. Every search costs a little, so limits protect the budget.'**
+  String get walkAdminIntro;
+
+  /// No description provided for @walkShowToUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Show to users'**
+  String get walkShowToUsers;
+
+  /// No description provided for @walkOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users see it in Profile and on the Home map.'**
+  String get walkOnHelp;
+
+  /// No description provided for @walkOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins can try it, from the button below.'**
+  String get walkOffHelp;
+
+  /// No description provided for @walkDefaultDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'Default distance'**
+  String get walkDefaultDistance;
+
+  /// No description provided for @walkPlaceTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Place types'**
+  String get walkPlaceTypes;
+
+  /// No description provided for @walkLimits.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily limits per user'**
+  String get walkLimits;
+
+  /// No description provided for @walkDailySearches.
+  ///
+  /// In en, this message translates to:
+  /// **'Searches'**
+  String get walkDailySearches;
+
+  /// No description provided for @walkDailySearchesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Each search looks for places in one area.'**
+  String get walkDailySearchesHelp;
+
+  /// No description provided for @walkDailyDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Place details'**
+  String get walkDailyDetails;
+
+  /// No description provided for @walkDailyDetailsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening a place loads its photo, rating and hours.'**
+  String get walkDailyDetailsHelp;
+
+  /// No description provided for @walkLimitInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Limits must be between 1 and 1000.'**
+  String get walkLimitInvalid;
+
+  /// No description provided for @walkHiddenPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden places'**
+  String get walkHiddenPlaces;
+
+  /// No description provided for @walkHiddenEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'None. Open a place as admin and tap \"Hide this place\" to remove an unsuitable one.'**
+  String get walkHiddenEmpty;
+
+  /// No description provided for @walkShowAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Show again'**
+  String get walkShowAgain;
+
+  /// No description provided for @walkOpenScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Places to walk'**
+  String get walkOpenScreen;
+
+  /// No description provided for @supportCodami.
+  ///
+  /// In en, this message translates to:
+  /// **'Support CodaMi'**
+  String get supportCodami;
+
+  /// No description provided for @supportProfileSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional, to help keep CodaMi running'**
+  String get supportProfileSubtitle;
+
+  /// No description provided for @adminSupportSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voluntary support: where it shows, how often, amounts'**
+  String get adminSupportSubtitle;
+
+  /// No description provided for @supportHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi is free, and stays free'**
+  String get supportHeaderTitle;
+
+  /// No description provided for @supportHeaderText.
+  ///
+  /// In en, this message translates to:
+  /// **'If you like what CodaMi does for animals, you can help with a small voluntary contribution. It\'s completely optional.'**
+  String get supportHeaderText;
+
+  /// No description provided for @supportUsesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What your support pays for'**
+  String get supportUsesTitle;
+
+  /// No description provided for @supportUseServers.
+  ///
+  /// In en, this message translates to:
+  /// **'Servers that keep the app running'**
+  String get supportUseServers;
+
+  /// No description provided for @supportUseDevelopment.
+  ///
+  /// In en, this message translates to:
+  /// **'Developing the app'**
+  String get supportUseDevelopment;
+
+  /// No description provided for @supportUseModeration.
+  ///
+  /// In en, this message translates to:
+  /// **'Content moderation'**
+  String get supportUseModeration;
+
+  /// No description provided for @supportUseSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer support'**
+  String get supportUseSupport;
+
+  /// No description provided for @supportUseTranslations.
+  ///
+  /// In en, this message translates to:
+  /// **'Translations'**
+  String get supportUseTranslations;
+
+  /// No description provided for @supportUseFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'New features and improvements'**
+  String get supportUseFeatures;
+
+  /// No description provided for @supportUseCampaigns.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal welfare awareness campaigns'**
+  String get supportUseCampaigns;
+
+  /// No description provided for @supportChooseAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an amount'**
+  String get supportChooseAmount;
+
+  /// No description provided for @supportWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Support with {amount}'**
+  String supportWith(Object amount);
+
+  /// No description provided for @supportFinePrint.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment is made through Google Play or the App Store. Your support goes to running and improving CodaMi; it is not a donation to a charity and gives no advantages in the app. You can use CodaMi fully without it.'**
+  String get supportFinePrint;
+
+  /// No description provided for @supportThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you!'**
+  String get supportThanks;
+
+  /// No description provided for @supportThanksText.
+  ///
+  /// In en, this message translates to:
+  /// **'Your support helps CodaMi keep helping animals.'**
+  String get supportThanksText;
+
+  /// No description provided for @supportSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments in the app are coming soon. Thank you for wanting to help!'**
+  String get supportSoon;
+
+  /// No description provided for @supportClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get supportClose;
+
+  /// No description provided for @supportPromptReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your report is live'**
+  String get supportPromptReportTitle;
+
+  /// No description provided for @supportPromptFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wonderful news!'**
+  String get supportPromptFoundTitle;
+
+  /// No description provided for @supportPromptText.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi is free for everyone. If you\'d like, a small voluntary contribution helps keep it running. Completely optional.'**
+  String get supportPromptText;
+
+  /// No description provided for @supportAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Voluntary support from users, through Google Play and the App Store. Always optional; users are never blocked.'**
+  String get supportAdminIntro;
+
+  /// No description provided for @supportPaymentsNotReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Store payments aren\'t connected yet: users see the page and the amounts, and the button says payments are coming soon. Connecting them needs the payments profile in Google Play Console and the products in both stores.'**
+  String get supportPaymentsNotReady;
+
+  /// No description provided for @supportShowToUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Show to users'**
+  String get supportShowToUsers;
+
+  /// No description provided for @supportOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: shown in the places switched on below.'**
+  String get supportOnHelp;
+
+  /// No description provided for @supportOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: users don\'t see it anywhere. You can still preview the page.'**
+  String get supportOffHelp;
+
+  /// No description provided for @supportWhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Where it shows'**
+  String get supportWhere;
+
+  /// No description provided for @supportWhereProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile → Support CodaMi'**
+  String get supportWhereProfile;
+
+  /// No description provided for @supportWhereReport.
+  ///
+  /// In en, this message translates to:
+  /// **'After a report is published'**
+  String get supportWhereReport;
+
+  /// No description provided for @supportWhereFound.
+  ///
+  /// In en, this message translates to:
+  /// **'When a pet is found or a report resolved'**
+  String get supportWhereFound;
+
+  /// No description provided for @supportSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get supportSettings;
+
+  /// No description provided for @supportDaysBetween.
+  ///
+  /// In en, this message translates to:
+  /// **'Days between messages'**
+  String get supportDaysBetween;
+
+  /// No description provided for @supportDaysBetweenHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The message after a report or a found pet shows at most once in this many days.'**
+  String get supportDaysBetweenHelp;
+
+  /// No description provided for @supportAmounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Amounts (€)'**
+  String get supportAmounts;
+
+  /// No description provided for @supportAmountsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 6, separated by commas. Each one becomes a product in the stores.'**
+  String get supportAmountsHelp;
+
+  /// No description provided for @supportAmountsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter up to 6 amounts, for example 1, 3, 5, 10, 25'**
+  String get supportAmountsInvalid;
+
+  /// No description provided for @supportPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview the page'**
+  String get supportPreview;
 }
 
 class _AppLocalizationsDelegate

@@ -350,6 +350,12 @@
       "languageVersion": "3.9"
     },
     {
+      "name": "gal",
+      "rootUri": "file:///Users/ammar/.pub-cache/hosted/pub.dev/gal-2.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "geoclue",
       "rootUri": "file:///Users/ammar/.pub-cache/hosted/pub.dev/geoclue-0.1.1",
       "packageUri": "lib/",
@@ -768,6 +774,18 @@
       "rootUri": "file:///Users/ammar/.pub-cache/hosted/pub.dev/pub_semver-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "qr",
+      "rootUri": "file:///Users/ammar/.pub-cache/hosted/pub.dev/qr-3.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "qr_flutter",
+      "rootUri": "file:///Users/ammar/.pub-cache/hosted/pub.dev/qr_flutter-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "record_use",

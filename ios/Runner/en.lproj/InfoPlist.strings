@@ -2,3 +2,4 @@
 "NSPhotoLibraryUsageDescription" = "CodaMi needs access to your photos so you can add pictures of your pets.";
 "NSLocationWhenInUseUsageDescription" = "CodaMi uses your location to show lost and found pets near you on the map.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "CodaMi uses your location to show lost and found pets near you on the map.";
+"NSPhotoLibraryAddUsageDescription" = "CodaMi saves your invite QR code and flyer to your photos.";

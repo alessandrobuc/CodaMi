@@ -19,6 +19,8 @@ import '../../../reports/presentation/screens/report_detail_screen.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
 import '../../../shell/presentation/providers/shell_provider.dart';
 import '../../domain/clustering.dart';
+import '../../../walks/presentation/providers/walks_provider.dart';
+import '../../../walks/presentation/screens/walks_screen.dart';
 import '../providers/map_provider.dart';
 import '../widgets/map_style.dart';
 import '../widgets/map_widget.dart';
@@ -518,10 +520,7 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
         zoom: home == null ? _italyZoom : _cityZoom,
       ),
       style: codamiMapStyle,
-      markers: _withEmergencies(
-        _buildMarkers(pins, selected?.id),
-        emergencies,
-      ),
+      markers: _withEmergencies(_buildMarkers(pins, selected?.id), emergencies),
       circles: _buildCircles(pins, home, km),
       onMapCreated: _onCreated,
       onCameraIdle: _onCameraIdle,
@@ -613,6 +612,18 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
                   onTap: _openFullscreen,
                 ),
         ),
+        if (!widget.fullscreen && ref.watch(walksEnabledProvider))
+          PositionedDirectional(
+            top: top + 52,
+            end: 12,
+            child: MapIconButton(
+              icon: Icons.park_rounded,
+              tooltip: context.l10n.walksTitle,
+              onTap: () => Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (_) => const WalksScreen())),
+            ),
+          ),
         AnimatedPositionedDirectional(
           duration: const Duration(milliseconds: 280),
           curve: Curves.easeOutCubic,

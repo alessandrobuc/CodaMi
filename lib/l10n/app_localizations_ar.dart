@@ -4343,4 +4343,356 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shopFreeAboveHelp => 'اختياري. اتركه فارغًا لتحصيل الشحن دائمًا.';
+
+  @override
+  String get inviteQrTitle => 'رمز QR الخاص بك';
+
+  @override
+  String get inviteQrSubtitle => 'احفظه أو اطبع منشورًا لدعوة من حولك.';
+
+  @override
+  String get inviteQrScreenTitle => 'رمز QR والمنشور';
+
+  @override
+  String get inviteQrCode => 'رمز QR';
+
+  @override
+  String get inviteFlyer => 'منشور';
+
+  @override
+  String get inviteQrHelp =>
+      'يمسحه أصدقاؤك بكاميرا الهاتف للحصول على CodaMi برمز دعوتك.';
+
+  @override
+  String get inviteFlyerHelp => 'منشور جاهز للطباعة والتوزيع في منطقتك.';
+
+  @override
+  String get inviteSaveToPhotos => 'حفظ في الصور';
+
+  @override
+  String get inviteSaved => 'تم الحفظ في صورك';
+
+  @override
+  String get inviteSaveDenied =>
+      'تعذر الحفظ. اسمح لـ CodaMi بإضافة الصور من إعدادات الهاتف.';
+
+  @override
+  String get flyerTitle => 'ساعد الحيوانات الضائعة على العودة';
+
+  @override
+  String get flyerText =>
+      'انضم إلى CodaMi، التطبيق المجاني حيث يساعد الجيران الحيوانات الضائعة والمعثور عليها.';
+
+  @override
+  String get flyerScan => 'امسحه بكاميرا هاتفك';
+
+  @override
+  String flyerCode(String code) {
+    return 'رمز الدعوة: $code';
+  }
+
+  @override
+  String get flyerFree => 'تطبيق مجاني';
+
+  @override
+  String get walksTitle => 'أماكن للتنزه';
+
+  @override
+  String get walksSubtitle => 'حدائق ومناطق للكلاب ومسارات قريبة منك';
+
+  @override
+  String get adminWalksSubtitle =>
+      'بحث Google والمسافة والأنواع والأماكن المخفية';
+
+  @override
+  String get walkDogParks => 'حدائق الكلاب';
+
+  @override
+  String get walkParks => 'حدائق';
+
+  @override
+  String get walkGreen => 'مساحات خضراء';
+
+  @override
+  String get walkTrails => 'مسارات';
+
+  @override
+  String walkNearYou(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count أماكن قريبة منك',
+      one: 'مكان واحد قريب منك',
+      zero: 'لا أماكن قريبة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String walkNearCity(int count, String city) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count أماكن قرب $city',
+      one: 'مكان واحد قرب $city',
+      zero: 'لا أماكن قرب $city',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get walkUseMyLocation => 'استخدم موقعي';
+
+  @override
+  String get walkNeedLocation =>
+      'اسمح بالموقع أو حدد مدينتك في الملف الشخصي لرؤية الأماكن القريبة.';
+
+  @override
+  String get walkShowMap => 'عرض الخريطة';
+
+  @override
+  String get walkShowList => 'عرض القائمة';
+
+  @override
+  String get walkSearching => 'جارٍ البحث عن أماكن…';
+
+  @override
+  String get walkNoPlaces => 'لم يتم العثور على أماكن. جرّب مسافة أكبر.';
+
+  @override
+  String get walkLimitReached => 'وصلت إلى حد البحث اليومي. حاول غدًا.';
+
+  @override
+  String get walkTurnedOff => 'أماكن التنزه غير متاحة حاليًا.';
+
+  @override
+  String get walkUnavailable =>
+      'تعذر تحميل الأماكن. تحقق من الاتصال وحاول مجددًا.';
+
+  @override
+  String get walkSearchHere => 'ابحث في هذه المنطقة';
+
+  @override
+  String get walkDataFromGoogle => 'بيانات الأماكن من Google';
+
+  @override
+  String walkPhotoBy(String name) {
+    return 'الصورة: $name (Google)';
+  }
+
+  @override
+  String get walkOpenNow => 'مفتوح الآن';
+
+  @override
+  String get walkClosedNow => 'مغلق الآن';
+
+  @override
+  String get walkDogsAllowed => 'يُسمح بالكلاب';
+
+  @override
+  String get walkDogsNotAllowed => 'لا يُسمح بالكلاب';
+
+  @override
+  String get walkOpeningHours => 'ساعات العمل';
+
+  @override
+  String get walkDirections => 'الاتجاهات';
+
+  @override
+  String get walkCall => 'اتصال';
+
+  @override
+  String get walkWebsite => 'الموقع';
+
+  @override
+  String get walkDetailsFailed => 'تعذر تحميل مزيد من التفاصيل.';
+
+  @override
+  String get walkOpenFailed => 'تعذر الفتح.';
+
+  @override
+  String get walkHide => 'إخفاء هذا المكان (مشرف)';
+
+  @override
+  String get walkHidden => 'مخفي للجميع';
+
+  @override
+  String get walkAdminIntro =>
+      'يعثر Google على الحدائق ومناطق الكلاب والمساحات الخضراء والمسارات حول كل مستخدم. لكل بحث تكلفة بسيطة، والحدود تحمي الميزانية.';
+
+  @override
+  String get walkShowToUsers => 'عرض للمستخدمين';
+
+  @override
+  String get walkOnHelp =>
+      'مفعّل: يظهر في الملف الشخصي وعلى خريطة الصفحة الرئيسية.';
+
+  @override
+  String get walkOffHelp => 'معطّل: يمكن للمشرفين فقط تجربته من الزر أدناه.';
+
+  @override
+  String get walkDefaultDistance => 'المسافة الافتراضية';
+
+  @override
+  String get walkPlaceTypes => 'أنواع الأماكن';
+
+  @override
+  String get walkLimits => 'الحدود اليومية لكل مستخدم';
+
+  @override
+  String get walkDailySearches => 'عمليات البحث';
+
+  @override
+  String get walkDailySearchesHelp => 'كل بحث يبحث عن أماكن في منطقة واحدة.';
+
+  @override
+  String get walkDailyDetails => 'تفاصيل الأماكن';
+
+  @override
+  String get walkDailyDetailsHelp => 'فتح مكان يحمّل صورته وتقييمه ومواعيده.';
+
+  @override
+  String get walkLimitInvalid => 'يجب أن تكون الحدود بين 1 و1000.';
+
+  @override
+  String get walkHiddenPlaces => 'الأماكن المخفية';
+
+  @override
+  String get walkHiddenEmpty =>
+      'لا شيء. افتح مكانًا كمشرف واضغط \"إخفاء هذا المكان\".';
+
+  @override
+  String get walkShowAgain => 'إظهار مجددًا';
+
+  @override
+  String get walkOpenScreen => 'فتح أماكن للتنزه';
+
+  @override
+  String get supportCodami => 'ادعم CodaMi';
+
+  @override
+  String get supportProfileSubtitle => 'اختياري، للمساعدة في استمرار CodaMi';
+
+  @override
+  String get adminSupportSubtitle => 'الدعم الطوعي: أين ومتى والمبالغ';
+
+  @override
+  String get supportHeaderTitle => 'CodaMi مجاني وسيبقى مجانيًا';
+
+  @override
+  String get supportHeaderText =>
+      'إذا أعجبك ما يقدمه CodaMi للحيوانات، يمكنك المساعدة بمساهمة طوعية صغيرة. الأمر اختياري تمامًا.';
+
+  @override
+  String get supportUsesTitle => 'فيمَ يُستخدم دعمك';
+
+  @override
+  String get supportUseServers => 'الخوادم التي تُشغّل التطبيق';
+
+  @override
+  String get supportUseDevelopment => 'تطوير التطبيق';
+
+  @override
+  String get supportUseModeration => 'الإشراف على المحتوى';
+
+  @override
+  String get supportUseSupport => 'دعم المستخدمين';
+
+  @override
+  String get supportUseTranslations => 'الترجمات';
+
+  @override
+  String get supportUseFeatures => 'ميزات وتحسينات جديدة';
+
+  @override
+  String get supportUseCampaigns => 'حملات التوعية برعاية الحيوان';
+
+  @override
+  String get supportChooseAmount => 'اختر مبلغًا';
+
+  @override
+  String supportWith(Object amount) {
+    return 'ادعم بمبلغ $amount';
+  }
+
+  @override
+  String get supportFinePrint =>
+      'يتم الدفع عبر Google Play أو App Store. يذهب دعمك لتشغيل CodaMi وتحسينه؛ وهو ليس تبرعًا لجمعية خيرية ولا يمنح مزايا في التطبيق. يمكنك استخدام CodaMi بالكامل بدونه.';
+
+  @override
+  String get supportThanks => 'شكرًا لك!';
+
+  @override
+  String get supportThanksText =>
+      'دعمك يساعد CodaMi على مواصلة مساعدة الحيوانات.';
+
+  @override
+  String get supportSoon =>
+      'الدفع داخل التطبيق قادم قريبًا. شكرًا لرغبتك في المساعدة!';
+
+  @override
+  String get supportClose => 'إغلاق';
+
+  @override
+  String get supportPromptReportTitle => 'تم نشر بلاغك';
+
+  @override
+  String get supportPromptFoundTitle => 'خبر رائع!';
+
+  @override
+  String get supportPromptText =>
+      'CodaMi مجاني للجميع. إن أردت، تساعد مساهمة طوعية صغيرة في استمراره. اختياري تمامًا.';
+
+  @override
+  String get supportAdminIntro =>
+      'دعم طوعي من المستخدمين عبر Google Play وApp Store. اختياري دائمًا ولا يُمنع أحد.';
+
+  @override
+  String get supportPaymentsNotReady =>
+      'مدفوعات المتجر غير متصلة بعد: يرى المستخدمون الصفحة والمبالغ، والزر يقول إن الدفع قادم قريبًا. يلزم ملف الدفع في Google Play Console والمنتجات في المتجرين.';
+
+  @override
+  String get supportShowToUsers => 'عرض للمستخدمين';
+
+  @override
+  String get supportOnHelp => 'مفعّل: يظهر في الأماكن المفعّلة أدناه.';
+
+  @override
+  String get supportOffHelp =>
+      'معطّل: لا يراه المستخدمون. يمكنك معاينة الصفحة.';
+
+  @override
+  String get supportWhere => 'أين يظهر';
+
+  @override
+  String get supportWhereProfile => 'الملف الشخصي ← ادعم CodaMi';
+
+  @override
+  String get supportWhereReport => 'بعد نشر بلاغ';
+
+  @override
+  String get supportWhereFound => 'عند العثور على حيوان أو حل بلاغ';
+
+  @override
+  String get supportSettings => 'الإعدادات';
+
+  @override
+  String get supportDaysBetween => 'الأيام بين الرسائل';
+
+  @override
+  String get supportDaysBetweenHelp =>
+      'تظهر الرسالة بعد البلاغ أو العثور على حيوان مرة واحدة على الأكثر خلال هذه الأيام.';
+
+  @override
+  String get supportAmounts => 'المبالغ (€)';
+
+  @override
+  String get supportAmountsHelp =>
+      'حتى 6 مبالغ مفصولة بفواصل. يصبح كل مبلغ منتجًا في المتجرين.';
+
+  @override
+  String get supportAmountsInvalid => 'أدخل حتى 6 مبالغ، مثل 1، 3، 5، 10، 25';
+
+  @override
+  String get supportPreview => 'معاينة الصفحة';
 }

@@ -2,3 +2,4 @@
 "NSPhotoLibraryUsageDescription" = "CodaMi 需要访问你的照片，以便你添加宠物的图片。";
 "NSLocationWhenInUseUsageDescription" = "CodaMi 使用你的位置，在地图上显示你附近走失和被发现的宠物。";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "CodaMi 使用你的位置，在地图上显示你附近走失和被发现的宠物。";
+"NSPhotoLibraryAddUsageDescription" = "CodaMi 会将您的邀请二维码和传单保存到照片中。";

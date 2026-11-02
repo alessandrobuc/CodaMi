@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Fri 30 Oct 2026_
+_Last updated: Mon 2 Nov 2026_
 
 ---
 
@@ -63,6 +63,10 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **Shop (Thu 29 Oct):** deploy `firestore:rules,storage` (new `config/shop`, `shopCategories`, `brands`, `suppliers`, `products` rules and the `shop/` image folder). The shop stays off until an admin opens it
 - [ ] **Shop day 2 (Fri 30 Oct):** deploy `firestore:rules` (`config/shipping`, `productCosts`, `affiliateClicks`, sponsored product fields)
 - [ ] Shop shipping: replace the starting prices with the real ones before opening the shop
+- [ ] **Phase 4 (Mon 2 Nov):** deploy `hosting,functions,firestore:rules` (invite page, walk functions, `config/walks` and `config/donations` rules)
+- [ ] Places to walk: Google Places costs (Nearby Search and Place Details with photos) in the budget alert; mention in the privacy policy that the user's position is sent to Google to find places
+- [ ] Donations: before switching on, store products (consumable, one per amount), payments profile in Play Console, Paid Apps agreement on App Store Connect, Data safety and App Store privacy labels for purchases; wording stays "Support CodaMi", not charity
+- [ ] Invite flyer: Data safety "Photos" not needed (the app only adds images); iPhone permission text added
 - [ ] Raise the version name (not only the build number) for every release that has notes, and publish its notes in Admin → More → What's new
 - [ ] **App updates (Tue 27 Oct):** deploy `firestore:rules` (new `config/appVersion`, readable before sign-in, admin-only writes). Can go together with the What's new paging deploy above
 - [ ] **Every release:** once the update is live in the store, set Admin → More → App updates → Latest version for that platform. Only set a Minimum version for a release that old versions can't work with (it blocks the app until updated)

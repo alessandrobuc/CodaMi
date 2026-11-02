@@ -2,7 +2,7 @@
 
 Request from the client (Thu 29 Oct 2026): a pet products shop inside the app, with brand partnerships, dropshipping, affiliate links, commissions and sponsored products, all managed from the admin panel. Modular, no dependence on one provider, start simple and grow into a multi-brand marketplace without a redesign.
 
-_Last updated: Fri 30 Oct 2026 (Phase 1 day 2 built; rules to deploy)_
+_Last updated: Mon 2 Nov 2026 (day 2 committed; day 3 waiting for the client's Stripe keys and details)_
 
 **Go-ahead (Thu 29 Oct):** start with Phase 1. Added by us: a **Shop on/off switch** in the admin panel (`config/shop.enabled`). Off: users don't see the Shop tab; admins can still prepare the catalogue. On: the shop shows for everyone at once, no new build. Starts off.
 
@@ -129,10 +129,20 @@ Nothing from Phase 1 is rebuilt for Phase 2 or 3: split orders, connectors, sale
 - [ ] Deploy: `firebase deploy --only firestore:rules`
 - [ ] Phone test: day 2 part of `TEST_SCENARIO_SHOP_2026-10-29.md`
 
-**Next days**
-- [ ] Stripe checkout (needs the Stripe account), orders, My orders, refunds
-- [ ] Dropshipping orders by email, commissions per order line
+**Day 3: orders and payment (on hold).** The developer asked the client on Mon 2 Nov for the Stripe keys, the email service, the countries and the company / VAT details; work starts when they arrive (aimed for Tue 3 Nov). If Stripe is still missing then, orders can start as "awaiting payment" with the shop kept off.
+- [ ] Checkout screen: delivery details (name, street, postcode, city, province, phone, delivery notes) saved for next time; order review with products, shipping method and total with VAT
+- [ ] Callable function creates the order: re-reads products, availability, shipping config and costs; refuses changed prices or unavailable items; saves each line with price, cost, margin, commission, supplier and sales model at the time of sale; splits into one shipment per supplier
+- [ ] Order statuses: awaiting payment → paid → sent to supplier → shipped → delivered; cancelled; per-shipment status, courier and tracking
+- [ ] My orders: list, details, status timeline, tracking link; push and in-app notification at each status change
+- [ ] Admin → Shop → Orders: filter by status, order details with address, change status, courier and tracking per shipment, internal notes (admin only)
+- [ ] Dropshipping: order email to the supplier prepared in the `mail` collection (Trigger Email format), sent once the email service is set up
+- [ ] Rules (users read only their own orders; only the server creates orders and sets payment status), labels in 10 languages, app and emulator tests, test scenario
+
+**Later days**
+- [ ] Stripe payment in the checkout (cards, Apple Pay, Google Pay), webhook marks orders paid, refunds from the admin panel (needs the Stripe account or test keys)
+- [ ] Commission rules per brand, supplier, category and product
 - [ ] Basic reports, shop manager role, admin on the computer
+- [ ] Product variants (size, flavour, colour), if the client wants them
 
 ---
 

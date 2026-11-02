@@ -2,7 +2,7 @@
 
 Questions sent to the client that still need an answer. Move an item to **Answered** with the date and the answer when it comes back.
 
-_Last updated: Thu 29 Oct 2026_
+_Last updated: Mon 2 Nov 2026_
 
 ---
 
@@ -46,11 +46,18 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 **Shop (request 18, Thu 29 Oct)**: plan and details in `SHOP_FEATURE.md`. Phase 1 approved Thu 29 Oct
 - [ ] Countries we sell to at the start (Italy only?)
 - [ ] Company name and VAT number for the shop; Stripe account in CodaMi's name
+- [ ] Stripe: account in CodaMi's name, or OK for the developer to use Stripe test keys until then (asked again Mon 2 Nov; needed to start the order system)
+- [ ] Email service for order confirmations and supplier order emails (same one as for emergency alerts; asked again Mon 2 Nov)
 - [ ] First brands, suppliers or affiliate programmes (otherwise sample products)
 - [ ] Languages for product texts (suggested: Italian and English, the others fall back to English)
 - [ ] Shop as a new tab in the bottom bar
 - [ ] Admin panel on the computer as well
 - [ ] Who prepares the terms of sale and the return policy
+
+**Phase 4 requests (Mon 2 Nov)**: details in `PHASE_4_REQUESTS.md`
+- [ ] QR invites: invite page on the Firebase address OK for now? Flyer text and language? "Scan QR" button in the app?
+- [ ] Donations: store payments (Google / Apple, about 15% fee) OK? Amounts? Payments profile in Play Console; "Supporter" badge? Accountant check
+- [ ] Places to walk: where in the app? Default distance? Google cost OK with a budget alert?
 
 ---
 

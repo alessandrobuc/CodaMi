@@ -4379,4 +4379,359 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get shopFreeAboveHelp =>
       'वैकल्पिक। हमेशा शिपिंग लेने के लिए खाली छोड़ें।';
+
+  @override
+  String get inviteQrTitle => 'आपका QR कोड';
+
+  @override
+  String get inviteQrSubtitle =>
+      'इसे सहेजें या आस-पास के लोगों को बुलाने के लिए फ़्लायर छापें।';
+
+  @override
+  String get inviteQrScreenTitle => 'QR कोड और फ़्लायर';
+
+  @override
+  String get inviteQrCode => 'QR कोड';
+
+  @override
+  String get inviteFlyer => 'फ़्लायर';
+
+  @override
+  String get inviteQrHelp =>
+      'दोस्त फ़ोन कैमरे से इसे स्कैन करके आपके कोड के साथ CodaMi पाते हैं।';
+
+  @override
+  String get inviteFlyerHelp =>
+      'अपने इलाके में बाँटने के लिए छापने को तैयार फ़्लायर।';
+
+  @override
+  String get inviteSaveToPhotos => 'फ़ोटो में सहेजें';
+
+  @override
+  String get inviteSaved => 'आपकी फ़ोटो में सहेजा गया';
+
+  @override
+  String get inviteSaveDenied =>
+      'सहेज नहीं सके। फ़ोन सेटिंग में CodaMi को फ़ोटो जोड़ने की अनुमति दें।';
+
+  @override
+  String get flyerTitle => 'खोए पालतू जानवरों को घर पहुँचाएँ';
+
+  @override
+  String get flyerText =>
+      'CodaMi से जुड़ें, मुफ़्त ऐप जहाँ पड़ोसी खोए और मिले पालतू जानवरों की मदद करते हैं।';
+
+  @override
+  String get flyerScan => 'फ़ोन कैमरे से स्कैन करें';
+
+  @override
+  String flyerCode(String code) {
+    return 'आमंत्रण कोड: $code';
+  }
+
+  @override
+  String get flyerFree => 'मुफ़्त ऐप';
+
+  @override
+  String get walksTitle => 'टहलने की जगहें';
+
+  @override
+  String get walksSubtitle => 'आस-पास के पार्क, डॉग एरिया और ट्रेल';
+
+  @override
+  String get adminWalksSubtitle => 'Google खोज, दूरी, प्रकार, छिपी जगहें';
+
+  @override
+  String get walkDogParks => 'डॉग पार्क';
+
+  @override
+  String get walkParks => 'पार्क';
+
+  @override
+  String get walkGreen => 'हरित क्षेत्र';
+
+  @override
+  String get walkTrails => 'ट्रेल';
+
+  @override
+  String walkNearYou(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'आस-पास $count जगहें',
+      one: 'आस-पास 1 जगह',
+      zero: 'आस-पास कोई जगह नहीं',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String walkNearCity(int count, String city) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$city के पास $count जगहें',
+      one: '$city के पास 1 जगह',
+      zero: '$city के पास कोई जगह नहीं',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get walkUseMyLocation => 'मेरी लोकेशन';
+
+  @override
+  String get walkNeedLocation =>
+      'आस-पास की जगहें देखने के लिए लोकेशन की अनुमति दें या प्रोफ़ाइल में अपना शहर चुनें।';
+
+  @override
+  String get walkShowMap => 'मैप दिखाएँ';
+
+  @override
+  String get walkShowList => 'सूची दिखाएँ';
+
+  @override
+  String get walkSearching => 'जगहें खोज रहे हैं…';
+
+  @override
+  String get walkNoPlaces => 'यहाँ कोई जगह नहीं मिली। ज़्यादा दूरी चुनें।';
+
+  @override
+  String get walkLimitReached =>
+      'आज की खोज सीमा पूरी हो गई। कल फिर कोशिश करें।';
+
+  @override
+  String get walkTurnedOff => 'टहलने की जगहें अभी उपलब्ध नहीं हैं।';
+
+  @override
+  String get walkUnavailable => 'जगहें लोड नहीं हुईं। कनेक्शन जाँचें।';
+
+  @override
+  String get walkSearchHere => 'इस इलाके में खोजें';
+
+  @override
+  String get walkDataFromGoogle => 'जगहों का डेटा Google से';
+
+  @override
+  String walkPhotoBy(String name) {
+    return 'फ़ोटो: $name (Google)';
+  }
+
+  @override
+  String get walkOpenNow => 'अभी खुला';
+
+  @override
+  String get walkClosedNow => 'अभी बंद';
+
+  @override
+  String get walkDogsAllowed => 'कुत्तों की अनुमति';
+
+  @override
+  String get walkDogsNotAllowed => 'कुत्तों की अनुमति नहीं';
+
+  @override
+  String get walkOpeningHours => 'खुलने का समय';
+
+  @override
+  String get walkDirections => 'रास्ता';
+
+  @override
+  String get walkCall => 'कॉल करें';
+
+  @override
+  String get walkWebsite => 'वेबसाइट';
+
+  @override
+  String get walkDetailsFailed => 'और जानकारी लोड नहीं हुई।';
+
+  @override
+  String get walkOpenFailed => 'खुल नहीं सका।';
+
+  @override
+  String get walkHide => 'यह जगह छिपाएँ (एडमिन)';
+
+  @override
+  String get walkHidden => 'सबके लिए छिपाया गया';
+
+  @override
+  String get walkAdminIntro =>
+      'Google हर उपयोगकर्ता के पास पार्क, डॉग एरिया, हरित क्षेत्र और ट्रेल ढूँढता है। हर खोज की थोड़ी लागत है, सीमाएँ बजट बचाती हैं।';
+
+  @override
+  String get walkShowToUsers => 'उपयोगकर्ताओं को दिखाएँ';
+
+  @override
+  String get walkOnHelp =>
+      'चालू: उपयोगकर्ता इसे प्रोफ़ाइल और होम मैप पर देखते हैं।';
+
+  @override
+  String get walkOffHelp => 'बंद: केवल एडमिन नीचे के बटन से आज़मा सकते हैं।';
+
+  @override
+  String get walkDefaultDistance => 'डिफ़ॉल्ट दूरी';
+
+  @override
+  String get walkPlaceTypes => 'जगह के प्रकार';
+
+  @override
+  String get walkLimits => 'प्रति उपयोगकर्ता दैनिक सीमा';
+
+  @override
+  String get walkDailySearches => 'खोजें';
+
+  @override
+  String get walkDailySearchesHelp => 'हर खोज एक इलाके में जगहें ढूँढती है।';
+
+  @override
+  String get walkDailyDetails => 'जगह का विवरण';
+
+  @override
+  String get walkDailyDetailsHelp =>
+      'जगह खोलने पर फ़ोटो, रेटिंग और समय लोड होते हैं।';
+
+  @override
+  String get walkLimitInvalid => 'सीमा 1 से 1000 के बीच होनी चाहिए।';
+
+  @override
+  String get walkHiddenPlaces => 'छिपी जगहें';
+
+  @override
+  String get walkHiddenEmpty =>
+      'कोई नहीं। एडमिन के रूप में जगह खोलें और \"यह जगह छिपाएँ\" दबाएँ।';
+
+  @override
+  String get walkShowAgain => 'फिर दिखाएँ';
+
+  @override
+  String get walkOpenScreen => 'टहलने की जगहें खोलें';
+
+  @override
+  String get supportCodami => 'CodaMi का समर्थन करें';
+
+  @override
+  String get supportProfileSubtitle => 'वैकल्पिक, CodaMi को चलाते रहने के लिए';
+
+  @override
+  String get adminSupportSubtitle => 'स्वैच्छिक समर्थन: कहाँ, कितनी बार, राशि';
+
+  @override
+  String get supportHeaderTitle => 'CodaMi मुफ़्त है और मुफ़्त रहेगा';
+
+  @override
+  String get supportHeaderText =>
+      'अगर आपको CodaMi का जानवरों के लिए काम पसंद है, तो छोटे स्वैच्छिक योगदान से मदद करें। यह पूरी तरह वैकल्पिक है।';
+
+  @override
+  String get supportUsesTitle => 'आपका समर्थन किस काम आता है';
+
+  @override
+  String get supportUseServers => 'ऐप चलाने वाले सर्वर';
+
+  @override
+  String get supportUseDevelopment => 'ऐप का विकास';
+
+  @override
+  String get supportUseModeration => 'कंटेंट मॉडरेशन';
+
+  @override
+  String get supportUseSupport => 'ग्राहक सहायता';
+
+  @override
+  String get supportUseTranslations => 'अनुवाद';
+
+  @override
+  String get supportUseFeatures => 'नई सुविधाएँ और सुधार';
+
+  @override
+  String get supportUseCampaigns => 'पशु कल्याण जागरूकता अभियान';
+
+  @override
+  String get supportChooseAmount => 'राशि चुनें';
+
+  @override
+  String supportWith(Object amount) {
+    return '$amount से समर्थन करें';
+  }
+
+  @override
+  String get supportFinePrint =>
+      'भुगतान Google Play या App Store से होता है। आपका समर्थन CodaMi चलाने और बेहतर बनाने में जाता है; यह किसी चैरिटी को दान नहीं है और ऐप में कोई फ़ायदा नहीं देता। आप इसके बिना भी CodaMi पूरी तरह इस्तेमाल कर सकते हैं।';
+
+  @override
+  String get supportThanks => 'धन्यवाद!';
+
+  @override
+  String get supportThanksText =>
+      'आपका समर्थन CodaMi को जानवरों की मदद जारी रखने में मदद करता है।';
+
+  @override
+  String get supportSoon =>
+      'ऐप में भुगतान जल्द आ रहा है। मदद करने की इच्छा के लिए धन्यवाद!';
+
+  @override
+  String get supportClose => 'बंद करें';
+
+  @override
+  String get supportPromptReportTitle => 'आपकी रिपोर्ट लाइव है';
+
+  @override
+  String get supportPromptFoundTitle => 'बहुत अच्छी ख़बर!';
+
+  @override
+  String get supportPromptText =>
+      'CodaMi सबके लिए मुफ़्त है। चाहें तो छोटा स्वैच्छिक योगदान इसे चलाने में मदद करता है। पूरी तरह वैकल्पिक।';
+
+  @override
+  String get supportAdminIntro =>
+      'Google Play और App Store से स्वैच्छिक समर्थन। हमेशा वैकल्पिक; किसी को रोका नहीं जाता।';
+
+  @override
+  String get supportPaymentsNotReady =>
+      'स्टोर भुगतान अभी जुड़े नहीं हैं: उपयोगकर्ता पेज और राशि देखते हैं, बटन बताता है जल्द आ रहा है। इसके लिए Google Play Console में पेमेंट प्रोफ़ाइल और दोनों स्टोर में प्रोडक्ट चाहिए।';
+
+  @override
+  String get supportShowToUsers => 'उपयोगकर्ताओं को दिखाएँ';
+
+  @override
+  String get supportOnHelp => 'चालू: नीचे चालू जगहों पर दिखता है।';
+
+  @override
+  String get supportOffHelp =>
+      'बंद: उपयोगकर्ता इसे कहीं नहीं देखते। आप पूर्वावलोकन कर सकते हैं।';
+
+  @override
+  String get supportWhere => 'कहाँ दिखे';
+
+  @override
+  String get supportWhereProfile => 'प्रोफ़ाइल → CodaMi का समर्थन';
+
+  @override
+  String get supportWhereReport => 'रिपोर्ट प्रकाशित होने के बाद';
+
+  @override
+  String get supportWhereFound => 'जब पालतू मिल जाए या रिपोर्ट हल हो';
+
+  @override
+  String get supportSettings => 'सेटिंग्स';
+
+  @override
+  String get supportDaysBetween => 'संदेशों के बीच दिन';
+
+  @override
+  String get supportDaysBetweenHelp =>
+      'रिपोर्ट या पालतू मिलने के बाद का संदेश इतने दिनों में अधिकतम एक बार दिखता है।';
+
+  @override
+  String get supportAmounts => 'राशि (€)';
+
+  @override
+  String get supportAmountsHelp =>
+      'अधिकतम 6, कॉमा से अलग। हर एक स्टोर में प्रोडक्ट बनेगा।';
+
+  @override
+  String get supportAmountsInvalid =>
+      'अधिकतम 6 राशियाँ डालें, जैसे 1, 3, 5, 10, 25';
+
+  @override
+  String get supportPreview => 'पेज का पूर्वावलोकन';
 }

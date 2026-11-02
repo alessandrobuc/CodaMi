@@ -6,6 +6,12 @@ final _codePattern = RegExp(
   '(?<![A-Z0-9])[$inviteCodeAlphabet]{$inviteCodeLength}(?![A-Z0-9])',
 );
 
+// The page a QR code or shared link opens (hosting/invite.html). It sends
+// Android to Google Play with the code and iPhone to the App Store.
+const inviteLinkBase = 'https://codami-cd91e.web.app/i/';
+
+String inviteLink(String code) => '$inviteLinkBase$code';
+
 bool isInviteCode(String code) =>
     code.length == inviteCodeLength &&
     code.split('').every(inviteCodeAlphabet.contains);
@@ -16,7 +22,9 @@ String? extractInviteCode(String input) {
   final text = input.trim().toUpperCase();
   if (text.isEmpty) return null;
 
-  final fromLink = RegExp(r'REFERRER(?:=|%3D)([A-Z0-9]+)').firstMatch(text);
+  final fromLink =
+      RegExp(r'REFERRER(?:=|%3D)([A-Z0-9]+)').firstMatch(text) ??
+      RegExp(r'/I/([A-Z0-9]+)(?![A-Z0-9])').firstMatch(text);
   if (fromLink != null && isInviteCode(fromLink.group(1)!)) {
     return fromLink.group(1);
   }

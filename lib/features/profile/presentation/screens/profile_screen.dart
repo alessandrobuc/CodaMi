@@ -25,6 +25,11 @@ import '../../../points/presentation/screens/points_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../feedback/presentation/widgets/feedback_sheet.dart';
 import '../../../petitions/presentation/screens/petitions_screen.dart';
+import '../../../donations/data/donations_repository.dart';
+import '../../../donations/presentation/support_screen.dart';
+import '../../../walks/presentation/providers/walks_provider.dart';
+import '../../../walks/presentation/screens/walks_screen.dart';
+import '../../../walks/presentation/widgets/walk_widgets.dart';
 import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../whats_new/presentation/screens/whats_new_screen.dart';
 import '../../../app_update/data/app_update_repository.dart';
@@ -298,6 +303,27 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             _SectionCard(
               children: [
+                if (ref.watch(donationsConfigProvider).value case final d?
+                    when d.enabled && d.showInProfile)
+                  _ProfileTile(
+                    icon: Icons.favorite_rounded,
+                    color: supportColor,
+                    title: l10n.supportCodami,
+                    subtitle: l10n.supportProfileSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const SupportScreen()),
+                    ),
+                  ),
+                if (ref.watch(walksEnabledProvider))
+                  _ProfileTile(
+                    icon: Icons.park_rounded,
+                    color: walkColor,
+                    title: l10n.walksTitle,
+                    subtitle: l10n.walksSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const WalksScreen()),
+                    ),
+                  ),
                 _ProfileTile(
                   icon: Icons.campaign_rounded,
                   color: petitionColor,

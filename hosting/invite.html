@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodaMi invite</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.png">
+<style>
+  :root { --primary: #1F6F5B; --text: #102A23; --muted: #5C736C; --bg: #F6F8F7; --border: #D7E3DE; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  main { max-width: 440px; margin: 0 auto; padding: 32px 16px 40px; text-align: center; }
+  img.logo { width: 88px; height: 88px; border-radius: 22px; }
+  h1 { font-size: 24px; margin: 18px 0 8px; }
+  p { color: var(--muted); line-height: 1.5; margin: 0 0 18px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 18px; margin: 20px 0; }
+  .label { font-size: 14px; color: var(--muted); }
+  .code { font-size: 36px; font-weight: 800; letter-spacing: 8px; margin: 6px 0 4px; user-select: all; }
+  .button { display: block; width: 100%; padding: 15px; border-radius: 16px; font-weight: 700; font-size: 16px; text-decoration: none; margin-top: 12px; }
+  .primary { background: var(--primary); color: #fff; }
+  .secondary { background: #fff; color: var(--text); border: 1px solid var(--border); }
+  .disabled { opacity: .5; pointer-events: none; }
+  small { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/icon.png" alt="CodaMi">
+  <h1 id="title"></h1>
+  <p id="intro"></p>
+  <div class="card">
+    <div class="label" id="codeLabel"></div>
+    <div class="code" id="code">——————</div>
+    <small id="codeHelp"></small>
+  </div>
+  <a class="button primary" id="play" href="#"></a>
+  <a class="button secondary" id="appStore" href="#"></a>
+</main>
+<script>
+  // Shown in the visitor's language; English when it isn't one of the app's.
+  const texts = {
+    en: ["You're invited to CodaMi", "CodaMi helps lost pets get back home. Join your neighbours and help animals near you.", "Invite code", "Enter this code in the app when it asks if a friend invited you.", "Get it on Google Play", "Download on the App Store", "Coming soon on the App Store"],
+    it: ["Sei invitato su CodaMi", "CodaMi aiuta gli animali smarriti a tornare a casa. Unisciti ai tuoi vicini e aiuta gli animali intorno a te.", "Codice invito", "Inserisci questo codice nell'app quando ti chiede se un amico ti ha invitato.", "Scarica su Google Play", "Scarica su App Store", "Presto su App Store"],
+    de: ["Du bist zu CodaMi eingeladen", "CodaMi hilft vermissten Tieren, nach Hause zu finden. Mach mit und hilf Tieren in deiner Nähe.", "Einladungscode", "Gib diesen Code in der App ein, wenn sie fragt, ob dich ein Freund eingeladen hat.", "Bei Google Play laden", "Im App Store laden", "Bald im App Store"],
+    fr: ["Vous êtes invité sur CodaMi", "CodaMi aide les animaux perdus à rentrer chez eux. Rejoignez vos voisins et aidez les animaux près de chez vous.", "Code d'invitation", "Saisissez ce code dans l'app quand elle vous demande si un ami vous a invité.", "Disponible sur Google Play", "Télécharger dans l'App Store", "Bientôt sur l'App Store"],
+    es: ["Te han invitado a CodaMi", "CodaMi ayuda a las mascotas perdidas a volver a casa. Únete a tus vecinos y ayuda a los animales cerca de ti.", "Código de invitación", "Introduce este código en la app cuando te pregunte si un amigo te invitó.", "Disponible en Google Play", "Descargar en App Store", "Próximamente en App Store"],
+    pt: ["Foi convidado para a CodaMi", "A CodaMi ajuda animais perdidos a voltar para casa. Junte-se aos seus vizinhos e ajude os animais perto de si.", "Código de convite", "Introduza este código na app quando perguntar se um amigo o convidou.", "Disponível no Google Play", "Descarregar na App Store", "Em breve na App Store"],
+    ru: ["Вас пригласили в CodaMi", "CodaMi помогает потерявшимся питомцам вернуться домой. Присоединяйтесь к соседям и помогайте животным рядом.", "Код приглашения", "Введите этот код в приложении, когда оно спросит, пригласил ли вас друг.", "Доступно в Google Play", "Загрузить в App Store", "Скоро в App Store"],
+    zh: ["邀请您加入 CodaMi", "CodaMi 帮助走失的宠物回家。加入您的邻居，一起帮助身边的动物。", "邀请码", "当应用询问是否有朋友邀请您时，请输入此代码。", "在 Google Play 下载", "在 App Store 下载", "即将登陆 App Store"],
+    ar: ["أنت مدعو إلى CodaMi", "يساعد CodaMi الحيوانات الضائعة على العودة إلى المنزل. انضم إلى جيرانك وساعد الحيوانات من حولك.", "رمز الدعوة", "أدخل هذا الرمز في التطبيق عندما يسألك إن كان صديق قد دعاك.", "احصل عليه من Google Play", "نزّله من App Store", "قريبًا على App Store"],
+    hi: ["आपको CodaMi पर आमंत्रित किया गया है", "CodaMi खोए हुए पालतू जानवरों को घर लौटने में मदद करता है। अपने पड़ोसियों से जुड़ें और आस-पास के जानवरों की मदद करें।", "आमंत्रण कोड", "जब ऐप पूछे कि क्या किसी दोस्त ने आपको आमंत्रित किया है, तो यह कोड डालें।", "Google Play पर पाएं", "App Store से डाउनलोड करें", "जल्द ही App Store पर"],
+  };
+  const lang = (navigator.language || "en").slice(0, 2).toLowerCase();
+  const t = texts[lang] || texts.en;
+  document.documentElement.lang = texts[lang] ? lang : "en";
+  if (lang === "ar") document.documentElement.dir = "rtl";
+
+  // Same alphabet and length as the app's invite codes.
+  const raw = (location.pathname.split("/i/")[1] || "").split("/")[0].toUpperCase();
+  const code = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/.test(raw) ? raw : "";
+
+  const play = "https://play.google.com/store/apps/details?id=com.codami.app" + (code ? "&referrer=" + code : "");
+  document.getElementById("title").textContent = t[0];
+  document.getElementById("intro").textContent = t[1];
+  document.getElementById("codeLabel").textContent = t[2];
+  document.getElementById("codeHelp").textContent = t[3];
+  if (code) document.getElementById("code").textContent = code;
+  else document.querySelector(".card").style.display = "none";
+  const playLink = document.getElementById("play");
+  playLink.textContent = t[4];
+  playLink.href = play;
+  const appStore = document.getElementById("appStore");
+  appStore.textContent = t[6];
+  appStore.classList.add("disabled");
+
+  const ua = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(ua);
+  const isIos = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIos) playLink.style.display = "none";
+  if (isAndroid) appStore.style.display = "none";
+
+  // The App Store ID is set in Admin → More → App updates.
+  fetch("https://firestore.googleapis.com/v1/projects/codami-cd91e/databases/(default)/documents/config/appVersion")
+    .then((r) => r.ok ? r.json() : null)
+    .then((doc) => {
+      const id = doc && doc.fields && doc.fields.appStoreId && doc.fields.appStoreId.stringValue;
+      if (!id) return;
+      appStore.textContent = t[5];
+      appStore.href = "https://apps.apple.com/app/id" + id;
+      appStore.classList.remove("disabled");
+    })
+    .catch(() => {});
+
+  // Android opens Google Play straight away; the code travels with the link.
+  if (isAndroid && code) setTimeout(() => { location.href = play; }, 600);
+</script>
+</body>
+</html>
