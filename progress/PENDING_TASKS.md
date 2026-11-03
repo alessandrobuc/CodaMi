@@ -2,7 +2,7 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Tue 3 Nov 2026 (invite tracking built and committed, to deploy; phase 5 plan sent)_
+_Last updated: Tue 3 Nov 2026 (invite tracking deployed and tested; Places key in Secret Manager, functions deploy left; phase 5 plan sent)_
 
 ---
 
@@ -58,7 +58,7 @@ Fixes found while testing go here:
   - [ ] Supplier order email for dropshipping (prepared in the `mail` collection, sent once the email service exists)
   - [ ] Rules, labels in 10 languages, tests, test scenario
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
-- [ ] Places key in Secret Manager: code done and secret set Tue 3 Nov, removed from `functions/.env`; left: `firebase deploy --only functions`, then check, check city / street / walks (`LAUNCH_CHECKLIST.md` §1)
+- [ ] Places key in Secret Manager: code done and secret set Tue 3 Nov, removed from `functions/.env`; left: `firebase deploy --only functions`, then check city / street / pin street name / walks (`LAUNCH_CHECKLIST.md` §1)
 - [ ] Restrict the Places (server) key to Places API (New) + Geocoding API; the Maps Android and iOS keys are already restricted (`LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
 - [ ] Privacy policy and Data safety: feedback (stars, comment, name, email, app version) readable by the team, install ID, exact emergency location shown to signed-in users, city position used for nearby alerts, support email (`LAUNCH_CHECKLIST.md` §6)
@@ -106,7 +106,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 
 ## Done recently
 
-- Tue 3 Nov: phase 4 and invite tracking deployed and tested on the phone. Places key moved to a Secret Manager secret in the code (to set and deploy); `invites.cjs` now clears earlier invites so all 8 emulator scripts pass in one run (323)
+- Tue 3 Nov: phase 4 and invite tracking deployed and tested on the phone. Places key moved to Secret Manager (code changed, secret set, removed from `functions/.env`; functions deploy left). Maps Android and iOS keys confirmed restricted; `invites.cjs` now clears earlier invites so all 8 emulator scripts pass in one run (323)
 - Tue 3 Nov: phase 5 requests received (AI breed scanner, heat calendar, pet sitting, schedule, social sharing, share reminders, feedback, titles); plan with what's already in the app and what to build in `PHASE_5_REQUESTS.md`, sent to the client
 
 - Tue 3 Nov: invite tracking (client follow-up of the same day): QR scans and link opens counted by the invite page (QR link marked `?s=qr`, once a day per visitor, no IP kept), invite statuses Active / Inactive / Waiting plus "still using the app" (new setting, 30 days), Admin → user's Invites box and invited friends list, Admin → More → Invites (totals, ranking, periods), the user's own counts on Invite friends. 10 languages, 10 new app tests (125), 5 new server tests (80), 29 new emulator checks. Count boxes in a row made the same height (Active / Inactive / Waiting in one row). Not deployed yet
