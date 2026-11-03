@@ -7,7 +7,6 @@ import {getStorage} from "firebase-admin/storage";
 import {onDocumentCreated, onDocumentUpdated, onDocumentWritten} from "firebase-functions/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
-import {defineString} from "firebase-functions/params";
 
 import {
   SAFE_ID_PATTERN,
@@ -41,11 +40,11 @@ import {deleteModerationData, isCleared} from "./moderationFunctions";
 import {deletePointsData} from "./pointsFunctions";
 import {sendToTokens, tokensOf, type PushToken} from "./push";
 import {releaseCasesOf} from "./supportFunctions";
+import {placesApiKey, placesSecret} from "./secrets";
 import {searchFieldsOf} from "./users";
 
 initializeApp();
 
-const placesApiKey = defineString("PLACES_API_KEY");
 
 const PLACES_URL = "https://places.googleapis.com/v1";
 const ITALY_BIAS = {
@@ -99,7 +98,7 @@ async function callPlaces(
   return body;
 }
 
-export const searchCities = onCall(async (request) => {
+export const searchCities = onCall(placesSecret, async (request) => {
   requireAuth(request);
   const input = readString(request.data, "input", {min: 2, max: 100});
   const sessionToken = readString(request.data, "sessionToken", {
@@ -121,7 +120,7 @@ export const searchCities = onCall(async (request) => {
   return {suggestions: parseSuggestions(body)};
 });
 
-export const getCityDetails = onCall(async (request) => {
+export const getCityDetails = onCall(placesSecret, async (request) => {
   requireAuth(request);
   const placeId = readString(request.data, "placeId", {
     min: 3,
@@ -150,7 +149,7 @@ export const getCityDetails = onCall(async (request) => {
   return city;
 });
 
-export const searchStreets = onCall(async (request) => {
+export const searchStreets = onCall(placesSecret, async (request) => {
   requireAuth(request);
   const input = readString(request.data, "input", {min: 2, max: 100});
   const sessionToken = readString(request.data, "sessionToken", {
@@ -185,7 +184,7 @@ export const searchStreets = onCall(async (request) => {
   return {suggestions: suggestionsInCity(parseSuggestions(body), city)};
 });
 
-export const getStreetDetails = onCall(async (request) => {
+export const getStreetDetails = onCall(placesSecret, async (request) => {
   requireAuth(request);
   const placeId = readString(request.data, "placeId", {
     min: 3,
@@ -359,7 +358,7 @@ export const onReportResolved = onDocumentUpdated(
   },
 );
 
-export const reverseGeocode = onCall(async (request) => {
+export const reverseGeocode = onCall(placesSecret, async (request) => {
   requireAuth(request);
   const lat = readCoordinate(request.data, "lat", 90);
   const lng = readCoordinate(request.data, "lng", 180);

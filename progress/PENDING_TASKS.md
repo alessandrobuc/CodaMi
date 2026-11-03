@@ -2,15 +2,15 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Tue 3 Nov 2026 (invite tracking built, to deploy with phase 4)_
+_Last updated: Tue 3 Nov 2026 (invite tracking built and committed, to deploy; phase 5 plan sent)_
 
 ---
 
 ## 1. Testing now
 
-- [ ] **Deploy (phase 4 Mon 2 Nov + invite tracking Tue 3 Nov):** `firebase deploy --only functions,hosting,firestore:rules` (functions first: the invite page's `/api/invite-open` rewrite needs `trackInviteOpen`; also `adminInviteStats`, `adminInviteRanking`, `findWalkPlaces`, `walkPlaceDetails`; rules for `config/walks`, `config/donations` and the new `stillUsingDays`)
+- [x] **Deploy (phase 4 Mon 2 Nov + invite tracking Tue 3 Nov):** `firebase deploy --only functions,hosting,firestore:rules` (functions first: the invite page's `/api/invite-open` rewrite needs `trackInviteOpen`; also `adminInviteStats`, `adminInviteRanking`, `findWalkPlaces`, `walkPlaceDetails`; rules for `config/walks`, `config/donations` and the new `stillUsingDays`)
 - [ ] **Google Cloud:** check that Places API (New) is enabled for the `PLACES_API_KEY` project (it already is for city search) and set a budget alert
-- [ ] **Phase 4 on the phone:** follow `TEST_SCENARIO_PHASE4_2026-11-02.md` (QR and flyer, invite page on Android and a computer, Places to walk, donation screens, and part 10: invite tracking)
+- [x] **Phase 4 on the phone (tested Tue 3 Nov):** follow `TEST_SCENARIO_PHASE4_2026-11-02.md` (QR and flyer, invite page on Android and a computer, Places to walk, donation screens, and part 10: invite tracking)
 - [ ] **Deploy (shop day 2, Fri 30 Oct):** `firebase deploy --only firestore:rules` (shipping settings, cost prices, affiliate clicks, sponsored fields; without it these can't be saved)
 - [ ] **Shop day 2 on the phone:** follow part 11 of `TEST_SCENARIO_SHOP_2026-10-29.md` (shipping setup, cart, totals, cost and margin, affiliate clicks, sponsored)
 - [x] **Deploy (shop, Thu 29 Oct):** rules and storage are live
@@ -28,7 +28,7 @@ _Last updated: Tue 3 Nov 2026 (invite tracking built, to deploy with phase 4)_
 - [ ] **What's new:** raise the version name in `pubspec.yaml` (for example `1.1.0+11`), write and publish the notes for 1.1.0 in Admin → More → What's new, install the update over the old app: the notes show once; Profile → What's new shows them again; a fresh install shows nothing
 - [ ] **Feedback:** Profile → Send feedback, pick stars and send; the points show only after 5 days since sign-up (set "Days after sign-up before asking for feedback" to 0 to test), a second send the same day is refused; read it in Admin → More → Feedback
 - [ ] **Review window:** only from a Play Store install; set the review days to 0 in Points and rewards to see it 25 seconds after opening the app on Home (Google may not show it every time; that's normal)
-- [ ] Automatic invite code (Fri 23 Oct, needs the Play Store build): on phone B, uninstall CodaMi, open phone A's invite link (Profile → Invite friends → Share), install from the Play Store (closed testing), sign up and choose the city; the "Did a friend invite you?" screen should already show A's code with a note, then tap Use. Installing from a cable or APK can't test this
+- [ ] Automatic invite code (Fri 23 Oct, needs the Play Store build): on phone B, uninstall CodaMi, open phone A's invite link (Profile → Invite friends → Share) or scan A's QR, install from the Play Store (closed testing), sign up and choose the city; the "Did a friend invite you?" screen should already show A's code with a note, then tap Use. Installing from a cable or APK can't test this (internal testing works too; uninstall the debug build first)
 
 - [x] **Deploy (app updates, Tue 27 Oct):** rules are live (`config/appVersion`)
 - [x] **App updates, admin side on the Oppo (Tue 27 Oct):** form checks, notes status (missing / draft / published), update sheet once per version with the notes, "Update now" opens Google Play, confirm dialog, "Update required" covers the app straight away
@@ -46,6 +46,7 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
+- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** plan sent, waiting for the go-ahead. Order: feedback (1 day), social sharing (2), share reminders (0.5), schedule and reminders (2-3), heat calendar (2), AI breed scanner (2-3), titles and achievements (3), pet sitting (6-8). Already there: store review window, feedback card and admin list, text sharing of reports, push notifications, invite levels
 
 - [ ] **Phase 4 (client request Mon 2 Nov, `PHASE_4_REQUESTS.md`):** built Mon 2 Nov (QR invites and flyer, Places to walk, donation screens switched off); left: store payments for donations once the client sets up the stores, "Scan QR" in the app if the client wants it
 - [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built and committed (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); then Stripe payment, refunds, reports, shop manager role, computer admin (`SHOP_FEATURE.md`)
@@ -57,7 +58,8 @@ Fixes found while testing go here:
   - [ ] Supplier order email for dropshipping (prepared in the `mail` collection, sent once the email service exists)
   - [ ] Rules, labels in 10 languages, tests, test scenario
 - [ ] Turn on email alerts to organizations once the client sets up the email service (install the Firebase "Trigger Email" extension, then Admin → Emergency settings → Email alerts)
-- [ ] Move the Places key to Secret Manager and restrict the Google Cloud keys (see `LAUNCH_CHECKLIST.md` §1)
+- [ ] Places key in Secret Manager: code done and secret set Tue 3 Nov, removed from `functions/.env`; left: `firebase deploy --only functions`, then check, check city / street / walks (`LAUNCH_CHECKLIST.md` §1)
+- [ ] Restrict the Places (server) key to Places API (New) + Geocoding API; the Maps Android and iOS keys are already restricted (`LAUNCH_CHECKLIST.md` §1)
 - [ ] App Check, budget alert, API quotas, Crashlytics (`LAUNCH_CHECKLIST.md` §4)
 - [ ] Privacy policy and Data safety: feedback (stars, comment, name, email, app version) readable by the team, install ID, exact emergency location shown to signed-in users, city position used for nearby alerts, support email (`LAUNCH_CHECKLIST.md` §6)
 - [ ] Remove test data (reports, users including invite.test.cm1@codami.test, pets, test contacts) and retake store screenshots before release
@@ -83,6 +85,7 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - [ ] Native-speaker translation review (Italian first)
 - [ ] Confirm the Android signing key backup
 - [ ] Petitions: where in the app (Home banner + Profile for now), one or several languages for summaries, second-admin approval, notifications
+- [ ] **Phase 5 (Tue 3 Nov):** go-ahead and order, pet sitting payments, AI scanner cost and limit, heat calendar animals, donor title amounts
 - [ ] **Shop (request 18):** Phase 1 approved Thu 29 Oct; still need countries, company / VAT, Stripe account (or OK to use test keys), email service for order and supplier emails, first partners, product text languages, bottom-bar tab, computer admin, terms of sale (`SHOP_FEATURE.md`). Asked again Mon 2 Nov: Stripe, email service, countries, company / VAT
 
 ## 4. Later (after launch)
@@ -97,13 +100,16 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 
 - `LAUNCH_CHECKLIST.md`: everything needed before publishing
 - `WAITING_FOR_CLIENT.md`: questions sent to the client and their answers
-- `PHASE_2_REQUESTS.md` / `PHASE_3_REQUESTS.md`: feature requests, decisions and what was built
+- `PHASE_2_REQUESTS.md` to `PHASE_5_REQUESTS.md`: feature requests, decisions and what was built
 - `WEEK_N_*.md`: weekly progress for the client
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
 
-- Tue 3 Nov: invite tracking (client follow-up of the same day): QR scans and link opens counted by the invite page (QR link marked `?s=qr`, once a day per visitor, no IP kept), invite statuses Active / Inactive / Waiting plus "still using the app" (new setting, 30 days), Admin → user's Invites box and invited friends list, Admin → More → Invites (totals, ranking, periods), the user's own counts on Invite friends. 10 languages, 7 new app tests (122), 5 new server tests (80), 29 new emulator checks. Not deployed yet
+- Tue 3 Nov: phase 4 and invite tracking deployed and tested on the phone. Places key moved to a Secret Manager secret in the code (to set and deploy); `invites.cjs` now clears earlier invites so all 8 emulator scripts pass in one run (323)
+- Tue 3 Nov: phase 5 requests received (AI breed scanner, heat calendar, pet sitting, schedule, social sharing, share reminders, feedback, titles); plan with what's already in the app and what to build in `PHASE_5_REQUESTS.md`, sent to the client
+
+- Tue 3 Nov: invite tracking (client follow-up of the same day): QR scans and link opens counted by the invite page (QR link marked `?s=qr`, once a day per visitor, no IP kept), invite statuses Active / Inactive / Waiting plus "still using the app" (new setting, 30 days), Admin → user's Invites box and invited friends list, Admin → More → Invites (totals, ranking, periods), the user's own counts on Invite friends. 10 languages, 10 new app tests (125), 5 new server tests (80), 29 new emulator checks. Count boxes in a row made the same height (Active / Inactive / Waiting in one row). Not deployed yet
 
 - Mon 2 Nov: phase 4 (client request of the same day): QR invites with a printable flyer and an invite page for Android and iPhone; Places to walk with Google Places (map and list, types, distance, details, directions, admin settings and hidden places, daily limits); voluntary donation screens (Support CodaMi page, prompts after a report and a found pet, admin settings), switched off until store payments. 10 languages, 7 new app tests (115), 7 new server tests (75), 23 new emulator checks. Not deployed yet
 

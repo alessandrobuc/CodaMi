@@ -3,9 +3,9 @@ import "./options";
 import {getFirestore} from "firebase-admin/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
-import {defineString} from "firebase-functions/params";
 
 import {SAFE_ID_PATTERN, readString} from "./places";
+import {placesApiKey, placesSecret} from "./secrets";
 import {dayKey} from "./points";
 import {
   DETAIL_FIELDS,
@@ -25,7 +25,6 @@ import {
   type WalksConfig,
 } from "./walks";
 
-const placesApiKey = defineString("PLACES_API_KEY");
 const PLACES_URL = "https://places.googleapis.com/v1";
 const CACHE_MS = 30 * 60 * 1000;
 const CACHE_SIZE = 300;
@@ -110,7 +109,7 @@ async function callPlaces(
   return body;
 }
 
-export const findWalkPlaces = onCall(async (request) => {
+export const findWalkPlaces = onCall(placesSecret, async (request) => {
   const uid = requireUid(request);
   const lat = readNumber(request.data, "lat", -90, 90);
   const lng = readNumber(request.data, "lng", -180, 180);
@@ -149,7 +148,7 @@ export const findWalkPlaces = onCall(async (request) => {
   return {places: places.filter((p) => !hidden.has(p.id))};
 });
 
-export const walkPlaceDetails = onCall(async (request) => {
+export const walkPlaceDetails = onCall(placesSecret, async (request) => {
   const uid = requireUid(request);
   const placeId = readString(request.data, "placeId", {min: 3, max: 300, pattern: SAFE_ID_PATTERN});
   const language = readLanguage(request.data);

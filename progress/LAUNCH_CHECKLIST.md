@@ -8,15 +8,15 @@ _Last updated: Tue 3 Nov 2026_
 
 ## 1. API keys and secrets
 
-- [ ] **Move the Places key to Secret Manager**
-  1. `firebase functions:secrets:set PLACES_API_KEY` (paste the key)
-  2. Remove `PLACES_API_KEY` from `functions/.env`
-  3. Change `defineString("PLACES_API_KEY")` to `defineSecret("PLACES_API_KEY")` in `functions/src/index.ts` and add `secrets: [placesApiKey]` to the functions that use it
-  4. `firebase deploy --only functions`
+- [ ] **Move the Places key to Secret Manager** (code changed Tue 3 Nov: `functions/src/secrets.ts`, used by the city, street, reverse geocode and walk functions)
+  1. [x] `firebase functions:secrets:set PLACES_API_KEY` (set Tue 3 Nov, version 1, checked against the old key)
+  2. [x] Removed the `PLACES_API_KEY` line from `functions/.env` (Tue 3 Nov)
+  3. `firebase deploy --only functions`
+  4. Check city search, street search, the pin's street name and Places to walk in the app
 - [ ] **Places (server) key:** API restrictions = Places API (New) + Geocoding API only
 - [ ] **Geocoding API** enabled in Google Cloud (needed for auto street names on the pin)
-- [ ] **Maps Android key:** Android apps restriction + Maps SDK for Android only
-- [ ] **Maps iOS key:** iOS apps restriction (`com.codami.app`) + Maps SDK for iOS only
+- [x] **Maps Android key:** Android apps restriction + Maps SDK for Android only (done, confirmed Tue 3 Nov)
+- [x] **Maps iOS key:** iOS apps restriction (`com.codami.app`) + Maps SDK for iOS only (done, confirmed Tue 3 Nov)
 - [ ] Do **not** edit the "auto created by Firebase" keys
 - [ ] Confirm no keys in git: `git log --all -p | grep AIza` should only show Firebase config files
 
@@ -105,6 +105,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
+- [ ] Phase 5, once built (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (not kept), private schedule and heat cycle records, pet sitting profiles, chats and reviews, and the public report page (no phone, email or exact address); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`
@@ -115,7 +116,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] Target audience: 18 and over
 - [ ] Support email
 
-Phase 2 features requested by the client (admin panel, rewards, donations, support, videos, sounds) are tracked in `PHASE_2_REQUESTS.md`. New requests (AI moderation, referrals, emergencies) are in `PHASE_3_REQUESTS.md`, and open questions for the client in `WAITING_FOR_CLIENT.md`. Donations and videos will change the Data safety form, privacy labels and possibly the content rating.
+Phase 2 features requested by the client (admin panel, rewards, donations, support, videos, sounds) are tracked in `PHASE_2_REQUESTS.md`. New requests (AI moderation, referrals, emergencies) are in `PHASE_3_REQUESTS.md`, later ones in `PHASE_4_REQUESTS.md` and `PHASE_5_REQUESTS.md`, and open questions for the client in `WAITING_FOR_CLIENT.md`. Donations and videos will change the Data safety form, privacy labels and possibly the content rating.
 
 ## 7. Scale (when users grow)
 

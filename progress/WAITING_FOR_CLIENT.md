@@ -62,6 +62,13 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 **Invite tracking (Tue 3 Nov)**: details in `PHASE_4_REQUESTS.md` §4
 - [ ] Confirm the meaning of Active (qualified: 3 active days with a city within 14 days) and Inactive (not active in time, or rejected), and the 30 days for "still using the app"
 
+**Phase 5 requests (Tue 3 Nov)**: plan and details in `PHASE_5_REQUESTS.md`
+- [ ] Go-ahead for the plan and the suggested order (feedback, sharing, share reminders, schedule, heat calendar, AI scanner, titles, pet sitting)
+- [ ] Pet sitting: payment between users outside the app (recommended for now), or through the app?
+- [ ] AI breed scanner: OK with a small cost per scan (less than 1 cent) and a daily limit?
+- [ ] Heat calendar: which animals besides dogs and cats?
+- [ ] Donor titles: amounts for Bronze, Silver, Gold, Platinum, Lifetime
+
 ---
 
 ## Answered

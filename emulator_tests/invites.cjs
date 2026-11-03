@@ -54,6 +54,8 @@ const daysAgo = (n) => new Intl.DateTimeFormat("en-CA", {timeZone: "Europe/Rome"
 const opensOf = async (code) => (await db.collection("inviteOpens").doc(`${code}_${today}`).get()).data() ?? {};
 
 (async () => {
+  // Earlier scripts leave invites behind; the all-time totals below need only these.
+  for (const name of ["referrals", "inviteOpens", "inviteOpenSeen"]) await db.recursiveDelete(db.collection(name));
   const admin = await signUp("admin@invites.test");
   const inviter = await signUp("inviter@invites.test");
   const other = await signUp("other@invites.test");

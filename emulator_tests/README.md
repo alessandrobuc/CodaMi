@@ -8,6 +8,8 @@ firebase emulators:exec --only auth,functions,firestore,storage --project demo-c
   "node emulator_tests/moderation.cjs && node emulator_tests/points_emergency.cjs && node emulator_tests/feedback_notes.cjs && node emulator_tests/petitions.cjs && node emulator_tests/app_version.cjs && node emulator_tests/shop.cjs && node emulator_tests/phase4.cjs && node emulator_tests/invites.cjs"
 ```
 
+The Places key is a secret: create `functions/.secret.local` with `PLACES_API_KEY=emulator-placeholder` (not committed), or the emulator warns that it can't reach Secret Manager. `invites.cjs` clears invites left by the earlier scripts before its own checks.
+
 Each script prints one PASS or FAIL line per check and exits with an error if anything fails.
 
 - `moderation.cjs`: AI photo moderation (clear, review, blocked, injured animals, quarantine, approve, remove, rules)
