@@ -92,6 +92,16 @@
     })
     .catch(() => {});
 
+  // Counted for the admin side: a QR code adds ?s=qr, a shared link doesn't.
+  if (code) {
+    fetch("/api/invite-open", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({code, source: new URLSearchParams(location.search).get("s") === "qr" ? "qr" : "link"}),
+      keepalive: true,
+    }).catch(() => {});
+  }
+
   // Android opens Google Play straight away; the code travels with the link.
   if (isAndroid && code) setTimeout(() => { location.href = play; }, 600);
 </script>

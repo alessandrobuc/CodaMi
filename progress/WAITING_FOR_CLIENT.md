@@ -2,7 +2,7 @@
 
 Questions sent to the client that still need an answer. Move an item to **Answered** with the date and the answer when it comes back.
 
-_Last updated: Mon 2 Nov 2026_
+_Last updated: Tue 3 Nov 2026_
 
 ---
 
@@ -59,9 +59,15 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 - [ ] Donations: store payments (Google / Apple, about 15% fee) OK? Amounts? Payments profile in Play Console; "Supporter" badge? Accountant check
 - [ ] Places to walk: where in the app? Default distance? Google cost OK with a budget alert?
 
+**Invite tracking (Tue 3 Nov)**: details in `PHASE_4_REQUESTS.md` §4
+- [ ] Confirm the meaning of Active (qualified: 3 active days with a city within 14 days) and Inactive (not active in time, or rejected), and the 30 days for "still using the app"
+
 ---
 
 ## Answered
+
+**Tue 3 Nov: invite tracking**
+- The client wants invites tracked per user, with a count of active and inactive invites, for future activities. Told them the code is permanent and QR scans weren't counted yet; plan in `PHASE_4_REQUESTS.md` §4, built from Tue 3 Nov. The Active / Inactive meaning in the plan was sent for them to confirm.
 
 **Disclaimer wording: approved**
 - The client approved the text as it is: "CodaMi is not an emergency service. If an animal is in immediate danger, call 112 or a vet first. Don't rely only on app notifications." Already in the app in all 10 languages.

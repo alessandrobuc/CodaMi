@@ -8339,6 +8339,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Preview the page'**
   String get supportPreview;
+
+  /// No description provided for @adminInvites.
+  ///
+  /// In en, this message translates to:
+  /// **'Invites'**
+  String get adminInvites;
+
+  /// No description provided for @adminInvitesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite counts, QR scans and ranking by user'**
+  String get adminInvitesSubtitle;
+
+  /// No description provided for @inviteBucketActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get inviteBucketActive;
+
+  /// No description provided for @inviteBucketInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get inviteBucketInactive;
+
+  /// No description provided for @inviteBucketWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get inviteBucketWaiting;
+
+  /// No description provided for @inviteStillUsing.
+  ///
+  /// In en, this message translates to:
+  /// **'Still using the app'**
+  String get inviteStillUsing;
+
+  /// No description provided for @inviteQrScans.
+  ///
+  /// In en, this message translates to:
+  /// **'QR scans'**
+  String get inviteQrScans;
+
+  /// No description provided for @inviteLinkOpens.
+  ///
+  /// In en, this message translates to:
+  /// **'Link opens'**
+  String get inviteLinkOpens;
+
+  /// No description provided for @inviteSignedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed up'**
+  String get inviteSignedUp;
+
+  /// No description provided for @inviteBucketsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Active: the friend started using CodaMi and the inviter got the points. Inactive: not active in time, or rejected. Waiting: still has time to become active.'**
+  String get inviteBucketsHelp;
+
+  /// No description provided for @inviteStillUsingHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{Still using: active friends who opened the app today.} other{Still using: active friends who opened the app in the last {days} days.}}'**
+  String inviteStillUsingHelp(int days);
+
+  /// No description provided for @invitedFriendsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invited friends'**
+  String get invitedFriendsTitle;
+
+  /// No description provided for @seeInvitedFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'See invited friends'**
+  String get seeInvitedFriends;
+
+  /// No description provided for @inviteJoinedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed up {date}'**
+  String inviteJoinedOn(String date);
+
+  /// No description provided for @inviteLastInApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Last in the app: {date}'**
+  String inviteLastInApp(String date);
+
+  /// No description provided for @periodThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get periodThisMonth;
+
+  /// No description provided for @periodLastMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Last month'**
+  String get periodLastMonth;
+
+  /// No description provided for @periodAllTime.
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get periodAllTime;
+
+  /// No description provided for @periodChooseDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose dates'**
+  String get periodChooseDates;
+
+  /// No description provided for @sortMostActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Most active'**
+  String get sortMostActive;
+
+  /// No description provided for @sortMostInvited.
+  ///
+  /// In en, this message translates to:
+  /// **'Most invited'**
+  String get sortMostInvited;
+
+  /// No description provided for @inviteWholeApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole app'**
+  String get inviteWholeApp;
+
+  /// No description provided for @inviteRanking.
+  ///
+  /// In en, this message translates to:
+  /// **'Ranking'**
+  String get inviteRanking;
+
+  /// No description provided for @inviteRankingUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 user} other{{count} users}}'**
+  String inviteRankingUsers(int count);
+
+  /// No description provided for @noInvitesInPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'No invites in this period'**
+  String get noInvitesInPeriod;
+
+  /// No description provided for @noInvitesInPeriodMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends who sign up with a code, and opens of the QR code or link, will show here.'**
+  String get noInvitesInPeriodMessage;
+
+  /// No description provided for @adminNoInvites.
+  ///
+  /// In en, this message translates to:
+  /// **'This user hasn\'t invited anyone yet.'**
+  String get adminNoInvites;
+
+  /// No description provided for @invitesLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load the invites. Check your connection and try again.'**
+  String get invitesLoadError;
+
+  /// No description provided for @settingsStillUsingDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days that count as still using the app'**
+  String get settingsStillUsingDays;
 }
 
 class _AppLocalizationsDelegate

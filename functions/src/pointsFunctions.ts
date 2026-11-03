@@ -28,6 +28,7 @@ import {
   type PointAction,
   type PointsConfig,
 } from "./points";
+import {deleteInviteOpens, sweepInviteOpenSeen} from "./invitesFunctions";
 import {pointsText} from "./pointsMessages";
 import {oneOf} from "./support";
 import {requireStaff} from "./supportFunctions";
@@ -400,7 +401,8 @@ export const pointsSweep = onSchedule("every day 04:00", async () => {
   const cutoff = Timestamp.fromMillis(Date.now() - config.qualifyWithinDays * DAY_MS);
   const old = await referralsRef().where("status", "==", "pending").where("joinedAt", "<=", cutoff).limit(500).get();
   for (const doc of old.docs) await evaluateReferral(doc.id);
-  logger.info("Points sweep", {checked: old.size});
+  const opensForgotten = await sweepInviteOpenSeen();
+  logger.info("Points sweep", {checked: old.size, opensForgotten});
 });
 
 // Used by account deletion. The ledger goes with the user document.
@@ -415,5 +417,6 @@ export async function deletePointsData(uid: string): Promise<void> {
     ...asInviter.docs.map((d) => d.ref.delete()),
     ...codes.docs.map((d) => d.ref.delete()),
     ...feedback.docs.map((d) => d.ref.delete()),
+    deleteInviteOpens(uid),
   ]);
 }

@@ -49,6 +49,7 @@ class PointsConfig {
   final int reviewAfterDays;
   final int reviewMinActiveDays;
   final int reviewEveryDays;
+  final int stillUsingDays;
   final List<LevelRule> levels;
 
   const PointsConfig({
@@ -68,6 +69,7 @@ class PointsConfig {
     this.reviewAfterDays = 10,
     this.reviewMinActiveDays = 5,
     this.reviewEveryDays = 120,
+    this.stillUsingDays = 30,
     this.levels = const [
       LevelRule(AmbassadorLevel.supporter, 1, 10),
       LevelRule(AmbassadorLevel.ambassador, 5, 50),
@@ -98,6 +100,7 @@ class PointsConfig {
       reviewAfterDays: read('reviewAfterDays', d.reviewAfterDays),
       reviewMinActiveDays: read('reviewMinActiveDays', d.reviewMinActiveDays),
       reviewEveryDays: read('reviewEveryDays', d.reviewEveryDays),
+      stillUsingDays: read('stillUsingDays', d.stillUsingDays),
       levels: [
         for (final rule in d.levels)
           if (levels is Map && levels[rule.level.value] is Map)
@@ -131,6 +134,7 @@ class PointsConfig {
     'reviewAfterDays': reviewAfterDays,
     'reviewMinActiveDays': reviewMinActiveDays,
     'reviewEveryDays': reviewEveryDays,
+    'stillUsingDays': stillUsingDays,
     'levels': {
       for (final rule in levels)
         rule.level.value: {'minFriends': rule.minFriends, 'bonus': rule.bonus},
@@ -227,7 +231,16 @@ enum ReferralStatus {
 
   static ReferralStatus fromValue(Object? value) =>
       values.where((s) => s.name == value).firstOrNull ?? pending;
+
+  // Same grouping as the server (`inviteBucket` in functions/src/points.ts).
+  InviteBucket get bucket => switch (this) {
+    qualified => InviteBucket.active,
+    rejected || expired => InviteBucket.inactive,
+    pending || review => InviteBucket.waiting,
+  };
 }
+
+enum InviteBucket { active, inactive, waiting }
 
 class Referral {
   final String inviteeId;
@@ -260,4 +273,177 @@ class Referral {
     createdAt: (map['createdAt'] as Timestamp?)?.toDate(),
     joinedAt: (map['joinedAt'] as Timestamp?)?.toDate(),
   );
+}
+
+int _int(Object? value) => (value as num?)?.toInt() ?? 0;
+
+DateTime? _millis(Object? value) =>
+    value is num ? DateTime.fromMillisecondsSinceEpoch(value.toInt()) : null;
+
+Map<String, dynamic> _map(Object? value) =>
+    value is Map ? Map<String, dynamic>.from(value) : const {};
+
+class InviteCounts {
+  final int qrOpens;
+  final int linkOpens;
+  final int joined;
+  final int active;
+  final int inactive;
+  final int waiting;
+  final int stillUsing;
+
+  const InviteCounts({
+    this.qrOpens = 0,
+    this.linkOpens = 0,
+    this.joined = 0,
+    this.active = 0,
+    this.inactive = 0,
+    this.waiting = 0,
+    this.stillUsing = 0,
+  });
+
+  factory InviteCounts.fromMap(Object? value) {
+    final map = _map(value);
+    return InviteCounts(
+      qrOpens: _int(map['qrOpens']),
+      linkOpens: _int(map['linkOpens']),
+      joined: _int(map['joined']),
+      active: _int(map['active']),
+      inactive: _int(map['inactive']),
+      waiting: _int(map['waiting']),
+      stillUsing: _int(map['stillUsing']),
+    );
+  }
+
+  factory InviteCounts.ofReferrals(Iterable<Referral> referrals) {
+    int count(InviteBucket b) =>
+        referrals.where((r) => r.status.bucket == b).length;
+    return InviteCounts(
+      joined: referrals.length,
+      active: count(InviteBucket.active),
+      inactive: count(InviteBucket.inactive),
+      waiting: count(InviteBucket.waiting),
+    );
+  }
+}
+
+class InvitedFriend {
+  final String inviteeId;
+  final String name;
+  final ReferralStatus status;
+  final DateTime? createdAt;
+  final DateTime? qualifiedAt;
+  final DateTime? lastActiveDay;
+  final bool stillUsing;
+
+  const InvitedFriend({
+    required this.inviteeId,
+    required this.name,
+    required this.status,
+    this.createdAt,
+    this.qualifiedAt,
+    this.lastActiveDay,
+    this.stillUsing = false,
+  });
+
+  factory InvitedFriend.fromMap(Map<String, dynamic> map) => InvitedFriend(
+    inviteeId: map['inviteeId'] as String? ?? '',
+    name: map['name'] as String? ?? '',
+    status: ReferralStatus.fromValue(map['status']),
+    createdAt: _millis(map['createdAt']),
+    qualifiedAt: _millis(map['qualifiedAt']),
+    lastActiveDay: DateTime.tryParse(map['lastActiveDay'] as String? ?? ''),
+    stillUsing: map['stillUsing'] == true,
+  );
+}
+
+// One user's invites, from `adminInviteStats`.
+class InviteStats {
+  final String? code;
+  final int stillUsingDays;
+  final InviteCounts counts;
+  final List<InvitedFriend> friends;
+
+  const InviteStats({
+    this.code,
+    this.stillUsingDays = 30,
+    this.counts = const InviteCounts(),
+    this.friends = const [],
+  });
+
+  factory InviteStats.fromMap(Object? value) {
+    final map = _map(value);
+    return InviteStats(
+      code: map['code'] as String?,
+      stillUsingDays: _int(map['stillUsingDays']),
+      counts: InviteCounts.fromMap(map['counts']),
+      friends: [
+        for (final f in map['friends'] as List? ?? const [])
+          InvitedFriend.fromMap(_map(f)),
+      ],
+    );
+  }
+}
+
+enum InviteSort { active, joined }
+
+// Days as yyyy-MM-dd; both null means all time.
+typedef InvitePeriod = ({String? from, String? to});
+
+String dayKeyOf(DateTime day) {
+  String two(int n) => n.toString().padLeft(2, '0');
+  return '${day.year}-${two(day.month)}-${two(day.day)}';
+}
+
+class InviteRankingRow {
+  final String uid;
+  final String name;
+  final String email;
+  final String? code;
+  final InviteCounts counts;
+
+  const InviteRankingRow({
+    required this.uid,
+    required this.name,
+    required this.email,
+    this.code,
+    this.counts = const InviteCounts(),
+  });
+
+  factory InviteRankingRow.fromMap(Map<String, dynamic> map) =>
+      InviteRankingRow(
+        uid: map['uid'] as String? ?? '',
+        name: map['name'] as String? ?? '',
+        email: map['email'] as String? ?? '',
+        code: map['code'] as String?,
+        counts: InviteCounts.fromMap(map),
+      );
+}
+
+// From `adminInviteRanking`: totals for the period and the top inviters.
+class InviteRanking {
+  final InviteCounts totals;
+  final int inviters;
+  final int stillUsingDays;
+  final List<InviteRankingRow> rows;
+
+  const InviteRanking({
+    this.totals = const InviteCounts(),
+    this.inviters = 0,
+    this.stillUsingDays = 30,
+    this.rows = const [],
+  });
+
+  factory InviteRanking.fromMap(Object? value) {
+    final map = _map(value);
+    return InviteRanking(
+      totals: InviteCounts.fromMap(map['totals']),
+      inviters: _int(map['inviters']),
+      stillUsingDays: _int(map['stillUsingDays']),
+      rows: [
+        for (final r in map['rows'] as List? ?? const [])
+          InviteRankingRow.fromMap(_map(r)),
+      ],
+    );
+  }
 }

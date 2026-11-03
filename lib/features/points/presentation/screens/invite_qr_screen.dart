@@ -210,7 +210,7 @@ class InviteQr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return QrImageView(
-      data: inviteLink(code),
+      data: inviteQrLink(code),
       size: size,
       padding: EdgeInsets.zero,
       backgroundColor: Colors.white,

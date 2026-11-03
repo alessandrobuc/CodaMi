@@ -83,6 +83,7 @@ class _AdminPointsSettingsScreenState
       reviewAfterDays: read('reviewAfterDays', d.reviewAfterDays),
       reviewMinActiveDays: read('reviewMinActiveDays', d.reviewMinActiveDays),
       reviewEveryDays: read('reviewEveryDays', d.reviewEveryDays),
+      stillUsingDays: read('stillUsingDays', d.stillUsingDays),
       levels: [
         for (final rule in d.levels)
           LevelRule(
@@ -157,6 +158,7 @@ class _AdminPointsSettingsScreenState
                       l10n.settingsMaxPerDay,
                       l10n.settingsMaxPerDayHelp,
                     ),
+                    field('stillUsingDays', l10n.settingsStillUsingDays),
                   ],
                 ),
                 SettingsSection(

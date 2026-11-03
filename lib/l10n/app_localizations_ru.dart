@@ -4790,4 +4790,120 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get supportPreview => 'Предпросмотр страницы';
+
+  @override
+  String get adminInvites => 'Приглашения';
+
+  @override
+  String get adminInvitesSubtitle =>
+      'Приглашения, сканирования QR и рейтинг пользователей';
+
+  @override
+  String get inviteBucketActive => 'Активные';
+
+  @override
+  String get inviteBucketInactive => 'Неактивные';
+
+  @override
+  String get inviteBucketWaiting => 'Ожидают';
+
+  @override
+  String get inviteStillUsing => 'Ещё пользуются приложением';
+
+  @override
+  String get inviteQrScans => 'Сканирования QR';
+
+  @override
+  String get inviteLinkOpens => 'Открытия ссылки';
+
+  @override
+  String get inviteSignedUp => 'Зарегистрировались';
+
+  @override
+  String get inviteBucketsHelp =>
+      'Активные: друг начал пользоваться CodaMi, и пригласивший получил баллы. Неактивные: не стал активным вовремя или отклонено. Ожидают: ещё есть время стать активным.';
+
+  @override
+  String inviteStillUsingHelp(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'Ещё пользуются: активные друзья, которые открывали приложение за последние $days дн.',
+      one:
+          'Ещё пользуются: активные друзья, которые открывали приложение сегодня.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get invitedFriendsTitle => 'Приглашённые друзья';
+
+  @override
+  String get seeInvitedFriends => 'Посмотреть приглашённых друзей';
+
+  @override
+  String inviteJoinedOn(String date) {
+    return 'Зарегистрирован $date';
+  }
+
+  @override
+  String inviteLastInApp(String date) {
+    return 'Последний раз в приложении: $date';
+  }
+
+  @override
+  String get periodThisMonth => 'Этот месяц';
+
+  @override
+  String get periodLastMonth => 'Прошлый месяц';
+
+  @override
+  String get periodAllTime => 'За всё время';
+
+  @override
+  String get periodChooseDates => 'Выбрать даты';
+
+  @override
+  String get sortMostActive => 'Самые активные';
+
+  @override
+  String get sortMostInvited => 'Больше всего приглашений';
+
+  @override
+  String get inviteWholeApp => 'Всё приложение';
+
+  @override
+  String get inviteRanking => 'Рейтинг';
+
+  @override
+  String inviteRankingUsers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count пользователя',
+      many: '$count пользователей',
+      few: '$count пользователя',
+      one: '1 пользователь',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noInvitesInPeriod => 'Нет приглашений за этот период';
+
+  @override
+  String get noInvitesInPeriodMessage =>
+      'Здесь появятся друзья, зарегистрировавшиеся по коду, и открытия QR-кода или ссылки.';
+
+  @override
+  String get adminNoInvites => 'Этот пользователь ещё никого не пригласил.';
+
+  @override
+  String get invitesLoadError =>
+      'Не удалось загрузить приглашения. Проверьте подключение и попробуйте снова.';
+
+  @override
+  String get settingsStillUsingDays =>
+      'Сколько дней считать, что приложением ещё пользуются';
 }

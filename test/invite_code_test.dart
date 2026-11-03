@@ -34,6 +34,12 @@ void main() {
     expect(extractInviteCode('Join me: ${inviteLink('QWE789')}'), 'QWE789');
   });
 
+  test('the QR link is marked so scans count apart from shared links', () {
+    expect(inviteQrLink('QWE789'), 'https://codami-cd91e.web.app/i/QWE789?s=qr');
+    expect(extractInviteCode(inviteQrLink('QWE789')), 'QWE789');
+    expect(extractInviteCode(inviteQrLink('qwe789')), 'QWE789');
+  });
+
   test('unclear text gives no code instead of a guess', () {
     expect(extractInviteCode('QWE789 or ZXC456'), isNull);
     expect(extractInviteCode('hello there'), isNull);

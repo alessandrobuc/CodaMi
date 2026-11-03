@@ -5,7 +5,16 @@ import {
   CODE_LENGTH,
   DEFAULT_POINTS_CONFIG,
   LEVEL_IDS,
+  addInvite,
+  addOpens,
   dayKey,
+  emptyInviteCounts,
+  inviteBucket,
+  isDayKey,
+  isStillUsing,
+  periodOf,
+  rankInviters,
+  shiftDay,
   deviceFlags,
   earnsStreakBonus,
   feedbackEarnsPoints,
@@ -129,4 +138,58 @@ test("feedback earns points only after some days of use", () => {
   assert.equal(feedbackEarnsPoints(0, 4 * DAY, config), false);
   assert.equal(feedbackEarnsPoints(0, 9 * DAY, pointsConfigOf({feedbackPoints: 0})), false);
   assert.equal(pointsConfigOf({reviewEveryDays: 5}).reviewEveryDays, 120);
+});
+
+test("invites are active, inactive or waiting", () => {
+  assert.equal(inviteBucket("qualified"), "active");
+  assert.equal(inviteBucket("expired"), "inactive");
+  assert.equal(inviteBucket("rejected"), "inactive");
+  assert.equal(inviteBucket("pending"), "waiting");
+  assert.equal(inviteBucket("review"), "waiting");
+  assert.equal(inviteBucket(undefined), "waiting");
+});
+
+test("still using means the app was opened in the last days, today included", () => {
+  assert.equal(isStillUsing("2026-11-03", "2026-11-03", 30), true);
+  assert.equal(isStillUsing("2026-10-05", "2026-11-03", 30), true);
+  assert.equal(isStillUsing("2026-10-04", "2026-11-03", 30), false);
+  assert.equal(isStillUsing("2026-11-03", "2026-11-03", 1), true);
+  assert.equal(isStillUsing("2026-11-02", "2026-11-03", 1), false);
+  assert.equal(isStillUsing(null, "2026-11-03", 30), false);
+  assert.equal(pointsConfigOf({stillUsingDays: 0}).stillUsingDays, 30);
+  assert.equal(pointsConfigOf({stillUsingDays: 60}).stillUsingDays, 60);
+});
+
+test("invite counts add up, still using only for active friends", () => {
+  const counts = emptyInviteCounts();
+  addInvite(counts, "active", true);
+  addInvite(counts, "active", false);
+  addInvite(counts, "inactive", true);
+  addInvite(counts, "waiting", false);
+  addOpens(counts, {qr: 3, link: 2});
+  addOpens(counts, {qr: -4, link: "x"});
+  assert.deepEqual(counts, {qrOpens: 3, linkOpens: 2, joined: 4, active: 2, inactive: 1, waiting: 1, stillUsing: 1});
+});
+
+test("periods are all time or a valid range of days", () => {
+  assert.equal(periodOf({}), "all");
+  assert.equal(periodOf(null), "all");
+  assert.deepEqual(periodOf({from: "2026-11-01", to: "2026-11-30"}), {from: "2026-11-01", to: "2026-11-30"});
+  assert.deepEqual(periodOf({from: "2026-11-03", to: "2026-11-03"}), {from: "2026-11-03", to: "2026-11-03"});
+  assert.equal(periodOf({from: "2026-11-30", to: "2026-11-01"}), null);
+  assert.equal(periodOf({from: "2026-02-30", to: "2026-03-01"}), null);
+  assert.equal(periodOf({from: "2026-11-01"}), null);
+  assert.equal(periodOf({from: "yesterday", to: "2026-11-01"}), null);
+  assert.equal(isDayKey("2026-12-31"), true);
+  assert.equal(shiftDay("2026-03-01", -1), "2026-02-28");
+  assert.equal(shiftDay("2026-12-31", 1), "2027-01-01");
+});
+
+test("ranking sorts by active or by total, with ties broken by the other counts", () => {
+  const row = (uid: string, active: number, joined: number, qrOpens = 0) =>
+    ({...emptyInviteCounts(), uid, active, joined, qrOpens});
+  const rows = [row("a", 1, 5), row("b", 3, 3), row("c", 3, 4), row("d", 1, 5, 9)];
+  assert.deepEqual(rankInviters(rows, "active").map((r) => r.uid), ["c", "b", "d", "a"]);
+  assert.deepEqual(rankInviters(rows, "joined").map((r) => r.uid), ["d", "a", "c", "b"]);
+  assert.deepEqual(rows.map((r) => r.uid), ["a", "b", "c", "d"]);
 });

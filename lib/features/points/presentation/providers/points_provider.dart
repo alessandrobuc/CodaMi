@@ -36,6 +36,20 @@ final invitesToReviewProvider = StreamProvider<List<Referral>>(
   (ref) => ref.watch(pointsRepositoryProvider).watchToReview(),
 );
 
+final adminInviteStatsProvider = FutureProvider.autoDispose
+    .family<InviteStats, String>(
+      (ref, uid) => ref.watch(pointsRepositoryProvider).adminInviteStats(uid),
+      retry: (_, _) => null,
+    );
+
+final adminInviteRankingProvider = FutureProvider.autoDispose
+    .family<InviteRanking, (InvitePeriod, InviteSort)>(
+      (ref, args) => ref
+          .watch(pointsRepositoryProvider)
+          .adminInviteRanking(args.$1, args.$2),
+      retry: (_, _) => null,
+    );
+
 class _Lifecycle with WidgetsBindingObserver {
   final void Function(AppLifecycleState) onChange;
 

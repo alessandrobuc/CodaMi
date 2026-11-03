@@ -1,6 +1,6 @@
-# CodaMi: Phase 4 test (Mon 2 Nov)
+# CodaMi: Phase 4 test (Mon 2 Nov, invite tracking added Tue 3 Nov)
 
-QR invites, Places to walk and the donation screens.
+QR invites, Places to walk, the donation screens and invite tracking (part 10).
 
 **Before testing**
 1. Deploy: `firebase deploy --only hosting,functions,firestore:rules`
@@ -82,3 +82,26 @@ Note anything wrong in `PENDING_TASKS.md` under "Fixes found while testing".
 ---
 
 **Expected:** every step as written, no red error screens. If Places to walk shows "Couldn't load places", check the function logs (`firebase functions:log --only findWalkPlaces`) for a Places API error (for example a place type Google doesn't accept, or the API not enabled for the key).
+
+## 10. Invite tracking (Tue 3 Nov)
+
+**Opens from the QR and the link**
+1. Phone A (user): Profile → Invite friends → open the QR. The QR now opens `…/i/XXXXXX?s=qr`.
+2. Scan phone A's QR with phone B's camera (or open the link on a computer). Then open phone A's shared link (Share → the link) on a **different** phone or computer.
+3. Admin → Users → user A: the new **Invites** box shows the code, **QR scans 1** and **Link opens 1**. Opening the same QR again on the same phone the same day doesn't add another scan.
+
+**Counts and friends**
+4. In the same box: Signed up and Still using the app, then Active, Inactive, Waiting in one row (boxes in a row are the same height). They match the user's invites (Active = points earned, Inactive = didn't become active in time or rejected, Waiting = still has time or being checked).
+5. **See invited friends**: each friend with a coloured chip (Active / Inactive / Waiting), the detailed status, "Signed up …" and "Last in the app: …". Tap a friend → their user page.
+6. The old "Invited friends (active)" line is gone from the user details (the box replaces it).
+
+**Admin → More → Invites**
+7. A new **Invites** row (above Invites to review) opens the screen on **All time**: Whole app totals, the explanation of the counts, then the **Ranking** with the number of users.
+8. **Most active** / **Most invited** reorder the list; the top 3 have an orange number. Tap a row → that user's page.
+9. **This month**, **Last month** and **Choose dates** (pick a range in the calendar) change the totals and ranking; the dates show under the chips. A period with nothing shows "No invites in this period".
+10. Pull down to refresh.
+
+**User side and settings**
+11. Phone A: Invite friends → under **Your invites**, three boxes: Active, Inactive, Waiting (only when there's at least one invite).
+12. Admin → More → Points and rewards → Invite friends: new **Days that count as still using the app** (30). Set it to 90, save, and check "Still using the app" in a user's Invites box.
+13. Languages: switch to Italian and Arabic and check the Invites screens (texts, right-to-left layout, numbers not cut off).

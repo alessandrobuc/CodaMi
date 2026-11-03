@@ -4695,4 +4695,122 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get supportPreview => 'معاينة الصفحة';
+
+  @override
+  String get adminInvites => 'الدعوات';
+
+  @override
+  String get adminInvitesSubtitle =>
+      'عدد الدعوات ومسح رموز QR والترتيب حسب المستخدم';
+
+  @override
+  String get inviteBucketActive => 'نشطة';
+
+  @override
+  String get inviteBucketInactive => 'غير نشطة';
+
+  @override
+  String get inviteBucketWaiting => 'قيد الانتظار';
+
+  @override
+  String get inviteStillUsing => 'ما زالوا يستخدمون التطبيق';
+
+  @override
+  String get inviteQrScans => 'مسح رمز QR';
+
+  @override
+  String get inviteLinkOpens => 'فتح الرابط';
+
+  @override
+  String get inviteSignedUp => 'مسجّلون';
+
+  @override
+  String get inviteBucketsHelp =>
+      'نشطة: بدأ الصديق باستخدام CodaMi وحصل صاحب الدعوة على النقاط. غير نشطة: لم يصبح نشطًا في الوقت المحدد، أو رُفضت. قيد الانتظار: ما زال لديه وقت ليصبح نشطًا.';
+
+  @override
+  String inviteStillUsingHelp(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'ما زالوا يستخدمونه: أصدقاء نشطون فتحوا التطبيق خلال آخر $days يومًا.',
+      few:
+          'ما زالوا يستخدمونه: أصدقاء نشطون فتحوا التطبيق خلال آخر $days أيام.',
+      two: 'ما زالوا يستخدمونه: أصدقاء نشطون فتحوا التطبيق خلال آخر يومين.',
+      one: 'ما زالوا يستخدمونه: أصدقاء نشطون فتحوا التطبيق اليوم.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get invitedFriendsTitle => 'الأصدقاء المدعوون';
+
+  @override
+  String get seeInvitedFriends => 'عرض الأصدقاء المدعوين';
+
+  @override
+  String inviteJoinedOn(String date) {
+    return 'سجّل في $date';
+  }
+
+  @override
+  String inviteLastInApp(String date) {
+    return 'آخر مرة في التطبيق: $date';
+  }
+
+  @override
+  String get periodThisMonth => 'هذا الشهر';
+
+  @override
+  String get periodLastMonth => 'الشهر الماضي';
+
+  @override
+  String get periodAllTime => 'كل الوقت';
+
+  @override
+  String get periodChooseDates => 'اختيار التواريخ';
+
+  @override
+  String get sortMostActive => 'الأكثر نشاطًا';
+
+  @override
+  String get sortMostInvited => 'الأكثر دعوات';
+
+  @override
+  String get inviteWholeApp => 'التطبيق كله';
+
+  @override
+  String get inviteRanking => 'الترتيب';
+
+  @override
+  String inviteRankingUsers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count مستخدم',
+      few: '$count مستخدمين',
+      two: 'مستخدمان',
+      one: 'مستخدم واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noInvitesInPeriod => 'لا توجد دعوات في هذه الفترة';
+
+  @override
+  String get noInvitesInPeriodMessage =>
+      'سيظهر هنا الأصدقاء الذين يسجّلون برمز دعوة، وعدد مرات فتح رمز QR أو الرابط.';
+
+  @override
+  String get adminNoInvites => 'لم يدعُ هذا المستخدم أحدًا بعد.';
+
+  @override
+  String get invitesLoadError =>
+      'تعذّر تحميل الدعوات. تحقّق من الاتصال وحاول مرة أخرى.';
+
+  @override
+  String get settingsStillUsingDays =>
+      'عدد الأيام التي تُحتسب «ما زال يستخدم التطبيق»';
 }

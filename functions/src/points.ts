@@ -44,6 +44,7 @@ export interface PointsConfig {
   reviewAfterDays: number;
   reviewMinActiveDays: number;
   reviewEveryDays: number;
+  stillUsingDays: number;
   levels: Level[];
 }
 
@@ -64,6 +65,7 @@ export const DEFAULT_POINTS_CONFIG: PointsConfig = {
   reviewAfterDays: 10,
   reviewMinActiveDays: 5,
   reviewEveryDays: 120,
+  stillUsingDays: 30,
   levels: [
     {id: "supporter", minFriends: 1, bonus: 10},
     {id: "ambassador", minFriends: 5, bonus: 50},
@@ -90,6 +92,7 @@ const LIMITS: Record<Exclude<keyof PointsConfig, "levels">, [number, number]> = 
   reviewAfterDays: [0, 365],
   reviewMinActiveDays: [0, 365],
   reviewEveryDays: [30, 365],
+  stillUsingDays: [1, 365],
 };
 
 function intIn(value: unknown, [min, max]: [number, number]): number | null {
@@ -132,9 +135,18 @@ export function dayKey(at: number): string {
 }
 
 export function previousDay(day: string): string {
+  return shiftDay(day, -1);
+}
+
+export function shiftDay(day: string, days: number): string {
   const date = new Date(`${day}T12:00:00Z`);
-  date.setUTCDate(date.getUTCDate() - 1);
+  date.setUTCDate(date.getUTCDate() + days);
   return date.toISOString().slice(0, 10);
+}
+
+export function isDayKey(value: unknown): value is string {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    !Number.isNaN(Date.parse(`${value}T12:00:00Z`)) && shiftDay(value, 0) === value;
 }
 
 export interface Streak {
@@ -232,4 +244,69 @@ export function feedbackOf(data: unknown): Feedback | null {
 // Points for feedback come once per account, and only after some real use.
 export function feedbackEarnsPoints(joinedAt: number, now: number, config: PointsConfig): boolean {
   return config.feedbackPoints > 0 && now - joinedAt >= config.feedbackAfterDays * 86_400_000;
+}
+
+export type InviteBucket = "active" | "inactive" | "waiting";
+
+// Active: qualified (the inviter got points). Inactive: never active in time, or rejected.
+export function inviteBucket(status: unknown): InviteBucket {
+  if (status === "qualified") return "active";
+  if (status === "expired" || status === "rejected") return "inactive";
+  return "waiting";
+}
+
+// Opened the app within the last `days` days, today included.
+export function isStillUsing(lastDay: unknown, today: string, days: number): boolean {
+  return typeof lastDay === "string" && lastDay >= shiftDay(today, 1 - days);
+}
+
+export interface InviteCounts {
+  qrOpens: number;
+  linkOpens: number;
+  joined: number;
+  active: number;
+  inactive: number;
+  waiting: number;
+  stillUsing: number;
+}
+
+export const emptyInviteCounts = (): InviteCounts =>
+  ({qrOpens: 0, linkOpens: 0, joined: 0, active: 0, inactive: 0, waiting: 0, stillUsing: 0});
+
+export function addInvite(counts: InviteCounts, bucket: InviteBucket, stillUsing: boolean): void {
+  counts.joined++;
+  counts[bucket]++;
+  if (bucket === "active" && stillUsing) counts.stillUsing++;
+}
+
+export function addOpens(counts: InviteCounts, opens: {qr?: unknown; link?: unknown}): void {
+  const count = (v: unknown) => typeof v === "number" && v > 0 ? Math.floor(v) : 0;
+  counts.qrOpens += count(opens.qr);
+  counts.linkOpens += count(opens.link);
+}
+
+export interface Period {
+  from: string;
+  to: string;
+}
+
+// No dates means all time; anything else must be a valid range of days.
+export function periodOf(data: unknown): Period | "all" | null {
+  const input = typeof data === "object" && data !== null ? data as Json : {};
+  if (input.from === undefined && input.to === undefined) return "all";
+  if (!isDayKey(input.from) || !isDayKey(input.to) || input.from > input.to) return null;
+  return {from: input.from, to: input.to};
+}
+
+export const RANK_SORTS = ["active", "joined"] as const;
+export type RankSort = (typeof RANK_SORTS)[number];
+
+export function rankInviters<T extends InviteCounts>(rows: T[], sort: RankSort): T[] {
+  const keys: (keyof InviteCounts)[] = sort === "active" ?
+    ["active", "joined", "stillUsing", "qrOpens", "linkOpens"] :
+    ["joined", "active", "stillUsing", "qrOpens", "linkOpens"];
+  return [...rows].sort((a, b) => {
+    for (const key of keys) if (a[key] !== b[key]) return b[key] - a[key];
+    return 0;
+  });
 }

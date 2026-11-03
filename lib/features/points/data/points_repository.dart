@@ -139,6 +139,20 @@ class PointsRepository {
     {'inviteeId': inviteeId, 'approve': approve},
   );
 
+  Future<InviteStats> adminInviteStats(String uid) async =>
+      InviteStats.fromMap(await _call('adminInviteStats', {'uid': uid}));
+
+  Future<InviteRanking> adminInviteRanking(
+    InvitePeriod period,
+    InviteSort sort,
+  ) async => InviteRanking.fromMap(
+    await _call('adminInviteRanking', {
+      'sort': sort.name,
+      'from': ?period.from,
+      'to': ?period.to,
+    }),
+  );
+
   Future<void> adjust(String uid, int amount, String reason) => _call(
     'adminAdjustPoints',
     {'uid': uid, 'amount': amount, 'reason': reason},

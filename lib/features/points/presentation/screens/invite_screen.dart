@@ -12,6 +12,7 @@ import '../../domain/invite_code.dart';
 import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/invite_code_input.dart';
+import '../widgets/invite_stats_widgets.dart';
 import '../widgets/points_widgets.dart';
 import 'invite_qr_screen.dart';
 
@@ -241,7 +242,9 @@ class InviteScreen extends ConsumerWidget {
               l10n.noInvitesYet,
               style: const TextStyle(color: AppColors.textMuted),
             )
-          else
+          else ...[
+            InviteBucketCounts(counts: InviteCounts.ofReferrals(invites)),
+            const SizedBox(height: 6),
             for (final invite in invites)
               ListTile(
                 contentPadding: EdgeInsets.zero,
@@ -262,7 +265,7 @@ class InviteScreen extends ConsumerWidget {
                       ? l10n.aFriend
                       : invite.inviteeName,
                 ),
-                subtitle: Text(_statusLabel(l10n, invite.status)),
+                subtitle: Text(invite.status.label(l10n)),
                 trailing: invite.status == ReferralStatus.qualified
                     ? Text(
                         '+${config.referralQualified}',
@@ -273,19 +276,11 @@ class InviteScreen extends ConsumerWidget {
                       )
                     : null,
               ),
+          ],
         ],
       ),
     );
   }
-
-  static String _statusLabel(AppLocalizations l10n, ReferralStatus status) =>
-      switch (status) {
-        ReferralStatus.pending => l10n.inviteStatusPending,
-        ReferralStatus.qualified => l10n.inviteStatusQualified,
-        ReferralStatus.review => l10n.inviteStatusReview,
-        ReferralStatus.rejected => l10n.inviteStatusRejected,
-        ReferralStatus.expired => l10n.inviteStatusExpired,
-      };
 }
 
 class _Step extends StatelessWidget {

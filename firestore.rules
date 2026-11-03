@@ -448,7 +448,7 @@ service cloud.firestore {
           'dailyCheckin', 'dailyActive', 'activeMinutes', 'streakDays', 'streakBonus',
           'referralQualified', 'referralWelcome', 'qualifyDays', 'qualifyWithinDays',
           'codeEntryDays', 'maxQualifiedPerDay', 'feedbackPoints', 'feedbackAfterDays',
-          'reviewAfterDays', 'reviewMinActiveDays', 'reviewEveryDays', 'levels'
+          'reviewAfterDays', 'reviewMinActiveDays', 'reviewEveryDays', 'stillUsingDays', 'levels'
         ]);
     }
 

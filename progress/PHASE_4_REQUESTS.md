@@ -2,13 +2,14 @@
 
 New requests from the client (received Mon 2 Nov 2026): QR invitations, voluntary donations, places to walk with pets. The plan was sent the same day; the developer said go for the QR codes and places to walk, and the donation screens (switched off) until the store payment setup is done.
 
-_Last updated: Mon 2 Nov 2026 (built; hosting, functions and rules to deploy)_
+_Last updated: Tue 3 Nov 2026 (request 4, invite tracking, built; hosting, functions and rules to deploy)_
 
 | # | Request | Status | Size |
 |---|---|---|---|
 | 1 | Unique invitations with QR codes | Built (Mon 2 Nov), to deploy and test | Small |
 | 2 | Voluntary donations | Screens built (Mon 2 Nov), switched off; payments later (store setup by the client) | Small (screens) + Medium (payments) |
 | 3 | Places to walk with pets (Google Maps) | Built (Mon 2 Nov), to deploy and test with the real Google key | Medium |
+| 4 | Invite tracking (follow-up, Tue 3 Nov) | Built (Tue 3 Nov), to deploy and test | Small (about 1 day) |
 
 ---
 
@@ -40,6 +41,30 @@ _Last updated: Mon 2 Nov 2026 (built; hosting, functions and rules to deploy)_
 - Map and list, filter by type; each place: name, address, distance; on tap, rating, opening hours, open now, "dogs allowed" when Google has it, phone, website, Directions.
 - Searches go through our server (the Google key never reaches the app), with a daily limit per user. Results are kept only for a short time, as Google's terms allow.
 - Admin: on/off, default distance, place types, hide a place, daily limit.
+
+## 4. Invite tracking (follow-up, Tue 3 Nov)
+
+**Client's questions:** "Is the invite code permanent? Is the QR code tracked on the admin side? For me it's important to track invites by user." They want a count of each user's invites, **active and inactive**, for future activities.
+
+**Answers sent:** the code is permanent (one per user, never changes, the QR and link carry the same code, it only stops working if the account is deleted). QR scans were not tracked yet; the admin only saw the qualified friends per user and the invites held for review.
+
+**Plan (sent Tue 3 Nov, go given the same day)**
+- Status of every invite: **Active** (friend signed up with the code and qualified: active on 3 days with a city within 14 days, the moment the inviter gets points), **Inactive** (not active within 14 days, or rejected by an admin), **Waiting** (signed up less than 14 days ago). Extra: active friends **still using the app** (opened it in the last 30 days, new setting in Points and rewards).
+- The invite page counts every open, QR scans and shared links separately (the QR link gets `?s=qr`). Only numbers, nothing personal about the visitor.
+- Admin → user's page: Invites box (code, QR scans, link opens, invited, active, inactive, waiting) and the list of invited friends (name, joined, status, last time in the app).
+- Admin → More → **Invites**: totals for the whole app and a ranking of users, sorted by active or total, for this month, last month, all time or chosen dates.
+- Invite friends screen: the user's own counts (active / inactive / waiting).
+- Existing invites are counted; QR scans from this update onward. Friends who delete their account drop out of the counts.
+
+## What was built (Tue 3 Nov): invite tracking
+
+- **Opens:** the QR now encodes `…/i/<CODE>?s=qr`; shared links stay `…/i/<CODE>`. `hosting/invite.html` posts `{code, source}` to `/api/invite-open` (Hosting rewrite to the new `trackInviteOpen` HTTP function). The function checks the code in `inviteCodes`, counts each visitor once a day per code (`inviteOpenSeen/{sha256(day|code|IP|user agent)}`, only `day` stored, removed by the daily `pointsSweep` after a day) and adds to `inviteOpens/{CODE}_{day}` (`uid`, `code`, `day`, `qr`, `link`). Link previews (WhatsApp etc.) don't run the page's script, so they aren't counted. Both collections are server-only.
+- **Statuses:** Active = `qualified`, Inactive = `expired` or `rejected`, Waiting = `pending` or `review` (`inviteBucket` on the server, `ReferralStatus.bucket` in the app). Still using = active friends whose `activity.lastDay` is within `config/points.stillUsingDays` (default 30, 1 to 365, new field in Points and rewards and in the rules).
+- **`adminInviteStats`** (admins only): a user's code, counts and invited friends (name, status, date, last day in the app, still using), newest first.
+- **`adminInviteRanking`** (admins only): totals and the top 100 inviters for all time or a period of Italian days (`from` / `to`, checked), sorted by active or by total; names, emails and codes.
+- **App:** Admin → Users → user: **Invites** box (code, QR scans, link opens, signed up, active, still using, inactive, waiting) replacing "Invited friends (active)", and **See invited friends** (friend cards with a coloured status chip, tap to open the friend). Admin → More → **Invites** (above Invites to review): All time / This month / Last month / Choose dates, Whole app totals with an explanation, ranking with Most active / Most invited, pull to refresh. Invite friends: Active / Inactive / Waiting boxes above the user's own list.
+- Open counts are deleted with the account (`deletePointsData`). Friends who delete their account were already removed (their referral goes with them).
+- 29 labels in 10 languages. Tests: 7 new app tests (122, including a small-phone layout check in English, German and Arabic), 5 new server tests (80), 29 new emulator checks (`emulator_tests/invites.cjs`); all 8 emulator scripts pass (323 checks).
 
 ## What was built (Mon 2 Nov)
 

@@ -4736,4 +4736,116 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get supportPreview => 'Preview the page';
+
+  @override
+  String get adminInvites => 'Invites';
+
+  @override
+  String get adminInvitesSubtitle =>
+      'Invite counts, QR scans and ranking by user';
+
+  @override
+  String get inviteBucketActive => 'Active';
+
+  @override
+  String get inviteBucketInactive => 'Inactive';
+
+  @override
+  String get inviteBucketWaiting => 'Waiting';
+
+  @override
+  String get inviteStillUsing => 'Still using the app';
+
+  @override
+  String get inviteQrScans => 'QR scans';
+
+  @override
+  String get inviteLinkOpens => 'Link opens';
+
+  @override
+  String get inviteSignedUp => 'Signed up';
+
+  @override
+  String get inviteBucketsHelp =>
+      'Active: the friend started using CodaMi and the inviter got the points. Inactive: not active in time, or rejected. Waiting: still has time to become active.';
+
+  @override
+  String inviteStillUsingHelp(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'Still using: active friends who opened the app in the last $days days.',
+      one: 'Still using: active friends who opened the app today.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get invitedFriendsTitle => 'Invited friends';
+
+  @override
+  String get seeInvitedFriends => 'See invited friends';
+
+  @override
+  String inviteJoinedOn(String date) {
+    return 'Signed up $date';
+  }
+
+  @override
+  String inviteLastInApp(String date) {
+    return 'Last in the app: $date';
+  }
+
+  @override
+  String get periodThisMonth => 'This month';
+
+  @override
+  String get periodLastMonth => 'Last month';
+
+  @override
+  String get periodAllTime => 'All time';
+
+  @override
+  String get periodChooseDates => 'Choose dates';
+
+  @override
+  String get sortMostActive => 'Most active';
+
+  @override
+  String get sortMostInvited => 'Most invited';
+
+  @override
+  String get inviteWholeApp => 'Whole app';
+
+  @override
+  String get inviteRanking => 'Ranking';
+
+  @override
+  String inviteRankingUsers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count users',
+      one: '1 user',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noInvitesInPeriod => 'No invites in this period';
+
+  @override
+  String get noInvitesInPeriodMessage =>
+      'Friends who sign up with a code, and opens of the QR code or link, will show here.';
+
+  @override
+  String get adminNoInvites => 'This user hasn\'t invited anyone yet.';
+
+  @override
+  String get invitesLoadError =>
+      'Couldn\'t load the invites. Check your connection and try again.';
+
+  @override
+  String get settingsStillUsingDays => 'Days that count as still using the app';
 }

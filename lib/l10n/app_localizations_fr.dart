@@ -4811,4 +4811,118 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get supportPreview => 'Aperçu de la page';
+
+  @override
+  String get adminInvites => 'Invitations';
+
+  @override
+  String get adminInvitesSubtitle =>
+      'Invitations, scans QR et classement par utilisateur';
+
+  @override
+  String get inviteBucketActive => 'Actives';
+
+  @override
+  String get inviteBucketInactive => 'Inactives';
+
+  @override
+  String get inviteBucketWaiting => 'En attente';
+
+  @override
+  String get inviteStillUsing => 'Utilisent encore l\'app';
+
+  @override
+  String get inviteQrScans => 'Scans QR';
+
+  @override
+  String get inviteLinkOpens => 'Ouvertures du lien';
+
+  @override
+  String get inviteSignedUp => 'Inscrits';
+
+  @override
+  String get inviteBucketsHelp =>
+      'Actives : l\'ami a commencé à utiliser CodaMi et le parrain a reçu les points. Inactives : pas actif à temps, ou refusée. En attente : il a encore le temps de devenir actif.';
+
+  @override
+  String inviteStillUsingHelp(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other:
+          'Utilisent encore l\'app : amis actifs qui ont ouvert l\'app ces $days derniers jours.',
+      one:
+          'Utilisent encore l\'app : amis actifs qui ont ouvert l\'app aujourd\'hui.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get invitedFriendsTitle => 'Amis invités';
+
+  @override
+  String get seeInvitedFriends => 'Voir les amis invités';
+
+  @override
+  String inviteJoinedOn(String date) {
+    return 'Inscrit le $date';
+  }
+
+  @override
+  String inviteLastInApp(String date) {
+    return 'Dernière visite dans l\'app : $date';
+  }
+
+  @override
+  String get periodThisMonth => 'Ce mois-ci';
+
+  @override
+  String get periodLastMonth => 'Mois dernier';
+
+  @override
+  String get periodAllTime => 'Depuis le début';
+
+  @override
+  String get periodChooseDates => 'Choisir les dates';
+
+  @override
+  String get sortMostActive => 'Les plus actifs';
+
+  @override
+  String get sortMostInvited => 'Le plus d\'invitations';
+
+  @override
+  String get inviteWholeApp => 'Toute l\'app';
+
+  @override
+  String get inviteRanking => 'Classement';
+
+  @override
+  String inviteRankingUsers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count utilisateurs',
+      one: '1 utilisateur',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noInvitesInPeriod => 'Aucune invitation sur cette période';
+
+  @override
+  String get noInvitesInPeriodMessage =>
+      'Les amis inscrits avec un code et les ouvertures du QR code ou du lien apparaîtront ici.';
+
+  @override
+  String get adminNoInvites => 'Cet utilisateur n\'a encore invité personne.';
+
+  @override
+  String get invitesLoadError =>
+      'Impossible de charger les invitations. Vérifiez votre connexion et réessayez.';
+
+  @override
+  String get settingsStillUsingDays =>
+      'Jours comptés comme « utilise encore l\'app »';
 }

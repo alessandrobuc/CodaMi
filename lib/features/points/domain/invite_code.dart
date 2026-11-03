@@ -12,6 +12,9 @@ const inviteLinkBase = 'https://codami-cd91e.web.app/i/';
 
 String inviteLink(String code) => '$inviteLinkBase$code';
 
+// The page counts QR scans apart from shared links.
+String inviteQrLink(String code) => '${inviteLink(code)}?s=qr';
+
 bool isInviteCode(String code) =>
     code.length == inviteCodeLength &&
     code.split('').every(inviteCodeAlphabet.contains);

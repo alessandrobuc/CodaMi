@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Mon 2 Nov 2026_
+_Last updated: Tue 3 Nov 2026_
 
 ---
 
@@ -63,7 +63,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [x] **Shop (Thu 29 Oct):** deploy `firestore:rules,storage` (new `config/shop`, `shopCategories`, `brands`, `suppliers`, `products` rules and the `shop/` image folder). The shop stays off until an admin opens it
 - [ ] **Shop day 2 (Fri 30 Oct):** deploy `firestore:rules` (`config/shipping`, `productCosts`, `affiliateClicks`, sponsored product fields)
 - [ ] Shop shipping: replace the starting prices with the real ones before opening the shop
-- [ ] **Phase 4 (Mon 2 Nov):** deploy `hosting,functions,firestore:rules` (invite page, walk functions, `config/walks` and `config/donations` rules)
+- [ ] **Phase 4 (Mon 2 Nov) + invite tracking (Tue 3 Nov):** deploy `functions,hosting,firestore:rules` (functions first or in the same command: the `/api/invite-open` rewrite needs `trackInviteOpen`; invite page, walk and invite functions, `config/walks`, `config/donations` and `stillUsingDays` rules)
 - [ ] Places to walk: Google Places costs (Nearby Search and Place Details with photos) in the budget alert; mention in the privacy policy that the user's position is sent to Google to find places
 - [ ] Donations: before switching on, store products (consumable, one per amount), payments profile in Play Console, Paid Apps agreement on App Store Connect, Data safety and App Store privacy labels for purchases; wording stays "Support CodaMi", not charity
 - [ ] Invite flyer: Data safety "Photos" not needed (the app only adds images); iPhone permission text added
@@ -102,7 +102,7 @@ Add SHA-1s to the existing key. Never replace them.
   - [ ] Play may require a way to **request** deletion without the app (for example by email) on this page
 - [x] **Report / block users** in the app (Apple guideline 1.2, Google Play UGC policy)
   - [ ] Update the content rating answers to "Yes"
-- [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
+- [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)

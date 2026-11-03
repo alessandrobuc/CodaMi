@@ -67,4 +67,84 @@ void main() {
     );
     expect(AmbassadorLevel.fromValue(null), isNull);
   });
+
+  test('invites are grouped as active, inactive or waiting', () {
+    expect(ReferralStatus.qualified.bucket, InviteBucket.active);
+    expect(ReferralStatus.expired.bucket, InviteBucket.inactive);
+    expect(ReferralStatus.rejected.bucket, InviteBucket.inactive);
+    expect(ReferralStatus.pending.bucket, InviteBucket.waiting);
+    expect(ReferralStatus.review.bucket, InviteBucket.waiting);
+
+    Referral r(ReferralStatus status) => Referral(
+      inviteeId: status.name,
+      inviterId: 'me',
+      inviteeName: '',
+      status: status,
+    );
+    final counts = InviteCounts.ofReferrals([
+      for (final s in ReferralStatus.values) r(s),
+      r(ReferralStatus.qualified),
+    ]);
+    expect(counts.joined, 6);
+    expect(counts.active, 2);
+    expect(counts.inactive, 2);
+    expect(counts.waiting, 2);
+  });
+
+  test('admin invite stats and ranking read the server answer', () {
+    final stats = InviteStats.fromMap({
+      'code': 'QWE789',
+      'stillUsingDays': 30,
+      'counts': {'qrOpens': 12, 'linkOpens': 4, 'joined': 3, 'active': 2},
+      'friends': [
+        {
+          'inviteeId': 'f1',
+          'name': 'Anna',
+          'status': 'qualified',
+          'createdAt': DateTime.utc(2026, 11, 1).millisecondsSinceEpoch,
+          'lastActiveDay': '2026-11-03',
+          'stillUsing': true,
+        },
+        {'inviteeId': 'f2', 'status': 'odd', 'lastActiveDay': null},
+      ],
+    });
+    expect(stats.code, 'QWE789');
+    expect(stats.counts.qrOpens, 12);
+    expect(stats.counts.inactive, 0);
+    expect(stats.friends.first.status, ReferralStatus.qualified);
+    expect(stats.friends.first.lastActiveDay, DateTime(2026, 11, 3));
+    expect(stats.friends.first.stillUsing, isTrue);
+    expect(stats.friends.last.status, ReferralStatus.pending);
+    expect(stats.friends.last.lastActiveDay, isNull);
+    expect(stats.friends.last.createdAt, isNull);
+
+    final ranking = InviteRanking.fromMap({
+      'totals': {'joined': 9, 'stillUsing': 4},
+      'inviters': 2,
+      'stillUsingDays': 30,
+      'rows': [
+        {
+          'uid': 'u1',
+          'name': 'Marco',
+          'email': 'm@x.it',
+          'active': 5,
+          'qrOpens': 7,
+        },
+      ],
+    });
+    expect(ranking.totals.joined, 9);
+    expect(ranking.inviters, 2);
+    expect(ranking.rows.single.counts.active, 5);
+    expect(ranking.rows.single.counts.qrOpens, 7);
+    expect(ranking.rows.single.code, isNull);
+    expect(InviteRanking.fromMap(null).rows, isEmpty);
+  });
+
+  test('periods use plain day keys and the still-using days are saved', () {
+    expect(dayKeyOf(DateTime(2026, 3, 7)), '2026-03-07');
+    expect(dayKeyOf(DateTime(2026, 11, 0)), '2026-10-31');
+    expect(const PointsConfig().stillUsingDays, 30);
+    expect(PointsConfig.fromMap({'stillUsingDays': 14}).stillUsingDays, 14);
+    expect(const PointsConfig().toMap()['stillUsingDays'], 30);
+  });
 }

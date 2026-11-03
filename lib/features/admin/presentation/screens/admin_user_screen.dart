@@ -12,7 +12,9 @@ import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
 import 'admin_users_screen.dart';
 import '../../../points/data/points_repository.dart';
+import '../../../points/presentation/screens/admin_invites_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
+import '../../../profile/presentation/providers/profile_provider.dart';
 
 class AdminUserScreen extends ConsumerStatefulWidget {
   final String uid;
@@ -214,6 +216,7 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     final name = user.name.isEmpty ? user.email : user.name;
     final reports = ref.watch(userReportCountProvider(user.uid)).value;
     final canManage = !isMe && user.role != UserRole.admin;
+    final viewerIsAdmin = ref.watch(userRoleProvider) == UserRole.admin;
 
     return ListView(
       padding: EdgeInsets.fromLTRB(
@@ -289,14 +292,13 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
                   ?user.ambassadorLevel?.label(l10n),
                 ].join(' · '),
               ),
-              _InfoTile(
-                icon: Icons.group_add_rounded,
-                label: l10n.invitedFriends,
-                value: '${user.referralCount}',
-              ),
             ],
           ),
         ),
+        if (viewerIsAdmin) ...[
+          const SizedBox(height: 12),
+          AdminUserInvitesCard(uid: user.uid, name: name),
+        ],
         if (!isMe) ...[
           const SizedBox(height: 12),
           OutlinedButton.icon(

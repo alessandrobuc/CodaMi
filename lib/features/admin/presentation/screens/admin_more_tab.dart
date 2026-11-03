@@ -17,6 +17,7 @@ import 'support_staff_screen.dart';
 import '../../../emergency/presentation/screens/admin_contacts_screen.dart';
 import '../../../emergency/presentation/screens/admin_emergencies_screen.dart';
 import '../../../emergency/presentation/screens/admin_emergency_settings_screen.dart';
+import '../../../points/presentation/screens/admin_invites_screen.dart';
 import '../../../points/presentation/screens/admin_points_settings_screen.dart';
 import '../../../points/presentation/screens/admin_referrals_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
@@ -279,6 +280,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminPointsSettingsScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.leaderboard_rounded,
+                    color: pointsColor,
+                    title: l10n.adminInvites,
+                    subtitle: l10n.adminInvitesSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminInvitesScreen(),
                       ),
                     ),
                   ),

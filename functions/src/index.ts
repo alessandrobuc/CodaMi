@@ -546,4 +546,5 @@ export {
   submitFeedback,
 } from "./pointsFunctions";
 export {emergencySweep, onEmergencyCreated, seedTestContacts, updateEmergency} from "./emergencyFunctions";
+export {adminInviteRanking, adminInviteStats, trackInviteOpen} from "./invitesFunctions";
 export {findWalkPlaces, walkPlaceDetails} from "./walksFunctions";

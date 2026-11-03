@@ -77,6 +77,13 @@
     "cleanUrls": true,
     "rewrites": [
       {
+        "source": "/api/invite-open",
+        "function": {
+          "functionId": "trackInviteOpen",
+          "region": "europe-west1"
+        }
+      },
+      {
         "source": "/i/**",
         "destination": "/invite.html"
       }

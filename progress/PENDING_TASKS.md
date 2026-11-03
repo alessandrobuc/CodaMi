@@ -2,15 +2,15 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Mon 2 Nov 2026 (phase 4: QR invites, places to walk, donation screens)_
+_Last updated: Tue 3 Nov 2026 (invite tracking built, to deploy with phase 4)_
 
 ---
 
 ## 1. Testing now
 
-- [ ] **Deploy (phase 4, Mon 2 Nov):** `firebase deploy --only hosting,functions,firestore:rules` (invite page, `findWalkPlaces` and `walkPlaceDetails`, rules for `config/walks` and `config/donations`)
+- [ ] **Deploy (phase 4 Mon 2 Nov + invite tracking Tue 3 Nov):** `firebase deploy --only functions,hosting,firestore:rules` (functions first: the invite page's `/api/invite-open` rewrite needs `trackInviteOpen`; also `adminInviteStats`, `adminInviteRanking`, `findWalkPlaces`, `walkPlaceDetails`; rules for `config/walks`, `config/donations` and the new `stillUsingDays`)
 - [ ] **Google Cloud:** check that Places API (New) is enabled for the `PLACES_API_KEY` project (it already is for city search) and set a budget alert
-- [ ] **Phase 4 on the phone:** follow `TEST_SCENARIO_PHASE4_2026-11-02.md` (QR and flyer, invite page on Android and a computer, Places to walk, donation screens)
+- [ ] **Phase 4 on the phone:** follow `TEST_SCENARIO_PHASE4_2026-11-02.md` (QR and flyer, invite page on Android and a computer, Places to walk, donation screens, and part 10: invite tracking)
 - [ ] **Deploy (shop day 2, Fri 30 Oct):** `firebase deploy --only firestore:rules` (shipping settings, cost prices, affiliate clicks, sponsored fields; without it these can't be saved)
 - [ ] **Shop day 2 on the phone:** follow part 11 of `TEST_SCENARIO_SHOP_2026-10-29.md` (shipping setup, cart, totals, cost and margin, affiliate clicks, sponsored)
 - [x] **Deploy (shop, Thu 29 Oct):** rules and storage are live
@@ -45,6 +45,7 @@ Fixes found while testing go here:
 - Thu 22 Oct, emulator test continued (support account): Tickets, request Chat / Details / Timeline and More work with no errors. Fixed: a large empty gap under the time cards in a request's Details (same fix on the new emergency, new report and video form screens), and a two-line user name and email in Details were misaligned. Also fixed: signing out of the admin side caused an error and might not set the operator offline (now set offline before signing out); support staff saw another operator's chat messages labelled "Admin" (now "Support team", only admins see names). Redesigned Admin → Emergency settings and Points and rewards (header, section cards, one row per setting, extra space at the end); emergency settings now show the defaults if they can't be loaded
 
 ## 2. Development left (ours)
+
 
 - [ ] **Phase 4 (client request Mon 2 Nov, `PHASE_4_REQUESTS.md`):** built Mon 2 Nov (QR invites and flyer, Places to walk, donation screens switched off); left: store payments for donations once the client sets up the stores, "Scan QR" in the app if the client wants it
 - [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built and committed (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); then Stripe payment, refunds, reports, shop manager role, computer admin (`SHOP_FEATURE.md`)
@@ -101,6 +102,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Tue 3 Nov: invite tracking (client follow-up of the same day): QR scans and link opens counted by the invite page (QR link marked `?s=qr`, once a day per visitor, no IP kept), invite statuses Active / Inactive / Waiting plus "still using the app" (new setting, 30 days), Admin → user's Invites box and invited friends list, Admin → More → Invites (totals, ranking, periods), the user's own counts on Invite friends. 10 languages, 7 new app tests (122), 5 new server tests (80), 29 new emulator checks. Not deployed yet
 
 - Mon 2 Nov: phase 4 (client request of the same day): QR invites with a printable flyer and an invite page for Android and iPhone; Places to walk with Google Places (map and list, types, distance, details, directions, admin settings and hidden places, daily limits); voluntary donation screens (Support CodaMi page, prompts after a report and a found pet, admin settings), switched off until store payments. 10 languages, 7 new app tests (115), 7 new server tests (75), 23 new emulator checks. Not deployed yet
 

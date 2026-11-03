@@ -4502,4 +4502,110 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get supportPreview => '预览页面';
+
+  @override
+  String get adminInvites => '邀请';
+
+  @override
+  String get adminInvitesSubtitle => '按用户统计邀请、二维码扫描和排名';
+
+  @override
+  String get inviteBucketActive => '活跃';
+
+  @override
+  String get inviteBucketInactive => '不活跃';
+
+  @override
+  String get inviteBucketWaiting => '等待中';
+
+  @override
+  String get inviteStillUsing => '仍在使用应用';
+
+  @override
+  String get inviteQrScans => '二维码扫描';
+
+  @override
+  String get inviteLinkOpens => '链接打开';
+
+  @override
+  String get inviteSignedUp => '已注册';
+
+  @override
+  String get inviteBucketsHelp =>
+      '活跃：好友已开始使用 CodaMi，邀请人已获得积分。不活跃：未在规定时间内活跃，或已被拒绝。等待中：仍有时间变为活跃。';
+
+  @override
+  String inviteStillUsingHelp(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '仍在使用：最近 $days 天内打开过应用的活跃好友。',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get invitedFriendsTitle => '已邀请的好友';
+
+  @override
+  String get seeInvitedFriends => '查看已邀请的好友';
+
+  @override
+  String inviteJoinedOn(String date) {
+    return '注册于 $date';
+  }
+
+  @override
+  String inviteLastInApp(String date) {
+    return '最近一次使用应用：$date';
+  }
+
+  @override
+  String get periodThisMonth => '本月';
+
+  @override
+  String get periodLastMonth => '上月';
+
+  @override
+  String get periodAllTime => '全部时间';
+
+  @override
+  String get periodChooseDates => '选择日期';
+
+  @override
+  String get sortMostActive => '最活跃';
+
+  @override
+  String get sortMostInvited => '邀请最多';
+
+  @override
+  String get inviteWholeApp => '整个应用';
+
+  @override
+  String get inviteRanking => '排名';
+
+  @override
+  String inviteRankingUsers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 位用户',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noInvitesInPeriod => '此期间没有邀请';
+
+  @override
+  String get noInvitesInPeriodMessage => '使用邀请码注册的好友以及二维码或链接的打开次数会显示在这里。';
+
+  @override
+  String get adminNoInvites => '该用户还没有邀请任何人。';
+
+  @override
+  String get invitesLoadError => '无法加载邀请。请检查网络连接后重试。';
+
+  @override
+  String get settingsStillUsingDays => '计为“仍在使用应用”的天数';
 }
