@@ -5014,4 +5014,210 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'حاول مرة أخرى';
+
+  @override
+  String get heatCalendar => 'تقويم الشياع';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'تقويم الشياع لـ $name';
+  }
+
+  @override
+  String get adminHeatSubtitle => 'الشياع: تشغيل/إيقاف والقيم المعتادة لكل نوع';
+
+  @override
+  String get heatRecord => 'سجّل فترة شياع';
+
+  @override
+  String get heatEdit => 'تعديل فترة الشياع';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'بعد $days يومًا',
+      few: 'بعد $days أيام',
+      two: 'بعد يومين',
+      one: 'غدًا',
+      zero: 'اليوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'فترات الشياع المتوقعة القادمة';
+
+  @override
+  String get heatHistory => 'السجل';
+
+  @override
+  String get heatHistoryEmpty =>
+      'لا توجد فترات شياع مسجلة بعد. اضغط «سجّل فترة شياع» لإضافة الأولى.';
+
+  @override
+  String get heatOngoing => 'مستمرة';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days يومًا',
+      few: '$days أيام',
+      two: 'يومان',
+      one: 'يوم واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'التواريخ القادمة تقديرية وكل حيوان مختلف. استشر طبيبك البيطري بشأن التزاوج والتعقيم وأي مخاوف صحية.';
+
+  @override
+  String get heatInHeatNow => 'في فترة الشياع الآن';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'اليوم $day';
+  }
+
+  @override
+  String get heatEndToday => 'انتهى الشياع اليوم';
+
+  @override
+  String get heatNextExpected => 'الشياع التالي متوقع في حوالي';
+
+  @override
+  String get heatNoEstimate =>
+      'سجّل أول فترة شياع لمعرفة موعد الفترة التالية المتوقع.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'سجّل فترة شياع أخرى لمعرفة موعد الفترة التالية المتوقع.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'الدورة نحو $cycle يوم · يستمر الشياع نحو $heat يوم';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'بناءً على $count فترة مسجلة.',
+      few: 'بناءً على $count فترات مسجلة.',
+      two: 'بناءً على فترتين مسجلتين.',
+      one: 'بناءً على فترة واحدة مسجلة.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical => 'قيمة معتادة للنوع حتى تتوفر سجلات أكثر.';
+
+  @override
+  String get heatReminders => 'التذكيرات';
+
+  @override
+  String get heatRemindMe => 'ذكّرني قبل الشياع التالي';
+
+  @override
+  String get heatRemindNeedsEstimate => 'متاح عند وجود تاريخ متوقع.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'قبل $days يومًا',
+      few: 'قبل $days أيام',
+      two: 'قبل يومين',
+      one: 'قبل يوم واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'التذكير التالي: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'حذف فترة الشياع هذه؟';
+
+  @override
+  String get heatDeleteMessage => 'ستُزال من السجل ومن التقديرات.';
+
+  @override
+  String get heatDelete => 'حذف';
+
+  @override
+  String get heatEndBeforeStart => 'لا يمكن أن تكون النهاية قبل البداية.';
+
+  @override
+  String get heatStart => 'البداية';
+
+  @override
+  String get heatEnd => 'النهاية';
+
+  @override
+  String get heatStillInHeat => 'ما زالت في الشياع';
+
+  @override
+  String get heatNotes => 'ملاحظات';
+
+  @override
+  String get heatNotesHint => 'السلوك، النزيف، زيارة الطبيب البيطري…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'في فترة الشياع الآن · اليوم $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'الشياع التالي متوقع في حوالي $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'سجّل فترات الشياع واحصل على تذكير قبل الفترة التالية';
+
+  @override
+  String get heatLegendRecorded => 'شياع مسجل';
+
+  @override
+  String get heatLegendEstimated => 'متوقع';
+
+  @override
+  String get heatLegendToday => 'اليوم';
+
+  @override
+  String get heatAdminIntro =>
+      'يسجّل المالكون فترات الشياع لإناث حيواناتهم. يقدّر التطبيق الفترات التالية ويمكنه إرسال تذكير مسبق. تُستخدم القيم المعتادة حتى تتوفر سجلات خاصة بالحيوان.';
+
+  @override
+  String get heatOnHelp =>
+      'مُفعّل: يرى المالكون تقويم الشياع في صفحة إناث حيواناتهم.';
+
+  @override
+  String get heatOffHelp => 'متوقف: يراه المشرفون فقط.';
+
+  @override
+  String get heatTypicalCycle => 'الدورة المعتادة (أيام)';
+
+  @override
+  String get heatTypicalHeat => 'مدة الشياع المعتادة (أيام)';
+
+  @override
+  String get heatTypicalHelp =>
+      'تُستخدم حتى يكون للحيوان فترتا شياع مسجلتان. للحيوانات الأخرى، الدورة 0 تعني عدم وجود تقدير حتى ذلك الحين.';
+
+  @override
+  String get heatInvalidValues =>
+      'الدورة: من 7 إلى 400 يوم (يُسمح بـ 0 للحيوانات الأخرى). المدة: من 1 إلى 60 يومًا.';
 }

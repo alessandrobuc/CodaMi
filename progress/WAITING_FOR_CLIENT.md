@@ -66,7 +66,7 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 - [x] Go-ahead: given Wed 4 Nov, no fixed order (the AI breed scanner was built first)
 - [ ] Pet sitting: payment between users outside the app (recommended for now), or through the app?
 - [ ] AI breed scanner: OK with a small cost per scan (less than 1 cent) and a daily limit? (built with 10 scans per user per day, changeable in Admin)
-- [ ] Heat calendar: which animals besides dogs and cats?
+- [ ] Heat calendar: which animals besides dogs and cats? (built for all species: dogs and cats with typical cycles, other animals estimated from their own records; typical values changeable in Admin)
 - [ ] Donor titles: amounts for Bronze, Silver, Gold, Platinum, Lifetime
 
 ---

@@ -8,6 +8,8 @@ import '../../../../core/utils/snackbar_utils.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../../domain/repositories/pets_repository.dart';
 import '../../../reports/presentation/screens/create_report_screen.dart';
+import '../../../heat/presentation/providers/heat_provider.dart';
+import '../../../heat/presentation/screens/heat_calendar_screen.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
 import 'pet_form_screen.dart';
@@ -279,6 +281,13 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                       _FeaturesCard(
                         text: pet.features!,
                       ).animate().fadeIn(delay: 250.ms, duration: 350.ms),
+                    ],
+                    if (pet.sex != PetSex.male &&
+                        ref.watch(heatAvailableProvider)) ...[
+                      const SizedBox(height: 16),
+                      HeatPetCard(
+                        pet: pet,
+                      ).animate().fadeIn(delay: 280.ms, duration: 350.ms),
                     ],
                     const SizedBox(height: 24),
                     _ReportLostCard(

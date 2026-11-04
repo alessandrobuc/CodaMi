@@ -4797,4 +4797,191 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get scannerModelRetry => '重试';
+
+  @override
+  String get heatCalendar => '发情期日历';
+
+  @override
+  String heatCalendarOf(String name) {
+    return '$name的发情期日历';
+  }
+
+  @override
+  String get adminHeatSubtitle => '发情期：开关和各物种的典型值';
+
+  @override
+  String get heatRecord => '记录发情期';
+
+  @override
+  String get heatEdit => '编辑发情期';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days 天后',
+      one: '明天',
+      zero: '今天',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => '接下来预计的发情期';
+
+  @override
+  String get heatHistory => '历史记录';
+
+  @override
+  String get heatHistoryEmpty => '还没有记录发情期。点按“记录发情期”添加第一条。';
+
+  @override
+  String get heatOngoing => '进行中';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days 天',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote => '未来的日期只是估计，每只动物都不一样。有关繁育、绝育和健康问题，请咨询兽医。';
+
+  @override
+  String get heatInHeatNow => '正在发情期';
+
+  @override
+  String heatDayNumber(int day) {
+    return '第 $day 天';
+  }
+
+  @override
+  String get heatEndToday => '发情期今天结束';
+
+  @override
+  String get heatNextExpected => '下次发情期预计在';
+
+  @override
+  String get heatNoEstimate => '记录第一次发情期，即可查看下一次的预计时间。';
+
+  @override
+  String get heatNoEstimateMore => '再记录一次发情期，即可查看下一次的预计时间。';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return '周期约 $cycle 天 · 发情期约持续 $heat 天';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '根据 $count 次记录的发情期。',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical => '在有更多记录之前，使用该物种的典型值。';
+
+  @override
+  String get heatReminders => '提醒';
+
+  @override
+  String get heatRemindMe => '在下次发情期前提醒我';
+
+  @override
+  String get heatRemindNeedsEstimate => '有预计日期后即可使用。';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '提前 $days 天',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return '下次提醒：$date';
+  }
+
+  @override
+  String get heatDeleteConfirm => '删除这次发情期？';
+
+  @override
+  String get heatDeleteMessage => '它将从历史记录和估计中移除。';
+
+  @override
+  String get heatDelete => '删除';
+
+  @override
+  String get heatEndBeforeStart => '结束日期不能早于开始日期。';
+
+  @override
+  String get heatStart => '开始';
+
+  @override
+  String get heatEnd => '结束';
+
+  @override
+  String get heatStillInHeat => '仍在发情期';
+
+  @override
+  String get heatNotes => '备注';
+
+  @override
+  String get heatNotesHint => '行为、出血、看兽医…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return '正在发情期 · 第 $day 天';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return '下次发情期预计在 $date 左右';
+  }
+
+  @override
+  String get heatCardRecordFirst => '记录发情期，并在下次之前收到提醒';
+
+  @override
+  String get heatLegendRecorded => '已记录';
+
+  @override
+  String get heatLegendEstimated => '预计';
+
+  @override
+  String get heatLegendToday => '今天';
+
+  @override
+  String get heatAdminIntro =>
+      '主人记录母宠物的发情期。应用会估计下一次的时间，并可提前发送提醒。在宠物有自己的记录之前，使用典型值。';
+
+  @override
+  String get heatOnHelp => '开启：主人可在母宠物的页面看到发情期日历。';
+
+  @override
+  String get heatOffHelp => '关闭：仅管理员可见。';
+
+  @override
+  String get heatTypicalCycle => '典型周期（天）';
+
+  @override
+  String get heatTypicalHeat => '典型发情期长度（天）';
+
+  @override
+  String get heatTypicalHelp => '在宠物有两次记录之前使用。对于其他动物，周期为 0 表示在此之前不做估计。';
+
+  @override
+  String get heatInvalidValues => '周期：7 到 400 天（其他动物可为 0）。长度：1 到 60 天。';
 }

@@ -29,6 +29,8 @@ import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../shop/presentation/screens/admin_shop_screen.dart';
 import '../../../donations/presentation/admin_donations_screen.dart';
 import '../../../donations/presentation/support_screen.dart';
+import '../../../heat/presentation/screens/admin_heat_screen.dart';
+import '../../../heat/presentation/widgets/heat_widgets.dart';
 import '../../../scanner/presentation/screens/admin_scanner_screen.dart';
 import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/screens/admin_walks_screen.dart';
@@ -224,6 +226,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminScannerScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.calendar_month_rounded,
+                    color: heatColor,
+                    title: l10n.heatCalendar,
+                    subtitle: l10n.adminHeatSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminHeatScreen(),
                       ),
                     ),
                   ),

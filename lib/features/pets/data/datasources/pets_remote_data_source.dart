@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:flutter/foundation.dart';
+
 import '../../../../core/services/photo_uploader.dart';
+import '../../../heat/data/heat_repository.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../models/pets_model.dart';
 
@@ -66,6 +69,11 @@ class PetsRemoteDataSource {
   );
 
   Future<void> deletePet(Pet pet) async {
+    try {
+      await HeatRepository(db: _firestore).deleteForPet(pet.ownerId, pet.id);
+    } catch (e) {
+      debugPrint('Heat records not removed: $e');
+    }
     await _pets.doc(pet.id).delete();
     await _photos.deleteUnused(ownerId: pet.ownerId, urls: pet.photoUrls);
   }

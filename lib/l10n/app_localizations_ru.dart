@@ -5113,4 +5113,211 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Повторить';
+
+  @override
+  String get heatCalendar => 'Календарь течки';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Календарь течки: $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Течка: вкл./выкл. и типичные значения по видам';
+
+  @override
+  String get heatRecord => 'Записать течку';
+
+  @override
+  String get heatEdit => 'Изменить течку';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'Через $days дня',
+      many: 'Через $days дней',
+      few: 'Через $days дня',
+      one: 'Через $days день',
+      zero: 'Сегодня',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Следующие ожидаемые течки';
+
+  @override
+  String get heatHistory => 'История';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Течек пока нет. Нажмите «Записать течку», чтобы добавить первую.';
+
+  @override
+  String get heatOngoing => 'Продолжается';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days дня',
+      many: '$days дней',
+      few: '$days дня',
+      one: '$days день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Будущие даты — это оценка, и каждое животное индивидуально. Спросите ветеринара о вязке, стерилизации и любых вопросах здоровья.';
+
+  @override
+  String get heatInHeatNow => 'Сейчас течка';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'День $day';
+  }
+
+  @override
+  String get heatEndToday => 'Течка закончилась сегодня';
+
+  @override
+  String get heatNextExpected => 'Следующая течка ожидается около';
+
+  @override
+  String get heatNoEstimate =>
+      'Запишите первую течку, чтобы увидеть, когда ожидается следующая.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Запишите ещё одну течку, чтобы увидеть, когда ожидается следующая.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Цикл около $cycle дн. · течка длится около $heat дн.';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'По $count записанным течкам.',
+      one: 'По $count записанной течке.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Типичное значение для вида, пока записей мало.';
+
+  @override
+  String get heatReminders => 'Напоминания';
+
+  @override
+  String get heatRemindMe => 'Напомнить перед следующей течкой';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Доступно, когда появится ожидаемая дата.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'За $days дня',
+      many: 'За $days дней',
+      few: 'За $days дня',
+      one: 'За $days день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Следующее напоминание: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Удалить эту течку?';
+
+  @override
+  String get heatDeleteMessage => 'Она будет удалена из истории и оценок.';
+
+  @override
+  String get heatDelete => 'Удалить';
+
+  @override
+  String get heatEndBeforeStart => 'Конец не может быть раньше начала.';
+
+  @override
+  String get heatStart => 'Начало';
+
+  @override
+  String get heatEnd => 'Конец';
+
+  @override
+  String get heatStillInHeat => 'Течка продолжается';
+
+  @override
+  String get heatNotes => 'Заметки';
+
+  @override
+  String get heatNotesHint => 'Поведение, выделения, визит к ветеринару…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'Сейчас течка · день $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Следующая течка ожидается около $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Записывайте течки и получайте напоминание перед следующей';
+
+  @override
+  String get heatLegendRecorded => 'Записанная течка';
+
+  @override
+  String get heatLegendEstimated => 'Ожидается';
+
+  @override
+  String get heatLegendToday => 'Сегодня';
+
+  @override
+  String get heatAdminIntro =>
+      'Владельцы записывают течки своих самок. Приложение оценивает следующие и может заранее напомнить. Пока у животного нет своих записей, используются типичные значения.';
+
+  @override
+  String get heatOnHelp =>
+      'Вкл.: владельцы видят календарь течки на странице своих самок.';
+
+  @override
+  String get heatOffHelp => 'Выкл.: видят только администраторы.';
+
+  @override
+  String get heatTypicalCycle => 'Типичный цикл (дней)';
+
+  @override
+  String get heatTypicalHeat => 'Типичная длительность течки (дней)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Используются, пока у животного нет двух записанных течек. Для других животных цикл 0 означает: без оценки до тех пор.';
+
+  @override
+  String get heatInvalidValues =>
+      'Цикл: от 7 до 400 дней (0 можно для других животных). Длительность: от 1 до 60 дней.';
 }

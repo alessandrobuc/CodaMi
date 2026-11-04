@@ -8879,6 +8879,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try again'**
   String get scannerModelRetry;
+
+  /// No description provided for @heatCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat calendar'**
+  String get heatCalendar;
+
+  /// No description provided for @heatCalendarOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s heat calendar'**
+  String heatCalendarOf(String name);
+
+  /// No description provided for @adminHeatSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat cycles: on/off and typical values per species'**
+  String get adminHeatSubtitle;
+
+  /// No description provided for @heatRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Record a heat'**
+  String get heatRecord;
+
+  /// No description provided for @heatEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit heat'**
+  String get heatEdit;
+
+  /// No description provided for @heatInDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =0{Today} =1{Tomorrow} other{In {days} days}}'**
+  String heatInDays(int days);
+
+  /// No description provided for @heatUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Next expected heats'**
+  String get heatUpcoming;
+
+  /// No description provided for @heatHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get heatHistory;
+
+  /// No description provided for @heatHistoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No heats recorded yet. Tap “Record a heat” to add the first one.'**
+  String get heatHistoryEmpty;
+
+  /// No description provided for @heatOngoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Ongoing'**
+  String get heatOngoing;
+
+  /// No description provided for @heatLengthDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1 day} other{{days} days}}'**
+  String heatLengthDays(int days);
+
+  /// No description provided for @heatEstimateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Future dates are estimates and every animal is different. Ask your vet about breeding, spaying and any health concerns.'**
+  String get heatEstimateNote;
+
+  /// No description provided for @heatInHeatNow.
+  ///
+  /// In en, this message translates to:
+  /// **'In heat now'**
+  String get heatInHeatNow;
+
+  /// No description provided for @heatDayNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {day}'**
+  String heatDayNumber(int day);
+
+  /// No description provided for @heatEndToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat ended today'**
+  String get heatEndToday;
+
+  /// No description provided for @heatNextExpected.
+  ///
+  /// In en, this message translates to:
+  /// **'Next heat expected around'**
+  String get heatNextExpected;
+
+  /// No description provided for @heatNoEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Record the first heat to see when the next one is expected.'**
+  String get heatNoEstimate;
+
+  /// No description provided for @heatNoEstimateMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Record one more heat to see when the next one is expected.'**
+  String get heatNoEstimateMore;
+
+  /// No description provided for @heatCycleSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cycle about {cycle} days · heat lasts about {heat} days'**
+  String heatCycleSummary(int cycle, int heat);
+
+  /// No description provided for @heatBasedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Based on 1 recorded heat.} other{Based on {count} recorded heats.}}'**
+  String heatBasedOn(int count);
+
+  /// No description provided for @heatBasedOnTypical.
+  ///
+  /// In en, this message translates to:
+  /// **'Typical for the species until there are more records.'**
+  String get heatBasedOnTypical;
+
+  /// No description provided for @heatReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get heatReminders;
+
+  /// No description provided for @heatRemindMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind me before the next heat'**
+  String get heatRemindMe;
+
+  /// No description provided for @heatRemindNeedsEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Available once there\'s an expected date.'**
+  String get heatRemindNeedsEstimate;
+
+  /// No description provided for @heatRemindDaysBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1 day before} other{{days} days before}}'**
+  String heatRemindDaysBefore(int days);
+
+  /// No description provided for @heatNextReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Next reminder: {date}'**
+  String heatNextReminder(String date);
+
+  /// No description provided for @heatDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this heat?'**
+  String get heatDeleteConfirm;
+
+  /// No description provided for @heatDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed from the history and the estimates.'**
+  String get heatDeleteMessage;
+
+  /// No description provided for @heatDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get heatDelete;
+
+  /// No description provided for @heatEndBeforeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'The end can\'t be before the start.'**
+  String get heatEndBeforeStart;
+
+  /// No description provided for @heatStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get heatStart;
+
+  /// No description provided for @heatEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'End'**
+  String get heatEnd;
+
+  /// No description provided for @heatStillInHeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Still in heat'**
+  String get heatStillInHeat;
+
+  /// No description provided for @heatNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get heatNotes;
+
+  /// No description provided for @heatNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Behaviour, bleeding, vet visit…'**
+  String get heatNotesHint;
+
+  /// No description provided for @heatCardInHeat.
+  ///
+  /// In en, this message translates to:
+  /// **'In heat now · day {day}'**
+  String heatCardInHeat(int day);
+
+  /// No description provided for @heatCardNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next heat expected around {date}'**
+  String heatCardNext(String date);
+
+  /// No description provided for @heatCardRecordFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Record heats and get reminders before the next one'**
+  String get heatCardRecordFirst;
+
+  /// No description provided for @heatLegendRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded heat'**
+  String get heatLegendRecorded;
+
+  /// No description provided for @heatLegendEstimated.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected'**
+  String get heatLegendEstimated;
+
+  /// No description provided for @heatLegendToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get heatLegendToday;
+
+  /// No description provided for @heatAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners record their female pets\' heats. The app estimates the next ones and can send a reminder before. Typical values are used until a pet has its own records.'**
+  String get heatAdminIntro;
+
+  /// No description provided for @heatOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: owners see the heat calendar on their female pets\' pages.'**
+  String get heatOnHelp;
+
+  /// No description provided for @heatOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins can see it.'**
+  String get heatOffHelp;
+
+  /// No description provided for @heatTypicalCycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Typical cycle (days)'**
+  String get heatTypicalCycle;
+
+  /// No description provided for @heatTypicalHeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Typical heat length (days)'**
+  String get heatTypicalHeat;
+
+  /// No description provided for @heatTypicalHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Used until a pet has two recorded heats. For other animals, a cycle of 0 means no estimate until then.'**
+  String get heatTypicalHelp;
+
+  /// No description provided for @heatInvalidValues.
+  ///
+  /// In en, this message translates to:
+  /// **'Cycle: 7 to 400 days (0 allowed for other animals). Heat length: 1 to 60 days.'**
+  String get heatInvalidValues;
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,6 @@
 # CodaMi: Phase 5 Requests
 
-New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6). Everything else below is still to do.
+New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6) and the heat calendar (§5). Everything else below is still to do.
 
 _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner built Wed 4 Nov, to deploy and test; the rest not started)_
 
@@ -10,7 +10,7 @@ _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner built Wed 4 Nov,
 | 2 | 5 | Social sharing of reports | Partly (text share) | Not started | Medium (about 2 days) |
 | 3 | 6 | Recurring share reminders | No | Not started | Small (about half a day) |
 | 4 | 4 | Personal schedule, notes and reminders | No | Not started | Medium (2 to 3 days) |
-| 5 | 2 | Heat cycle calendar | No | Not started | Medium (about 2 days) |
+| 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
 | 6 | 1 | AI breed scanner | No (only photo moderation) | **Built Wed 4 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 7 | 8 | Profile tags, titles and achievements | Partly (invite levels) | Not started | Medium (about 3 days) |
 | 8 | 3 | Pet sitting marketplace | No | Not started | Large (6 to 8 days) |
@@ -78,7 +78,21 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Reminders arrive like push notifications, also with the app closed (scheduled on the phone so they work offline, kept in sync with Firestore; set again on a new phone after sign-in).
 - Private: only the owner can read (rules); deleted with the account.
 
-## 5. Heat calendar (request 2)
+## 5. Heat calendar (request 2): built Wed 4 Nov
+
+**Built**
+- Per pet (all pets except males), from a **Heat calendar** card on the pet's page: status (in heat now · day N, or next heat expected around a date and in how many days, or "record the first heat"), cycle and heat length with what they're based on, month calendar (recorded days in full colour, expected ones lighter, today circled), the next 3 expected heats, reminders, history (tap to edit or delete), a vet / estimate note.
+- Record or edit a heat: start, end or "still in heat", notes (500). "Heat ended today" for an ongoing heat.
+- Estimate: average of the pet's last 4 cycles; entries within a week of another are treated as duplicates; until there are 2 records, the typical cycle for the species (admin setting); heat length from the pet's records or typical. Past estimates without a record are skipped to the next one.
+- Reminders: on/off and 1 / 3 / 7 / 14 days before; the app stores the next expected start in `heatReminders/{petId}` (kept in step when records change); the daily `heatReminderSweep` (09:00 Rome) sends the push in the owner's language and plans the next cycle; missed days are skipped, never sent late. Reminders keep coming without opening the app.
+- Admin → More → Heat calendar: show to users (saves straight away; admins see it while off), typical cycle and heat length for dogs (180 / 18), cats (21 / 7), other animals (0 = no estimate until 2 records / 7).
+- Private: only the owner reads or writes their pets' heats and reminders (not even admins); removed when the pet or the account is deleted.
+- 48 texts in 10 languages (calore, Läufigkeit, chaleurs, celo, cio, течка…) + server push texts in 10 languages; 11 app tests, 4 server tests, 32 emulator checks; test plan `TEST_SCENARIO_HEAT_2026-11-04.md`.
+
+**Left**
+- Deploy functions and rules, phone test, client answer on which other animals (the "other" typical cycle can be set in Admin meanwhile).
+
+**Planned (kept for reference)**
 
 **Already there**
 - Nothing for cycles. Uses the schedule and reminders of request 4.

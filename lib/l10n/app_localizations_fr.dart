@@ -5133,4 +5133,207 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Réessayer';
+
+  @override
+  String get heatCalendar => 'Calendrier des chaleurs';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Calendrier des chaleurs de $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Chaleurs : activé/désactivé et valeurs typiques par espèce';
+
+  @override
+  String get heatRecord => 'Noter des chaleurs';
+
+  @override
+  String get heatEdit => 'Modifier les chaleurs';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'Dans $days jours',
+      one: 'Demain',
+      zero: 'Aujourd\'hui',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Prochaines chaleurs prévues';
+
+  @override
+  String get heatHistory => 'Historique';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Aucune chaleur notée. Touchez « Noter des chaleurs » pour ajouter la première.';
+
+  @override
+  String get heatOngoing => 'En cours';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days jours',
+      one: '1 jour',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Les dates futures sont des estimations et chaque animal est différent. Demandez à votre vétérinaire pour la reproduction, la stérilisation et toute question de santé.';
+
+  @override
+  String get heatInHeatNow => 'En chaleur';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Jour $day';
+  }
+
+  @override
+  String get heatEndToday => 'Chaleurs terminées aujourd\'hui';
+
+  @override
+  String get heatNextExpected => 'Prochaines chaleurs prévues vers le';
+
+  @override
+  String get heatNoEstimate =>
+      'Notez les premières chaleurs pour voir quand les prochaines sont prévues.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Notez encore une période de chaleurs pour voir quand les prochaines sont prévues.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Cycle d\'environ $cycle jours · les chaleurs durent environ $heat jours';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'D\'après $count périodes notées.',
+      one: 'D\'après 1 période notée.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Valeur typique de l\'espèce tant qu\'il n\'y a pas plus de données.';
+
+  @override
+  String get heatReminders => 'Rappels';
+
+  @override
+  String get heatRemindMe => 'Me prévenir avant les prochaines chaleurs';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Disponible dès qu\'une date est prévue.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days jours avant',
+      one: '1 jour avant',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Prochain rappel : $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Supprimer ces chaleurs ?';
+
+  @override
+  String get heatDeleteMessage =>
+      'Elles seront retirées de l\'historique et des estimations.';
+
+  @override
+  String get heatDelete => 'Supprimer';
+
+  @override
+  String get heatEndBeforeStart => 'La fin ne peut pas être avant le début.';
+
+  @override
+  String get heatStart => 'Début';
+
+  @override
+  String get heatEnd => 'Fin';
+
+  @override
+  String get heatStillInHeat => 'Toujours en chaleur';
+
+  @override
+  String get heatNotes => 'Notes';
+
+  @override
+  String get heatNotesHint =>
+      'Comportement, pertes, visite chez le vétérinaire…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'En chaleur · jour $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Prochaines chaleurs prévues vers le $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Notez les chaleurs et recevez un rappel avant les prochaines';
+
+  @override
+  String get heatLegendRecorded => 'Chaleurs notées';
+
+  @override
+  String get heatLegendEstimated => 'Prévues';
+
+  @override
+  String get heatLegendToday => 'Aujourd\'hui';
+
+  @override
+  String get heatAdminIntro =>
+      'Les propriétaires notent les chaleurs de leurs femelles. L\'app estime les prochaines et peut envoyer un rappel avant. Des valeurs typiques sont utilisées tant que l\'animal n\'a pas ses propres données.';
+
+  @override
+  String get heatOnHelp =>
+      'Activé : les propriétaires voient le calendrier des chaleurs sur la page de leurs femelles.';
+
+  @override
+  String get heatOffHelp => 'Désactivé : seuls les admins le voient.';
+
+  @override
+  String get heatTypicalCycle => 'Cycle typique (jours)';
+
+  @override
+  String get heatTypicalHeat => 'Durée typique des chaleurs (jours)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Utilisées tant que l\'animal n\'a pas deux périodes notées. Pour les autres animaux, un cycle de 0 signifie pas d\'estimation d\'ici là.';
+
+  @override
+  String get heatInvalidValues =>
+      'Cycle : 7 à 400 jours (0 accepté pour les autres animaux). Durée : 1 à 60 jours.';
 }

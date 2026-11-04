@@ -5102,4 +5102,207 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Tentar novamente';
+
+  @override
+  String get heatCalendar => 'Calendário do cio';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Calendário do cio de $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Cio: ligar/desligar e valores típicos por espécie';
+
+  @override
+  String get heatRecord => 'Registar um cio';
+
+  @override
+  String get heatEdit => 'Editar cio';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'Daqui a $days dias',
+      one: 'Amanhã',
+      zero: 'Hoje',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Próximos cios previstos';
+
+  @override
+  String get heatHistory => 'Histórico';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Ainda não há cios registados. Toque em «Registar um cio» para adicionar o primeiro.';
+
+  @override
+  String get heatOngoing => 'A decorrer';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days dias',
+      one: '1 dia',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'As datas futuras são estimativas e cada animal é diferente. Fale com o seu veterinário sobre reprodução, esterilização e qualquer dúvida de saúde.';
+
+  @override
+  String get heatInHeatNow => 'Com cio agora';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Dia $day';
+  }
+
+  @override
+  String get heatEndToday => 'O cio terminou hoje';
+
+  @override
+  String get heatNextExpected => 'Próximo cio previsto por volta de';
+
+  @override
+  String get heatNoEstimate =>
+      'Registe o primeiro cio para ver quando se espera o próximo.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Registe mais um cio para ver quando se espera o próximo.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Ciclo de cerca de $cycle dias · o cio dura cerca de $heat dias';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Com base em $count cios registados.',
+      one: 'Com base em 1 cio registado.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Valor típico da espécie até haver mais registos.';
+
+  @override
+  String get heatReminders => 'Lembretes';
+
+  @override
+  String get heatRemindMe => 'Avisar-me antes do próximo cio';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Disponível quando houver uma data prevista.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days dias antes',
+      one: '1 dia antes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Próximo lembrete: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Eliminar este cio?';
+
+  @override
+  String get heatDeleteMessage =>
+      'Será retirado do histórico e das estimativas.';
+
+  @override
+  String get heatDelete => 'Eliminar';
+
+  @override
+  String get heatEndBeforeStart => 'O fim não pode ser antes do início.';
+
+  @override
+  String get heatStart => 'Início';
+
+  @override
+  String get heatEnd => 'Fim';
+
+  @override
+  String get heatStillInHeat => 'Ainda com cio';
+
+  @override
+  String get heatNotes => 'Notas';
+
+  @override
+  String get heatNotesHint =>
+      'Comportamento, perdas de sangue, ida ao veterinário…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'Com cio agora · dia $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Próximo cio previsto por volta de $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Registe os cios e receba um lembrete antes do próximo';
+
+  @override
+  String get heatLegendRecorded => 'Cio registado';
+
+  @override
+  String get heatLegendEstimated => 'Previsto';
+
+  @override
+  String get heatLegendToday => 'Hoje';
+
+  @override
+  String get heatAdminIntro =>
+      'Os donos registam os cios das suas fêmeas. A app estima os próximos e pode enviar um lembrete antes. São usados valores típicos até o animal ter os seus próprios registos.';
+
+  @override
+  String get heatOnHelp =>
+      'Ligado: os donos veem o calendário do cio na página das suas fêmeas.';
+
+  @override
+  String get heatOffHelp => 'Desligado: só os administradores o veem.';
+
+  @override
+  String get heatTypicalCycle => 'Ciclo típico (dias)';
+
+  @override
+  String get heatTypicalHeat => 'Duração típica do cio (dias)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Usados até o animal ter dois cios registados. Para outros animais, um ciclo de 0 significa sem estimativa até lá.';
+
+  @override
+  String get heatInvalidValues =>
+      'Ciclo: 7 a 400 dias (0 permitido para outros animais). Duração: 1 a 60 dias.';
 }

@@ -5050,4 +5050,204 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'फिर कोशिश करें';
+
+  @override
+  String get heatCalendar => 'हीट कैलेंडर';
+
+  @override
+  String heatCalendarOf(String name) {
+    return '$name का हीट कैलेंडर';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'हीट चक्र: चालू/बंद और हर प्रजाति के सामान्य मान';
+
+  @override
+  String get heatRecord => 'हीट दर्ज करें';
+
+  @override
+  String get heatEdit => 'हीट बदलें';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days दिन में',
+      one: 'कल',
+      zero: 'आज',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'आने वाली अनुमानित हीट';
+
+  @override
+  String get heatHistory => 'इतिहास';
+
+  @override
+  String get heatHistoryEmpty =>
+      'अभी कोई हीट दर्ज नहीं है। पहली जोड़ने के लिए “हीट दर्ज करें” पर टैप करें।';
+
+  @override
+  String get heatOngoing => 'जारी है';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days दिन',
+      one: '1 दिन',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'आगे की तारीखें अनुमान हैं और हर जानवर अलग होता है। प्रजनन, नसबंदी और सेहत से जुड़े सवालों के लिए अपने पशु चिकित्सक से पूछें।';
+
+  @override
+  String get heatInHeatNow => 'अभी हीट में';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'दिन $day';
+  }
+
+  @override
+  String get heatEndToday => 'हीट आज खत्म हुई';
+
+  @override
+  String get heatNextExpected => 'अगली हीट लगभग इस दिन';
+
+  @override
+  String get heatNoEstimate =>
+      'पहली हीट दर्ज करें ताकि पता चले कि अगली कब आएगी।';
+
+  @override
+  String get heatNoEstimateMore =>
+      'एक और हीट दर्ज करें ताकि पता चले कि अगली कब आएगी।';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'चक्र लगभग $cycle दिन · हीट लगभग $heat दिन चलती है';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count दर्ज हीट के आधार पर।',
+      one: '1 दर्ज हीट के आधार पर।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'ज़्यादा रिकॉर्ड होने तक प्रजाति का सामान्य मान।';
+
+  @override
+  String get heatReminders => 'रिमाइंडर';
+
+  @override
+  String get heatRemindMe => 'अगली हीट से पहले याद दिलाएँ';
+
+  @override
+  String get heatRemindNeedsEstimate => 'अनुमानित तारीख होने पर उपलब्ध।';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days दिन पहले',
+      one: '1 दिन पहले',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'अगला रिमाइंडर: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'यह हीट हटाएँ?';
+
+  @override
+  String get heatDeleteMessage => 'इसे इतिहास और अनुमानों से हटा दिया जाएगा।';
+
+  @override
+  String get heatDelete => 'हटाएँ';
+
+  @override
+  String get heatEndBeforeStart => 'अंत, शुरुआत से पहले नहीं हो सकता।';
+
+  @override
+  String get heatStart => 'शुरुआत';
+
+  @override
+  String get heatEnd => 'अंत';
+
+  @override
+  String get heatStillInHeat => 'अभी भी हीट में';
+
+  @override
+  String get heatNotes => 'नोट्स';
+
+  @override
+  String get heatNotesHint => 'व्यवहार, खून आना, पशु चिकित्सक के पास जाना…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'अभी हीट में · दिन $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'अगली हीट लगभग $date को';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'हीट दर्ज करें और अगली से पहले रिमाइंडर पाएँ';
+
+  @override
+  String get heatLegendRecorded => 'दर्ज हीट';
+
+  @override
+  String get heatLegendEstimated => 'अनुमानित';
+
+  @override
+  String get heatLegendToday => 'आज';
+
+  @override
+  String get heatAdminIntro =>
+      'मालिक अपनी मादा पालतू की हीट दर्ज करते हैं। ऐप अगली हीट का अनुमान लगाता है और पहले से रिमाइंडर भेज सकता है। जब तक पालतू के अपने रिकॉर्ड न हों, सामान्य मान इस्तेमाल होते हैं।';
+
+  @override
+  String get heatOnHelp =>
+      'चालू: मालिक अपनी मादा पालतू के पेज पर हीट कैलेंडर देखते हैं।';
+
+  @override
+  String get heatOffHelp => 'बंद: सिर्फ़ एडमिन देख सकते हैं।';
+
+  @override
+  String get heatTypicalCycle => 'सामान्य चक्र (दिन)';
+
+  @override
+  String get heatTypicalHeat => 'हीट की सामान्य अवधि (दिन)';
+
+  @override
+  String get heatTypicalHelp =>
+      'जब तक पालतू की दो हीट दर्ज न हों, ये इस्तेमाल होते हैं। दूसरे जानवरों के लिए 0 का मतलब है तब तक कोई अनुमान नहीं।';
+
+  @override
+  String get heatInvalidValues =>
+      'चक्र: 7 से 400 दिन (दूसरे जानवरों के लिए 0 भी)। अवधि: 1 से 60 दिन।';
 }

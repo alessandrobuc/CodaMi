@@ -5129,4 +5129,206 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Erneut versuchen';
+
+  @override
+  String get heatCalendar => 'Läufigkeitskalender';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Läufigkeitskalender von $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Läufigkeit: an/aus und typische Werte pro Tierart';
+
+  @override
+  String get heatRecord => 'Läufigkeit eintragen';
+
+  @override
+  String get heatEdit => 'Läufigkeit bearbeiten';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'In $days Tagen',
+      one: 'Morgen',
+      zero: 'Heute',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Nächste erwartete Läufigkeiten';
+
+  @override
+  String get heatHistory => 'Verlauf';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Noch keine Läufigkeit eingetragen. Tippe auf „Läufigkeit eintragen“, um die erste hinzuzufügen.';
+
+  @override
+  String get heatOngoing => 'Läuft noch';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage',
+      one: '1 Tag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Künftige Daten sind Schätzungen, und jedes Tier ist anders. Frag deinen Tierarzt zu Zucht, Kastration und Gesundheitsfragen.';
+
+  @override
+  String get heatInHeatNow => 'Gerade läufig';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Tag $day';
+  }
+
+  @override
+  String get heatEndToday => 'Läufigkeit heute beendet';
+
+  @override
+  String get heatNextExpected => 'Nächste Läufigkeit erwartet um den';
+
+  @override
+  String get heatNoEstimate =>
+      'Trage die erste Läufigkeit ein, um zu sehen, wann die nächste erwartet wird.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Trage noch eine Läufigkeit ein, um zu sehen, wann die nächste erwartet wird.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Zyklus etwa $cycle Tage · Läufigkeit dauert etwa $heat Tage';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Basierend auf $count eingetragenen Läufigkeiten.',
+      one: 'Basierend auf 1 eingetragenen Läufigkeit.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Typischer Wert der Tierart, bis mehr Einträge da sind.';
+
+  @override
+  String get heatReminders => 'Erinnerungen';
+
+  @override
+  String get heatRemindMe => 'Vor der nächsten Läufigkeit erinnern';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Verfügbar, sobald es ein erwartetes Datum gibt.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage vorher',
+      one: '1 Tag vorher',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Nächste Erinnerung: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Diese Läufigkeit löschen?';
+
+  @override
+  String get heatDeleteMessage =>
+      'Sie wird aus dem Verlauf und den Schätzungen entfernt.';
+
+  @override
+  String get heatDelete => 'Löschen';
+
+  @override
+  String get heatEndBeforeStart => 'Das Ende kann nicht vor dem Beginn liegen.';
+
+  @override
+  String get heatStart => 'Beginn';
+
+  @override
+  String get heatEnd => 'Ende';
+
+  @override
+  String get heatStillInHeat => 'Noch läufig';
+
+  @override
+  String get heatNotes => 'Notizen';
+
+  @override
+  String get heatNotesHint => 'Verhalten, Blutung, Tierarztbesuch…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'Gerade läufig · Tag $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Nächste Läufigkeit erwartet um den $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Läufigkeiten eintragen und vor der nächsten erinnert werden';
+
+  @override
+  String get heatLegendRecorded => 'Eingetragen';
+
+  @override
+  String get heatLegendEstimated => 'Erwartet';
+
+  @override
+  String get heatLegendToday => 'Heute';
+
+  @override
+  String get heatAdminIntro =>
+      'Besitzer tragen die Läufigkeiten ihrer weiblichen Tiere ein. Die App schätzt die nächsten und kann vorher erinnern. Typische Werte gelten, bis ein Tier eigene Einträge hat.';
+
+  @override
+  String get heatOnHelp =>
+      'An: Besitzer sehen den Läufigkeitskalender auf der Seite ihrer weiblichen Tiere.';
+
+  @override
+  String get heatOffHelp => 'Aus: Nur Admins sehen ihn.';
+
+  @override
+  String get heatTypicalCycle => 'Typischer Zyklus (Tage)';
+
+  @override
+  String get heatTypicalHeat => 'Typische Dauer der Läufigkeit (Tage)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Gilt, bis ein Tier zwei eingetragene Läufigkeiten hat. Bei anderen Tieren bedeutet ein Zyklus von 0: keine Schätzung bis dahin.';
+
+  @override
+  String get heatInvalidValues =>
+      'Zyklus: 7 bis 400 Tage (0 erlaubt bei anderen Tieren). Dauer: 1 bis 60 Tage.';
 }

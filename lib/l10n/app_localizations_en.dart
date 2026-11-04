@@ -5051,4 +5051,206 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Try again';
+
+  @override
+  String get heatCalendar => 'Heat calendar';
+
+  @override
+  String heatCalendarOf(String name) {
+    return '$name\'s heat calendar';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Heat cycles: on/off and typical values per species';
+
+  @override
+  String get heatRecord => 'Record a heat';
+
+  @override
+  String get heatEdit => 'Edit heat';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'In $days days',
+      one: 'Tomorrow',
+      zero: 'Today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Next expected heats';
+
+  @override
+  String get heatHistory => 'History';
+
+  @override
+  String get heatHistoryEmpty =>
+      'No heats recorded yet. Tap “Record a heat” to add the first one.';
+
+  @override
+  String get heatOngoing => 'Ongoing';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Future dates are estimates and every animal is different. Ask your vet about breeding, spaying and any health concerns.';
+
+  @override
+  String get heatInHeatNow => 'In heat now';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Day $day';
+  }
+
+  @override
+  String get heatEndToday => 'Heat ended today';
+
+  @override
+  String get heatNextExpected => 'Next heat expected around';
+
+  @override
+  String get heatNoEstimate =>
+      'Record the first heat to see when the next one is expected.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Record one more heat to see when the next one is expected.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Cycle about $cycle days · heat lasts about $heat days';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Based on $count recorded heats.',
+      one: 'Based on 1 recorded heat.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Typical for the species until there are more records.';
+
+  @override
+  String get heatReminders => 'Reminders';
+
+  @override
+  String get heatRemindMe => 'Remind me before the next heat';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Available once there\'s an expected date.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days before',
+      one: '1 day before',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Next reminder: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Delete this heat?';
+
+  @override
+  String get heatDeleteMessage =>
+      'It will be removed from the history and the estimates.';
+
+  @override
+  String get heatDelete => 'Delete';
+
+  @override
+  String get heatEndBeforeStart => 'The end can\'t be before the start.';
+
+  @override
+  String get heatStart => 'Start';
+
+  @override
+  String get heatEnd => 'End';
+
+  @override
+  String get heatStillInHeat => 'Still in heat';
+
+  @override
+  String get heatNotes => 'Notes';
+
+  @override
+  String get heatNotesHint => 'Behaviour, bleeding, vet visit…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'In heat now · day $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Next heat expected around $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Record heats and get reminders before the next one';
+
+  @override
+  String get heatLegendRecorded => 'Recorded heat';
+
+  @override
+  String get heatLegendEstimated => 'Expected';
+
+  @override
+  String get heatLegendToday => 'Today';
+
+  @override
+  String get heatAdminIntro =>
+      'Owners record their female pets\' heats. The app estimates the next ones and can send a reminder before. Typical values are used until a pet has its own records.';
+
+  @override
+  String get heatOnHelp =>
+      'On: owners see the heat calendar on their female pets\' pages.';
+
+  @override
+  String get heatOffHelp => 'Off: only admins can see it.';
+
+  @override
+  String get heatTypicalCycle => 'Typical cycle (days)';
+
+  @override
+  String get heatTypicalHeat => 'Typical heat length (days)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Used until a pet has two recorded heats. For other animals, a cycle of 0 means no estimate until then.';
+
+  @override
+  String get heatInvalidValues =>
+      'Cycle: 7 to 400 days (0 allowed for other animals). Heat length: 1 to 60 days.';
 }

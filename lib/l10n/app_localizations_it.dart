@@ -5112,4 +5112,205 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Riprova';
+
+  @override
+  String get heatCalendar => 'Calendario del calore';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Calendario del calore di $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Cicli di calore: on/off e valori tipici per specie';
+
+  @override
+  String get heatRecord => 'Registra un calore';
+
+  @override
+  String get heatEdit => 'Modifica calore';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'Tra $days giorni',
+      one: 'Domani',
+      zero: 'Oggi',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Prossimi calori previsti';
+
+  @override
+  String get heatHistory => 'Storico';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Nessun calore registrato. Tocca “Registra un calore” per aggiungere il primo.';
+
+  @override
+  String get heatOngoing => 'In corso';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days giorni',
+      one: '1 giorno',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Le date future sono stime e ogni animale è diverso. Chiedi al veterinario per accoppiamento, sterilizzazione e dubbi sulla salute.';
+
+  @override
+  String get heatInHeatNow => 'In calore ora';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Giorno $day';
+  }
+
+  @override
+  String get heatEndToday => 'Il calore è finito oggi';
+
+  @override
+  String get heatNextExpected => 'Prossimo calore previsto intorno al';
+
+  @override
+  String get heatNoEstimate =>
+      'Registra il primo calore per vedere quando è previsto il prossimo.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Registra un altro calore per vedere quando è previsto il prossimo.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Ciclo di circa $cycle giorni · il calore dura circa $heat giorni';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'In base a $count calori registrati.',
+      one: 'In base a 1 calore registrato.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Valore tipico della specie finché non ci sono altri dati.';
+
+  @override
+  String get heatReminders => 'Promemoria';
+
+  @override
+  String get heatRemindMe => 'Avvisami prima del prossimo calore';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Disponibile quando c\'è una data prevista.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days giorni prima',
+      one: '1 giorno prima',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Prossimo promemoria: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => 'Eliminare questo calore?';
+
+  @override
+  String get heatDeleteMessage => 'Verrà tolto dallo storico e dalle stime.';
+
+  @override
+  String get heatDelete => 'Elimina';
+
+  @override
+  String get heatEndBeforeStart => 'La fine non può essere prima dell\'inizio.';
+
+  @override
+  String get heatStart => 'Inizio';
+
+  @override
+  String get heatEnd => 'Fine';
+
+  @override
+  String get heatStillInHeat => 'Ancora in calore';
+
+  @override
+  String get heatNotes => 'Note';
+
+  @override
+  String get heatNotesHint => 'Comportamento, perdite, visita dal veterinario…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'In calore ora · giorno $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Prossimo calore previsto intorno al $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Registra i calori e ricevi un promemoria prima del prossimo';
+
+  @override
+  String get heatLegendRecorded => 'Calore registrato';
+
+  @override
+  String get heatLegendEstimated => 'Previsto';
+
+  @override
+  String get heatLegendToday => 'Oggi';
+
+  @override
+  String get heatAdminIntro =>
+      'I proprietari registrano i calori delle loro femmine. L\'app stima i prossimi e può inviare un promemoria prima. Si usano valori tipici finché l\'animale non ha dati propri.';
+
+  @override
+  String get heatOnHelp =>
+      'Attivo: i proprietari vedono il calendario del calore nella pagina delle loro femmine.';
+
+  @override
+  String get heatOffHelp => 'Disattivo: solo gli admin lo vedono.';
+
+  @override
+  String get heatTypicalCycle => 'Ciclo tipico (giorni)';
+
+  @override
+  String get heatTypicalHeat => 'Durata tipica del calore (giorni)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Usati finché l\'animale non ha due calori registrati. Per gli altri animali, un ciclo di 0 significa nessuna stima fino ad allora.';
+
+  @override
+  String get heatInvalidValues =>
+      'Ciclo: da 7 a 400 giorni (0 ammesso per gli altri animali). Durata: da 1 a 60 giorni.';
 }

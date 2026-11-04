@@ -5112,4 +5112,207 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get scannerModelRetry => 'Reintentar';
+
+  @override
+  String get heatCalendar => 'Calendario de celo';
+
+  @override
+  String heatCalendarOf(String name) {
+    return 'Calendario de celo de $name';
+  }
+
+  @override
+  String get adminHeatSubtitle =>
+      'Celo: activar/desactivar y valores típicos por especie';
+
+  @override
+  String get heatRecord => 'Registrar un celo';
+
+  @override
+  String get heatEdit => 'Editar celo';
+
+  @override
+  String heatInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'En $days días',
+      one: 'Mañana',
+      zero: 'Hoy',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatUpcoming => 'Próximos celos previstos';
+
+  @override
+  String get heatHistory => 'Historial';
+
+  @override
+  String get heatHistoryEmpty =>
+      'Aún no hay celos registrados. Toca «Registrar un celo» para añadir el primero.';
+
+  @override
+  String get heatOngoing => 'En curso';
+
+  @override
+  String heatLengthDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days días',
+      one: '1 día',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatEstimateNote =>
+      'Las fechas futuras son estimaciones y cada animal es distinto. Consulta a tu veterinario sobre cría, esterilización y cualquier duda de salud.';
+
+  @override
+  String get heatInHeatNow => 'En celo ahora';
+
+  @override
+  String heatDayNumber(int day) {
+    return 'Día $day';
+  }
+
+  @override
+  String get heatEndToday => 'El celo terminó hoy';
+
+  @override
+  String get heatNextExpected => 'Próximo celo previsto hacia el';
+
+  @override
+  String get heatNoEstimate =>
+      'Registra el primer celo para ver cuándo se espera el siguiente.';
+
+  @override
+  String get heatNoEstimateMore =>
+      'Registra un celo más para ver cuándo se espera el siguiente.';
+
+  @override
+  String heatCycleSummary(int cycle, int heat) {
+    return 'Ciclo de unos $cycle días · el celo dura unos $heat días';
+  }
+
+  @override
+  String heatBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Según $count celos registrados.',
+      one: 'Según 1 celo registrado.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get heatBasedOnTypical =>
+      'Valor típico de la especie hasta que haya más registros.';
+
+  @override
+  String get heatReminders => 'Recordatorios';
+
+  @override
+  String get heatRemindMe => 'Avisarme antes del próximo celo';
+
+  @override
+  String get heatRemindNeedsEstimate =>
+      'Disponible cuando haya una fecha prevista.';
+
+  @override
+  String heatRemindDaysBefore(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days días antes',
+      one: '1 día antes',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String heatNextReminder(String date) {
+    return 'Próximo recordatorio: $date';
+  }
+
+  @override
+  String get heatDeleteConfirm => '¿Eliminar este celo?';
+
+  @override
+  String get heatDeleteMessage =>
+      'Se quitará del historial y de las estimaciones.';
+
+  @override
+  String get heatDelete => 'Eliminar';
+
+  @override
+  String get heatEndBeforeStart => 'El final no puede ser antes del inicio.';
+
+  @override
+  String get heatStart => 'Inicio';
+
+  @override
+  String get heatEnd => 'Fin';
+
+  @override
+  String get heatStillInHeat => 'Todavía en celo';
+
+  @override
+  String get heatNotes => 'Notas';
+
+  @override
+  String get heatNotesHint =>
+      'Comportamiento, sangrado, visita al veterinario…';
+
+  @override
+  String heatCardInHeat(int day) {
+    return 'En celo ahora · día $day';
+  }
+
+  @override
+  String heatCardNext(String date) {
+    return 'Próximo celo previsto hacia el $date';
+  }
+
+  @override
+  String get heatCardRecordFirst =>
+      'Registra los celos y recibe un aviso antes del siguiente';
+
+  @override
+  String get heatLegendRecorded => 'Celo registrado';
+
+  @override
+  String get heatLegendEstimated => 'Previsto';
+
+  @override
+  String get heatLegendToday => 'Hoy';
+
+  @override
+  String get heatAdminIntro =>
+      'Los dueños registran los celos de sus hembras. La app estima los siguientes y puede enviar un recordatorio antes. Se usan valores típicos hasta que el animal tenga sus propios registros.';
+
+  @override
+  String get heatOnHelp =>
+      'Activado: los dueños ven el calendario de celo en la página de sus hembras.';
+
+  @override
+  String get heatOffHelp => 'Desactivado: solo los administradores lo ven.';
+
+  @override
+  String get heatTypicalCycle => 'Ciclo típico (días)';
+
+  @override
+  String get heatTypicalHeat => 'Duración típica del celo (días)';
+
+  @override
+  String get heatTypicalHelp =>
+      'Se usan hasta que el animal tenga dos celos registrados. Para otros animales, un ciclo de 0 significa sin estimación hasta entonces.';
+
+  @override
+  String get heatInvalidValues =>
+      'Ciclo: de 7 a 400 días (0 permitido para otros animales). Duración: de 1 a 60 días.';
 }

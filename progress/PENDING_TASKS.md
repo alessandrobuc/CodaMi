@@ -2,11 +2,13 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Wed 4 Nov 2026 (phase 5 go-ahead; AI breed scanner built, to deploy and test)_
+_Last updated: Wed 4 Nov 2026 (phase 5: AI breed scanner online; heat calendar built, to deploy and test)_
 
 ---
 
 ## 1. Testing now
+
+- [ ] **Heat calendar (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules` (new `heatReminderSweep`, rules for `heatCycles`, `heatReminders`, `config/heat`); new build; phone test with `TEST_SCENARIO_HEAT_2026-11-04.md`; then Admin → More → Heat calendar → Show to users
 
 - [ ] **Scanner model list (Wed 4 Nov):** the first deploy of `scannerModels` left out the public invoker, so the app got "Something went wrong" (log: "The request was not authorized to invoke this service"). Fixed in the code (`invoker: "public"`); run `firebase deploy --only functions:scannerModels`, then Admin → Breed scanner → AI model should show the list. If not: Cloud Run → scannermodels → Security → Allow public access (the function still checks for an admin)
 - [ ] **AI breed scanner (Wed 4 Nov):** ~~enable Vertex AI API~~ done; ~~deploy functions and rules~~ done; first scan tested and working; phone test with `TEST_SCENARIO_SCANNER_2026-11-04.md` (dog, cat, mix, other animal, blurry, no animal; Italian and Arabic); then Admin → More → Breed scanner → Show to users. If scans fail with a permission error, give the functions' service account the "Vertex AI User" role
@@ -49,12 +51,12 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner.
+- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner, the heat calendar.
   - [ ] 1. Feedback (request 7, about 1 day): current feedback entry → Google Play review; separate internal feedback (type, optional stars, text), asked after 10-20 uses of a feature, 2-week cooldown, admin list with filters and settings
   - [ ] 2. Social sharing (request 5, about 2 days): pop-up after a lost or found report, share image (photo, status, details, logo), public report page with link, WhatsApp / Facebook with link, Instagram / TikTok image only
   - [ ] 3. Share reminders (request 6, about half a day): first after X days, then weekly, off switch for users and admin, client's text in 10 languages
   - [ ] 4. Schedule and reminders (request 4, 2-3 days): notes, appointments, vet, vaccines, medicine, grooming, feeding; repeat, done, edit, delete; reminders with the app closed; private
-  - [ ] 5. Heat calendar (request 2, about 2 days): start / end, history, notes, next cycles estimated per pet and species, reminders before
+  - [x] 5. Heat calendar (request 2): **built Wed 4 Nov** (pet page card, calendar, estimates, history, reminders by the daily sweep, admin settings). Left: deploy, phone test (`TEST_SCENARIO_HEAT_2026-11-04.md`), switch on for users
   - [x] 6. AI breed scanner (request 1): **built Wed 4 Nov** (Gemini on Vertex AI, admin settings, Profile and pet form, save breed to a pet). Left: enable Vertex AI API, deploy, phone test (`TEST_SCENARIO_SCANNER_2026-11-04.md`), switch on for users
   - [ ] 7. Titles and achievements (request 8, about 3 days): tags and titles with levels, page with locked titles, requirements and progress, title on the profile, donor titles by total donated (after donation payments)
   - [ ] 8. Pet sitting (request 3, 6-8 days): requests, sitter profiles, browse and offer, chat between users, both confirm the service, verified reviews only, reports, blocking, admin moderation
@@ -117,6 +119,8 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Wed 4 Nov: heat calendar (phase 5, request 2): card on female pets' pages, calendar with recorded and expected heats, estimate from the pet's own cycles (typical per species until 2 records, duplicates ignored), history with edit / delete, "heat ended today", reminders 1/3/7/14 days before sent by the new daily `heatReminderSweep` in the owner's language, Admin → More → Heat calendar (instant switch, typical values), private rules, removed with the pet or the account. 48 texts in 10 languages, 11 new app tests (144), 4 new server tests (93), 32 new emulator checks (384). Not deployed yet
 
 - Wed 4 Nov: scanner card at the top of the Pets tab ("Which breed is it?", only while the scanner is on), besides Profile and the pet form. Needs a new build
 - Wed 4 Nov: Admin → Breed scanner: the "Show to users" switch now saves straight away (only the switch; the scans-per-day number and the model still use Save). Needs a new build
