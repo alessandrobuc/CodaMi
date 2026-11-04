@@ -14,6 +14,7 @@ _Last updated: Tue 3 Nov 2026_
   3. `firebase deploy --only functions`
   4. Check city search, street search, the pin's street name and Places to walk in the app
 - [ ] **Places (server) key:** API restrictions = Places API (New) + Geocoding API only
+- [ ] **Vertex AI API** enabled in Google Cloud (needed by the AI breed scanner; the functions use the project's service account, no key)
 - [ ] **Geocoding API** enabled in Google Cloud (needed for auto street names on the pin)
 - [x] **Maps Android key:** Android apps restriction + Maps SDK for Android only (done, confirmed Tue 3 Nov)
 - [x] **Maps iOS key:** iOS apps restriction (`com.codami.app`) + Maps SDK for iOS only (done, confirmed Tue 3 Nov)
@@ -105,7 +106,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
-- [ ] Phase 5, once built (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (not kept), private schedule and heat cycle records, pet sitting profiles, chats and reviews, and the public report page (no phone, email or exact address); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)
+- [ ] Phase 5 (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (built Wed 4 Nov: sent to Google Gemini on Vertex AI for the scan only, not stored, not used to train models), private schedule and heat cycle records, pet sitting profiles, chats and reviews, and the public report page (no phone, email or exact address); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

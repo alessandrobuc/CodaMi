@@ -11,18 +11,25 @@ import 'pets_widget.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/labels.dart';
 
-Future<String?> pickPhoto(BuildContext context) async {
-  final source = await showModalBottomSheet<ImageSource>(
-    context: context,
-    backgroundColor: Colors.transparent,
-    builder: (_) => const PhotoSourceSheet(),
-  );
+// Asks camera or gallery unless [from] is given.
+Future<String?> pickPhoto(
+  BuildContext context, {
+  ImageSource? from,
+  double maxSize = 1600,
+}) async {
+  final source =
+      from ??
+      await showModalBottomSheet<ImageSource>(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (_) => const PhotoSourceSheet(),
+      );
   if (source == null) return null;
   try {
     final file = await ImagePicker().pickImage(
       source: source,
-      maxWidth: 1600,
-      maxHeight: 1600,
+      maxWidth: maxSize,
+      maxHeight: maxSize,
       imageQuality: 82,
     );
     return file?.path;

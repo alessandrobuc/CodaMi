@@ -7,6 +7,9 @@ import '../../../../core/utils/snackbar_utils.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../../domain/repositories/pets_repository.dart';
+import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../scanner/presentation/screens/scanner_screen.dart';
+import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pet_form_widgets.dart';
 import '../widgets/pets_widget.dart';
@@ -95,6 +98,15 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
 
   void _removePhoto(int index) {
     setState(() => _photos = [..._photos]..removeAt(index));
+  }
+
+  Future<void> _scanBreed() async {
+    final breed = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => const ScannerScreen(pickBreed: true)),
+    );
+    if (breed != null && breed.isNotEmpty && mounted) {
+      setState(() => _breed.text = breed);
+    }
   }
 
   Future<void> _save() async {
@@ -286,6 +298,21 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                           textCapitalization: TextCapitalization.words,
                           maxLength: 60,
                         ),
+                        if (ref.watch(scannerEnabledProvider))
+                          Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: TextButton.icon(
+                              style: TextButton.styleFrom(
+                                foregroundColor: scannerColor,
+                              ),
+                              onPressed: _scanBreed,
+                              icon: const Icon(
+                                Icons.document_scanner_rounded,
+                                size: 18,
+                              ),
+                              label: Text(context.l10n.scannerIdentifyWithAi),
+                            ),
+                          ),
                         const SizedBox(height: 22),
                         SectionLabel(context.l10n.color, optional: true),
                         const SizedBox(height: 8),

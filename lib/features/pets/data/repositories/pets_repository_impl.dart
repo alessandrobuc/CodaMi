@@ -34,6 +34,10 @@ class PetsRepositoryImpl implements PetsRepository {
   Future<void> deletePet(Pet pet) =>
       _guard(() => _remote.deletePet(pet), action: 'delete');
 
+  @override
+  Future<void> saveBreed(Pet pet, String breed) =>
+      _guard(() => _remote.saveBreed(pet.id, breed), action: 'save');
+
   Future<void> _guard(
     Future<void> Function() run, {
     required String action,

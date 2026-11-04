@@ -8513,6 +8513,372 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Days that count as still using the app'**
   String get settingsStillUsingDays;
+
+  /// No description provided for @breedScanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Breed scanner'**
+  String get breedScanner;
+
+  /// No description provided for @scannerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find out your pet\'s breed with AI'**
+  String get scannerSubtitle;
+
+  /// No description provided for @adminScannerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI breed scanner: on/off, daily scans, AI model'**
+  String get adminScannerSubtitle;
+
+  /// No description provided for @scannerIntroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Which breed is it?'**
+  String get scannerIntroTitle;
+
+  /// No description provided for @scannerIntroText.
+  ///
+  /// In en, this message translates to:
+  /// **'Take or choose a photo of a dog, cat or other pet. AI suggests the most likely breeds and tells you about them.'**
+  String get scannerIntroText;
+
+  /// No description provided for @scannerTipWhole.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole animal, from the side or the front'**
+  String get scannerTipWhole;
+
+  /// No description provided for @scannerTipLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good light, no blur'**
+  String get scannerTipLight;
+
+  /// No description provided for @scannerTipOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Only one animal in the photo'**
+  String get scannerTipOne;
+
+  /// No description provided for @scannerScanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking at the photo…'**
+  String get scannerScanning;
+
+  /// No description provided for @scannerEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'This is an AI estimate, not a guarantee. Only a vet or a DNA test can confirm a breed.'**
+  String get scannerEstimate;
+
+  /// No description provided for @scannerPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'The photo is only used for the scan and is not saved.'**
+  String get scannerPrivacy;
+
+  /// No description provided for @scannerMostLikely.
+  ///
+  /// In en, this message translates to:
+  /// **'Most likely'**
+  String get scannerMostLikely;
+
+  /// No description provided for @scannerMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed breed'**
+  String get scannerMixed;
+
+  /// No description provided for @scannerPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{value}%'**
+  String scannerPercent(int value);
+
+  /// No description provided for @scannerConfidenceHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Very likely'**
+  String get scannerConfidenceHigh;
+
+  /// No description provided for @scannerConfidenceMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Likely'**
+  String get scannerConfidenceMedium;
+
+  /// No description provided for @scannerConfidenceLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not sure'**
+  String get scannerConfidenceLow;
+
+  /// No description provided for @scannerOtherBreeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Other possible breeds'**
+  String get scannerOtherBreeds;
+
+  /// No description provided for @scannerMixOthers.
+  ///
+  /// In en, this message translates to:
+  /// **'Other breeds in the mix'**
+  String get scannerMixOthers;
+
+  /// No description provided for @scannerPoorPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'The photo isn\'t very clear, so the result may be less accurate. Try another photo for a better result.'**
+  String get scannerPoorPhoto;
+
+  /// No description provided for @scannerAboutBreed.
+  ///
+  /// In en, this message translates to:
+  /// **'About this breed'**
+  String get scannerAboutBreed;
+
+  /// No description provided for @scannerAboutMix.
+  ///
+  /// In en, this message translates to:
+  /// **'About this mix'**
+  String get scannerAboutMix;
+
+  /// No description provided for @breedFactSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get breedFactSize;
+
+  /// No description provided for @breedFactWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get breedFactWeight;
+
+  /// No description provided for @breedFactLifeSpan.
+  ///
+  /// In en, this message translates to:
+  /// **'Life span'**
+  String get breedFactLifeSpan;
+
+  /// No description provided for @breedFactTemperament.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperament'**
+  String get breedFactTemperament;
+
+  /// No description provided for @breedFactCharacteristics.
+  ///
+  /// In en, this message translates to:
+  /// **'Characteristics'**
+  String get breedFactCharacteristics;
+
+  /// No description provided for @breedFactCare.
+  ///
+  /// In en, this message translates to:
+  /// **'Care'**
+  String get breedFactCare;
+
+  /// No description provided for @scannerNoAnimalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No animal found'**
+  String get scannerNoAnimalTitle;
+
+  /// No description provided for @scannerNoAnimalText.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t see an animal clearly. Try a photo of the whole animal in good light.'**
+  String get scannerNoAnimalText;
+
+  /// No description provided for @scannerTryAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another photo'**
+  String get scannerTryAnother;
+
+  /// No description provided for @scannerSaveToPet.
+  ///
+  /// In en, this message translates to:
+  /// **'Save breed to my pet'**
+  String get scannerSaveToPet;
+
+  /// No description provided for @scannerUseBreed.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this breed'**
+  String get scannerUseBreed;
+
+  /// No description provided for @scannerChoosePet.
+  ///
+  /// In en, this message translates to:
+  /// **'Which pet?'**
+  String get scannerChoosePet;
+
+  /// No description provided for @scannerBreedSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Breed saved for {name}'**
+  String scannerBreedSaved(String name);
+
+  /// No description provided for @scannerNoPets.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a pet first, then you can save its breed.'**
+  String get scannerNoPets;
+
+  /// No description provided for @scannerLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve used today\'s scans. Try again tomorrow.'**
+  String get scannerLimit;
+
+  /// No description provided for @scannerOff.
+  ///
+  /// In en, this message translates to:
+  /// **'The breed scanner isn\'t available.'**
+  String get scannerOff;
+
+  /// No description provided for @scannerBadPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'This photo can\'t be used. Please choose another one.'**
+  String get scannerBadPhoto;
+
+  /// No description provided for @scannerUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The scanner isn\'t available right now. Please try again later.'**
+  String get scannerUnavailable;
+
+  /// No description provided for @scannerIdentifyWithAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the breed with AI'**
+  String get scannerIdentifyWithAi;
+
+  /// No description provided for @scannerAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Users take or choose a photo and AI suggests the breed, with other possible breeds and facts. Each scan costs less than 1 cent. Photos are not saved.'**
+  String get scannerAdminIntro;
+
+  /// No description provided for @scannerOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users see the scanner in Profile and when adding a pet.'**
+  String get scannerOnHelp;
+
+  /// No description provided for @scannerOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins can try it.'**
+  String get scannerOffHelp;
+
+  /// No description provided for @scannerSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan settings'**
+  String get scannerSettings;
+
+  /// No description provided for @scannerDailyScans.
+  ///
+  /// In en, this message translates to:
+  /// **'Scans per user per day'**
+  String get scannerDailyScans;
+
+  /// No description provided for @scannerDailyScansHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'From 1 to 100. Failed scans don\'t count.'**
+  String get scannerDailyScansHelp;
+
+  /// No description provided for @scannerModel.
+  ///
+  /// In en, this message translates to:
+  /// **'AI model'**
+  String get scannerModel;
+
+  /// No description provided for @scannerModelHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The Google Gemini model used for scans. Tap to choose from the models Google offers now.'**
+  String get scannerModelHelp;
+
+  /// No description provided for @scannerModelInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a Gemini model name, for example gemini-3.8-flash.'**
+  String get scannerModelInvalid;
+
+  /// No description provided for @scannerLimitInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 1 to 100.'**
+  String get scannerLimitInvalid;
+
+  /// No description provided for @scannerOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Try the scanner'**
+  String get scannerOpen;
+
+  /// No description provided for @scannerModelChoose.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the AI model'**
+  String get scannerModelChoose;
+
+  /// No description provided for @scannerModelTierLite.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest and fastest, a little less accurate'**
+  String get scannerModelTierLite;
+
+  /// No description provided for @scannerModelTierFlash.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast and accurate at a low cost'**
+  String get scannerModelTierFlash;
+
+  /// No description provided for @scannerModelTierPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Most accurate, but slower and costs more'**
+  String get scannerModelTierPro;
+
+  /// No description provided for @scannerModelRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get scannerModelRecommended;
+
+  /// No description provided for @scannerModelFromGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gemini models Google offers right now.'**
+  String get scannerModelFromGoogle;
+
+  /// No description provided for @scannerModelOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Google\'s list couldn\'t be loaded, so the usual models are shown.'**
+  String get scannerModelOffline;
+
+  /// No description provided for @scannerModelGone.
+  ///
+  /// In en, this message translates to:
+  /// **'Google no longer lists this model. Choose another one so scans keep working.'**
+  String get scannerModelGone;
+
+  /// No description provided for @scannerModelRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get scannerModelRetry;
 }
 
 class _AppLocalizationsDelegate

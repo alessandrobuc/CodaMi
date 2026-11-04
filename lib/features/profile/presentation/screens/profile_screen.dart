@@ -27,6 +27,9 @@ import '../../../feedback/presentation/widgets/feedback_sheet.dart';
 import '../../../petitions/presentation/screens/petitions_screen.dart';
 import '../../../donations/data/donations_repository.dart';
 import '../../../donations/presentation/support_screen.dart';
+import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../scanner/presentation/screens/scanner_screen.dart';
+import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/providers/walks_provider.dart';
 import '../../../walks/presentation/screens/walks_screen.dart';
 import '../../../walks/presentation/widgets/walk_widgets.dart';
@@ -322,6 +325,16 @@ class ProfileScreen extends ConsumerWidget {
                     subtitle: l10n.walksSubtitle,
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => const WalksScreen()),
+                    ),
+                  ),
+                if (ref.watch(scannerEnabledProvider))
+                  _ProfileTile(
+                    icon: Icons.document_scanner_rounded,
+                    color: scannerColor,
+                    title: l10n.breedScanner,
+                    subtitle: l10n.scannerSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const ScannerScreen()),
                     ),
                   ),
                 _ProfileTile(

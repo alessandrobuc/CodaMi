@@ -41,6 +41,7 @@ import {deletePointsData} from "./pointsFunctions";
 import {sendToTokens, tokensOf, type PushToken} from "./push";
 import {releaseCasesOf} from "./supportFunctions";
 import {placesApiKey, placesSecret} from "./secrets";
+import {deleteScanUsage} from "./scannerFunctions";
 import {searchFieldsOf} from "./users";
 
 initializeApp();
@@ -422,6 +423,7 @@ async function deleteUserData(uid: string): Promise<void> {
   await db.recursiveDelete(db.collection("users").doc(uid));
   await deleteModerationData(uid);
   await deletePointsData(uid);
+  await deleteScanUsage(uid);
   await deleteEmergencyData(uid);
 
   const bucket = getStorage().bucket();
@@ -547,3 +549,4 @@ export {
 export {emergencySweep, onEmergencyCreated, seedTestContacts, updateEmergency} from "./emergencyFunctions";
 export {adminInviteRanking, adminInviteStats, trackInviteOpen} from "./invitesFunctions";
 export {findWalkPlaces, walkPlaceDetails} from "./walksFunctions";
+export {scanBreed, scannerModels} from "./scannerFunctions";

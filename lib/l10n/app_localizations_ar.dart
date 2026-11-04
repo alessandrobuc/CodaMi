@@ -4813,4 +4813,205 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settingsStillUsingDays =>
       'عدد الأيام التي تُحتسب «ما زال يستخدم التطبيق»';
+
+  @override
+  String get breedScanner => 'ماسح السلالات';
+
+  @override
+  String get scannerSubtitle => 'اكتشف سلالة حيوانك الأليف بالذكاء الاصطناعي';
+
+  @override
+  String get adminScannerSubtitle =>
+      'ماسح السلالات بالذكاء الاصطناعي: تشغيل/إيقاف، عدد المسوح يوميًا، نموذج الذكاء الاصطناعي';
+
+  @override
+  String get scannerIntroTitle => 'ما هذه السلالة؟';
+
+  @override
+  String get scannerIntroText =>
+      'التقط أو اختر صورة لكلب أو قطة أو حيوان أليف آخر. يقترح الذكاء الاصطناعي السلالات الأكثر احتمالًا ويعرّفك بها.';
+
+  @override
+  String get scannerTipWhole => 'الحيوان كاملًا، من الجانب أو من الأمام';
+
+  @override
+  String get scannerTipLight => 'إضاءة جيدة، بدون اهتزاز';
+
+  @override
+  String get scannerTipOne => 'حيوان واحد فقط في الصورة';
+
+  @override
+  String get scannerScanning => 'جارٍ فحص الصورة…';
+
+  @override
+  String get scannerEstimate =>
+      'هذا تقدير من الذكاء الاصطناعي وليس ضمانًا. وحده الطبيب البيطري أو اختبار الحمض النووي يمكنه تأكيد السلالة.';
+
+  @override
+  String get scannerPrivacy => 'تُستخدم الصورة للمسح فقط ولا يتم حفظها.';
+
+  @override
+  String get scannerMostLikely => 'الأكثر احتمالًا';
+
+  @override
+  String get scannerMixed => 'سلالة مختلطة';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => 'مرجح جدًا';
+
+  @override
+  String get scannerConfidenceMedium => 'مرجح';
+
+  @override
+  String get scannerConfidenceLow => 'غير متأكد';
+
+  @override
+  String get scannerOtherBreeds => 'سلالات محتملة أخرى';
+
+  @override
+  String get scannerMixOthers => 'سلالات أخرى في الخليط';
+
+  @override
+  String get scannerPoorPhoto =>
+      'الصورة ليست واضحة جدًا، لذا قد تكون النتيجة أقل دقة. جرّب صورة أخرى للحصول على نتيجة أفضل.';
+
+  @override
+  String get scannerAboutBreed => 'عن هذه السلالة';
+
+  @override
+  String get scannerAboutMix => 'عن هذا الخليط';
+
+  @override
+  String get breedFactSize => 'الحجم';
+
+  @override
+  String get breedFactWeight => 'الوزن';
+
+  @override
+  String get breedFactLifeSpan => 'متوسط العمر';
+
+  @override
+  String get breedFactTemperament => 'الطباع';
+
+  @override
+  String get breedFactCharacteristics => 'الصفات';
+
+  @override
+  String get breedFactCare => 'العناية';
+
+  @override
+  String get scannerNoAnimalTitle => 'لم يتم العثور على حيوان';
+
+  @override
+  String get scannerNoAnimalText =>
+      'لم نتمكن من رؤية حيوان بوضوح. جرّب صورة للحيوان كاملًا في إضاءة جيدة.';
+
+  @override
+  String get scannerTryAnother => 'جرّب صورة أخرى';
+
+  @override
+  String get scannerSaveToPet => 'احفظ السلالة لحيواني';
+
+  @override
+  String get scannerUseBreed => 'استخدم هذه السلالة';
+
+  @override
+  String get scannerChoosePet => 'أي حيوان؟';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return 'تم حفظ السلالة لـ $name';
+  }
+
+  @override
+  String get scannerNoPets => 'أضف حيوانًا أليفًا أولًا، ثم يمكنك حفظ سلالته.';
+
+  @override
+  String get scannerLimit => 'لقد استخدمت مسوح اليوم. حاول مرة أخرى غدًا.';
+
+  @override
+  String get scannerOff => 'ماسح السلالات غير متاح.';
+
+  @override
+  String get scannerBadPhoto =>
+      'لا يمكن استخدام هذه الصورة. يرجى اختيار صورة أخرى.';
+
+  @override
+  String get scannerUnavailable =>
+      'الماسح غير متاح الآن. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get scannerIdentifyWithAi => 'اعرف السلالة بالذكاء الاصطناعي';
+
+  @override
+  String get scannerAdminIntro =>
+      'يلتقط المستخدمون صورة أو يختارونها، ويقترح الذكاء الاصطناعي السلالة مع سلالات محتملة أخرى ومعلومات عنها. تكلفة كل مسح أقل من سنت واحد. لا يتم حفظ الصور.';
+
+  @override
+  String get scannerOnHelp =>
+      'مُفعّل: يرى المستخدمون الماسح في الملف الشخصي وعند إضافة حيوان.';
+
+  @override
+  String get scannerOffHelp => 'متوقف: يمكن للمشرفين فقط تجربته.';
+
+  @override
+  String get scannerSettings => 'إعدادات المسح';
+
+  @override
+  String get scannerDailyScans => 'عدد المسوح لكل مستخدم يوميًا';
+
+  @override
+  String get scannerDailyScansHelp => 'من 1 إلى 100. المسوح الفاشلة لا تُحتسب.';
+
+  @override
+  String get scannerModel => 'نموذج الذكاء الاصطناعي';
+
+  @override
+  String get scannerModelHelp =>
+      'نموذج Google Gemini المستخدم في المسح. اضغط للاختيار من النماذج التي تقدمها Google حاليًا.';
+
+  @override
+  String get scannerModelInvalid =>
+      'أدخل اسم نموذج Gemini، مثل gemini-3.8-flash.';
+
+  @override
+  String get scannerLimitInvalid => 'أدخل رقمًا من 1 إلى 100.';
+
+  @override
+  String get scannerOpen => 'جرّب الماسح';
+
+  @override
+  String get scannerModelChoose => 'اختر نموذج الذكاء الاصطناعي';
+
+  @override
+  String get scannerModelTierLite => 'الأرخص والأسرع، أقل دقة قليلًا';
+
+  @override
+  String get scannerModelTierFlash => 'سريع ودقيق بتكلفة منخفضة';
+
+  @override
+  String get scannerModelTierPro => 'الأكثر دقة، لكنه أبطأ وأعلى تكلفة';
+
+  @override
+  String get scannerModelRecommended => 'موصى به';
+
+  @override
+  String get scannerModelFromGoogle =>
+      'نماذج Gemini التي تقدمها Google حاليًا.';
+
+  @override
+  String get scannerModelOffline =>
+      'تعذّر تحميل قائمة Google، لذلك تظهر النماذج المعتادة.';
+
+  @override
+  String get scannerModelGone =>
+      'لم تعد Google تقدم هذا النموذج. اختر نموذجًا آخر لكي يستمر المسح في العمل.';
+
+  @override
+  String get scannerModelRetry => 'حاول مرة أخرى';
 }

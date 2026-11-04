@@ -4907,4 +4907,209 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get settingsStillUsingDays =>
       'Giorni per contare chi usa ancora l\'app';
+
+  @override
+  String get breedScanner => 'Scanner razza';
+
+  @override
+  String get scannerSubtitle => 'Scopri la razza del tuo animale con l\'IA';
+
+  @override
+  String get adminScannerSubtitle =>
+      'Scanner razza con IA: on/off, scansioni al giorno, modello IA';
+
+  @override
+  String get scannerIntroTitle => 'Di che razza è?';
+
+  @override
+  String get scannerIntroText =>
+      'Scatta o scegli una foto di un cane, un gatto o un altro animale. L\'IA suggerisce le razze più probabili e te le descrive.';
+
+  @override
+  String get scannerTipWhole => 'L\'animale intero, di lato o di fronte';
+
+  @override
+  String get scannerTipLight => 'Buona luce, foto non mossa';
+
+  @override
+  String get scannerTipOne => 'Un solo animale nella foto';
+
+  @override
+  String get scannerScanning => 'Sto guardando la foto…';
+
+  @override
+  String get scannerEstimate =>
+      'È una stima dell\'IA, non una garanzia. Solo un veterinario o un test del DNA possono confermare la razza.';
+
+  @override
+  String get scannerPrivacy =>
+      'La foto serve solo per la scansione e non viene salvata.';
+
+  @override
+  String get scannerMostLikely => 'Più probabile';
+
+  @override
+  String get scannerMixed => 'Meticcio';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => 'Molto probabile';
+
+  @override
+  String get scannerConfidenceMedium => 'Probabile';
+
+  @override
+  String get scannerConfidenceLow => 'Non sicuro';
+
+  @override
+  String get scannerOtherBreeds => 'Altre razze possibili';
+
+  @override
+  String get scannerMixOthers => 'Altre razze nel mix';
+
+  @override
+  String get scannerPoorPhoto =>
+      'La foto non è molto chiara, quindi il risultato può essere meno preciso. Prova un\'altra foto per un risultato migliore.';
+
+  @override
+  String get scannerAboutBreed => 'Informazioni sulla razza';
+
+  @override
+  String get scannerAboutMix => 'Informazioni sul mix';
+
+  @override
+  String get breedFactSize => 'Taglia';
+
+  @override
+  String get breedFactWeight => 'Peso';
+
+  @override
+  String get breedFactLifeSpan => 'Aspettativa di vita';
+
+  @override
+  String get breedFactTemperament => 'Carattere';
+
+  @override
+  String get breedFactCharacteristics => 'Caratteristiche';
+
+  @override
+  String get breedFactCare => 'Cura';
+
+  @override
+  String get scannerNoAnimalTitle => 'Nessun animale trovato';
+
+  @override
+  String get scannerNoAnimalText =>
+      'Non riusciamo a vedere bene un animale. Prova una foto dell\'animale intero con una buona luce.';
+
+  @override
+  String get scannerTryAnother => 'Prova un\'altra foto';
+
+  @override
+  String get scannerSaveToPet => 'Salva la razza nel mio animale';
+
+  @override
+  String get scannerUseBreed => 'Usa questa razza';
+
+  @override
+  String get scannerChoosePet => 'Quale animale?';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return 'Razza salvata per $name';
+  }
+
+  @override
+  String get scannerNoPets =>
+      'Aggiungi prima un animale, poi potrai salvare la sua razza.';
+
+  @override
+  String get scannerLimit => 'Hai usato le scansioni di oggi. Riprova domani.';
+
+  @override
+  String get scannerOff => 'Lo scanner razza non è disponibile.';
+
+  @override
+  String get scannerBadPhoto =>
+      'Questa foto non si può usare. Scegline un\'altra.';
+
+  @override
+  String get scannerUnavailable =>
+      'Lo scanner non è disponibile in questo momento. Riprova più tardi.';
+
+  @override
+  String get scannerIdentifyWithAi => 'Trova la razza con l\'IA';
+
+  @override
+  String get scannerAdminIntro =>
+      'Gli utenti scattano o scelgono una foto e l\'IA suggerisce la razza, con altre razze possibili e informazioni. Ogni scansione costa meno di 1 centesimo. Le foto non vengono salvate.';
+
+  @override
+  String get scannerOnHelp =>
+      'Attivo: gli utenti vedono lo scanner nel Profilo e quando aggiungono un animale.';
+
+  @override
+  String get scannerOffHelp => 'Disattivo: solo gli admin possono provarlo.';
+
+  @override
+  String get scannerSettings => 'Impostazioni scansione';
+
+  @override
+  String get scannerDailyScans => 'Scansioni per utente al giorno';
+
+  @override
+  String get scannerDailyScansHelp =>
+      'Da 1 a 100. Le scansioni non riuscite non contano.';
+
+  @override
+  String get scannerModel => 'Modello IA';
+
+  @override
+  String get scannerModelHelp =>
+      'Il modello Google Gemini usato per le scansioni. Tocca per scegliere tra i modelli offerti ora da Google.';
+
+  @override
+  String get scannerModelInvalid =>
+      'Inserisci il nome di un modello Gemini, per esempio gemini-3.8-flash.';
+
+  @override
+  String get scannerLimitInvalid => 'Inserisci un numero da 1 a 100.';
+
+  @override
+  String get scannerOpen => 'Prova lo scanner';
+
+  @override
+  String get scannerModelChoose => 'Scegli il modello IA';
+
+  @override
+  String get scannerModelTierLite =>
+      'Il più economico e veloce, un po\' meno preciso';
+
+  @override
+  String get scannerModelTierFlash => 'Veloce e preciso a basso costo';
+
+  @override
+  String get scannerModelTierPro =>
+      'Il più preciso, ma più lento e costa di più';
+
+  @override
+  String get scannerModelRecommended => 'Consigliato';
+
+  @override
+  String get scannerModelFromGoogle => 'Modelli Gemini offerti ora da Google.';
+
+  @override
+  String get scannerModelOffline =>
+      'Impossibile caricare l\'elenco di Google, quindi vengono mostrati i modelli abituali.';
+
+  @override
+  String get scannerModelGone =>
+      'Google non elenca più questo modello. Scegline un altro perché le scansioni continuino a funzionare.';
+
+  @override
+  String get scannerModelRetry => 'Riprova';
 }

@@ -2,11 +2,14 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Tue 3 Nov 2026 (invite tracking deployed and tested; Places key in Secret Manager, functions deploy left; phase 5 plan sent)_
+_Last updated: Wed 4 Nov 2026 (phase 5 go-ahead; AI breed scanner built, to deploy and test)_
 
 ---
 
 ## 1. Testing now
+
+- [ ] **Scanner model list (Wed 4 Nov):** the first deploy of `scannerModels` left out the public invoker, so the app got "Something went wrong" (log: "The request was not authorized to invoke this service"). Fixed in the code (`invoker: "public"`); run `firebase deploy --only functions:scannerModels`, then Admin → Breed scanner → AI model should show the list. If not: Cloud Run → scannermodels → Security → Allow public access (the function still checks for an admin)
+- [ ] **AI breed scanner (Wed 4 Nov):** ~~enable Vertex AI API~~ done; ~~deploy functions and rules~~ done; first scan tested and working; phone test with `TEST_SCENARIO_SCANNER_2026-11-04.md` (dog, cat, mix, other animal, blurry, no animal; Italian and Arabic); then Admin → More → Breed scanner → Show to users. If scans fail with a permission error, give the functions' service account the "Vertex AI User" role
 
 - [x] **Deploy (phase 4 Mon 2 Nov + invite tracking Tue 3 Nov):** `firebase deploy --only functions,hosting,firestore:rules` (functions first: the invite page's `/api/invite-open` rewrite needs `trackInviteOpen`; also `adminInviteStats`, `adminInviteRanking`, `findWalkPlaces`, `walkPlaceDetails`; rules for `config/walks`, `config/donations` and the new `stillUsingDays`)
 - [ ] **Google Cloud:** check that Places API (New) is enabled for the `PLACES_API_KEY` project (it already is for city search) and set a budget alert
@@ -46,7 +49,16 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** plan sent, waiting for the go-ahead. Order: feedback (1 day), social sharing (2), share reminders (0.5), schedule and reminders (2-3), heat calendar (2), AI breed scanner (2-3), titles and achievements (3), pet sitting (6-8). Already there: store review window, feedback card and admin list, text sharing of reports, push notifications, invite levels
+- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner.
+  - [ ] 1. Feedback (request 7, about 1 day): current feedback entry → Google Play review; separate internal feedback (type, optional stars, text), asked after 10-20 uses of a feature, 2-week cooldown, admin list with filters and settings
+  - [ ] 2. Social sharing (request 5, about 2 days): pop-up after a lost or found report, share image (photo, status, details, logo), public report page with link, WhatsApp / Facebook with link, Instagram / TikTok image only
+  - [ ] 3. Share reminders (request 6, about half a day): first after X days, then weekly, off switch for users and admin, client's text in 10 languages
+  - [ ] 4. Schedule and reminders (request 4, 2-3 days): notes, appointments, vet, vaccines, medicine, grooming, feeding; repeat, done, edit, delete; reminders with the app closed; private
+  - [ ] 5. Heat calendar (request 2, about 2 days): start / end, history, notes, next cycles estimated per pet and species, reminders before
+  - [x] 6. AI breed scanner (request 1): **built Wed 4 Nov** (Gemini on Vertex AI, admin settings, Profile and pet form, save breed to a pet). Left: enable Vertex AI API, deploy, phone test (`TEST_SCENARIO_SCANNER_2026-11-04.md`), switch on for users
+  - [ ] 7. Titles and achievements (request 8, about 3 days): tags and titles with levels, page with locked titles, requirements and progress, title on the profile, donor titles by total donated (after donation payments)
+  - [ ] 8. Pet sitting (request 3, 6-8 days): requests, sitter profiles, browse and offer, chat between users, both confirm the service, verified reviews only, reports, blocking, admin moderation
+  - Already in the app: store review window and "Rate CodaMi", feedback card and admin list, text sharing of reports, push notifications, invite levels, donation screens (off)
 
 - [ ] **Phase 4 (client request Mon 2 Nov, `PHASE_4_REQUESTS.md`):** built Mon 2 Nov (QR invites and flyer, Places to walk, donation screens switched off); left: store payments for donations once the client sets up the stores, "Scan QR" in the app if the client wants it
 - [ ] **Shop Phase 1** (started Thu 29 Oct): day 1 and 2 built and committed (switch, catalogue, Shop tab, cart, shipping settings, cost and margin, affiliate clicks, sponsored); then Stripe payment, refunds, reports, shop manager role, computer admin (`SHOP_FEATURE.md`)
@@ -105,6 +117,11 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Wed 4 Nov: scanner card at the top of the Pets tab ("Which breed is it?", only while the scanner is on), besides Profile and the pet form. Needs a new build
+- Wed 4 Nov: Admin → Breed scanner: the "Show to users" switch now saves straight away (only the switch; the scans-per-day number and the model still use Save). Needs a new build
+- Wed 4 Nov: scanner tested on the phone (works). Admin AI model is now picked from Google's live list of Gemini models (`scannerModels`, admins only; usual models if the list can't be read; warning if the chosen model disappears). 10 texts in 10 languages; 133 app tests, 89 server tests, 352 emulator checks. Needs `firebase deploy --only functions` and a new build
+- Wed 4 Nov: AI breed scanner (phase 5, request 1): `scanBreed` function with Gemini on Vertex AI (photo checked and never stored, daily limit, answer cleaned), Admin → More → Breed scanner (on/off, scans per day, model), Profile → Breed scanner, result with breeds and %, mix, facts and AI note, save breed to a pet, "Find the breed with AI" in the pet form. 52 texts in 10 languages, 7 new app tests (132), 7 new server tests (87), 26 new emulator checks (349). Not deployed yet
 
 - Tue 3 Nov: phase 4 and invite tracking deployed and tested on the phone. Places key moved to Secret Manager (code changed, secret set, removed from `functions/.env`; functions deploy left). Maps Android and iOS keys confirmed restricted; `invites.cjs` now clears earlier invites so all 8 emulator scripts pass in one run (323)
 - Tue 3 Nov: phase 5 requests received (AI breed scanner, heat calendar, pet sitting, schedule, social sharing, share reminders, feedback, titles); plan with what's already in the app and what to build in `PHASE_5_REQUESTS.md`, sent to the client

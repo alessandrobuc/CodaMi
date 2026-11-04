@@ -539,6 +539,19 @@ service cloud.firestore {
         && shopStamped(request.resource.data);
     }
 
+    // Breed scanner settings. Scans go through Cloud Functions only.
+    match /config/scanner {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'dailyScans', 'model', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.dailyScans is int
+        && request.resource.data.dailyScans >= 1 && request.resource.data.dailyScans <= 100
+        && request.resource.data.model is string
+        && request.resource.data.model.matches('gemini-[a-z0-9.-]{1,60}')
+        && shopStamped(request.resource.data);
+    }
+
     match /config/shipping {
       allow read: if signedIn();
       allow write: if isAdmin() && validShipping(request.resource.data);

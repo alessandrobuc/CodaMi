@@ -5,6 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/empty_state.dart';
+import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../scanner/presentation/screens/scanner_screen.dart';
+import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../domain/entities/pets_entity.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
@@ -52,6 +55,17 @@ class PetsScreen extends ConsumerWidget {
               ),
             ),
           ),
+          if (ref.watch(scannerEnabledProvider))
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 8),
+              sliver: SliverToBoxAdapter(
+                child: ScannerPromoCard(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const ScannerScreen()),
+                  ),
+                ).animate().fadeIn(duration: 400.ms),
+              ),
+            ),
           if (petsState.isLoading && !petsState.hasValue)
             const SliverPadding(
               padding: EdgeInsets.fromLTRB(20, 8, 20, 0),

@@ -4906,4 +4906,211 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get settingsStillUsingDays =>
       'Сколько дней считать, что приложением ещё пользуются';
+
+  @override
+  String get breedScanner => 'Определение породы';
+
+  @override
+  String get scannerSubtitle => 'Узнайте породу питомца с помощью ИИ';
+
+  @override
+  String get adminScannerSubtitle =>
+      'Определение породы с ИИ: вкл./выкл., сканирований в день, модель ИИ';
+
+  @override
+  String get scannerIntroTitle => 'Какая это порода?';
+
+  @override
+  String get scannerIntroText =>
+      'Сделайте или выберите фото собаки, кошки или другого питомца. ИИ предложит наиболее вероятные породы и расскажет о них.';
+
+  @override
+  String get scannerTipWhole => 'Животное целиком, сбоку или спереди';
+
+  @override
+  String get scannerTipLight => 'Хорошее освещение, без размытия';
+
+  @override
+  String get scannerTipOne => 'Только одно животное на фото';
+
+  @override
+  String get scannerScanning => 'Смотрим на фото…';
+
+  @override
+  String get scannerEstimate =>
+      'Это оценка ИИ, а не гарантия. Подтвердить породу может только ветеринар или ДНК-тест.';
+
+  @override
+  String get scannerPrivacy =>
+      'Фото используется только для сканирования и не сохраняется.';
+
+  @override
+  String get scannerMostLikely => 'Наиболее вероятно';
+
+  @override
+  String get scannerMixed => 'Метис';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => 'Очень вероятно';
+
+  @override
+  String get scannerConfidenceMedium => 'Вероятно';
+
+  @override
+  String get scannerConfidenceLow => 'Не уверены';
+
+  @override
+  String get scannerOtherBreeds => 'Другие возможные породы';
+
+  @override
+  String get scannerMixOthers => 'Другие породы в смеси';
+
+  @override
+  String get scannerPoorPhoto =>
+      'Фото не очень чёткое, поэтому результат может быть менее точным. Попробуйте другое фото для лучшего результата.';
+
+  @override
+  String get scannerAboutBreed => 'Об этой породе';
+
+  @override
+  String get scannerAboutMix => 'Об этой смеси';
+
+  @override
+  String get breedFactSize => 'Размер';
+
+  @override
+  String get breedFactWeight => 'Вес';
+
+  @override
+  String get breedFactLifeSpan => 'Продолжительность жизни';
+
+  @override
+  String get breedFactTemperament => 'Характер';
+
+  @override
+  String get breedFactCharacteristics => 'Особенности';
+
+  @override
+  String get breedFactCare => 'Уход';
+
+  @override
+  String get scannerNoAnimalTitle => 'Животное не найдено';
+
+  @override
+  String get scannerNoAnimalText =>
+      'Не удалось чётко разглядеть животное. Попробуйте фото животного целиком при хорошем освещении.';
+
+  @override
+  String get scannerTryAnother => 'Попробовать другое фото';
+
+  @override
+  String get scannerSaveToPet => 'Сохранить породу питомцу';
+
+  @override
+  String get scannerUseBreed => 'Использовать эту породу';
+
+  @override
+  String get scannerChoosePet => 'Какой питомец?';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return 'Порода сохранена для: $name';
+  }
+
+  @override
+  String get scannerNoPets =>
+      'Сначала добавьте питомца, затем можно будет сохранить его породу.';
+
+  @override
+  String get scannerLimit =>
+      'Сканирования на сегодня закончились. Попробуйте завтра.';
+
+  @override
+  String get scannerOff => 'Определение породы недоступно.';
+
+  @override
+  String get scannerBadPhoto =>
+      'Это фото нельзя использовать. Выберите другое.';
+
+  @override
+  String get scannerUnavailable =>
+      'Сканер сейчас недоступен. Попробуйте позже.';
+
+  @override
+  String get scannerIdentifyWithAi => 'Определить породу с ИИ';
+
+  @override
+  String get scannerAdminIntro =>
+      'Пользователи делают или выбирают фото, и ИИ предлагает породу, другие возможные породы и информацию о них. Каждое сканирование стоит меньше 1 цента. Фото не сохраняются.';
+
+  @override
+  String get scannerOnHelp =>
+      'Вкл.: пользователи видят сканер в Профиле и при добавлении питомца.';
+
+  @override
+  String get scannerOffHelp =>
+      'Выкл.: попробовать могут только администраторы.';
+
+  @override
+  String get scannerSettings => 'Настройки сканирования';
+
+  @override
+  String get scannerDailyScans => 'Сканирований на пользователя в день';
+
+  @override
+  String get scannerDailyScansHelp =>
+      'От 1 до 100. Неудачные сканирования не считаются.';
+
+  @override
+  String get scannerModel => 'Модель ИИ';
+
+  @override
+  String get scannerModelHelp =>
+      'Модель Google Gemini для сканирования. Нажмите, чтобы выбрать из моделей, которые Google предлагает сейчас.';
+
+  @override
+  String get scannerModelInvalid =>
+      'Введите название модели Gemini, например gemini-3.8-flash.';
+
+  @override
+  String get scannerLimitInvalid => 'Введите число от 1 до 100.';
+
+  @override
+  String get scannerOpen => 'Попробовать сканер';
+
+  @override
+  String get scannerModelChoose => 'Выберите модель ИИ';
+
+  @override
+  String get scannerModelTierLite =>
+      'Самая дешёвая и быстрая, чуть менее точная';
+
+  @override
+  String get scannerModelTierFlash => 'Быстрая и точная при низкой стоимости';
+
+  @override
+  String get scannerModelTierPro => 'Самая точная, но медленнее и дороже';
+
+  @override
+  String get scannerModelRecommended => 'Рекомендуется';
+
+  @override
+  String get scannerModelFromGoogle =>
+      'Модели Gemini, которые Google предлагает сейчас.';
+
+  @override
+  String get scannerModelOffline =>
+      'Не удалось загрузить список Google, поэтому показаны обычные модели.';
+
+  @override
+  String get scannerModelGone =>
+      'Google больше не предлагает эту модель. Выберите другую, чтобы сканирование продолжало работать.';
+
+  @override
+  String get scannerModelRetry => 'Повторить';
 }

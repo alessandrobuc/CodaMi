@@ -4848,4 +4848,206 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get settingsStillUsingDays =>
       'कितने दिनों तक इसे “अब भी ऐप इस्तेमाल कर रहे हैं” गिना जाए';
+
+  @override
+  String get breedScanner => 'नस्ल स्कैनर';
+
+  @override
+  String get scannerSubtitle => 'AI से अपने पालतू की नस्ल जानें';
+
+  @override
+  String get adminScannerSubtitle =>
+      'AI नस्ल स्कैनर: चालू/बंद, रोज़ के स्कैन, AI मॉडल';
+
+  @override
+  String get scannerIntroTitle => 'यह कौन सी नस्ल है?';
+
+  @override
+  String get scannerIntroText =>
+      'कुत्ते, बिल्ली या किसी दूसरे पालतू की फ़ोटो लें या चुनें। AI सबसे संभावित नस्लें बताता है और उनके बारे में जानकारी देता है।';
+
+  @override
+  String get scannerTipWhole => 'पूरा जानवर, बगल से या सामने से';
+
+  @override
+  String get scannerTipLight => 'अच्छी रोशनी, धुंधली नहीं';
+
+  @override
+  String get scannerTipOne => 'फ़ोटो में सिर्फ़ एक जानवर';
+
+  @override
+  String get scannerScanning => 'फ़ोटो देखी जा रही है…';
+
+  @override
+  String get scannerEstimate =>
+      'यह AI का अनुमान है, गारंटी नहीं। नस्ल की पुष्टि सिर्फ़ पशु चिकित्सक या DNA टेस्ट कर सकता है।';
+
+  @override
+  String get scannerPrivacy =>
+      'फ़ोटो सिर्फ़ स्कैन के लिए इस्तेमाल होती है और सेव नहीं की जाती।';
+
+  @override
+  String get scannerMostLikely => 'सबसे संभावित';
+
+  @override
+  String get scannerMixed => 'मिश्रित नस्ल';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => 'बहुत संभावित';
+
+  @override
+  String get scannerConfidenceMedium => 'संभावित';
+
+  @override
+  String get scannerConfidenceLow => 'पक्का नहीं';
+
+  @override
+  String get scannerOtherBreeds => 'दूसरी संभावित नस्लें';
+
+  @override
+  String get scannerMixOthers => 'मिश्रण में दूसरी नस्लें';
+
+  @override
+  String get scannerPoorPhoto =>
+      'फ़ोटो बहुत साफ़ नहीं है, इसलिए नतीजा कम सटीक हो सकता है। बेहतर नतीजे के लिए दूसरी फ़ोटो आज़माएँ।';
+
+  @override
+  String get scannerAboutBreed => 'इस नस्ल के बारे में';
+
+  @override
+  String get scannerAboutMix => 'इस मिश्रण के बारे में';
+
+  @override
+  String get breedFactSize => 'आकार';
+
+  @override
+  String get breedFactWeight => 'वज़न';
+
+  @override
+  String get breedFactLifeSpan => 'औसत उम्र';
+
+  @override
+  String get breedFactTemperament => 'स्वभाव';
+
+  @override
+  String get breedFactCharacteristics => 'विशेषताएँ';
+
+  @override
+  String get breedFactCare => 'देखभाल';
+
+  @override
+  String get scannerNoAnimalTitle => 'कोई जानवर नहीं मिला';
+
+  @override
+  String get scannerNoAnimalText =>
+      'हमें कोई जानवर साफ़ नहीं दिखा। अच्छी रोशनी में पूरे जानवर की फ़ोटो आज़माएँ।';
+
+  @override
+  String get scannerTryAnother => 'दूसरी फ़ोटो आज़माएँ';
+
+  @override
+  String get scannerSaveToPet => 'नस्ल मेरे पालतू में सेव करें';
+
+  @override
+  String get scannerUseBreed => 'यह नस्ल इस्तेमाल करें';
+
+  @override
+  String get scannerChoosePet => 'कौन सा पालतू?';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return '$name के लिए नस्ल सेव हो गई';
+  }
+
+  @override
+  String get scannerNoPets =>
+      'पहले एक पालतू जोड़ें, फिर आप उसकी नस्ल सेव कर सकते हैं।';
+
+  @override
+  String get scannerLimit => 'आज के स्कैन खत्म हो गए। कल फिर कोशिश करें।';
+
+  @override
+  String get scannerOff => 'नस्ल स्कैनर उपलब्ध नहीं है।';
+
+  @override
+  String get scannerBadPhoto =>
+      'यह फ़ोटो इस्तेमाल नहीं हो सकती। कृपया दूसरी चुनें।';
+
+  @override
+  String get scannerUnavailable =>
+      'स्कैनर अभी उपलब्ध नहीं है। कृपया बाद में फिर कोशिश करें।';
+
+  @override
+  String get scannerIdentifyWithAi => 'AI से नस्ल जानें';
+
+  @override
+  String get scannerAdminIntro =>
+      'उपयोगकर्ता फ़ोटो लेते या चुनते हैं और AI नस्ल बताता है, साथ में दूसरी संभावित नस्लें और जानकारी। हर स्कैन की लागत 1 सेंट से कम है। फ़ोटो सेव नहीं की जातीं।';
+
+  @override
+  String get scannerOnHelp =>
+      'चालू: उपयोगकर्ता प्रोफ़ाइल में और पालतू जोड़ते समय स्कैनर देखते हैं।';
+
+  @override
+  String get scannerOffHelp => 'बंद: सिर्फ़ एडमिन इसे आज़मा सकते हैं।';
+
+  @override
+  String get scannerSettings => 'स्कैन सेटिंग्स';
+
+  @override
+  String get scannerDailyScans => 'हर उपयोगकर्ता के रोज़ के स्कैन';
+
+  @override
+  String get scannerDailyScansHelp => '1 से 100 तक। असफल स्कैन नहीं गिने जाते।';
+
+  @override
+  String get scannerModel => 'AI मॉडल';
+
+  @override
+  String get scannerModelHelp =>
+      'स्कैन के लिए इस्तेमाल होने वाला Google Gemini मॉडल। Google अभी जो मॉडल देता है, उनमें से चुनने के लिए टैप करें।';
+
+  @override
+  String get scannerModelInvalid =>
+      'Gemini मॉडल का नाम लिखें, जैसे gemini-3.8-flash।';
+
+  @override
+  String get scannerLimitInvalid => '1 से 100 तक की संख्या लिखें।';
+
+  @override
+  String get scannerOpen => 'स्कैनर आज़माएँ';
+
+  @override
+  String get scannerModelChoose => 'AI मॉडल चुनें';
+
+  @override
+  String get scannerModelTierLite => 'सबसे सस्ता और तेज़, थोड़ा कम सटीक';
+
+  @override
+  String get scannerModelTierFlash => 'कम लागत में तेज़ और सटीक';
+
+  @override
+  String get scannerModelTierPro => 'सबसे सटीक, लेकिन धीमा और महँगा';
+
+  @override
+  String get scannerModelRecommended => 'सुझाया गया';
+
+  @override
+  String get scannerModelFromGoogle => 'Google अभी जो Gemini मॉडल देता है।';
+
+  @override
+  String get scannerModelOffline =>
+      'Google की सूची लोड नहीं हो सकी, इसलिए सामान्य मॉडल दिखाए गए हैं।';
+
+  @override
+  String get scannerModelGone =>
+      'Google अब यह मॉडल नहीं देता। स्कैन चालू रखने के लिए दूसरा मॉडल चुनें।';
+
+  @override
+  String get scannerModelRetry => 'फिर कोशिश करें';
 }

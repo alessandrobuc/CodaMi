@@ -61,6 +61,10 @@ class PetsRemoteDataSource {
     );
   }
 
+  Future<void> saveBreed(String petId, String breed) => _pets.doc(petId).update(
+    {'breed': breed, 'updatedAt': FieldValue.serverTimestamp()},
+  );
+
   Future<void> deletePet(Pet pet) async {
     await _pets.doc(pet.id).delete();
     await _photos.deleteUnused(ownerId: pet.ownerId, urls: pet.photoUrls);

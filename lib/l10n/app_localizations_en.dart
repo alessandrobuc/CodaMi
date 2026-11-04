@@ -4848,4 +4848,207 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsStillUsingDays => 'Days that count as still using the app';
+
+  @override
+  String get breedScanner => 'Breed scanner';
+
+  @override
+  String get scannerSubtitle => 'Find out your pet\'s breed with AI';
+
+  @override
+  String get adminScannerSubtitle =>
+      'AI breed scanner: on/off, daily scans, AI model';
+
+  @override
+  String get scannerIntroTitle => 'Which breed is it?';
+
+  @override
+  String get scannerIntroText =>
+      'Take or choose a photo of a dog, cat or other pet. AI suggests the most likely breeds and tells you about them.';
+
+  @override
+  String get scannerTipWhole => 'The whole animal, from the side or the front';
+
+  @override
+  String get scannerTipLight => 'Good light, no blur';
+
+  @override
+  String get scannerTipOne => 'Only one animal in the photo';
+
+  @override
+  String get scannerScanning => 'Looking at the photo…';
+
+  @override
+  String get scannerEstimate =>
+      'This is an AI estimate, not a guarantee. Only a vet or a DNA test can confirm a breed.';
+
+  @override
+  String get scannerPrivacy =>
+      'The photo is only used for the scan and is not saved.';
+
+  @override
+  String get scannerMostLikely => 'Most likely';
+
+  @override
+  String get scannerMixed => 'Mixed breed';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => 'Very likely';
+
+  @override
+  String get scannerConfidenceMedium => 'Likely';
+
+  @override
+  String get scannerConfidenceLow => 'Not sure';
+
+  @override
+  String get scannerOtherBreeds => 'Other possible breeds';
+
+  @override
+  String get scannerMixOthers => 'Other breeds in the mix';
+
+  @override
+  String get scannerPoorPhoto =>
+      'The photo isn\'t very clear, so the result may be less accurate. Try another photo for a better result.';
+
+  @override
+  String get scannerAboutBreed => 'About this breed';
+
+  @override
+  String get scannerAboutMix => 'About this mix';
+
+  @override
+  String get breedFactSize => 'Size';
+
+  @override
+  String get breedFactWeight => 'Weight';
+
+  @override
+  String get breedFactLifeSpan => 'Life span';
+
+  @override
+  String get breedFactTemperament => 'Temperament';
+
+  @override
+  String get breedFactCharacteristics => 'Characteristics';
+
+  @override
+  String get breedFactCare => 'Care';
+
+  @override
+  String get scannerNoAnimalTitle => 'No animal found';
+
+  @override
+  String get scannerNoAnimalText =>
+      'We couldn\'t see an animal clearly. Try a photo of the whole animal in good light.';
+
+  @override
+  String get scannerTryAnother => 'Try another photo';
+
+  @override
+  String get scannerSaveToPet => 'Save breed to my pet';
+
+  @override
+  String get scannerUseBreed => 'Use this breed';
+
+  @override
+  String get scannerChoosePet => 'Which pet?';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return 'Breed saved for $name';
+  }
+
+  @override
+  String get scannerNoPets => 'Add a pet first, then you can save its breed.';
+
+  @override
+  String get scannerLimit => 'You\'ve used today\'s scans. Try again tomorrow.';
+
+  @override
+  String get scannerOff => 'The breed scanner isn\'t available.';
+
+  @override
+  String get scannerBadPhoto =>
+      'This photo can\'t be used. Please choose another one.';
+
+  @override
+  String get scannerUnavailable =>
+      'The scanner isn\'t available right now. Please try again later.';
+
+  @override
+  String get scannerIdentifyWithAi => 'Find the breed with AI';
+
+  @override
+  String get scannerAdminIntro =>
+      'Users take or choose a photo and AI suggests the breed, with other possible breeds and facts. Each scan costs less than 1 cent. Photos are not saved.';
+
+  @override
+  String get scannerOnHelp =>
+      'On: users see the scanner in Profile and when adding a pet.';
+
+  @override
+  String get scannerOffHelp => 'Off: only admins can try it.';
+
+  @override
+  String get scannerSettings => 'Scan settings';
+
+  @override
+  String get scannerDailyScans => 'Scans per user per day';
+
+  @override
+  String get scannerDailyScansHelp =>
+      'From 1 to 100. Failed scans don\'t count.';
+
+  @override
+  String get scannerModel => 'AI model';
+
+  @override
+  String get scannerModelHelp =>
+      'The Google Gemini model used for scans. Tap to choose from the models Google offers now.';
+
+  @override
+  String get scannerModelInvalid =>
+      'Enter a Gemini model name, for example gemini-3.8-flash.';
+
+  @override
+  String get scannerLimitInvalid => 'Enter a number from 1 to 100.';
+
+  @override
+  String get scannerOpen => 'Try the scanner';
+
+  @override
+  String get scannerModelChoose => 'Choose the AI model';
+
+  @override
+  String get scannerModelTierLite =>
+      'Cheapest and fastest, a little less accurate';
+
+  @override
+  String get scannerModelTierFlash => 'Fast and accurate at a low cost';
+
+  @override
+  String get scannerModelTierPro => 'Most accurate, but slower and costs more';
+
+  @override
+  String get scannerModelRecommended => 'Recommended';
+
+  @override
+  String get scannerModelFromGoogle => 'Gemini models Google offers right now.';
+
+  @override
+  String get scannerModelOffline =>
+      'Google\'s list couldn\'t be loaded, so the usual models are shown.';
+
+  @override
+  String get scannerModelGone =>
+      'Google no longer lists this model. Choose another one so scans keep working.';
+
+  @override
+  String get scannerModelRetry => 'Try again';
 }

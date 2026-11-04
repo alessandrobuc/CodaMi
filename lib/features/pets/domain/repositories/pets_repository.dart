@@ -11,6 +11,8 @@ abstract class PetsRepository {
   });
 
   Future<void> deletePet(Pet pet);
+
+  Future<void> saveBreed(Pet pet, String breed);
 }
 
 class PetsException implements Exception {

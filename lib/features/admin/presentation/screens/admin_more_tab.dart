@@ -29,6 +29,8 @@ import '../../../petitions/presentation/widgets/petition_widgets.dart';
 import '../../../shop/presentation/screens/admin_shop_screen.dart';
 import '../../../donations/presentation/admin_donations_screen.dart';
 import '../../../donations/presentation/support_screen.dart';
+import '../../../scanner/presentation/screens/admin_scanner_screen.dart';
+import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/screens/admin_walks_screen.dart';
 import '../../../walks/presentation/widgets/walk_widgets.dart';
 import '../../../shop/presentation/widgets/shop_widgets.dart';
@@ -211,6 +213,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminWalksScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.document_scanner_rounded,
+                    color: scannerColor,
+                    title: l10n.breedScanner,
+                    subtitle: l10n.adminScannerSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminScannerScreen(),
                       ),
                     ),
                   ),

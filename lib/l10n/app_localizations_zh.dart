@@ -4608,4 +4608,193 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settingsStillUsingDays => '计为“仍在使用应用”的天数';
+
+  @override
+  String get breedScanner => '品种识别';
+
+  @override
+  String get scannerSubtitle => '用 AI 识别您宠物的品种';
+
+  @override
+  String get adminScannerSubtitle => 'AI 品种识别：开关、每日次数、AI 模型';
+
+  @override
+  String get scannerIntroTitle => '这是什么品种？';
+
+  @override
+  String get scannerIntroText => '拍摄或选择一张狗、猫或其他宠物的照片。AI 会给出最可能的品种并介绍它们。';
+
+  @override
+  String get scannerTipWhole => '拍到整只动物，侧面或正面';
+
+  @override
+  String get scannerTipLight => '光线充足，不要模糊';
+
+  @override
+  String get scannerTipOne => '照片中只有一只动物';
+
+  @override
+  String get scannerScanning => '正在查看照片…';
+
+  @override
+  String get scannerEstimate => '这是 AI 的估计，并非保证。只有兽医或 DNA 检测才能确认品种。';
+
+  @override
+  String get scannerPrivacy => '照片仅用于识别，不会被保存。';
+
+  @override
+  String get scannerMostLikely => '最可能';
+
+  @override
+  String get scannerMixed => '混血';
+
+  @override
+  String scannerPercent(int value) {
+    return '$value%';
+  }
+
+  @override
+  String get scannerConfidenceHigh => '非常可能';
+
+  @override
+  String get scannerConfidenceMedium => '可能';
+
+  @override
+  String get scannerConfidenceLow => '不确定';
+
+  @override
+  String get scannerOtherBreeds => '其他可能的品种';
+
+  @override
+  String get scannerMixOthers => '混血中的其他品种';
+
+  @override
+  String get scannerPoorPhoto => '照片不太清晰，结果可能不够准确。换一张照片可获得更好的结果。';
+
+  @override
+  String get scannerAboutBreed => '关于这个品种';
+
+  @override
+  String get scannerAboutMix => '关于这种混血';
+
+  @override
+  String get breedFactSize => '体型';
+
+  @override
+  String get breedFactWeight => '体重';
+
+  @override
+  String get breedFactLifeSpan => '寿命';
+
+  @override
+  String get breedFactTemperament => '性格';
+
+  @override
+  String get breedFactCharacteristics => '特征';
+
+  @override
+  String get breedFactCare => '护理';
+
+  @override
+  String get scannerNoAnimalTitle => '未找到动物';
+
+  @override
+  String get scannerNoAnimalText => '我们无法清楚地看到动物。请在光线充足时拍摄整只动物。';
+
+  @override
+  String get scannerTryAnother => '换一张照片';
+
+  @override
+  String get scannerSaveToPet => '将品种保存到我的宠物';
+
+  @override
+  String get scannerUseBreed => '使用这个品种';
+
+  @override
+  String get scannerChoosePet => '哪只宠物？';
+
+  @override
+  String scannerBreedSaved(String name) {
+    return '已为$name保存品种';
+  }
+
+  @override
+  String get scannerNoPets => '请先添加宠物，然后即可保存其品种。';
+
+  @override
+  String get scannerLimit => '今天的识别次数已用完。请明天再试。';
+
+  @override
+  String get scannerOff => '品种识别暂不可用。';
+
+  @override
+  String get scannerBadPhoto => '无法使用这张照片。请选择另一张。';
+
+  @override
+  String get scannerUnavailable => '识别功能暂时不可用。请稍后再试。';
+
+  @override
+  String get scannerIdentifyWithAi => '用 AI 识别品种';
+
+  @override
+  String get scannerAdminIntro =>
+      '用户拍摄或选择照片，AI 给出品种、其他可能的品种和相关信息。每次识别费用不到 1 美分。照片不会被保存。';
+
+  @override
+  String get scannerOnHelp => '开启：用户可在个人资料和添加宠物时看到识别功能。';
+
+  @override
+  String get scannerOffHelp => '关闭：仅管理员可以试用。';
+
+  @override
+  String get scannerSettings => '识别设置';
+
+  @override
+  String get scannerDailyScans => '每位用户每日识别次数';
+
+  @override
+  String get scannerDailyScansHelp => '1 到 100。失败的识别不计入。';
+
+  @override
+  String get scannerModel => 'AI 模型';
+
+  @override
+  String get scannerModelHelp =>
+      '用于识别的 Google Gemini 模型。点按即可从 Google 目前提供的模型中选择。';
+
+  @override
+  String get scannerModelInvalid => '请输入 Gemini 模型名称，例如 gemini-3.8-flash。';
+
+  @override
+  String get scannerLimitInvalid => '请输入 1 到 100 之间的数字。';
+
+  @override
+  String get scannerOpen => '试用识别';
+
+  @override
+  String get scannerModelChoose => '选择 AI 模型';
+
+  @override
+  String get scannerModelTierLite => '最便宜、最快，准确度稍低';
+
+  @override
+  String get scannerModelTierFlash => '快速准确，成本低';
+
+  @override
+  String get scannerModelTierPro => '最准确，但更慢、费用更高';
+
+  @override
+  String get scannerModelRecommended => '推荐';
+
+  @override
+  String get scannerModelFromGoogle => 'Google 目前提供的 Gemini 模型。';
+
+  @override
+  String get scannerModelOffline => '无法加载 Google 的列表，因此显示常用模型。';
+
+  @override
+  String get scannerModelGone => 'Google 已不再提供此模型。请选择其他模型，以便识别继续正常工作。';
+
+  @override
+  String get scannerModelRetry => '重试';
 }
