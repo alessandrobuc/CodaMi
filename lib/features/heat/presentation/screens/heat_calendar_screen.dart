@@ -9,6 +9,7 @@ import '../../data/heat_repository.dart';
 import '../../domain/heat.dart';
 import '../providers/heat_provider.dart';
 import '../widgets/heat_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class HeatCalendarScreen extends ConsumerStatefulWidget {
   final Pet pet;
@@ -144,7 +145,12 @@ class _HeatCalendarScreenState extends ConsumerState<HeatCalendarScreen> {
                   : const CircularProgressIndicator(),
             )
           : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
+              padding: EdgeInsets.fromLTRB(
+                16,
+                8,
+                16,
+                endSpace(context, floatingButton: true),
+              ),
               children: [
                 _Status(
                   estimate: estimate,

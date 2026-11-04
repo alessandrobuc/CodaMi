@@ -7,6 +7,7 @@ import '../../data/support_repository.dart';
 import '../../domain/support_case.dart';
 import '../widgets/support_labels.dart';
 import 'support_case_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class NewCaseScreen extends ConsumerStatefulWidget {
   final CaseKind kind;
@@ -68,12 +69,7 @@ class _NewCaseScreenState extends ConsumerState<NewCaseScreen> {
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: EdgeInsets.fromLTRB(
-            20,
-            8,
-            20,
-            40 + MediaQuery.viewPaddingOf(context).bottom,
-          ),
+          padding: EdgeInsets.fromLTRB(20, 8, 20, endSpace(context)),
           children: [
             Text(
               l10n.supportCategory,

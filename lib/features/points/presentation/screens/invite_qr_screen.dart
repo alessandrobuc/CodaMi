@@ -11,6 +11,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
 import '../../domain/invite_code.dart';
+import '../../../../core/utils/screen_space.dart';
 
 enum _Kind { qr, flyer }
 
@@ -97,7 +98,6 @@ class _InviteQrScreenState extends State<InviteQrScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final bottom = MediaQuery.viewPaddingOf(context).bottom;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -107,7 +107,7 @@ class _InviteQrScreenState extends State<InviteQrScreen> {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(20, 4, 20, bottom + 24),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           SegmentedButton<_Kind>(
             segments: [

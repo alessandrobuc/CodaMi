@@ -27,14 +27,15 @@ Note anything wrong in `PENDING_TASKS.md` under "Fixes found while testing".
 
 ## 5. Chat
 8. Phone A → on the offer: **Chat** → write → phone B gets a push with the message; chat icon / Pets card shows the unread count.
-9. Phone B replies. Both see the messages; the list in **Chats** shows the last one.
+9. Phone B replies. Both see the messages; the list in **Chats** shows the last one. The title shows the other person's avatar with their first letter.
+9b. Long chat: send more than 20 messages, close and reopen the chat → scroll up → a small spinner at the top loads the earlier messages, none missing.
 
 ## 6. Book
-10. Phone A → **Accept** → confirm → "Booked!". Phone B gets "Your offer was accepted"; the request shows "You're the pet sitter for this request".
+10. Phone A → **Accept** → confirm → the button shows a spinner and can't be tapped again → "Booked!" (the first tap after a quiet while can take a few seconds while the server wakes up). Phone B gets "Your offer was accepted"; the request shows "You're the pet sitter for this request".
 11. A second sitter's offer (optional, phone C) turns "Declined".
 
 ## 7. Confirm and review
-12. Phone A → **Did the pet sitting take place? → Yes, it was done** → "Waiting for the other person to confirm". Phone B gets a push.
+12. The confirm card appears only from the **start date** (use a request starting today). Phone A → **Did the pet sitting take place? → Yes, it was done** (spinner while saving) → "Waiting for the other person to confirm". Phone B gets a push.
 13. Phone B → **Yes, it was done** → request "Completed"; B's profile "Completed: 1".
 14. Phone A → **Review [name]** → 5 stars + text → Send. B's profile: stars, "(1)", the review with **Verified service**. "Review" again → not offered.
 

@@ -16,6 +16,7 @@ import '../../data/support_repository.dart';
 import '../../domain/support_case.dart';
 import '../providers/support_provider.dart';
 import '../widgets/support_labels.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // The case on screen, so a push for it doesn't also show a banner.
 final visibleSupportCase = ValueNotifier<String?>(null);
@@ -1437,12 +1438,7 @@ class _TimelineView extends ConsumerWidget {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.fromLTRB(
-        20,
-        20,
-        20,
-        32 + MediaQuery.viewPaddingOf(context).bottom,
-      ),
+      padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
       itemCount: list.length,
       itemBuilder: (context, i) {
         final e = list[i];

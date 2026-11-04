@@ -9,6 +9,7 @@ import '../../domain/emergency.dart';
 import '../providers/emergency_provider.dart';
 import '../widgets/emergency_widgets.dart';
 import 'emergency_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminEmergenciesScreen extends ConsumerStatefulWidget {
   const AdminEmergenciesScreen({super.key});
@@ -40,7 +41,7 @@ class _AdminEmergenciesScreenState
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           Row(
             children: [

@@ -561,5 +561,6 @@ export {
   confirmSitting,
   onSittingMessage,
   onSittingOffer,
+  onSittingRequestUpdated,
   reviewSitter,
 } from "./sittingFunctions";

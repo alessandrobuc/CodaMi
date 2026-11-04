@@ -12,6 +12,7 @@ import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
 import 'cart_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   final String productId;
@@ -149,7 +150,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
               ),
             ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+            padding: EdgeInsets.fromLTRB(16, 16, 16, endSpace(context)),
             sliver: SliverList.list(
               children: [
                 _Card(

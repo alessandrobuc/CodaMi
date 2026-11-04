@@ -12,6 +12,7 @@ import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/invite_stats_widgets.dart';
 import '../widgets/points_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 Widget _card({required Widget child, EdgeInsets? padding}) => Container(
   padding: padding ?? const EdgeInsets.all(16),
@@ -145,7 +146,7 @@ class AdminUserInvitesScreen extends ConsumerWidget {
         AsyncData(:final value) => RefreshIndicator(
           onRefresh: () => ref.refresh(adminInviteStatsProvider(uid).future),
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+            padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
             children: [
               InviteCountsGrid(counts: value.counts),
               const SizedBox(height: 12),
@@ -367,7 +368,7 @@ class _AdminInvitesScreenState extends ConsumerState<AdminInvitesScreen> {
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(adminInviteRankingProvider(key).future),
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+          padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
           children: [
             Wrap(
               spacing: 8,

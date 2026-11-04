@@ -33,6 +33,7 @@ import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
 import '../widgets/spot_picker.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../core/utils/screen_space.dart';
 
 enum _Step { type, pet, where, when, details, review }
 
@@ -453,7 +454,7 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
   }) {
     return ListView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 24),
+      padding: EdgeInsets.fromLTRB(20, 18, 20, endSpace(context)),
       children: [
         Text(
           title,

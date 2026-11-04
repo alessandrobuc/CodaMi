@@ -15,6 +15,7 @@ import '../../domain/emergency.dart';
 import '../providers/emergency_provider.dart';
 import '../widgets/emergency_widgets.dart';
 import 'emergency_contacts_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class EmergencyScreen extends ConsumerStatefulWidget {
   final String emergencyId;
@@ -128,12 +129,7 @@ class _EmergencyScreenState extends ConsumerState<EmergencyScreen> {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(
-          20,
-          4,
-          20,
-          MediaQuery.paddingOf(context).bottom + 32,
-        ),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           if (widget.justSent) ...[
             _Notice(

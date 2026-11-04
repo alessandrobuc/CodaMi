@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/widgets/language_picker.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
@@ -20,12 +21,7 @@ class LanguageScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(
-          20,
-          8,
-          20,
-          24 + MediaQuery.paddingOf(context).bottom,
-        ),
+        padding: EdgeInsets.fromLTRB(20, 8, 20, endSpace(context)),
         children: const [LanguageList()],
       ),
     );

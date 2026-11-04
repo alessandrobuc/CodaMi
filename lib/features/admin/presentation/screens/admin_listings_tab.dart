@@ -8,6 +8,7 @@ import '../../../reports/domain/entities/reports_entity.dart';
 import '../../../reports/presentation/screens/report_detail_screen.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
 import '../providers/admin_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminListingsTab extends ConsumerStatefulWidget {
   const AdminListingsTab({super.key});
@@ -49,7 +50,7 @@ class _AdminListingsTabState extends ConsumerState<AdminListingsTab> {
       );
     } else {
       body = ListView.builder(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 120),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         itemCount: reports.length + (hasMore ? 1 : 0),
         itemBuilder: (context, i) {
           if (i == reports.length) {

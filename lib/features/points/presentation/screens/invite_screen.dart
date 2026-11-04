@@ -15,6 +15,7 @@ import '../widgets/invite_code_input.dart';
 import '../widgets/invite_stats_widgets.dart';
 import '../widgets/points_widgets.dart';
 import 'invite_qr_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 final _inviteCodeProvider = FutureProvider<String>((ref) async {
   final saved = ref.read(userProfileProvider).value?.inviteCode;
@@ -46,7 +47,7 @@ class InviteScreen extends ConsumerWidget {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           Text(
             l10n.inviteIntro,

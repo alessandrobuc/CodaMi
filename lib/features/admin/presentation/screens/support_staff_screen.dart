@@ -8,6 +8,7 @@ import '../../../auth/data/models/user_model.dart';
 import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
 import 'admin_users_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class SupportStaffScreen extends ConsumerWidget {
   const SupportStaffScreen({super.key});
@@ -101,7 +102,7 @@ class SupportStaffScreen extends ConsumerWidget {
                   20,
                   8,
                   20,
-                  120 + MediaQuery.viewPaddingOf(context).bottom,
+                  endSpace(context, floatingButton: true),
                 ),
                 itemCount: members.length,
                 separatorBuilder: (_, _) => const SizedBox(height: 10),

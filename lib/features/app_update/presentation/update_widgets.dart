@@ -13,6 +13,7 @@ import '../../whats_new/presentation/providers/whats_new_provider.dart';
 import '../../whats_new/presentation/screens/whats_new_screen.dart';
 import '../data/app_update_repository.dart';
 import '../domain/app_update.dart';
+import '../../../core/utils/screen_space.dart';
 
 Future<void> _update(BuildContext context, WidgetRef ref) async {
   final message = context.l10n.updateStoreFailed;
@@ -343,7 +344,7 @@ class _UpdateRequiredScreen extends ConsumerWidget {
           children: [
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.fromLTRB(24, 48, 24, 16),
+                padding: EdgeInsets.fromLTRB(24, 48, 24, endSpace(context)),
                 children: [
                   _UpdateIntro(
                     title: l10n.updateRequiredTitle,

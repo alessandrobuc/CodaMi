@@ -11,6 +11,7 @@ import '../providers/support_provider.dart';
 import '../widgets/case_tile.dart';
 import '../widgets/support_labels.dart';
 import 'support_case_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminTicketsTab extends ConsumerStatefulWidget {
   const AdminTicketsTab({super.key});
@@ -383,10 +384,9 @@ class CaseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final bottom = 120 + MediaQuery.viewPaddingOf(context).bottom;
     if (cases.isEmpty) {
       return ListView(
-        padding: EdgeInsets.fromLTRB(20, 40, 20, bottom),
+        padding: EdgeInsets.fromLTRB(20, 40, 20, endSpace(context)),
         children: [
           EmptyState(
             icon: const Icon(Icons.inbox_rounded),
@@ -397,7 +397,7 @@ class CaseList extends StatelessWidget {
       );
     }
     return ListView.builder(
-      padding: EdgeInsets.fromLTRB(20, 4, 20, bottom),
+      padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
       itemCount: cases.length + (onLoadMore != null ? 1 : 0),
       itemBuilder: (context, i) {
         if (i == cases.length) {

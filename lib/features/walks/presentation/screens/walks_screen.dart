@@ -14,6 +14,7 @@ import '../../data/walks_repository.dart';
 import '../../domain/walks.dart';
 import '../providers/walks_provider.dart';
 import '../widgets/walk_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 double _zoomFor(int km) => switch (km) {
   1 => 15,
@@ -392,12 +393,7 @@ class _WalksScreenState extends ConsumerState<WalksScreen> {
 
   Widget _list(List<WalkPlace> shown, LatLng origin) {
     return ListView(
-      padding: EdgeInsets.fromLTRB(
-        16,
-        4,
-        16,
-        MediaQuery.paddingOf(context).bottom + 24,
-      ),
+      padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
       children: [
         if (_loading || _error != null || shown.isEmpty)
           Padding(

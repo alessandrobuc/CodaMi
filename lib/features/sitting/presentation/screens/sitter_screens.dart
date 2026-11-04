@@ -17,6 +17,7 @@ import '../providers/sitting_provider.dart';
 import '../widgets/sitting_widgets.dart';
 import 'chat_screens.dart';
 import 'request_screens.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class SitterFormScreen extends ConsumerStatefulWidget {
   final SitterProfile? existing;
@@ -124,12 +125,7 @@ class _SitterFormScreenState extends ConsumerState<SitterFormScreen> {
         absorbing: _busy,
         child: ListView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          padding: EdgeInsets.fromLTRB(
-            16,
-            8,
-            16,
-            MediaQuery.paddingOf(context).bottom + 80,
-          ),
+          padding: EdgeInsets.fromLTRB(16, 8, 16, endSpace(context)),
           children: [
             if (!hasPlace) ...[
               SittingCard(
@@ -341,7 +337,7 @@ class SitterProfileScreen extends ConsumerWidget {
                   : Text(l10n.sitNotFound),
             )
           : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+              padding: EdgeInsets.fromLTRB(16, 8, 16, endSpace(context)),
               children: [
                 Container(
                   clipBehavior: Clip.antiAlias,
@@ -441,7 +437,7 @@ class SitterProfileScreen extends ConsumerWidget {
                               l10n.localeName,
                             ).format(s.rating),
                       label: l10n.sitStatRating,
-                      color: const Color(0xFFB7791F),
+                      color: AppColors.rewardText,
                     ),
                     StatTile(
                       icon: Icons.reviews_outlined,

@@ -8,6 +8,7 @@ import '../../../auth/data/models/user_model.dart';
 import '../../data/admin_repository.dart';
 import '../providers/admin_provider.dart';
 import 'admin_user_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // With `pickStaff`, tapping a user adds them to the support team and pops
 // with their name instead of opening their details.
@@ -121,12 +122,7 @@ class _AdminUsersScreenState extends ConsumerState<AdminUsersScreen> {
       );
     } else {
       list = ListView.separated(
-        padding: EdgeInsets.fromLTRB(
-          20,
-          4,
-          20,
-          100 + MediaQuery.viewPaddingOf(context).bottom,
-        ),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         itemCount: users.length + (hasMore ? 1 : 0),
         separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (context, i) {

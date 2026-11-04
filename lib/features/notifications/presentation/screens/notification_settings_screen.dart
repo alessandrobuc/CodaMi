@@ -8,6 +8,7 @@ import '../../../../l10n/l10n.dart';
 import '../../data/notification_sounds.dart';
 import '../../domain/entities/notification_prefs.dart';
 import '../providers/notification_settings_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class NotificationSettingsScreen extends ConsumerWidget {
   const NotificationSettingsScreen({super.key});
@@ -70,7 +71,7 @@ class NotificationSettingsScreen extends ConsumerWidget {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           Text(
             l10n.notificationSettingsIntro,

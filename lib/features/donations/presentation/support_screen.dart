@@ -8,6 +8,7 @@ import '../../../l10n/app_languages.dart';
 import '../../../l10n/l10n.dart';
 import '../data/donations_repository.dart';
 import '../domain/donations.dart';
+import '../../../core/utils/screen_space.dart';
 
 const supportColor = Color(0xFFE11D48);
 
@@ -197,7 +198,7 @@ class _SupportScreenState extends ConsumerState<SupportScreen> {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           Container(
             padding: const EdgeInsets.all(18),

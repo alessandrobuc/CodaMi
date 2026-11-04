@@ -135,8 +135,12 @@ const offer = (requestId, ownerId, sitterId, extra = {}) => ({
     "an offer starts as waiting");
   ok(await get(owner.token, `sittingOffers/${o1}`) === 200 && await get(sitter.token, `sittingOffers/${o1}`) === 200, "owner and sitter read the offer");
   ok(await get(stranger.token, `sittingOffers/${o1}`) === 403, "nobody else reads it");
-  await wait(2500);
-  ok((await db.collection("sittingRequests").doc("r1").get()).get("offerCount") === 2, "the server counts the offers");
+  let counted;
+  for (let i = 0; i < 20 && counted !== 2; i++) {
+    await wait(500);
+    counted = (await db.collection("sittingRequests").doc("r1").get()).get("offerCount");
+  }
+  ok(counted === 2, "the server counts the offers");
 
   // Booking
   ok((await call("acceptSittingOffer", stranger.token, {requestId: "r1", sitterId: sitter.uid})).error?.status === "PERMISSION_DENIED",

@@ -9,6 +9,7 @@ import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
 import 'product_detail_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class CartScreen extends ConsumerStatefulWidget {
   const CartScreen({super.key});
@@ -84,7 +85,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
               ),
             )
           : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+              padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
               children: [
                 for (final item in summary.items) ...[
                   _CartRow(item: item),

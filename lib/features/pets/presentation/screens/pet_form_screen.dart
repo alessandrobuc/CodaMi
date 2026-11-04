@@ -15,6 +15,7 @@ import '../widgets/pet_form_widgets.dart';
 import '../widgets/pets_widget.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/labels.dart';
+import '../../../../core/utils/screen_space.dart';
 
 const _maxPhotos = 4;
 
@@ -244,7 +245,12 @@ class _PetFormScreenState extends ConsumerState<PetFormScreen> {
                     child: ListView(
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
-                      padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+                      padding: EdgeInsets.fromLTRB(
+                        20,
+                        12,
+                        20,
+                        endSpace(context),
+                      ),
                       children: [
                         PhotoPickerField(
                           photos: _photos,

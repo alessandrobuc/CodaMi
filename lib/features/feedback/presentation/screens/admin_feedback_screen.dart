@@ -6,6 +6,7 @@ import '../../../../core/utils/date_format.dart';
 import '../../../../core/widgets/empty_state.dart';
 import '../../../../l10n/l10n.dart';
 import '../../data/feedback_repository.dart';
+import '../../../../core/utils/screen_space.dart';
 
 final _feedbackProvider = StreamProvider.autoDispose<List<FeedbackEntry>>(
   (ref) => ref.watch(feedbackRepositoryProvider).watchLatest(),
@@ -59,12 +60,7 @@ class _AdminFeedbackScreenState extends ConsumerState<AdminFeedbackScreen> {
                 ),
               )
             : ListView(
-                padding: EdgeInsets.fromLTRB(
-                  16,
-                  4,
-                  16,
-                  MediaQuery.paddingOf(context).bottom + 32,
-                ),
+                padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
                 children: [
                   _Summary(
                     entries: all,

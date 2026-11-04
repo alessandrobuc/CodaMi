@@ -16,6 +16,7 @@ import '../../domain/entities/notification_entity.dart';
 import '../providers/notifications_provider.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class NotificationsScreen extends ConsumerWidget {
   const NotificationsScreen({super.key});
@@ -168,7 +169,12 @@ class NotificationsScreen extends ConsumerWidget {
                         ),
                       )
                     : ListView(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+                        padding: EdgeInsets.fromLTRB(
+                          16,
+                          8,
+                          16,
+                          endSpace(context),
+                        ),
                         children: [
                           if (recent.isNotEmpty)
                             section(

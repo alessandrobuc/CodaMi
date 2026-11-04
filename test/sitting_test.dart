@@ -31,6 +31,31 @@ class _FakeRepository implements SittingRepository {
   dynamic noSuchMethod(Invocation invocation) => Future<void>.value();
 }
 
+// Hands out older chat pages and counts how often they were asked for.
+class _PagingRepository implements SittingRepository {
+  int olderCalls = 0;
+
+  @override
+  Future<List<ChatMessage>> olderMessages(
+    String chatId,
+    DateTime before,
+  ) async {
+    olderCalls++;
+    return [
+      for (var i = 1; i <= 5; i++)
+        ChatMessage(
+          id: 'old$i',
+          senderId: 's1',
+          text: 'Older message $i',
+          at: before.subtract(Duration(minutes: i)),
+        ),
+    ];
+  }
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => Future<void>.value();
+}
+
 DateTime day(int fromToday) {
   final now = DateTime.now();
   return DateTime.utc(now.year, now.month, now.day + fromToday);
@@ -388,4 +413,55 @@ void main() {
       }
     });
   }
+
+  testWidgets('chat loads older messages a page at a time when scrolling up', (
+    tester,
+  ) async {
+    final paging = _PagingRepository();
+    final start = DateTime(2026, 11, 4, 12);
+    final latest = [
+      for (var i = 0; i < chatPageSize; i++)
+        ChatMessage(
+          id: 'm$i',
+          senderId: i.isEven ? 'me' : 's1',
+          text: 'Message $i',
+          at: start.subtract(Duration(minutes: i)),
+        ),
+    ];
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authStateProvider.overrideWith((ref) => Stream.value(_FakeUser())),
+          sittingRepositoryProvider.overrideWithValue(paging),
+          chatMessagesProvider.overrideWith((ref, id) => Stream.value(latest)),
+        ],
+        child: MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: const ChatScreen(
+            chatId: 'me_s1',
+            otherId: 's1',
+            otherName: 'Sara',
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(paging.olderCalls, 0, reason: 'only the newest page at first');
+    expect(find.text('Message 0'), findsOneWidget);
+
+    await tester.dragUntilVisible(
+      find.text('Older message 5'),
+      find.byType(ListView),
+      const Offset(0, 300),
+    );
+    await tester.pumpAndSettle();
+    expect(paging.olderCalls, 1, reason: 'one older page, asked once');
+    expect(find.text('Older message 5'), findsOneWidget);
+    expect(
+      find.text('Message 19', skipOffstage: false),
+      findsOneWidget,
+      reason: 'nothing lost between the pages',
+    );
+  });
 }

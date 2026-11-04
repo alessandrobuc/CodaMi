@@ -12,6 +12,7 @@ import '../providers/support_provider.dart';
 import '../widgets/support_labels.dart';
 import 'admin_tickets_tab.dart';
 import 'support_case_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // Admin view of each operator's activity and performance.
 class OperatorsScreen extends ConsumerWidget {
@@ -38,12 +39,7 @@ class OperatorsScreen extends ConsumerWidget {
               ),
             )
           : ListView.builder(
-              padding: EdgeInsets.fromLTRB(
-                20,
-                8,
-                20,
-                100 + MediaQuery.viewPaddingOf(context).bottom,
-              ),
+              padding: EdgeInsets.fromLTRB(20, 8, 20, endSpace(context)),
               itemCount: list.length,
               itemBuilder: (context, i) {
                 final member = list[i];

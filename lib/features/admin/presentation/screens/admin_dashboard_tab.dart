@@ -9,6 +9,7 @@ import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../support/presentation/providers/support_provider.dart';
 import '../providers/admin_provider.dart';
 import '../../../emergency/presentation/providers/emergency_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminDashboardTab extends ConsumerWidget {
   const AdminDashboardTab({super.key});
@@ -84,7 +85,7 @@ class AdminDashboardTab extends ConsumerWidget {
             ref.refresh(supportCountsProvider.future),
           ).wait,
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
+            padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
             children: [
               Text(
                 l10n.adminPanel,

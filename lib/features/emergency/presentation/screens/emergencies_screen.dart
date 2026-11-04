@@ -11,6 +11,7 @@ import '../widgets/emergency_widgets.dart';
 import 'create_emergency_screen.dart';
 import 'emergency_contacts_screen.dart';
 import 'emergency_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // Emergencies near the user's city and the ones they reported.
 class EmergenciesScreen extends ConsumerStatefulWidget {
@@ -65,7 +66,12 @@ class _EmergenciesScreenState extends ConsumerState<EmergenciesScreen> {
         label: Text(l10n.reportEmergency),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 120),
+        padding: EdgeInsets.fromLTRB(
+          20,
+          4,
+          20,
+          endSpace(context, floatingButton: true),
+        ),
         children: [
           Row(
             children: [

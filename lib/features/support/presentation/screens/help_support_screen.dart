@@ -9,6 +9,7 @@ import '../providers/support_provider.dart';
 import '../widgets/case_tile.dart';
 import 'new_case_screen.dart';
 import 'support_case_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class HelpSupportScreen extends ConsumerWidget {
   const HelpSupportScreen({super.key});
@@ -34,12 +35,7 @@ class HelpSupportScreen extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(liveChatAvailableProvider.future),
         child: ListView(
-          padding: EdgeInsets.fromLTRB(
-            20,
-            8,
-            20,
-            60 + MediaQuery.viewPaddingOf(context).bottom,
-          ),
+          padding: EdgeInsets.fromLTRB(20, 8, 20, endSpace(context)),
           children: [
             Text(
               l10n.supportIntroTitle,

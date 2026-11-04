@@ -19,6 +19,7 @@ import '../../data/scanner_repository.dart';
 import '../../domain/breed_scan.dart';
 import '../providers/scanner_provider.dart';
 import '../widgets/scanner_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ScannerScreen extends ConsumerStatefulWidget {
   // Opened from the pet form: the result offers "Use this breed" and returns it.
@@ -137,7 +138,7 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
       body: SafeArea(
         top: false,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+          padding: EdgeInsets.fromLTRB(16, 8, 16, endSpace(context)),
           children: [
             if (photo == null)
               _Intro(onScan: _scan)

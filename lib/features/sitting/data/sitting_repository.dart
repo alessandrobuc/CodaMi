@@ -8,6 +8,8 @@ import '../../moderation/data/moderation_repository.dart' show FlagReason;
 import '../../pets/domain/entities/pets_entity.dart';
 import '../domain/sitting.dart';
 
+const chatPageSize = 20;
+
 class SittingException implements Exception {
   final String code;
 
@@ -229,15 +231,30 @@ class SittingRepository {
           ),
       );
 
+  // Live: only the newest page. Older pages are read once with olderMessages.
   Stream<List<ChatMessage>> watchMessages(String chatId) => _chats
       .doc(chatId)
       .collection('messages')
       .orderBy('at', descending: true)
-      .limit(200)
+      .limit(chatPageSize)
       .snapshots()
       .map(
         (s) => [for (final d in s.docs) ChatMessage.fromMap(d.id, d.data())],
       );
+
+  Future<List<ChatMessage>> olderMessages(
+    String chatId,
+    DateTime before,
+  ) async {
+    final page = await _chats
+        .doc(chatId)
+        .collection('messages')
+        .orderBy('at', descending: true)
+        .startAfter([Timestamp.fromDate(before)])
+        .limit(chatPageSize)
+        .get();
+    return [for (final d in page.docs) ChatMessage.fromMap(d.id, d.data())];
+  }
 
   // Opens the chat between two users, creating it the first time.
   Future<String> openChat({

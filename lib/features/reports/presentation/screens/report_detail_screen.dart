@@ -22,6 +22,7 @@ import '../widgets/report_actions.dart';
 import '../widgets/reports_widget.dart';
 import '../../../../l10n/labels.dart';
 import '../../../moderation/presentation/widgets/held_photo_notice.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
   final Report report;
@@ -228,12 +229,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
             ),
           ),
           SliverPadding(
-            padding: EdgeInsets.fromLTRB(
-              20,
-              0,
-              20,
-              MediaQuery.paddingOf(context).bottom + 24,
-            ),
+            padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
             sliver: SliverList.list(
               children: [
                 if (isOwner) HeldPhotoNotice(photoUrls: report.photoUrls),

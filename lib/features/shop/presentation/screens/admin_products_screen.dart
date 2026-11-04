@@ -9,6 +9,7 @@ import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
 import 'admin_product_form_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminProductsScreen extends ConsumerStatefulWidget {
   const AdminProductsScreen({super.key});
@@ -100,7 +101,7 @@ class _AdminProductsScreenState extends ConsumerState<AdminProductsScreen> {
             16,
             4,
             16,
-            MediaQuery.paddingOf(context).bottom + 96,
+            endSpace(context, floatingButton: true),
           ),
           children: [
             TextField(

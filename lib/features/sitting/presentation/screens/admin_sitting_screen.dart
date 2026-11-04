@@ -14,6 +14,7 @@ import '../providers/sitting_provider.dart';
 import '../widgets/sitting_widgets.dart';
 import 'request_screens.dart';
 import 'sitter_screens.dart';
+import '../../../../core/utils/screen_space.dart';
 
 extension SittingFlagKindView on SittingFlagKind {
   IconData get icon => switch (this) {
@@ -24,9 +25,9 @@ extension SittingFlagKindView on SittingFlagKind {
   };
 
   Color get color => switch (this) {
-    SittingFlagKind.request => sittingColor,
-    SittingFlagKind.sitter => AppColors.primary,
-    SittingFlagKind.review => const Color(0xFFB7791F),
+    SittingFlagKind.request => AppColors.primary,
+    SittingFlagKind.sitter => AppColors.primaryDark,
+    SittingFlagKind.review => AppColors.rewardText,
     SittingFlagKind.chat => AppColors.danger,
   };
 
@@ -53,67 +54,32 @@ class AdminSittingScreen extends ConsumerWidget {
           title: Text(l10n.sitTitle),
           backgroundColor: AppColors.background,
           surfaceTintColor: Colors.transparent,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(54),
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: sittingColor.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: sittingColor.withValues(alpha: 0.15)),
-              ),
-              child: TabBar(
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                dividerColor: Colors.transparent,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicator: BoxDecoration(
-                  gradient: sittingGradient,
-                  borderRadius: BorderRadius.circular(10),
+          bottom: SittingTabs(
+            scrollable: true,
+            tabs: [
+              Tab(child: _TabLabel(Icons.tune_rounded, l10n.sitAdminSettings)),
+              Tab(
+                child: Badge(
+                  isLabelVisible: flags > 0,
+                  label: Text('$flags'),
+                  offset: const Offset(10, -6),
+                  child: _TabLabel(Icons.flag_outlined, l10n.sitAdminReported),
                 ),
-                labelColor: Colors.white,
-                unselectedLabelColor: sittingColor,
-                labelStyle: const TextStyle(fontWeight: FontWeight.w800),
-                labelPadding: const EdgeInsets.symmetric(horizontal: 14),
-                tabs: [
-                  Tab(
-                    height: 36,
-                    child: _TabLabel(Icons.tune_rounded, l10n.sitAdminSettings),
-                  ),
-                  Tab(
-                    height: 36,
-                    child: Badge(
-                      isLabelVisible: flags > 0,
-                      label: Text('$flags'),
-                      offset: const Offset(10, -6),
-                      child: _TabLabel(
-                        Icons.flag_outlined,
-                        l10n.sitAdminReported,
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    height: 36,
-                    child: _TabLabel(
-                      Icons.event_note_outlined,
-                      l10n.sitTabRequests,
-                    ),
-                  ),
-                  Tab(
-                    height: 36,
-                    child: _TabLabel(Icons.badge_outlined, l10n.sitTabSitters),
-                  ),
-                  Tab(
-                    height: 36,
-                    child: _TabLabel(
-                      Icons.star_outline_rounded,
-                      l10n.sitAdminReviews,
-                    ),
-                  ),
-                ],
               ),
-            ),
+              Tab(
+                child: _TabLabel(
+                  Icons.event_note_outlined,
+                  l10n.sitTabRequests,
+                ),
+              ),
+              Tab(child: _TabLabel(Icons.badge_outlined, l10n.sitTabSitters)),
+              Tab(
+                child: _TabLabel(
+                  Icons.star_outline_rounded,
+                  l10n.sitAdminReviews,
+                ),
+              ),
+            ],
           ),
         ),
         body: const TabBarView(
@@ -251,7 +217,7 @@ class _SettingsState extends ConsumerState<_Settings> {
                 icon: Icons.star_outline_rounded,
                 value: '${ref.watch(latestReviewsProvider).value?.length ?? 0}',
                 label: l10n.sitAdminReviews,
-                color: const Color(0xFFB7791F),
+                color: AppColors.rewardText,
               ),
             ],
           ),
@@ -317,7 +283,7 @@ class _Reported extends ConsumerWidget {
     void open(Widget screen) =>
         Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, endSpace(context)),
       children: [
         for (final f in list)
           Padding(
@@ -436,7 +402,7 @@ class _Requests extends ConsumerWidget {
       return const Center(child: CircularProgressIndicator());
     }
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, endSpace(context)),
       children: [
         for (final r in list)
           Padding(
@@ -481,7 +447,7 @@ class _Sitters extends ConsumerWidget {
       return const Center(child: CircularProgressIndicator());
     }
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, endSpace(context)),
       children: [
         for (final s in list)
           Padding(
@@ -527,7 +493,7 @@ class _Reviews extends ConsumerWidget {
       return const Center(child: CircularProgressIndicator());
     }
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, endSpace(context)),
       children: [
         for (final r in list)
           Padding(

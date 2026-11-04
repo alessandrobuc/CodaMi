@@ -9,9 +9,11 @@ import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../moderation/presentation/providers/moderation_provider.dart';
 import '../../../moderation/presentation/widgets/flag_actions.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../data/sitting_repository.dart' show chatPageSize;
 import '../../domain/sitting.dart';
 import '../providers/sitting_provider.dart';
 import '../widgets/sitting_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 Future<void> openChatWith(
   BuildContext context,
@@ -69,7 +71,7 @@ class ChatsScreen extends ConsumerWidget {
               text: l10n.sitNoChats,
             )
           : ListView.separated(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.only(top: 8, bottom: endSpace(context)),
               itemCount: chats.length,
               separatorBuilder: (_, _) => const Divider(height: 1, indent: 72),
               itemBuilder: (context, i) {
@@ -148,6 +150,33 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   final _text = TextEditingController();
   bool _sending = false;
   String? _readUpTo;
+  // Every message seen while the chat is open, so none drop out when the
+  // live newest page moves on; older pages are added when scrolling up.
+  final Map<String, ChatMessage> _known = {};
+  bool _loadingOlder = false;
+  bool _noMoreOlder = false;
+
+  Future<void> _loadOlder(List<ChatMessage> shown) async {
+    final oldest = shown.lastOrNull?.at;
+    if (_loadingOlder || _noMoreOlder || oldest == null) return;
+    setState(() => _loadingOlder = true);
+    try {
+      final page = await ref
+          .read(sittingRepositoryProvider)
+          .olderMessages(widget.chatId, oldest);
+      if (!mounted) return;
+      setState(() {
+        for (final m in page) {
+          _known[m.id] = m;
+        }
+        _noMoreOlder = page.length < chatPageSize;
+      });
+    } catch (e) {
+      debugPrint('Older messages not loaded: $e');
+    } finally {
+      if (mounted) setState(() => _loadingOlder = false);
+    }
+  }
 
   @override
   void dispose() {
@@ -193,8 +222,16 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
         .watch(blockedUsersProvider)
         .containsKey(widget.otherId);
     final state = ref.watch(chatMessagesProvider(widget.chatId));
-    final messages = state.value ?? const <ChatMessage>[];
-    if (state.hasValue) _markRead(messages, me);
+    final latest = state.value ?? const <ChatMessage>[];
+    if (state.hasValue) _markRead(latest, me);
+    for (final m in latest) {
+      _known[m.id] = m;
+    }
+    final now = DateTime.now();
+    final messages = _known.values.toList()
+      ..sort((a, b) => (b.at ?? now).compareTo(a.at ?? now));
+    // More may exist when the newest page is full.
+    final mayHaveOlder = !_noMoreOlder && latest.length >= chatPageSize;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -266,8 +303,24 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                 : ListView.builder(
                     reverse: true,
                     padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
-                    itemCount: messages.length,
+                    itemCount: messages.length + (mayHaveOlder ? 1 : 0),
                     itemBuilder: (context, i) {
+                      if (i == messages.length) {
+                        // Shown at the top when scrolled up: loads the next page.
+                        WidgetsBinding.instance.addPostFrameCallback(
+                          (_) => _loadOlder(messages),
+                        );
+                        return const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          child: Center(
+                            child: SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                          ),
+                        );
+                      }
                       final m = messages[i];
                       final mine = m.senderId == me;
                       // The list runs bottom-up: a day label goes above the first message of each day.

@@ -12,6 +12,7 @@ import '../widgets/report_actions.dart';
 import '../widgets/reports_widget.dart';
 import 'create_report_screen.dart';
 import 'report_detail_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class MyReportsScreen extends ConsumerWidget {
   const MyReportsScreen({super.key});
@@ -356,12 +357,7 @@ class _ReportsList extends StatelessWidget {
     if (reports.isEmpty) return _Message(child: empty);
 
     return ListView.builder(
-      padding: EdgeInsets.fromLTRB(
-        20,
-        20,
-        20,
-        24 + MediaQuery.paddingOf(context).bottom,
-      ),
+      padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
       itemCount: reports.length,
       itemBuilder: (context, i) {
         final delay = (45 * i.clamp(0, 6)).ms;

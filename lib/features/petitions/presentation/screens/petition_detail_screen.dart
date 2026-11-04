@@ -6,6 +6,7 @@ import '../../../../l10n/l10n.dart';
 import '../../domain/petition.dart';
 import '../widgets/petition_widgets.dart';
 import 'petitions_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class PetitionDetailScreen extends StatelessWidget {
   final Petition petition;
@@ -71,7 +72,7 @@ class PetitionDetailScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+        padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
         children: [
           PetitionImage(
             petition: petition,

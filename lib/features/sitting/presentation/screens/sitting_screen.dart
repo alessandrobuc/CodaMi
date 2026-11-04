@@ -12,6 +12,7 @@ import '../widgets/sitting_widgets.dart';
 import 'chat_screens.dart';
 import 'request_screens.dart';
 import 'sitter_screens.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class SittingScreen extends ConsumerStatefulWidget {
   const SittingScreen({super.key});
@@ -74,7 +75,7 @@ class _SittingScreenState extends ConsumerState<SittingScreen> {
         ],
       ),
       AsyncData(:final value) => ListView(
-        padding: const EdgeInsets.only(bottom: 24),
+        padding: EdgeInsets.only(bottom: endSpace(context)),
         children: [
           _filters(),
           for (final w in build(value))
@@ -95,143 +96,52 @@ class _SittingScreenState extends ConsumerState<SittingScreen> {
     final profile = ref.watch(userProfileProvider).value;
     final lat = profile?.homeLat, lng = profile?.homeLng;
     final unread = ref.watch(unreadChatsProvider);
-    final top = MediaQuery.paddingOf(context).top;
 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         backgroundColor: AppColors.background,
+        appBar: AppBar(
+          title: Text(l10n.sitTitle),
+          backgroundColor: AppColors.background,
+          surfaceTintColor: Colors.transparent,
+          actions: [
+            IconButton(
+              tooltip: l10n.sitChats,
+              onPressed: () => _open(const ChatsScreen()),
+              icon: Badge(
+                isLabelVisible: unread > 0,
+                label: Text('$unread'),
+                child: const Icon(Icons.chat_bubble_outline_rounded),
+              ),
+            ),
+          ],
+        ),
         body: NestedScrollView(
           headerSliverBuilder: (context, _) => [
-            SliverAppBar(
-              pinned: true,
-              expandedHeight: 196,
-              backgroundColor: const Color(0xFF1E4E8C),
-              foregroundColor: Colors.white,
-              surfaceTintColor: Colors.transparent,
-              title: Text(l10n.sitTitle),
-              actions: [
-                IconButton(
-                  tooltip: l10n.sitChats,
-                  onPressed: () => _open(const ChatsScreen()),
-                  icon: Badge(
-                    isLabelVisible: unread > 0,
-                    label: Text('$unread'),
-                    child: const Icon(Icons.chat_bubble_outline_rounded),
-                  ),
-                ),
-              ],
-              flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.pin,
-                background: Container(
-                  decoration: const BoxDecoration(gradient: sittingGradient),
-                  child: Stack(
-                    children: [
-                      PositionedDirectional(
-                        end: -20,
-                        top: top + 30,
-                        child: Icon(
-                          Icons.pets_rounded,
-                          size: 130,
-                          color: Colors.white.withValues(alpha: 0.08),
-                        ),
-                      ),
-                      PositionedDirectional(
-                        start: 16,
-                        end: 16,
-                        bottom: 60,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              l10n.sitHeroText,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontSize: 14,
-                                height: 1.35,
-                                color: Colors.white.withValues(alpha: 0.92),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Flexible(
-                                  child: FilledButton.icon(
-                                    style: FilledButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      foregroundColor: sittingColor,
-                                      visualDensity: VisualDensity.compact,
-                                    ),
-                                    onPressed: () =>
-                                        _open(const RequestFormScreen()),
-                                    icon: const Icon(
-                                      Icons.add_rounded,
-                                      size: 18,
-                                    ),
-                                    label: Text(
-                                      l10n.sitNewRequest,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Flexible(
-                                  child: OutlinedButton.icon(
-                                    style: OutlinedButton.styleFrom(
-                                      foregroundColor: Colors.white,
-                                      side: const BorderSide(
-                                        color: Colors.white70,
-                                      ),
-                                      visualDensity: VisualDensity.compact,
-                                    ),
-                                    onPressed: () => _open(const ChatsScreen()),
-                                    icon: const Icon(
-                                      Icons.forum_outlined,
-                                      size: 18,
-                                    ),
-                                    label: Text(
-                                      unread > 0
-                                          ? '${l10n.sitChats} · $unread'
-                                          : l10n.sitChats,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                child: _Welcome(
+                  unread: unread,
+                  onNew: () => _open(const RequestFormScreen()),
+                  onChats: () => _open(const ChatsScreen()),
                 ),
               ),
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(52),
-                child: Container(
-                  margin: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.16),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: TabBar(
-                    dividerColor: Colors.transparent,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicator: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    labelColor: sittingColor,
-                    unselectedLabelColor: Colors.white,
-                    labelStyle: const TextStyle(fontWeight: FontWeight.w800),
-                    tabs: [
-                      Tab(height: 36, text: l10n.sitTabRequests),
-                      Tab(height: 36, text: l10n.sitTabSitters),
-                      Tab(height: 36, text: l10n.sitTabMine),
-                    ],
-                  ),
-                ),
+            ),
+            SliverAppBar(
+              pinned: true,
+              primary: false,
+              automaticallyImplyLeading: false,
+              toolbarHeight: 0,
+              backgroundColor: AppColors.background,
+              surfaceTintColor: Colors.transparent,
+              bottom: SittingTabs(
+                tabs: [
+                  Tab(text: l10n.sitTabRequests),
+                  Tab(text: l10n.sitTabSitters),
+                  Tab(text: l10n.sitTabMine),
+                ],
               ),
             ),
           ],
@@ -305,7 +215,7 @@ class _Mine extends ConsumerWidget {
         Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      padding: EdgeInsets.fromLTRB(16, 12, 16, endSpace(context)),
       children: [
         StatGrid(
           perRow: 3,
@@ -490,6 +400,98 @@ class _OfferRow extends ConsumerWidget {
           ),
           const SizedBox(width: 8),
           SittingChip(offer.status.label(l10n), color: offer.status.color),
+        ],
+      ),
+    );
+  }
+}
+
+class _Welcome extends StatelessWidget {
+  final int unread;
+  final VoidCallback onNew;
+  final VoidCallback onChats;
+
+  const _Welcome({
+    required this.unread,
+    required this.onNew,
+    required this.onChats,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        gradient: sittingGradient,
+        borderRadius: BorderRadius.circular(22),
+      ),
+      child: Stack(
+        children: [
+          PositionedDirectional(
+            end: -14,
+            top: -10,
+            child: Icon(
+              Icons.pets_rounded,
+              size: 110,
+              color: Colors.white.withValues(alpha: 0.08),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.sitHeroText,
+                  style: const TextStyle(
+                    fontSize: 14.5,
+                    height: 1.35,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Flexible(
+                      child: FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: AppColors.surface,
+                          foregroundColor: AppColors.primary,
+                          visualDensity: VisualDensity.compact,
+                        ),
+                        onPressed: onNew,
+                        icon: const Icon(Icons.add_rounded, size: 18),
+                        label: Text(
+                          l10n.sitNewRequest,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Flexible(
+                      child: OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          side: const BorderSide(color: Colors.white70),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                        onPressed: onChats,
+                        icon: const Icon(Icons.forum_outlined, size: 18),
+                        label: Text(
+                          unread > 0
+                              ? '${l10n.sitChats} · $unread'
+                              : l10n.sitChats,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

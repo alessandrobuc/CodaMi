@@ -6,6 +6,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/utils/snackbar_utils.dart';
 import '../../l10n/l10n.dart';
 import 'legal_content.dart';
+import '../../core/utils/screen_space.dart';
 
 class LegalScreen extends StatelessWidget {
   final LegalDocument document;
@@ -46,12 +47,7 @@ class LegalScreen extends StatelessWidget {
       ),
       body: SelectionArea(
         child: ListView(
-          padding: EdgeInsets.fromLTRB(
-            20,
-            4,
-            20,
-            32 + MediaQuery.paddingOf(context).bottom,
-          ),
+          padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
           children: [
             Text(
               l10n.legalLastUpdated(

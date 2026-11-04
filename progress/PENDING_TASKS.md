@@ -8,6 +8,8 @@ _Last updated: Wed 4 Nov 2026 (phase 5: AI breed scanner online; heat calendar a
 
 ## 1. Testing now
 
+- [ ] **Pet sitting fixes (Wed 4 Nov):** `firebase deploy --only functions` (changed `acceptSittingOffer`, `confirmSitting`; new trigger `onSittingRequestUpdated` sends the "accepted" and "please confirm" pushes); new build; check the spinner on Accept, the avatar letter in chat, and scrolling up in a long chat
+
 - [ ] **Pet sitting (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` (6 new functions, rules, 1 new index: wait until it's "Enabled"); new build on two phones; test with `TEST_SCENARIO_SITTING_2026-11-04.md`; then Admin → More → Pet sitting → Show to users
 
 - [ ] **Heat calendar (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules` (new `heatReminderSweep`, rules for `heatCycles`, `heatReminders`, `config/heat`); new build; phone test with `TEST_SCENARIO_HEAT_2026-11-04.md`; then Admin → More → Heat calendar → Show to users
@@ -121,6 +123,12 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Wed 4 Nov: pet sitting fixes from the phone test: Accept / Decline / Close / Withdraw / "Yes, it was done" show a spinner and can't be tapped twice; the offer and review forms send with a spinner on Send and show errors inside the form. Accepting is faster: the other offers are declined in the same transaction and the pushes (accepted, please confirm) moved to a new background trigger `onSittingRequestUpdated`, so the app gets its answer straight away. Chat avatar letter was invisible (see-through avatar on the green ring): solid background now. Chat messages are paged: live only the newest 20, older pages of 20 read once when scrolling up, nothing lost when new messages arrive. 1 new app test (152). Needs `firebase deploy --only functions` and a new build
+
+- Wed 4 Nov: pet sitting back in the app theme: only `AppColors` (green, dark green, orange accent, neutrals), no own blue. Light top bar like every other screen with a green welcome card inside the page, the app's standard tabs (white track, green pill, as on Home and My reports) on the user and admin side, stars in the theme orange, statuses open green / booked dark orange / completed dark green / closed grey. Needs a new build
+
+- Wed 4 Nov: space at the end of every screen: one shared `endSpace()` (`lib/core/utils/screen_space.dart`) that clears the phone's gesture bar, the floating tab bar on tab screens, and a floating "+" button where there is one (48, or 104 with a button). Used on 59 scrolling screens across the app (user and admin), the home lost / found list, Pets, Videos, the pet, report and product pages. Bottom sheets and screens with a fixed bottom bar keep their own spacing. Needs a new build
 
 - Wed 4 Nov: pet sitting look refreshed: gradient header with quick buttons and pill tabs, request cards with a calendar date badge and info pills, sitter cards with a rating badge and service icons, request form in 4 numbered step cards (pet tiles, service tiles, dates with the number of days) and more space under Publish, request page with a gradient header and a Published → Booked → Confirmed → Reviewed timeline, sitter profile with a banner, big avatar and stat tiles, chat with shaped bubbles and day labels, Mine overview tiles, admin overview tiles, reports coloured by type, and pill-style tabs with icons on the admin side too. 8 new texts in 10 languages. Needs a new build
 

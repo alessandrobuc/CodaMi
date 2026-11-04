@@ -10,6 +10,7 @@ import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/invite_code_input.dart';
 import '../widgets/points_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // Shown once after sign-up and city setup, so invited friends don't miss the code box.
 class InvitePromptScreen extends ConsumerStatefulWidget {
@@ -98,7 +99,7 @@ class _InvitePromptScreenState extends ConsumerState<InvitePromptScreen> {
                     key: const ValueKey('form'),
                     keyboardDismissBehavior:
                         ScrollViewKeyboardDismissBehavior.onDrag,
-                    padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                    padding: EdgeInsets.fromLTRB(24, 8, 24, endSpace(context)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [

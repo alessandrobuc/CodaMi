@@ -6,6 +6,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/widgets/language_picker.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../l10n/locale_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class LanguageSelectScreen extends ConsumerWidget {
   const LanguageSelectScreen({super.key});
@@ -21,7 +22,7 @@ class LanguageSelectScreen extends ConsumerWidget {
           children: [
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
+                padding: EdgeInsets.fromLTRB(20, 24, 20, endSpace(context)),
                 children: [
                   Center(
                         child: Image.asset(

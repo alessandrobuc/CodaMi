@@ -38,6 +38,7 @@ import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/screens/admin_walks_screen.dart';
 import '../../../walks/presentation/widgets/walk_widgets.dart';
 import '../../../shop/presentation/widgets/shop_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminMoreTab extends ConsumerWidget {
   const AdminMoreTab({super.key});
@@ -85,7 +86,7 @@ class AdminMoreTab extends ConsumerWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
+          padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
           children: [
             Text(
               l10n.adminMore,

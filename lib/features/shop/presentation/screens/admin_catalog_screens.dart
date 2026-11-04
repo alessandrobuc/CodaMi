@@ -14,6 +14,7 @@ import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../domain/shop.dart';
 import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 String? _adminId(WidgetRef ref) => ref.read(authStateProvider).value?.uid;
 
@@ -87,7 +88,7 @@ class _ListScaffold extends StatelessWidget {
             16,
             4,
             16,
-            MediaQuery.paddingOf(context).bottom + 96,
+            endSpace(context, floatingButton: true),
           ),
           children: children,
         ),

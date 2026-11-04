@@ -12,6 +12,7 @@ import '../../../videos/presentation/screens/video_player_screen.dart';
 import '../../../videos/presentation/widgets/video_labels.dart';
 import '../../../videos/presentation/widgets/video_thumbnail.dart';
 import 'admin_video_form_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 enum _Filter { all, visible, hidden }
 
@@ -160,7 +161,7 @@ class _AdminVideosScreenState extends ConsumerState<AdminVideosScreen> {
                         20,
                         8,
                         20,
-                        100 + MediaQuery.paddingOf(context).bottom,
+                        endSpace(context, floatingButton: true),
                       ),
                       itemCount: videos.length,
                       separatorBuilder: (_, _) => const SizedBox(height: 12),

@@ -7,6 +7,7 @@ import '../../../../l10n/l10n.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../data/moderation_repository.dart';
 import '../providers/moderation_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class BlockedUsersScreen extends ConsumerWidget {
   const BlockedUsersScreen({super.key});
@@ -55,7 +56,7 @@ class BlockedUsersScreen extends ConsumerWidget {
               ),
             )
           : ListView.separated(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+              padding: EdgeInsets.fromLTRB(20, 8, 20, endSpace(context)),
               itemCount: blocked.length,
               separatorBuilder: (_, _) => const SizedBox(height: 10),
               itemBuilder: (context, i) {

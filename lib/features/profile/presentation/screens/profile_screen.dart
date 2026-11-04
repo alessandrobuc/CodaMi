@@ -41,6 +41,7 @@ import '../../../whats_new/presentation/screens/whats_new_screen.dart';
 import '../../../app_update/data/app_update_repository.dart';
 import '../../../app_update/presentation/update_widgets.dart';
 import 'package:in_app_review/in_app_review.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -119,7 +120,7 @@ class ProfileScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+          padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
           children: [
             Text(
               l10n.profileTitle,

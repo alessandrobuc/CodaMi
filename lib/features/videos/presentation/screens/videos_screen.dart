@@ -10,6 +10,7 @@ import '../providers/videos_provider.dart';
 import '../widgets/video_labels.dart';
 import '../widgets/video_thumbnail.dart';
 import 'video_player_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class VideosScreen extends ConsumerStatefulWidget {
   const VideosScreen({super.key});
@@ -201,7 +202,7 @@ class _VideosScreenState extends ConsumerState<VideosScreen> {
                 ),
               ),
             ],
-            SliverToBoxAdapter(child: SizedBox(height: bottomInset + 24)),
+            SliverToBoxAdapter(child: SizedBox(height: endSpace(context))),
           ],
         ),
       ),

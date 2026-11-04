@@ -18,6 +18,7 @@ import '../providers/sitting_provider.dart';
 import '../widgets/sitting_widgets.dart';
 import 'chat_screens.dart';
 import 'sitter_screens.dart';
+import '../../../../core/utils/screen_space.dart';
 
 String sittingError(AppLocalizations l10n, Object e) => switch (e) {
   SittingException(code: 'failed-precondition') => l10n.sitNotAvailableNow,
@@ -193,12 +194,7 @@ class _RequestFormScreenState extends ConsumerState<RequestFormScreen> {
         absorbing: _busy,
         child: ListView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          padding: EdgeInsets.fromLTRB(
-            16,
-            8,
-            16,
-            MediaQuery.paddingOf(context).bottom + 80,
-          ),
+          padding: EdgeInsets.fromLTRB(16, 8, 16, endSpace(context)),
           children: [
             if (!hasPlace)
               SittingCard(
@@ -427,7 +423,7 @@ class RequestDetailScreen extends ConsumerWidget {
                   : Text(l10n.sitNotFound),
             )
           : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+              padding: EdgeInsets.fromLTRB(16, 8, 16, endSpace(context)),
               children: [
                 _RequestSummary(request: r),
                 const SizedBox(height: 12),
@@ -564,25 +560,23 @@ class RequestDetailScreen extends ConsumerWidget {
                     runSpacing: 8,
                     children: [
                       if (o.status == OfferStatus.pending)
-                        FilledButton(
+                        BusyButton(
+                          kind: BusyKind.filled,
                           style: FilledButton.styleFrom(
                             backgroundColor: AppColors.primary,
                           ),
-                          onPressed: () async {
-                            if (await confirmDialog(
-                                  context,
-                                  l10n.sitAcceptTitle(o.sitterName),
-                                  l10n.sitAcceptText,
-                                ) &&
-                                context.mounted) {
-                              await runSitting(
-                                context,
-                                () => repo.acceptOffer(o),
-                                success: l10n.sitAccepted,
-                              );
-                            }
-                          },
-                          child: Text(l10n.sitAccept),
+                          before: () => confirmDialog(
+                            context,
+                            l10n.sitAcceptTitle(o.sitterName),
+                            l10n.sitAcceptText,
+                          ),
+                          onPressed: () => runSitting(
+                            context,
+                            () => repo.acceptOffer(o),
+                            success: l10n.sitAccepted,
+                          ),
+                          icon: const Icon(Icons.check_rounded, size: 18),
+                          label: Text(l10n.sitAccept),
                         ),
                       OutlinedButton(
                         onPressed: () =>
@@ -599,12 +593,13 @@ class RequestDetailScreen extends ConsumerWidget {
                         child: Text(l10n.sitChat),
                       ),
                       if (o.status == OfferStatus.pending)
-                        TextButton(
+                        BusyButton(
+                          kind: BusyKind.text,
                           onPressed: () => runSitting(
                             context,
                             () => repo.setOfferStatus(o, OfferStatus.declined),
                           ),
-                          child: Text(l10n.sitDecline),
+                          label: Text(l10n.sitDecline),
                         ),
                     ],
                   ),
@@ -616,18 +611,12 @@ class RequestDetailScreen extends ConsumerWidget {
       if (r.status == SittingStatus.open ||
           r.status == SittingStatus.booked) ...[
         const SizedBox(height: 12),
-        TextButton.icon(
+        BusyButton(
+          kind: BusyKind.text,
           style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-          onPressed: () async {
-            if (await confirmDialog(
-                  context,
-                  l10n.sitCloseTitle,
-                  l10n.sitCloseText,
-                ) &&
-                context.mounted) {
-              await runSitting(context, () => repo.closeRequest(r.id));
-            }
-          },
+          before: () =>
+              confirmDialog(context, l10n.sitCloseTitle, l10n.sitCloseText),
+          onPressed: () => runSitting(context, () => repo.closeRequest(r.id)),
           icon: const Icon(Icons.close_rounded),
           label: Text(
             r.status == SittingStatus.booked
@@ -697,12 +686,13 @@ class RequestDetailScreen extends ConsumerWidget {
               if (mine.status == OfferStatus.pending)
                 Align(
                   alignment: AlignmentDirectional.centerEnd,
-                  child: TextButton(
+                  child: BusyButton(
+                    kind: BusyKind.text,
                     onPressed: () => runSitting(
                       context,
                       () => repo.setOfferStatus(mine, OfferStatus.withdrawn),
                     ),
-                    child: Text(l10n.sitWithdraw),
+                    label: Text(l10n.sitWithdraw),
                   ),
                 ),
             ],
@@ -734,81 +724,95 @@ class RequestDetailScreen extends ConsumerWidget {
     final l10n = context.l10n;
     final message = TextEditingController();
     final price = TextEditingController();
+    String? error;
     final send = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
       backgroundColor: AppColors.surface,
-      builder: (context) => Padding(
-        padding: EdgeInsets.fromLTRB(
-          20,
-          0,
-          20,
-          MediaQuery.viewInsetsOf(context).bottom + 20,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SittingTitle(l10n.sitSendOffer),
-            TextField(
-              controller: message,
-              autofocus: true,
-              maxLength: 500,
-              maxLines: 4,
-              minLines: 2,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                labelText: l10n.sitOfferMessage,
-                hintText: l10n.sitOfferMessageHint,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => Padding(
+          padding: EdgeInsets.fromLTRB(
+            20,
+            0,
+            20,
+            MediaQuery.viewInsetsOf(context).bottom + 20,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SittingTitle(l10n.sitSendOffer),
+              TextField(
+                controller: message,
+                autofocus: true,
+                maxLength: 500,
+                maxLines: 4,
+                minLines: 2,
+                textCapitalization: TextCapitalization.sentences,
+                decoration: InputDecoration(
+                  labelText: l10n.sitOfferMessage,
+                  hintText: l10n.sitOfferMessageHint,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: price,
-              maxLength: 40,
-              decoration: InputDecoration(
-                labelText: l10n.sitOfferPrice,
-                hintText: l10n.sitBudgetHint,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+              const SizedBox(height: 8),
+              TextField(
+                controller: price,
+                maxLength: 40,
+                decoration: InputDecoration(
+                  labelText: l10n.sitOfferPrice,
+                  hintText: l10n.sitBudgetHint,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: sittingColor,
-                minimumSize: const Size.fromHeight(50),
+              const SizedBox(height: 8),
+              if (error != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    error!,
+                    style: const TextStyle(color: AppColors.danger),
+                  ),
+                ),
+              BusyButton(
+                kind: BusyKind.filled,
+                style: FilledButton.styleFrom(
+                  backgroundColor: sittingColor,
+                  minimumSize: const Size.fromHeight(50),
+                ),
+                onPressed: () async {
+                  if (message.text.trim().isEmpty) return;
+                  try {
+                    await ref
+                        .read(sittingRepositoryProvider)
+                        .sendOffer(
+                          r,
+                          sitterId: sitter.uid,
+                          sitterName: sitter.name,
+                          message: message.text,
+                          price: price.text,
+                        );
+                    if (context.mounted) Navigator.pop(context, true);
+                  } catch (e) {
+                    debugPrint('Offer not sent: $e');
+                    setState(() => error = sittingError(l10n, e));
+                  }
+                },
+                icon: const Icon(Icons.send_rounded, size: 18),
+                label: Text(l10n.sitSend),
               ),
-              onPressed: () {
-                if (message.text.trim().isNotEmpty) {
-                  Navigator.pop(context, true);
-                }
-              },
-              child: Text(l10n.sitSend),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
     if (send == true && context.mounted) {
-      await runSitting(
-        context,
-        () => ref
-            .read(sittingRepositoryProvider)
-            .sendOffer(
-              r,
-              sitterId: sitter.uid,
-              sitterName: sitter.name,
-              message: message.text,
-              price: price.text,
-            ),
-        success: l10n.sitOfferSent,
-      );
+      SnackbarUtils.showSuccess(context, l10n.sitOfferSent);
     }
     message.dispose();
     price.dispose();
@@ -874,7 +878,7 @@ class _RequestSummary extends ConsumerWidget {
           ),
           child: Row(
             children: [
-              DateBadge(date: r.start, color: const Color(0xFF1E4E8C)),
+              DateBadge(date: r.start, color: AppColors.primaryDark),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -989,7 +993,8 @@ class _ConfirmCard extends ConsumerWidget {
             style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
           ),
           const SizedBox(height: 10),
-          FilledButton.icon(
+          BusyButton(
+            kind: BusyKind.filled,
             style: FilledButton.styleFrom(backgroundColor: sittingColor),
             onPressed: () => runSitting(
               context,
@@ -1013,6 +1018,7 @@ Future<void> showReviewSheet(
   final l10n = context.l10n;
   final text = TextEditingController();
   var stars = 0;
+  String? error;
   final send = await showModalBottomSheet<bool>(
     context: context,
     isScrollControlled: true,
@@ -1047,7 +1053,7 @@ Future<void> showReviewSheet(
                           ? Icons.star_rounded
                           : Icons.star_outline_rounded,
                       size: 36,
-                      color: const Color(0xFFE0A100),
+                      color: AppColors.accent,
                     ),
                   ),
               ],
@@ -1066,13 +1072,34 @@ Future<void> showReviewSheet(
               ),
             ),
             const SizedBox(height: 8),
-            FilledButton(
+            if (error != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  error!,
+                  style: const TextStyle(color: AppColors.danger),
+                ),
+              ),
+            BusyButton(
+              kind: BusyKind.filled,
               style: FilledButton.styleFrom(
                 backgroundColor: sittingColor,
                 minimumSize: const Size.fromHeight(50),
               ),
-              onPressed: stars == 0 ? null : () => Navigator.pop(context, true),
-              child: Text(l10n.sitSend),
+              onPressed: () async {
+                if (stars == 0) return;
+                try {
+                  await ref
+                      .read(sittingRepositoryProvider)
+                      .review(r.id, stars, text.text);
+                  if (context.mounted) Navigator.pop(context, true);
+                } catch (e) {
+                  debugPrint('Review not sent: $e');
+                  setState(() => error = sittingError(l10n, e));
+                }
+              },
+              icon: const Icon(Icons.send_rounded, size: 18),
+              label: Text(l10n.sitSend),
             ),
           ],
         ),
@@ -1080,11 +1107,7 @@ Future<void> showReviewSheet(
     ),
   );
   if (send == true && context.mounted) {
-    await runSitting(
-      context,
-      () => ref.read(sittingRepositoryProvider).review(r.id, stars, text.text),
-      success: l10n.sitThanksReview,
-    );
+    SnackbarUtils.showSuccess(context, l10n.sitThanksReview);
   }
   text.dispose();
 }

@@ -9,6 +9,7 @@ import '../../../../l10n/locale_provider.dart';
 import '../../domain/release_note.dart';
 import '../../data/release_notes_repository.dart';
 import '../providers/notes_pager.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // With [notes], shows those after an update with a "Got it" button.
 // Without, lists the published versions page by page (Profile → What's new).
@@ -57,7 +58,7 @@ class _WhatsNewScreenState extends ConsumerState<WhatsNewScreen> {
         surfaceTintColor: Colors.transparent,
       ),
       body: pager == null
-          ? _list(widget.notes!, bottom: 24)
+          ? _list(widget.notes!)
           : ListenableBuilder(
               listenable: pager,
               builder: (context, _) {
@@ -84,7 +85,6 @@ class _WhatsNewScreenState extends ConsumerState<WhatsNewScreen> {
                 }
                 return _list(
                   pager.notes,
-                  bottom: bottom + 32,
                   footer: pager.hasMore
                       ? NotesLoadMore(loading: pager.loading, onTap: pager.more)
                       : null,
@@ -113,14 +113,10 @@ class _WhatsNewScreenState extends ConsumerState<WhatsNewScreen> {
     );
   }
 
-  Widget _list(
-    List<ReleaseNote> notes, {
-    required double bottom,
-    Widget? footer,
-  }) {
+  Widget _list(List<ReleaseNote> notes, {Widget? footer}) {
     final lang = ref.watch(localeProvider).code;
     return ListView(
-      padding: EdgeInsets.fromLTRB(16, 4, 16, bottom),
+      padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
       children: [
         _Header(intro: _afterUpdate),
         const SizedBox(height: 16),

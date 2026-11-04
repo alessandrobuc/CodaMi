@@ -12,6 +12,7 @@ import '../providers/notes_pager.dart';
 import '../providers/whats_new_provider.dart';
 import 'whats_new_screen.dart';
 import 'admin_release_note_form_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminReleaseNotesScreen extends ConsumerStatefulWidget {
   const AdminReleaseNotesScreen({super.key});
@@ -94,7 +95,7 @@ class _AdminReleaseNotesScreenState
                 16,
                 4,
                 16,
-                MediaQuery.paddingOf(context).bottom + 96,
+                endSpace(context, floatingButton: true),
               ),
               children: [
                 if (version != null)

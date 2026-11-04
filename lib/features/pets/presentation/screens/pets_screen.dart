@@ -17,6 +17,7 @@ import '../widgets/pets_widget.dart';
 import 'pet_detail_screen.dart';
 import 'pet_form_screen.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class PetsScreen extends ConsumerWidget {
   const PetsScreen({super.key});
@@ -162,7 +163,7 @@ class PetsScreen extends ConsumerWidget {
                 },
               ),
             ),
-          SliverToBoxAdapter(child: SizedBox(height: bottomInset + 16)),
+          SliverToBoxAdapter(child: SizedBox(height: endSpace(context))),
         ],
       ),
     );

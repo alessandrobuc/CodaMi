@@ -13,6 +13,7 @@ import '../../../reports/presentation/widgets/spot_picker.dart';
 import '../../data/emergency_repository.dart';
 import '../../domain/emergency.dart';
 import '../widgets/emergency_widgets.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ContactFormScreen extends ConsumerStatefulWidget {
   final EmergencyContact? contact;
@@ -180,7 +181,7 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           SectionLabel(l10n.contactName),
           const SizedBox(height: 8),

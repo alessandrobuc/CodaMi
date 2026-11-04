@@ -15,6 +15,7 @@ import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../../reports/presentation/providers/reports_provider.dart';
 import '../../../reports/presentation/screens/report_detail_screen.dart';
 import '../../../reports/presentation/widgets/reports_widget.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminReportedTab extends ConsumerWidget {
   const AdminReportedTab({super.key});
@@ -146,7 +147,7 @@ class _PhotoReviewList extends StatelessWidget {
       );
     }
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+      padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 12),
@@ -189,7 +190,7 @@ class _FlaggedList extends StatelessWidget {
       );
     }
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+      padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
       itemCount: items.length,
       separatorBuilder: (_, _) => const SizedBox(height: 12),
       itemBuilder: (context, i) =>

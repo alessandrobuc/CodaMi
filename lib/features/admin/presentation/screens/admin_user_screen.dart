@@ -15,6 +15,7 @@ import '../../../points/data/points_repository.dart';
 import '../../../points/presentation/screens/admin_invites_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminUserScreen extends ConsumerStatefulWidget {
   final String uid;
@@ -219,12 +220,7 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     final viewerIsAdmin = ref.watch(userRoleProvider) == UserRole.admin;
 
     return ListView(
-      padding: EdgeInsets.fromLTRB(
-        20,
-        0,
-        20,
-        100 + MediaQuery.viewPaddingOf(context).bottom,
-      ),
+      padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
       children: [
         Center(child: UserAvatar(user: user, radius: 40)),
         const SizedBox(height: 12),

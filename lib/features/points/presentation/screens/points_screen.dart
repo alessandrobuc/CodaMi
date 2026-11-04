@@ -9,6 +9,7 @@ import '../../domain/points.dart';
 import '../providers/points_provider.dart';
 import '../widgets/points_widgets.dart';
 import 'invite_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class PointsScreen extends ConsumerWidget {
   const PointsScreen({super.key});
@@ -32,7 +33,7 @@ class PointsScreen extends ConsumerWidget {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+        padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
         children: [
           Container(
             padding: const EdgeInsets.all(18),

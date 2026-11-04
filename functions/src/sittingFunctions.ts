@@ -3,7 +3,7 @@ import "./options";
 import {FieldValue, Timestamp, getFirestore, type DocumentSnapshot} from "firebase-admin/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
-import {onDocumentCreated} from "firebase-functions/firestore";
+import {onDocumentCreated, onDocumentUpdated} from "firebase-functions/firestore";
 
 import {DEFAULT_CHANNEL, languageOf} from "./notifications";
 import {dayKey} from "./points";
@@ -70,7 +70,8 @@ async function push(
   }
 }
 
-// The owner picks one offer: the request is booked and the other offers are declined.
+// The owner picks one offer: one transaction books the request and declines the other offers.
+// Pushes go out from onSittingRequestUpdated, so the app gets its answer straight away.
 export const acceptSittingOffer = onCall(async (request) => {
   const uid = uidOf(request);
   const requestId = idOf(request.data, "requestId");
@@ -78,7 +79,11 @@ export const acceptSittingOffer = onCall(async (request) => {
   const requestRef = requests().doc(requestId);
   const offerRef = offers().doc(offerIdOf(requestId, sitterId));
   await db().runTransaction(async (tx) => {
-    const [req, offer] = await Promise.all([tx.get(requestRef), tx.get(offerRef)]);
+    const [req, offer, pending] = await Promise.all([
+      tx.get(requestRef),
+      tx.get(offerRef),
+      tx.get(offers().where("requestId", "==", requestId).where("status", "==", "pending")),
+    ]);
     if (!req.exists || req.get("ownerId") !== uid) throw new HttpsError("permission-denied", "Not your request.");
     if (req.get("status") !== "open") throw new HttpsError("failed-precondition", "This request is no longer open.");
     if (!offer.exists || offer.get("status") !== "pending") {
@@ -86,12 +91,8 @@ export const acceptSittingOffer = onCall(async (request) => {
     }
     tx.update(requestRef, {status: "booked", sitterId, sitterName: offer.get("sitterName") ?? "", bookedAt: FieldValue.serverTimestamp()});
     tx.update(offerRef, {status: "accepted"});
+    pending.docs.filter((d) => d.id !== offerRef.id).forEach((d) => tx.update(d.ref, {status: "declined"}));
   });
-  const others = await offers().where("requestId", "==", requestId).where("status", "==", "pending").get();
-  await Promise.all(others.docs.map((d) => d.ref.update({status: "declined"})));
-  const owner = await nameOf(uid);
-  await push(sitterId, (l) => sittingText(l, "acceptedTitle", owner), (l) => sittingText(l, "acceptedBody", owner),
-    {kind: "sitting_accepted", requestId});
   return {booked: true};
 });
 
@@ -101,7 +102,7 @@ export const confirmSitting = onCall(async (request) => {
   const requestId = idOf(request.data, "requestId");
   const ref = requests().doc(requestId);
   const today = dayKey(Date.now());
-  const result = await db().runTransaction(async (tx) => {
+  const done = await db().runTransaction(async (tx) => {
     const req = await tx.get(ref);
     const step = confirmStep(req.data(), uid, today);
     if (!step) throw new HttpsError("failed-precondition", "This service can't be confirmed now.");
@@ -110,15 +111,37 @@ export const confirmSitting = onCall(async (request) => {
       ...(step.done ? {status: "done", doneAt: FieldValue.serverTimestamp()} : {}),
     });
     if (step.done) tx.set(sitters().doc(req.get("sitterId")), {completedCount: FieldValue.increment(1)}, {merge: true});
-    return {done: step.done, other: step.field === "ownerConfirmed" ? req.get("sitterId") : req.get("ownerId")};
+    return step.done;
   });
-  if (!result.done) {
-    const name = await nameOf(uid);
-    await push(result.other, (l) => sittingText(l, "confirmTitle", name), (l) => sittingText(l, "confirmBody", name),
-      {kind: "sitting_confirm", requestId});
-  }
-  return {done: result.done};
+  return {done};
 });
+
+// Tells the other side when a request is booked or one side has confirmed.
+export const onSittingRequestUpdated = onDocumentUpdated(
+  {document: "sittingRequests/{requestId}", region: TRIGGER_REGION},
+  async (event) => {
+    const before = event.data?.before.data();
+    const after = event.data?.after.data();
+    if (!before || !after) return;
+    const requestId = event.params.requestId;
+    const ownerId = String(after.ownerId ?? "");
+    const sitterId = String(after.sitterId ?? "");
+    if (before.status === "open" && after.status === "booked" && sitterId) {
+      const owner = await nameOf(ownerId);
+      await push(sitterId, (l) => sittingText(l, "acceptedTitle", owner), (l) => sittingText(l, "acceptedBody", owner),
+        {kind: "sitting_accepted", requestId});
+      return;
+    }
+    if (after.status !== "booked") return;
+    const ownerNow = after.ownerConfirmed === true && before.ownerConfirmed !== true;
+    const sitterNow = after.sitterConfirmed === true && before.sitterConfirmed !== true;
+    if (!ownerNow && !sitterNow) return;
+    const [from, to] = ownerNow ? [ownerId, sitterId] : [sitterId, ownerId];
+    const name = await nameOf(from);
+    await push(to, (l) => sittingText(l, "confirmTitle", name), (l) => sittingText(l, "confirmBody", name),
+      {kind: "sitting_confirm", requestId});
+  },
+);
 
 async function refreshRating(sitterId: string): Promise<void> {
   const all = await reviews().where("sitterId", "==", sitterId).get();

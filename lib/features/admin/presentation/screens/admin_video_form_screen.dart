@@ -17,6 +17,7 @@ import '../../../videos/domain/entities/video_entity.dart';
 import '../../../videos/presentation/providers/videos_provider.dart';
 import '../../../videos/presentation/widgets/video_labels.dart';
 import '../../../videos/presentation/widgets/video_thumbnail.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // Matches the limit in storage.rules.
 const _maxVideoBytes = 200 * 1024 * 1024;
@@ -179,7 +180,7 @@ class _AdminVideoFormScreenState extends ConsumerState<AdminVideoFormScreen> {
         body: AbsorbPointer(
           absorbing: busy,
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+            padding: EdgeInsets.fromLTRB(16, 4, 16, endSpace(context)),
             children: [
               _Section(
                 icon: Icons.movie_rounded,

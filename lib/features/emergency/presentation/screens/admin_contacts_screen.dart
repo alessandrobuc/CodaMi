@@ -10,6 +10,7 @@ import '../../domain/emergency.dart';
 import '../providers/emergency_provider.dart';
 import '../widgets/emergency_widgets.dart';
 import 'contact_form_screen.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class AdminContactsScreen extends ConsumerStatefulWidget {
   const AdminContactsScreen({super.key});
@@ -75,7 +76,12 @@ class _AdminContactsScreenState extends ConsumerState<AdminContactsScreen> {
         label: Text(l10n.addContact),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 4, 20, 120),
+        padding: EdgeInsets.fromLTRB(
+          20,
+          4,
+          20,
+          endSpace(context, floatingButton: true),
+        ),
         children: [
           TextField(
             controller: _search,

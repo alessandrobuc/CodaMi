@@ -12,6 +12,7 @@ import '../../domain/entities/video_entity.dart';
 import '../providers/videos_provider.dart';
 import '../widgets/video_labels.dart';
 import '../widgets/video_thumbnail.dart';
+import '../../../../core/utils/screen_space.dart';
 
 const _skip = Duration(seconds: 10);
 const _hideAfter = Duration(seconds: 3);
@@ -743,7 +744,7 @@ class _Details extends StatelessWidget {
     final l10n = context.l10n;
     final duration = video.durationLabel;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+      padding: EdgeInsets.fromLTRB(20, 20, 20, endSpace(context)),
       children: [
         Row(
           children: [

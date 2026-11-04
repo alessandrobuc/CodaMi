@@ -10,6 +10,7 @@ import '../../../admin/presentation/screens/admin_user_screen.dart';
 import '../../data/points_repository.dart';
 import '../../domain/points.dart';
 import '../providers/points_provider.dart';
+import '../../../../core/utils/screen_space.dart';
 
 // Invites the anti-fraud checks held back. Nothing is rejected without an admin.
 class AdminReferralsScreen extends ConsumerWidget {
@@ -68,7 +69,7 @@ class AdminReferralsScreen extends ConsumerWidget {
               ),
             )
           : ListView.separated(
-              padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
+              padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
               itemCount: items.length,
               separatorBuilder: (_, _) => const SizedBox(height: 12),
               itemBuilder: (context, i) {

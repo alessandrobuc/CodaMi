@@ -53,7 +53,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 4. Firebase
 
-- [ ] **Phase 5 deploy (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` for the heat calendar (`heatReminderSweep`) and pet sitting (6 functions, rules, the `sittingRequests` index); check the index is "Enabled"
+- [ ] **Phase 5 deploy (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` for the heat calendar (`heatReminderSweep`) and pet sitting (7 functions with `onSittingRequestUpdated`, rules, the `sittingRequests` index); check the index is "Enabled"
 
 - [x] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions` (Wed 21 Oct)
 - [x] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
@@ -90,6 +90,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Remove any test reports, test users and test pets from Firestore
 - [ ] Empty states, error messages and loading states reviewed on a slow connection
 - [ ] Test on a small phone and a large phone (layout never breaks)
+  - [x] Space at the end of every scrolling screen, above the gesture bar, the floating tab bar and the "+" button (Wed 4 Nov)
 - [x] Notification sounds on a real Android phone (Mon 19 Oct)
 - [ ] Notification sounds on a real iPhone (CodaMi sounds; app open, in background and closed). Needs the client's Apple account
 - [ ] Support on two real phones: user chat and request, operator take / reply / resolve, admin reassign, Operators screen

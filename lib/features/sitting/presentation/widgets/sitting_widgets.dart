@@ -9,7 +9,7 @@ import '../../../pets/domain/entities/pets_entity.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/sitting.dart';
 
-const sittingColor = Color(0xFF2B6CB0);
+const sittingColor = AppColors.primary;
 
 extension SittingServiceView on SittingService {
   IconData get icon => switch (this) {
@@ -31,9 +31,9 @@ extension SittingServiceView on SittingService {
 
 extension SittingStatusView on SittingStatus {
   Color get color => switch (this) {
-    SittingStatus.open => sittingColor,
-    SittingStatus.booked => AppColors.accent,
-    SittingStatus.done => AppColors.primary,
+    SittingStatus.open => AppColors.primary,
+    SittingStatus.booked => AppColors.rewardText,
+    SittingStatus.done => AppColors.primaryDark,
     SittingStatus.closed => AppColors.textMuted,
   };
 
@@ -47,7 +47,7 @@ extension SittingStatusView on SittingStatus {
 
 extension OfferStatusView on OfferStatus {
   Color get color => switch (this) {
-    OfferStatus.pending => sittingColor,
+    OfferStatus.pending => AppColors.rewardText,
     OfferStatus.accepted => AppColors.primary,
     OfferStatus.declined || OfferStatus.withdrawn => AppColors.textMuted,
   };
@@ -171,8 +171,13 @@ class SittingAvatar extends StatelessWidget {
     final letter = name.trim().isEmpty ? '?' : name.trim()[0].toUpperCase();
     return CircleAvatar(
       radius: radius,
-      backgroundColor: sittingColor.withValues(alpha: 0.12),
+      // Solid, so the letter stays readable on top of a coloured ring.
+      backgroundColor: Color.alphaBlend(
+        sittingColor.withValues(alpha: 0.14),
+        AppColors.surface,
+      ),
       foregroundImage: url == null || url.isEmpty ? null : NetworkImage(url),
+      onForegroundImageError: url == null || url.isEmpty ? null : (_, _) {},
       child: Text(
         letter,
         style: TextStyle(
@@ -203,7 +208,7 @@ class StarRow extends StatelessWidget {
               ? Icons.star_half_rounded
               : Icons.star_outline_rounded,
           size: size,
-          color: const Color(0xFFE0A100),
+          color: AppColors.accent,
         ),
     ],
   );
@@ -251,7 +256,7 @@ class RatingLine extends StatelessWidget {
 const sittingGradient = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
-  colors: [Color(0xFF1E4E8C), Color(0xFF2B6CB0), Color(0xFF38A1C9)],
+  colors: [AppColors.primary, AppColors.primaryDark],
 );
 
 int sittingDays(DateTime a, DateTime b) => b.difference(a).inDays + 1;
@@ -722,7 +727,7 @@ class SitterCard extends StatelessWidget {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFE0A100),
+                          color: AppColors.accent,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
                             color: AppColors.surface,
@@ -975,5 +980,139 @@ class SittingPromoCard extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+// The app's standard tabs: white track, green pill (as on Home and My reports).
+class SittingTabs extends StatelessWidget implements PreferredSizeWidget {
+  final List<Widget> tabs;
+  final bool scrollable;
+
+  const SittingTabs({super.key, required this.tabs, this.scrollable = false});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+    child: Container(
+      height: 48,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: TabBar(
+        isScrollable: scrollable,
+        tabAlignment: scrollable ? TabAlignment.start : null,
+        indicator: BoxDecoration(
+          color: AppColors.primary,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        indicatorSize: TabBarIndicatorSize.tab,
+        dividerColor: Colors.transparent,
+        labelColor: Colors.white,
+        unselectedLabelColor: AppColors.textMuted,
+        labelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+        splashBorderRadius: BorderRadius.circular(20),
+        labelPadding: scrollable
+            ? const EdgeInsets.symmetric(horizontal: 14)
+            : null,
+        tabs: tabs,
+      ),
+    ),
+  );
+}
+
+enum BusyKind { filled, outlined, text }
+
+// A button that shows a spinner and ignores taps while its action runs.
+class BusyButton extends StatefulWidget {
+  final BusyKind kind;
+  final Future<void> Function() onPressed;
+  // Asked first, before the spinner (for example a confirmation dialog).
+  final Future<bool> Function()? before;
+  final Widget label;
+  final Widget? icon;
+  final ButtonStyle? style;
+
+  const BusyButton({
+    super.key,
+    required this.kind,
+    required this.onPressed,
+    required this.label,
+    this.before,
+    this.icon,
+    this.style,
+  });
+
+  @override
+  State<BusyButton> createState() => _BusyButtonState();
+}
+
+class _BusyButtonState extends State<BusyButton> {
+  bool _busy = false;
+
+  Future<void> _run() async {
+    if (_busy) return;
+    if (widget.before != null && !await widget.before!()) return;
+    if (!mounted) return;
+    setState(() => _busy = true);
+    try {
+      await widget.onPressed();
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final spinner = SizedBox(
+      width: 16,
+      height: 16,
+      child: CircularProgressIndicator(
+        strokeWidth: 2,
+        color: widget.kind == BusyKind.filled ? Colors.white : sittingColor,
+      ),
+    );
+    final icon = _busy ? spinner : widget.icon;
+    void onPressed() => _busy ? null : _run();
+    return switch ((widget.kind, icon)) {
+      (BusyKind.filled, final i?) => FilledButton.icon(
+        style: widget.style,
+        onPressed: onPressed,
+        icon: i,
+        label: widget.label,
+      ),
+      (BusyKind.filled, null) => FilledButton(
+        style: widget.style,
+        onPressed: onPressed,
+        child: widget.label,
+      ),
+      (BusyKind.outlined, final i?) => OutlinedButton.icon(
+        style: widget.style,
+        onPressed: onPressed,
+        icon: i,
+        label: widget.label,
+      ),
+      (BusyKind.outlined, null) => OutlinedButton(
+        style: widget.style,
+        onPressed: onPressed,
+        child: widget.label,
+      ),
+      (BusyKind.text, final i?) => TextButton.icon(
+        style: widget.style,
+        onPressed: onPressed,
+        icon: i,
+        label: widget.label,
+      ),
+      (BusyKind.text, null) => TextButton(
+        style: widget.style,
+        onPressed: onPressed,
+        child: widget.label,
+      ),
+    };
   }
 }

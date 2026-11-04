@@ -10,13 +10,13 @@ import '../providers/reports_provider.dart';
 import '../widgets/reports_widget.dart';
 import 'report_detail_screen.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../core/utils/screen_space.dart';
 
 class ReportsListView extends ConsumerWidget {
   final ReportType type;
 
   const ReportsListView({super.key, required this.type});
 
-  static const _bottomPadding = 96.0;
   static const _loadMoreExtent = 600.0;
 
   @override
@@ -74,7 +74,9 @@ class ReportsListView extends ConsumerWidget {
         SliverFillRemaining(
           hasScrollBody: false,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: _bottomPadding),
+            padding: EdgeInsets.only(
+              bottom: endSpace(context, floatingButton: true),
+            ),
             child: loading ? placeholder : Center(child: placeholder),
           ),
         )
@@ -106,7 +108,9 @@ class ReportsListView extends ConsumerWidget {
             itemBuilder: (context, i) => _card(context, resolved[i], i),
           ),
         ],
-        const SliverToBoxAdapter(child: SizedBox(height: _bottomPadding)),
+        SliverToBoxAdapter(
+          child: SizedBox(height: endSpace(context, floatingButton: true)),
+        ),
       ],
     ];
 
