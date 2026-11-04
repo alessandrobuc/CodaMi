@@ -2,11 +2,13 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Wed 4 Nov 2026 (phase 5: AI breed scanner online; heat calendar built, to deploy and test)_
+_Last updated: Wed 4 Nov 2026 (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
 
 ---
 
 ## 1. Testing now
+
+- [ ] **Pet sitting (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` (6 new functions, rules, 1 new index: wait until it's "Enabled"); new build on two phones; test with `TEST_SCENARIO_SITTING_2026-11-04.md`; then Admin → More → Pet sitting → Show to users
 
 - [ ] **Heat calendar (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules` (new `heatReminderSweep`, rules for `heatCycles`, `heatReminders`, `config/heat`); new build; phone test with `TEST_SCENARIO_HEAT_2026-11-04.md`; then Admin → More → Heat calendar → Show to users
 
@@ -51,7 +53,7 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner, the heat calendar.
+- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner, the heat calendar, pet sitting.
   - [ ] 1. Feedback (request 7, about 1 day): current feedback entry → Google Play review; separate internal feedback (type, optional stars, text), asked after 10-20 uses of a feature, 2-week cooldown, admin list with filters and settings
   - [ ] 2. Social sharing (request 5, about 2 days): pop-up after a lost or found report, share image (photo, status, details, logo), public report page with link, WhatsApp / Facebook with link, Instagram / TikTok image only
   - [ ] 3. Share reminders (request 6, about half a day): first after X days, then weekly, off switch for users and admin, client's text in 10 languages
@@ -59,7 +61,7 @@ Fixes found while testing go here:
   - [x] 5. Heat calendar (request 2): **built Wed 4 Nov** (pet page card, calendar, estimates, history, reminders by the daily sweep, admin settings). Left: deploy, phone test (`TEST_SCENARIO_HEAT_2026-11-04.md`), switch on for users
   - [x] 6. AI breed scanner (request 1): **built Wed 4 Nov** (Gemini on Vertex AI, admin settings, Profile and pet form, save breed to a pet). Left: enable Vertex AI API, deploy, phone test (`TEST_SCENARIO_SCANNER_2026-11-04.md`), switch on for users
   - [ ] 7. Titles and achievements (request 8, about 3 days): tags and titles with levels, page with locked titles, requirements and progress, title on the profile, donor titles by total donated (after donation payments)
-  - [ ] 8. Pet sitting (request 3, 6-8 days): requests, sitter profiles, browse and offer, chat between users, both confirm the service, verified reviews only, reports, blocking, admin moderation
+  - [x] 8. Pet sitting (request 3): **built Wed 4 Nov**, all 3 parts (requests and sitter profiles, offers and booking, chat, both-sides confirmation, verified reviews, reports, blocking, admin moderation). Left: deploy, two-phone test (`TEST_SCENARIO_SITTING_2026-11-04.md`), switch on for users, terms text for the client
   - Already in the app: store review window and "Rate CodaMi", feedback card and admin list, text sharing of reports, push notifications, invite levels, donation screens (off)
 
 - [ ] **Phase 4 (client request Mon 2 Nov, `PHASE_4_REQUESTS.md`):** built Mon 2 Nov (QR invites and flyer, Places to walk, donation screens switched off); left: store payments for donations once the client sets up the stores, "Scan QR" in the app if the client wants it
@@ -119,6 +121,10 @@ Full list with context in `WAITING_FOR_CLIENT.md`.
 - `emulator_tests/README.md`: how to run the end-to-end emulator tests
 
 ## Done recently
+
+- Wed 4 Nov: pet sitting look refreshed: gradient header with quick buttons and pill tabs, request cards with a calendar date badge and info pills, sitter cards with a rating badge and service icons, request form in 4 numbered step cards (pet tiles, service tiles, dates with the number of days) and more space under Publish, request page with a gradient header and a Published → Booked → Confirmed → Reviewed timeline, sitter profile with a banner, big avatar and stat tiles, chat with shaped bubbles and day labels, Mine overview tiles, admin overview tiles, reports coloured by type, and pill-style tabs with icons on the admin side too. 8 new texts in 10 languages. Needs a new build
+
+- Wed 4 Nov: pet sitting (phase 5, request 3), all 3 parts: requests (city only), sitter profiles, offers, booking by the server, private chats with push and unread count, both-sides confirmation, verified reviews written by the server (new accounts wait, rating kept by the server), reports and blocks (the general report sheet and block dialog are now shared), Admin → More → Pet sitting (settings, reported, requests, sitters, reviews). 138 texts in 10 languages, 7 new app tests (151), 7 new server tests (100), 74 new emulator checks (458). The rules use `data['service']` because `service` is a reserved word. Not deployed yet
 
 - Wed 4 Nov: heat calendar (phase 5, request 2): card on female pets' pages, calendar with recorded and expected heats, estimate from the pet's own cycles (typical per species until 2 records, duplicates ignored), history with edit / delete, "heat ended today", reminders 1/3/7/14 days before sent by the new daily `heatReminderSweep` in the owner's language, Admin → More → Heat calendar (instant switch, typical values), private rules, removed with the pet or the account. 48 texts in 10 languages, 11 new app tests (144), 4 new server tests (93), 32 new emulator checks (384). Not deployed yet
 

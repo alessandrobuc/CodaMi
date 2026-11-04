@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Tue 3 Nov 2026_
+_Last updated: Wed 4 Nov 2026_
 
 ---
 
@@ -52,6 +52,8 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Once the app is on the App Store, put its App Store ID in Admin → More → App updates (turns on the Update button and "Rate CodaMi" on iPhone)
 
 ## 4. Firebase
+
+- [ ] **Phase 5 deploy (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` for the heat calendar (`heatReminderSweep`) and pet sitting (6 functions, rules, the `sittingRequests` index); check the index is "Enabled"
 
 - [x] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions` (Wed 21 Oct)
 - [x] **Deploy the new Firestore and Storage rules, indexes and functions before releasing the next build** (reward field, roles, report / block, admin panel). Old rules reject reports with a reward and reports of listings. New functions: `adminSetUserDisabled`, `adminDeleteUser`.
@@ -106,7 +108,7 @@ Add SHA-1s to the existing key. Never replace them.
 - [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
-- [ ] Phase 5 (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (built Wed 4 Nov: sent to Google Gemini on Vertex AI for the scan only, not stored, not used to train models), private schedule and heat cycle records, pet sitting profiles, chats and reviews, and the public report page (no phone, email or exact address); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)
+- [ ] Phase 5 (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (built Wed 4 Nov: sent to Google Gemini on Vertex AI for the scan only, not stored, not used to train models), private schedule and heat cycle records, pet sitting profiles, chats and reviews (built Wed 4 Nov: chats private to the two members, removed with the account), and the public report page (no phone, email or exact address); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)
 - [ ] Google Play **Data safety** form: answers prepared (precise location, name, email, user IDs, phone, photos, user content, device IDs; nothing shared; encrypted in transit; deletion available)
 - [ ] App Store **privacy labels**
 - [x] Feature graphic and Play icon: `assets/graphics/`

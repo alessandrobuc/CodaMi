@@ -384,6 +384,193 @@ service cloud.firestore {
         && request.resource.data.updatedAt == request.time;
     }
 
+    // ---------- Pet sitting ----------
+
+    function sittingSpecies(list) {
+      return list is list && list.size() >= 1 && list.size() <= 3 && list.toSet().hasOnly(['dog', 'cat', 'other']);
+    }
+
+    function sittingServices(list) {
+      return list is list && list.size() >= 1 && list.size() <= 5
+        && list.toSet().hasOnly(['visits', 'overnight', 'walks', 'daycare', 'boarding']);
+    }
+
+    function textUpTo(value, max) {
+      return value is string && value.size() <= max;
+    }
+
+    function cityPlace(data) {
+      return textUpTo(data.city, 80) && data.city.size() > 0
+        && data.lat is number && data.lat >= -90 && data.lat <= 90
+        && data.lng is number && data.lng >= -180 && data.lng <= 180;
+    }
+
+    function notBlockedBy(uid) {
+      return !(request.auth.uid in get(/databases/$(database)/documents/users/$(uid)).data.get('blockedUsers', {}));
+    }
+
+    function sitterFields() {
+      return ['uid', 'name', 'photoUrl', 'about', 'experience', 'species', 'services', 'availability',
+              'city', 'lat', 'lng', 'areaKm', 'active', 'hidden', 'createdAt', 'updatedAt'];
+    }
+
+    function validSitter(data, uid) {
+      return data.uid == uid
+        && textUpTo(data.name, 80)
+        && (!('photoUrl' in data) || data.photoUrl == null || textUpTo(data.photoUrl, 1000))
+        && textUpTo(data.about, 800) && data.about.size() >= 10
+        && textUpTo(data.experience, 500)
+        && sittingSpecies(data.species)
+        && sittingServices(data.services)
+        && textUpTo(data.availability, 300)
+        && cityPlace(data)
+        && data.areaKm in [2, 5, 10, 25, 50]
+        && data.active is bool
+        && data.updatedAt == request.time;
+    }
+
+    // Public sitter profiles; rating and counts are written only by Cloud Functions.
+    match /sitters/{uid} {
+      allow read: if isUser(uid) || isStaff() || (signedIn() && resource.data.hidden == false);
+      allow create: if isUser(uid)
+        && request.resource.data.keys().hasOnly(sitterFields())
+        && request.resource.data.hidden == false
+        && request.resource.data.createdAt == request.time
+        && validSitter(request.resource.data, uid);
+      allow update: if (isUser(uid)
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['name', 'photoUrl', 'about', 'experience', 'species', 'services', 'availability',
+                         'city', 'lat', 'lng', 'areaKm', 'active', 'updatedAt'])
+          && validSitter(request.resource.data, uid))
+        || (isStaff() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hidden'])
+          && request.resource.data.hidden is bool);
+      allow delete: if isUser(uid);
+    }
+
+    function validSittingRequest(data) {
+      return data.keys().hasOnly(['ownerId', 'ownerName', 'petIds', 'petNames', 'species', 'service', 'start', 'end',
+                                  'city', 'lat', 'lng', 'notes', 'budget', 'status', 'hidden', 'createdAt', 'updatedAt'])
+        && textUpTo(data.ownerName, 80)
+        && data.petIds is list && data.petIds.size() >= 1 && data.petIds.size() <= 10
+        && data.petNames is list && data.petNames.size() == data.petIds.size()
+        && sittingSpecies(data.species)
+        && data['service'] in ['visits', 'overnight', 'walks', 'daycare', 'boarding']
+        && isDay(data.start) && isDay(data.end) && data.end >= data.start
+        && cityPlace(data)
+        && textUpTo(data.notes, 800)
+        && (!('budget' in data) || textUpTo(data.budget, 40))
+        && data.updatedAt == request.time;
+    }
+
+    // Requests show the city only, never an address.
+    match /sittingRequests/{requestId} {
+      allow read: if signedIn() && (resource.data.hidden == false || resource.data.ownerId == request.auth.uid || isStaff());
+      allow create: if isUser(request.resource.data.ownerId)
+        && validSittingRequest(request.resource.data)
+        && request.resource.data.status == 'open'
+        && request.resource.data.hidden == false
+        && request.resource.data.createdAt == request.time;
+      allow update: if (isUser(resource.data.ownerId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'notes', 'budget', 'updatedAt'])
+          && textUpTo(request.resource.data.notes, 800)
+          && (!('budget' in request.resource.data) || textUpTo(request.resource.data.budget, 40))
+          && request.resource.data.updatedAt == request.time
+          && (request.resource.data.status == resource.data.status
+            || (resource.data.status in ['open', 'booked'] && request.resource.data.status == 'closed')))
+        || (isStaff() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hidden'])
+          && request.resource.data.hidden is bool);
+    }
+
+    // The ID is `{requestId}_{sitterId}`: one offer per sitter per request.
+    match /sittingOffers/{offerId} {
+      allow read: if signedIn()
+        && (resource.data.sitterId == request.auth.uid || resource.data.ownerId == request.auth.uid);
+      allow create: if isUser(request.resource.data.sitterId)
+        && offerId == request.resource.data.requestId + '_' + request.auth.uid
+        && request.resource.data.keys().hasOnly(['requestId', 'ownerId', 'sitterId', 'sitterName', 'message', 'price', 'status', 'createdAt'])
+        && request.resource.data.status == 'pending'
+        && textUpTo(request.resource.data.sitterName, 80)
+        && textUpTo(request.resource.data.message, 500) && request.resource.data.message.size() > 0
+        && (!('price' in request.resource.data) || textUpTo(request.resource.data.price, 40))
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.ownerId != request.auth.uid
+        && exists(/databases/$(database)/documents/sitters/$(request.auth.uid))
+        && get(/databases/$(database)/documents/sittingRequests/$(request.resource.data.requestId)).data.status == 'open'
+        && get(/databases/$(database)/documents/sittingRequests/$(request.resource.data.requestId)).data.ownerId == request.resource.data.ownerId
+        && notBlockedBy(request.resource.data.ownerId);
+      allow update: if (isUser(resource.data.sitterId) && resource.data.status == 'pending'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'message', 'price'])
+          && request.resource.data.status in ['pending', 'withdrawn']
+          && textUpTo(request.resource.data.message, 500)
+          && (!('price' in request.resource.data) || textUpTo(request.resource.data.price, 40)))
+        || (isUser(resource.data.ownerId) && resource.data.status == 'pending'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+          && request.resource.data.status == 'declined');
+    }
+
+    // Chats between two users; the ID is both user IDs, sorted, joined by "_".
+    match /sittingChats/{chatId} {
+      allow read: if signedIn() && request.auth.uid in resource.data.members;
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['members', 'names', 'lastMessage', 'lastAt', 'lastSender', 'readAt', 'createdAt'])
+        && request.resource.data.members is list && request.resource.data.members.size() == 2
+        && request.auth.uid in request.resource.data.members
+        && request.resource.data.members[0] < request.resource.data.members[1]
+        && chatId == request.resource.data.members[0] + '_' + request.resource.data.members[1]
+        && request.resource.data.names is map
+        && request.resource.data.createdAt == request.time
+        && notBlockedBy(request.resource.data.members[0])
+        && notBlockedBy(request.resource.data.members[1]);
+      allow update: if signedIn() && request.auth.uid in resource.data.members
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastMessage', 'lastAt', 'lastSender', 'readAt', 'names'])
+        && textUpTo(request.resource.data.lastMessage, 140);
+
+      match /messages/{messageId} {
+        allow read: if signedIn()
+          && request.auth.uid in get(/databases/$(database)/documents/sittingChats/$(chatId)).data.members;
+        allow create: if isUser(request.resource.data.senderId)
+          && request.resource.data.keys().hasOnly(['senderId', 'to', 'text', 'at'])
+          && request.auth.uid in get(/databases/$(database)/documents/sittingChats/$(chatId)).data.members
+          && request.resource.data.to in get(/databases/$(database)/documents/sittingChats/$(chatId)).data.members
+          && request.resource.data.to != request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 1000
+          && request.resource.data.at == request.time
+          && notBlockedBy(request.resource.data.to);
+      }
+    }
+
+    // Verified reviews: written only by Cloud Functions after both sides confirmed the service.
+    match /sittingReviews/{reviewId} {
+      allow read: if signedIn() && (resource == null || resource.data.hidden == false || isStaff() || resource.data.reviewerId == request.auth.uid);
+    }
+
+    // One report per user per item: the ID is `{reporterId}_{kind}_{targetId}`.
+    match /sittingFlags/{flagId} {
+      allow read: if isStaff() || (signedIn() && (resource == null || resource.data.reporterId == request.auth.uid));
+      allow create: if isUser(request.resource.data.reporterId)
+        && request.resource.data.keys().hasOnly(['reporterId', 'kind', 'targetId', 'targetOwnerId', 'reason', 'note', 'createdAt'])
+        && request.resource.data.kind in ['request', 'sitter', 'review', 'chat']
+        && flagId == request.auth.uid + '_' + request.resource.data.kind + '_' + request.resource.data.targetId
+        && textUpTo(request.resource.data.targetId, 256)
+        && request.resource.data.targetOwnerId is string
+        && request.resource.data.targetOwnerId != request.auth.uid
+        && request.resource.data.reason in ['spam', 'scam', 'inappropriate', 'wrongInfo', 'other']
+        && optionalString(request.resource.data, 'note', 300)
+        && request.resource.data.createdAt == request.time;
+      allow delete: if isStaff();
+    }
+
+    match /config/sitting {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'minAccountDays', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.minAccountDays is int
+        && request.resource.data.minAccountDays >= 0 && request.resource.data.minAccountDays <= 60
+        && shopStamped(request.resource.data);
+    }
+
     match /reports/{reportId} {
       allow read: if signedIn();
       allow create: if isUser(request.resource.data.ownerId)

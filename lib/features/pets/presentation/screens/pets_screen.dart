@@ -6,6 +6,9 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/empty_state.dart';
 import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../sitting/presentation/providers/sitting_provider.dart';
+import '../../../sitting/presentation/screens/sitting_screen.dart';
+import '../../../sitting/presentation/widgets/sitting_widgets.dart';
 import '../../../scanner/presentation/screens/scanner_screen.dart';
 import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../domain/entities/pets_entity.dart';
@@ -62,6 +65,18 @@ class PetsScreen extends ConsumerWidget {
                 child: ScannerPromoCard(
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (_) => const ScannerScreen()),
+                  ),
+                ).animate().fadeIn(duration: 400.ms),
+              ),
+            ),
+          if (ref.watch(sittingAvailableProvider))
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+              sliver: SliverToBoxAdapter(
+                child: SittingPromoCard(
+                  unread: ref.watch(unreadChatsProvider),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const SittingScreen()),
                   ),
                 ).animate().fadeIn(duration: 400.ms),
               ),

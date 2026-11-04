@@ -5320,4 +5320,491 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get heatInvalidValues =>
       'Цикл: от 7 до 400 дней (0 можно для других животных). Длительность: от 1 до 60 дней.';
+
+  @override
+  String get adminSittingSubtitle =>
+      'Передержка: вкл./выкл., жалобы, заявки, ситтеры, отзывы';
+
+  @override
+  String get sitAbout => 'Обо мне';
+
+  @override
+  String get sitAboutHint => 'Кто вы и почему любите животных';
+
+  @override
+  String get sitAboutTooShort => 'Напишите хотя бы несколько слов о себе.';
+
+  @override
+  String get sitAccept => 'Принять';
+
+  @override
+  String get sitAcceptText =>
+      'Заявка будет забронирована у этого ситтера, остальные предложения отклонены.';
+
+  @override
+  String sitAcceptTitle(String name) {
+    return 'Выбрать $name?';
+  }
+
+  @override
+  String get sitAccepted => 'Забронировано! Поздоровайтесь в чате.';
+
+  @override
+  String get sitAddPetFirst => 'Сначала добавьте питомца во вкладке «Питомцы».';
+
+  @override
+  String get sitAdminIntro =>
+      'Владельцы публикуют заявки, ситтеры присылают предложения, все общаются в приложении. Отзыв можно оставить только после подтверждения услуги обеими сторонами. Оплата — по договорённости между пользователями.';
+
+  @override
+  String get sitAdminReported => 'Жалобы';
+
+  @override
+  String get sitAdminReviews => 'Отзывы';
+
+  @override
+  String get sitAdminSettings => 'Настройки';
+
+  @override
+  String get sitAlreadyReviewed => 'Вы уже оставили отзыв об этой услуге.';
+
+  @override
+  String get sitAnimals => 'Каких животных я беру';
+
+  @override
+  String get sitArea => 'Как далеко я готов(а) ехать';
+
+  @override
+  String get sitAvailability => 'Когда я свободен(на)';
+
+  @override
+  String get sitAvailabilityHint => 'Например: выходные, вечера, август';
+
+  @override
+  String get sitBecomeSitter => 'Стать ситтером';
+
+  @override
+  String get sitBecomeSitterText =>
+      'Создайте профиль и предлагайте присмотр за питомцами рядом.';
+
+  @override
+  String get sitBecomeSitterToOffer =>
+      'Создайте профиль ситтера, чтобы отправить предложение';
+
+  @override
+  String sitBookedWith(String name) {
+    return 'Забронировано: $name';
+  }
+
+  @override
+  String get sitBudget => 'Бюджет (необязательно)';
+
+  @override
+  String get sitBudgetHint => 'Например: 20 € в день';
+
+  @override
+  String get sitCancelBooking => 'Отменить бронь';
+
+  @override
+  String get sitCantMessage => 'Вы не можете писать этому пользователю.';
+
+  @override
+  String get sitChat => 'Чат';
+
+  @override
+  String get sitChatSafety =>
+      'Берегите платёжные и личные данные. Сообщайте о подозрительном.';
+
+  @override
+  String sitChatWith(String name) {
+    return 'Написать: $name';
+  }
+
+  @override
+  String get sitChats => 'Чаты';
+
+  @override
+  String get sitChoosePets => 'Выберите хотя бы одного питомца.';
+
+  @override
+  String get sitChooseSpeciesServices =>
+      'Выберите хотя бы одно животное и одну услугу.';
+
+  @override
+  String sitCityArea(String city, int km) {
+    return '$city · до $km км';
+  }
+
+  @override
+  String sitCityDistance(String city, int km) {
+    return '$city · $km км от вас';
+  }
+
+  @override
+  String get sitCloseRequest => 'Закрыть заявку';
+
+  @override
+  String get sitCloseText => 'Больше никто не сможет прислать предложение.';
+
+  @override
+  String get sitCloseTitle => 'Закрыть эту заявку?';
+
+  @override
+  String sitCompletedCount(int count) {
+    return 'Выполнено: $count';
+  }
+
+  @override
+  String get sitConfirmButton => 'Да, выполнено';
+
+  @override
+  String get sitConfirmText =>
+      'Подтвердите, когда передержка состоялась. Когда подтвердите оба, можно будет оставить проверенный отзыв.';
+
+  @override
+  String get sitConfirmTitle => 'Передержка состоялась?';
+
+  @override
+  String get sitConfirmed => 'Спасибо, подтверждено.';
+
+  @override
+  String get sitDaysInvalid => 'Введите число от 0 до 60.';
+
+  @override
+  String get sitDecline => 'Отклонить';
+
+  @override
+  String get sitDismiss => 'Отклонить жалобу';
+
+  @override
+  String get sitEdit => 'Изменить';
+
+  @override
+  String get sitExperience => 'Опыт';
+
+  @override
+  String get sitExperienceHint =>
+      'Какие питомцы у вас были, кого вы опекали, обучение, курсы';
+
+  @override
+  String get sitFrom => 'С';
+
+  @override
+  String get sitHiddenDone => 'Скрыто.';
+
+  @override
+  String get sitHiddenLabel => 'Скрыто';
+
+  @override
+  String get sitHide => 'Скрыть';
+
+  @override
+  String get sitHideTheirProfile => 'Скрыть профиль ситтера';
+
+  @override
+  String get sitKindChat => 'Чат';
+
+  @override
+  String get sitKindRequest => 'Заявка';
+
+  @override
+  String get sitKindReview => 'Отзыв';
+
+  @override
+  String get sitKindSitter => 'Профиль ситтера';
+
+  @override
+  String sitLeaveReview(String name) {
+    return 'Отзыв о $name';
+  }
+
+  @override
+  String get sitMessageHint => 'Напишите сообщение';
+
+  @override
+  String get sitMinAccountDays => 'Дней до первого отзыва для нового аккаунта';
+
+  @override
+  String get sitMinAccountDaysHelp =>
+      'От 0 до 60. Помогает против фейковых аккаунтов.';
+
+  @override
+  String get sitMyOffers => 'Мои предложения';
+
+  @override
+  String get sitMyRequests => 'Мои заявки';
+
+  @override
+  String get sitMySitterProfile => 'Мой профиль ситтера';
+
+  @override
+  String get sitNeedCity =>
+      'Сначала укажите город в профиле: в заявках и профилях виден только город, а не адрес.';
+
+  @override
+  String get sitNewRequest => 'Новая заявка';
+
+  @override
+  String get sitNoChats => 'Чатов пока нет.';
+
+  @override
+  String get sitNoMyRequests => 'Вы ещё не искали ситтера.';
+
+  @override
+  String get sitNoOffersYet =>
+      'Предложений пока нет. Ситтеры рядом увидят вашу заявку.';
+
+  @override
+  String get sitNoRequestsNearby => 'Сейчас рядом нет заявок.';
+
+  @override
+  String get sitNoReviewsYet => 'Отзывов пока нет';
+
+  @override
+  String get sitNoSittersNearby => 'Рядом пока нет ситтеров.';
+
+  @override
+  String get sitNotAvailableNow => 'Сейчас это невозможно.';
+
+  @override
+  String get sitNotFound => 'Не найдено или больше недоступно.';
+
+  @override
+  String get sitNotes => 'Подробности';
+
+  @override
+  String get sitNotesHint =>
+      'Режим, корм, лекарства — всё, что нужно знать ситтеру';
+
+  @override
+  String get sitNothingReported => 'Жалоб нет.';
+
+  @override
+  String get sitOffHelp => 'Выкл.: видят только администраторы.';
+
+  @override
+  String get sitOfferAccepted => 'Принято';
+
+  @override
+  String get sitOfferDeclined => 'Отклонено';
+
+  @override
+  String get sitOfferMessage => 'Ваше сообщение';
+
+  @override
+  String get sitOfferMessageHint =>
+      'Представьтесь и расскажите, как будете ухаживать за питомцем';
+
+  @override
+  String get sitOfferPending => 'Ожидает';
+
+  @override
+  String get sitOfferPrice => 'Ваша цена (необязательно)';
+
+  @override
+  String get sitOfferSent => 'Предложение отправлено.';
+
+  @override
+  String get sitOfferWithdrawn => 'Отозвано';
+
+  @override
+  String sitOffersTitle(int count) {
+    return 'Предложения ($count)';
+  }
+
+  @override
+  String get sitOnHelp =>
+      'Вкл.: пользователи видят передержку во вкладке «Питомцы» и в профиле.';
+
+  @override
+  String get sitOpen => 'Открыть';
+
+  @override
+  String sitPrice(String price) {
+    return 'Цена: $price';
+  }
+
+  @override
+  String get sitProfilePaused => 'Приостановлен: не виден другим';
+
+  @override
+  String get sitProfileVisible => 'Виден владельцам питомцев';
+
+  @override
+  String get sitPromo =>
+      'Найдите ситтера или присматривайте за питомцами рядом';
+
+  @override
+  String get sitPublish => 'Опубликовать';
+
+  @override
+  String sitRatingSummary(String rating, int count) {
+    return '$rating ($count)';
+  }
+
+  @override
+  String get sitReport => 'Пожаловаться';
+
+  @override
+  String get sitRequest => 'Заявка на передержку';
+
+  @override
+  String get sitRequestPublished => 'Заявка опубликована.';
+
+  @override
+  String get sitReviewHint =>
+      'Только для услуг, подтверждённых обеими сторонами. Будьте честны и конкретны.';
+
+  @override
+  String get sitReviewText => 'Ваш отзыв (необязательно)';
+
+  @override
+  String sitReviewsTitle(int count) {
+    return 'Проверенные отзывы ($count)';
+  }
+
+  @override
+  String get sitSafetyText =>
+      'CodaMi лишь связывает людей и не участвует в услуге. Встретьтесь заранее, проверьте профиль и отзывы, договоритесь об оплате напрямую и не платите незнакомцам вперёд.';
+
+  @override
+  String get sitSafetyTitle => 'Безопасность';
+
+  @override
+  String sitSayHello(String name) {
+    return 'Поздоровайтесь с $name';
+  }
+
+  @override
+  String get sitSend => 'Отправить';
+
+  @override
+  String get sitSendOffer => 'Отправить предложение';
+
+  @override
+  String get sitServiceBoarding => 'Передержка у ситтера';
+
+  @override
+  String get sitServiceDaycare => 'Дневной присмотр';
+
+  @override
+  String get sitServiceOvernight => 'Ночёвка у вас дома';
+
+  @override
+  String get sitServiceVisits => 'Визиты на дом';
+
+  @override
+  String get sitServiceWalks => 'Прогулки';
+
+  @override
+  String get sitServices => 'Услуги';
+
+  @override
+  String get sitShow => 'Показать';
+
+  @override
+  String get sitShowMyProfile => 'Показывать мой профиль';
+
+  @override
+  String sitShownArea(String city) {
+    return 'Отображается: $city';
+  }
+
+  @override
+  String get sitShownDone => 'Снова видно.';
+
+  @override
+  String get sitSitterProfile => 'Ситтер';
+
+  @override
+  String get sitStatusBooked => 'Забронировано';
+
+  @override
+  String get sitStatusClosed => 'Закрыто';
+
+  @override
+  String get sitStatusDone => 'Выполнено';
+
+  @override
+  String get sitStatusOpen => 'Открыто';
+
+  @override
+  String get sitTabMine => 'Мои';
+
+  @override
+  String get sitTabRequests => 'Заявки';
+
+  @override
+  String get sitTabSitters => 'Ситтеры';
+
+  @override
+  String get sitThanksReview => 'Спасибо за отзыв!';
+
+  @override
+  String get sitTitle => 'Передержка';
+
+  @override
+  String get sitTo => 'По';
+
+  @override
+  String get sitVerifiedService => 'Подтверждённая услуга';
+
+  @override
+  String get sitViewProfile => 'Профиль';
+
+  @override
+  String get sitWaitingOtherConfirm => 'Ждём подтверждения от другой стороны.';
+
+  @override
+  String get sitWhatService => 'Что нужно?';
+
+  @override
+  String get sitWhen => 'Когда';
+
+  @override
+  String get sitWhichPets => 'Какие питомцы?';
+
+  @override
+  String get sitWithdraw => 'Отозвать';
+
+  @override
+  String get sitYes => 'Да';
+
+  @override
+  String get sitYouAreBooked => 'Вы — ситтер по этой заявке.';
+
+  @override
+  String sitYouBlocked(String name) {
+    return 'Вы заблокировали $name.';
+  }
+
+  @override
+  String get sitYourOffer => 'Ваше предложение';
+
+  @override
+  String get sitHeroText =>
+      'Надёжные люди рядом — с отзывами о реальных услугах.';
+
+  @override
+  String sitDaysTotal(int count) {
+    return 'Дней: $count';
+  }
+
+  @override
+  String get sitStepPublished => 'Опубликовано';
+
+  @override
+  String get sitStepConfirmed => 'Подтверждено';
+
+  @override
+  String get sitStepReviewed => 'Отзыв оставлен';
+
+  @override
+  String get sitStatRating => 'Рейтинг';
+
+  @override
+  String get sitStatOpenRequests => 'Открытые заявки';
+
+  @override
+  String get sitAdminOverview => 'Обзор';
 }

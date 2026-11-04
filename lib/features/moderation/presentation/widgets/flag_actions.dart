@@ -44,7 +44,14 @@ Future<void> flagReport(
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
     ),
-    builder: (_) => _FlagSheet(reporterId: uid, report: report),
+    builder: (_) => FlagSheet(
+      onSubmit: (reason, note) => repo.flag(
+        reporterId: uid,
+        report: report,
+        reason: reason,
+        note: note,
+      ),
+    ),
   );
   if (sent == true && context.mounted) {
     HapticFeedback.lightImpact();
@@ -52,15 +59,39 @@ Future<void> flagReport(
   }
 }
 
-Future<bool> blockOwner(
+// The same report sheet for anything else (pet sitting requests, profiles, reviews, chats).
+Future<void> flagWith(
   BuildContext context,
-  WidgetRef ref,
-  Report report,
+  Future<void> Function(FlagReason reason, String note) onSubmit,
 ) async {
+  final l10n = context.l10n;
+  final sent = await showModalBottomSheet<bool>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: AppColors.surface,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+    ),
+    builder: (_) => FlagSheet(onSubmit: onSubmit),
+  );
+  if (sent == true && context.mounted) {
+    HapticFeedback.lightImpact();
+    SnackbarUtils.showSuccess(context, l10n.flagSent);
+  }
+}
+
+Future<bool> blockOwner(BuildContext context, WidgetRef ref, Report report) =>
+    blockUser(context, ref, userId: report.ownerId, name: report.ownerName);
+
+Future<bool> blockUser(
+  BuildContext context,
+  WidgetRef ref, {
+  required String userId,
+  required String name,
+}) async {
   final l10n = context.l10n;
   final uid = ref.read(authStateProvider).value?.uid;
   if (uid == null) return false;
-  final name = report.ownerName;
   final confirmed = await showDialog<bool>(
     context: context,
     builder: (context) => AlertDialog(
@@ -85,7 +116,7 @@ Future<bool> blockOwner(
   try {
     await ref
         .read(moderationRepositoryProvider)
-        .block(uid, userId: report.ownerId, name: name);
+        .block(uid, userId: userId, name: name);
     if (context.mounted) {
       SnackbarUtils.showSuccess(context, l10n.userBlocked(name));
     }
@@ -96,17 +127,16 @@ Future<bool> blockOwner(
   }
 }
 
-class _FlagSheet extends ConsumerStatefulWidget {
-  final String reporterId;
-  final Report report;
+class FlagSheet extends StatefulWidget {
+  final Future<void> Function(FlagReason reason, String note) onSubmit;
 
-  const _FlagSheet({required this.reporterId, required this.report});
+  const FlagSheet({super.key, required this.onSubmit});
 
   @override
-  ConsumerState<_FlagSheet> createState() => _FlagSheetState();
+  State<FlagSheet> createState() => _FlagSheetState();
 }
 
-class _FlagSheetState extends ConsumerState<_FlagSheet> {
+class _FlagSheetState extends State<FlagSheet> {
   final _note = TextEditingController();
   FlagReason? _reason;
   bool _busy = false;
@@ -122,14 +152,7 @@ class _FlagSheetState extends ConsumerState<_FlagSheet> {
     if (reason == null) return;
     setState(() => _busy = true);
     try {
-      await ref
-          .read(moderationRepositoryProvider)
-          .flag(
-            reporterId: widget.reporterId,
-            report: widget.report,
-            reason: reason,
-            note: _note.text,
-          );
+      await widget.onSubmit(reason, _note.text.trim());
       if (mounted) Navigator.pop(context, true);
     } catch (_) {
       if (!mounted) return;

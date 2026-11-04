@@ -1,6 +1,15 @@
 {
   "indexes": [
     {
+      "collectionGroup": "sittingRequests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "hidden", "order": "ASCENDING"},
+        {"fieldPath": "status", "order": "ASCENDING"},
+        {"fieldPath": "end", "order": "ASCENDING"}
+      ]
+    },
+    {
       "collectionGroup": "releaseNotes",
       "queryScope": "COLLECTION",
       "fields": [

@@ -43,6 +43,7 @@ import {releaseCasesOf} from "./supportFunctions";
 import {placesApiKey, placesSecret} from "./secrets";
 import {deleteHeatData} from "./heatFunctions";
 import {deleteScanUsage} from "./scannerFunctions";
+import {deleteSittingData} from "./sittingFunctions";
 import {searchFieldsOf} from "./users";
 
 initializeApp();
@@ -426,6 +427,7 @@ async function deleteUserData(uid: string): Promise<void> {
   await deletePointsData(uid);
   await deleteScanUsage(uid);
   await deleteHeatData(uid);
+  await deleteSittingData(uid);
   await deleteEmergencyData(uid);
 
   const bucket = getStorage().bucket();
@@ -553,3 +555,11 @@ export {adminInviteRanking, adminInviteStats, trackInviteOpen} from "./invitesFu
 export {findWalkPlaces, walkPlaceDetails} from "./walksFunctions";
 export {scanBreed, scannerModels} from "./scannerFunctions";
 export {heatReminderSweep} from "./heatFunctions";
+export {
+  acceptSittingOffer,
+  adminSetReviewHidden,
+  confirmSitting,
+  onSittingMessage,
+  onSittingOffer,
+  reviewSitter,
+} from "./sittingFunctions";

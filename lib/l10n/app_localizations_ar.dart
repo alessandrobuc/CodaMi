@@ -5220,4 +5220,485 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get heatInvalidValues =>
       'الدورة: من 7 إلى 400 يوم (يُسمح بـ 0 للحيوانات الأخرى). المدة: من 1 إلى 60 يومًا.';
+
+  @override
+  String get adminSittingSubtitle =>
+      'رعاية الحيوانات: تشغيل/إيقاف، البلاغات، الطلبات، المربّون، التقييمات';
+
+  @override
+  String get sitAbout => 'نبذة عني';
+
+  @override
+  String get sitAboutHint => 'من أنت ولماذا تحب الحيوانات';
+
+  @override
+  String get sitAboutTooShort => 'اكتب بضع كلمات على الأقل عن نفسك.';
+
+  @override
+  String get sitAccept => 'قبول';
+
+  @override
+  String get sitAcceptText =>
+      'سيُحجز الطلب مع هذا المربّي وتُرفض العروض الأخرى.';
+
+  @override
+  String sitAcceptTitle(String name) {
+    return 'اختيار $name؟';
+  }
+
+  @override
+  String get sitAccepted => 'تم الحجز! ألقِ التحية في الدردشة.';
+
+  @override
+  String get sitAddPetFirst => 'أضف حيوانك أولًا في تبويب الحيوانات.';
+
+  @override
+  String get sitAdminIntro =>
+      'ينشر المالكون الطلبات ويرسل المربّون العروض ويتحدث الطرفان داخل التطبيق. لا يمكن التقييم إلا بعد تأكيد الطرفين للخدمة. يتم الاتفاق على الدفع بين المستخدمين.';
+
+  @override
+  String get sitAdminReported => 'المُبلغ عنها';
+
+  @override
+  String get sitAdminReviews => 'التقييمات';
+
+  @override
+  String get sitAdminSettings => 'الإعدادات';
+
+  @override
+  String get sitAlreadyReviewed => 'لقد قيّمت هذه الخدمة بالفعل.';
+
+  @override
+  String get sitAnimals => 'الحيوانات التي أرعاها';
+
+  @override
+  String get sitArea => 'المسافة التي أتنقلها';
+
+  @override
+  String get sitAvailability => 'أوقات التوفر';
+
+  @override
+  String get sitAvailabilityHint => 'مثلًا: عطلات نهاية الأسبوع، المساء، أغسطس';
+
+  @override
+  String get sitBecomeSitter => 'كن مربّيًا للحيوانات';
+
+  @override
+  String get sitBecomeSitterText =>
+      'أنشئ ملفك الشخصي واعرض رعاية الحيوانات القريبة منك.';
+
+  @override
+  String get sitBecomeSitterToOffer => 'أنشئ ملف مربٍّ لإرسال عرض';
+
+  @override
+  String sitBookedWith(String name) {
+    return 'تم الحجز مع $name';
+  }
+
+  @override
+  String get sitBudget => 'الميزانية (اختياري)';
+
+  @override
+  String get sitBudgetHint => 'مثلًا: 20 يورو يوميًا';
+
+  @override
+  String get sitCancelBooking => 'إلغاء الحجز';
+
+  @override
+  String get sitCantMessage => 'لا يمكنك مراسلة هذا المستخدم.';
+
+  @override
+  String get sitChat => 'دردشة';
+
+  @override
+  String get sitChatSafety =>
+      'حافظ على أمان مدفوعاتك وبياناتك. أبلغ عن أي شيء مريب.';
+
+  @override
+  String sitChatWith(String name) {
+    return 'دردشة مع $name';
+  }
+
+  @override
+  String get sitChats => 'الدردشات';
+
+  @override
+  String get sitChoosePets => 'اختر حيوانًا واحدًا على الأقل.';
+
+  @override
+  String get sitChooseSpeciesServices => 'اختر حيوانًا وخدمة واحدة على الأقل.';
+
+  @override
+  String sitCityArea(String city, int km) {
+    return '$city · حتى $km كم';
+  }
+
+  @override
+  String sitCityDistance(String city, int km) {
+    return '$city · على بعد $km كم';
+  }
+
+  @override
+  String get sitCloseRequest => 'إغلاق الطلب';
+
+  @override
+  String get sitCloseText => 'لن يتمكن أحد من إرسال عروض بعد ذلك.';
+
+  @override
+  String get sitCloseTitle => 'إغلاق هذا الطلب؟';
+
+  @override
+  String sitCompletedCount(int count) {
+    return 'المكتملة: $count';
+  }
+
+  @override
+  String get sitConfirmButton => 'نعم، تمت';
+
+  @override
+  String get sitConfirmText =>
+      'أكّد بعد أن تتم الرعاية. عندما تؤكدان كلاكما، يمكن ترك تقييم موثّق.';
+
+  @override
+  String get sitConfirmTitle => 'هل تمت الرعاية؟';
+
+  @override
+  String get sitConfirmed => 'شكرًا، تم التأكيد.';
+
+  @override
+  String get sitDaysInvalid => 'أدخل رقمًا من 0 إلى 60.';
+
+  @override
+  String get sitDecline => 'رفض';
+
+  @override
+  String get sitDismiss => 'تجاهل';
+
+  @override
+  String get sitEdit => 'تعديل';
+
+  @override
+  String get sitExperience => 'الخبرة';
+
+  @override
+  String get sitExperienceHint =>
+      'الحيوانات التي امتلكتها أو رعيتها، تدريب، دورات';
+
+  @override
+  String get sitFrom => 'من';
+
+  @override
+  String get sitHiddenDone => 'تم الإخفاء.';
+
+  @override
+  String get sitHiddenLabel => 'مخفي';
+
+  @override
+  String get sitHide => 'إخفاء';
+
+  @override
+  String get sitHideTheirProfile => 'إخفاء ملفه كمربٍّ';
+
+  @override
+  String get sitKindChat => 'دردشة';
+
+  @override
+  String get sitKindRequest => 'طلب';
+
+  @override
+  String get sitKindReview => 'تقييم';
+
+  @override
+  String get sitKindSitter => 'ملف المربّي';
+
+  @override
+  String sitLeaveReview(String name) {
+    return 'قيّم $name';
+  }
+
+  @override
+  String get sitMessageHint => 'اكتب رسالة';
+
+  @override
+  String get sitMinAccountDays => 'الأيام قبل أن يتمكن حساب جديد من التقييم';
+
+  @override
+  String get sitMinAccountDaysHelp => 'من 0 إلى 60. يساعد ضد الحسابات المزيفة.';
+
+  @override
+  String get sitMyOffers => 'عروضي';
+
+  @override
+  String get sitMyRequests => 'طلباتي';
+
+  @override
+  String get sitMySitterProfile => 'ملفي كمربٍّ';
+
+  @override
+  String get sitNeedCity =>
+      'حدّد مدينتك في الملف الشخصي أولًا: تُظهر الطلبات والملفات المدينة فقط، وليس عنوانك أبدًا.';
+
+  @override
+  String get sitNewRequest => 'طلب جديد';
+
+  @override
+  String get sitNoChats => 'لا توجد دردشات بعد.';
+
+  @override
+  String get sitNoMyRequests => 'لم تطلب مربّيًا بعد.';
+
+  @override
+  String get sitNoOffersYet => 'لا توجد عروض بعد. سيرى المربّون القريبون طلبك.';
+
+  @override
+  String get sitNoRequestsNearby => 'لا توجد طلبات قريبة منك الآن.';
+
+  @override
+  String get sitNoReviewsYet => 'لا توجد تقييمات بعد';
+
+  @override
+  String get sitNoSittersNearby => 'لا يوجد مربّون قريبون منك بعد.';
+
+  @override
+  String get sitNotAvailableNow => 'هذا غير ممكن الآن.';
+
+  @override
+  String get sitNotFound => 'غير موجود أو لم يعد متاحًا.';
+
+  @override
+  String get sitNotes => 'التفاصيل';
+
+  @override
+  String get sitNotesHint =>
+      'الروتين، الطعام، الأدوية، وكل ما يجب أن يعرفه المربّي';
+
+  @override
+  String get sitNothingReported => 'لا توجد بلاغات.';
+
+  @override
+  String get sitOffHelp => 'متوقف: يراه المشرفون فقط.';
+
+  @override
+  String get sitOfferAccepted => 'مقبول';
+
+  @override
+  String get sitOfferDeclined => 'مرفوض';
+
+  @override
+  String get sitOfferMessage => 'رسالتك';
+
+  @override
+  String get sitOfferMessageHint => 'عرّف بنفسك واذكر كيف سترعى الحيوان';
+
+  @override
+  String get sitOfferPending => 'قيد الانتظار';
+
+  @override
+  String get sitOfferPrice => 'سعرك (اختياري)';
+
+  @override
+  String get sitOfferSent => 'تم إرسال العرض.';
+
+  @override
+  String get sitOfferWithdrawn => 'مسحوب';
+
+  @override
+  String sitOffersTitle(int count) {
+    return 'العروض ($count)';
+  }
+
+  @override
+  String get sitOnHelp =>
+      'مُفعّل: يرى المستخدمون رعاية الحيوانات في تبويب الحيوانات وفي الملف الشخصي.';
+
+  @override
+  String get sitOpen => 'فتح';
+
+  @override
+  String sitPrice(String price) {
+    return 'السعر: $price';
+  }
+
+  @override
+  String get sitProfilePaused => 'متوقف مؤقتًا: غير ظاهر للآخرين';
+
+  @override
+  String get sitProfileVisible => 'ظاهر لمالكي الحيوانات';
+
+  @override
+  String get sitPromo => 'اعثر على مربٍّ أو ارعَ حيوانات قريبة منك';
+
+  @override
+  String get sitPublish => 'نشر';
+
+  @override
+  String sitRatingSummary(String rating, int count) {
+    return '$rating ($count)';
+  }
+
+  @override
+  String get sitReport => 'إبلاغ';
+
+  @override
+  String get sitRequest => 'طلب رعاية';
+
+  @override
+  String get sitRequestPublished => 'تم نشر الطلب.';
+
+  @override
+  String get sitReviewHint =>
+      'فقط للخدمات التي أكدها الطرفان. كن منصفًا ومحددًا.';
+
+  @override
+  String get sitReviewText => 'تقييمك (اختياري)';
+
+  @override
+  String sitReviewsTitle(int count) {
+    return 'التقييمات الموثّقة ($count)';
+  }
+
+  @override
+  String get sitSafetyText =>
+      'يربط CodaMi بين الناس وليس طرفًا في الخدمة. التقوا أولًا، وتحقق من الملف والتقييمات، واتفقوا على الدفع مباشرة، ولا تدفع مسبقًا للغرباء أبدًا.';
+
+  @override
+  String get sitSafetyTitle => 'ابقَ آمنًا';
+
+  @override
+  String sitSayHello(String name) {
+    return 'ألقِ التحية على $name';
+  }
+
+  @override
+  String get sitSend => 'إرسال';
+
+  @override
+  String get sitSendOffer => 'إرسال عرض';
+
+  @override
+  String get sitServiceBoarding => 'الإقامة لدى المربّي';
+
+  @override
+  String get sitServiceDaycare => 'رعاية نهارية';
+
+  @override
+  String get sitServiceOvernight => 'المبيت في المنزل';
+
+  @override
+  String get sitServiceVisits => 'زيارات منزلية';
+
+  @override
+  String get sitServiceWalks => 'نزهات';
+
+  @override
+  String get sitServices => 'الخدمات';
+
+  @override
+  String get sitShow => 'إظهار';
+
+  @override
+  String get sitShowMyProfile => 'إظهار ملفي';
+
+  @override
+  String sitShownArea(String city) {
+    return 'يظهر كالتالي: $city';
+  }
+
+  @override
+  String get sitShownDone => 'أصبح ظاهرًا مرة أخرى.';
+
+  @override
+  String get sitSitterProfile => 'مربّي الحيوانات';
+
+  @override
+  String get sitStatusBooked => 'محجوز';
+
+  @override
+  String get sitStatusClosed => 'مغلق';
+
+  @override
+  String get sitStatusDone => 'مكتمل';
+
+  @override
+  String get sitStatusOpen => 'مفتوح';
+
+  @override
+  String get sitTabMine => 'الخاصة بي';
+
+  @override
+  String get sitTabRequests => 'الطلبات';
+
+  @override
+  String get sitTabSitters => 'المربّون';
+
+  @override
+  String get sitThanksReview => 'شكرًا على تقييمك!';
+
+  @override
+  String get sitTitle => 'رعاية الحيوانات';
+
+  @override
+  String get sitTo => 'إلى';
+
+  @override
+  String get sitVerifiedService => 'خدمة موثّقة';
+
+  @override
+  String get sitViewProfile => 'عرض الملف';
+
+  @override
+  String get sitWaitingOtherConfirm => 'بانتظار تأكيد الطرف الآخر.';
+
+  @override
+  String get sitWhatService => 'ماذا تحتاج؟';
+
+  @override
+  String get sitWhen => 'متى';
+
+  @override
+  String get sitWhichPets => 'أي حيوانات؟';
+
+  @override
+  String get sitWithdraw => 'سحب';
+
+  @override
+  String get sitYes => 'نعم';
+
+  @override
+  String get sitYouAreBooked => 'أنت المربّي لهذا الطلب.';
+
+  @override
+  String sitYouBlocked(String name) {
+    return 'لقد حظرت $name.';
+  }
+
+  @override
+  String get sitYourOffer => 'عرضك';
+
+  @override
+  String get sitHeroText =>
+      'أشخاص موثوقون بالقرب منك، مع تقييمات من خدمات حقيقية مكتملة.';
+
+  @override
+  String sitDaysTotal(int count) {
+    return 'الأيام: $count';
+  }
+
+  @override
+  String get sitStepPublished => 'منشور';
+
+  @override
+  String get sitStepConfirmed => 'مؤكد';
+
+  @override
+  String get sitStepReviewed => 'تم التقييم';
+
+  @override
+  String get sitStatRating => 'التقييم';
+
+  @override
+  String get sitStatOpenRequests => 'الطلبات المفتوحة';
+
+  @override
+  String get sitAdminOverview => 'نظرة عامة';
 }

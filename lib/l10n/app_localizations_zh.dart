@@ -4984,4 +4984,474 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get heatInvalidValues => '周期：7 到 400 天（其他动物可为 0）。长度：1 到 60 天。';
+
+  @override
+  String get adminSittingSubtitle => '宠物照看：开关、举报、请求、照看者、评价';
+
+  @override
+  String get sitAbout => '关于我';
+
+  @override
+  String get sitAboutHint => '您是谁，为什么喜欢动物';
+
+  @override
+  String get sitAboutTooShort => '请至少写几句关于自己的话。';
+
+  @override
+  String get sitAccept => '接受';
+
+  @override
+  String get sitAcceptText => '该请求将预订给这位照看者，其他报价将被拒绝。';
+
+  @override
+  String sitAcceptTitle(String name) {
+    return '选择 $name？';
+  }
+
+  @override
+  String get sitAccepted => '已预订！在聊天中打个招呼吧。';
+
+  @override
+  String get sitAddPetFirst => '请先在“宠物”标签中添加您的宠物。';
+
+  @override
+  String get sitAdminIntro =>
+      '主人发布请求，照看者发送报价，双方在应用中聊天。只有双方确认服务后才能评价。付款由用户之间自行约定。';
+
+  @override
+  String get sitAdminReported => '已举报';
+
+  @override
+  String get sitAdminReviews => '评价';
+
+  @override
+  String get sitAdminSettings => '设置';
+
+  @override
+  String get sitAlreadyReviewed => '您已评价过此服务。';
+
+  @override
+  String get sitAnimals => '我照看的动物';
+
+  @override
+  String get sitArea => '我愿意前往的距离';
+
+  @override
+  String get sitAvailability => '可用时间';
+
+  @override
+  String get sitAvailabilityHint => '例如：周末、晚上、八月';
+
+  @override
+  String get sitBecomeSitter => '成为宠物照看者';
+
+  @override
+  String get sitBecomeSitterText => '创建您的资料，为附近的宠物提供照看。';
+
+  @override
+  String get sitBecomeSitterToOffer => '创建照看者资料后即可发送报价';
+
+  @override
+  String sitBookedWith(String name) {
+    return '已预订：$name';
+  }
+
+  @override
+  String get sitBudget => '预算（可选）';
+
+  @override
+  String get sitBudgetHint => '例如：每天 20 欧元';
+
+  @override
+  String get sitCancelBooking => '取消预订';
+
+  @override
+  String get sitCantMessage => '您无法向此用户发送消息。';
+
+  @override
+  String get sitChat => '聊天';
+
+  @override
+  String get sitChatSafety => '请保护好付款和个人信息。如有可疑情况请举报。';
+
+  @override
+  String sitChatWith(String name) {
+    return '与 $name 聊天';
+  }
+
+  @override
+  String get sitChats => '聊天';
+
+  @override
+  String get sitChoosePets => '请至少选择一只宠物。';
+
+  @override
+  String get sitChooseSpeciesServices => '请至少选择一种动物和一项服务。';
+
+  @override
+  String sitCityArea(String city, int km) {
+    return '$city · 最远 $km 公里';
+  }
+
+  @override
+  String sitCityDistance(String city, int km) {
+    return '$city · 距离 $km 公里';
+  }
+
+  @override
+  String get sitCloseRequest => '关闭请求';
+
+  @override
+  String get sitCloseText => '之后将无人能再发送报价。';
+
+  @override
+  String get sitCloseTitle => '关闭此请求？';
+
+  @override
+  String sitCompletedCount(int count) {
+    return '已完成：$count';
+  }
+
+  @override
+  String get sitConfirmButton => '是的，已完成';
+
+  @override
+  String get sitConfirmText => '宠物照看完成后请确认。双方都确认后，即可留下已验证的评价。';
+
+  @override
+  String get sitConfirmTitle => '宠物照看完成了吗？';
+
+  @override
+  String get sitConfirmed => '谢谢，已确认。';
+
+  @override
+  String get sitDaysInvalid => '请输入 0 到 60 之间的数字。';
+
+  @override
+  String get sitDecline => '拒绝';
+
+  @override
+  String get sitDismiss => '忽略';
+
+  @override
+  String get sitEdit => '编辑';
+
+  @override
+  String get sitExperience => '经验';
+
+  @override
+  String get sitExperienceHint => '养过或照看过的宠物、培训、课程';
+
+  @override
+  String get sitFrom => '从';
+
+  @override
+  String get sitHiddenDone => '已隐藏。';
+
+  @override
+  String get sitHiddenLabel => '已隐藏';
+
+  @override
+  String get sitHide => '隐藏';
+
+  @override
+  String get sitHideTheirProfile => '隐藏其照看者资料';
+
+  @override
+  String get sitKindChat => '聊天';
+
+  @override
+  String get sitKindRequest => '请求';
+
+  @override
+  String get sitKindReview => '评价';
+
+  @override
+  String get sitKindSitter => '照看者资料';
+
+  @override
+  String sitLeaveReview(String name) {
+    return '评价 $name';
+  }
+
+  @override
+  String get sitMessageHint => '输入消息';
+
+  @override
+  String get sitMinAccountDays => '新账户可评价前需等待的天数';
+
+  @override
+  String get sitMinAccountDaysHelp => '0 到 60。有助于防止虚假账户。';
+
+  @override
+  String get sitMyOffers => '我的报价';
+
+  @override
+  String get sitMyRequests => '我的请求';
+
+  @override
+  String get sitMySitterProfile => '我的照看者资料';
+
+  @override
+  String get sitNeedCity => '请先在个人资料中设置城市：请求和资料只显示城市，不显示您的地址。';
+
+  @override
+  String get sitNewRequest => '新请求';
+
+  @override
+  String get sitNoChats => '还没有聊天。';
+
+  @override
+  String get sitNoMyRequests => '您还没有寻找过宠物照看者。';
+
+  @override
+  String get sitNoOffersYet => '还没有报价。附近的照看者会看到您的请求。';
+
+  @override
+  String get sitNoRequestsNearby => '附近暂时没有请求。';
+
+  @override
+  String get sitNoReviewsYet => '还没有评价';
+
+  @override
+  String get sitNoSittersNearby => '附近还没有照看者。';
+
+  @override
+  String get sitNotAvailableNow => '现在无法进行此操作。';
+
+  @override
+  String get sitNotFound => '未找到或已不可用。';
+
+  @override
+  String get sitNotes => '详情';
+
+  @override
+  String get sitNotesHint => '作息、饮食、药物，以及照看者需要知道的一切';
+
+  @override
+  String get sitNothingReported => '没有举报。';
+
+  @override
+  String get sitOffHelp => '关闭：仅管理员可见。';
+
+  @override
+  String get sitOfferAccepted => '已接受';
+
+  @override
+  String get sitOfferDeclined => '已拒绝';
+
+  @override
+  String get sitOfferMessage => '您的留言';
+
+  @override
+  String get sitOfferMessageHint => '介绍一下自己，并说明您会如何照看宠物';
+
+  @override
+  String get sitOfferPending => '等待中';
+
+  @override
+  String get sitOfferPrice => '您的价格（可选）';
+
+  @override
+  String get sitOfferSent => '报价已发送。';
+
+  @override
+  String get sitOfferWithdrawn => '已撤回';
+
+  @override
+  String sitOffersTitle(int count) {
+    return '报价（$count）';
+  }
+
+  @override
+  String get sitOnHelp => '开启：用户可在“宠物”标签和个人资料中看到宠物照看。';
+
+  @override
+  String get sitOpen => '打开';
+
+  @override
+  String sitPrice(String price) {
+    return '价格：$price';
+  }
+
+  @override
+  String get sitProfilePaused => '已暂停：他人不可见';
+
+  @override
+  String get sitProfileVisible => '宠物主人可见';
+
+  @override
+  String get sitPromo => '寻找照看者，或照看附近的宠物';
+
+  @override
+  String get sitPublish => '发布';
+
+  @override
+  String sitRatingSummary(String rating, int count) {
+    return '$rating（$count）';
+  }
+
+  @override
+  String get sitReport => '举报';
+
+  @override
+  String get sitRequest => '宠物照看请求';
+
+  @override
+  String get sitRequestPublished => '请求已发布。';
+
+  @override
+  String get sitReviewHint => '仅限双方都确认过的服务。请公正、具体。';
+
+  @override
+  String get sitReviewText => '您的评价（可选）';
+
+  @override
+  String sitReviewsTitle(int count) {
+    return '已验证的评价（$count）';
+  }
+
+  @override
+  String get sitSafetyText =>
+      'CodaMi 只负责连接用户，不参与服务本身。请先见面，查看资料和评价，直接约定付款，切勿提前付款给陌生人。';
+
+  @override
+  String get sitSafetyTitle => '注意安全';
+
+  @override
+  String sitSayHello(String name) {
+    return '向 $name 打个招呼';
+  }
+
+  @override
+  String get sitSend => '发送';
+
+  @override
+  String get sitSendOffer => '发送报价';
+
+  @override
+  String get sitServiceBoarding => '寄养在照看者家';
+
+  @override
+  String get sitServiceDaycare => '日间托管';
+
+  @override
+  String get sitServiceOvernight => '在家过夜照看';
+
+  @override
+  String get sitServiceVisits => '上门探访';
+
+  @override
+  String get sitServiceWalks => '遛宠物';
+
+  @override
+  String get sitServices => '服务';
+
+  @override
+  String get sitShow => '显示';
+
+  @override
+  String get sitShowMyProfile => '显示我的资料';
+
+  @override
+  String sitShownArea(String city) {
+    return '显示为：$city';
+  }
+
+  @override
+  String get sitShownDone => '已重新显示。';
+
+  @override
+  String get sitSitterProfile => '宠物照看者';
+
+  @override
+  String get sitStatusBooked => '已预订';
+
+  @override
+  String get sitStatusClosed => '已关闭';
+
+  @override
+  String get sitStatusDone => '已完成';
+
+  @override
+  String get sitStatusOpen => '开放中';
+
+  @override
+  String get sitTabMine => '我的';
+
+  @override
+  String get sitTabRequests => '请求';
+
+  @override
+  String get sitTabSitters => '照看者';
+
+  @override
+  String get sitThanksReview => '感谢您的评价！';
+
+  @override
+  String get sitTitle => '宠物照看';
+
+  @override
+  String get sitTo => '到';
+
+  @override
+  String get sitVerifiedService => '已验证的服务';
+
+  @override
+  String get sitViewProfile => '查看资料';
+
+  @override
+  String get sitWaitingOtherConfirm => '正在等待对方确认。';
+
+  @override
+  String get sitWhatService => '您需要什么？';
+
+  @override
+  String get sitWhen => '时间';
+
+  @override
+  String get sitWhichPets => '哪些宠物？';
+
+  @override
+  String get sitWithdraw => '撤回';
+
+  @override
+  String get sitYes => '是';
+
+  @override
+  String get sitYouAreBooked => '您是此请求的宠物照看者。';
+
+  @override
+  String sitYouBlocked(String name) {
+    return '您已屏蔽 $name。';
+  }
+
+  @override
+  String get sitYourOffer => '您的报价';
+
+  @override
+  String get sitHeroText => '附近值得信赖的人，评价都来自真实完成的服务。';
+
+  @override
+  String sitDaysTotal(int count) {
+    return '天数：$count';
+  }
+
+  @override
+  String get sitStepPublished => '已发布';
+
+  @override
+  String get sitStepConfirmed => '已确认';
+
+  @override
+  String get sitStepReviewed => '已评价';
+
+  @override
+  String get sitStatRating => '评分';
+
+  @override
+  String get sitStatOpenRequests => '开放中的请求';
+
+  @override
+  String get sitAdminOverview => '概览';
 }

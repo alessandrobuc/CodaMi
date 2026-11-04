@@ -1,8 +1,8 @@
 # CodaMi: Phase 5 Requests
 
-New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6) and the heat calendar (§5). Everything else below is still to do.
+New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6), the heat calendar (§5) and pet sitting (§8). Everything else below is still to do.
 
-_Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner built Wed 4 Nov, to deploy and test; the rest not started)_
+_Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner online, heat calendar and pet sitting built and to deploy; feedback, sharing, share reminders, schedule and titles not started)_
 
 | Order | # | Request | Already in the app | Status | Size |
 |---|---|---|---|---|---|
@@ -13,7 +13,7 @@ _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner built Wed 4 Nov,
 | 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
 | 6 | 1 | AI breed scanner | No (only photo moderation) | **Built Wed 4 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 7 | 8 | Profile tags, titles and achievements | Partly (invite levels) | Not started | Medium (about 3 days) |
-| 8 | 3 | Pet sitting marketplace | No | Not started | Large (6 to 8 days) |
+| 8 | 3 | Pet sitting marketplace | No | **Built Wed 4 Nov** (all 3 parts), to deploy and test | Large (6 to 8 days) |
 | - | 9 | General principles | Followed already | - | - |
 
 Total: about 19 to 22 working days, one feature at a time, each tested and sent to the client when done.
@@ -145,7 +145,24 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Admin: thresholds and on/off per title.
 - Notification when a title is unlocked.
 
-## 8. Pet sitting (request 3)
+## 8. Pet sitting (request 3): built Wed 4 Nov
+
+**Built**
+- Part 1, requests and profiles: Pet sitting section (Pets tab card, Profile row; on/off in Admin, admins see it while off) with tabs Requests / Sitters / Mine and distance (5-50 km) and species filters. Requests: pets, service (home visits, overnight at home, walks, daycare, stay at the sitter's), dates, details, optional budget; only the city is stored and shown (rounded position, never an address). Sitter profiles: about, experience, animals, services, availability, distance, show / pause. Offers with message and optional price; the owner accepts one (server books it and declines the others) or declines; the sitter can withdraw; the owner can close or cancel.
+- Part 2, chat: private chat between two users from an offer, a request or a profile; unread count on the chat icon and the Pets card; push for each message, new offer, accepted offer and confirmation (owner's language); report and block in the chat; a blocked user can't message, offer or be seen.
+- Part 3, verified reviews and moderation: after the start date both sides confirm the service; only then the owner can leave one review (1-5 stars + text), written by the server only; new accounts wait N days (Admin, default 3); rating and completed count kept by the server; "Verified service" label. Report requests, profiles, reviews and chats; Admin → More → Pet sitting: Settings, Reported (hide / dismiss), Requests, Sitters, Reviews (hide / show; hiding a review updates the rating).
+- Safety note on the section, the forms and in every chat ("CodaMi connects people…, agree on payment directly, never pay in advance"). Payment between users outside the app.
+- Private and clean: chats readable only by the two members (not even admins); everything removed with the account.
+- 138 texts in 10 languages + server push texts in 10 languages; 7 app tests, 7 server tests, 74 emulator checks; test plan `TEST_SCENARIO_SITTING_2026-11-04.md`.
+
+**Not in this version (ask the client)**
+- Payment through the app; photos in chat; a separate switch for chat notifications (for now: block, or the phone's settings); owners reviewed by sitters (now only sitters are reviewed); tapping a notification opens the app, not the chat.
+- Terms for pet sitting: a short text for the client to check (the in-app safety note is there).
+
+**Left**
+- Deploy functions, rules and indexes, two-phone test, then switch on for users.
+
+**Planned (kept for reference)**
 
 **Already there**
 - Accounts, city, pets, report contact (phone, WhatsApp, email), support chat between user and operator (not between users), report and block parts of moderation.

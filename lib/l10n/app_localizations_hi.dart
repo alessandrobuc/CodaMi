@@ -5250,4 +5250,488 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get heatInvalidValues =>
       'चक्र: 7 से 400 दिन (दूसरे जानवरों के लिए 0 भी)। अवधि: 1 से 60 दिन।';
+
+  @override
+  String get adminSittingSubtitle =>
+      'पेट सिटिंग: चालू/बंद, रिपोर्ट, अनुरोध, सिटर, समीक्षाएँ';
+
+  @override
+  String get sitAbout => 'मेरे बारे में';
+
+  @override
+  String get sitAboutHint => 'आप कौन हैं और आपको जानवर क्यों पसंद हैं';
+
+  @override
+  String get sitAboutTooShort => 'अपने बारे में कम से कम कुछ शब्द लिखें।';
+
+  @override
+  String get sitAccept => 'स्वीकार करें';
+
+  @override
+  String get sitAcceptText =>
+      'अनुरोध इस सिटर के साथ बुक होगा और बाकी ऑफ़र अस्वीकार हो जाएँगे।';
+
+  @override
+  String sitAcceptTitle(String name) {
+    return '$name को चुनें?';
+  }
+
+  @override
+  String get sitAccepted => 'बुक हो गया! चैट में नमस्ते कहें।';
+
+  @override
+  String get sitAddPetFirst => 'पहले पालतू टैब में अपना पालतू जोड़ें।';
+
+  @override
+  String get sitAdminIntro =>
+      'मालिक अनुरोध डालते हैं, सिटर ऑफ़र भेजते हैं और दोनों ऐप में चैट करते हैं। समीक्षा तभी हो सकती है जब दोनों सेवा की पुष्टि कर दें। भुगतान उपयोगकर्ता आपस में तय करते हैं।';
+
+  @override
+  String get sitAdminReported => 'रिपोर्ट किए गए';
+
+  @override
+  String get sitAdminReviews => 'समीक्षाएँ';
+
+  @override
+  String get sitAdminSettings => 'सेटिंग्स';
+
+  @override
+  String get sitAlreadyReviewed => 'आप इस सेवा की समीक्षा पहले ही कर चुके हैं।';
+
+  @override
+  String get sitAnimals => 'जिन जानवरों की देखभाल करता/करती हूँ';
+
+  @override
+  String get sitArea => 'मैं कितनी दूर तक जाता/जाती हूँ';
+
+  @override
+  String get sitAvailability => 'उपलब्धता';
+
+  @override
+  String get sitAvailabilityHint => 'जैसे: वीकेंड, शाम, अगस्त';
+
+  @override
+  String get sitBecomeSitter => 'पेट सिटर बनें';
+
+  @override
+  String get sitBecomeSitterText =>
+      'अपनी प्रोफ़ाइल बनाएँ और आस-पास के पालतुओं की देखभाल का ऑफ़र दें।';
+
+  @override
+  String get sitBecomeSitterToOffer => 'ऑफ़र भेजने के लिए सिटर प्रोफ़ाइल बनाएँ';
+
+  @override
+  String sitBookedWith(String name) {
+    return '$name के साथ बुक';
+  }
+
+  @override
+  String get sitBudget => 'बजट (वैकल्पिक)';
+
+  @override
+  String get sitBudgetHint => 'जैसे: €20 प्रतिदिन';
+
+  @override
+  String get sitCancelBooking => 'बुकिंग रद्द करें';
+
+  @override
+  String get sitCantMessage => 'आप इस उपयोगकर्ता को संदेश नहीं भेज सकते।';
+
+  @override
+  String get sitChat => 'चैट';
+
+  @override
+  String get sitChatSafety =>
+      'भुगतान और निजी जानकारी सुरक्षित रखें। कुछ भी संदिग्ध लगे तो रिपोर्ट करें।';
+
+  @override
+  String sitChatWith(String name) {
+    return '$name से चैट करें';
+  }
+
+  @override
+  String get sitChats => 'चैट';
+
+  @override
+  String get sitChoosePets => 'कम से कम एक पालतू चुनें।';
+
+  @override
+  String get sitChooseSpeciesServices => 'कम से कम एक जानवर और एक सेवा चुनें।';
+
+  @override
+  String sitCityArea(String city, int km) {
+    return '$city · $km किमी तक';
+  }
+
+  @override
+  String sitCityDistance(String city, int km) {
+    return '$city · $km किमी दूर';
+  }
+
+  @override
+  String get sitCloseRequest => 'अनुरोध बंद करें';
+
+  @override
+  String get sitCloseText => 'इसके बाद कोई ऑफ़र नहीं भेज पाएगा।';
+
+  @override
+  String get sitCloseTitle => 'यह अनुरोध बंद करें?';
+
+  @override
+  String sitCompletedCount(int count) {
+    return 'पूरी हुईं: $count';
+  }
+
+  @override
+  String get sitConfirmButton => 'हाँ, हो गई';
+
+  @override
+  String get sitConfirmText =>
+      'पेट सिटिंग होने के बाद पुष्टि करें। जब आप दोनों पुष्टि कर देंगे, तब सत्यापित समीक्षा दी जा सकेगी।';
+
+  @override
+  String get sitConfirmTitle => 'क्या पेट सिटिंग हुई?';
+
+  @override
+  String get sitConfirmed => 'धन्यवाद, पुष्टि हो गई।';
+
+  @override
+  String get sitDaysInvalid => '0 से 60 तक की संख्या लिखें।';
+
+  @override
+  String get sitDecline => 'अस्वीकार करें';
+
+  @override
+  String get sitDismiss => 'खारिज करें';
+
+  @override
+  String get sitEdit => 'बदलें';
+
+  @override
+  String get sitExperience => 'अनुभव';
+
+  @override
+  String get sitExperienceHint =>
+      'आपके पालतू या जिनकी देखभाल की, ट्रेनिंग, कोर्स';
+
+  @override
+  String get sitFrom => 'से';
+
+  @override
+  String get sitHiddenDone => 'छिपा दिया गया।';
+
+  @override
+  String get sitHiddenLabel => 'छिपा हुआ';
+
+  @override
+  String get sitHide => 'छिपाएँ';
+
+  @override
+  String get sitHideTheirProfile => 'उनकी सिटर प्रोफ़ाइल छिपाएँ';
+
+  @override
+  String get sitKindChat => 'चैट';
+
+  @override
+  String get sitKindRequest => 'अनुरोध';
+
+  @override
+  String get sitKindReview => 'समीक्षा';
+
+  @override
+  String get sitKindSitter => 'सिटर प्रोफ़ाइल';
+
+  @override
+  String sitLeaveReview(String name) {
+    return '$name की समीक्षा करें';
+  }
+
+  @override
+  String get sitMessageHint => 'संदेश लिखें';
+
+  @override
+  String get sitMinAccountDays => 'नए खाते के समीक्षा करने से पहले के दिन';
+
+  @override
+  String get sitMinAccountDaysHelp =>
+      '0 से 60 तक। नकली खातों से बचाव में मदद करता है।';
+
+  @override
+  String get sitMyOffers => 'मेरे ऑफ़र';
+
+  @override
+  String get sitMyRequests => 'मेरे अनुरोध';
+
+  @override
+  String get sitMySitterProfile => 'मेरी सिटर प्रोफ़ाइल';
+
+  @override
+  String get sitNeedCity =>
+      'पहले प्रोफ़ाइल में अपना शहर सेट करें: अनुरोध और प्रोफ़ाइल में सिर्फ़ शहर दिखता है, आपका पता कभी नहीं।';
+
+  @override
+  String get sitNewRequest => 'नया अनुरोध';
+
+  @override
+  String get sitNoChats => 'अभी कोई चैट नहीं।';
+
+  @override
+  String get sitNoMyRequests => 'आपने अभी तक पेट सिटर नहीं माँगा है।';
+
+  @override
+  String get sitNoOffersYet =>
+      'अभी कोई ऑफ़र नहीं। आस-पास के सिटर आपका अनुरोध देखेंगे।';
+
+  @override
+  String get sitNoRequestsNearby => 'अभी आपके पास कोई अनुरोध नहीं।';
+
+  @override
+  String get sitNoReviewsYet => 'अभी कोई समीक्षा नहीं';
+
+  @override
+  String get sitNoSittersNearby => 'अभी आपके पास कोई सिटर नहीं।';
+
+  @override
+  String get sitNotAvailableNow => 'अभी यह संभव नहीं है।';
+
+  @override
+  String get sitNotFound => 'नहीं मिला या अब उपलब्ध नहीं।';
+
+  @override
+  String get sitNotes => 'विवरण';
+
+  @override
+  String get sitNotesHint =>
+      'दिनचर्या, खाना, दवाइयाँ, जो कुछ भी सिटर को पता होना चाहिए';
+
+  @override
+  String get sitNothingReported => 'कुछ भी रिपोर्ट नहीं हुआ।';
+
+  @override
+  String get sitOffHelp => 'बंद: सिर्फ़ एडमिन देख सकते हैं।';
+
+  @override
+  String get sitOfferAccepted => 'स्वीकार';
+
+  @override
+  String get sitOfferDeclined => 'अस्वीकार';
+
+  @override
+  String get sitOfferMessage => 'आपका संदेश';
+
+  @override
+  String get sitOfferMessageHint =>
+      'अपना परिचय दें और बताएँ कि आप पालतू की देखभाल कैसे करेंगे';
+
+  @override
+  String get sitOfferPending => 'प्रतीक्षा में';
+
+  @override
+  String get sitOfferPrice => 'आपकी कीमत (वैकल्पिक)';
+
+  @override
+  String get sitOfferSent => 'ऑफ़र भेज दिया गया।';
+
+  @override
+  String get sitOfferWithdrawn => 'वापस लिया';
+
+  @override
+  String sitOffersTitle(int count) {
+    return 'ऑफ़र ($count)';
+  }
+
+  @override
+  String get sitOnHelp =>
+      'चालू: उपयोगकर्ता पालतू टैब और प्रोफ़ाइल में पेट सिटिंग देखते हैं।';
+
+  @override
+  String get sitOpen => 'खोलें';
+
+  @override
+  String sitPrice(String price) {
+    return 'कीमत: $price';
+  }
+
+  @override
+  String get sitProfilePaused => 'रुका हुआ: दूसरों को नहीं दिखता';
+
+  @override
+  String get sitProfileVisible => 'पालतू मालिकों को दिखता है';
+
+  @override
+  String get sitPromo => 'सिटर खोजें या आस-पास के पालतुओं की देखभाल करें';
+
+  @override
+  String get sitPublish => 'प्रकाशित करें';
+
+  @override
+  String sitRatingSummary(String rating, int count) {
+    return '$rating ($count)';
+  }
+
+  @override
+  String get sitReport => 'रिपोर्ट करें';
+
+  @override
+  String get sitRequest => 'पेट सिटिंग अनुरोध';
+
+  @override
+  String get sitRequestPublished => 'अनुरोध प्रकाशित हो गया।';
+
+  @override
+  String get sitReviewHint =>
+      'सिर्फ़ उन सेवाओं के लिए जिनकी दोनों ने पुष्टि की। निष्पक्ष और स्पष्ट रहें।';
+
+  @override
+  String get sitReviewText => 'आपकी समीक्षा (वैकल्पिक)';
+
+  @override
+  String sitReviewsTitle(int count) {
+    return 'सत्यापित समीक्षाएँ ($count)';
+  }
+
+  @override
+  String get sitSafetyText =>
+      'CodaMi लोगों को जोड़ता है और सेवा का हिस्सा नहीं है। पहले मिलें, प्रोफ़ाइल और समीक्षाएँ देखें, भुगतान सीधे तय करें और अजनबियों को कभी पहले पैसे न दें।';
+
+  @override
+  String get sitSafetyTitle => 'सुरक्षित रहें';
+
+  @override
+  String sitSayHello(String name) {
+    return '$name को नमस्ते कहें';
+  }
+
+  @override
+  String get sitSend => 'भेजें';
+
+  @override
+  String get sitSendOffer => 'ऑफ़र भेजें';
+
+  @override
+  String get sitServiceBoarding => 'सिटर के घर पर रहना';
+
+  @override
+  String get sitServiceDaycare => 'डेकेयर';
+
+  @override
+  String get sitServiceOvernight => 'घर पर रात भर';
+
+  @override
+  String get sitServiceVisits => 'घर पर विज़िट';
+
+  @override
+  String get sitServiceWalks => 'सैर';
+
+  @override
+  String get sitServices => 'सेवाएँ';
+
+  @override
+  String get sitShow => 'दिखाएँ';
+
+  @override
+  String get sitShowMyProfile => 'मेरी प्रोफ़ाइल दिखाएँ';
+
+  @override
+  String sitShownArea(String city) {
+    return 'ऐसे दिखेगा: $city';
+  }
+
+  @override
+  String get sitShownDone => 'फिर से दिख रहा है।';
+
+  @override
+  String get sitSitterProfile => 'पेट सिटर';
+
+  @override
+  String get sitStatusBooked => 'बुक';
+
+  @override
+  String get sitStatusClosed => 'बंद';
+
+  @override
+  String get sitStatusDone => 'पूरी हुई';
+
+  @override
+  String get sitStatusOpen => 'खुला';
+
+  @override
+  String get sitTabMine => 'मेरे';
+
+  @override
+  String get sitTabRequests => 'अनुरोध';
+
+  @override
+  String get sitTabSitters => 'सिटर';
+
+  @override
+  String get sitThanksReview => 'आपकी समीक्षा के लिए धन्यवाद!';
+
+  @override
+  String get sitTitle => 'पेट सिटिंग';
+
+  @override
+  String get sitTo => 'तक';
+
+  @override
+  String get sitVerifiedService => 'सत्यापित सेवा';
+
+  @override
+  String get sitViewProfile => 'प्रोफ़ाइल देखें';
+
+  @override
+  String get sitWaitingOtherConfirm => 'दूसरे व्यक्ति की पुष्टि का इंतज़ार।';
+
+  @override
+  String get sitWhatService => 'आपको क्या चाहिए?';
+
+  @override
+  String get sitWhen => 'कब';
+
+  @override
+  String get sitWhichPets => 'कौन से पालतू?';
+
+  @override
+  String get sitWithdraw => 'वापस लें';
+
+  @override
+  String get sitYes => 'हाँ';
+
+  @override
+  String get sitYouAreBooked => 'आप इस अनुरोध के पेट सिटर हैं।';
+
+  @override
+  String sitYouBlocked(String name) {
+    return 'आपने $name को ब्लॉक किया है।';
+  }
+
+  @override
+  String get sitYourOffer => 'आपका ऑफ़र';
+
+  @override
+  String get sitHeroText =>
+      'आपके पास भरोसेमंद लोग, असली पूरी हुई सेवाओं की समीक्षाओं के साथ।';
+
+  @override
+  String sitDaysTotal(int count) {
+    return 'दिन: $count';
+  }
+
+  @override
+  String get sitStepPublished => 'प्रकाशित';
+
+  @override
+  String get sitStepConfirmed => 'पुष्टि हुई';
+
+  @override
+  String get sitStepReviewed => 'समीक्षा हुई';
+
+  @override
+  String get sitStatRating => 'रेटिंग';
+
+  @override
+  String get sitStatOpenRequests => 'खुले अनुरोध';
+
+  @override
+  String get sitAdminOverview => 'सारांश';
 }

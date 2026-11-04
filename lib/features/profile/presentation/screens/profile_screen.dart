@@ -28,6 +28,9 @@ import '../../../petitions/presentation/screens/petitions_screen.dart';
 import '../../../donations/data/donations_repository.dart';
 import '../../../donations/presentation/support_screen.dart';
 import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../sitting/presentation/providers/sitting_provider.dart';
+import '../../../sitting/presentation/screens/sitting_screen.dart';
+import '../../../sitting/presentation/widgets/sitting_widgets.dart';
 import '../../../scanner/presentation/screens/scanner_screen.dart';
 import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/providers/walks_provider.dart';
@@ -325,6 +328,16 @@ class ProfileScreen extends ConsumerWidget {
                     subtitle: l10n.walksSubtitle,
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => const WalksScreen()),
+                    ),
+                  ),
+                if (ref.watch(sittingAvailableProvider))
+                  _ProfileTile(
+                    icon: Icons.volunteer_activism_rounded,
+                    color: sittingColor,
+                    title: l10n.sitTitle,
+                    subtitle: l10n.sitPromo,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const SittingScreen()),
                     ),
                   ),
                 if (ref.watch(scannerEnabledProvider))

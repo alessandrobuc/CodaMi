@@ -9167,6 +9167,882 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cycle: 7 to 400 days (0 allowed for other animals). Heat length: 1 to 60 days.'**
   String get heatInvalidValues;
+
+  /// No description provided for @adminSittingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet sitting: on/off, reports, requests, sitters, reviews'**
+  String get adminSittingSubtitle;
+
+  /// No description provided for @sitAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About me'**
+  String get sitAbout;
+
+  /// No description provided for @sitAboutHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Who you are and why you love animals'**
+  String get sitAboutHint;
+
+  /// No description provided for @sitAboutTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Write at least a few words about yourself.'**
+  String get sitAboutTooShort;
+
+  /// No description provided for @sitAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get sitAccept;
+
+  /// No description provided for @sitAcceptText.
+  ///
+  /// In en, this message translates to:
+  /// **'The request will be booked with this sitter and the other offers declined.'**
+  String get sitAcceptText;
+
+  /// No description provided for @sitAcceptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose {name}?'**
+  String sitAcceptTitle(String name);
+
+  /// No description provided for @sitAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked! Say hello in the chat.'**
+  String get sitAccepted;
+
+  /// No description provided for @sitAddPetFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your pet in the Pets tab first.'**
+  String get sitAddPetFirst;
+
+  /// No description provided for @sitAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners publish requests, sitters send offers, and both chat in the app. Reviews are only possible after both sides confirmed the service. Payment is arranged between users.'**
+  String get sitAdminIntro;
+
+  /// No description provided for @sitAdminReported.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported'**
+  String get sitAdminReported;
+
+  /// No description provided for @sitAdminReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get sitAdminReviews;
+
+  /// No description provided for @sitAdminSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get sitAdminSettings;
+
+  /// No description provided for @sitAlreadyReviewed.
+  ///
+  /// In en, this message translates to:
+  /// **'You already reviewed this service.'**
+  String get sitAlreadyReviewed;
+
+  /// No description provided for @sitAnimals.
+  ///
+  /// In en, this message translates to:
+  /// **'Animals I look after'**
+  String get sitAnimals;
+
+  /// No description provided for @sitArea.
+  ///
+  /// In en, this message translates to:
+  /// **'How far I travel'**
+  String get sitArea;
+
+  /// No description provided for @sitAvailability.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability'**
+  String get sitAvailability;
+
+  /// No description provided for @sitAvailabilityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For example: weekends, evenings, August'**
+  String get sitAvailabilityHint;
+
+  /// No description provided for @sitBecomeSitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Become a pet sitter'**
+  String get sitBecomeSitter;
+
+  /// No description provided for @sitBecomeSitterText.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your profile and offer to look after pets near you.'**
+  String get sitBecomeSitterText;
+
+  /// No description provided for @sitBecomeSitterToOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a sitter profile to send an offer'**
+  String get sitBecomeSitterToOffer;
+
+  /// No description provided for @sitBookedWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked with {name}'**
+  String sitBookedWith(String name);
+
+  /// No description provided for @sitBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Budget (optional)'**
+  String get sitBudget;
+
+  /// No description provided for @sitBudgetHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For example: €20 a day'**
+  String get sitBudgetHint;
+
+  /// No description provided for @sitCancelBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel the booking'**
+  String get sitCancelBooking;
+
+  /// No description provided for @sitCantMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You can\'t send messages to this user.'**
+  String get sitCantMessage;
+
+  /// No description provided for @sitChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get sitChat;
+
+  /// No description provided for @sitChatSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep payments and personal details safe. Report anything suspicious.'**
+  String get sitChatSafety;
+
+  /// No description provided for @sitChatWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with {name}'**
+  String sitChatWith(String name);
+
+  /// No description provided for @sitChats.
+  ///
+  /// In en, this message translates to:
+  /// **'Chats'**
+  String get sitChats;
+
+  /// No description provided for @sitChoosePets.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one pet.'**
+  String get sitChoosePets;
+
+  /// No description provided for @sitChooseSpeciesServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one animal and one service.'**
+  String get sitChooseSpeciesServices;
+
+  /// No description provided for @sitCityArea.
+  ///
+  /// In en, this message translates to:
+  /// **'{city} · up to {km} km'**
+  String sitCityArea(String city, int km);
+
+  /// No description provided for @sitCityDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'{city} · {km} km away'**
+  String sitCityDistance(String city, int km);
+
+  /// No description provided for @sitCloseRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Close the request'**
+  String get sitCloseRequest;
+
+  /// No description provided for @sitCloseText.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody will be able to send offers any more.'**
+  String get sitCloseText;
+
+  /// No description provided for @sitCloseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close this request?'**
+  String get sitCloseTitle;
+
+  /// No description provided for @sitCompletedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed: {count}'**
+  String sitCompletedCount(int count);
+
+  /// No description provided for @sitConfirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, it was done'**
+  String get sitConfirmButton;
+
+  /// No description provided for @sitConfirmText.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm once the pet sitting has happened. When both of you confirm, a verified review can be left.'**
+  String get sitConfirmText;
+
+  /// No description provided for @sitConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Did the pet sitting take place?'**
+  String get sitConfirmTitle;
+
+  /// No description provided for @sitConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks, confirmed.'**
+  String get sitConfirmed;
+
+  /// No description provided for @sitDaysInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 0 to 60.'**
+  String get sitDaysInvalid;
+
+  /// No description provided for @sitDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get sitDecline;
+
+  /// No description provided for @sitDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get sitDismiss;
+
+  /// No description provided for @sitEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get sitEdit;
+
+  /// No description provided for @sitExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get sitExperience;
+
+  /// No description provided for @sitExperienceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pets you\'ve had or looked after, training, courses'**
+  String get sitExperienceHint;
+
+  /// No description provided for @sitFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get sitFrom;
+
+  /// No description provided for @sitHiddenDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden.'**
+  String get sitHiddenDone;
+
+  /// No description provided for @sitHiddenLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get sitHiddenLabel;
+
+  /// No description provided for @sitHide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get sitHide;
+
+  /// No description provided for @sitHideTheirProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide their sitter profile'**
+  String get sitHideTheirProfile;
+
+  /// No description provided for @sitKindChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get sitKindChat;
+
+  /// No description provided for @sitKindRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Request'**
+  String get sitKindRequest;
+
+  /// No description provided for @sitKindReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get sitKindReview;
+
+  /// No description provided for @sitKindSitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Sitter profile'**
+  String get sitKindSitter;
+
+  /// No description provided for @sitLeaveReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review {name}'**
+  String sitLeaveReview(String name);
+
+  /// No description provided for @sitMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a message'**
+  String get sitMessageHint;
+
+  /// No description provided for @sitMinAccountDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days before a new account can review'**
+  String get sitMinAccountDays;
+
+  /// No description provided for @sitMinAccountDaysHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'From 0 to 60. Helps against fake accounts.'**
+  String get sitMinAccountDaysHelp;
+
+  /// No description provided for @sitMyOffers.
+  ///
+  /// In en, this message translates to:
+  /// **'My offers'**
+  String get sitMyOffers;
+
+  /// No description provided for @sitMyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'My requests'**
+  String get sitMyRequests;
+
+  /// No description provided for @sitMySitterProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'My sitter profile'**
+  String get sitMySitterProfile;
+
+  /// No description provided for @sitNeedCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your city in Profile first: requests and profiles show only the city, never your address.'**
+  String get sitNeedCity;
+
+  /// No description provided for @sitNewRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get sitNewRequest;
+
+  /// No description provided for @sitNoChats.
+  ///
+  /// In en, this message translates to:
+  /// **'No chats yet.'**
+  String get sitNoChats;
+
+  /// No description provided for @sitNoMyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t asked for a pet sitter yet.'**
+  String get sitNoMyRequests;
+
+  /// No description provided for @sitNoOffersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No offers yet. Sitters near you will see your request.'**
+  String get sitNoOffersYet;
+
+  /// No description provided for @sitNoRequestsNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests near you right now.'**
+  String get sitNoRequestsNearby;
+
+  /// No description provided for @sitNoReviewsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get sitNoReviewsYet;
+
+  /// No description provided for @sitNoSittersNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'No sitters near you yet.'**
+  String get sitNoSittersNearby;
+
+  /// No description provided for @sitNotAvailableNow.
+  ///
+  /// In en, this message translates to:
+  /// **'This isn\'t possible right now.'**
+  String get sitNotAvailableNow;
+
+  /// No description provided for @sitNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Not found or no longer available.'**
+  String get sitNotFound;
+
+  /// No description provided for @sitNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get sitNotes;
+
+  /// No description provided for @sitNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Routine, food, medicines, anything the sitter should know'**
+  String get sitNotesHint;
+
+  /// No description provided for @sitNothingReported.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing reported.'**
+  String get sitNothingReported;
+
+  /// No description provided for @sitOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins can see it.'**
+  String get sitOffHelp;
+
+  /// No description provided for @sitOfferAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get sitOfferAccepted;
+
+  /// No description provided for @sitOfferDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get sitOfferDeclined;
+
+  /// No description provided for @sitOfferMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your message'**
+  String get sitOfferMessage;
+
+  /// No description provided for @sitOfferMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Introduce yourself and say how you\'d look after the pet'**
+  String get sitOfferMessageHint;
+
+  /// No description provided for @sitOfferPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get sitOfferPending;
+
+  /// No description provided for @sitOfferPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your price (optional)'**
+  String get sitOfferPrice;
+
+  /// No description provided for @sitOfferSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer sent.'**
+  String get sitOfferSent;
+
+  /// No description provided for @sitOfferWithdrawn.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn'**
+  String get sitOfferWithdrawn;
+
+  /// No description provided for @sitOffersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers ({count})'**
+  String sitOffersTitle(int count);
+
+  /// No description provided for @sitOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users see Pet sitting in the Pets tab and in Profile.'**
+  String get sitOnHelp;
+
+  /// No description provided for @sitOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get sitOpen;
+
+  /// No description provided for @sitPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price: {price}'**
+  String sitPrice(String price);
+
+  /// No description provided for @sitProfilePaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused: not shown to others'**
+  String get sitProfilePaused;
+
+  /// No description provided for @sitProfileVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible to pet owners'**
+  String get sitProfileVisible;
+
+  /// No description provided for @sitPromo.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a sitter or look after pets near you'**
+  String get sitPromo;
+
+  /// No description provided for @sitPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish'**
+  String get sitPublish;
+
+  /// No description provided for @sitRatingSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{rating} ({count})'**
+  String sitRatingSummary(String rating, int count);
+
+  /// No description provided for @sitReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get sitReport;
+
+  /// No description provided for @sitRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet sitting request'**
+  String get sitRequest;
+
+  /// No description provided for @sitRequestPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Request published.'**
+  String get sitRequestPublished;
+
+  /// No description provided for @sitReviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only for services you both confirmed. Be fair and specific.'**
+  String get sitReviewHint;
+
+  /// No description provided for @sitReviewText.
+  ///
+  /// In en, this message translates to:
+  /// **'Your review (optional)'**
+  String get sitReviewText;
+
+  /// No description provided for @sitReviewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified reviews ({count})'**
+  String sitReviewsTitle(int count);
+
+  /// No description provided for @sitSafetyText.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi connects people and isn\'t part of the service. Meet first, check the profile and reviews, agree on payment directly, and never pay strangers in advance.'**
+  String get sitSafetyText;
+
+  /// No description provided for @sitSafetyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay safe'**
+  String get sitSafetyTitle;
+
+  /// No description provided for @sitSayHello.
+  ///
+  /// In en, this message translates to:
+  /// **'Say hello to {name}'**
+  String sitSayHello(String name);
+
+  /// No description provided for @sitSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get sitSend;
+
+  /// No description provided for @sitSendOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Send an offer'**
+  String get sitSendOffer;
+
+  /// No description provided for @sitServiceBoarding.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay at the sitter\'s'**
+  String get sitServiceBoarding;
+
+  /// No description provided for @sitServiceDaycare.
+  ///
+  /// In en, this message translates to:
+  /// **'Daycare'**
+  String get sitServiceDaycare;
+
+  /// No description provided for @sitServiceOvernight.
+  ///
+  /// In en, this message translates to:
+  /// **'Overnight at home'**
+  String get sitServiceOvernight;
+
+  /// No description provided for @sitServiceVisits.
+  ///
+  /// In en, this message translates to:
+  /// **'Home visits'**
+  String get sitServiceVisits;
+
+  /// No description provided for @sitServiceWalks.
+  ///
+  /// In en, this message translates to:
+  /// **'Walks'**
+  String get sitServiceWalks;
+
+  /// No description provided for @sitServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get sitServices;
+
+  /// No description provided for @sitShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show'**
+  String get sitShow;
+
+  /// No description provided for @sitShowMyProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Show my profile'**
+  String get sitShowMyProfile;
+
+  /// No description provided for @sitShownArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown as: {city}'**
+  String sitShownArea(String city);
+
+  /// No description provided for @sitShownDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible again.'**
+  String get sitShownDone;
+
+  /// No description provided for @sitSitterProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet sitter'**
+  String get sitSitterProfile;
+
+  /// No description provided for @sitStatusBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked'**
+  String get sitStatusBooked;
+
+  /// No description provided for @sitStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get sitStatusClosed;
+
+  /// No description provided for @sitStatusDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get sitStatusDone;
+
+  /// No description provided for @sitStatusOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get sitStatusOpen;
+
+  /// No description provided for @sitTabMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Mine'**
+  String get sitTabMine;
+
+  /// No description provided for @sitTabRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get sitTabRequests;
+
+  /// No description provided for @sitTabSitters.
+  ///
+  /// In en, this message translates to:
+  /// **'Sitters'**
+  String get sitTabSitters;
+
+  /// No description provided for @sitThanksReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for your review!'**
+  String get sitThanksReview;
+
+  /// No description provided for @sitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet sitting'**
+  String get sitTitle;
+
+  /// No description provided for @sitTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get sitTo;
+
+  /// No description provided for @sitVerifiedService.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified service'**
+  String get sitVerifiedService;
+
+  /// No description provided for @sitViewProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'View profile'**
+  String get sitViewProfile;
+
+  /// No description provided for @sitWaitingOtherConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the other person to confirm.'**
+  String get sitWaitingOtherConfirm;
+
+  /// No description provided for @sitWhatService.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you need?'**
+  String get sitWhatService;
+
+  /// No description provided for @sitWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get sitWhen;
+
+  /// No description provided for @sitWhichPets.
+  ///
+  /// In en, this message translates to:
+  /// **'Which pets?'**
+  String get sitWhichPets;
+
+  /// No description provided for @sitWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get sitWithdraw;
+
+  /// No description provided for @sitYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get sitYes;
+
+  /// No description provided for @sitYouAreBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re the pet sitter for this request.'**
+  String get sitYouAreBooked;
+
+  /// No description provided for @sitYouBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'You blocked {name}.'**
+  String sitYouBlocked(String name);
+
+  /// No description provided for @sitYourOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your offer'**
+  String get sitYourOffer;
+
+  /// No description provided for @sitHeroText.
+  ///
+  /// In en, this message translates to:
+  /// **'Trusted people near you, with reviews from real completed services.'**
+  String get sitHeroText;
+
+  /// No description provided for @sitDaysTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Days: {count}'**
+  String sitDaysTotal(int count);
+
+  /// No description provided for @sitStepPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get sitStepPublished;
+
+  /// No description provided for @sitStepConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get sitStepConfirmed;
+
+  /// No description provided for @sitStepReviewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewed'**
+  String get sitStepReviewed;
+
+  /// No description provided for @sitStatRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get sitStatRating;
+
+  /// No description provided for @sitStatOpenRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Open requests'**
+  String get sitStatOpenRequests;
+
+  /// No description provided for @sitAdminOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get sitAdminOverview;
 }
 
 class _AppLocalizationsDelegate

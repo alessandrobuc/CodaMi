@@ -5315,4 +5315,494 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get heatInvalidValues =>
       'Ciclo: de 7 a 400 días (0 permitido para otros animales). Duración: de 1 a 60 días.';
+
+  @override
+  String get adminSittingSubtitle =>
+      'Cuidado de mascotas: activar/desactivar, denuncias, solicitudes, cuidadores, reseñas';
+
+  @override
+  String get sitAbout => 'Sobre mí';
+
+  @override
+  String get sitAboutHint => 'Quién eres y por qué te gustan los animales';
+
+  @override
+  String get sitAboutTooShort => 'Escribe al menos unas palabras sobre ti.';
+
+  @override
+  String get sitAccept => 'Aceptar';
+
+  @override
+  String get sitAcceptText =>
+      'La solicitud se reservará con este cuidador y se rechazarán las demás ofertas.';
+
+  @override
+  String sitAcceptTitle(String name) {
+    return '¿Elegir a $name?';
+  }
+
+  @override
+  String get sitAccepted => '¡Reservado! Saluda en el chat.';
+
+  @override
+  String get sitAddPetFirst =>
+      'Primero añade tu mascota en la pestaña Mascotas.';
+
+  @override
+  String get sitAdminIntro =>
+      'Los dueños publican solicitudes, los cuidadores envían ofertas y ambos chatean en la app. Las reseñas solo son posibles cuando ambos confirman el servicio. El pago se acuerda entre los usuarios.';
+
+  @override
+  String get sitAdminReported => 'Denunciados';
+
+  @override
+  String get sitAdminReviews => 'Reseñas';
+
+  @override
+  String get sitAdminSettings => 'Ajustes';
+
+  @override
+  String get sitAlreadyReviewed => 'Ya has valorado este servicio.';
+
+  @override
+  String get sitAnimals => 'Animales que cuido';
+
+  @override
+  String get sitArea => 'Hasta dónde me desplazo';
+
+  @override
+  String get sitAvailability => 'Disponibilidad';
+
+  @override
+  String get sitAvailabilityHint =>
+      'Por ejemplo: fines de semana, tardes, agosto';
+
+  @override
+  String get sitBecomeSitter => 'Hazte cuidador';
+
+  @override
+  String get sitBecomeSitterText =>
+      'Crea tu perfil y ofrécete a cuidar mascotas cerca de ti.';
+
+  @override
+  String get sitBecomeSitterToOffer =>
+      'Crea un perfil de cuidador para enviar una oferta';
+
+  @override
+  String sitBookedWith(String name) {
+    return 'Reservado con $name';
+  }
+
+  @override
+  String get sitBudget => 'Presupuesto (opcional)';
+
+  @override
+  String get sitBudgetHint => 'Por ejemplo: 20 € al día';
+
+  @override
+  String get sitCancelBooking => 'Cancelar la reserva';
+
+  @override
+  String get sitCantMessage => 'No puedes enviar mensajes a este usuario.';
+
+  @override
+  String get sitChat => 'Chat';
+
+  @override
+  String get sitChatSafety =>
+      'Protege los pagos y tus datos. Denuncia lo que parezca sospechoso.';
+
+  @override
+  String sitChatWith(String name) {
+    return 'Chatear con $name';
+  }
+
+  @override
+  String get sitChats => 'Chats';
+
+  @override
+  String get sitChoosePets => 'Elige al menos una mascota.';
+
+  @override
+  String get sitChooseSpeciesServices =>
+      'Elige al menos un animal y un servicio.';
+
+  @override
+  String sitCityArea(String city, int km) {
+    return '$city · hasta $km km';
+  }
+
+  @override
+  String sitCityDistance(String city, int km) {
+    return '$city · a $km km';
+  }
+
+  @override
+  String get sitCloseRequest => 'Cerrar la solicitud';
+
+  @override
+  String get sitCloseText => 'Nadie podrá enviar más ofertas.';
+
+  @override
+  String get sitCloseTitle => '¿Cerrar esta solicitud?';
+
+  @override
+  String sitCompletedCount(int count) {
+    return 'Completados: $count';
+  }
+
+  @override
+  String get sitConfirmButton => 'Sí, se realizó';
+
+  @override
+  String get sitConfirmText =>
+      'Confirma cuando el cuidado haya tenido lugar. Cuando ambos confirméis, se podrá dejar una reseña verificada.';
+
+  @override
+  String get sitConfirmTitle => '¿Se realizó el cuidado?';
+
+  @override
+  String get sitConfirmed => 'Gracias, confirmado.';
+
+  @override
+  String get sitDaysInvalid => 'Escribe un número del 0 al 60.';
+
+  @override
+  String get sitDecline => 'Rechazar';
+
+  @override
+  String get sitDismiss => 'Descartar';
+
+  @override
+  String get sitEdit => 'Editar';
+
+  @override
+  String get sitExperience => 'Experiencia';
+
+  @override
+  String get sitExperienceHint =>
+      'Mascotas que has tenido o cuidado, formación, cursos';
+
+  @override
+  String get sitFrom => 'Desde';
+
+  @override
+  String get sitHiddenDone => 'Ocultado.';
+
+  @override
+  String get sitHiddenLabel => 'Oculto';
+
+  @override
+  String get sitHide => 'Ocultar';
+
+  @override
+  String get sitHideTheirProfile => 'Ocultar su perfil de cuidador';
+
+  @override
+  String get sitKindChat => 'Chat';
+
+  @override
+  String get sitKindRequest => 'Solicitud';
+
+  @override
+  String get sitKindReview => 'Reseña';
+
+  @override
+  String get sitKindSitter => 'Perfil de cuidador';
+
+  @override
+  String sitLeaveReview(String name) {
+    return 'Valorar a $name';
+  }
+
+  @override
+  String get sitMessageHint => 'Escribe un mensaje';
+
+  @override
+  String get sitMinAccountDays =>
+      'Días antes de que una cuenta nueva pueda valorar';
+
+  @override
+  String get sitMinAccountDaysHelp =>
+      'De 0 a 60. Ayuda contra las cuentas falsas.';
+
+  @override
+  String get sitMyOffers => 'Mis ofertas';
+
+  @override
+  String get sitMyRequests => 'Mis solicitudes';
+
+  @override
+  String get sitMySitterProfile => 'Mi perfil de cuidador';
+
+  @override
+  String get sitNeedCity =>
+      'Indica primero tu ciudad en el Perfil: las solicitudes y los perfiles solo muestran la ciudad, nunca tu dirección.';
+
+  @override
+  String get sitNewRequest => 'Nueva solicitud';
+
+  @override
+  String get sitNoChats => 'Aún no hay chats.';
+
+  @override
+  String get sitNoMyRequests => 'Aún no has pedido un cuidador.';
+
+  @override
+  String get sitNoOffersYet =>
+      'Aún no hay ofertas. Los cuidadores cercanos verán tu solicitud.';
+
+  @override
+  String get sitNoRequestsNearby => 'No hay solicitudes cerca de ti ahora.';
+
+  @override
+  String get sitNoReviewsYet => 'Aún no hay reseñas';
+
+  @override
+  String get sitNoSittersNearby => 'Aún no hay cuidadores cerca de ti.';
+
+  @override
+  String get sitNotAvailableNow => 'Ahora no es posible.';
+
+  @override
+  String get sitNotFound => 'No encontrado o ya no disponible.';
+
+  @override
+  String get sitNotes => 'Detalles';
+
+  @override
+  String get sitNotesHint =>
+      'Rutina, comida, medicinas, todo lo que el cuidador deba saber';
+
+  @override
+  String get sitNothingReported => 'Nada denunciado.';
+
+  @override
+  String get sitOffHelp => 'Desactivado: solo lo ven los administradores.';
+
+  @override
+  String get sitOfferAccepted => 'Aceptada';
+
+  @override
+  String get sitOfferDeclined => 'Rechazada';
+
+  @override
+  String get sitOfferMessage => 'Tu mensaje';
+
+  @override
+  String get sitOfferMessageHint =>
+      'Preséntate y explica cómo cuidarías a la mascota';
+
+  @override
+  String get sitOfferPending => 'Pendiente';
+
+  @override
+  String get sitOfferPrice => 'Tu precio (opcional)';
+
+  @override
+  String get sitOfferSent => 'Oferta enviada.';
+
+  @override
+  String get sitOfferWithdrawn => 'Retirada';
+
+  @override
+  String sitOffersTitle(int count) {
+    return 'Ofertas ($count)';
+  }
+
+  @override
+  String get sitOnHelp =>
+      'Activado: los usuarios ven el cuidado de mascotas en la pestaña Mascotas y en el Perfil.';
+
+  @override
+  String get sitOpen => 'Abrir';
+
+  @override
+  String sitPrice(String price) {
+    return 'Precio: $price';
+  }
+
+  @override
+  String get sitProfilePaused => 'En pausa: no visible para otros';
+
+  @override
+  String get sitProfileVisible => 'Visible para los dueños';
+
+  @override
+  String get sitPromo => 'Encuentra un cuidador o cuida mascotas cerca de ti';
+
+  @override
+  String get sitPublish => 'Publicar';
+
+  @override
+  String sitRatingSummary(String rating, int count) {
+    return '$rating ($count)';
+  }
+
+  @override
+  String get sitReport => 'Denunciar';
+
+  @override
+  String get sitRequest => 'Solicitud de cuidado';
+
+  @override
+  String get sitRequestPublished => 'Solicitud publicada.';
+
+  @override
+  String get sitReviewHint =>
+      'Solo para servicios que ambos confirmasteis. Sé justo y concreto.';
+
+  @override
+  String get sitReviewText => 'Tu reseña (opcional)';
+
+  @override
+  String sitReviewsTitle(int count) {
+    return 'Reseñas verificadas ($count)';
+  }
+
+  @override
+  String get sitSafetyText =>
+      'CodaMi pone en contacto a las personas y no forma parte del servicio. Conoceos antes, revisa el perfil y las reseñas, acordad el pago directamente y nunca pagues por adelantado a desconocidos.';
+
+  @override
+  String get sitSafetyTitle => 'Seguridad';
+
+  @override
+  String sitSayHello(String name) {
+    return 'Saluda a $name';
+  }
+
+  @override
+  String get sitSend => 'Enviar';
+
+  @override
+  String get sitSendOffer => 'Enviar una oferta';
+
+  @override
+  String get sitServiceBoarding => 'Estancia con el cuidador';
+
+  @override
+  String get sitServiceDaycare => 'Guardería de día';
+
+  @override
+  String get sitServiceOvernight => 'Noche en casa';
+
+  @override
+  String get sitServiceVisits => 'Visitas a domicilio';
+
+  @override
+  String get sitServiceWalks => 'Paseos';
+
+  @override
+  String get sitServices => 'Servicios';
+
+  @override
+  String get sitShow => 'Mostrar';
+
+  @override
+  String get sitShowMyProfile => 'Mostrar mi perfil';
+
+  @override
+  String sitShownArea(String city) {
+    return 'Se muestra: $city';
+  }
+
+  @override
+  String get sitShownDone => 'Visible de nuevo.';
+
+  @override
+  String get sitSitterProfile => 'Cuidador';
+
+  @override
+  String get sitStatusBooked => 'Reservada';
+
+  @override
+  String get sitStatusClosed => 'Cerrada';
+
+  @override
+  String get sitStatusDone => 'Completada';
+
+  @override
+  String get sitStatusOpen => 'Abierta';
+
+  @override
+  String get sitTabMine => 'Lo mío';
+
+  @override
+  String get sitTabRequests => 'Solicitudes';
+
+  @override
+  String get sitTabSitters => 'Cuidadores';
+
+  @override
+  String get sitThanksReview => '¡Gracias por tu reseña!';
+
+  @override
+  String get sitTitle => 'Cuidado de mascotas';
+
+  @override
+  String get sitTo => 'Hasta';
+
+  @override
+  String get sitVerifiedService => 'Servicio verificado';
+
+  @override
+  String get sitViewProfile => 'Ver perfil';
+
+  @override
+  String get sitWaitingOtherConfirm =>
+      'Esperando la confirmación de la otra persona.';
+
+  @override
+  String get sitWhatService => '¿Qué necesitas?';
+
+  @override
+  String get sitWhen => 'Cuándo';
+
+  @override
+  String get sitWhichPets => '¿Qué mascotas?';
+
+  @override
+  String get sitWithdraw => 'Retirar';
+
+  @override
+  String get sitYes => 'Sí';
+
+  @override
+  String get sitYouAreBooked => 'Eres el cuidador de esta solicitud.';
+
+  @override
+  String sitYouBlocked(String name) {
+    return 'Has bloqueado a $name.';
+  }
+
+  @override
+  String get sitYourOffer => 'Tu oferta';
+
+  @override
+  String get sitHeroText =>
+      'Personas de confianza cerca de ti, con reseñas de servicios reales.';
+
+  @override
+  String sitDaysTotal(int count) {
+    return 'Días: $count';
+  }
+
+  @override
+  String get sitStepPublished => 'Publicada';
+
+  @override
+  String get sitStepConfirmed => 'Confirmada';
+
+  @override
+  String get sitStepReviewed => 'Valorada';
+
+  @override
+  String get sitStatRating => 'Valoración';
+
+  @override
+  String get sitStatOpenRequests => 'Solicitudes abiertas';
+
+  @override
+  String get sitAdminOverview => 'Resumen';
 }

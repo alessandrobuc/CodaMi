@@ -2,7 +2,7 @@
 
 Questions sent to the client that still need an answer. Move an item to **Answered** with the date and the answer when it comes back.
 
-_Last updated: Tue 3 Nov 2026_
+_Last updated: Wed 4 Nov 2026_
 
 ---
 
@@ -64,7 +64,8 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 
 **Phase 5 requests (Tue 3 Nov)**: plan and details in `PHASE_5_REQUESTS.md`
 - [x] Go-ahead: given Wed 4 Nov, no fixed order (the AI breed scanner was built first)
-- [ ] Pet sitting: payment between users outside the app (recommended for now), or through the app?
+- [ ] Pet sitting: payment between users outside the app (built this way), or through the app later?
+- [ ] Pet sitting: a short terms text ("CodaMi connects people and isn't part of the service…"): draft by us, check by the client; photos in chat? sitters reviewing owners too?
 - [ ] AI breed scanner: OK with a small cost per scan (less than 1 cent) and a daily limit? (built with 10 scans per user per day, changeable in Admin)
 - [ ] Heat calendar: which animals besides dogs and cats? (built for all species: dogs and cats with typical cycles, other animals estimated from their own records; typical values changeable in Admin)
 - [ ] Donor titles: amounts for Bronze, Silver, Gold, Platinum, Lifetime

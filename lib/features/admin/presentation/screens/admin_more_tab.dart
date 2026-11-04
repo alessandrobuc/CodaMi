@@ -32,6 +32,8 @@ import '../../../donations/presentation/support_screen.dart';
 import '../../../heat/presentation/screens/admin_heat_screen.dart';
 import '../../../heat/presentation/widgets/heat_widgets.dart';
 import '../../../scanner/presentation/screens/admin_scanner_screen.dart';
+import '../../../sitting/presentation/screens/admin_sitting_screen.dart';
+import '../../../sitting/presentation/widgets/sitting_widgets.dart';
 import '../../../scanner/presentation/widgets/scanner_widgets.dart';
 import '../../../walks/presentation/screens/admin_walks_screen.dart';
 import '../../../walks/presentation/widgets/walk_widgets.dart';
@@ -226,6 +228,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminScannerScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.volunteer_activism_rounded,
+                    color: sittingColor,
+                    title: l10n.sitTitle,
+                    subtitle: l10n.adminSittingSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminSittingScreen(),
                       ),
                     ),
                   ),
