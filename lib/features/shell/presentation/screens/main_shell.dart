@@ -23,6 +23,8 @@ import '../../../points/data/points_repository.dart';
 import '../../../points/presentation/providers/points_provider.dart';
 import '../../../shop/presentation/providers/shop_provider.dart';
 import '../../../shop/presentation/screens/shop_screen.dart';
+import '../../../schedule/presentation/providers/schedule_provider.dart';
+import '../../../schedule/presentation/screens/schedule_screen.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -96,7 +98,15 @@ class _MainShellState extends ConsumerState<MainShell>
           onOpenEmergency: (id) => appNavigatorKey.currentState?.push(
             MaterialPageRoute(builder: (_) => EmergencyScreen(emergencyId: id)),
           ),
+          onOpenSchedule: (id) => appNavigatorKey.currentState?.push(
+            MaterialPageRoute(builder: (_) => ScheduleScreen(openEventId: id)),
+          ),
         );
+    syncScheduleReminders(
+      ref.read(scheduleRepositoryProvider),
+      context.l10n,
+      uid,
+    );
     ref.read(notificationSettingsProvider).restoreChannels();
     ref.read(pointsRepositoryProvider).registerVisit();
     ref.read(activeTimeProvider);

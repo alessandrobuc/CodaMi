@@ -5701,4 +5701,443 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sitAdminOverview => 'نظرة عامة';
+
+  @override
+  String get schTitle => 'جدولي';
+
+  @override
+  String schTitleOf(String name) {
+    return 'جدول $name';
+  }
+
+  @override
+  String get schSubtitle => 'زيارات البيطري والأدوية والعناية والتذكيرات';
+
+  @override
+  String get schPromo => 'خطط لزيارات البيطري والأدوية وغيرها، مع تذكيرات';
+
+  @override
+  String schNext(String what, String when) {
+    return 'التالي: $what · $when';
+  }
+
+  @override
+  String get schAddEvent => 'حدث جديد';
+
+  @override
+  String get schEditEvent => 'تعديل الحدث';
+
+  @override
+  String get schEdit => 'تعديل';
+
+  @override
+  String get schTabCalendar => 'التقويم';
+
+  @override
+  String get schTabUpcoming => 'القادمة';
+
+  @override
+  String get schTabDone => 'المنجزة';
+
+  @override
+  String get schToday => 'اليوم';
+
+  @override
+  String get schTomorrow => 'غدًا';
+
+  @override
+  String get schAllDay => 'طوال اليوم';
+
+  @override
+  String get schEmptyTitle => 'لا شيء مخطط بعد';
+
+  @override
+  String get schEmptyUpcoming =>
+      'اضغط «حدث جديد» لإضافة زيارة بيطري أو دواء أو موعد إطعام أو أي تذكير.';
+
+  @override
+  String get schEmptyDay => 'لا شيء في هذا اليوم.';
+
+  @override
+  String get schEmptyDone => 'تظهر هنا الأحداث التي تحددها كمنجزة.';
+
+  @override
+  String get schMissed => 'لم تُنجز بعد';
+
+  @override
+  String get schAllPets => 'الكل';
+
+  @override
+  String get schAllTypes => 'كل الأنواع';
+
+  @override
+  String get schType => 'النوع';
+
+  @override
+  String get schTypeVet => 'زيارة البيطري';
+
+  @override
+  String get schTypeVaccine => 'تطعيم';
+
+  @override
+  String get schTypeMedicine => 'دواء';
+
+  @override
+  String get schTypeGrooming => 'عناية وتجميل';
+
+  @override
+  String get schTypeFeeding => 'إطعام';
+
+  @override
+  String get schTypeWalk => 'نزهة أو نشاط';
+
+  @override
+  String get schTypeNote => 'ملاحظة';
+
+  @override
+  String get schTypeOther => 'أخرى';
+
+  @override
+  String get schEventTitle => 'العنوان';
+
+  @override
+  String schTitleHint(String type) {
+    return 'اختياري. إذا تُرك فارغًا: $type';
+  }
+
+  @override
+  String get schVaccineName => 'اللقاح';
+
+  @override
+  String get schVaccineHint => 'مثل: داء الكلب، جرعة معززة';
+
+  @override
+  String get schMedicineName => 'الدواء والجرعة';
+
+  @override
+  String get schMedicineHint => 'مثل: مضاد حيوي، قرص واحد';
+
+  @override
+  String get schForPets => 'لأي حيوانات؟';
+
+  @override
+  String get schForPetsHelp => 'لا تختر أي حيوان لتذكير عام.';
+
+  @override
+  String get schDate => 'التاريخ';
+
+  @override
+  String get schRepeat => 'التكرار';
+
+  @override
+  String get schRepeatNone => 'لا يتكرر';
+
+  @override
+  String get schRepeatDaily => 'كل يوم';
+
+  @override
+  String get schRepeatWeekly => 'كل أسبوع';
+
+  @override
+  String get schRepeatMonthly => 'كل شهر';
+
+  @override
+  String get schRepeatYearly => 'كل سنة';
+
+  @override
+  String get schEvery => 'كل';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'يومًا',
+      few: 'أيام',
+      two: 'يومين',
+      one: 'يوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'أسبوعًا',
+      few: 'أسابيع',
+      two: 'أسبوعين',
+      one: 'أسبوع',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'شهرًا',
+      few: 'أشهر',
+      two: 'شهرين',
+      one: 'شهر',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'سنة',
+      few: 'سنوات',
+      two: 'سنتين',
+      one: 'سنة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => 'في هذه الأيام';
+
+  @override
+  String get schEnds => 'ينتهي';
+
+  @override
+  String get schEndsNever => 'أبدًا';
+
+  @override
+  String get schEndsOn => 'في تاريخ';
+
+  @override
+  String get schEndsAfter => 'بعد عدد من المرات';
+
+  @override
+  String get schTimes => 'عدد المرات';
+
+  @override
+  String get schInvalidEvery => 'أدخل رقمًا من 1 إلى 99.';
+
+  @override
+  String get schInvalidCount => 'أدخل رقمًا من 1 إلى 999.';
+
+  @override
+  String get schUntilBeforeStart =>
+      'لا يمكن أن يكون تاريخ الانتهاء قبل البداية.';
+
+  @override
+  String get schRemind => 'التذكيرات';
+
+  @override
+  String get schRemindHelp =>
+      'حتى تذكيرين، تُرسل كإشعارات حتى عندما يكون التطبيق مغلقًا.';
+
+  @override
+  String get schRemindMax => 'يمكنك اختيار تذكيرين كحد أقصى.';
+
+  @override
+  String get schRemindAtTime => 'في الموعد';
+
+  @override
+  String get schRemindAllDay => 'في اليوم نفسه، الساعة 9:00';
+
+  @override
+  String get schRemind15 => 'قبل 15 دقيقة';
+
+  @override
+  String get schRemind60 => 'قبل ساعة';
+
+  @override
+  String get schRemindDay => 'قبل يوم';
+
+  @override
+  String get schRemindWeek => 'قبل أسبوع';
+
+  @override
+  String get schNoReminders => 'بلا تذكيرات';
+
+  @override
+  String get schPlace => 'المكان';
+
+  @override
+  String get schPlaceHint => 'عيادة، صالون تجميل، حديقة…';
+
+  @override
+  String get schNotes => 'ملاحظات';
+
+  @override
+  String get schMarkDone => 'تحديد كمنجز';
+
+  @override
+  String get schUndoDone => 'تحديد كغير منجز';
+
+  @override
+  String get schDoneLabel => 'منجز';
+
+  @override
+  String get schSkip => 'تخطي هذه المرة';
+
+  @override
+  String get schSkipped => 'تم التخطي هذه المرة';
+
+  @override
+  String get schDeleteConfirm => 'حذف هذا الحدث؟';
+
+  @override
+  String get schDeleteMessage => 'سيُحذف مع تذكيراته.';
+
+  @override
+  String get schDeleted => 'تم الحذف';
+
+  @override
+  String get schRepeatScopeText =>
+      'هذا الحدث يتكرر. هذه المرة فقط أم كل المرات؟';
+
+  @override
+  String get schOnlyThis => 'هذه المرة فقط';
+
+  @override
+  String get schAllTimes => 'كل المرات';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'كل $count يومًا',
+      few: 'كل $count أيام',
+      two: 'كل يومين',
+      one: 'كل يوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'كل $count أسبوعًا',
+      few: 'كل $count أسابيع',
+      two: 'كل أسبوعين',
+      one: 'كل أسبوع',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'كل $count شهرًا',
+      few: 'كل $count أشهر',
+      two: 'كل شهرين',
+      one: 'كل شهر',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'كل $count سنة',
+      few: 'كل $count سنوات',
+      two: 'كل سنتين',
+      one: 'كل سنة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return 'حتى $date';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count مرة',
+      few: '$count مرات',
+      two: 'مرتين',
+      one: 'مرة واحدة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name: الشياع متوقع';
+  }
+
+  @override
+  String get schEstimate => 'تقدير';
+
+  @override
+  String get schSeeAll => 'عرض الكل';
+
+  @override
+  String schPetEmpty(String name) {
+    return 'لا توجد أحداث قادمة لـ $name.';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'لدى $name $count حدثًا مجدولًا',
+      few: 'لدى $name $count أحداث مجدولة',
+      two: 'لدى $name حدثان مجدولان',
+      one: 'لدى $name حدث واحد مجدول',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage =>
+      'حذفها أيضًا؟ الأحداث المشتركة مع حيوانات أخرى تبقى، لكن بدون هذا الحيوان.';
+
+  @override
+  String get schKeepEvents => 'الاحتفاظ بها';
+
+  @override
+  String get schDeleteEvents => 'حذفها';
+
+  @override
+  String get schWhenNow => 'الآن';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return 'بعد $count دقيقة';
+  }
+
+  @override
+  String get schWhenInHour => 'بعد ساعة';
+
+  @override
+  String schWhenOn(String date) {
+    return 'يوم $date';
+  }
+
+  @override
+  String get adminScheduleSubtitle =>
+      'الجدول الشخصي والتذكيرات: تشغيل أو إيقاف';
+
+  @override
+  String get schAdminIntro =>
+      'لكل مستخدم جدول خاص لزيارات البيطري والتطعيمات والأدوية والعناية والإطعام والأنشطة الأخرى، مع تذكيرات فورية. لا يراه إلا المستخدم نفسه، ولا حتى المشرفون.';
+
+  @override
+  String get schOnHelp =>
+      'تشغيل: يرى المستخدمون «جدولي» في تبويب «حيواناتي» وصفحات حيواناتهم والملف الشخصي.';
+
+  @override
+  String get schOffHelp => 'إيقاف: لا يراه إلا المشرفون.';
 }

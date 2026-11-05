@@ -6,6 +6,8 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../core/widgets/empty_state.dart';
 import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../schedule/presentation/providers/schedule_provider.dart';
+import '../../../schedule/presentation/widgets/schedule_cards.dart';
 import '../../../sitting/presentation/providers/sitting_provider.dart';
 import '../../../sitting/presentation/screens/sitting_screen.dart';
 import '../../../sitting/presentation/widgets/sitting_widgets.dart';
@@ -59,6 +61,15 @@ class PetsScreen extends ConsumerWidget {
               ),
             ),
           ),
+          if (ref.watch(scheduleAvailableProvider))
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 8),
+              sliver: SliverToBoxAdapter(
+                child: const SchedulePromoCard().animate().fadeIn(
+                  duration: 400.ms,
+                ),
+              ),
+            ),
           if (ref.watch(scannerEnabledProvider))
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(20, 4, 20, 8),

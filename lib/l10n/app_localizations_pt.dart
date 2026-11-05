@@ -5795,4 +5795,423 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get sitAdminOverview => 'Resumo';
+
+  @override
+  String get schTitle => 'Minha agenda';
+
+  @override
+  String schTitleOf(String name) {
+    return 'Agenda de $name';
+  }
+
+  @override
+  String get schSubtitle => 'Veterinário, remédios, banho e tosa e lembretes';
+
+  @override
+  String get schPromo => 'Planeje veterinário, remédios e mais, com lembretes';
+
+  @override
+  String schNext(String what, String when) {
+    return 'Próximo: $what · $when';
+  }
+
+  @override
+  String get schAddEvent => 'Novo evento';
+
+  @override
+  String get schEditEvent => 'Editar evento';
+
+  @override
+  String get schEdit => 'Editar';
+
+  @override
+  String get schTabCalendar => 'Calendário';
+
+  @override
+  String get schTabUpcoming => 'Próximos';
+
+  @override
+  String get schTabDone => 'Feitos';
+
+  @override
+  String get schToday => 'Hoje';
+
+  @override
+  String get schTomorrow => 'Amanhã';
+
+  @override
+  String get schAllDay => 'Dia inteiro';
+
+  @override
+  String get schEmptyTitle => 'Nada planejado ainda';
+
+  @override
+  String get schEmptyUpcoming =>
+      'Toque em “Novo evento” para adicionar uma consulta, um remédio, uma refeição ou qualquer lembrete.';
+
+  @override
+  String get schEmptyDay => 'Nada neste dia.';
+
+  @override
+  String get schEmptyDone => 'Os eventos marcados como feitos aparecem aqui.';
+
+  @override
+  String get schMissed => 'Ainda não feitos';
+
+  @override
+  String get schAllPets => 'Todos';
+
+  @override
+  String get schAllTypes => 'Todos os tipos';
+
+  @override
+  String get schType => 'Tipo';
+
+  @override
+  String get schTypeVet => 'Consulta veterinária';
+
+  @override
+  String get schTypeVaccine => 'Vacinação';
+
+  @override
+  String get schTypeMedicine => 'Remédio';
+
+  @override
+  String get schTypeGrooming => 'Banho e tosa';
+
+  @override
+  String get schTypeFeeding => 'Alimentação';
+
+  @override
+  String get schTypeWalk => 'Passeio ou atividade';
+
+  @override
+  String get schTypeNote => 'Nota';
+
+  @override
+  String get schTypeOther => 'Outro';
+
+  @override
+  String get schEventTitle => 'Título';
+
+  @override
+  String schTitleHint(String type) {
+    return 'Opcional. Se vazio: $type';
+  }
+
+  @override
+  String get schVaccineName => 'Vacina';
+
+  @override
+  String get schVaccineHint => 'ex. Raiva, reforço';
+
+  @override
+  String get schMedicineName => 'Remédio e dose';
+
+  @override
+  String get schMedicineHint => 'ex. Antibiótico, 1 comprimido';
+
+  @override
+  String get schForPets => 'Para quais pets?';
+
+  @override
+  String get schForPetsHelp => 'Nenhum para um lembrete geral.';
+
+  @override
+  String get schDate => 'Data';
+
+  @override
+  String get schRepeat => 'Repetir';
+
+  @override
+  String get schRepeatNone => 'Não se repete';
+
+  @override
+  String get schRepeatDaily => 'Todo dia';
+
+  @override
+  String get schRepeatWeekly => 'Toda semana';
+
+  @override
+  String get schRepeatMonthly => 'Todo mês';
+
+  @override
+  String get schRepeatYearly => 'Todo ano';
+
+  @override
+  String get schEvery => 'A cada';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'dias',
+      one: 'dia',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'semanas',
+      one: 'semana',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'meses',
+      one: 'mês',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'anos',
+      one: 'ano',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => 'Nestes dias';
+
+  @override
+  String get schEnds => 'Termina';
+
+  @override
+  String get schEndsNever => 'Nunca';
+
+  @override
+  String get schEndsOn => 'Em uma data';
+
+  @override
+  String get schEndsAfter => 'Depois de um número de vezes';
+
+  @override
+  String get schTimes => 'Número de vezes';
+
+  @override
+  String get schInvalidEvery => 'Digite um número de 1 a 99.';
+
+  @override
+  String get schInvalidCount => 'Digite um número de 1 a 999.';
+
+  @override
+  String get schUntilBeforeStart =>
+      'A data final não pode ser antes do início.';
+
+  @override
+  String get schRemind => 'Lembretes';
+
+  @override
+  String get schRemindHelp =>
+      'Até 2 lembretes, enviados como notificação mesmo com o app fechado.';
+
+  @override
+  String get schRemindMax => 'Você pode escolher até 2 lembretes.';
+
+  @override
+  String get schRemindAtTime => 'Na hora';
+
+  @override
+  String get schRemindAllDay => 'No dia, às 9:00';
+
+  @override
+  String get schRemind15 => '15 minutos antes';
+
+  @override
+  String get schRemind60 => '1 hora antes';
+
+  @override
+  String get schRemindDay => '1 dia antes';
+
+  @override
+  String get schRemindWeek => '1 semana antes';
+
+  @override
+  String get schNoReminders => 'Sem lembretes';
+
+  @override
+  String get schPlace => 'Local';
+
+  @override
+  String get schPlaceHint => 'Clínica, pet shop, parque…';
+
+  @override
+  String get schNotes => 'Notas';
+
+  @override
+  String get schMarkDone => 'Marcar como feito';
+
+  @override
+  String get schUndoDone => 'Marcar como não feito';
+
+  @override
+  String get schDoneLabel => 'Feito';
+
+  @override
+  String get schSkip => 'Pular desta vez';
+
+  @override
+  String get schSkipped => 'Pulado desta vez';
+
+  @override
+  String get schDeleteConfirm => 'Excluir este evento?';
+
+  @override
+  String get schDeleteMessage => 'Ele será removido com seus lembretes.';
+
+  @override
+  String get schDeleted => 'Excluído';
+
+  @override
+  String get schRepeatScopeText =>
+      'Este evento se repete. Só desta vez ou todas as vezes?';
+
+  @override
+  String get schOnlyThis => 'Só desta vez';
+
+  @override
+  String get schAllTimes => 'Todas as vezes';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'A cada $count dias',
+      one: 'Todo dia',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'A cada $count semanas',
+      one: 'Toda semana',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'A cada $count meses',
+      one: 'Todo mês',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'A cada $count anos',
+      one: 'Todo ano',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return 'até $date';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count vezes',
+      one: 'uma vez',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name: cio previsto';
+  }
+
+  @override
+  String get schEstimate => 'estimativa';
+
+  @override
+  String get schSeeAll => 'Ver tudo';
+
+  @override
+  String schPetEmpty(String name) {
+    return 'Nenhum evento próximo para $name.';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$name tem $count eventos na agenda',
+      one: '$name tem 1 evento na agenda',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage =>
+      'Excluir também? Eventos compartilhados com outros pets são mantidos, sem este pet.';
+
+  @override
+  String get schKeepEvents => 'Manter';
+
+  @override
+  String get schDeleteEvents => 'Excluir';
+
+  @override
+  String get schWhenNow => 'Agora';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return 'Em $count minutos';
+  }
+
+  @override
+  String get schWhenInHour => 'Em 1 hora';
+
+  @override
+  String schWhenOn(String date) {
+    return 'Em $date';
+  }
+
+  @override
+  String get adminScheduleSubtitle =>
+      'Agenda pessoal e lembretes: ligar ou desligar';
+
+  @override
+  String get schAdminIntro =>
+      'Cada usuário tem uma agenda privada para veterinário, vacinas, remédios, banho e tosa, alimentação e outras atividades, com lembretes push. Só o usuário vê, nem mesmo os admins.';
+
+  @override
+  String get schOnHelp =>
+      'Ligada: os usuários veem Minha agenda na aba Animais, nas páginas dos seus pets e no Perfil.';
+
+  @override
+  String get schOffHelp => 'Desligada: só os admins veem.';
 }

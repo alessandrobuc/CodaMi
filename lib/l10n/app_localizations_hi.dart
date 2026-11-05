@@ -5734,4 +5734,424 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get sitAdminOverview => 'सारांश';
+
+  @override
+  String get schTitle => 'मेरा शेड्यूल';
+
+  @override
+  String schTitleOf(String name) {
+    return '$name का शेड्यूल';
+  }
+
+  @override
+  String get schSubtitle => 'पशु चिकित्सक, दवाइयाँ, ग्रूमिंग और रिमाइंडर';
+
+  @override
+  String get schPromo =>
+      'पशु चिकित्सक, दवाइयाँ और बहुत कुछ प्लान करें, रिमाइंडर के साथ';
+
+  @override
+  String schNext(String what, String when) {
+    return 'अगला: $what · $when';
+  }
+
+  @override
+  String get schAddEvent => 'नया इवेंट';
+
+  @override
+  String get schEditEvent => 'इवेंट बदलें';
+
+  @override
+  String get schEdit => 'बदलें';
+
+  @override
+  String get schTabCalendar => 'कैलेंडर';
+
+  @override
+  String get schTabUpcoming => 'आने वाले';
+
+  @override
+  String get schTabDone => 'पूरे';
+
+  @override
+  String get schToday => 'आज';
+
+  @override
+  String get schTomorrow => 'कल';
+
+  @override
+  String get schAllDay => 'पूरा दिन';
+
+  @override
+  String get schEmptyTitle => 'अभी कुछ प्लान नहीं है';
+
+  @override
+  String get schEmptyUpcoming =>
+      'पशु चिकित्सक की विज़िट, दवा, खाने का समय या कोई भी रिमाइंडर जोड़ने के लिए “नया इवेंट” दबाएँ।';
+
+  @override
+  String get schEmptyDay => 'इस दिन कुछ नहीं है।';
+
+  @override
+  String get schEmptyDone =>
+      'जिन इवेंट को आप पूरा मार्क करेंगे, वे यहाँ दिखेंगे।';
+
+  @override
+  String get schMissed => 'अभी पूरे नहीं हुए';
+
+  @override
+  String get schAllPets => 'सभी';
+
+  @override
+  String get schAllTypes => 'सभी प्रकार';
+
+  @override
+  String get schType => 'प्रकार';
+
+  @override
+  String get schTypeVet => 'पशु चिकित्सक विज़िट';
+
+  @override
+  String get schTypeVaccine => 'टीकाकरण';
+
+  @override
+  String get schTypeMedicine => 'दवा';
+
+  @override
+  String get schTypeGrooming => 'ग्रूमिंग';
+
+  @override
+  String get schTypeFeeding => 'खाना';
+
+  @override
+  String get schTypeWalk => 'सैर या गतिविधि';
+
+  @override
+  String get schTypeNote => 'नोट';
+
+  @override
+  String get schTypeOther => 'अन्य';
+
+  @override
+  String get schEventTitle => 'शीर्षक';
+
+  @override
+  String schTitleHint(String type) {
+    return 'वैकल्पिक। खाली हो तो: $type';
+  }
+
+  @override
+  String get schVaccineName => 'टीका';
+
+  @override
+  String get schVaccineHint => 'जैसे रेबीज़, बूस्टर';
+
+  @override
+  String get schMedicineName => 'दवा और खुराक';
+
+  @override
+  String get schMedicineHint => 'जैसे एंटीबायोटिक, 1 गोली';
+
+  @override
+  String get schForPets => 'किन पालतू जानवरों के लिए?';
+
+  @override
+  String get schForPetsHelp => 'सामान्य रिमाइंडर के लिए कोई न चुनें।';
+
+  @override
+  String get schDate => 'तारीख';
+
+  @override
+  String get schRepeat => 'दोहराएँ';
+
+  @override
+  String get schRepeatNone => 'नहीं दोहराता';
+
+  @override
+  String get schRepeatDaily => 'हर दिन';
+
+  @override
+  String get schRepeatWeekly => 'हर हफ़्ते';
+
+  @override
+  String get schRepeatMonthly => 'हर महीने';
+
+  @override
+  String get schRepeatYearly => 'हर साल';
+
+  @override
+  String get schEvery => 'हर';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'दिन',
+      one: 'दिन',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हफ़्ते',
+      one: 'हफ़्ते',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'महीने',
+      one: 'महीने',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'साल',
+      one: 'साल',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => 'इन दिनों में';
+
+  @override
+  String get schEnds => 'खत्म होता है';
+
+  @override
+  String get schEndsNever => 'कभी नहीं';
+
+  @override
+  String get schEndsOn => 'किसी तारीख को';
+
+  @override
+  String get schEndsAfter => 'कुछ बार के बाद';
+
+  @override
+  String get schTimes => 'कितनी बार';
+
+  @override
+  String get schInvalidEvery => '1 से 99 तक की संख्या डालें।';
+
+  @override
+  String get schInvalidCount => '1 से 999 तक की संख्या डालें।';
+
+  @override
+  String get schUntilBeforeStart =>
+      'खत्म होने की तारीख शुरू से पहले नहीं हो सकती।';
+
+  @override
+  String get schRemind => 'रिमाइंडर';
+
+  @override
+  String get schRemindHelp =>
+      'ज़्यादा से ज़्यादा 2 रिमाइंडर, ऐप बंद होने पर भी नोटिफ़िकेशन के रूप में।';
+
+  @override
+  String get schRemindMax => 'आप ज़्यादा से ज़्यादा 2 रिमाइंडर चुन सकते हैं।';
+
+  @override
+  String get schRemindAtTime => 'समय पर';
+
+  @override
+  String get schRemindAllDay => 'उसी दिन 9:00 बजे';
+
+  @override
+  String get schRemind15 => '15 मिनट पहले';
+
+  @override
+  String get schRemind60 => '1 घंटा पहले';
+
+  @override
+  String get schRemindDay => '1 दिन पहले';
+
+  @override
+  String get schRemindWeek => '1 हफ़्ता पहले';
+
+  @override
+  String get schNoReminders => 'कोई रिमाइंडर नहीं';
+
+  @override
+  String get schPlace => 'जगह';
+
+  @override
+  String get schPlaceHint => 'क्लिनिक, ग्रूमर, पार्क…';
+
+  @override
+  String get schNotes => 'नोट्स';
+
+  @override
+  String get schMarkDone => 'पूरा मार्क करें';
+
+  @override
+  String get schUndoDone => 'अधूरा मार्क करें';
+
+  @override
+  String get schDoneLabel => 'पूरा';
+
+  @override
+  String get schSkip => 'इस बार छोड़ें';
+
+  @override
+  String get schSkipped => 'इस बार छोड़ा गया';
+
+  @override
+  String get schDeleteConfirm => 'यह इवेंट हटाएँ?';
+
+  @override
+  String get schDeleteMessage => 'यह अपने रिमाइंडर के साथ हट जाएगा।';
+
+  @override
+  String get schDeleted => 'हटा दिया गया';
+
+  @override
+  String get schRepeatScopeText =>
+      'यह इवेंट दोहराता है। सिर्फ़ इस बार या हर बार?';
+
+  @override
+  String get schOnlyThis => 'सिर्फ़ इस बार';
+
+  @override
+  String get schAllTimes => 'हर बार';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हर $count दिन',
+      one: 'हर दिन',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हर $count हफ़्ते',
+      one: 'हर हफ़्ते',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हर $count महीने',
+      one: 'हर महीने',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'हर $count साल',
+      one: 'हर साल',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return '$date तक';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बार',
+      one: 'एक बार',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name: हीट की उम्मीद';
+  }
+
+  @override
+  String get schEstimate => 'अनुमान';
+
+  @override
+  String get schSeeAll => 'सब देखें';
+
+  @override
+  String schPetEmpty(String name) {
+    return '$name के लिए कोई आने वाला इवेंट नहीं।';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$name के $count इवेंट शेड्यूल में हैं',
+      one: '$name का 1 इवेंट शेड्यूल में है',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage =>
+      'क्या इन्हें भी हटाएँ? दूसरे पालतू जानवरों के साथ साझा इवेंट रहेंगे, बस इस जानवर के बिना।';
+
+  @override
+  String get schKeepEvents => 'रखें';
+
+  @override
+  String get schDeleteEvents => 'हटाएँ';
+
+  @override
+  String get schWhenNow => 'अभी';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return '$count मिनट में';
+  }
+
+  @override
+  String get schWhenInHour => '1 घंटे में';
+
+  @override
+  String schWhenOn(String date) {
+    return '$date को';
+  }
+
+  @override
+  String get adminScheduleSubtitle => 'निजी शेड्यूल और रिमाइंडर: चालू या बंद';
+
+  @override
+  String get schAdminIntro =>
+      'हर यूज़र को पशु चिकित्सक, टीके, दवाइयाँ, ग्रूमिंग, खाना और दूसरी गतिविधियों के लिए एक निजी शेड्यूल मिलता है, पुश रिमाइंडर के साथ। इसे सिर्फ़ यूज़र देख सकता है, एडमिन भी नहीं।';
+
+  @override
+  String get schOnHelp =>
+      'चालू: यूज़र पालतू टैब, अपने पालतू जानवरों के पेज और प्रोफ़ाइल में मेरा शेड्यूल देखते हैं।';
+
+  @override
+  String get schOffHelp => 'बंद: सिर्फ़ एडमिन देख सकते हैं।';
 }

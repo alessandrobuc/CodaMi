@@ -28,6 +28,9 @@ import '../../../petitions/presentation/screens/petitions_screen.dart';
 import '../../../donations/data/donations_repository.dart';
 import '../../../donations/presentation/support_screen.dart';
 import '../../../scanner/presentation/providers/scanner_provider.dart';
+import '../../../schedule/presentation/providers/schedule_provider.dart';
+import '../../../schedule/presentation/screens/schedule_screen.dart';
+import '../../../schedule/presentation/widgets/schedule_widgets.dart';
 import '../../../sitting/presentation/providers/sitting_provider.dart';
 import '../../../sitting/presentation/screens/sitting_screen.dart';
 import '../../../sitting/presentation/widgets/sitting_widgets.dart';
@@ -329,6 +332,16 @@ class ProfileScreen extends ConsumerWidget {
                     subtitle: l10n.walksSubtitle,
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => const WalksScreen()),
+                    ),
+                  ),
+                if (ref.watch(scheduleAvailableProvider))
+                  _ProfileTile(
+                    icon: Icons.event_note_rounded,
+                    color: scheduleColor,
+                    title: l10n.schTitle,
+                    subtitle: l10n.schSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const ScheduleScreen()),
                     ),
                   ),
                 if (ref.watch(sittingAvailableProvider))

@@ -10,6 +10,8 @@ import '../../domain/repositories/pets_repository.dart';
 import '../../../reports/presentation/screens/create_report_screen.dart';
 import '../../../heat/presentation/providers/heat_provider.dart';
 import '../../../heat/presentation/screens/heat_calendar_screen.dart';
+import '../../../schedule/presentation/providers/schedule_provider.dart';
+import '../../../schedule/presentation/widgets/schedule_cards.dart';
 import '../providers/pets_provider.dart';
 import '../widgets/pets_widget.dart';
 import 'pet_form_screen.dart';
@@ -81,9 +83,39 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
       ),
     );
     if (confirmed != true || !mounted) return;
+    final events = (ref.read(scheduleEventsProvider).value ?? const [])
+        .where((e) => e.petIds.contains(pet.id))
+        .length;
+    bool? deleteEvents;
+    if (events > 0) {
+      deleteEvents = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(context.l10n.schPetEventsTitle(pet.name, events)),
+          content: Text(context.l10n.schPetEventsMessage),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(context.l10n.schKeepEvents),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
+              child: Text(context.l10n.schDeleteEvents),
+            ),
+          ],
+        ),
+      );
+      if (deleteEvents == null || !mounted) return;
+    }
 
     setState(() => _deleting = true);
     try {
+      if (deleteEvents != null) {
+        await ref
+            .read(scheduleRepositoryProvider)
+            .removePet(pet.ownerId, pet.id, delete: deleteEvents);
+      }
       await ref.read(petsRepositoryProvider).deletePet(pet);
       if (!mounted) return;
       Navigator.of(context).pop();
@@ -277,6 +309,12 @@ class _PetDetailScreenState extends ConsumerState<PetDetailScreen> {
                       _FeaturesCard(
                         text: pet.features!,
                       ).animate().fadeIn(delay: 250.ms, duration: 350.ms),
+                    ],
+                    if (ref.watch(scheduleAvailableProvider)) ...[
+                      const SizedBox(height: 16),
+                      PetScheduleCard(
+                        pet: pet,
+                      ).animate().fadeIn(delay: 270.ms, duration: 350.ms),
                     ],
                     if (pet.sex != PetSex.male &&
                         ref.watch(heatAvailableProvider)) ...[

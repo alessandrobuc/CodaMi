@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../schedule/presentation/screens/admin_schedule_screen.dart';
+import '../../../schedule/presentation/widgets/schedule_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_constants.dart';
@@ -240,6 +242,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminSittingScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.event_note_rounded,
+                    color: scheduleColor,
+                    title: l10n.schTitle,
+                    subtitle: l10n.adminScheduleSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminScheduleScreen(),
                       ),
                     ),
                   ),

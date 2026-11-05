@@ -10043,6 +10043,636 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Overview'**
   String get sitAdminOverview;
+
+  /// No description provided for @schTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My schedule'**
+  String get schTitle;
+
+  /// No description provided for @schTitleOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\'s schedule'**
+  String schTitleOf(String name);
+
+  /// No description provided for @schSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vet visits, medicines, grooming and reminders'**
+  String get schSubtitle;
+
+  /// No description provided for @schPromo.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan vet visits, medicines and more, with reminders'**
+  String get schPromo;
+
+  /// No description provided for @schNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next: {what} · {when}'**
+  String schNext(String what, String when);
+
+  /// No description provided for @schAddEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'New event'**
+  String get schAddEvent;
+
+  /// No description provided for @schEditEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit event'**
+  String get schEditEvent;
+
+  /// No description provided for @schEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get schEdit;
+
+  /// No description provided for @schTabCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get schTabCalendar;
+
+  /// No description provided for @schTabUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get schTabUpcoming;
+
+  /// No description provided for @schTabDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get schTabDone;
+
+  /// No description provided for @schToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get schToday;
+
+  /// No description provided for @schTomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow'**
+  String get schTomorrow;
+
+  /// No description provided for @schAllDay.
+  ///
+  /// In en, this message translates to:
+  /// **'All day'**
+  String get schAllDay;
+
+  /// No description provided for @schEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing planned yet'**
+  String get schEmptyTitle;
+
+  /// No description provided for @schEmptyUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap “New event” to add a vet visit, a medicine, a feeding time or any reminder.'**
+  String get schEmptyUpcoming;
+
+  /// No description provided for @schEmptyDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing on this day.'**
+  String get schEmptyDay;
+
+  /// No description provided for @schEmptyDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Events you mark as done show up here.'**
+  String get schEmptyDone;
+
+  /// No description provided for @schMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not done yet'**
+  String get schMissed;
+
+  /// No description provided for @schAllPets.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get schAllPets;
+
+  /// No description provided for @schAllTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'All types'**
+  String get schAllTypes;
+
+  /// No description provided for @schType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get schType;
+
+  /// No description provided for @schTypeVet.
+  ///
+  /// In en, this message translates to:
+  /// **'Vet visit'**
+  String get schTypeVet;
+
+  /// No description provided for @schTypeVaccine.
+  ///
+  /// In en, this message translates to:
+  /// **'Vaccination'**
+  String get schTypeVaccine;
+
+  /// No description provided for @schTypeMedicine.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication'**
+  String get schTypeMedicine;
+
+  /// No description provided for @schTypeGrooming.
+  ///
+  /// In en, this message translates to:
+  /// **'Grooming'**
+  String get schTypeGrooming;
+
+  /// No description provided for @schTypeFeeding.
+  ///
+  /// In en, this message translates to:
+  /// **'Feeding'**
+  String get schTypeFeeding;
+
+  /// No description provided for @schTypeWalk.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk or activity'**
+  String get schTypeWalk;
+
+  /// No description provided for @schTypeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get schTypeNote;
+
+  /// No description provided for @schTypeOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get schTypeOther;
+
+  /// No description provided for @schEventTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get schEventTitle;
+
+  /// No description provided for @schTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. If empty: {type}'**
+  String schTitleHint(String type);
+
+  /// No description provided for @schVaccineName.
+  ///
+  /// In en, this message translates to:
+  /// **'Vaccine'**
+  String get schVaccineName;
+
+  /// No description provided for @schVaccineHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Rabies, booster'**
+  String get schVaccineHint;
+
+  /// No description provided for @schMedicineName.
+  ///
+  /// In en, this message translates to:
+  /// **'Medicine and dose'**
+  String get schMedicineName;
+
+  /// No description provided for @schMedicineHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Antibiotic, 1 tablet'**
+  String get schMedicineHint;
+
+  /// No description provided for @schForPets.
+  ///
+  /// In en, this message translates to:
+  /// **'For which pets?'**
+  String get schForPets;
+
+  /// No description provided for @schForPetsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose none for a general reminder.'**
+  String get schForPetsHelp;
+
+  /// No description provided for @schDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get schDate;
+
+  /// No description provided for @schRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat'**
+  String get schRepeat;
+
+  /// No description provided for @schRepeatNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Doesn\'t repeat'**
+  String get schRepeatNone;
+
+  /// No description provided for @schRepeatDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Every day'**
+  String get schRepeatDaily;
+
+  /// No description provided for @schRepeatWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every week'**
+  String get schRepeatWeekly;
+
+  /// No description provided for @schRepeatMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every month'**
+  String get schRepeatMonthly;
+
+  /// No description provided for @schRepeatYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every year'**
+  String get schRepeatYearly;
+
+  /// No description provided for @schEvery.
+  ///
+  /// In en, this message translates to:
+  /// **'Every'**
+  String get schEvery;
+
+  /// No description provided for @schUnitDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{day} other{days}}'**
+  String schUnitDays(int count);
+
+  /// No description provided for @schUnitWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{week} other{weeks}}'**
+  String schUnitWeeks(int count);
+
+  /// No description provided for @schUnitMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{month} other{months}}'**
+  String schUnitMonths(int count);
+
+  /// No description provided for @schUnitYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{year} other{years}}'**
+  String schUnitYears(int count);
+
+  /// No description provided for @schOnDays.
+  ///
+  /// In en, this message translates to:
+  /// **'On these days'**
+  String get schOnDays;
+
+  /// No description provided for @schEnds.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends'**
+  String get schEnds;
+
+  /// No description provided for @schEndsNever.
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get schEndsNever;
+
+  /// No description provided for @schEndsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On a date'**
+  String get schEndsOn;
+
+  /// No description provided for @schEndsAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'After a number of times'**
+  String get schEndsAfter;
+
+  /// No description provided for @schTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of times'**
+  String get schTimes;
+
+  /// No description provided for @schInvalidEvery.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 1 to 99.'**
+  String get schInvalidEvery;
+
+  /// No description provided for @schInvalidCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 1 to 999.'**
+  String get schInvalidCount;
+
+  /// No description provided for @schUntilBeforeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'The end date can\'t be before the start date.'**
+  String get schUntilBeforeStart;
+
+  /// No description provided for @schRemind.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get schRemind;
+
+  /// No description provided for @schRemindHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 2 reminders, sent as notifications even when the app is closed.'**
+  String get schRemindHelp;
+
+  /// No description provided for @schRemindMax.
+  ///
+  /// In en, this message translates to:
+  /// **'You can choose up to 2 reminders.'**
+  String get schRemindMax;
+
+  /// No description provided for @schRemindAtTime.
+  ///
+  /// In en, this message translates to:
+  /// **'At the time'**
+  String get schRemindAtTime;
+
+  /// No description provided for @schRemindAllDay.
+  ///
+  /// In en, this message translates to:
+  /// **'On the day, at 9:00'**
+  String get schRemindAllDay;
+
+  /// No description provided for @schRemind15.
+  ///
+  /// In en, this message translates to:
+  /// **'15 minutes before'**
+  String get schRemind15;
+
+  /// No description provided for @schRemind60.
+  ///
+  /// In en, this message translates to:
+  /// **'1 hour before'**
+  String get schRemind60;
+
+  /// No description provided for @schRemindDay.
+  ///
+  /// In en, this message translates to:
+  /// **'1 day before'**
+  String get schRemindDay;
+
+  /// No description provided for @schRemindWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'1 week before'**
+  String get schRemindWeek;
+
+  /// No description provided for @schNoReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'No reminders'**
+  String get schNoReminders;
+
+  /// No description provided for @schPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'Place'**
+  String get schPlace;
+
+  /// No description provided for @schPlaceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinic, groomer, park…'**
+  String get schPlaceHint;
+
+  /// No description provided for @schNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get schNotes;
+
+  /// No description provided for @schMarkDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as done'**
+  String get schMarkDone;
+
+  /// No description provided for @schUndoDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as not done'**
+  String get schUndoDone;
+
+  /// No description provided for @schDoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get schDoneLabel;
+
+  /// No description provided for @schSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip this time'**
+  String get schSkip;
+
+  /// No description provided for @schSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped this time'**
+  String get schSkipped;
+
+  /// No description provided for @schDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this event?'**
+  String get schDeleteConfirm;
+
+  /// No description provided for @schDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed with its reminders.'**
+  String get schDeleteMessage;
+
+  /// No description provided for @schDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get schDeleted;
+
+  /// No description provided for @schRepeatScopeText.
+  ///
+  /// In en, this message translates to:
+  /// **'This event repeats. Apply to this time only, or to all times?'**
+  String get schRepeatScopeText;
+
+  /// No description provided for @schOnlyThis.
+  ///
+  /// In en, this message translates to:
+  /// **'Only this time'**
+  String get schOnlyThis;
+
+  /// No description provided for @schAllTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'All times'**
+  String get schAllTimes;
+
+  /// No description provided for @schEveryDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Every day} other{Every {count} days}}'**
+  String schEveryDays(int count);
+
+  /// No description provided for @schEveryWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Every week} other{Every {count} weeks}}'**
+  String schEveryWeeks(int count);
+
+  /// No description provided for @schEveryMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Every month} other{Every {count} months}}'**
+  String schEveryMonths(int count);
+
+  /// No description provided for @schEveryYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Every year} other{Every {count} years}}'**
+  String schEveryYears(int count);
+
+  /// No description provided for @schUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'until {date}'**
+  String schUntil(String date);
+
+  /// No description provided for @schTimesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{once} other{{count} times}}'**
+  String schTimesCount(int count);
+
+  /// No description provided for @schHeatExpected.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: heat expected'**
+  String schHeatExpected(String name);
+
+  /// No description provided for @schEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'estimate'**
+  String get schEstimate;
+
+  /// No description provided for @schSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get schSeeAll;
+
+  /// No description provided for @schPetEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No upcoming events for {name}.'**
+  String schPetEmpty(String name);
+
+  /// No description provided for @schPetEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{{name} has 1 scheduled event} other{{name} has {count} scheduled events}}'**
+  String schPetEventsTitle(String name, int count);
+
+  /// No description provided for @schPetEventsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete them too? Events shared with other pets are kept, just without this pet.'**
+  String get schPetEventsMessage;
+
+  /// No description provided for @schKeepEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep them'**
+  String get schKeepEvents;
+
+  /// No description provided for @schDeleteEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete them'**
+  String get schDeleteEvents;
+
+  /// No description provided for @schWhenNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get schWhenNow;
+
+  /// No description provided for @schWhenInMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'In {count} minutes'**
+  String schWhenInMinutes(int count);
+
+  /// No description provided for @schWhenInHour.
+  ///
+  /// In en, this message translates to:
+  /// **'In 1 hour'**
+  String get schWhenInHour;
+
+  /// No description provided for @schWhenOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On {date}'**
+  String schWhenOn(String date);
+
+  /// No description provided for @adminScheduleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal schedule and reminders: on or off'**
+  String get adminScheduleSubtitle;
+
+  /// No description provided for @schAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Every user gets a private schedule for vet visits, vaccinations, medicines, grooming, feeding and other activities, with push reminders. Only the user can see it, not even admins.'**
+  String get schAdminIntro;
+
+  /// No description provided for @schOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users see My schedule in the Pets tab, on their pets\' pages and in Profile.'**
+  String get schOnHelp;
+
+  /// No description provided for @schOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins can see it.'**
+  String get schOffHelp;
 }
 
 class _AppLocalizationsDelegate

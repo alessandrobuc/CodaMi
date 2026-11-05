@@ -5454,4 +5454,411 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get sitAdminOverview => '概览';
+
+  @override
+  String get schTitle => '我的日程';
+
+  @override
+  String schTitleOf(String name) {
+    return '$name 的日程';
+  }
+
+  @override
+  String get schSubtitle => '看兽医、用药、美容和提醒';
+
+  @override
+  String get schPromo => '安排看兽医、用药等事项，并设置提醒';
+
+  @override
+  String schNext(String what, String when) {
+    return '下一项：$what · $when';
+  }
+
+  @override
+  String get schAddEvent => '新建事项';
+
+  @override
+  String get schEditEvent => '编辑事项';
+
+  @override
+  String get schEdit => '编辑';
+
+  @override
+  String get schTabCalendar => '日历';
+
+  @override
+  String get schTabUpcoming => '即将到来';
+
+  @override
+  String get schTabDone => '已完成';
+
+  @override
+  String get schToday => '今天';
+
+  @override
+  String get schTomorrow => '明天';
+
+  @override
+  String get schAllDay => '全天';
+
+  @override
+  String get schEmptyTitle => '还没有安排';
+
+  @override
+  String get schEmptyUpcoming => '点击“新建事项”，添加看兽医、用药、喂食时间或任何提醒。';
+
+  @override
+  String get schEmptyDay => '这一天没有安排。';
+
+  @override
+  String get schEmptyDone => '标记为已完成的事项会显示在这里。';
+
+  @override
+  String get schMissed => '尚未完成';
+
+  @override
+  String get schAllPets => '全部';
+
+  @override
+  String get schAllTypes => '所有类型';
+
+  @override
+  String get schType => '类型';
+
+  @override
+  String get schTypeVet => '看兽医';
+
+  @override
+  String get schTypeVaccine => '疫苗接种';
+
+  @override
+  String get schTypeMedicine => '用药';
+
+  @override
+  String get schTypeGrooming => '美容';
+
+  @override
+  String get schTypeFeeding => '喂食';
+
+  @override
+  String get schTypeWalk => '散步或活动';
+
+  @override
+  String get schTypeNote => '备注';
+
+  @override
+  String get schTypeOther => '其他';
+
+  @override
+  String get schEventTitle => '标题';
+
+  @override
+  String schTitleHint(String type) {
+    return '可选。留空则为：$type';
+  }
+
+  @override
+  String get schVaccineName => '疫苗';
+
+  @override
+  String get schVaccineHint => '例如：狂犬病、加强针';
+
+  @override
+  String get schMedicineName => '药物和剂量';
+
+  @override
+  String get schMedicineHint => '例如：抗生素，1 片';
+
+  @override
+  String get schForPets => '给哪些宠物？';
+
+  @override
+  String get schForPetsHelp => '不选则为一般提醒。';
+
+  @override
+  String get schDate => '日期';
+
+  @override
+  String get schRepeat => '重复';
+
+  @override
+  String get schRepeatNone => '不重复';
+
+  @override
+  String get schRepeatDaily => '每天';
+
+  @override
+  String get schRepeatWeekly => '每周';
+
+  @override
+  String get schRepeatMonthly => '每月';
+
+  @override
+  String get schRepeatYearly => '每年';
+
+  @override
+  String get schEvery => '每';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '天',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '周',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '个月',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '年',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => '在这些日子';
+
+  @override
+  String get schEnds => '结束';
+
+  @override
+  String get schEndsNever => '从不';
+
+  @override
+  String get schEndsOn => '在某个日期';
+
+  @override
+  String get schEndsAfter => '重复一定次数后';
+
+  @override
+  String get schTimes => '次数';
+
+  @override
+  String get schInvalidEvery => '请输入 1 到 99 之间的数字。';
+
+  @override
+  String get schInvalidCount => '请输入 1 到 999 之间的数字。';
+
+  @override
+  String get schUntilBeforeStart => '结束日期不能早于开始日期。';
+
+  @override
+  String get schRemind => '提醒';
+
+  @override
+  String get schRemindHelp => '最多 2 个提醒，即使应用关闭也会以通知发送。';
+
+  @override
+  String get schRemindMax => '最多可以选择 2 个提醒。';
+
+  @override
+  String get schRemindAtTime => '准时';
+
+  @override
+  String get schRemindAllDay => '当天 9:00';
+
+  @override
+  String get schRemind15 => '提前 15 分钟';
+
+  @override
+  String get schRemind60 => '提前 1 小时';
+
+  @override
+  String get schRemindDay => '提前 1 天';
+
+  @override
+  String get schRemindWeek => '提前 1 周';
+
+  @override
+  String get schNoReminders => '无提醒';
+
+  @override
+  String get schPlace => '地点';
+
+  @override
+  String get schPlaceHint => '诊所、美容店、公园…';
+
+  @override
+  String get schNotes => '备注';
+
+  @override
+  String get schMarkDone => '标记为已完成';
+
+  @override
+  String get schUndoDone => '标记为未完成';
+
+  @override
+  String get schDoneLabel => '已完成';
+
+  @override
+  String get schSkip => '跳过这一次';
+
+  @override
+  String get schSkipped => '已跳过这一次';
+
+  @override
+  String get schDeleteConfirm => '删除这个事项？';
+
+  @override
+  String get schDeleteMessage => '它会和提醒一起被删除。';
+
+  @override
+  String get schDeleted => '已删除';
+
+  @override
+  String get schRepeatScopeText => '这个事项会重复。仅这一次，还是所有次？';
+
+  @override
+  String get schOnlyThis => '仅这一次';
+
+  @override
+  String get schAllTimes => '所有次';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '每 $count 天',
+      one: '每天',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '每 $count 周',
+      one: '每周',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '每 $count 个月',
+      one: '每月',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '每 $count 年',
+      one: '每年',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return '直到 $date';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count 次',
+      one: '1 次',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name：预计发情';
+  }
+
+  @override
+  String get schEstimate => '估计';
+
+  @override
+  String get schSeeAll => '查看全部';
+
+  @override
+  String schPetEmpty(String name) {
+    return '$name 没有即将到来的事项。';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$name 有 $count 个日程事项',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage => '也一起删除吗？与其他宠物共享的事项会保留，只是去掉这只宠物。';
+
+  @override
+  String get schKeepEvents => '保留';
+
+  @override
+  String get schDeleteEvents => '删除';
+
+  @override
+  String get schWhenNow => '现在';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return '$count 分钟后';
+  }
+
+  @override
+  String get schWhenInHour => '1 小时后';
+
+  @override
+  String schWhenOn(String date) {
+    return '$date';
+  }
+
+  @override
+  String get adminScheduleSubtitle => '个人日程和提醒：开启或关闭';
+
+  @override
+  String get schAdminIntro =>
+      '每位用户都有私人日程，可安排看兽医、疫苗、用药、美容、喂食和其他活动，并收到推送提醒。只有用户本人能看到，管理员也看不到。';
+
+  @override
+  String get schOnHelp => '开启：用户可以在宠物标签、宠物页面和个人资料中看到“我的日程”。';
+
+  @override
+  String get schOffHelp => '关闭：只有管理员能看到。';
 }

@@ -364,6 +364,52 @@ service cloud.firestore {
       allow delete: if isUser(resource.data.ownerId);
     }
 
+    function validScheduleRepeat(r) {
+      return r is map
+        && r.keys().hasOnly(['freq', 'every', 'weekdays', 'until', 'count'])
+        && r.freq in ['none', 'daily', 'weekly', 'monthly', 'yearly']
+        && r.every is int && r.every >= 1 && r.every <= 99
+        && r.weekdays is list && r.weekdays.size() <= 7
+        && (r.until == null || isDay(r.until))
+        && (r.count == null || (r.count is int && r.count >= 1 && r.count <= 999));
+    }
+
+    function validScheduleEvent(data) {
+      return data.keys().hasOnly([
+          'ownerId', 'type', 'title', 'notes', 'place', 'detail', 'petIds', 'petNames', 'start', 'time',
+          'repeat', 'remind', 'done', 'skipped', 'reminders', 'nextRemindAt', 'createdAt', 'updatedAt'
+        ])
+        && data.type in ['vet', 'vaccine', 'medicine', 'grooming', 'feeding', 'walk', 'note', 'other']
+        && textUpTo(data.title, 80)
+        && textUpTo(data.notes, 1000)
+        && textUpTo(data.place, 120)
+        && textUpTo(data.detail, 120)
+        && data.petIds is list && data.petIds.size() <= 10
+        && data.petNames is list && data.petNames.size() <= 10
+        && isDay(data.start)
+        && (data.time == null || (data.time is int && data.time >= 0 && data.time < 1440))
+        && validScheduleRepeat(data.repeat)
+        && data.remind is list && data.remind.size() <= 2
+        && data.done is list && data.done.size() <= 1000
+        && data.skipped is list && data.skipped.size() <= 1000
+        && data.reminders is list && data.reminders.size() <= 60
+        && (data.nextRemindAt == null || data.nextRemindAt is timestamp)
+        && data.updatedAt == request.time;
+    }
+
+    // Personal schedule: private to its owner, not even admins read it.
+    match /scheduleEvents/{eventId} {
+      allow read: if signedIn() && (resource == null || resource.data.ownerId == request.auth.uid);
+      allow create: if isUser(request.resource.data.ownerId)
+        && validScheduleEvent(request.resource.data)
+        && request.resource.data.createdAt == request.time;
+      allow update: if isUser(resource.data.ownerId)
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && validScheduleEvent(request.resource.data);
+      allow delete: if signedIn() && (resource == null || resource.data.ownerId == request.auth.uid);
+    }
+
     // One per pet while reminders are on; the daily sweep sends them.
     match /heatReminders/{petId} {
       allow read: if signedIn() && (resource == null || resource.data.ownerId == request.auth.uid);
@@ -789,6 +835,15 @@ service cloud.firestore {
         && request.resource.data.dailyScans >= 1 && request.resource.data.dailyScans <= 100
         && request.resource.data.model is string
         && request.resource.data.model.matches('gemini-[a-z0-9.-]{1,60}')
+        && shopStamped(request.resource.data);
+    }
+
+    // Personal schedule settings: on or off for users.
+    match /config/schedule {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
         && shopStamped(request.resource.data);
     }
 

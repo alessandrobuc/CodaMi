@@ -9,7 +9,7 @@ _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner online, heat cal
 | 1 | 7 | Feedback: store reviews + internal feedback | Mostly | Not started | Small (about 1 day) |
 | 2 | 5 | Social sharing of reports | Partly (text share) | Not started | Medium (about 2 days) |
 | 3 | 6 | Recurring share reminders | No | Not started | Small (about half a day) |
-| 4 | 4 | Personal schedule, notes and reminders | No | Not started | Medium (2 to 3 days) |
+| 4 | 4 | Personal schedule, notes and reminders | No | **Built Thu 5 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
 | 6 | 1 | AI breed scanner | No (only photo moderation) | **Built Wed 4 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 7 | 8 | Profile tags, titles and achievements | Partly (invite levels) | Not started | Medium (about 3 days) |
@@ -65,7 +65,23 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Switch in Profile → Notifications; on/off in Admin.
 - Text in 10 languages.
 
-## 4. Personal schedule, notes and reminders (request 4)
+## 4. Personal schedule, notes and reminders (request 4): built Thu 5 Nov
+
+**Built**
+- Firestore `scheduleEvents/{id}` (app in `lib/features/schedule/`): type (vet, vaccine, medicine, grooming, feeding, walk, note, other), title (empty = type name), pets (none = general), date, time or all day, place, vaccine / medicine name and dose, notes, repeat (daily, weekly on chosen days, monthly with the last day for short months, yearly; every N; ends never, on a date or after N times), up to 2 reminders (at the time / 15 min / 1 hour / 1 day / 1 week before; all-day events at 9:00), done and skipped days.
+- Defaults agreed with the client: vet, vaccine, grooming 1 day + 1 hour before; medicine and feeding at the time; walk 15 min before; note all day without reminder.
+- Screens: **My schedule** card at the top of the Pets tab (next event), a card on each pet's page (next 3, See all, New event), a Profile row. Calendar (month, dots per type, tap a day), Upcoming (Not done yet for the last 7 days, then by day), Done; filter by pet and type; heat estimates from the heat calendar shown as "heat expected · estimate".
+- Details sheet: mark done / not done, skip this time, edit or delete "only this time" or "all times" (only this time = the day becomes its own event and the series skips it).
+- Reminders: the phone plans the next ones (up to 60, within 180 days) with the texts in the user's language and stores them on the event; `scheduleReminderSweep` (every 5 minutes) sends the due one and keeps the rest; more than 30 minutes late is dropped, never sent late; done days don't remind. The app tops them up and rewrites them in the current language each time it starts. Tapping the notification opens the event.
+- Deleting a pet with events asks to delete them (shared events just lose the pet) or keep them.
+- Admin → More → My schedule: show to users (admins see it while off).
+- Private: only the owner reads or writes (not even admins); removed with the account (`deleteScheduleData`).
+- 104 texts in 10 languages; 17 app tests, 4 server tests, 33 emulator checks; test plan `TEST_SCENARIO_SCHEDULE_2026-11-05.md`.
+
+**Left**
+- Deploy functions and rules, phone test, then switch on for users.
+
+**Planned (kept for reference)**
 
 **Already there**
 - Pets with species, breed, sex, age (`pets_entity.dart`); push notifications.

@@ -5818,4 +5818,427 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get sitAdminOverview => 'Überblick';
+
+  @override
+  String get schTitle => 'Mein Kalender';
+
+  @override
+  String schTitleOf(String name) {
+    return 'Kalender von $name';
+  }
+
+  @override
+  String get schSubtitle =>
+      'Tierarzttermine, Medikamente, Pflege und Erinnerungen';
+
+  @override
+  String get schPromo =>
+      'Tierarzt, Medikamente und mehr planen, mit Erinnerungen';
+
+  @override
+  String schNext(String what, String when) {
+    return 'Als Nächstes: $what · $when';
+  }
+
+  @override
+  String get schAddEvent => 'Neuer Termin';
+
+  @override
+  String get schEditEvent => 'Termin bearbeiten';
+
+  @override
+  String get schEdit => 'Bearbeiten';
+
+  @override
+  String get schTabCalendar => 'Kalender';
+
+  @override
+  String get schTabUpcoming => 'Demnächst';
+
+  @override
+  String get schTabDone => 'Erledigt';
+
+  @override
+  String get schToday => 'Heute';
+
+  @override
+  String get schTomorrow => 'Morgen';
+
+  @override
+  String get schAllDay => 'Ganztägig';
+
+  @override
+  String get schEmptyTitle => 'Noch nichts geplant';
+
+  @override
+  String get schEmptyUpcoming =>
+      'Tippe auf „Neuer Termin“, um einen Tierarzttermin, ein Medikament, eine Fütterung oder eine Erinnerung hinzuzufügen.';
+
+  @override
+  String get schEmptyDay => 'An diesem Tag ist nichts geplant.';
+
+  @override
+  String get schEmptyDone =>
+      'Hier erscheinen Termine, die du als erledigt markierst.';
+
+  @override
+  String get schMissed => 'Noch nicht erledigt';
+
+  @override
+  String get schAllPets => 'Alle';
+
+  @override
+  String get schAllTypes => 'Alle Arten';
+
+  @override
+  String get schType => 'Art';
+
+  @override
+  String get schTypeVet => 'Tierarztbesuch';
+
+  @override
+  String get schTypeVaccine => 'Impfung';
+
+  @override
+  String get schTypeMedicine => 'Medikament';
+
+  @override
+  String get schTypeGrooming => 'Fellpflege';
+
+  @override
+  String get schTypeFeeding => 'Fütterung';
+
+  @override
+  String get schTypeWalk => 'Spaziergang oder Aktivität';
+
+  @override
+  String get schTypeNote => 'Notiz';
+
+  @override
+  String get schTypeOther => 'Sonstiges';
+
+  @override
+  String get schEventTitle => 'Titel';
+
+  @override
+  String schTitleHint(String type) {
+    return 'Optional. Wenn leer: $type';
+  }
+
+  @override
+  String get schVaccineName => 'Impfstoff';
+
+  @override
+  String get schVaccineHint => 'z. B. Tollwut, Auffrischung';
+
+  @override
+  String get schMedicineName => 'Medikament und Dosis';
+
+  @override
+  String get schMedicineHint => 'z. B. Antibiotikum, 1 Tablette';
+
+  @override
+  String get schForPets => 'Für welche Tiere?';
+
+  @override
+  String get schForPetsHelp =>
+      'Keins auswählen für eine allgemeine Erinnerung.';
+
+  @override
+  String get schDate => 'Datum';
+
+  @override
+  String get schRepeat => 'Wiederholen';
+
+  @override
+  String get schRepeatNone => 'Keine Wiederholung';
+
+  @override
+  String get schRepeatDaily => 'Jeden Tag';
+
+  @override
+  String get schRepeatWeekly => 'Jede Woche';
+
+  @override
+  String get schRepeatMonthly => 'Jeden Monat';
+
+  @override
+  String get schRepeatYearly => 'Jedes Jahr';
+
+  @override
+  String get schEvery => 'Alle';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Tage',
+      one: 'Tag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Wochen',
+      one: 'Woche',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Monate',
+      one: 'Monat',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Jahre',
+      one: 'Jahr',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => 'An diesen Tagen';
+
+  @override
+  String get schEnds => 'Endet';
+
+  @override
+  String get schEndsNever => 'Nie';
+
+  @override
+  String get schEndsOn => 'An einem Datum';
+
+  @override
+  String get schEndsAfter => 'Nach einer Anzahl von Malen';
+
+  @override
+  String get schTimes => 'Anzahl';
+
+  @override
+  String get schInvalidEvery => 'Gib eine Zahl von 1 bis 99 ein.';
+
+  @override
+  String get schInvalidCount => 'Gib eine Zahl von 1 bis 999 ein.';
+
+  @override
+  String get schUntilBeforeStart =>
+      'Das Enddatum darf nicht vor dem Start liegen.';
+
+  @override
+  String get schRemind => 'Erinnerungen';
+
+  @override
+  String get schRemindHelp =>
+      'Bis zu 2 Erinnerungen, als Mitteilung auch bei geschlossener App.';
+
+  @override
+  String get schRemindMax => 'Du kannst bis zu 2 Erinnerungen wählen.';
+
+  @override
+  String get schRemindAtTime => 'Zum Termin';
+
+  @override
+  String get schRemindAllDay => 'Am Tag selbst um 9:00';
+
+  @override
+  String get schRemind15 => '15 Minuten vorher';
+
+  @override
+  String get schRemind60 => '1 Stunde vorher';
+
+  @override
+  String get schRemindDay => '1 Tag vorher';
+
+  @override
+  String get schRemindWeek => '1 Woche vorher';
+
+  @override
+  String get schNoReminders => 'Keine Erinnerungen';
+
+  @override
+  String get schPlace => 'Ort';
+
+  @override
+  String get schPlaceHint => 'Praxis, Hundefriseur, Park…';
+
+  @override
+  String get schNotes => 'Notizen';
+
+  @override
+  String get schMarkDone => 'Als erledigt markieren';
+
+  @override
+  String get schUndoDone => 'Als nicht erledigt markieren';
+
+  @override
+  String get schDoneLabel => 'Erledigt';
+
+  @override
+  String get schSkip => 'Dieses Mal überspringen';
+
+  @override
+  String get schSkipped => 'Dieses Mal übersprungen';
+
+  @override
+  String get schDeleteConfirm => 'Diesen Termin löschen?';
+
+  @override
+  String get schDeleteMessage => 'Er wird mit seinen Erinnerungen gelöscht.';
+
+  @override
+  String get schDeleted => 'Gelöscht';
+
+  @override
+  String get schRepeatScopeText =>
+      'Dieser Termin wiederholt sich. Nur für dieses Mal oder für alle Male?';
+
+  @override
+  String get schOnlyThis => 'Nur dieses Mal';
+
+  @override
+  String get schAllTimes => 'Alle Male';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Alle $count Tage',
+      one: 'Jeden Tag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Alle $count Wochen',
+      one: 'Jede Woche',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Alle $count Monate',
+      one: 'Jeden Monat',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Alle $count Jahre',
+      one: 'Jedes Jahr',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return 'bis $date';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count-mal',
+      one: 'einmal',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name: Läufigkeit erwartet';
+  }
+
+  @override
+  String get schEstimate => 'Schätzung';
+
+  @override
+  String get schSeeAll => 'Alle ansehen';
+
+  @override
+  String schPetEmpty(String name) {
+    return 'Keine anstehenden Termine für $name.';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$name hat $count geplante Termine',
+      one: '$name hat 1 geplanten Termin',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage =>
+      'Auch löschen? Termine, die mit anderen Tieren geteilt sind, bleiben, nur ohne dieses Tier.';
+
+  @override
+  String get schKeepEvents => 'Behalten';
+
+  @override
+  String get schDeleteEvents => 'Löschen';
+
+  @override
+  String get schWhenNow => 'Jetzt';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return 'In $count Minuten';
+  }
+
+  @override
+  String get schWhenInHour => 'In 1 Stunde';
+
+  @override
+  String schWhenOn(String date) {
+    return 'Am $date';
+  }
+
+  @override
+  String get adminScheduleSubtitle =>
+      'Persönlicher Kalender und Erinnerungen: ein oder aus';
+
+  @override
+  String get schAdminIntro =>
+      'Jeder Nutzer bekommt einen privaten Kalender für Tierarzt, Impfungen, Medikamente, Pflege, Fütterung und andere Aktivitäten, mit Push-Erinnerungen. Nur der Nutzer sieht ihn, nicht einmal Admins.';
+
+  @override
+  String get schOnHelp =>
+      'Ein: Nutzer sehen Mein Kalender im Tab Tiere, auf den Seiten ihrer Tiere und im Profil.';
+
+  @override
+  String get schOffHelp => 'Aus: nur Admins sehen ihn.';
 }

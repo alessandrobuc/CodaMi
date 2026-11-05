@@ -27,6 +27,7 @@ class PushService {
     void Function(String caseId)? onOpenCase,
     void Function()? onOpenPhotoReview,
     void Function(String emergencyId)? onOpenEmergency,
+    void Function(String eventId)? onOpenSchedule,
     ForegroundPush? onForeground,
   }) async {
     if (_uid == uid) return;
@@ -42,6 +43,10 @@ class PushService {
       final emergencyId = message.data['emergencyId'];
       if (emergencyId is String && emergencyId.isNotEmpty) {
         onOpenEmergency?.call(emergencyId);
+      }
+      final eventId = message.data['scheduleEventId'];
+      if (eventId is String && eventId.isNotEmpty) {
+        onOpenSchedule?.call(eventId);
       }
     }
 

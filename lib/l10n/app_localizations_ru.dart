@@ -5807,4 +5807,445 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get sitAdminOverview => 'Обзор';
+
+  @override
+  String get schTitle => 'Мой календарь';
+
+  @override
+  String schTitleOf(String name) {
+    return 'Календарь: $name';
+  }
+
+  @override
+  String get schSubtitle => 'Ветеринар, лекарства, груминг и напоминания';
+
+  @override
+  String get schPromo =>
+      'Планируйте визиты к ветеринару, лекарства и другое, с напоминаниями';
+
+  @override
+  String schNext(String what, String when) {
+    return 'Далее: $what · $when';
+  }
+
+  @override
+  String get schAddEvent => 'Новое событие';
+
+  @override
+  String get schEditEvent => 'Изменить событие';
+
+  @override
+  String get schEdit => 'Изменить';
+
+  @override
+  String get schTabCalendar => 'Календарь';
+
+  @override
+  String get schTabUpcoming => 'Скоро';
+
+  @override
+  String get schTabDone => 'Выполнено';
+
+  @override
+  String get schToday => 'Сегодня';
+
+  @override
+  String get schTomorrow => 'Завтра';
+
+  @override
+  String get schAllDay => 'Весь день';
+
+  @override
+  String get schEmptyTitle => 'Пока ничего не запланировано';
+
+  @override
+  String get schEmptyUpcoming =>
+      'Нажмите «Новое событие», чтобы добавить визит к ветеринару, лекарство, кормление или любое напоминание.';
+
+  @override
+  String get schEmptyDay => 'В этот день ничего нет.';
+
+  @override
+  String get schEmptyDone =>
+      'Здесь появятся события, отмеченные как выполненные.';
+
+  @override
+  String get schMissed => 'Ещё не выполнено';
+
+  @override
+  String get schAllPets => 'Все';
+
+  @override
+  String get schAllTypes => 'Все типы';
+
+  @override
+  String get schType => 'Тип';
+
+  @override
+  String get schTypeVet => 'Визит к ветеринару';
+
+  @override
+  String get schTypeVaccine => 'Прививка';
+
+  @override
+  String get schTypeMedicine => 'Лекарство';
+
+  @override
+  String get schTypeGrooming => 'Груминг';
+
+  @override
+  String get schTypeFeeding => 'Кормление';
+
+  @override
+  String get schTypeWalk => 'Прогулка или занятие';
+
+  @override
+  String get schTypeNote => 'Заметка';
+
+  @override
+  String get schTypeOther => 'Другое';
+
+  @override
+  String get schEventTitle => 'Название';
+
+  @override
+  String schTitleHint(String type) {
+    return 'Необязательно. Если пусто: $type';
+  }
+
+  @override
+  String get schVaccineName => 'Вакцина';
+
+  @override
+  String get schVaccineHint => 'напр. Бешенство, ревакцинация';
+
+  @override
+  String get schMedicineName => 'Лекарство и доза';
+
+  @override
+  String get schMedicineHint => 'напр. Антибиотик, 1 таблетка';
+
+  @override
+  String get schForPets => 'Для каких питомцев?';
+
+  @override
+  String get schForPetsHelp => 'Не выбирайте никого для общего напоминания.';
+
+  @override
+  String get schDate => 'Дата';
+
+  @override
+  String get schRepeat => 'Повтор';
+
+  @override
+  String get schRepeatNone => 'Не повторяется';
+
+  @override
+  String get schRepeatDaily => 'Каждый день';
+
+  @override
+  String get schRepeatWeekly => 'Каждую неделю';
+
+  @override
+  String get schRepeatMonthly => 'Каждый месяц';
+
+  @override
+  String get schRepeatYearly => 'Каждый год';
+
+  @override
+  String get schEvery => 'Каждые';
+
+  @override
+  String schUnitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'дня',
+      many: 'дней',
+      few: 'дня',
+      one: 'день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'недели',
+      many: 'недель',
+      few: 'недели',
+      one: 'неделю',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'месяца',
+      many: 'месяцев',
+      few: 'месяца',
+      one: 'месяц',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUnitYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'года',
+      many: 'лет',
+      few: 'года',
+      one: 'год',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schOnDays => 'В эти дни';
+
+  @override
+  String get schEnds => 'Окончание';
+
+  @override
+  String get schEndsNever => 'Никогда';
+
+  @override
+  String get schEndsOn => 'В дату';
+
+  @override
+  String get schEndsAfter => 'После нескольких раз';
+
+  @override
+  String get schTimes => 'Сколько раз';
+
+  @override
+  String get schInvalidEvery => 'Введите число от 1 до 99.';
+
+  @override
+  String get schInvalidCount => 'Введите число от 1 до 999.';
+
+  @override
+  String get schUntilBeforeStart =>
+      'Дата окончания не может быть раньше начала.';
+
+  @override
+  String get schRemind => 'Напоминания';
+
+  @override
+  String get schRemindHelp =>
+      'До 2 напоминаний, приходят уведомлением, даже когда приложение закрыто.';
+
+  @override
+  String get schRemindMax => 'Можно выбрать до 2 напоминаний.';
+
+  @override
+  String get schRemindAtTime => 'В момент события';
+
+  @override
+  String get schRemindAllDay => 'В тот же день в 9:00';
+
+  @override
+  String get schRemind15 => 'За 15 минут';
+
+  @override
+  String get schRemind60 => 'За 1 час';
+
+  @override
+  String get schRemindDay => 'За 1 день';
+
+  @override
+  String get schRemindWeek => 'За 1 неделю';
+
+  @override
+  String get schNoReminders => 'Без напоминаний';
+
+  @override
+  String get schPlace => 'Место';
+
+  @override
+  String get schPlaceHint => 'Клиника, грумер, парк…';
+
+  @override
+  String get schNotes => 'Заметки';
+
+  @override
+  String get schMarkDone => 'Отметить выполненным';
+
+  @override
+  String get schUndoDone => 'Отметить невыполненным';
+
+  @override
+  String get schDoneLabel => 'Выполнено';
+
+  @override
+  String get schSkip => 'Пропустить в этот раз';
+
+  @override
+  String get schSkipped => 'Пропущено в этот раз';
+
+  @override
+  String get schDeleteConfirm => 'Удалить это событие?';
+
+  @override
+  String get schDeleteMessage => 'Оно будет удалено вместе с напоминаниями.';
+
+  @override
+  String get schDeleted => 'Удалено';
+
+  @override
+  String get schRepeatScopeText =>
+      'Это событие повторяется. Только в этот раз или для всех повторов?';
+
+  @override
+  String get schOnlyThis => 'Только в этот раз';
+
+  @override
+  String get schAllTimes => 'Все повторы';
+
+  @override
+  String schEveryDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Каждые $count дня',
+      many: 'Каждые $count дней',
+      few: 'Каждые $count дня',
+      one: 'Каждый $count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Каждые $count недели',
+      many: 'Каждые $count недель',
+      few: 'Каждые $count недели',
+      one: 'Каждую $count неделю',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Каждые $count месяца',
+      many: 'Каждые $count месяцев',
+      few: 'Каждые $count месяца',
+      one: 'Каждый $count месяц',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schEveryYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Каждые $count года',
+      many: 'Каждые $count лет',
+      few: 'Каждые $count года',
+      one: 'Каждый $count год',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schUntil(String date) {
+    return 'до $date';
+  }
+
+  @override
+  String schTimesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count раза',
+      many: '$count раз',
+      few: '$count раза',
+      one: '$count раз',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String schHeatExpected(String name) {
+    return '$name: ожидается течка';
+  }
+
+  @override
+  String get schEstimate => 'оценка';
+
+  @override
+  String get schSeeAll => 'Все';
+
+  @override
+  String schPetEmpty(String name) {
+    return 'Нет предстоящих событий для $name.';
+  }
+
+  @override
+  String schPetEventsTitle(String name, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'У $name $count запланированного события',
+      many: 'У $name $count запланированных событий',
+      few: 'У $name $count запланированных события',
+      one: 'У $name $count запланированное событие',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get schPetEventsMessage =>
+      'Удалить и их? События, общие с другими питомцами, останутся, но без этого питомца.';
+
+  @override
+  String get schKeepEvents => 'Оставить';
+
+  @override
+  String get schDeleteEvents => 'Удалить';
+
+  @override
+  String get schWhenNow => 'Сейчас';
+
+  @override
+  String schWhenInMinutes(int count) {
+    return 'Через $count минут';
+  }
+
+  @override
+  String get schWhenInHour => 'Через 1 час';
+
+  @override
+  String schWhenOn(String date) {
+    return '$date';
+  }
+
+  @override
+  String get adminScheduleSubtitle =>
+      'Личный календарь и напоминания: вкл. или выкл.';
+
+  @override
+  String get schAdminIntro =>
+      'У каждого пользователя есть личный календарь для ветеринара, прививок, лекарств, груминга, кормления и других дел, с push-напоминаниями. Его видит только сам пользователь, даже не админы.';
+
+  @override
+  String get schOnHelp =>
+      'Вкл.: пользователи видят «Мой календарь» во вкладке «Питомцы», на страницах своих питомцев и в профиле.';
+
+  @override
+  String get schOffHelp => 'Выкл.: его видят только админы.';
 }
