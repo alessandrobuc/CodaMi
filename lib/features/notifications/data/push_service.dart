@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 
 // Phones don't show pushes while the app is open, so the app shows them itself.
 const photoReviewKind = 'photo_review';
+const shareReminderKind = 'share_reminder';
 
 typedef ForegroundPush =
     void Function(RemoteMessage message, void Function() open);
@@ -28,6 +29,7 @@ class PushService {
     void Function()? onOpenPhotoReview,
     void Function(String emergencyId)? onOpenEmergency,
     void Function(String eventId)? onOpenSchedule,
+    void Function()? onOpenShareReminder,
     ForegroundPush? onForeground,
   }) async {
     if (_uid == uid) return;
@@ -40,6 +42,9 @@ class PushService {
       if (reportId is String && reportId.isNotEmpty) onOpenReport(reportId);
       if (caseId is String && caseId.isNotEmpty) onOpenCase?.call(caseId);
       if (message.data['kind'] == photoReviewKind) onOpenPhotoReview?.call();
+      if (message.data['kind'] == shareReminderKind) {
+        onOpenShareReminder?.call();
+      }
       final emergencyId = message.data['emergencyId'];
       if (emergencyId is String && emergencyId.isNotEmpty) {
         onOpenEmergency?.call(emergencyId);

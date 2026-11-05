@@ -10990,6 +10990,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Direct link'**
   String get shareDirect;
+
+  /// No description provided for @alertShareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share reminders'**
+  String get alertShareTitle;
+
+  /// No description provided for @alertShareDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'About once a week, a reminder to invite friends to CodaMi.'**
+  String get alertShareDescription;
+
+  /// No description provided for @shareAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share CodaMi'**
+  String get shareAppTitle;
+
+  /// No description provided for @shareAppHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Help CodaMi make a difference!'**
+  String get shareAppHeadline;
+
+  /// No description provided for @shareAppText.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing our app costs you nothing, but your support can have an enormous impact on our community and help more animals find their way home. Share CodaMi with your friends and on your social networks!'**
+  String get shareAppText;
+
+  /// No description provided for @shareAppPosterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Join CodaMi'**
+  String get shareAppPosterTitle;
+
+  /// No description provided for @shareAppPosterText.
+  ///
+  /// In en, this message translates to:
+  /// **'The free app that helps lost pets find their way home'**
+  String get shareAppPosterText;
+
+  /// No description provided for @shareAppBenefitAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts when a pet goes missing nearby'**
+  String get shareAppBenefitAlerts;
+
+  /// No description provided for @shareAppBenefitMap.
+  ///
+  /// In en, this message translates to:
+  /// **'A live map of lost and found pets'**
+  String get shareAppBenefitMap;
+
+  /// No description provided for @shareAppBenefitNeighbours.
+  ///
+  /// In en, this message translates to:
+  /// **'Neighbours helping neighbours'**
+  String get shareAppBenefitNeighbours;
+
+  /// No description provided for @shareAppCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get shareAppCode;
+
+  /// No description provided for @shareAppFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free on Google Play and the App Store'**
+  String get shareAppFree;
+
+  /// No description provided for @shareAppMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'🐾 I\'m on CodaMi, the free app that helps lost pets find their way home. Join me: the more neighbours use it, the faster lost pets are found! My invite code: {code}'**
+  String shareAppMessage(String code);
+
+  /// No description provided for @shareAppJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No friends joined yet} =1{1 friend joined with your link} other{{count} friends joined with your link}}'**
+  String shareAppJoined(int count);
+
+  /// No description provided for @shareAppSeeRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'See your invite levels and rewards'**
+  String get shareAppSeeRewards;
+
+  /// No description provided for @shareAppStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t remind me again'**
+  String get shareAppStop;
+
+  /// No description provided for @shareAppStopped.
+  ///
+  /// In en, this message translates to:
+  /// **'You won\'t get share reminders anymore. You can turn them back on in Notifications.'**
+  String get shareAppStopped;
+
+  /// No description provided for @shareRemAdminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share reminders'**
+  String get shareRemAdminTitle;
+
+  /// No description provided for @shareRemAdminSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly push asking users to share CodaMi'**
+  String get shareRemAdminSubtitle;
+
+  /// No description provided for @shareRemAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A few days after signing up, then about once a week, users get a push asking them to share CodaMi. It opens a screen with their invite link, QR code and one-tap sharing.'**
+  String get shareRemAdminIntro;
+
+  /// No description provided for @shareRemOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: reminders are sent every evening around 18:00 (Italian time).'**
+  String get shareRemOnHelp;
+
+  /// No description provided for @shareRemOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: no reminders are sent.'**
+  String get shareRemOffHelp;
+
+  /// No description provided for @shareRemWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get shareRemWhen;
+
+  /// No description provided for @shareRemFirstDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days after sign-up before the first'**
+  String get shareRemFirstDays;
+
+  /// No description provided for @shareRemEveryDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days between reminders'**
+  String get shareRemEveryDays;
+
+  /// No description provided for @shareRemMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders in total per user'**
+  String get shareRemMax;
+
+  /// No description provided for @shareRemInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'First: 1 to 60 days. Between: 3 to 60 days. Total: 1 to 52.'**
+  String get shareRemInvalid;
+
+  /// No description provided for @shareRemHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped for users who turned them off, shared something in the last 2 weeks, or haven\'t opened the app in 60 days. Never on a day the app asked for feedback or a rating.'**
+  String get shareRemHelp;
+
+  /// No description provided for @shareRemSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get shareRemSent;
+
+  /// No description provided for @shareRemOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'Opened'**
+  String get shareRemOpened;
+
+  /// No description provided for @shareRemShares.
+  ///
+  /// In en, this message translates to:
+  /// **'Shares'**
+  String get shareRemShares;
+
+  /// No description provided for @shareRemTry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try it'**
+  String get shareRemTry;
+
+  /// No description provided for @shareRemPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview the screen users see'**
+  String get shareRemPreview;
+
+  /// No description provided for @shareRemTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send me a test reminder'**
+  String get shareRemTest;
+
+  /// No description provided for @shareRemTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test reminder sent to your phone.'**
+  String get shareRemTestSent;
+
+  /// No description provided for @shareRemTestFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t send it. Check that notifications are allowed on this phone.'**
+  String get shareRemTestFailed;
 }
 
 class _AppLocalizationsDelegate

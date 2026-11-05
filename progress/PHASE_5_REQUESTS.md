@@ -8,7 +8,7 @@ _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner online, heat cal
 |---|---|---|---|---|---|
 | 1 | 7 | Feedback: store reviews + internal feedback | Mostly | Not started | Small (about 1 day) |
 | 2 | 5 | Social sharing of reports | Partly (text share) | **Built Thu 5 Nov**, to deploy and test | Medium (about 2 days) |
-| 3 | 6 | Recurring share reminders | No | Not started | Small (about half a day) |
+| 3 | 6 | Recurring share reminders | No | **Built Thu 5 Nov**, to deploy and test | Small (about half a day) |
 | 4 | 4 | Personal schedule, notes and reminders | No | **Built Thu 5 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
 | 6 | 1 | AI breed scanner | No (only photo moderation) | **Built Wed 4 Nov**, to deploy and test | Medium (2 to 3 days) |
@@ -67,7 +67,20 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Hide the page when the report is deleted or resolved.
 - Admin: pop-up on/off.
 
-## 3. Share reminders (request 6)
+## 3. Share reminders (request 6): built Thu 5 Nov
+
+**Built** (defaults agreed: first after 3 days, every 7 days, stop after 8, around 18:00 Italian time)
+- Plan per user in `shareReminders/{uid}` (server only): `registerVisit` plans the first one `firstDays` after sign-up (from the sign-in record), never in the past; later visits keep it.
+- `shareReminderSweep` every day at 18:00 Europe/Rome: sends one reminder to each due user through the new `share` notification type (own switch and sound), rotating 4 texts in 10 languages with the client's text first; then plans the next one `everyDays` later. Skipped (planned a week later): switch off, shared CodaMi or a report in the last 14 days (`lastSharedDay`, set by `logReportShare` and `shareReminderEvent`), not active for 60 days. Stops after `maxCount`. Deleted or disabled accounts are removed.
+- Tapping it opens **Share CodaMi**: the client's text, a "Join CodaMi" image with the invite code and a QR to the invite page, WhatsApp / Facebook / Instagram / TikTok / More / Save / Copy link (image straight into the app on Android), the friends who joined and a link to invite rewards, "Don't remind me again" (turns the switch off). Also from Invite friends (share icon).
+- No feedback card or rating window on a day a reminder was opened.
+- Admin → More → Share reminders: on/off, first / between / total, last 30 days sent, opened (%), shares; preview of the screen; "Send me a test reminder".
+- Settings rules: every 3 to 60 days, first after 1 to 60, total 1 to 52. Removed with the account. 36 app texts + 40 push texts in 10 languages; 6 app tests, 6 server tests, 26 emulator checks; test plan `TEST_SCENARIO_SHARE_REMINDERS_2026-11-05.md`.
+
+**Left**
+- Deploy functions and rules, test on the phone, switch on.
+
+**Planned (kept for reference)**
 
 **Already there**
 - Push notifications (`firebase_messaging`, `push_service.dart`), Profile → Notifications switches, daily server sweep.

@@ -16,3 +16,11 @@ final reportShareStatsProvider = StreamProvider.family<ShareStats, String>(
 final shareTotalsProvider = StreamProvider<ShareStats>(
   (ref) => ref.watch(sharingRepositoryProvider).watchTotals(),
 );
+
+final shareReminderConfigProvider = StreamProvider<ShareReminderConfig>(
+  (ref) => ref.watch(sharingRepositoryProvider).watchReminderConfig(),
+);
+
+final shareReminderTotalsProvider = StreamProvider<ShareReminderStats>(
+  (ref) => ref.watch(sharingRepositoryProvider).watchReminderTotals(),
+);

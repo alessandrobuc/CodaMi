@@ -6,6 +6,7 @@ import {HttpsError, onCall, onRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
 
 import {pathOfUrl} from "./moderation";
+import {markShared} from "./shareRemindersFunctions";
 import {dayKey} from "./points";
 import {
   SITE, isBot, pageLangOf, pageReportOf, renderReportPage, reportIdOfPath, shareInputOf, viewSourceOf,
@@ -33,6 +34,7 @@ export const logReportShare = onCall(async (request) => {
   const report = await db().collection("reports").doc(input.reportId).get();
   if (!report.exists || report.get("status") === "hidden") throw new HttpsError("not-found", "Report not found.");
   await count(input.reportId, report.get("ownerId"), "shares", "byTarget", input.target);
+  await markShared(request.auth.uid);
   return {counted: true};
 });
 

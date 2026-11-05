@@ -53,6 +53,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 4. Firebase
 
+- [ ] **Share reminders (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (`shareReminderSweep` at 18:00 Italian time, `shareReminderEvent`, `testShareReminder`; rules with the `share` notification type)
 - [ ] **Social sharing (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules,hosting` (`reportPage` behind `/r/**`, `logReportShare`, rules for `config/sharing`, `reportShares`, `shareStats`)
 - [ ] **Personal schedule (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (`scheduleReminderSweep` every 5 minutes, rules for `scheduleEvents`, `config/schedule`)
 - [ ] **Pet sitting review fix (Thu 5 Nov):** `firebase deploy --only functions:reviewSitter`

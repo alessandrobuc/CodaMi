@@ -6447,4 +6447,134 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get shareDirect => 'Direkter Link';
+
+  @override
+  String get alertShareTitle => 'Teilen-Erinnerungen';
+
+  @override
+  String get alertShareDescription =>
+      'Etwa einmal pro Woche eine Erinnerung, Freunde zu CodaMi einzuladen.';
+
+  @override
+  String get shareAppTitle => 'CodaMi teilen';
+
+  @override
+  String get shareAppHeadline => 'Hilf CodaMi, etwas zu bewirken!';
+
+  @override
+  String get shareAppText =>
+      'Unsere App zu teilen kostet dich nichts, aber deine Unterstützung kann viel für unsere Gemeinschaft bewirken und mehr Tieren helfen, nach Hause zu finden. Teile CodaMi mit deinen Freunden und in deinen sozialen Netzwerken!';
+
+  @override
+  String get shareAppPosterTitle => 'Komm zu CodaMi';
+
+  @override
+  String get shareAppPosterText =>
+      'Die kostenlose App, die vermissten Tieren nach Hause hilft';
+
+  @override
+  String get shareAppBenefitAlerts =>
+      'Hinweise, wenn in der Nähe ein Tier vermisst wird';
+
+  @override
+  String get shareAppBenefitMap => 'Live-Karte vermisster und gefundener Tiere';
+
+  @override
+  String get shareAppBenefitNeighbours => 'Nachbarn helfen Nachbarn';
+
+  @override
+  String get shareAppCode => 'Einladungscode';
+
+  @override
+  String get shareAppFree => 'Kostenlos bei Google Play und im App Store';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 Ich bin bei CodaMi, der kostenlosen App, die vermissten Tieren nach Hause hilft. Mach mit: Je mehr Nachbarn sie nutzen, desto schneller werden vermisste Tiere gefunden! Mein Einladungscode: $code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Freunde sind über deinen Link dabei',
+      one: '1 Freund ist über deinen Link dabei',
+      zero: 'Noch keine Freunde dabei',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => 'Deine Einladungsstufen und Belohnungen';
+
+  @override
+  String get shareAppStop => 'Nicht mehr erinnern';
+
+  @override
+  String get shareAppStopped =>
+      'Du bekommst keine Teilen-Erinnerungen mehr. Du kannst sie unter Benachrichtigungen wieder einschalten.';
+
+  @override
+  String get shareRemAdminTitle => 'Teilen-Erinnerungen';
+
+  @override
+  String get shareRemAdminSubtitle =>
+      'Wöchentliche Mitteilung zum Teilen von CodaMi';
+
+  @override
+  String get shareRemAdminIntro =>
+      'Einige Tage nach der Anmeldung und danach etwa einmal pro Woche bekommen Nutzer eine Mitteilung, CodaMi zu teilen. Sie öffnet einen Bildschirm mit ihrem Einladungslink, QR-Code und Teilen mit einem Tipp.';
+
+  @override
+  String get shareRemOnHelp =>
+      'Ein: Erinnerungen gehen jeden Abend gegen 18:00 Uhr (italienische Zeit) raus.';
+
+  @override
+  String get shareRemOffHelp => 'Aus: Es werden keine Erinnerungen gesendet.';
+
+  @override
+  String get shareRemWhen => 'Wann';
+
+  @override
+  String get shareRemFirstDays => 'Tage nach der Anmeldung bis zur ersten';
+
+  @override
+  String get shareRemEveryDays => 'Tage zwischen Erinnerungen';
+
+  @override
+  String get shareRemMax => 'Erinnerungen insgesamt pro Nutzer';
+
+  @override
+  String get shareRemInvalid =>
+      'Erste: 1 bis 60 Tage. Abstand: 3 bis 60 Tage. Insgesamt: 1 bis 52.';
+
+  @override
+  String get shareRemHelp =>
+      'Übersprungen bei Nutzern, die sie ausgeschaltet, in den letzten 2 Wochen etwas geteilt oder die App seit 60 Tagen nicht geöffnet haben. Nie an einem Tag, an dem die App um Feedback oder eine Bewertung gebeten hat.';
+
+  @override
+  String get shareRemSent => 'Gesendet';
+
+  @override
+  String get shareRemOpened => 'Geöffnet';
+
+  @override
+  String get shareRemShares => 'Geteilt';
+
+  @override
+  String get shareRemTry => 'Ausprobieren';
+
+  @override
+  String get shareRemPreview => 'Vorschau des Bildschirms für Nutzer';
+
+  @override
+  String get shareRemTest => 'Test-Erinnerung an mich senden';
+
+  @override
+  String get shareRemTestSent => 'Test-Erinnerung an dein Telefon gesendet.';
+
+  @override
+  String get shareRemTestFailed =>
+      'Senden nicht möglich. Prüfe, ob Benachrichtigungen auf diesem Telefon erlaubt sind.';
 }

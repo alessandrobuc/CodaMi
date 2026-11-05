@@ -44,6 +44,7 @@ import {placesApiKey, placesSecret} from "./secrets";
 import {deleteHeatData} from "./heatFunctions";
 import {deleteScheduleData} from "./scheduleFunctions";
 import {deleteReportShares} from "./sharingFunctions";
+import {deleteShareReminderData} from "./shareRemindersFunctions";
 import {deleteScanUsage} from "./scannerFunctions";
 import {deleteSittingData} from "./sittingFunctions";
 import {searchFieldsOf} from "./users";
@@ -431,6 +432,7 @@ async function deleteUserData(uid: string): Promise<void> {
   await deleteScanUsage(uid);
   await deleteHeatData(uid);
   await deleteScheduleData(uid);
+  await deleteShareReminderData(uid);
   await deleteSittingData(uid);
   await deleteEmergencyData(uid);
 
@@ -561,6 +563,7 @@ export {scanBreed, scannerModels} from "./scannerFunctions";
 export {heatReminderSweep} from "./heatFunctions";
 export {scheduleReminderSweep} from "./scheduleFunctions";
 export {logReportShare, reportPage} from "./sharingFunctions";
+export {shareReminderEvent, shareReminderSweep, testShareReminder} from "./shareRemindersFunctions";
 export {
   acceptSittingOffer,
   adminSetReviewHidden,

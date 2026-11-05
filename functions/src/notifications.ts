@@ -23,7 +23,7 @@ export interface NotificationContent {
 }
 
 // Same keys as `notificationPrefs` on the user profile (see notification_prefs.dart).
-export type AlertType = "lost" | "found" | "resolved" | "support" | "emergency";
+export type AlertType = "lost" | "found" | "resolved" | "support" | "emergency" | "share";
 
 export const DEFAULT_CHANNEL = "codami_alerts";
 const BUNDLED_SOUNDS = new Set(["chime", "bell", "bright", "soft"]);

@@ -16,8 +16,9 @@ import '../widgets/invite_stats_widgets.dart';
 import '../widgets/points_widgets.dart';
 import 'invite_qr_screen.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../sharing/presentation/screens/share_app_screen.dart';
 
-final _inviteCodeProvider = FutureProvider<String>((ref) async {
+final myInviteCodeProvider = FutureProvider<String>((ref) async {
   final saved = ref.read(userProfileProvider).value?.inviteCode;
   return saved ?? ref.read(pointsRepositoryProvider).inviteCode();
 });
@@ -28,7 +29,7 @@ class InviteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
-    final code = ref.watch(_inviteCodeProvider);
+    final code = ref.watch(myInviteCodeProvider);
     final config =
         ref.watch(pointsConfigProvider).value ?? const PointsConfig();
     final invites = ref.watch(myInvitesProvider).value ?? const [];
@@ -45,6 +46,15 @@ class InviteScreen extends ConsumerWidget {
         title: Text(l10n.inviteFriends),
         backgroundColor: AppColors.background,
         surfaceTintColor: Colors.transparent,
+        actions: [
+          IconButton(
+            tooltip: l10n.shareAppTitle,
+            icon: const Icon(Icons.ios_share_rounded),
+            onPressed: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const ShareAppScreen())),
+          ),
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(20, 4, 20, endSpace(context)),
@@ -87,7 +97,7 @@ class InviteScreen extends ConsumerWidget {
                     child: CircularProgressIndicator(),
                   ),
                   error: (_, _) => TextButton(
-                    onPressed: () => ref.invalidate(_inviteCodeProvider),
+                    onPressed: () => ref.invalidate(myInviteCodeProvider),
                     child: Text(l10n.actionFailed),
                   ),
                 ),

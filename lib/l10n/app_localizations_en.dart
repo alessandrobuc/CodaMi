@@ -6364,4 +6364,133 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareDirect => 'Direct link';
+
+  @override
+  String get alertShareTitle => 'Share reminders';
+
+  @override
+  String get alertShareDescription =>
+      'About once a week, a reminder to invite friends to CodaMi.';
+
+  @override
+  String get shareAppTitle => 'Share CodaMi';
+
+  @override
+  String get shareAppHeadline => 'Help CodaMi make a difference!';
+
+  @override
+  String get shareAppText =>
+      'Sharing our app costs you nothing, but your support can have an enormous impact on our community and help more animals find their way home. Share CodaMi with your friends and on your social networks!';
+
+  @override
+  String get shareAppPosterTitle => 'Join CodaMi';
+
+  @override
+  String get shareAppPosterText =>
+      'The free app that helps lost pets find their way home';
+
+  @override
+  String get shareAppBenefitAlerts => 'Alerts when a pet goes missing nearby';
+
+  @override
+  String get shareAppBenefitMap => 'A live map of lost and found pets';
+
+  @override
+  String get shareAppBenefitNeighbours => 'Neighbours helping neighbours';
+
+  @override
+  String get shareAppCode => 'Invite code';
+
+  @override
+  String get shareAppFree => 'Free on Google Play and the App Store';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 I\'m on CodaMi, the free app that helps lost pets find their way home. Join me: the more neighbours use it, the faster lost pets are found! My invite code: $code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count friends joined with your link',
+      one: '1 friend joined with your link',
+      zero: 'No friends joined yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => 'See your invite levels and rewards';
+
+  @override
+  String get shareAppStop => 'Don\'t remind me again';
+
+  @override
+  String get shareAppStopped =>
+      'You won\'t get share reminders anymore. You can turn them back on in Notifications.';
+
+  @override
+  String get shareRemAdminTitle => 'Share reminders';
+
+  @override
+  String get shareRemAdminSubtitle =>
+      'Weekly push asking users to share CodaMi';
+
+  @override
+  String get shareRemAdminIntro =>
+      'A few days after signing up, then about once a week, users get a push asking them to share CodaMi. It opens a screen with their invite link, QR code and one-tap sharing.';
+
+  @override
+  String get shareRemOnHelp =>
+      'On: reminders are sent every evening around 18:00 (Italian time).';
+
+  @override
+  String get shareRemOffHelp => 'Off: no reminders are sent.';
+
+  @override
+  String get shareRemWhen => 'When';
+
+  @override
+  String get shareRemFirstDays => 'Days after sign-up before the first';
+
+  @override
+  String get shareRemEveryDays => 'Days between reminders';
+
+  @override
+  String get shareRemMax => 'Reminders in total per user';
+
+  @override
+  String get shareRemInvalid =>
+      'First: 1 to 60 days. Between: 3 to 60 days. Total: 1 to 52.';
+
+  @override
+  String get shareRemHelp =>
+      'Skipped for users who turned them off, shared something in the last 2 weeks, or haven\'t opened the app in 60 days. Never on a day the app asked for feedback or a rating.';
+
+  @override
+  String get shareRemSent => 'Sent';
+
+  @override
+  String get shareRemOpened => 'Opened';
+
+  @override
+  String get shareRemShares => 'Shares';
+
+  @override
+  String get shareRemTry => 'Try it';
+
+  @override
+  String get shareRemPreview => 'Preview the screen users see';
+
+  @override
+  String get shareRemTest => 'Send me a test reminder';
+
+  @override
+  String get shareRemTestSent => 'Test reminder sent to your phone.';
+
+  @override
+  String get shareRemTestFailed =>
+      'Couldn\'t send it. Check that notifications are allowed on this phone.';
 }

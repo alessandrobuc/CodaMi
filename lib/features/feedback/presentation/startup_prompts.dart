@@ -16,6 +16,7 @@ import '../../whats_new/presentation/screens/whats_new_screen.dart';
 import '../data/feedback_repository.dart';
 import '../domain/feedback_rules.dart';
 import 'widgets/feedback_sheet.dart';
+import '../../sharing/domain/sharing.dart';
 
 // Waits so nothing pops up while the user is starting to do something.
 const _calmDelay = Duration(seconds: 25);
@@ -71,7 +72,8 @@ Future<bool> _showWhatsNew(BuildContext context, WidgetRef ref) async {
 
 Future<void> _askFeedbackOrReview(BuildContext context, WidgetRef ref) async {
   final profile = ref.read(userProfileProvider).value;
-  if (profile == null) return;
+  // A share reminder already asked something of the user today.
+  if (profile == null || openedShareReminderToday(DateTime.now())) return;
   final config = await ref
       .read(pointsConfigProvider.future)
       .timeout(

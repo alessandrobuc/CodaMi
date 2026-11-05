@@ -387,7 +387,7 @@ class _ShareSheetState extends ConsumerState<ShareSheet> {
                   (ShareTarget.tiktok, FontAwesomeIcons.tiktok, 'TikTok'),
                 ])
                   Expanded(
-                    child: _AppButton(
+                    child: ShareAppButton(
                       icon: icon,
                       label: label,
                       busy: _busy == target,
@@ -443,13 +443,14 @@ class _ShareSheetState extends ConsumerState<ShareSheet> {
   }
 }
 
-class _AppButton extends StatelessWidget {
+class ShareAppButton extends StatelessWidget {
   final FaIconData icon;
   final String label;
   final bool busy;
   final VoidCallback? onTap;
 
-  const _AppButton({
+  const ShareAppButton({
+    super.key,
     required this.icon,
     required this.label,
     required this.busy,

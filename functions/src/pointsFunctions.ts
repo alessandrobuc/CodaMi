@@ -1,5 +1,6 @@
 import "./options";
 
+import {ensureShareReminder} from "./shareRemindersFunctions";
 import {createHash} from "node:crypto";
 
 import {getAuth} from "firebase-admin/auth";
@@ -107,6 +108,7 @@ export const registerVisit = onCall(async (request) => {
   });
 
   await evaluateReferral(uid);
+  await ensureShareReminder(uid);
   return {day: today};
 });
 

@@ -6432,4 +6432,135 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get shareDirect => 'Enlace directo';
+
+  @override
+  String get alertShareTitle => 'Recordatorios para compartir';
+
+  @override
+  String get alertShareDescription =>
+      'Más o menos una vez por semana, un recordatorio para invitar a amigos a CodaMi.';
+
+  @override
+  String get shareAppTitle => 'Compartir CodaMi';
+
+  @override
+  String get shareAppHeadline => '¡Ayuda a CodaMi a marcar la diferencia!';
+
+  @override
+  String get shareAppText =>
+      'Compartir nuestra app no te cuesta nada, pero tu apoyo puede tener un impacto enorme en nuestra comunidad y ayudar a más animales a volver a casa. ¡Comparte CodaMi con tus amigos y en tus redes sociales!';
+
+  @override
+  String get shareAppPosterTitle => 'Únete a CodaMi';
+
+  @override
+  String get shareAppPosterText =>
+      'La app gratuita que ayuda a las mascotas perdidas a volver a casa';
+
+  @override
+  String get shareAppBenefitAlerts =>
+      'Avisos cuando se pierde una mascota cerca';
+
+  @override
+  String get shareAppBenefitMap =>
+      'Mapa en vivo de mascotas perdidas y encontradas';
+
+  @override
+  String get shareAppBenefitNeighbours => 'Vecinos que ayudan a vecinos';
+
+  @override
+  String get shareAppCode => 'Código de invitación';
+
+  @override
+  String get shareAppFree => 'Gratis en Google Play y App Store';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 Uso CodaMi, la app gratuita que ayuda a las mascotas perdidas a volver a casa. Únete: ¡cuantos más vecinos la usen, antes aparecen! Mi código de invitación: $code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count amigos se unieron con tu enlace',
+      one: '1 amigo se unió con tu enlace',
+      zero: 'Aún no se ha unido ningún amigo',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => 'Ver tus niveles y premios por invitar';
+
+  @override
+  String get shareAppStop => 'No me lo recuerdes más';
+
+  @override
+  String get shareAppStopped =>
+      'Ya no recibirás recordatorios para compartir. Puedes activarlos de nuevo en Notificaciones.';
+
+  @override
+  String get shareRemAdminTitle => 'Recordatorios para compartir';
+
+  @override
+  String get shareRemAdminSubtitle => 'Aviso semanal para compartir CodaMi';
+
+  @override
+  String get shareRemAdminIntro =>
+      'Unos días después de registrarse, y luego más o menos una vez por semana, los usuarios reciben un aviso para compartir CodaMi. Abre una pantalla con su enlace de invitación, código QR y compartir con un toque.';
+
+  @override
+  String get shareRemOnHelp =>
+      'Activado: los recordatorios salen cada tarde hacia las 18:00 (hora italiana).';
+
+  @override
+  String get shareRemOffHelp => 'Desactivado: no se envían recordatorios.';
+
+  @override
+  String get shareRemWhen => 'Cuándo';
+
+  @override
+  String get shareRemFirstDays => 'Días tras el registro antes del primero';
+
+  @override
+  String get shareRemEveryDays => 'Días entre recordatorios';
+
+  @override
+  String get shareRemMax => 'Recordatorios en total por usuario';
+
+  @override
+  String get shareRemInvalid =>
+      'Primero: de 1 a 60 días. Intervalo: de 3 a 60 días. Total: de 1 a 52.';
+
+  @override
+  String get shareRemHelp =>
+      'No se envían a quien los desactivó, compartió algo en las últimas 2 semanas o no abre la app desde hace 60 días. Nunca el mismo día en que la app pidió una opinión o una valoración.';
+
+  @override
+  String get shareRemSent => 'Enviados';
+
+  @override
+  String get shareRemOpened => 'Abiertos';
+
+  @override
+  String get shareRemShares => 'Compartidos';
+
+  @override
+  String get shareRemTry => 'Probar';
+
+  @override
+  String get shareRemPreview => 'Vista previa de la pantalla de usuarios';
+
+  @override
+  String get shareRemTest => 'Enviarme un recordatorio de prueba';
+
+  @override
+  String get shareRemTestSent =>
+      'Recordatorio de prueba enviado a tu teléfono.';
+
+  @override
+  String get shareRemTestFailed =>
+      'No se pudo enviar. Comprueba que las notificaciones estén permitidas en este teléfono.';
 }

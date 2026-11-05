@@ -31,6 +31,7 @@ extension AlertTypeLabels on AlertType {
     AlertType.resolved => l10n.alertResolvedTitle,
     AlertType.support => l10n.alertSupportTitle,
     AlertType.emergency => l10n.alertEmergencyTitle,
+    AlertType.share => l10n.alertShareTitle,
   };
 
   String description(AppLocalizations l10n) => switch (this) {
@@ -39,6 +40,7 @@ extension AlertTypeLabels on AlertType {
     AlertType.resolved => l10n.alertResolvedDescription,
     AlertType.support => l10n.alertSupportDescription,
     AlertType.emergency => l10n.alertEmergencyDescription,
+    AlertType.share => l10n.alertShareDescription,
   };
 }
 

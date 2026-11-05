@@ -6359,4 +6359,133 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get shareDirect => 'सीधा लिंक';
+
+  @override
+  String get alertShareTitle => 'शेयर रिमाइंडर';
+
+  @override
+  String get alertShareDescription =>
+      'लगभग हफ़्ते में एक बार, दोस्तों को CodaMi पर बुलाने का रिमाइंडर।';
+
+  @override
+  String get shareAppTitle => 'CodaMi शेयर करें';
+
+  @override
+  String get shareAppHeadline => 'CodaMi को बदलाव लाने में मदद करें!';
+
+  @override
+  String get shareAppText =>
+      'हमारा ऐप शेयर करने में आपका कुछ खर्च नहीं होता, लेकिन आपका साथ हमारी कम्युनिटी पर बड़ा असर डाल सकता है और ज़्यादा जानवरों को घर लौटने में मदद कर सकता है। CodaMi को अपने दोस्तों और सोशल नेटवर्क पर शेयर करें!';
+
+  @override
+  String get shareAppPosterTitle => 'CodaMi से जुड़ें';
+
+  @override
+  String get shareAppPosterText =>
+      'मुफ़्त ऐप जो खोए पालतू जानवरों को घर पहुँचाने में मदद करता है';
+
+  @override
+  String get shareAppBenefitAlerts => 'पास में कोई पालतू खोने पर अलर्ट';
+
+  @override
+  String get shareAppBenefitMap => 'खोए और मिले पालतू जानवरों का लाइव मैप';
+
+  @override
+  String get shareAppBenefitNeighbours => 'पड़ोसी, पड़ोसियों की मदद करते हुए';
+
+  @override
+  String get shareAppCode => 'आमंत्रण कोड';
+
+  @override
+  String get shareAppFree => 'Google Play और App Store पर मुफ़्त';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 मैं CodaMi इस्तेमाल करता/करती हूँ, एक मुफ़्त ऐप जो खोए पालतू जानवरों को घर पहुँचाने में मदद करता है। आप भी जुड़ें: जितने ज़्यादा पड़ोसी, उतनी जल्दी पालतू मिलते हैं! मेरा आमंत्रण कोड: $code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'आपके लिंक से $count दोस्त जुड़े',
+      one: 'आपके लिंक से 1 दोस्त जुड़ा',
+      zero: 'अभी कोई दोस्त नहीं जुड़ा',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => 'अपने आमंत्रण लेवल और इनाम देखें';
+
+  @override
+  String get shareAppStop => 'मुझे फिर याद न दिलाएँ';
+
+  @override
+  String get shareAppStopped =>
+      'अब आपको शेयर रिमाइंडर नहीं मिलेंगे। आप इन्हें नोटिफ़िकेशन में फिर से चालू कर सकते हैं।';
+
+  @override
+  String get shareRemAdminTitle => 'शेयर रिमाइंडर';
+
+  @override
+  String get shareRemAdminSubtitle =>
+      'CodaMi शेयर करने के लिए साप्ताहिक नोटिफ़िकेशन';
+
+  @override
+  String get shareRemAdminIntro =>
+      'साइन-अप के कुछ दिन बाद, फिर लगभग हफ़्ते में एक बार, यूज़र को CodaMi शेयर करने का नोटिफ़िकेशन मिलता है। यह उनके आमंत्रण लिंक, QR कोड और एक टैप में शेयर वाली स्क्रीन खोलता है।';
+
+  @override
+  String get shareRemOnHelp =>
+      'चालू: रिमाइंडर हर शाम लगभग 18:00 बजे (इटली के समय) भेजे जाते हैं।';
+
+  @override
+  String get shareRemOffHelp => 'बंद: कोई रिमाइंडर नहीं भेजा जाता।';
+
+  @override
+  String get shareRemWhen => 'कब';
+
+  @override
+  String get shareRemFirstDays => 'साइन-अप के बाद पहले रिमाइंडर तक दिन';
+
+  @override
+  String get shareRemEveryDays => 'रिमाइंडर के बीच दिन';
+
+  @override
+  String get shareRemMax => 'हर यूज़र के लिए कुल रिमाइंडर';
+
+  @override
+  String get shareRemInvalid =>
+      'पहला: 1 से 60 दिन। अंतर: 3 से 60 दिन। कुल: 1 से 52।';
+
+  @override
+  String get shareRemHelp =>
+      'जिन्होंने इन्हें बंद किया, पिछले 2 हफ़्तों में कुछ शेयर किया या 60 दिन से ऐप नहीं खोला, उन्हें नहीं भेजे जाते। जिस दिन ऐप ने फ़ीडबैक या रेटिंग माँगी, उस दिन कभी नहीं।';
+
+  @override
+  String get shareRemSent => 'भेजे गए';
+
+  @override
+  String get shareRemOpened => 'खोले गए';
+
+  @override
+  String get shareRemShares => 'शेयर';
+
+  @override
+  String get shareRemTry => 'आज़माएँ';
+
+  @override
+  String get shareRemPreview => 'यूज़र को दिखने वाली स्क्रीन देखें';
+
+  @override
+  String get shareRemTest => 'मुझे टेस्ट रिमाइंडर भेजें';
+
+  @override
+  String get shareRemTestSent => 'टेस्ट रिमाइंडर आपके फ़ोन पर भेजा गया।';
+
+  @override
+  String get shareRemTestFailed =>
+      'भेजा नहीं जा सका। देखें कि इस फ़ोन पर नोटिफ़िकेशन की अनुमति है।';
 }

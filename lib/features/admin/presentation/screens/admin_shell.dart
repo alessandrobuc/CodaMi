@@ -27,6 +27,7 @@ import 'admin_listings_tab.dart';
 import 'admin_more_tab.dart';
 import 'admin_reported_tab.dart';
 import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../sharing/presentation/screens/share_app_screen.dart';
 
 class _AdminTab {
   final NavItem item;
@@ -76,6 +77,12 @@ class _AdminShellState extends ConsumerState<AdminShell>
             onOpenEmergency: (id) => appNavigatorKey.currentState?.push(
               MaterialPageRoute(
                 builder: (_) => EmergencyScreen(emergencyId: id),
+              ),
+            ),
+            onOpenShareReminder: () => appNavigatorKey.currentState?.push(
+              MaterialPageRoute(
+                builder: (_) =>
+                    const ShareAppScreen(fromReminder: true, preview: true),
               ),
             ),
           );

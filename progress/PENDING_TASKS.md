@@ -2,7 +2,7 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Thu 5 Nov 2026 (personal schedule and social sharing built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
+_Last updated: Thu 5 Nov 2026 (personal schedule, social sharing and share reminders built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
 
 ---
 
@@ -12,6 +12,7 @@ _Last updated: Thu 5 Nov 2026 (personal schedule and social sharing built) (phas
 - [ ] **Pet sitting admin "View profile" (Thu 5 Nov):** new build; Admin → Pet sitting → Reported: "View profile" on a chat report against an owner opens their admin page; "Open" on a sitter or review report opens the sitter profile
 - [ ] **Personal schedule (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (new `scheduleReminderSweep` every 5 minutes, rules for `scheduleEvents`, `config/schedule`); new build; phone test with `TEST_SCENARIO_SCHEDULE_2026-11-05.md`; then Admin → More → My schedule → Show to users
 - [ ] **Social sharing (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules,hosting` (new `reportPage`, `logReportShare`, the `/r/**` page, rules for `config/sharing`, `reportShares`, `shareStats`); new build (installs the codami:// link); phone test with `TEST_SCENARIO_SHARING_2026-11-05.md`; then Admin → More → Social sharing → Share pop-up on
+- [ ] **Share reminders (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (new `shareReminderSweep` at 18:00 Italian time, `shareReminderEvent`, `testShareReminder`; changed `registerVisit`, `logReportShare`; rules for `config/shareReminders`, `shareReminders`, `shareReminderStats` and the `share` notification switch); new build; phone test with `TEST_SCENARIO_SHARE_REMINDERS_2026-11-05.md`; then Admin → More → Share reminders → on
 - [ ] **Owner profiles and two-way reviews:** client asked Thu 5 Nov to see the reviews of whoever published a request; plan sent, waiting for the go-ahead
 
 - [ ] **Pet sitting fixes (Wed 4 Nov):** `firebase deploy --only functions` (changed `acceptSittingOffer`, `confirmSitting`; new trigger `onSittingRequestUpdated` sends the "accepted" and "please confirm" pushes); new build; check the spinner on Accept, the avatar letter in chat, and scrolling up in a long chat
@@ -63,7 +64,7 @@ Fixes found while testing go here:
 
 ## 2. Development left (ours)
 
-- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner, the heat calendar, pet sitting, the personal schedule, social sharing.
+- [ ] **Phase 5 (client request Tue 3 Nov, `PHASE_5_REQUESTS.md`):** go-ahead given Wed 4 Nov, no fixed order. Built so far: the AI breed scanner, the heat calendar, pet sitting, the personal schedule, social sharing, share reminders.
   - [ ] 1. Feedback (request 7, about 1 day): current feedback entry → Google Play review; separate internal feedback (type, optional stars, text), asked after 10-20 uses of a feature, 2-week cooldown, admin list with filters and settings
   - [ ] 2. Social sharing (request 5, about 2 days): pop-up after a lost or found report, share image (photo, status, details, logo), public report page with link, WhatsApp / Facebook with link, Instagram / TikTok image only
   - [ ] 3. Share reminders (request 6, about half a day): first after X days, then weekly, off switch for users and admin, client's text in 10 languages

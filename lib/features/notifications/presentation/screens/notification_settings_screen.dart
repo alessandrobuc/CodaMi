@@ -19,6 +19,7 @@ class NotificationSettingsScreen extends ConsumerWidget {
     AlertType.resolved: (Icons.home_rounded, AppColors.accent),
     AlertType.support: (Icons.support_agent_rounded, AppColors.primaryDark),
     AlertType.emergency: (Icons.emergency_rounded, AppColors.danger),
+    AlertType.share: (Icons.campaign_rounded, AppColors.primary),
   };
 
   Future<void> _run(

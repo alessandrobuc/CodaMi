@@ -1,5 +1,5 @@
 // Stored on `users/{uid}.notificationPrefs`; Cloud Functions read the same keys.
-enum AlertType { lost, found, resolved, support, emergency }
+enum AlertType { lost, found, resolved, support, emergency, share }
 
 enum SoundKind {
   deviceDefault('default'),

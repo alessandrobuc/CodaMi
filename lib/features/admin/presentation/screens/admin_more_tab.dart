@@ -42,6 +42,7 @@ import '../../../walks/presentation/screens/admin_walks_screen.dart';
 import '../../../walks/presentation/widgets/walk_widgets.dart';
 import '../../../shop/presentation/widgets/shop_widgets.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../sharing/presentation/screens/admin_share_reminders_screen.dart';
 
 class AdminMoreTab extends ConsumerWidget {
   const AdminMoreTab({super.key});
@@ -254,6 +255,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminSharingScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.notifications_active_rounded,
+                    color: AppColors.primary,
+                    title: l10n.shareRemAdminTitle,
+                    subtitle: l10n.shareRemAdminSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminShareRemindersScreen(),
                       ),
                     ),
                   ),

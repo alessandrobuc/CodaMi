@@ -6348,4 +6348,135 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shareDirect => 'رابط مباشر';
+
+  @override
+  String get alertShareTitle => 'تذكيرات المشاركة';
+
+  @override
+  String get alertShareDescription =>
+      'مرة في الأسبوع تقريبًا، تذكير بدعوة أصدقائك إلى CodaMi.';
+
+  @override
+  String get shareAppTitle => 'شارك CodaMi';
+
+  @override
+  String get shareAppHeadline => 'ساعد CodaMi على إحداث فرق!';
+
+  @override
+  String get shareAppText =>
+      'مشاركة تطبيقنا لا تكلفك شيئًا، لكن دعمك قد يُحدث أثرًا كبيرًا في مجتمعنا ويساعد المزيد من الحيوانات على العودة إلى البيت. شارك CodaMi مع أصدقائك وعلى شبكاتك الاجتماعية!';
+
+  @override
+  String get shareAppPosterTitle => 'انضم إلى CodaMi';
+
+  @override
+  String get shareAppPosterText =>
+      'التطبيق المجاني الذي يساعد الحيوانات الضائعة على العودة إلى البيت';
+
+  @override
+  String get shareAppBenefitAlerts => 'تنبيهات عند فقدان حيوان بالقرب منك';
+
+  @override
+  String get shareAppBenefitMap => 'خريطة مباشرة للحيوانات المفقودة والموجودة';
+
+  @override
+  String get shareAppBenefitNeighbours => 'جيران يساعدون جيرانهم';
+
+  @override
+  String get shareAppCode => 'رمز الدعوة';
+
+  @override
+  String get shareAppFree => 'مجاني على Google Play وApp Store';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 أستخدم CodaMi، التطبيق المجاني الذي يساعد الحيوانات الضائعة على العودة إلى البيت. انضم إلي: كلما زاد الجيران، عُثر عليها أسرع! رمز دعوتي: $code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'انضم $count صديقًا عبر رابطك',
+      few: 'انضم $count أصدقاء عبر رابطك',
+      two: 'انضم صديقان عبر رابطك',
+      one: 'انضم صديق واحد عبر رابطك',
+      zero: 'لم ينضم أي صديق بعد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => 'اطّلع على مستويات الدعوة والمكافآت';
+
+  @override
+  String get shareAppStop => 'لا تذكّرني مرة أخرى';
+
+  @override
+  String get shareAppStopped =>
+      'لن تصلك تذكيرات المشاركة بعد الآن. يمكنك إعادة تشغيلها من الإشعارات.';
+
+  @override
+  String get shareRemAdminTitle => 'تذكيرات المشاركة';
+
+  @override
+  String get shareRemAdminSubtitle =>
+      'إشعار أسبوعي يدعو المستخدمين لمشاركة CodaMi';
+
+  @override
+  String get shareRemAdminIntro =>
+      'بعد أيام قليلة من التسجيل، ثم مرة في الأسبوع تقريبًا، يتلقى المستخدمون إشعارًا يدعوهم لمشاركة CodaMi. يفتح شاشة فيها رابط الدعوة ورمز QR والمشاركة بلمسة واحدة.';
+
+  @override
+  String get shareRemOnHelp =>
+      'تشغيل: تُرسل التذكيرات كل مساء نحو الساعة 18:00 (بتوقيت إيطاليا).';
+
+  @override
+  String get shareRemOffHelp => 'إيقاف: لا تُرسل أي تذكيرات.';
+
+  @override
+  String get shareRemWhen => 'متى';
+
+  @override
+  String get shareRemFirstDays => 'أيام بعد التسجيل قبل أول تذكير';
+
+  @override
+  String get shareRemEveryDays => 'أيام بين التذكيرات';
+
+  @override
+  String get shareRemMax => 'إجمالي التذكيرات لكل مستخدم';
+
+  @override
+  String get shareRemInvalid =>
+      'الأول: من 1 إلى 60 يومًا. الفاصل: من 3 إلى 60 يومًا. الإجمالي: من 1 إلى 52.';
+
+  @override
+  String get shareRemHelp =>
+      'لا تُرسل لمن أوقفها، أو شارك شيئًا خلال الأسبوعين الماضيين، أو لم يفتح التطبيق منذ 60 يومًا. ولا تُرسل أبدًا في يوم طلب فيه التطبيق رأيًا أو تقييمًا.';
+
+  @override
+  String get shareRemSent => 'المُرسلة';
+
+  @override
+  String get shareRemOpened => 'المفتوحة';
+
+  @override
+  String get shareRemShares => 'المشاركات';
+
+  @override
+  String get shareRemTry => 'جرّب';
+
+  @override
+  String get shareRemPreview => 'معاينة الشاشة التي يراها المستخدمون';
+
+  @override
+  String get shareRemTest => 'أرسل لي تذكيرًا تجريبيًا';
+
+  @override
+  String get shareRemTestSent => 'تم إرسال التذكير التجريبي إلى هاتفك.';
+
+  @override
+  String get shareRemTestFailed =>
+      'تعذر الإرسال. تأكد من السماح بالإشعارات على هذا الهاتف.';
 }

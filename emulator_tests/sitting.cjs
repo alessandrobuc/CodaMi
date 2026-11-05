@@ -136,7 +136,8 @@ const offer = (requestId, ownerId, sitterId, extra = {}) => ({
   ok(await get(owner.token, `sittingOffers/${o1}`) === 200 && await get(sitter.token, `sittingOffers/${o1}`) === 200, "owner and sitter read the offer");
   ok(await get(stranger.token, `sittingOffers/${o1}`) === 403, "nobody else reads it");
   let counted;
-  for (let i = 0; i < 20 && counted !== 2; i++) {
+  // The trigger can take a while to start on the emulator.
+  for (let i = 0; i < 60 && counted !== 2; i++) {
     await wait(500);
     counted = (await db.collection("sittingRequests").doc("r1").get()).get("offerCount");
   }

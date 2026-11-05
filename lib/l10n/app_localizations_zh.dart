@@ -6053,4 +6053,125 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shareDirect => '直接链接';
+
+  @override
+  String get alertShareTitle => '分享提醒';
+
+  @override
+  String get alertShareDescription => '大约每周一次，提醒你邀请朋友加入 CodaMi。';
+
+  @override
+  String get shareAppTitle => '分享 CodaMi';
+
+  @override
+  String get shareAppHeadline => '帮助 CodaMi 带来改变！';
+
+  @override
+  String get shareAppText =>
+      '分享我们的应用不花你一分钱，但你的支持能给我们的社区带来巨大的影响，帮助更多动物回家。把 CodaMi 分享给朋友和你的社交网络吧！';
+
+  @override
+  String get shareAppPosterTitle => '加入 CodaMi';
+
+  @override
+  String get shareAppPosterText => '帮助走失宠物回家的免费应用';
+
+  @override
+  String get shareAppBenefitAlerts => '附近有宠物走失时提醒你';
+
+  @override
+  String get shareAppBenefitMap => '走失和捡到宠物的实时地图';
+
+  @override
+  String get shareAppBenefitNeighbours => '邻里互助';
+
+  @override
+  String get shareAppCode => '邀请码';
+
+  @override
+  String get shareAppFree => '在 Google Play 和 App Store 免费下载';
+
+  @override
+  String shareAppMessage(String code) {
+    return '🐾 我在用 CodaMi，这是一款帮助走失宠物回家的免费应用。一起来吧：用的邻居越多，走失的宠物就越快被找到！我的邀请码：$code';
+  }
+
+  @override
+  String shareAppJoined(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '已有 $count 位朋友通过你的链接加入',
+      zero: '还没有朋友加入',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get shareAppSeeRewards => '查看你的邀请等级和奖励';
+
+  @override
+  String get shareAppStop => '不再提醒我';
+
+  @override
+  String get shareAppStopped => '你将不再收到分享提醒。可以在“通知”中重新开启。';
+
+  @override
+  String get shareRemAdminTitle => '分享提醒';
+
+  @override
+  String get shareRemAdminSubtitle => '每周推送，邀请用户分享 CodaMi';
+
+  @override
+  String get shareRemAdminIntro =>
+      '注册几天后，以及之后大约每周一次，用户会收到邀请分享 CodaMi 的推送。点开后是一个包含邀请链接、二维码和一键分享的页面。';
+
+  @override
+  String get shareRemOnHelp => '开启：每天晚上 18:00 左右（意大利时间）发送提醒。';
+
+  @override
+  String get shareRemOffHelp => '关闭：不发送提醒。';
+
+  @override
+  String get shareRemWhen => '时间';
+
+  @override
+  String get shareRemFirstDays => '注册后多少天发送第一次';
+
+  @override
+  String get shareRemEveryDays => '两次提醒间隔天数';
+
+  @override
+  String get shareRemMax => '每位用户的提醒总数';
+
+  @override
+  String get shareRemInvalid => '第一次：1 到 60 天。间隔：3 到 60 天。总数：1 到 52。';
+
+  @override
+  String get shareRemHelp =>
+      '已关闭提醒、最近 2 周分享过内容或 60 天未打开应用的用户不会收到。应用请求反馈或评分的当天不会发送。';
+
+  @override
+  String get shareRemSent => '已发送';
+
+  @override
+  String get shareRemOpened => '已打开';
+
+  @override
+  String get shareRemShares => '分享次数';
+
+  @override
+  String get shareRemTry => '试一试';
+
+  @override
+  String get shareRemPreview => '预览用户看到的页面';
+
+  @override
+  String get shareRemTest => '给我发送一条测试提醒';
+
+  @override
+  String get shareRemTestSent => '测试提醒已发送到你的手机。';
+
+  @override
+  String get shareRemTestFailed => '发送失败。请检查这台手机是否允许通知。';
 }

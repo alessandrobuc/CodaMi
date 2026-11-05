@@ -302,7 +302,7 @@ service cloud.firestore {
               && request.resource.data.blockedUsers.size() <= 500))
           && (!('notificationPrefs' in request.resource.data)
             || (request.resource.data.notificationPrefs is map
-              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support', 'emergency']))))
+              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support', 'emergency', 'share']))))
         || (isAdmin() && !isUser(uid)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
           && roleOf(resource.data) in ['user', 'support']
@@ -836,6 +836,27 @@ service cloud.firestore {
         && request.resource.data.model is string
         && request.resource.data.model.matches('gemini-[a-z0-9.-]{1,60}')
         && shopStamped(request.resource.data);
+    }
+
+    // Share reminders: when and how often (sent by the evening sweep).
+    match /config/shareReminders {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'firstDays', 'everyDays', 'maxCount', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.firstDays is int && request.resource.data.firstDays >= 1 && request.resource.data.firstDays <= 60
+        && request.resource.data.everyDays is int && request.resource.data.everyDays >= 3 && request.resource.data.everyDays <= 60
+        && request.resource.data.maxCount is int && request.resource.data.maxCount >= 1 && request.resource.data.maxCount <= 52
+        && shopStamped(request.resource.data);
+    }
+
+    // Each user's next reminder, written only by the server.
+    match /shareReminders/{uid} {
+      allow read: if isUser(uid) || isAdmin();
+    }
+
+    match /shareReminderStats/{day} {
+      allow read: if isAdmin();
     }
 
     // Share pop-up switch.
