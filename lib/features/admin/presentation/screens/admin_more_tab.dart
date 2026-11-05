@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../schedule/presentation/screens/admin_schedule_screen.dart';
+import '../../../sharing/presentation/screens/admin_sharing_screen.dart';
 import '../../../schedule/presentation/widgets/schedule_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -242,6 +243,17 @@ class AdminMoreTab extends ConsumerWidget {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const AdminSittingScreen(),
+                      ),
+                    ),
+                  ),
+                  _Tile(
+                    icon: Icons.campaign_rounded,
+                    color: AppColors.primary,
+                    title: l10n.shareAdminTitle,
+                    subtitle: l10n.shareAdminSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AdminSharingScreen(),
                       ),
                     ),
                   ),

@@ -77,6 +77,13 @@
     "cleanUrls": true,
     "rewrites": [
       {
+        "source": "/r/**",
+        "function": {
+          "functionId": "reportPage",
+          "region": "europe-west1"
+        }
+      },
+      {
         "source": "/api/invite-open",
         "function": {
           "functionId": "trackInviteOpen",

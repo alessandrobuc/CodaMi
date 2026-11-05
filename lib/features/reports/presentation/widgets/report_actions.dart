@@ -9,6 +9,8 @@ import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../donations/domain/donations.dart';
 import '../../../donations/presentation/support_screen.dart';
+import '../../../sharing/domain/sharing.dart';
+import '../../../sharing/presentation/share_sheet.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../../domain/repositories/reports_repository.dart';
 import '../providers/reports_provider.dart';
@@ -59,8 +61,19 @@ Future<bool> resolveReport(
     action: () => ref.read(reportsRepositoryProvider).markResolved(r),
     success: context.l10n.reportResolvedSuccess,
   );
-  if (done) unawaited(maybeAskForSupport(ref, DonationTrigger.afterFound));
-  return done;
+  if (!done) return false;
+  if (sharePopupOn(ref) && context.mounted) {
+    await showReportShareSheet(
+      context,
+      r,
+      kind: ShareKind.reunited,
+      prompt: true,
+    );
+  }
+  if (context.mounted) {
+    unawaited(maybeAskForSupport(ref, DonationTrigger.afterFound));
+  }
+  return true;
 }
 
 Future<bool> deleteReport(

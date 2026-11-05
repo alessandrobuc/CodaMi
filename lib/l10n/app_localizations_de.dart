@@ -6241,4 +6241,210 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get schOffHelp => 'Aus: nur Admins sehen ihn.';
+
+  @override
+  String get shareBadgeLost => 'VERMISST';
+
+  @override
+  String get shareBadgeFound => 'GEFUNDEN';
+
+  @override
+  String get shareBadgeHome => 'WIEDER ZU HAUSE';
+
+  @override
+  String get shareBadgeReunited => 'WIEDERVEREINT';
+
+  @override
+  String shareLostOn(String date) {
+    return 'Vermisst seit $date';
+  }
+
+  @override
+  String shareFoundOn(String date) {
+    return 'Gefunden am $date';
+  }
+
+  @override
+  String shareHomeTitle(String name) {
+    return '$name ist wieder zu Hause!';
+  }
+
+  @override
+  String get shareHomeThanks => 'Danke fürs Teilen';
+
+  @override
+  String get shareHomeHelp =>
+      'Jedes Teilen hilft. Mach mit bei CodaMi und hilf Tieren in deiner Nähe.';
+
+  @override
+  String shareSeenHelp(String name) {
+    return '$name gesehen? Code scannen oder CodaMi suchen.';
+  }
+
+  @override
+  String get shareYoursHelp =>
+      'Ist das dein Tier? Code scannen oder CodaMi suchen.';
+
+  @override
+  String get shareScan => 'SCANNEN';
+
+  @override
+  String get shareTagline => 'Wir helfen vermissten Tieren nach Hause';
+
+  @override
+  String shareSheetTitleLost(String name) {
+    return 'Hilf $name nach Hause';
+  }
+
+  @override
+  String shareSheetTextLost(String name) {
+    return 'Die meisten vermissten Tiere werden dank Nachbarn gefunden. Jedes Teilen bringt $name ein Stück näher nach Hause.';
+  }
+
+  @override
+  String get shareSheetTitleFound => 'Hilf, die Familie zu finden';
+
+  @override
+  String get shareSheetTextFound =>
+      'Teile es, damit der Besitzer es schnell sieht. Jemand sucht dieses Tier gerade jetzt.';
+
+  @override
+  String get shareSheetTitleHome => 'Teile die gute Nachricht! 🎉';
+
+  @override
+  String get shareSheetTextHome =>
+      'Happy Ends ermutigen andere zu helfen und bringen mehr Menschen zu CodaMi.';
+
+  @override
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  ) {
+    return '🚨 VERMISST $species: $name\n📍 $place · $date\nBitte teilen und $name nach Hause helfen!';
+  }
+
+  @override
+  String shareMessageFound(String species, String place, String date) {
+    return '🐾 GEFUNDEN $species\n📍 $place · $date\nKennst du den Besitzer? Bitte teilen!';
+  }
+
+  @override
+  String shareMessageHome(String name) {
+    return '🎉 $name ist wieder zu Hause!\nDanke an alle, die geteilt haben. ❤️';
+  }
+
+  @override
+  String get shareMessageFooter =>
+      'CodaMi hilft vermissten Tieren nach Hause 🐾';
+
+  @override
+  String get shareTagLost => '#TierVermisst';
+
+  @override
+  String get shareTagFound => '#TierGefunden';
+
+  @override
+  String get shareTagHome => '#WiederZuHause';
+
+  @override
+  String get shareCaptionCopiedFacebook =>
+      'Text mit Link kopiert. Füge ihn in deinen Facebook-Beitrag ein.';
+
+  @override
+  String get shareCaptionCopiedInstagram =>
+      'Text kopiert. Füge ihn in deinen Instagram-Beitrag oder deine Story ein.';
+
+  @override
+  String get shareCaptionCopiedTiktok =>
+      'Text kopiert. Füge ihn in deinen TikTok-Beitrag ein.';
+
+  @override
+  String get shareImageSaved => 'Bild in deinen Fotos gespeichert';
+
+  @override
+  String get shareLinkCopied => 'Link kopiert';
+
+  @override
+  String get shareFailed =>
+      'Teilen gerade nicht möglich. Bitte versuche es erneut.';
+
+  @override
+  String get shareMore => 'Mehr';
+
+  @override
+  String get shareSave => 'Bild speichern';
+
+  @override
+  String get shareCopyLink => 'Link kopieren';
+
+  @override
+  String get shareTip =>
+      'Es werden keine Telefonnummer und keine genaue Adresse geteilt. Man kontaktiert dich in der App.';
+
+  @override
+  String get shareNotNow => 'Nicht jetzt';
+
+  @override
+  String shareStatsLine(int shares, int views) {
+    String _temp0 = intl.Intl.pluralLogic(
+      shares,
+      locale: localeName,
+      other: '$shares-mal geteilt',
+      one: 'Einmal geteilt',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      views,
+      locale: localeName,
+      other: '$views Seitenaufrufe',
+      one: '1 Seitenaufruf',
+    );
+    return '$_temp0 · $_temp1';
+  }
+
+  @override
+  String get shareAdminTitle => 'Teilen in sozialen Netzwerken';
+
+  @override
+  String get shareAdminSubtitle => 'Teilen-Pop-up und Zahlen';
+
+  @override
+  String get shareAdminIntro =>
+      'Nach dem Veröffentlichen einer Vermisst- oder Fundmeldung und wenn ein Tier wieder zu Hause ist, werden Nutzer gebeten, sie auf WhatsApp, Facebook, Instagram, TikTok und mehr zu teilen, mit einem Bild und einem Link zur Webseite der Meldung.';
+
+  @override
+  String get shareAdminPopup => 'Teilen-Pop-up';
+
+  @override
+  String get shareAdminOnHelp =>
+      'Ein: Das Pop-up öffnet sich nach dem Veröffentlichen und wenn ein Tier wieder zu Hause ist.';
+
+  @override
+  String get shareAdminOffHelp =>
+      'Aus: Nur Admins sehen das Pop-up. Die Teilen-Taste an Meldungen funktioniert immer.';
+
+  @override
+  String get shareAdminLast30 => 'Letzte 30 Tage';
+
+  @override
+  String get shareAdminShares => 'Geteilt';
+
+  @override
+  String get shareAdminViews => 'Seitenaufrufe';
+
+  @override
+  String get shareAdminByApp => 'Geteilt auf';
+
+  @override
+  String get shareAdminVisitsFrom => 'Aufrufe von';
+
+  @override
+  String get shareNoneYet => 'Noch nichts.';
+
+  @override
+  String get shareFromQr => 'QR-Code';
+
+  @override
+  String get shareDirect => 'Direkter Link';
 }

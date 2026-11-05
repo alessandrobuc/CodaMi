@@ -6154,4 +6154,209 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get schOffHelp => 'बंद: सिर्फ़ एडमिन देख सकते हैं।';
+
+  @override
+  String get shareBadgeLost => 'खोया';
+
+  @override
+  String get shareBadgeFound => 'मिला';
+
+  @override
+  String get shareBadgeHome => 'घर लौटा';
+
+  @override
+  String get shareBadgeReunited => 'फिर साथ';
+
+  @override
+  String shareLostOn(String date) {
+    return '$date को खोया';
+  }
+
+  @override
+  String shareFoundOn(String date) {
+    return '$date को मिला';
+  }
+
+  @override
+  String shareHomeTitle(String name) {
+    return '$name घर लौट आया!';
+  }
+
+  @override
+  String get shareHomeThanks => 'शेयर करने के लिए धन्यवाद';
+
+  @override
+  String get shareHomeHelp =>
+      'हर शेयर मदद करता है। CodaMi से जुड़ें और आस-पास के जानवरों की मदद करें।';
+
+  @override
+  String shareSeenHelp(String name) {
+    return '$name को देखा? कोड स्कैन करें या CodaMi खोजें।';
+  }
+
+  @override
+  String get shareYoursHelp =>
+      'क्या यह आपका पालतू है? कोड स्कैन करें या CodaMi खोजें।';
+
+  @override
+  String get shareScan => 'स्कैन करें';
+
+  @override
+  String get shareTagline => 'खोए पालतू जानवरों को घर पहुँचाने में मदद';
+
+  @override
+  String shareSheetTitleLost(String name) {
+    return '$name को घर लाने में मदद करें';
+  }
+
+  @override
+  String shareSheetTextLost(String name) {
+    return 'ज़्यादातर खोए पालतू जानवर पड़ोसियों की वजह से मिलते हैं। हर शेयर $name को घर के और करीब लाता है।';
+  }
+
+  @override
+  String get shareSheetTitleFound => 'परिवार को ढूँढने में मदद करें';
+
+  @override
+  String get shareSheetTextFound =>
+      'शेयर करें ताकि मालिक जल्दी देख ले। कोई अभी इस पालतू को ढूँढ रहा है।';
+
+  @override
+  String get shareSheetTitleHome => 'खुशखबरी शेयर करें! 🎉';
+
+  @override
+  String get shareSheetTextHome =>
+      'खुशहाल अंत दूसरों को मदद करने के लिए प्रेरित करते हैं और ज़्यादा लोगों को CodaMi तक लाते हैं।';
+
+  @override
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  ) {
+    return '🚨 खोया $species: $name\n📍 $place · $date\nकृपया शेयर करें और $name को घर लाने में मदद करें!';
+  }
+
+  @override
+  String shareMessageFound(String species, String place, String date) {
+    return '🐾 मिला $species\n📍 $place · $date\nक्या आप मालिक को जानते हैं? कृपया शेयर करें!';
+  }
+
+  @override
+  String shareMessageHome(String name) {
+    return '🎉 $name घर लौट आया!\nशेयर करने वाले सभी लोगों का धन्यवाद। ❤️';
+  }
+
+  @override
+  String get shareMessageFooter =>
+      'CodaMi खोए पालतू जानवरों को घर पहुँचाने में मदद करता है 🐾';
+
+  @override
+  String get shareTagLost => '#खोयापालतू';
+
+  @override
+  String get shareTagFound => '#मिलापालतू';
+
+  @override
+  String get shareTagHome => '#घरवापसी';
+
+  @override
+  String get shareCaptionCopiedFacebook =>
+      'लिंक के साथ टेक्स्ट कॉपी हो गया। इसे अपनी Facebook पोस्ट में पेस्ट करें।';
+
+  @override
+  String get shareCaptionCopiedInstagram =>
+      'टेक्स्ट कॉपी हो गया। इसे अपनी Instagram पोस्ट या स्टोरी में पेस्ट करें।';
+
+  @override
+  String get shareCaptionCopiedTiktok =>
+      'टेक्स्ट कॉपी हो गया। इसे अपनी TikTok पोस्ट में पेस्ट करें।';
+
+  @override
+  String get shareImageSaved => 'इमेज आपकी फ़ोटो में सेव हो गई';
+
+  @override
+  String get shareLinkCopied => 'लिंक कॉपी हो गया';
+
+  @override
+  String get shareFailed => 'अभी शेयर नहीं हो सका। फिर से कोशिश करें।';
+
+  @override
+  String get shareMore => 'और';
+
+  @override
+  String get shareSave => 'इमेज सेव करें';
+
+  @override
+  String get shareCopyLink => 'लिंक कॉपी करें';
+
+  @override
+  String get shareTip =>
+      'कोई फ़ोन नंबर या सटीक पता शेयर नहीं होता। लोग ऐप में आपसे संपर्क करते हैं।';
+
+  @override
+  String get shareNotNow => 'अभी नहीं';
+
+  @override
+  String shareStatsLine(int shares, int views) {
+    String _temp0 = intl.Intl.pluralLogic(
+      shares,
+      locale: localeName,
+      other: '$shares बार शेयर हुआ',
+      one: 'एक बार शेयर हुआ',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      views,
+      locale: localeName,
+      other: 'पेज पर $views विज़िट',
+      one: 'पेज पर 1 विज़िट',
+    );
+    return '$_temp0 · $_temp1';
+  }
+
+  @override
+  String get shareAdminTitle => 'सोशल शेयरिंग';
+
+  @override
+  String get shareAdminSubtitle => 'शेयर पॉप-अप और आँकड़े';
+
+  @override
+  String get shareAdminIntro =>
+      'खोए या मिले जानवर की रिपोर्ट पब्लिश करने के बाद, और जब कोई पालतू घर लौटता है, तो यूज़र से इसे WhatsApp, Facebook, Instagram, TikTok वगैरह पर शेयर करने को कहा जाता है, एक इमेज और रिपोर्ट के वेब पेज के लिंक के साथ।';
+
+  @override
+  String get shareAdminPopup => 'शेयर पॉप-अप';
+
+  @override
+  String get shareAdminOnHelp =>
+      'चालू: रिपोर्ट पब्लिश करने के बाद और पालतू के घर लौटने पर पॉप-अप खुलता है।';
+
+  @override
+  String get shareAdminOffHelp =>
+      'बंद: पॉप-अप सिर्फ़ एडमिन देखते हैं। रिपोर्ट पर शेयर बटन हमेशा काम करता है।';
+
+  @override
+  String get shareAdminLast30 => 'पिछले 30 दिन';
+
+  @override
+  String get shareAdminShares => 'शेयर';
+
+  @override
+  String get shareAdminViews => 'रिपोर्ट पेज विज़िट';
+
+  @override
+  String get shareAdminByApp => 'कहाँ शेयर हुआ';
+
+  @override
+  String get shareAdminVisitsFrom => 'विज़िट कहाँ से';
+
+  @override
+  String get shareNoneYet => 'अभी कुछ नहीं।';
+
+  @override
+  String get shareFromQr => 'QR कोड';
+
+  @override
+  String get shareDirect => 'सीधा लिंक';
 }

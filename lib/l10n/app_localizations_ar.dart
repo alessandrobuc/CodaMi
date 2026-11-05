@@ -6140,4 +6140,212 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get schOffHelp => 'إيقاف: لا يراه إلا المشرفون.';
+
+  @override
+  String get shareBadgeLost => 'مفقود';
+
+  @override
+  String get shareBadgeFound => 'تم العثور عليه';
+
+  @override
+  String get shareBadgeHome => 'عاد إلى البيت';
+
+  @override
+  String get shareBadgeReunited => 'اجتمع شمله';
+
+  @override
+  String shareLostOn(String date) {
+    return 'فُقد في $date';
+  }
+
+  @override
+  String shareFoundOn(String date) {
+    return 'عُثر عليه في $date';
+  }
+
+  @override
+  String shareHomeTitle(String name) {
+    return 'عاد $name إلى البيت!';
+  }
+
+  @override
+  String get shareHomeThanks => 'شكرًا لكل من شارك';
+
+  @override
+  String get shareHomeHelp =>
+      'كل مشاركة تساعد. انضم إلى CodaMi وساعد الحيوانات من حولك.';
+
+  @override
+  String shareSeenHelp(String name) {
+    return 'هل رأيت $name؟ امسح الرمز أو ابحث عن CodaMi.';
+  }
+
+  @override
+  String get shareYoursHelp => 'هل هذا حيوانك؟ امسح الرمز أو ابحث عن CodaMi.';
+
+  @override
+  String get shareScan => 'امسحني';
+
+  @override
+  String get shareTagline => 'نساعد الحيوانات الضائعة على العودة إلى البيت';
+
+  @override
+  String shareSheetTitleLost(String name) {
+    return 'ساعد $name على العودة إلى البيت';
+  }
+
+  @override
+  String shareSheetTextLost(String name) {
+    return 'معظم الحيوانات الضائعة يُعثر عليها بفضل الجيران. كل مشاركة تقرّب $name من البيت.';
+  }
+
+  @override
+  String get shareSheetTitleFound => 'ساعد في العثور على العائلة';
+
+  @override
+  String get shareSheetTextFound =>
+      'شاركه ليراه صاحبه بسرعة. هناك من يبحث عن هذا الحيوان الآن.';
+
+  @override
+  String get shareSheetTitleHome => 'شارك الخبر السعيد! 🎉';
+
+  @override
+  String get shareSheetTextHome =>
+      'النهايات السعيدة تشجع الآخرين على المساعدة وتجلب المزيد من الناس إلى CodaMi.';
+
+  @override
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  ) {
+    return '🚨 مفقود $species: $name\n📍 $place · $date\nشارك وساعد $name على العودة إلى البيت!';
+  }
+
+  @override
+  String shareMessageFound(String species, String place, String date) {
+    return '🐾 تم العثور على $species\n📍 $place · $date\nهل تعرف صاحبه؟ شارك من فضلك!';
+  }
+
+  @override
+  String shareMessageHome(String name) {
+    return '🎉 عاد $name إلى البيت!\nشكرًا لكل من شارك. ❤️';
+  }
+
+  @override
+  String get shareMessageFooter =>
+      'يساعد CodaMi الحيوانات الضائعة على العودة إلى البيت 🐾';
+
+  @override
+  String get shareTagLost => '#حيوان_مفقود';
+
+  @override
+  String get shareTagFound => '#حيوان_موجود';
+
+  @override
+  String get shareTagHome => '#عاد_للبيت';
+
+  @override
+  String get shareCaptionCopiedFacebook =>
+      'تم نسخ النص مع الرابط. الصقه في منشورك على Facebook.';
+
+  @override
+  String get shareCaptionCopiedInstagram =>
+      'تم نسخ النص. الصقه في منشورك أو قصتك على Instagram.';
+
+  @override
+  String get shareCaptionCopiedTiktok =>
+      'تم نسخ النص. الصقه في منشورك على TikTok.';
+
+  @override
+  String get shareImageSaved => 'تم حفظ الصورة في صورك';
+
+  @override
+  String get shareLinkCopied => 'تم نسخ الرابط';
+
+  @override
+  String get shareFailed => 'تعذرت المشاركة الآن. حاول مرة أخرى.';
+
+  @override
+  String get shareMore => 'المزيد';
+
+  @override
+  String get shareSave => 'حفظ الصورة';
+
+  @override
+  String get shareCopyLink => 'نسخ الرابط';
+
+  @override
+  String get shareTip =>
+      'لا تتم مشاركة رقم الهاتف أو العنوان الدقيق. يتواصل الناس معك داخل التطبيق.';
+
+  @override
+  String get shareNotNow => 'ليس الآن';
+
+  @override
+  String shareStatsLine(int shares, int views) {
+    String _temp0 = intl.Intl.pluralLogic(
+      shares,
+      locale: localeName,
+      other: 'تمت المشاركة $shares مرة',
+      few: 'تمت المشاركة $shares مرات',
+      two: 'تمت المشاركة مرتين',
+      one: 'تمت المشاركة مرة واحدة',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      views,
+      locale: localeName,
+      other: '$views زيارة للصفحة',
+      few: '$views زيارات للصفحة',
+      two: 'زيارتان للصفحة',
+      one: 'زيارة واحدة للصفحة',
+    );
+    return '$_temp0 · $_temp1';
+  }
+
+  @override
+  String get shareAdminTitle => 'المشاركة على مواقع التواصل';
+
+  @override
+  String get shareAdminSubtitle => 'نافذة المشاركة والأرقام';
+
+  @override
+  String get shareAdminIntro =>
+      'بعد نشر بلاغ عن حيوان مفقود أو تم العثور عليه، وعند عودة حيوان إلى البيت، يُطلب من المستخدمين مشاركته على WhatsApp وFacebook وInstagram وTikTok وغيرها، مع صورة ورابط لصفحة البلاغ على الويب.';
+
+  @override
+  String get shareAdminPopup => 'نافذة المشاركة';
+
+  @override
+  String get shareAdminOnHelp =>
+      'تشغيل: تظهر النافذة بعد النشر وعند عودة حيوان إلى البيت.';
+
+  @override
+  String get shareAdminOffHelp =>
+      'إيقاف: لا يرى النافذة إلا المشرفون. زر المشاركة في البلاغات يعمل دائمًا.';
+
+  @override
+  String get shareAdminLast30 => 'آخر 30 يومًا';
+
+  @override
+  String get shareAdminShares => 'المشاركات';
+
+  @override
+  String get shareAdminViews => 'زيارات الصفحات';
+
+  @override
+  String get shareAdminByApp => 'تمت المشاركة على';
+
+  @override
+  String get shareAdminVisitsFrom => 'الزيارات من';
+
+  @override
+  String get shareNoneYet => 'لا شيء بعد.';
+
+  @override
+  String get shareFromQr => 'رمز QR';
+
+  @override
+  String get shareDirect => 'رابط مباشر';
 }

@@ -69,6 +69,7 @@ dependencies:
   in_app_review: ^2.0.12
   qr_flutter: ^4.1.0
   gal: ^2.3.3
+  app_links: ^7.2.2
 
 dependency_overrides:
   # google_maps_flutter still depends on the CocoaPods-only iOS plugin.

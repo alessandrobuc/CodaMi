@@ -838,6 +838,24 @@ service cloud.firestore {
         && shopStamped(request.resource.data);
     }
 
+    // Share pop-up switch.
+    match /config/sharing {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['popup', 'updatedBy', 'updatedAt'])
+        && request.resource.data.popup is bool
+        && shopStamped(request.resource.data);
+    }
+
+    // Share and page-visit counts, written only by the server.
+    match /reportShares/{reportId} {
+      allow read: if isAdmin() || (signedIn() && (resource == null || resource.data.ownerId == request.auth.uid));
+    }
+
+    match /shareStats/{day} {
+      allow read: if isAdmin();
+    }
+
     // Personal schedule settings: on or off for users.
     match /config/schedule {
       allow read: if signedIn();

@@ -43,6 +43,7 @@ import {releaseCasesOf} from "./supportFunctions";
 import {placesApiKey, placesSecret} from "./secrets";
 import {deleteHeatData} from "./heatFunctions";
 import {deleteScheduleData} from "./scheduleFunctions";
+import {deleteReportShares} from "./sharingFunctions";
 import {deleteScanUsage} from "./scannerFunctions";
 import {deleteSittingData} from "./sittingFunctions";
 import {searchFieldsOf} from "./users";
@@ -415,6 +416,7 @@ async function deleteUserData(uid: string): Promise<void> {
   const db = getFirestore();
   for (const name of ["reports", "pets"]) {
     const owned = await db.collection(name).where("ownerId", "==", uid).get();
+    if (name === "reports") await deleteReportShares(owned.docs.map((d) => d.id));
     for (const group of chunk(owned.docs, 400)) {
       const batch = db.batch();
       group.forEach((doc) => batch.delete(doc.ref));
@@ -558,6 +560,7 @@ export {findWalkPlaces, walkPlaceDetails} from "./walksFunctions";
 export {scanBreed, scannerModels} from "./scannerFunctions";
 export {heatReminderSweep} from "./heatFunctions";
 export {scheduleReminderSweep} from "./scheduleFunctions";
+export {logReportShare, reportPage} from "./sharingFunctions";
 export {
   acceptSittingOffer,
   adminSetReviewHidden,

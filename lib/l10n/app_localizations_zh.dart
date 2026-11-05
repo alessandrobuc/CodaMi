@@ -5861,4 +5861,196 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get schOffHelp => '关闭：只有管理员能看到。';
+
+  @override
+  String get shareBadgeLost => '走失';
+
+  @override
+  String get shareBadgeFound => '捡到';
+
+  @override
+  String get shareBadgeHome => '已回家';
+
+  @override
+  String get shareBadgeReunited => '已团聚';
+
+  @override
+  String shareLostOn(String date) {
+    return '$date 走失';
+  }
+
+  @override
+  String shareFoundOn(String date) {
+    return '$date 捡到';
+  }
+
+  @override
+  String shareHomeTitle(String name) {
+    return '$name 回家了！';
+  }
+
+  @override
+  String get shareHomeThanks => '感谢每一次分享';
+
+  @override
+  String get shareHomeHelp => '每次分享都有帮助。加入 CodaMi，帮助身边的动物。';
+
+  @override
+  String shareSeenHelp(String name) {
+    return '见过 $name 吗？扫码或搜索 CodaMi。';
+  }
+
+  @override
+  String get shareYoursHelp => '这是你的宠物吗？扫码或搜索 CodaMi。';
+
+  @override
+  String get shareScan => '扫一扫';
+
+  @override
+  String get shareTagline => '帮助走失的宠物回家';
+
+  @override
+  String shareSheetTitleLost(String name) {
+    return '帮助 $name 回家';
+  }
+
+  @override
+  String shareSheetTextLost(String name) {
+    return '大多数走失的宠物都是靠邻居找到的。每次分享都让 $name 离家更近一步。';
+  }
+
+  @override
+  String get shareSheetTitleFound => '帮它找到家人';
+
+  @override
+  String get shareSheetTextFound => '分享出去，让主人尽快看到。此刻正有人在找这只宠物。';
+
+  @override
+  String get shareSheetTitleHome => '分享好消息！🎉';
+
+  @override
+  String get shareSheetTextHome => '圆满的结局会鼓励更多人帮忙，也让更多人认识 CodaMi。';
+
+  @override
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  ) {
+    return '🚨 走失$species：$name\n📍 $place · $date\n请帮忙转发，帮助 $name 回家！';
+  }
+
+  @override
+  String shareMessageFound(String species, String place, String date) {
+    return '🐾 捡到$species\n📍 $place · $date\n认识主人吗？请帮忙转发！';
+  }
+
+  @override
+  String shareMessageHome(String name) {
+    return '🎉 $name 回家了！\n感谢所有帮忙转发的人。❤️';
+  }
+
+  @override
+  String get shareMessageFooter => 'CodaMi 帮助走失的宠物回家 🐾';
+
+  @override
+  String get shareTagLost => '#寻宠';
+
+  @override
+  String get shareTagFound => '#捡到宠物';
+
+  @override
+  String get shareTagHome => '#回家了';
+
+  @override
+  String get shareCaptionCopiedFacebook => '已复制带链接的文字。请粘贴到 Facebook 帖子中。';
+
+  @override
+  String get shareCaptionCopiedInstagram => '文字已复制。请粘贴到 Instagram 帖子或快拍中。';
+
+  @override
+  String get shareCaptionCopiedTiktok => '文字已复制。请粘贴到 TikTok 帖子中。';
+
+  @override
+  String get shareImageSaved => '图片已保存到相册';
+
+  @override
+  String get shareLinkCopied => '链接已复制';
+
+  @override
+  String get shareFailed => '暂时无法分享，请重试。';
+
+  @override
+  String get shareMore => '更多';
+
+  @override
+  String get shareSave => '保存图片';
+
+  @override
+  String get shareCopyLink => '复制链接';
+
+  @override
+  String get shareTip => '不会分享电话号码或详细地址。大家会在应用里联系你。';
+
+  @override
+  String get shareNotNow => '以后再说';
+
+  @override
+  String shareStatsLine(int shares, int views) {
+    String _temp0 = intl.Intl.pluralLogic(
+      shares,
+      locale: localeName,
+      other: '已分享 $shares 次',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      views,
+      locale: localeName,
+      other: '页面访问 $views 次',
+    );
+    return '$_temp0 · $_temp1';
+  }
+
+  @override
+  String get shareAdminTitle => '社交分享';
+
+  @override
+  String get shareAdminSubtitle => '分享弹窗和数据';
+
+  @override
+  String get shareAdminIntro =>
+      '发布走失或捡到的报告后，以及宠物回家时，会请用户把它分享到 WhatsApp、Facebook、Instagram、TikTok 等，附带图片和报告网页的链接。';
+
+  @override
+  String get shareAdminPopup => '分享弹窗';
+
+  @override
+  String get shareAdminOnHelp => '开启：发布报告后和宠物回家时会弹出窗口。';
+
+  @override
+  String get shareAdminOffHelp => '关闭：只有管理员能看到弹窗。报告上的分享按钮一直可用。';
+
+  @override
+  String get shareAdminLast30 => '最近 30 天';
+
+  @override
+  String get shareAdminShares => '分享次数';
+
+  @override
+  String get shareAdminViews => '报告页面访问';
+
+  @override
+  String get shareAdminByApp => '分享到';
+
+  @override
+  String get shareAdminVisitsFrom => '访问来源';
+
+  @override
+  String get shareNoneYet => '暂无数据。';
+
+  @override
+  String get shareFromQr => '二维码';
+
+  @override
+  String get shareDirect => '直接链接';
 }

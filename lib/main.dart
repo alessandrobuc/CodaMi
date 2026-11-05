@@ -8,6 +8,7 @@ import 'core/theme/app_theme.dart';
 import 'core/utils/system_bars.dart';
 import 'features/app_update/presentation/update_widgets.dart';
 import 'features/auth/presentation/widgets/auth_wrapper.dart';
+import 'features/sharing/presentation/deep_links.dart';
 import 'l10n/app_languages.dart';
 import 'l10n/l10n.dart';
 import 'l10n/locale_provider.dart';
@@ -17,6 +18,7 @@ void main() async {
   binding.deferFirstFrame();
   // Clears a full-screen state left over from the video player.
   showSystemBars();
+  listenForReportLinks();
   final (_, prefs) = await (
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     SharedPreferences.getInstance(),

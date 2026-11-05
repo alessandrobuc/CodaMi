@@ -7,7 +7,7 @@ _Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner online, heat cal
 | Order | # | Request | Already in the app | Status | Size |
 |---|---|---|---|---|---|
 | 1 | 7 | Feedback: store reviews + internal feedback | Mostly | Not started | Small (about 1 day) |
-| 2 | 5 | Social sharing of reports | Partly (text share) | Not started | Medium (about 2 days) |
+| 2 | 5 | Social sharing of reports | Partly (text share) | **Built Thu 5 Nov**, to deploy and test | Medium (about 2 days) |
 | 3 | 6 | Recurring share reminders | No | Not started | Small (about half a day) |
 | 4 | 4 | Personal schedule, notes and reminders | No | **Built Thu 5 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
@@ -39,7 +39,21 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Admin → Feedback: filters by type and feature, mark as read / done.
 - Admin settings: uses needed, cooldown days, max asks, on/off.
 
-## 2. Social sharing (request 5)
+## 2. Social sharing (request 5): built Thu 5 Nov
+
+**Built** (choices agreed: Firebase address for now, area and reward on the page, a "back home" share)
+- Share sheet (`lib/features/sharing/`): opens by itself after publishing a lost or found report and after marking a pet found (admin switch `config/sharing.popup`, admins always), and from Share on any report. Preview of the image, WhatsApp, Facebook, Instagram, TikTok, More, Save image, Copy link, "Not now"; the owner sees "Shared N times · M page visits".
+- Share image (1080×1080, made on the phone in the app's colours): photo, LOST / FOUND / BACK HOME / REUNITED label, CodaMi logo, name, species and area, date, reward, a QR code to the page and the green CodaMi bar. Never a phone, email or exact address.
+- Each platform (fixed Thu 5 Nov after the first test: the image now always goes): on Android each button opens its app directly with the image (`codami/share` channel in `MainActivity.kt`, FileProvider `share_paths.xml`); WhatsApp gets the text + link as the image caption; Facebook, Instagram and TikTok drop text from other apps, so the caption with the link (and hashtags for Instagram/TikTok) is copied to paste. iPhone, or an app not installed: the share menu with the image and text. More = image + text + link.
+- Public page `/r/<id>` (`reportPage`, hosting rewrite): built by the server with link-preview tags (title, text, photo) in the sharer's language (`?l=`) or the visitor's; photo, label, chips, description, "Seen …? Open CodaMi", Open in CodaMi (Android intent `codami://report/<id>`, Google Play if not installed; iPhone tries the app then the App Store), store buttons, Share this page. Only photos that passed moderation; resolved = "back home" card; hidden or deleted = "no longer available".
+- "Open in CodaMi": the app opens the report (`app_links`, `codami://report/<id>`, Android intent filter and iOS URL type; after sign-in if needed).
+- Numbers: `logReportShare` counts shares per report and app; the page counts visits by source (WhatsApp, QR, direct…), not link previews. `reportShares/{id}` (owner and admins read), `shareStats/{day}` (admins). Admin → More → Social sharing: pop-up on/off, last 30 days shares and visits, by app and by source.
+- Removed with the account. 52 app texts and the page in 10 languages; 7 app tests, 5 server tests, 28 emulator checks; test plan `TEST_SCENARIO_SHARING_2026-11-05.md`.
+
+**Left**
+- Deploy functions, rules and hosting; phone test; switch the pop-up on. Later: own domain for shorter links; Android App Links (https opens the app directly) once the Play signing fingerprint is known.
+
+**Planned (kept for reference)**
 
 **Already there**
 - Share button on a report (`report_detail_screen.dart`): text with title, species, place, time, reward, description and footer, through the phone's share menu (`share_plus`).

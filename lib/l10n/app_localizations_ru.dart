@@ -6248,4 +6248,213 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schOffHelp => 'Выкл.: его видят только админы.';
+
+  @override
+  String get shareBadgeLost => 'ПОТЕРЯН';
+
+  @override
+  String get shareBadgeFound => 'НАЙДЕН';
+
+  @override
+  String get shareBadgeHome => 'СНОВА ДОМА';
+
+  @override
+  String get shareBadgeReunited => 'ВМЕСТЕ';
+
+  @override
+  String shareLostOn(String date) {
+    return 'Потерян $date';
+  }
+
+  @override
+  String shareFoundOn(String date) {
+    return 'Найден $date';
+  }
+
+  @override
+  String shareHomeTitle(String name) {
+    return '$name снова дома!';
+  }
+
+  @override
+  String get shareHomeThanks => 'Спасибо, что делились';
+
+  @override
+  String get shareHomeHelp =>
+      'Каждый репост помогает. Присоединяйтесь к CodaMi и помогайте животным рядом.';
+
+  @override
+  String shareSeenHelp(String name) {
+    return 'Видели $name? Отсканируйте код или найдите CodaMi.';
+  }
+
+  @override
+  String get shareYoursHelp =>
+      'Это ваш питомец? Отсканируйте код или найдите CodaMi.';
+
+  @override
+  String get shareScan => 'СКАНИРУЙ';
+
+  @override
+  String get shareTagline => 'Помогаем потерявшимся питомцам вернуться домой';
+
+  @override
+  String shareSheetTitleLost(String name) {
+    return 'Помогите $name вернуться домой';
+  }
+
+  @override
+  String shareSheetTextLost(String name) {
+    return 'Большинство потерявшихся питомцев находят благодаря соседям. Каждый репост приближает $name к дому.';
+  }
+
+  @override
+  String get shareSheetTitleFound => 'Помогите найти хозяев';
+
+  @override
+  String get shareSheetTextFound =>
+      'Поделитесь, чтобы хозяин быстрее увидел. Кто-то ищет этого питомца прямо сейчас.';
+
+  @override
+  String get shareSheetTitleHome => 'Поделитесь хорошей новостью! 🎉';
+
+  @override
+  String get shareSheetTextHome =>
+      'Счастливые истории вдохновляют других помогать и приводят новых людей в CodaMi.';
+
+  @override
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  ) {
+    return '🚨 ПОТЕРЯН $species: $name\n📍 $place · $date\nПоделитесь и помогите $name вернуться домой!';
+  }
+
+  @override
+  String shareMessageFound(String species, String place, String date) {
+    return '🐾 НАЙДЕН $species\n📍 $place · $date\nЗнаете хозяина? Поделитесь!';
+  }
+
+  @override
+  String shareMessageHome(String name) {
+    return '🎉 $name снова дома!\nСпасибо всем, кто делился. ❤️';
+  }
+
+  @override
+  String get shareMessageFooter =>
+      'CodaMi помогает потерявшимся питомцам вернуться домой 🐾';
+
+  @override
+  String get shareTagLost => '#ПотерялсяПитомец';
+
+  @override
+  String get shareTagFound => '#НайденПитомец';
+
+  @override
+  String get shareTagHome => '#СноваДома';
+
+  @override
+  String get shareCaptionCopiedFacebook =>
+      'Текст со ссылкой скопирован. Вставьте его в пост на Facebook.';
+
+  @override
+  String get shareCaptionCopiedInstagram =>
+      'Текст скопирован. Вставьте его в пост или историю Instagram.';
+
+  @override
+  String get shareCaptionCopiedTiktok =>
+      'Текст скопирован. Вставьте его в пост TikTok.';
+
+  @override
+  String get shareImageSaved => 'Изображение сохранено в фото';
+
+  @override
+  String get shareLinkCopied => 'Ссылка скопирована';
+
+  @override
+  String get shareFailed => 'Не удалось поделиться. Попробуйте ещё раз.';
+
+  @override
+  String get shareMore => 'Ещё';
+
+  @override
+  String get shareSave => 'Сохранить';
+
+  @override
+  String get shareCopyLink => 'Копировать ссылку';
+
+  @override
+  String get shareTip =>
+      'Номер телефона и точный адрес не публикуются. С вами свяжутся в приложении.';
+
+  @override
+  String get shareNotNow => 'Не сейчас';
+
+  @override
+  String shareStatsLine(int shares, int views) {
+    String _temp0 = intl.Intl.pluralLogic(
+      shares,
+      locale: localeName,
+      other: 'Поделились $shares раза',
+      many: 'Поделились $shares раз',
+      few: 'Поделились $shares раза',
+      one: 'Поделились $shares раз',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      views,
+      locale: localeName,
+      other: '$views просмотра страницы',
+      many: '$views просмотров страницы',
+      few: '$views просмотра страницы',
+      one: '$views просмотр страницы',
+    );
+    return '$_temp0 · $_temp1';
+  }
+
+  @override
+  String get shareAdminTitle => 'Репосты в соцсетях';
+
+  @override
+  String get shareAdminSubtitle => 'Окно репоста и статистика';
+
+  @override
+  String get shareAdminIntro =>
+      'После публикации объявления о потере или находке, а также когда питомец вернулся домой, пользователям предлагают поделиться им в WhatsApp, Facebook, Instagram, TikTok и других, с картинкой и ссылкой на веб-страницу объявления.';
+
+  @override
+  String get shareAdminPopup => 'Окно репоста';
+
+  @override
+  String get shareAdminOnHelp =>
+      'Вкл.: окно открывается после публикации и когда питомец вернулся домой.';
+
+  @override
+  String get shareAdminOffHelp =>
+      'Выкл.: окно видят только админы. Кнопка «Поделиться» в объявлениях работает всегда.';
+
+  @override
+  String get shareAdminLast30 => 'Последние 30 дней';
+
+  @override
+  String get shareAdminShares => 'Репосты';
+
+  @override
+  String get shareAdminViews => 'Просмотры страниц';
+
+  @override
+  String get shareAdminByApp => 'Куда делились';
+
+  @override
+  String get shareAdminVisitsFrom => 'Откуда переходили';
+
+  @override
+  String get shareNoneYet => 'Пока ничего.';
+
+  @override
+  String get shareFromQr => 'QR-код';
+
+  @override
+  String get shareDirect => 'Прямая ссылка';
 }

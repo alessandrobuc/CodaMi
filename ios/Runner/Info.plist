@@ -95,7 +95,19 @@
 				<string>com.googleusercontent.apps.838596105438-av2tip5n3mpsueo1bus1aqlapeag2gl1</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.codami.app.report</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>codami</string>
+			</array>
+		</dict>
 	</array>
+	<key>FlutterDeepLinkingEnabled</key>
+	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>CodaMi uses the camera so you can take photos of your pets.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

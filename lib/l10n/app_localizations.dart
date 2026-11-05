@@ -10673,6 +10673,323 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Off: only admins can see it.'**
   String get schOffHelp;
+
+  /// No description provided for @shareBadgeLost.
+  ///
+  /// In en, this message translates to:
+  /// **'LOST'**
+  String get shareBadgeLost;
+
+  /// No description provided for @shareBadgeFound.
+  ///
+  /// In en, this message translates to:
+  /// **'FOUND'**
+  String get shareBadgeFound;
+
+  /// No description provided for @shareBadgeHome.
+  ///
+  /// In en, this message translates to:
+  /// **'BACK HOME'**
+  String get shareBadgeHome;
+
+  /// No description provided for @shareBadgeReunited.
+  ///
+  /// In en, this message translates to:
+  /// **'REUNITED'**
+  String get shareBadgeReunited;
+
+  /// No description provided for @shareLostOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost on {date}'**
+  String shareLostOn(String date);
+
+  /// No description provided for @shareFoundOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Found on {date}'**
+  String shareFoundOn(String date);
+
+  /// No description provided for @shareHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is back home!'**
+  String shareHomeTitle(String name);
+
+  /// No description provided for @shareHomeThanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for sharing'**
+  String get shareHomeThanks;
+
+  /// No description provided for @shareHomeHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Every share helps. Join CodaMi and help pets near you.'**
+  String get shareHomeHelp;
+
+  /// No description provided for @shareSeenHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Seen {name}? Scan the code or search CodaMi.'**
+  String shareSeenHelp(String name);
+
+  /// No description provided for @shareYoursHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this your pet? Scan the code or search CodaMi.'**
+  String get shareYoursHelp;
+
+  /// No description provided for @shareScan.
+  ///
+  /// In en, this message translates to:
+  /// **'SCAN ME'**
+  String get shareScan;
+
+  /// No description provided for @shareTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Helping lost pets find their way home'**
+  String get shareTagline;
+
+  /// No description provided for @shareSheetTitleLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Help bring {name} home'**
+  String shareSheetTitleLost(String name);
+
+  /// No description provided for @shareSheetTextLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Most lost pets are found thanks to neighbours. Every share brings {name} a little closer to home.'**
+  String shareSheetTextLost(String name);
+
+  /// No description provided for @shareSheetTitleFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Help find the family'**
+  String get shareSheetTitleFound;
+
+  /// No description provided for @shareSheetTextFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Share it so the owner sees it fast. Someone is looking for this pet right now.'**
+  String get shareSheetTextFound;
+
+  /// No description provided for @shareSheetTitleHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Share the happy news! 🎉'**
+  String get shareSheetTitleHome;
+
+  /// No description provided for @shareSheetTextHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Happy endings encourage others to help, and bring more people to CodaMi.'**
+  String get shareSheetTextHome;
+
+  /// No description provided for @shareMessageLost.
+  ///
+  /// In en, this message translates to:
+  /// **'🚨 LOST {species}: {name}\n📍 {place} · {date}\nPlease share and help bring {name} home!'**
+  String shareMessageLost(
+    String name,
+    String species,
+    String place,
+    String date,
+  );
+
+  /// No description provided for @shareMessageFound.
+  ///
+  /// In en, this message translates to:
+  /// **'🐾 FOUND {species}\n📍 {place} · {date}\nDo you know the owner? Please share!'**
+  String shareMessageFound(String species, String place, String date);
+
+  /// No description provided for @shareMessageHome.
+  ///
+  /// In en, this message translates to:
+  /// **'🎉 {name} is back home!\nThank you to everyone who shared. ❤️'**
+  String shareMessageHome(String name);
+
+  /// No description provided for @shareMessageFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi helps lost pets find their way home 🐾'**
+  String get shareMessageFooter;
+
+  /// No description provided for @shareTagLost.
+  ///
+  /// In en, this message translates to:
+  /// **'#LostPet'**
+  String get shareTagLost;
+
+  /// No description provided for @shareTagFound.
+  ///
+  /// In en, this message translates to:
+  /// **'#FoundPet'**
+  String get shareTagFound;
+
+  /// No description provided for @shareTagHome.
+  ///
+  /// In en, this message translates to:
+  /// **'#BackHome'**
+  String get shareTagHome;
+
+  /// No description provided for @shareCaptionCopiedFacebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Caption with the link copied. Paste it in your Facebook post.'**
+  String get shareCaptionCopiedFacebook;
+
+  /// No description provided for @shareCaptionCopiedInstagram.
+  ///
+  /// In en, this message translates to:
+  /// **'Caption copied. Paste it in your Instagram post or story.'**
+  String get shareCaptionCopiedInstagram;
+
+  /// No description provided for @shareCaptionCopiedTiktok.
+  ///
+  /// In en, this message translates to:
+  /// **'Caption copied. Paste it in your TikTok post.'**
+  String get shareCaptionCopiedTiktok;
+
+  /// No description provided for @shareImageSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Image saved to your photos'**
+  String get shareImageSaved;
+
+  /// No description provided for @shareLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get shareLinkCopied;
+
+  /// No description provided for @shareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t share right now. Please try again.'**
+  String get shareFailed;
+
+  /// No description provided for @shareMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get shareMore;
+
+  /// No description provided for @shareSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save image'**
+  String get shareSave;
+
+  /// No description provided for @shareCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get shareCopyLink;
+
+  /// No description provided for @shareTip.
+  ///
+  /// In en, this message translates to:
+  /// **'No phone number or exact address is shared. People contact you in the app.'**
+  String get shareTip;
+
+  /// No description provided for @shareNotNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get shareNotNow;
+
+  /// No description provided for @shareStatsLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{shares, plural, =1{Shared once} other{Shared {shares} times}} · {views, plural, =1{1 page visit} other{{views} page visits}}'**
+  String shareStatsLine(int shares, int views);
+
+  /// No description provided for @shareAdminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Social sharing'**
+  String get shareAdminTitle;
+
+  /// No description provided for @shareAdminSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share pop-up and numbers'**
+  String get shareAdminSubtitle;
+
+  /// No description provided for @shareAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'After publishing a lost or found report, and when a pet is back home, users are asked to share it on WhatsApp, Facebook, Instagram, TikTok and more, with an image and a link to the report\'s web page.'**
+  String get shareAdminIntro;
+
+  /// No description provided for @shareAdminPopup.
+  ///
+  /// In en, this message translates to:
+  /// **'Share pop-up'**
+  String get shareAdminPopup;
+
+  /// No description provided for @shareAdminOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: the pop-up opens after publishing a report and when a pet is back home.'**
+  String get shareAdminOnHelp;
+
+  /// No description provided for @shareAdminOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: only admins see the pop-up. The Share button on reports always works.'**
+  String get shareAdminOffHelp;
+
+  /// No description provided for @shareAdminLast30.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get shareAdminLast30;
+
+  /// No description provided for @shareAdminShares.
+  ///
+  /// In en, this message translates to:
+  /// **'Shares'**
+  String get shareAdminShares;
+
+  /// No description provided for @shareAdminViews.
+  ///
+  /// In en, this message translates to:
+  /// **'Report page visits'**
+  String get shareAdminViews;
+
+  /// No description provided for @shareAdminByApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared to'**
+  String get shareAdminByApp;
+
+  /// No description provided for @shareAdminVisitsFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Visits from'**
+  String get shareAdminVisitsFrom;
+
+  /// No description provided for @shareNoneYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing yet.'**
+  String get shareNoneYet;
+
+  /// No description provided for @shareFromQr.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code'**
+  String get shareFromQr;
+
+  /// No description provided for @shareDirect.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct link'**
+  String get shareDirect;
 }
 
 class _AppLocalizationsDelegate

@@ -25,6 +25,7 @@ import '../../../shop/presentation/providers/shop_provider.dart';
 import '../../../shop/presentation/screens/shop_screen.dart';
 import '../../../schedule/presentation/providers/schedule_provider.dart';
 import '../../../schedule/presentation/screens/schedule_screen.dart';
+import '../../../sharing/presentation/deep_links.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -78,6 +79,17 @@ class _MainShellState extends ConsumerState<MainShell>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _startPush());
+    pendingReportLink.addListener(_openReportLink);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _openReportLink());
+  }
+
+  void _openReportLink() {
+    final id = pendingReportLink.value;
+    if (id == null || !mounted) return;
+    pendingReportLink.value = null;
+    appNavigatorKey.currentState?.push(
+      MaterialPageRoute(builder: (_) => ReportByIdScreen(reportId: id)),
+    );
   }
 
   void _startPush() {
@@ -122,6 +134,7 @@ class _MainShellState extends ConsumerState<MainShell>
 
   @override
   void dispose() {
+    pendingReportLink.removeListener(_openReportLink);
     _enter.dispose();
     super.dispose();
   }

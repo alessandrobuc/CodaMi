@@ -7,6 +7,7 @@
       "name": "CodaMi",
       "version": "1.0.0+18",
       "dependencies": [
+        "app_links",
         "cached_network_image",
         "cloud_firestore",
         "cloud_functions",
@@ -88,6 +89,16 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "app_links",
+      "version": "7.2.2",
+      "dependencies": [
+        "app_links_linux",
+        "app_links_platform_interface",
+        "app_links_web",
+        "flutter"
       ]
     },
     {
@@ -550,6 +561,32 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "app_links_web",
+      "version": "1.0.5",
+      "dependencies": [
+        "app_links_platform_interface",
+        "flutter",
+        "flutter_web_plugins",
+        "web"
+      ]
+    },
+    {
+      "name": "app_links_platform_interface",
+      "version": "2.0.4",
+      "dependencies": [
+        "flutter",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "app_links_linux",
+      "version": "1.0.4",
+      "dependencies": [
+        "app_links_platform_interface",
+        "flutter"
       ]
     },
     {
@@ -1358,15 +1395,15 @@
       ]
     },
     {
-      "name": "platform",
-      "version": "3.2.0",
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
       "dependencies": [
         "meta"
       ]
     },
     {
-      "name": "plugin_platform_interface",
-      "version": "2.1.8",
+      "name": "platform",
+      "version": "3.2.0",
       "dependencies": [
         "meta"
       ]

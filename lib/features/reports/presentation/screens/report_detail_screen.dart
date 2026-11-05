@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_constants.dart';
@@ -15,6 +14,7 @@ import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../moderation/presentation/widgets/flag_actions.dart';
 import '../../../moderation/presentation/widgets/moderation_panel.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
+import '../../../sharing/presentation/share_sheet.dart';
 import '../../../pets/presentation/widgets/pets_widget.dart';
 import '../../domain/entities/reports_entity.dart';
 import '../providers/reports_provider.dart';
@@ -80,26 +80,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
     context.l10n.emailFailed,
   );
 
-  Future<void> _share(Report r) async {
-    final l10n = context.l10n;
-    final title = r.type == ReportType.lost
-        ? l10n.shareTitleLost(r.petName)
-        : l10n.shareTitleFound(r.petName);
-    await SharePlus.instance.share(
-      ShareParams(
-        subject: title,
-        text:
-            '$title\n'
-            '🐾 ${r.species.label(l10n)}\n'
-            '📍 ${r.placeLabel(l10n)}\n'
-            '🕒 ${dateTimeLabel(l10n, r.eventAt)}\n'
-            '${r.activeReward == null ? '' : '🎁 ${l10n.rewardAmount(euroAmount(r.activeReward!))}\n'}'
-            '\n'
-            '${r.description}\n\n'
-            '${l10n.shareFooter}',
-      ),
-    );
-  }
+  Future<void> _share(Report r) => showReportShareSheet(context, r);
 
   void _setBusy(bool resolving, bool value) {
     if (!mounted) return;

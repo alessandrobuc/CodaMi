@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/navigation/app_navigator.dart';
 import '../../../../core/utils/date_format.dart';
 import '../../../../core/utils/geo.dart';
 import '../../../../core/utils/number_format.dart';
@@ -34,6 +35,7 @@ import '../widgets/reports_widget.dart';
 import '../widgets/spot_picker.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../sharing/presentation/share_sheet.dart';
 
 enum _Step { type, pet, where, when, details, review }
 
@@ -334,8 +336,15 @@ class _CreateReportScreenState extends ConsumerState<CreateReportScreen> {
             ? context.l10n.publishedLost(report.petName)
             : context.l10n.publishedFound(report.petName),
       );
+      final popup = sharePopupOn(ref);
       Navigator.of(context).popUntil((route) => route.isFirst);
-      unawaited(maybeAskForSupport(ref, DonationTrigger.afterReport));
+      final root = appNavigatorKey.currentState?.context;
+      if (popup && root != null && root.mounted) {
+        // The share prompt takes the place of the support ask this time.
+        unawaited(showReportShareSheet(root, report, prompt: true));
+      } else {
+        unawaited(maybeAskForSupport(ref, DonationTrigger.afterReport));
+      }
     } on ReportsException catch (e) {
       if (!mounted) return;
       setState(() {

@@ -16,6 +16,8 @@ import android.provider.OpenableColumns
 import android.view.WindowManager
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
+import androidx.core.content.FileProvider
+import java.io.File
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
@@ -51,6 +53,20 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/notification_sounds")
             .setMethodCallHandler(::onSoundCall)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/share")
+            .setMethodCallHandler { call, result ->
+                if (call.method == "toApp") {
+                    result.success(
+                        shareToApp(
+                            call.argument<List<String>>("packages") ?: emptyList(),
+                            call.argument<ByteArray>("png")!!,
+                            call.argument<String>("text"),
+                        ),
+                    )
+                } else {
+                    result.notImplemented()
+                }
+            }
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/install_referrer")
             .setMethodCallHandler { call, result ->
                 if (call.method == "get") readInstallReferrer(result) else result.notImplemented()
@@ -90,6 +106,34 @@ class MainActivity : FlutterActivity() {
             })
         } catch (_: Exception) {
             answer(null)
+        }
+    }
+
+    // Opens the first installed app of [packages] with the image and its text.
+    private fun shareToApp(packages: List<String>, png: ByteArray, text: String?): Boolean {
+        val target = packages.firstOrNull { name ->
+            try {
+                packageManager.getPackageInfo(name, 0)
+                true
+            } catch (_: Exception) {
+                false
+            }
+        } ?: return false
+        return try {
+            val folder = File(cacheDir, "shared").apply { mkdirs() }
+            val file = File(folder, "codami_share.png").apply { writeBytes(png) }
+            val uri = FileProvider.getUriForFile(this, "$packageName.codami_share", file)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "image/png"
+                setPackage(target)
+                putExtra(Intent.EXTRA_STREAM, uri)
+                if (text != null) putExtra(Intent.EXTRA_TEXT, text)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            startActivity(intent)
+            true
+        } catch (_: Exception) {
+            false
         }
     }
 
