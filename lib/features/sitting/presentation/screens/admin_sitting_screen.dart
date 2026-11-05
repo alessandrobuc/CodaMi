@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/snackbar_utils.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../admin/presentation/screens/admin_user_screen.dart';
 import '../../../admin/presentation/widgets/settings_fields.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../../moderation/presentation/widgets/flag_actions.dart';
@@ -335,12 +336,19 @@ class _Reported extends ConsumerWidget {
                               open(RequestDetailScreen(requestId: f.targetId)),
                           child: Text(l10n.sitOpen),
                         ),
-                      if (f.kind != SittingFlagKind.request)
+                      if (f.kind == SittingFlagKind.sitter ||
+                          f.kind == SittingFlagKind.review)
                         OutlinedButton(
                           onPressed: () =>
                               open(SitterProfileScreen(uid: f.targetOwnerId)),
-                          child: Text(l10n.sitViewProfile),
+                          child: Text(l10n.sitOpen),
                         ),
+                      // A reported chat user may have no sitter profile.
+                      OutlinedButton(
+                        onPressed: () =>
+                            open(AdminUserScreen(uid: f.targetOwnerId)),
+                        child: Text(l10n.sitViewProfile),
+                      ),
                       FilledButton(
                         style: FilledButton.styleFrom(
                           backgroundColor: AppColors.danger,

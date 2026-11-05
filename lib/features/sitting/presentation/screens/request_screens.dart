@@ -1030,7 +1030,7 @@ Future<void> showReviewSheet(
           20,
           0,
           20,
-          MediaQuery.viewInsetsOf(context).bottom + 20,
+          MediaQuery.viewInsetsOf(context).bottom + endSpace(context),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

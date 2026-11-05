@@ -1,6 +1,7 @@
 import "./options";
 
-import {FieldValue, Timestamp, getFirestore, type DocumentSnapshot} from "firebase-admin/firestore";
+import {getAuth} from "firebase-admin/auth";
+import {FieldValue, getFirestore, type DocumentSnapshot} from "firebase-admin/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
 import {onDocumentCreated, onDocumentUpdated} from "firebase-functions/firestore";
@@ -153,13 +154,15 @@ export const reviewSitter = onCall(async (request) => {
   const uid = uidOf(request);
   const input = reviewInputOf(request.data);
   if (!input) throw new HttpsError("invalid-argument", "Choose 1 to 5 stars and keep the text under 800 characters.");
-  const [req, user, config] = await Promise.all([
+  const [req, user, config, account] = await Promise.all([
     requests().doc(input.requestId).get(),
     db().collection("users").doc(uid).get(),
     db().collection("config").doc("sitting").get(),
+    getAuth().getUser(uid),
   ]);
-  const created = user.get("createdAt");
-  const ageDays = created instanceof Timestamp ? (Date.now() - created.toMillis()) / 86_400_000 : 0;
+  // The sign-in record holds the real account age; users can't edit it.
+  const created = Date.parse(account.metadata.creationTime);
+  const ageDays = Number.isNaN(created) ? 0 : (Date.now() - created) / 86_400_000;
   const block = reviewBlockOf(req.data(), uid, ageDays, sittingConfigOf(config.data()).minAccountDays);
   if (block) throw new HttpsError("failed-precondition", `Review not allowed: ${block}.`);
   const sitterId = req.get("sitterId") as string;
@@ -174,8 +177,9 @@ export const reviewSitter = onCall(async (request) => {
       hidden: false,
       createdAt: FieldValue.serverTimestamp(),
     });
-  } catch {
-    throw new HttpsError("already-exists", "You already reviewed this service.");
+  } catch (e) {
+    if ((e as {code?: unknown}).code === 6) throw new HttpsError("already-exists", "You already reviewed this service.");
+    throw e;
   }
   await refreshRating(sitterId);
   return {reviewed: true};

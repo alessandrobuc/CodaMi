@@ -2,11 +2,15 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Wed 4 Nov 2026 (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
+_Last updated: Thu 5 Nov 2026 (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
 
 ---
 
 ## 1. Testing now
+
+- [ ] **Pet sitting review fix (Thu 5 Nov):** `firebase deploy --only functions:reviewSitter` (account age read from the sign-in record, not the `createdAt` text, which made every review fail as "too new"); new build for the extra space under Send in the review sheet; then send a review again
+- [ ] **Pet sitting admin "View profile" (Thu 5 Nov):** new build; Admin → Pet sitting → Reported: "View profile" on a chat report against an owner opens their admin page; "Open" on a sitter or review report opens the sitter profile
+- [ ] **Owner profiles and two-way reviews:** client asked Thu 5 Nov to see the reviews of whoever published a request; plan sent, waiting for the go-ahead
 
 - [ ] **Pet sitting fixes (Wed 4 Nov):** `firebase deploy --only functions` (changed `acceptSittingOffer`, `confirmSitting`; new trigger `onSittingRequestUpdated` sends the "accepted" and "please confirm" pushes); new build; check the spinner on Accept, the avatar letter in chat, and scrolling up in a long chat
 

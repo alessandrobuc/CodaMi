@@ -53,6 +53,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 4. Firebase
 
+- [ ] **Pet sitting review fix (Thu 5 Nov):** `firebase deploy --only functions:reviewSitter`
 - [ ] **Phase 5 deploy (Wed 4 Nov):** `firebase deploy --only functions,firestore:rules,firestore:indexes` for the heat calendar (`heatReminderSweep`) and pet sitting (7 functions with `onSittingRequestUpdated`, rules, the `sittingRequests` index); check the index is "Enabled"
 
 - [x] Deploy everything: `firebase deploy --only firestore:rules,firestore:indexes,storage,functions` (Wed 21 Oct)
