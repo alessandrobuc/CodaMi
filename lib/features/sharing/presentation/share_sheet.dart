@@ -27,6 +27,8 @@ import '../data/direct_share.dart';
 import '../domain/sharing.dart';
 import 'providers/sharing_provider.dart';
 import 'widgets/report_poster.dart';
+import '../../feedback/domain/feedback.dart';
+import '../../feedback/presentation/providers/feedback_provider.dart';
 
 // Admins see the pop-up while it's off for users.
 bool sharePopupOn(WidgetRef ref) =>
@@ -235,6 +237,12 @@ class _ShareSheetState extends ConsumerState<ShareSheet> {
     } finally {
       if (mounted) setState(() => _busy = null);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.sharing);
   }
 
   @override

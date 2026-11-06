@@ -15,6 +15,8 @@ import '../../domain/walks.dart';
 import '../providers/walks_provider.dart';
 import '../widgets/walk_widgets.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 double _zoomFor(int km) => switch (km) {
   1 => 15,
@@ -46,6 +48,7 @@ class _WalksScreenState extends ConsumerState<WalksScreen> {
   @override
   void initState() {
     super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.walks);
     WidgetsBinding.instance.addPostFrameCallback((_) => _start());
   }
 

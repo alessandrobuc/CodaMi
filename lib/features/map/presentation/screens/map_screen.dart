@@ -26,6 +26,8 @@ import '../widgets/map_style.dart';
 import '../widgets/map_widget.dart';
 import '../widgets/pin_icons.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 const _italy = LatLng(42.5, 12.5);
 const _italyZoom = 5.3;
@@ -100,6 +102,14 @@ class _ReportsMapViewState extends ConsumerState<ReportsMapView> {
   Set<Circle> _circles = const {};
   Object? _emergencyKey;
   Set<Marker> _allMarkers = const {};
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.fullscreen) {
+      ref.read(feedbackTrackerProvider).used(FeedbackArea.map);
+    }
+  }
 
   @override
   void dispose() {

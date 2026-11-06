@@ -5,7 +5,7 @@ End-to-end checks of the Cloud Functions and the Firestore and Storage rules, ru
 ```sh
 (cd functions && npm run build)
 firebase emulators:exec --only auth,functions,firestore,storage --project demo-codami \
-  "node emulator_tests/moderation.cjs && node emulator_tests/points_emergency.cjs && node emulator_tests/feedback_notes.cjs && node emulator_tests/petitions.cjs && node emulator_tests/app_version.cjs && node emulator_tests/shop.cjs && node emulator_tests/phase4.cjs && node emulator_tests/invites.cjs && node emulator_tests/scanner.cjs && node emulator_tests/heat.cjs && node emulator_tests/sitting.cjs && node emulator_tests/schedule.cjs && node emulator_tests/sharing.cjs && node emulator_tests/share_reminders.cjs"
+  "node emulator_tests/moderation.cjs && node emulator_tests/points_emergency.cjs && node emulator_tests/feedback_notes.cjs && node emulator_tests/feedback_asks.cjs && node emulator_tests/petitions.cjs && node emulator_tests/app_version.cjs && node emulator_tests/shop.cjs && node emulator_tests/phase4.cjs && node emulator_tests/invites.cjs && node emulator_tests/scanner.cjs && node emulator_tests/heat.cjs && node emulator_tests/sitting.cjs && node emulator_tests/schedule.cjs && node emulator_tests/sharing.cjs && node emulator_tests/share_reminders.cjs"
 ```
 
 The Places key is a secret: create `functions/.secret.local` with `PLACES_API_KEY=emulator-placeholder` (not committed), or the emulator warns that it can't reach Secret Manager. `invites.cjs` clears invites left by the earlier scripts before its own checks.
@@ -14,7 +14,8 @@ Each script prints one PASS or FAIL line per check and exits with an error if an
 
 - `moderation.cjs`: AI photo moderation (clear, review, blocked, injured animals, quarantine, approve, remove, rules)
 - `points_emergency.cjs`: daily rewards, streaks, invite codes, referral checks and admin review, emergencies, nearby alerts, contacts and their rules
-- `feedback_notes.cjs`: feedback points (once per account, one feedback a day), who can read feedback, the feedback and review settings, "What's new" notes and their rules, feedback removed with the account
+- `feedback_notes.cjs`: feedback points (once per account), who can read feedback, the feedback and review settings, "What's new" notes and their rules, feedback removed with the account
+- `feedback_asks.cjs`: internal feedback: type, part of the app, optional stars, screenshot (own folder only, images up to 5 MB, only the team opens it), five a day at most; the team's inbox (status and private note through the server only, users can't change them, a thank-you once per feedback); question settings admin only (uses "to" not below "from", pause 3 to 90 days, 1 to 20 questions); the user's own question history and "don't ask again"; feedback and screenshots removed with the account. When to ask is covered by `test/feedback_rules_test.dart`
 - `petitions.cjs`: petitions: only admins write, users see only published ones, link and field checks, verification checks needed to approve or publish, image upload rules
 - `app_version.cjs`: app update settings: readable before sign-in, only admins write, version and App Store ID checks, unknown fields refused
 - `shop.cjs`: shop: users only read the catalogue while the shop is on, hidden items stay hidden, suppliers are admin only, only admins write, product, category, brand and supplier field checks, photo and logo upload rules

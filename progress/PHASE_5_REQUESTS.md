@@ -2,11 +2,11 @@
 
 New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6), the heat calendar (§5) and pet sitting (§8). Everything else below is still to do.
 
-_Last updated: Wed 4 Nov 2026 (go-ahead given; AI breed scanner online, heat calendar and pet sitting built and to deploy; feedback, sharing, share reminders, schedule and titles not started)_
+_Last updated: Fri 6 Nov 2026 (feedback built, to deploy and test) (Wed 4 Nov: go-ahead given; AI breed scanner online, heat calendar and pet sitting built and to deploy; feedback, sharing, share reminders, schedule and titles not started)_
 
 | Order | # | Request | Already in the app | Status | Size |
 |---|---|---|---|---|---|
-| 1 | 7 | Feedback: store reviews + internal feedback | Mostly | Not started | Small (about 1 day) |
+| 1 | 7 | Feedback: store reviews + internal feedback | Mostly | **Built Fri 6 Nov**, to deploy and test | Small (about 1 day) |
 | 2 | 5 | Social sharing of reports | Partly (text share) | **Built Thu 5 Nov**, to deploy and test | Medium (about 2 days) |
 | 3 | 6 | Recurring share reminders | No | **Built Thu 5 Nov**, to deploy and test | Small (about half a day) |
 | 4 | 4 | Personal schedule, notes and reminders | No | **Built Thu 5 Nov**, to deploy and test | Medium (2 to 3 days) |
@@ -20,7 +20,7 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 
 ---
 
-## 1. Feedback (request 7)
+## 1. Feedback (request 7): built Fri 6 Nov
 
 **Already there**
 - In-app Google Play review window (`in_app_review`), asked after `reviewAfterDays` and `reviewMinActiveDays`, then every `reviewEveryDays` (Admin → Points and rewards); never right after our own question (`startup_prompts.dart`, `feedback_rules.dart`).
@@ -38,6 +38,13 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Feedback saves the feature it came from and the app version.
 - Admin → Feedback: filters by type and feature, mark as read / done.
 - Admin settings: uses needed, cooldown days, max asks, on/off.
+
+**Built (Fri 6 Nov)**
+- 7A: Profile → **Rate CodaMi** now comes first and opens the Play Store page (Google asks that a button opens the store page; its in-app window is kept for the automatic moment). The automatic window now waits the feedback pause (14 days) after our own question instead of 1 day.
+- 7B: new form (`feedback_sheet.dart`): Suggestion / Bug / Problem / Improvement, part of the app, optional stars, text with a hint per type, optional screenshot (`feedback/<uid>/`, staff only), app version, phone model (`codami/device` channel) and language added automatically. Up to 5 a day; first one still +20 points.
+- Asks: each screen counts a use (`FeedbackTracker.used`); after a fixed random 10 to 20 uses per user and part (`usesNeeded`), the question waits until the user is back on the main tabs (`askFeedbackWhenIdle`). Pause 14 days (also after sending, and after the store window), each part once, 4 at most, none in the first 3 days, "Don't ask me again". General question on 1 in 4 starts after 10 active days, once. State on the account (`users.feedbackAsk`), counters on the phone.
+- Admin → Feedback: last 30 days by type and average stars per part, New / In progress / Done tabs, filters (type, part, stars), screenshot viewer, private note, open user, Done with an optional thank-you push in the user's language (once). ⚙ settings: on/off, uses from–to, pause, max (`config/feedbackAsks`).
+- Tests: `test/feedback_rules_test.dart`, `functions/src/feedback.test.ts`, `emulator_tests/feedback_asks.cjs`; phone test `TEST_SCENARIO_FEEDBACK_2026-11-06.md`.
 
 ## 2. Social sharing (request 5): built Thu 5 Nov
 

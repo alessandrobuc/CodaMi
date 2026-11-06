@@ -6493,4 +6493,206 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get shareRemTestFailed =>
       'Couldn\'t send it. Check that notifications are allowed on this phone.';
+
+  @override
+  String get fbQuickTitle => 'Quick question 🐾';
+
+  @override
+  String get fbQuickBody =>
+      'You\'ve used this part of CodaMi quite a bit. How is it working for you? Ideas and problems help us most.';
+
+  @override
+  String get fbSelfBody =>
+      'Ideas, bugs or problems: it all goes straight to the CodaMi team.';
+
+  @override
+  String get fbTypeLabel => 'What is it about?';
+
+  @override
+  String get fbTypeSuggestion => 'Suggestion';
+
+  @override
+  String get fbTypeBug => 'Bug';
+
+  @override
+  String get fbTypeProblem => 'Problem';
+
+  @override
+  String get fbTypeImprovement => 'Improvement';
+
+  @override
+  String get fbTypeGeneral => 'General';
+
+  @override
+  String get fbAreaLabel => 'Which part of the app?';
+
+  @override
+  String get fbAreaGeneral => 'The whole app';
+
+  @override
+  String get fbAreaReports => 'Lost and found';
+
+  @override
+  String get fbAreaMap => 'Map';
+
+  @override
+  String get fbAreaWalks => 'Walks';
+
+  @override
+  String get fbAreaSitting => 'Pet sitting';
+
+  @override
+  String get fbAreaSchedule => 'Schedule';
+
+  @override
+  String get fbAreaHeat => 'Heat calendar';
+
+  @override
+  String get fbAreaScanner => 'Breed scanner';
+
+  @override
+  String get fbAreaShop => 'Shop';
+
+  @override
+  String get fbAreaSharing => 'Sharing';
+
+  @override
+  String get fbRatingLabel => 'Your rating (optional)';
+
+  @override
+  String get fbHintSuggestion => 'What would you like to see in CodaMi?';
+
+  @override
+  String get fbHintBug => 'What happened, and what did you expect?';
+
+  @override
+  String get fbHintProblem => 'What is hard or not working for you?';
+
+  @override
+  String get fbHintImprovement => 'What could work better, and how?';
+
+  @override
+  String get fbScreenshotAdd => 'Add a screenshot';
+
+  @override
+  String get fbAutoInfo => 'The app version and phone model are added for you.';
+
+  @override
+  String get fbNeedSomething => 'Add stars or a few words to send';
+
+  @override
+  String get fbDontAsk => 'Don\'t ask me again';
+
+  @override
+  String get fbDontAskDone =>
+      'OK, we won\'t ask again. You can always send feedback from Profile.';
+
+  @override
+  String get fbLimitToday =>
+      'Thanks, that\'s a lot of feedback for today! You can send more tomorrow.';
+
+  @override
+  String get fbProfileSubtitle => 'Suggestions, bugs and ideas for the team';
+
+  @override
+  String get fbStatusNew => 'New';
+
+  @override
+  String get fbStatusProgress => 'In progress';
+
+  @override
+  String get fbStatusDone => 'Done';
+
+  @override
+  String get fbAdminOverview => 'Last 30 days';
+
+  @override
+  String get fbAdminStarsByArea => 'Average stars by part of the app';
+
+  @override
+  String get fbAdminNoStars => 'No stars given in the last 30 days.';
+
+  @override
+  String get fbAdminNoRating => 'No stars';
+
+  @override
+  String get fbAdminAnyStars => 'Any stars';
+
+  @override
+  String get fbAdminAllAreas => 'All parts';
+
+  @override
+  String get fbAdminAsked => 'Asked in the app';
+
+  @override
+  String get fbAdminSelf => 'Sent from Profile';
+
+  @override
+  String get fbAdminNote => 'Private note';
+
+  @override
+  String get fbAdminNoteHint => 'Only the team sees this note';
+
+  @override
+  String get fbAdminMarkDoneTitle => 'Mark as done?';
+
+  @override
+  String get fbAdminNotify => 'Thank the user';
+
+  @override
+  String get fbAdminNotifyHelp =>
+      'They get a short notification in their language: \"Thanks, we fixed it!\" for bugs and problems, \"Your idea is in CodaMi!\" for the rest.';
+
+  @override
+  String get fbAdminNotified => 'Saved. The user was thanked.';
+
+  @override
+  String get fbAdminThanked => 'Thanked';
+
+  @override
+  String get fbAdminEmptyTab => 'Nothing here.';
+
+  @override
+  String get fbAdminOpenUser => 'Open profile';
+
+  @override
+  String get fbAdminChangeStatus => 'Change status';
+
+  @override
+  String get fbAdminSettings => 'Feedback questions';
+
+  @override
+  String get fbSetIntro =>
+      'Choose when the app asks users for feedback. Users can always send feedback from Profile.';
+
+  @override
+  String get fbSetOnHelp =>
+      'On: users are asked after using a part of the app a few times';
+
+  @override
+  String get fbSetOffHelp =>
+      'Off: nobody is asked, but feedback from Profile still works';
+
+  @override
+  String get fbSetWhen => 'When to ask';
+
+  @override
+  String get fbSetUsesMin => 'Uses before asking: from';
+
+  @override
+  String get fbSetUsesMax => 'Uses before asking: to';
+
+  @override
+  String get fbSetPause => 'Days of pause after a question';
+
+  @override
+  String get fbSetMax => 'Most questions per user';
+
+  @override
+  String get fbSetHelp =>
+      'Each user gets a random number of uses in this range for each part of the app, and is asked about each part only once. New accounts wait 3 days. The Google Play rating window also waits for the pause.';
+
+  @override
+  String get fbSetInvalid =>
+      'Check the numbers: \"from\" 1 to 100, \"to\" not below \"from\" and at most 200, pause 3 to 90 days, questions 1 to 20.';
 }

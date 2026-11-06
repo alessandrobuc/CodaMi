@@ -2,7 +2,7 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Thu 5 Nov 2026 (personal schedule, social sharing and share reminders built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
+_Last updated: Fri 6 Nov 2026 (feedback: Google Play rating and internal feedback built) (Thu 5 Nov: personal schedule, social sharing and share reminders built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
 
 ---
 
@@ -13,6 +13,7 @@ _Last updated: Thu 5 Nov 2026 (personal schedule, social sharing and share remin
 - [ ] **Personal schedule (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (new `scheduleReminderSweep` every 5 minutes, rules for `scheduleEvents`, `config/schedule`); new build; phone test with `TEST_SCENARIO_SCHEDULE_2026-11-05.md`; then Admin → More → My schedule → Show to users
 - [ ] **Social sharing (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules,hosting` (new `reportPage`, `logReportShare`, the `/r/**` page, rules for `config/sharing`, `reportShares`, `shareStats`); new build (installs the codami:// link); phone test with `TEST_SCENARIO_SHARING_2026-11-05.md`; then Admin → More → Social sharing → Share pop-up on
 - [ ] **Share reminders (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (new `shareReminderSweep` at 18:00 Italian time, `shareReminderEvent`, `testShareReminder`; changed `registerVisit`, `logReportShare`; rules for `config/shareReminders`, `shareReminders`, `shareReminderStats` and the `share` notification switch); new build; phone test with `TEST_SCENARIO_SHARE_REMINDERS_2026-11-05.md`; then Admin → More → Share reminders → on
+- [ ] **Feedback (Fri 6 Nov):** `firebase deploy --only functions,firestore:rules,storage` (new `updateFeedback`, changed `submitFeedback`: types, part of the app, optional stars, screenshot, 5 a day; rules for `config/feedbackAsks`, the user's `feedbackAsk` and `feedbackDayCount`; storage rule for `feedback/<uid>/`); new build (native phone model channel); phone test with `TEST_SCENARIO_FEEDBACK_2026-11-06.md`
 - [ ] **Owner profiles and two-way reviews:** client asked Thu 5 Nov to see the reviews of whoever published a request; plan sent, waiting for the go-ahead
 
 - [ ] **Pet sitting fixes (Wed 4 Nov):** `firebase deploy --only functions` (changed `acceptSittingOffer`, `confirmSitting`; new trigger `onSittingRequestUpdated` sends the "accepted" and "please confirm" pushes); new build; check the spinner on Accept, the avatar letter in chat, and scrolling up in a long chat
@@ -42,7 +43,7 @@ _Last updated: Thu 5 Nov 2026 (personal schedule, social sharing and share remin
 - [x] Admin side tested on the phone: add version, wrong / duplicate version refused, English required, publish, Feedback and reviews settings save, Feedback screen empty state
 - [ ] Full real-phone test: follow `TEST_SCENARIO_2026-10-23.md`
 - [ ] **What's new:** raise the version name in `pubspec.yaml` (for example `1.1.0+11`), write and publish the notes for 1.1.0 in Admin → More → What's new, install the update over the old app: the notes show once; Profile → What's new shows them again; a fresh install shows nothing
-- [ ] **Feedback:** Profile → Send feedback, pick stars and send; the points show only after 5 days since sign-up (set "Days after sign-up before asking for feedback" to 0 to test), a second send the same day is refused; read it in Admin → More → Feedback
+- [x] **Feedback (old card):** replaced Fri 6 Nov by the new feedback (see above); up to 5 a day now instead of 1
 - [ ] **Review window:** only from a Play Store install; set the review days to 0 in Points and rewards to see it 25 seconds after opening the app on Home (Google may not show it every time; that's normal)
 - [ ] Automatic invite code (Fri 23 Oct, needs the Play Store build): on phone B, uninstall CodaMi, open phone A's invite link (Profile → Invite friends → Share) or scan A's QR, install from the Play Store (closed testing), sign up and choose the city; the "Did a friend invite you?" screen should already show A's code with a note, then tap Use. Installing from a cable or APK can't test this (internal testing works too; uninstall the debug build first)
 

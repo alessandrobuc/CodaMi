@@ -91,10 +91,10 @@ const points = async (uid) => (await db.collection("users").doc(uid).get()).get(
   const f1 = await call("submitFeedback", newbie.token, {rating: 4, comment: " Nice app ", appVersion: "1.1.0", platform: "android", lang: "it"});
   ok(f1.status === 200 && f1.result.points === 0, "feedback from a brand new account is saved without points");
   const saved = await db.collection("feedback").where("uid", "==", newbie.uid).get();
-  ok(saved.size === 1 && saved.docs[0].get("comment") === "Nice app" && saved.docs[0].get("rating") === 4 && saved.docs[0].get("name") === "Nina Nuova", "feedback is stored with rating, comment and name");
+  ok(saved.size >= 1 && saved.docs[0].get("comment") === "Nice app" && saved.docs[0].get("rating") === 4 && saved.docs[0].get("name") === "Nina Nuova", "feedback is stored with rating, comment and name");
   const f2 = await call("submitFeedback", newbie.token, {rating: 5});
-  ok(f2.status === 429 || f2.error?.status === "RESOURCE_EXHAUSTED", "only one feedback per day");
-  ok((await call("submitFeedback", regular.token, {rating: 7})).status === 400, "stars must be 1 to 5");
+  ok(f2.status === 200 && f2.result.points === 0, "a second feedback the same day is saved too");
+  ok((await call("submitFeedback", regular.token, {rating: 7})).status === 400, "stars must be 0 to 5");
   ok((await call("submitFeedback", regular.token, {rating: 3, comment: "x".repeat(1001)})).status === 400, "comment is limited to 1000 characters");
 
   await db.collection("config").doc("points").set({feedbackAfterDays: 0, feedbackPoints: 20});

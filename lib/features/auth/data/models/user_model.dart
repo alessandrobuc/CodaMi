@@ -1,3 +1,4 @@
+import '../../../feedback/domain/feedback.dart';
 import '../../../notifications/domain/entities/notification_prefs.dart';
 import '../../../points/domain/points.dart';
 
@@ -37,6 +38,7 @@ class UserModel {
   final AmbassadorLevel? ambassadorLevel;
   final int activeDays;
   final bool feedbackSent;
+  final FeedbackAskState feedbackAsk;
 
   UserModel({
     required this.uid,
@@ -63,6 +65,7 @@ class UserModel {
     this.ambassadorLevel,
     this.activeDays = 0,
     this.feedbackSent = false,
+    this.feedbackAsk = const FeedbackAskState(),
   });
 
   bool get hasCity => (cityKey ?? '').isNotEmpty;
@@ -108,6 +111,7 @@ class UserModel {
       ambassadorLevel: AmbassadorLevel.fromValue(map['ambassadorLevel']),
       activeDays: ((map['activity'] as Map?)?['days'] as num?)?.toInt() ?? 0,
       feedbackSent: map['feedbackDay'] is String,
+      feedbackAsk: FeedbackAskState.fromMap(map['feedbackAsk']),
     );
   }
 }

@@ -23,6 +23,8 @@ import '../widgets/reports_widget.dart';
 import '../../../../l10n/labels.dart';
 import '../../../moderation/presentation/widgets/held_photo_notice.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
   final Report report;
@@ -38,6 +40,12 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
   int _page = 0;
   bool _resolving = false;
   bool _deleting = false;
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.reports);
+  }
 
   @override
   void dispose() {

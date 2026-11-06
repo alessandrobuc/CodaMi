@@ -6174,4 +6174,199 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shareRemTestFailed => '发送失败。请检查这台手机是否允许通知。';
+
+  @override
+  String get fbQuickTitle => '小问题 🐾';
+
+  @override
+  String get fbQuickBody => '你已经经常使用 CodaMi 的这个部分了。用起来怎么样？想法和问题对我们帮助最大。';
+
+  @override
+  String get fbSelfBody => '想法、错误或问题：都会直接发送给 CodaMi 团队。';
+
+  @override
+  String get fbTypeLabel => '是关于什么的？';
+
+  @override
+  String get fbTypeSuggestion => '建议';
+
+  @override
+  String get fbTypeBug => '错误';
+
+  @override
+  String get fbTypeProblem => '问题';
+
+  @override
+  String get fbTypeImprovement => '改进';
+
+  @override
+  String get fbTypeGeneral => '一般';
+
+  @override
+  String get fbAreaLabel => '应用的哪个部分？';
+
+  @override
+  String get fbAreaGeneral => '整个应用';
+
+  @override
+  String get fbAreaReports => '走失与寻回';
+
+  @override
+  String get fbAreaMap => '地图';
+
+  @override
+  String get fbAreaWalks => '遛宠';
+
+  @override
+  String get fbAreaSitting => '宠物照看';
+
+  @override
+  String get fbAreaSchedule => '日程';
+
+  @override
+  String get fbAreaHeat => '发情期日历';
+
+  @override
+  String get fbAreaScanner => '品种识别';
+
+  @override
+  String get fbAreaShop => '商店';
+
+  @override
+  String get fbAreaSharing => '分享';
+
+  @override
+  String get fbRatingLabel => '你的评分（可选）';
+
+  @override
+  String get fbHintSuggestion => '你希望在 CodaMi 中看到什么？';
+
+  @override
+  String get fbHintBug => '发生了什么？你原本期望的是什么？';
+
+  @override
+  String get fbHintProblem => '哪里不好用或无法使用？';
+
+  @override
+  String get fbHintImprovement => '哪些地方可以做得更好？怎么做？';
+
+  @override
+  String get fbScreenshotAdd => '添加截图';
+
+  @override
+  String get fbAutoInfo => '应用版本和手机型号会自动附上。';
+
+  @override
+  String get fbNeedSomething => '给出星级或写几个字即可发送';
+
+  @override
+  String get fbDontAsk => '不再询问';
+
+  @override
+  String get fbDontAskDone => '好的，我们不会再询问。你随时可以在“个人资料”中发送反馈。';
+
+  @override
+  String get fbLimitToday => '谢谢，今天的反馈已经很多了！明天可以继续发送。';
+
+  @override
+  String get fbProfileSubtitle => '给团队的建议、错误和想法';
+
+  @override
+  String get fbStatusNew => '新的';
+
+  @override
+  String get fbStatusProgress => '处理中';
+
+  @override
+  String get fbStatusDone => '已完成';
+
+  @override
+  String get fbAdminOverview => '最近 30 天';
+
+  @override
+  String get fbAdminStarsByArea => '各部分的平均星级';
+
+  @override
+  String get fbAdminNoStars => '最近 30 天没有评分。';
+
+  @override
+  String get fbAdminNoRating => '无星级';
+
+  @override
+  String get fbAdminAnyStars => '全部星级';
+
+  @override
+  String get fbAdminAllAreas => '全部部分';
+
+  @override
+  String get fbAdminAsked => '应用内询问';
+
+  @override
+  String get fbAdminSelf => '从个人资料发送';
+
+  @override
+  String get fbAdminNote => '私人备注';
+
+  @override
+  String get fbAdminNoteHint => '只有团队能看到这条备注';
+
+  @override
+  String get fbAdminMarkDoneTitle => '标记为已完成？';
+
+  @override
+  String get fbAdminNotify => '感谢用户';
+
+  @override
+  String get fbAdminNotifyHelp =>
+      '用户会收到一条用其语言发送的简短通知：错误和问题为“谢谢，我们已经修好了！”，其他为“你的想法已加入 CodaMi！”。';
+
+  @override
+  String get fbAdminNotified => '已保存。已向用户致谢。';
+
+  @override
+  String get fbAdminThanked => '已致谢';
+
+  @override
+  String get fbAdminEmptyTab => '这里什么都没有。';
+
+  @override
+  String get fbAdminOpenUser => '打开资料';
+
+  @override
+  String get fbAdminChangeStatus => '更改状态';
+
+  @override
+  String get fbAdminSettings => '反馈提问';
+
+  @override
+  String get fbSetIntro => '选择应用何时向用户征求反馈。用户随时可以在个人资料中发送反馈。';
+
+  @override
+  String get fbSetOnHelp => '开启：用户多次使用某个部分后会收到提问';
+
+  @override
+  String get fbSetOffHelp => '关闭：不会询问任何人，但个人资料中的反馈仍可使用';
+
+  @override
+  String get fbSetWhen => '何时询问';
+
+  @override
+  String get fbSetUsesMin => '询问前的使用次数：从';
+
+  @override
+  String get fbSetUsesMax => '询问前的使用次数：到';
+
+  @override
+  String get fbSetPause => '提问后暂停的天数';
+
+  @override
+  String get fbSetMax => '每位用户最多提问次数';
+
+  @override
+  String get fbSetHelp =>
+      '每位用户在每个部分都会得到此范围内的一个随机使用次数，每个部分只会被询问一次。新账号需等待 3 天。Google Play 评分窗口也会遵守暂停期。';
+
+  @override
+  String get fbSetInvalid =>
+      '请检查数字：“从”为 1 到 100，“到”不小于“从”且最多 200，暂停 3 到 90 天，提问 1 到 20 次。';
 }

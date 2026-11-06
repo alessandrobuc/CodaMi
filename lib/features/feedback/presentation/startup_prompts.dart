@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,16 +14,19 @@ import '../../whats_new/data/release_notes_repository.dart';
 import '../../whats_new/domain/release_note.dart';
 import '../../whats_new/presentation/providers/whats_new_provider.dart';
 import '../../whats_new/presentation/screens/whats_new_screen.dart';
-import '../data/feedback_repository.dart';
-import '../domain/feedback_rules.dart';
-import 'widgets/feedback_sheet.dart';
+import '../../auth/data/models/user_model.dart';
 import '../../sharing/domain/sharing.dart';
+import '../data/feedback_repository.dart';
+import '../domain/feedback.dart';
+import '../domain/feedback_rules.dart';
+import 'feedback_asks.dart';
+import 'providers/feedback_provider.dart';
 
 // Waits so nothing pops up while the user is starting to do something.
 const _calmDelay = Duration(seconds: 25);
 
 // At most one of these per app start: the update message, the notes of a
-// new version, the feedback card, or the store rating window.
+// new version, the general feedback question, or the store rating window.
 Future<void> runStartupPrompts(
   BuildContext context,
   WidgetRef ref, {
@@ -72,32 +76,42 @@ Future<bool> _showWhatsNew(BuildContext context, WidgetRef ref) async {
 
 Future<void> _askFeedbackOrReview(BuildContext context, WidgetRef ref) async {
   final profile = ref.read(userProfileProvider).value;
+  final now = DateTime.now();
   // A share reminder already asked something of the user today.
-  if (profile == null || openedShareReminderToday(DateTime.now())) return;
+  if (profile == null ||
+      profile.role != UserRole.user ||
+      openedShareReminderToday(now)) {
+    return;
+  }
+  final prefs = ref.read(sharedPreferencesProvider);
+  final askConfig = await askConfigOrDefault(
+    ref.read(feedbackAskConfigProvider.future),
+  );
+  final facts = feedbackFactsOf(profile, askConfig, prefs);
+  if (shouldAskGeneral(facts, now, Random().nextDouble())) {
+    if (context.mounted) await askFeedback(context, ref, FeedbackArea.general);
+    return;
+  }
+
   final config = await ref
       .read(pointsConfigProvider.future)
       .timeout(
         const Duration(seconds: 10),
         onTimeout: () => const PointsConfig(),
       );
-  final store = PromptHistoryStore(
-    ref.read(sharedPreferencesProvider),
-    profile.uid,
-  );
+  final store = PromptHistoryStore(prefs, profile.uid);
   final usage = UsageFacts(
     joinedAt: profile.createdAt,
     activeDays: profile.activeDays,
-    feedbackSent: profile.feedbackSent,
   );
-  final history = store.read();
-  final now = DateTime.now();
-
-  if (shouldAskFeedback(usage, history, config, now)) {
-    await store.feedbackAsked(now);
-    if (context.mounted) await showFeedbackSheet(context);
-    return;
-  }
-  if (shouldAskReview(usage, history, config, now)) {
+  final history = store.read(feedbackAskedAt: profile.feedbackAsk.lastAt);
+  if (shouldAskReview(
+    usage,
+    history,
+    config,
+    now,
+    pauseDays: askConfig.pauseDays,
+  )) {
     final review = InAppReview.instance;
     if (!await review.isAvailable()) return;
     await store.reviewAsked(now);

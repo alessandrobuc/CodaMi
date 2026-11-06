@@ -438,7 +438,7 @@ async function deleteUserData(uid: string): Promise<void> {
 
   const bucket = getStorage().bucket();
   await Promise.all(
-    ["reports", "pets"].map((folder) =>
+    ["reports", "pets", "feedback"].map((folder) =>
       bucket.deleteFiles({prefix: `${folder}/${uid}/`}),
     ),
   );
@@ -564,6 +564,7 @@ export {heatReminderSweep} from "./heatFunctions";
 export {scheduleReminderSweep} from "./scheduleFunctions";
 export {logReportShare, reportPage} from "./sharingFunctions";
 export {shareReminderEvent, shareReminderSweep, testShareReminder} from "./shareRemindersFunctions";
+export {updateFeedback} from "./feedbackFunctions";
 export {
   acceptSittingOffer,
   adminSetReviewHidden,

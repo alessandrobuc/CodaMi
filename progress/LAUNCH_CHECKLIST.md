@@ -2,7 +2,7 @@
 
 Everything to do before publishing on Google Play and the App Store. Tick items off as they are done.
 
-_Last updated: Wed 4 Nov 2026_
+_Last updated: Fri 6 Nov 2026_
 
 ---
 
@@ -53,6 +53,7 @@ Add SHA-1s to the existing key. Never replace them.
 
 ## 4. Firebase
 
+- [ ] **Feedback (Fri 6 Nov):** `firebase deploy --only functions,firestore:rules,storage` (`updateFeedback`, changed `submitFeedback`, `config/feedbackAsks`, `feedbackAsk` on users, screenshot folder `feedback/<uid>/`)
 - [ ] **Share reminders (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (`shareReminderSweep` at 18:00 Italian time, `shareReminderEvent`, `testShareReminder`; rules with the `share` notification type)
 - [ ] **Social sharing (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules,hosting` (`reportPage` behind `/r/**`, `logReportShare`, rules for `config/sharing`, `reportShares`, `shareStats`)
 - [ ] **Personal schedule (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (`scheduleReminderSweep` every 5 minutes, rules for `scheduleEvents`, `config/schedule`)
@@ -110,7 +111,7 @@ Add SHA-1s to the existing key. Never replace them.
   - [ ] Play may require a way to **request** deletion without the app (for example by email) on this page
 - [x] **Report / block users** in the app (Apple guideline 1.2, Google Play UGC policy)
   - [ ] Update the content rating answers to "Yes"
-- [ ] Privacy policy and Data safety: mention that in-app feedback (stars, comment, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
+- [ ] Privacy policy and Data safety: mention that in-app feedback (type, part of the app, stars, comment, optional screenshot, app version, phone model and language, with the user's name and email) is kept for the team and deleted with the account; the random install ID (stored hashed, only to stop invite abuse, fits "Device or other IDs"), that the public invite page counts visits with a daily hash of IP and browser (no IP stored, deleted after a day), that the exact place of an emergency is shown to signed-in users, and that the home city position is used for nearby emergency alerts
 - [ ] Petitions: the "View petition" button opens external sites (Change.org, Care2, Avaaz…); the app collects no signatures. Mention external links in the Terms of use
 - [ ] Shop, before opening it to users: terms of sale, 14-day right of withdrawal, 2-year guarantee, prices with VAT and shipping, product safety information (GPSR), pet food label information, "Sponsored" and affiliate labels, privacy policy and Data safety updated for orders, addresses and payments (`SHOP_FEATURE.md`)
 - [ ] Phase 5 (`PHASE_5_REQUESTS.md`): privacy policy and Data safety for photos sent to the AI breed scanner (built Wed 4 Nov: sent to Google Gemini on Vertex AI for the scan only, not stored, not used to train models), private schedule (built Thu 5 Nov: only the owner reads it, removed with the account) and heat cycle records, pet sitting profiles, chats and reviews (built Wed 4 Nov: chats private to the two members, removed with the account), and the public report page (built Thu 5 Nov: anyone with the link sees the pet's photo, name, species, area, date, reward and description; no phone, email, owner name or exact address; gone when hidden or deleted); pet sitting terms and safety notes; chat between users needs report / block (UGC policy)

@@ -67,6 +67,19 @@ class MainActivity : FlutterActivity() {
                     result.notImplemented()
                 }
             }
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/device")
+            .setMethodCallHandler { call, result ->
+                if (call.method == "describe") {
+                    result.success(
+                        mapOf(
+                            "model" to "${Build.MANUFACTURER} ${Build.MODEL}",
+                            "system" to "Android ${Build.VERSION.RELEASE}",
+                        ),
+                    )
+                } else {
+                    result.notImplemented()
+                }
+            }
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "codami/install_referrer")
             .setMethodCallHandler { call, result ->
                 if (call.method == "get") readInstallReferrer(result) else result.notImplemented()

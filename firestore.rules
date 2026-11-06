@@ -72,7 +72,7 @@ service cloud.firestore {
     // Written only by Cloud Functions: points, daily rewards, invites, activity and the home geohash.
     function serverUserFields() {
       return ['points', 'daily', 'activity', 'installHashes', 'inviteCode', 'referredBy',
-        'referralCount', 'ambassadorLevel', 'homeGeohash', 'inviteTries', 'feedbackDay'];
+        'referralCount', 'ambassadorLevel', 'homeGeohash', 'inviteTries', 'feedbackDay', 'feedbackDayCount'];
     }
 
     function validEmergency(data) {
@@ -289,6 +289,16 @@ service cloud.firestore {
         && (!('reward' in data) || (data.type == 'lost' && data.reward is int && data.reward >= 1 && data.reward <= 99999));
     }
 
+    // When the app last asked this user for feedback, and about which parts.
+    function validFeedbackAsk(ask) {
+      return ask is map
+        && ask.keys().hasOnly(['lastAt', 'count', 'asked', 'optOut'])
+        && (!('lastAt' in ask) || ask.lastAt is timestamp)
+        && (!('count' in ask) || (ask.count is int && ask.count >= 0 && ask.count <= 100))
+        && (!('asked' in ask) || (ask.asked is list && ask.asked.size() <= 20))
+        && (!('optOut' in ask) || ask.optOut is bool);
+    }
+
     match /users/{uid} {
       allow read: if isUser(uid) || isAdmin();
       allow create: if isUser(uid) && roleOf(request.resource.data) == 'user'
@@ -302,7 +312,8 @@ service cloud.firestore {
               && request.resource.data.blockedUsers.size() <= 500))
           && (!('notificationPrefs' in request.resource.data)
             || (request.resource.data.notificationPrefs is map
-              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support', 'emergency', 'share']))))
+              && request.resource.data.notificationPrefs.keys().hasOnly(['lost', 'found', 'resolved', 'support', 'emergency', 'share'])))
+          && (!('feedbackAsk' in request.resource.data) || validFeedbackAsk(request.resource.data.feedbackAsk)))
         || (isAdmin() && !isUser(uid)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'updatedAt'])
           && roleOf(resource.data) in ['user', 'support']
@@ -738,7 +749,7 @@ service cloud.firestore {
         ]);
     }
 
-    // Written only by the `submitFeedback` function.
+    // Written only by the `submitFeedback` and `updateFeedback` functions.
     match /feedback/{feedbackId} {
       allow read: if isStaff();
     }
@@ -835,6 +846,20 @@ service cloud.firestore {
         && request.resource.data.dailyScans >= 1 && request.resource.data.dailyScans <= 100
         && request.resource.data.model is string
         && request.resource.data.model.matches('gemini-[a-z0-9.-]{1,60}')
+        && shopStamped(request.resource.data);
+    }
+
+    // Feedback questions: how many uses before asking, the pause and the limit.
+    match /config/feedbackAsks {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'usesMin', 'usesMax', 'pauseDays', 'maxAsks', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.usesMin is int && request.resource.data.usesMin >= 1 && request.resource.data.usesMin <= 100
+        && request.resource.data.usesMax is int && request.resource.data.usesMax >= request.resource.data.usesMin
+        && request.resource.data.usesMax <= 200
+        && request.resource.data.pauseDays is int && request.resource.data.pauseDays >= 3 && request.resource.data.pauseDays <= 90
+        && request.resource.data.maxAsks is int && request.resource.data.maxAsks >= 1 && request.resource.data.maxAsks <= 20
         && shopStamped(request.resource.data);
     }
 

@@ -11206,6 +11206,390 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t send it. Check that notifications are allowed on this phone.'**
   String get shareRemTestFailed;
+
+  /// No description provided for @fbQuickTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick question 🐾'**
+  String get fbQuickTitle;
+
+  /// No description provided for @fbQuickBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve used this part of CodaMi quite a bit. How is it working for you? Ideas and problems help us most.'**
+  String get fbQuickBody;
+
+  /// No description provided for @fbSelfBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideas, bugs or problems: it all goes straight to the CodaMi team.'**
+  String get fbSelfBody;
+
+  /// No description provided for @fbTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What is it about?'**
+  String get fbTypeLabel;
+
+  /// No description provided for @fbTypeSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion'**
+  String get fbTypeSuggestion;
+
+  /// No description provided for @fbTypeBug.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug'**
+  String get fbTypeBug;
+
+  /// No description provided for @fbTypeProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem'**
+  String get fbTypeProblem;
+
+  /// No description provided for @fbTypeImprovement.
+  ///
+  /// In en, this message translates to:
+  /// **'Improvement'**
+  String get fbTypeImprovement;
+
+  /// No description provided for @fbTypeGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get fbTypeGeneral;
+
+  /// No description provided for @fbAreaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Which part of the app?'**
+  String get fbAreaLabel;
+
+  /// No description provided for @fbAreaGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole app'**
+  String get fbAreaGeneral;
+
+  /// No description provided for @fbAreaReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost and found'**
+  String get fbAreaReports;
+
+  /// No description provided for @fbAreaMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get fbAreaMap;
+
+  /// No description provided for @fbAreaWalks.
+  ///
+  /// In en, this message translates to:
+  /// **'Walks'**
+  String get fbAreaWalks;
+
+  /// No description provided for @fbAreaSitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet sitting'**
+  String get fbAreaSitting;
+
+  /// No description provided for @fbAreaSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get fbAreaSchedule;
+
+  /// No description provided for @fbAreaHeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat calendar'**
+  String get fbAreaHeat;
+
+  /// No description provided for @fbAreaScanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Breed scanner'**
+  String get fbAreaScanner;
+
+  /// No description provided for @fbAreaShop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get fbAreaShop;
+
+  /// No description provided for @fbAreaSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing'**
+  String get fbAreaSharing;
+
+  /// No description provided for @fbRatingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating (optional)'**
+  String get fbRatingLabel;
+
+  /// No description provided for @fbHintSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'What would you like to see in CodaMi?'**
+  String get fbHintSuggestion;
+
+  /// No description provided for @fbHintBug.
+  ///
+  /// In en, this message translates to:
+  /// **'What happened, and what did you expect?'**
+  String get fbHintBug;
+
+  /// No description provided for @fbHintProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'What is hard or not working for you?'**
+  String get fbHintProblem;
+
+  /// No description provided for @fbHintImprovement.
+  ///
+  /// In en, this message translates to:
+  /// **'What could work better, and how?'**
+  String get fbHintImprovement;
+
+  /// No description provided for @fbScreenshotAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a screenshot'**
+  String get fbScreenshotAdd;
+
+  /// No description provided for @fbAutoInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'The app version and phone model are added for you.'**
+  String get fbAutoInfo;
+
+  /// No description provided for @fbNeedSomething.
+  ///
+  /// In en, this message translates to:
+  /// **'Add stars or a few words to send'**
+  String get fbNeedSomething;
+
+  /// No description provided for @fbDontAsk.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t ask me again'**
+  String get fbDontAsk;
+
+  /// No description provided for @fbDontAskDone.
+  ///
+  /// In en, this message translates to:
+  /// **'OK, we won\'t ask again. You can always send feedback from Profile.'**
+  String get fbDontAskDone;
+
+  /// No description provided for @fbLimitToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks, that\'s a lot of feedback for today! You can send more tomorrow.'**
+  String get fbLimitToday;
+
+  /// No description provided for @fbProfileSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestions, bugs and ideas for the team'**
+  String get fbProfileSubtitle;
+
+  /// No description provided for @fbStatusNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get fbStatusNew;
+
+  /// No description provided for @fbStatusProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get fbStatusProgress;
+
+  /// No description provided for @fbStatusDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get fbStatusDone;
+
+  /// No description provided for @fbAdminOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get fbAdminOverview;
+
+  /// No description provided for @fbAdminStarsByArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Average stars by part of the app'**
+  String get fbAdminStarsByArea;
+
+  /// No description provided for @fbAdminNoStars.
+  ///
+  /// In en, this message translates to:
+  /// **'No stars given in the last 30 days.'**
+  String get fbAdminNoStars;
+
+  /// No description provided for @fbAdminNoRating.
+  ///
+  /// In en, this message translates to:
+  /// **'No stars'**
+  String get fbAdminNoRating;
+
+  /// No description provided for @fbAdminAnyStars.
+  ///
+  /// In en, this message translates to:
+  /// **'Any stars'**
+  String get fbAdminAnyStars;
+
+  /// No description provided for @fbAdminAllAreas.
+  ///
+  /// In en, this message translates to:
+  /// **'All parts'**
+  String get fbAdminAllAreas;
+
+  /// No description provided for @fbAdminAsked.
+  ///
+  /// In en, this message translates to:
+  /// **'Asked in the app'**
+  String get fbAdminAsked;
+
+  /// No description provided for @fbAdminSelf.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent from Profile'**
+  String get fbAdminSelf;
+
+  /// No description provided for @fbAdminNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Private note'**
+  String get fbAdminNote;
+
+  /// No description provided for @fbAdminNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the team sees this note'**
+  String get fbAdminNoteHint;
+
+  /// No description provided for @fbAdminMarkDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as done?'**
+  String get fbAdminMarkDoneTitle;
+
+  /// No description provided for @fbAdminNotify.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank the user'**
+  String get fbAdminNotify;
+
+  /// No description provided for @fbAdminNotifyHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'They get a short notification in their language: \"Thanks, we fixed it!\" for bugs and problems, \"Your idea is in CodaMi!\" for the rest.'**
+  String get fbAdminNotifyHelp;
+
+  /// No description provided for @fbAdminNotified.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved. The user was thanked.'**
+  String get fbAdminNotified;
+
+  /// No description provided for @fbAdminThanked.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanked'**
+  String get fbAdminThanked;
+
+  /// No description provided for @fbAdminEmptyTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here.'**
+  String get fbAdminEmptyTab;
+
+  /// No description provided for @fbAdminOpenUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Open profile'**
+  String get fbAdminOpenUser;
+
+  /// No description provided for @fbAdminChangeStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Change status'**
+  String get fbAdminChangeStatus;
+
+  /// No description provided for @fbAdminSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback questions'**
+  String get fbAdminSettings;
+
+  /// No description provided for @fbSetIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose when the app asks users for feedback. Users can always send feedback from Profile.'**
+  String get fbSetIntro;
+
+  /// No description provided for @fbSetOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users are asked after using a part of the app a few times'**
+  String get fbSetOnHelp;
+
+  /// No description provided for @fbSetOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: nobody is asked, but feedback from Profile still works'**
+  String get fbSetOffHelp;
+
+  /// No description provided for @fbSetWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'When to ask'**
+  String get fbSetWhen;
+
+  /// No description provided for @fbSetUsesMin.
+  ///
+  /// In en, this message translates to:
+  /// **'Uses before asking: from'**
+  String get fbSetUsesMin;
+
+  /// No description provided for @fbSetUsesMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Uses before asking: to'**
+  String get fbSetUsesMax;
+
+  /// No description provided for @fbSetPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Days of pause after a question'**
+  String get fbSetPause;
+
+  /// No description provided for @fbSetMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Most questions per user'**
+  String get fbSetMax;
+
+  /// No description provided for @fbSetHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Each user gets a random number of uses in this range for each part of the app, and is asked about each part only once. New accounts wait 3 days. The Google Play rating window also waits for the pause.'**
+  String get fbSetHelp;
+
+  /// No description provided for @fbSetInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the numbers: \"from\" 1 to 100, \"to\" not below \"from\" and at most 200, pause 3 to 90 days, questions 1 to 20.'**
+  String get fbSetInvalid;
 }
 
 class _AppLocalizationsDelegate

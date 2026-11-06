@@ -24,6 +24,8 @@ import '../../data/direct_share.dart';
 import '../../domain/sharing.dart';
 import '../providers/sharing_provider.dart';
 import '../share_sheet.dart' show ShareAppButton;
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 // Where a share reminder leads: the user's invite link, ready to share.
 class ShareAppScreen extends ConsumerStatefulWidget {
@@ -48,6 +50,9 @@ class _ShareAppScreenState extends ConsumerState<ShareAppScreen> {
   @override
   void initState() {
     super.initState();
+    if (!widget.preview) {
+      ref.read(feedbackTrackerProvider).used(FeedbackArea.sharing);
+    }
     if (widget.fromReminder && !widget.preview) {
       shareReminderOpenedAt = DateTime.now();
       unawaited(

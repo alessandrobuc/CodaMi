@@ -13,6 +13,8 @@ import 'chat_screens.dart';
 import 'request_screens.dart';
 import 'sitter_screens.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 class SittingScreen extends ConsumerStatefulWidget {
   const SittingScreen({super.key});
@@ -88,6 +90,12 @@ class _SittingScreenState extends ConsumerState<SittingScreen> {
       AsyncError() => Center(child: Text(context.l10n.actionFailed)),
       _ => const Center(child: CircularProgressIndicator()),
     };
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.sitting);
   }
 
   @override

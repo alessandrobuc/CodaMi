@@ -226,21 +226,6 @@ export function referralOutcome(
   return progress.now > deadline ? "expire" : "wait";
 }
 
-export const FEEDBACK_COMMENT_MAX = 1000;
-
-export interface Feedback {
-  rating: number;
-  comment: string;
-}
-
-export function feedbackOf(data: unknown): Feedback | null {
-  const input = typeof data === "object" && data !== null ? data as Json : {};
-  const rating = intIn(input.rating, [1, 5]);
-  const comment = typeof input.comment === "string" ? input.comment.trim() : "";
-  if (rating === null || comment.length > FEEDBACK_COMMENT_MAX) return null;
-  return {rating, comment};
-}
-
 // Points for feedback come once per account, and only after some real use.
 export function feedbackEarnsPoints(joinedAt: number, now: number, config: PointsConfig): boolean {
   return config.feedbackPoints > 0 && now - joinedAt >= config.feedbackAfterDays * 86_400_000;

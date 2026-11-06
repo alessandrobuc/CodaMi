@@ -20,6 +20,8 @@ import '../../domain/breed_scan.dart';
 import '../providers/scanner_provider.dart';
 import '../widgets/scanner_widgets.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 class ScannerScreen extends ConsumerStatefulWidget {
   // Opened from the pet form: the result offers "Use this breed" and returns it.
@@ -121,6 +123,12 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
     } on PetsException catch (e) {
       if (mounted) SnackbarUtils.showError(context, e.message);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.scanner);
   }
 
   @override

@@ -16,7 +16,6 @@ import {
   deviceFlags,
   earnsStreakBonus,
   feedbackEarnsPoints,
-  feedbackOf,
   levelFor,
   levelsReached,
   newInviteCode,
@@ -29,6 +28,7 @@ import {
   type PointAction,
   type PointsConfig,
 } from "./points";
+import {feedbackOf, nextDayCount} from "./feedback";
 import {deleteInviteOpens, sweepInviteOpenSeen} from "./invitesFunctions";
 import {pointsText} from "./pointsMessages";
 import {oneOf} from "./support";
@@ -356,9 +356,9 @@ export const adminAdjustPoints = onCall(async (request) => {
 // In-app feedback for the team. This is not a store review: stores forbid rewarding those.
 export const submitFeedback = onCall(async (request) => {
   const uid = requireUid(request);
-  const feedback = feedbackOf(request.data);
-  if (!feedback) throw new HttpsError("invalid-argument", "Choose from 1 to 5 stars.");
-  const input = request.data as {appVersion?: unknown; platform?: unknown; lang?: unknown};
+  const feedback = feedbackOf(request.data, uid);
+  if (!feedback) throw new HttpsError("invalid-argument", "Add stars or a few words.");
+  const input = request.data as {appVersion?: unknown; platform?: unknown; lang?: unknown; device?: unknown};
   const short = (value: unknown, max: number) =>
     typeof value === "string" ? value.trim().slice(0, max) : null;
   const config = await loadConfig();
@@ -370,8 +370,9 @@ export const submitFeedback = onCall(async (request) => {
     if (!user.exists || user.get("disabled") === true) {
       throw new HttpsError("permission-denied", "This account can't send feedback.");
     }
-    if (user.get("feedbackDay") === today) {
-      throw new HttpsError("resource-exhausted", "Feedback already sent today.");
+    const count = nextDayCount(user.get("feedbackDay"), user.get("feedbackDayCount"), today);
+    if (count === null) {
+      throw new HttpsError("resource-exhausted", "Enough feedback for today.");
     }
     const given = await awardInTx(tx, [{
       uid,
@@ -383,17 +384,23 @@ export const submitFeedback = onCall(async (request) => {
       uid,
       name: String(user.get("name") ?? "").trim().slice(0, 80),
       email: String(user.get("email") ?? "").slice(0, 200),
+      type: feedback.type,
+      area: feedback.area,
       rating: feedback.rating,
       comment: feedback.comment,
+      asked: feedback.asked,
+      screenshotPath: feedback.screenshotPath,
+      status: "new",
       appVersion: short(input.appVersion, 20),
       platform: short(input.platform, 10),
+      device: short(input.device, 80),
       lang: short(input.lang, 5),
       createdAt: FieldValue.serverTimestamp(),
     });
-    tx.update(user.ref, {feedbackDay: today});
+    tx.update(user.ref, {feedbackDay: today, feedbackDayCount: count});
     return given.reduce((sum, award) => sum + award.points, 0);
   });
-  logger.info("Feedback received", {uid, rating: feedback.rating, points});
+  logger.info("Feedback received", {uid, type: feedback.type, area: feedback.area, rating: feedback.rating, points});
   return {points};
 });
 

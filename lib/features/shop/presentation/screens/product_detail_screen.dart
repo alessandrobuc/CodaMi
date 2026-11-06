@@ -13,6 +13,8 @@ import '../providers/shop_provider.dart';
 import '../widgets/shop_widgets.dart';
 import 'cart_screen.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   final String productId;
@@ -27,6 +29,12 @@ class ProductDetailScreen extends ConsumerStatefulWidget {
 class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   final _pages = PageController();
   int _page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.shop);
+  }
 
   @override
   void dispose() {

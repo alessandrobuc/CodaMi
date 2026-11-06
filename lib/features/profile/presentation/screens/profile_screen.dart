@@ -384,19 +384,14 @@ class ProfileScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
-                _ProfileTile(
-                  icon: Icons.rate_review_rounded,
-                  color: pointsColor,
-                  title: l10n.feedbackSend,
-                  subtitle: l10n.sendFeedbackSubtitle,
-                  onTap: () => showFeedbackSheet(context),
-                ),
                 if (defaultTargetPlatform == TargetPlatform.android)
                   _ProfileTile(
                     icon: Icons.star_rounded,
                     color: AppColors.accent,
                     title: l10n.rateCodaMi,
                     subtitle: l10n.rateCodaMiSubtitle,
+                    // A button opens the store page; Google's in-app window is
+                    // only for the automatic moment (Play review guidelines).
                     onTap: () => InAppReview.instance.openStoreListing(),
                   )
                 else if (ref.watch(appVersionConfigProvider).value?.appStoreId
@@ -409,6 +404,13 @@ class ProfileScreen extends ConsumerWidget {
                     onTap: () =>
                         InAppReview.instance.openStoreListing(appStoreId: id),
                   ),
+                _ProfileTile(
+                  icon: Icons.rate_review_rounded,
+                  color: pointsColor,
+                  title: l10n.feedbackSend,
+                  subtitle: l10n.fbProfileSubtitle,
+                  onTap: () => showFeedbackSheet(context),
+                ),
                 if (ref.watch(appUpdateProvider) case final update
                     when update.outdated)
                   _ProfileTile(

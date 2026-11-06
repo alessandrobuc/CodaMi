@@ -6488,4 +6488,206 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get shareRemTestFailed =>
       'भेजा नहीं जा सका। देखें कि इस फ़ोन पर नोटिफ़िकेशन की अनुमति है।';
+
+  @override
+  String get fbQuickTitle => 'एक छोटा सा सवाल 🐾';
+
+  @override
+  String get fbQuickBody =>
+      'आपने CodaMi का यह हिस्सा काफ़ी इस्तेमाल किया है। यह आपके लिए कैसा चल रहा है? आइडिया और समस्याएँ हमारी सबसे ज़्यादा मदद करती हैं।';
+
+  @override
+  String get fbSelfBody =>
+      'आइडिया, बग या समस्याएँ: सब कुछ सीधे CodaMi टीम तक पहुँचता है।';
+
+  @override
+  String get fbTypeLabel => 'यह किस बारे में है?';
+
+  @override
+  String get fbTypeSuggestion => 'सुझाव';
+
+  @override
+  String get fbTypeBug => 'बग';
+
+  @override
+  String get fbTypeProblem => 'समस्या';
+
+  @override
+  String get fbTypeImprovement => 'सुधार';
+
+  @override
+  String get fbTypeGeneral => 'सामान्य';
+
+  @override
+  String get fbAreaLabel => 'ऐप का कौन सा हिस्सा?';
+
+  @override
+  String get fbAreaGeneral => 'पूरा ऐप';
+
+  @override
+  String get fbAreaReports => 'खोए और मिले';
+
+  @override
+  String get fbAreaMap => 'मैप';
+
+  @override
+  String get fbAreaWalks => 'सैर';
+
+  @override
+  String get fbAreaSitting => 'पेट सिटिंग';
+
+  @override
+  String get fbAreaSchedule => 'शेड्यूल';
+
+  @override
+  String get fbAreaHeat => 'हीट कैलेंडर';
+
+  @override
+  String get fbAreaScanner => 'नस्ल स्कैनर';
+
+  @override
+  String get fbAreaShop => 'दुकान';
+
+  @override
+  String get fbAreaSharing => 'शेयरिंग';
+
+  @override
+  String get fbRatingLabel => 'आपकी रेटिंग (वैकल्पिक)';
+
+  @override
+  String get fbHintSuggestion => 'आप CodaMi में क्या देखना चाहेंगे?';
+
+  @override
+  String get fbHintBug => 'क्या हुआ, और आपको क्या उम्मीद थी?';
+
+  @override
+  String get fbHintProblem => 'क्या मुश्किल है या काम नहीं कर रहा?';
+
+  @override
+  String get fbHintImprovement => 'क्या बेहतर काम कर सकता है, और कैसे?';
+
+  @override
+  String get fbScreenshotAdd => 'स्क्रीनशॉट जोड़ें';
+
+  @override
+  String get fbAutoInfo => 'ऐप वर्ज़न और फ़ोन मॉडल अपने-आप जुड़ जाते हैं।';
+
+  @override
+  String get fbNeedSomething => 'भेजने के लिए स्टार दें या कुछ शब्द लिखें';
+
+  @override
+  String get fbDontAsk => 'मुझसे दोबारा न पूछें';
+
+  @override
+  String get fbDontAskDone =>
+      'ठीक है, हम दोबारा नहीं पूछेंगे। आप प्रोफ़ाइल से कभी भी फ़ीडबैक भेज सकते हैं।';
+
+  @override
+  String get fbLimitToday =>
+      'धन्यवाद, आज के लिए यह काफ़ी फ़ीडबैक है! आप कल और भेज सकते हैं।';
+
+  @override
+  String get fbProfileSubtitle => 'टीम के लिए सुझाव, बग और आइडिया';
+
+  @override
+  String get fbStatusNew => 'नया';
+
+  @override
+  String get fbStatusProgress => 'काम जारी';
+
+  @override
+  String get fbStatusDone => 'पूरा';
+
+  @override
+  String get fbAdminOverview => 'पिछले 30 दिन';
+
+  @override
+  String get fbAdminStarsByArea => 'ऐप के हर हिस्से के औसत स्टार';
+
+  @override
+  String get fbAdminNoStars => 'पिछले 30 दिनों में कोई स्टार नहीं मिला।';
+
+  @override
+  String get fbAdminNoRating => 'बिना स्टार';
+
+  @override
+  String get fbAdminAnyStars => 'सभी स्टार';
+
+  @override
+  String get fbAdminAllAreas => 'सभी हिस्से';
+
+  @override
+  String get fbAdminAsked => 'ऐप में पूछा गया';
+
+  @override
+  String get fbAdminSelf => 'प्रोफ़ाइल से भेजा गया';
+
+  @override
+  String get fbAdminNote => 'निजी नोट';
+
+  @override
+  String get fbAdminNoteHint => 'यह नोट सिर्फ़ टीम देखती है';
+
+  @override
+  String get fbAdminMarkDoneTitle => 'पूरा के रूप में चिह्नित करें?';
+
+  @override
+  String get fbAdminNotify => 'यूज़र को धन्यवाद दें';
+
+  @override
+  String get fbAdminNotifyHelp =>
+      'उन्हें उनकी भाषा में एक छोटी सूचना मिलती है: बग और समस्याओं के लिए \"धन्यवाद, हमने इसे ठीक कर दिया!\", बाकी के लिए \"आपका आइडिया CodaMi में है!\"।';
+
+  @override
+  String get fbAdminNotified => 'सेव हो गया। यूज़र को धन्यवाद भेजा गया।';
+
+  @override
+  String get fbAdminThanked => 'धन्यवाद भेजा';
+
+  @override
+  String get fbAdminEmptyTab => 'यहाँ कुछ नहीं है।';
+
+  @override
+  String get fbAdminOpenUser => 'प्रोफ़ाइल खोलें';
+
+  @override
+  String get fbAdminChangeStatus => 'स्थिति बदलें';
+
+  @override
+  String get fbAdminSettings => 'फ़ीडबैक सवाल';
+
+  @override
+  String get fbSetIntro =>
+      'चुनें कि ऐप यूज़र्स से कब फ़ीडबैक माँगे। यूज़र प्रोफ़ाइल से कभी भी फ़ीडबैक भेज सकते हैं।';
+
+  @override
+  String get fbSetOnHelp =>
+      'चालू: ऐप का कोई हिस्सा कुछ बार इस्तेमाल करने के बाद सवाल आता है';
+
+  @override
+  String get fbSetOffHelp =>
+      'बंद: किसी से नहीं पूछा जाता, पर प्रोफ़ाइल से फ़ीडबैक काम करता है';
+
+  @override
+  String get fbSetWhen => 'कब पूछें';
+
+  @override
+  String get fbSetUsesMin => 'पूछने से पहले इस्तेमाल: से';
+
+  @override
+  String get fbSetUsesMax => 'पूछने से पहले इस्तेमाल: तक';
+
+  @override
+  String get fbSetPause => 'सवाल के बाद रुकने के दिन';
+
+  @override
+  String get fbSetMax => 'हर यूज़र से ज़्यादा से ज़्यादा सवाल';
+
+  @override
+  String get fbSetHelp =>
+      'हर यूज़र को ऐप के हर हिस्से के लिए इस दायरे में एक रैंडम संख्या मिलती है, और हर हिस्से के बारे में सिर्फ़ एक बार पूछा जाता है। नए अकाउंट 3 दिन इंतज़ार करते हैं। Google Play रेटिंग विंडो भी इस रुकावट का ध्यान रखती है।';
+
+  @override
+  String get fbSetInvalid =>
+      'संख्याएँ जाँचें: \"से\" 1 से 100, \"तक\" \"से\" से कम नहीं और ज़्यादा से ज़्यादा 200, रुकावट 3 से 90 दिन, सवाल 1 से 20।';
 }

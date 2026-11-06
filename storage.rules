@@ -15,6 +15,15 @@ service firebase.storage {
             && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.get('role', 'user') == 'admin'));
     }
 
+    // Screenshots sent with feedback; only the team sees them.
+    match /feedback/{uid}/{fileName} {
+      allow read: if isStaff();
+      allow create: if request.auth != null && request.auth.uid == uid
+        && fileName.matches('[0-9]{1,16}[.](jpg|png)')
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
     // Photos held by moderation. Only Cloud Functions move files in and out.
     match /quarantine/{allPaths=**} {
       allow read: if isStaff();

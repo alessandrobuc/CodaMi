@@ -6589,4 +6589,208 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get shareRemTestFailed =>
       'Не удалось отправить. Проверьте, разрешены ли уведомления на этом телефоне.';
+
+  @override
+  String get fbQuickTitle => 'Короткий вопрос 🐾';
+
+  @override
+  String get fbQuickBody =>
+      'Вы уже часто пользуетесь этим разделом CodaMi. Как он вам? Больше всего нам помогают идеи и описания проблем.';
+
+  @override
+  String get fbSelfBody =>
+      'Идеи, ошибки или проблемы: всё попадает прямо к команде CodaMi.';
+
+  @override
+  String get fbTypeLabel => 'О чём это?';
+
+  @override
+  String get fbTypeSuggestion => 'Предложение';
+
+  @override
+  String get fbTypeBug => 'Ошибка';
+
+  @override
+  String get fbTypeProblem => 'Проблема';
+
+  @override
+  String get fbTypeImprovement => 'Улучшение';
+
+  @override
+  String get fbTypeGeneral => 'Общее';
+
+  @override
+  String get fbAreaLabel => 'Какой раздел приложения?';
+
+  @override
+  String get fbAreaGeneral => 'Всё приложение';
+
+  @override
+  String get fbAreaReports => 'Потеряшки и находки';
+
+  @override
+  String get fbAreaMap => 'Карта';
+
+  @override
+  String get fbAreaWalks => 'Прогулки';
+
+  @override
+  String get fbAreaSitting => 'Передержка';
+
+  @override
+  String get fbAreaSchedule => 'Календарь';
+
+  @override
+  String get fbAreaHeat => 'Календарь течки';
+
+  @override
+  String get fbAreaScanner => 'Определение породы';
+
+  @override
+  String get fbAreaShop => 'Магазин';
+
+  @override
+  String get fbAreaSharing => 'Репосты';
+
+  @override
+  String get fbRatingLabel => 'Ваша оценка (необязательно)';
+
+  @override
+  String get fbHintSuggestion => 'Что бы вы хотели видеть в CodaMi?';
+
+  @override
+  String get fbHintBug => 'Что случилось и чего вы ожидали?';
+
+  @override
+  String get fbHintProblem => 'Что неудобно или не работает?';
+
+  @override
+  String get fbHintImprovement => 'Что могло бы работать лучше и как?';
+
+  @override
+  String get fbScreenshotAdd => 'Добавить скриншот';
+
+  @override
+  String get fbAutoInfo =>
+      'Версия приложения и модель телефона добавляются автоматически.';
+
+  @override
+  String get fbNeedSomething => 'Поставьте звёзды или напишите пару слов';
+
+  @override
+  String get fbDontAsk => 'Больше не спрашивать';
+
+  @override
+  String get fbDontAskDone =>
+      'Хорошо, больше не будем спрашивать. Отзыв всегда можно отправить из Профиля.';
+
+  @override
+  String get fbLimitToday =>
+      'Спасибо, на сегодня отзывов много! Завтра можно отправить ещё.';
+
+  @override
+  String get fbProfileSubtitle => 'Предложения, ошибки и идеи для команды';
+
+  @override
+  String get fbStatusNew => 'Новые';
+
+  @override
+  String get fbStatusProgress => 'В работе';
+
+  @override
+  String get fbStatusDone => 'Готово';
+
+  @override
+  String get fbAdminOverview => 'Последние 30 дней';
+
+  @override
+  String get fbAdminStarsByArea => 'Средняя оценка по разделам';
+
+  @override
+  String get fbAdminNoStars => 'За последние 30 дней оценок нет.';
+
+  @override
+  String get fbAdminNoRating => 'Без оценки';
+
+  @override
+  String get fbAdminAnyStars => 'Любая оценка';
+
+  @override
+  String get fbAdminAllAreas => 'Все разделы';
+
+  @override
+  String get fbAdminAsked => 'Спросили в приложении';
+
+  @override
+  String get fbAdminSelf => 'Отправлено из Профиля';
+
+  @override
+  String get fbAdminNote => 'Заметка для команды';
+
+  @override
+  String get fbAdminNoteHint => 'Эту заметку видит только команда';
+
+  @override
+  String get fbAdminMarkDoneTitle => 'Отметить как готово?';
+
+  @override
+  String get fbAdminNotify => 'Поблагодарить пользователя';
+
+  @override
+  String get fbAdminNotifyHelp =>
+      'Он получит короткое уведомление на своём языке: «Спасибо, мы это исправили!» для ошибок и проблем, «Ваша идея теперь в CodaMi!» для остального.';
+
+  @override
+  String get fbAdminNotified =>
+      'Сохранено. Пользователь получил благодарность.';
+
+  @override
+  String get fbAdminThanked => 'Поблагодарили';
+
+  @override
+  String get fbAdminEmptyTab => 'Здесь пусто.';
+
+  @override
+  String get fbAdminOpenUser => 'Открыть профиль';
+
+  @override
+  String get fbAdminChangeStatus => 'Изменить статус';
+
+  @override
+  String get fbAdminSettings => 'Вопросы об отзывах';
+
+  @override
+  String get fbSetIntro =>
+      'Выберите, когда приложение просит пользователей оставить отзыв. Отправить отзыв из Профиля можно всегда.';
+
+  @override
+  String get fbSetOnHelp =>
+      'Вкл.: вопрос появляется после нескольких использований раздела';
+
+  @override
+  String get fbSetOffHelp =>
+      'Выкл.: никого не спрашиваем, но отзыв из Профиля работает';
+
+  @override
+  String get fbSetWhen => 'Когда спрашивать';
+
+  @override
+  String get fbSetUsesMin => 'Использований до вопроса: от';
+
+  @override
+  String get fbSetUsesMax => 'Использований до вопроса: до';
+
+  @override
+  String get fbSetPause => 'Дней паузы после вопроса';
+
+  @override
+  String get fbSetMax => 'Максимум вопросов на пользователя';
+
+  @override
+  String get fbSetHelp =>
+      'Каждый пользователь получает случайное число использований в этом диапазоне для каждого раздела, и о каждом разделе его спрашивают только один раз. Новые аккаунты ждут 3 дня. Окно оценки Google Play тоже соблюдает паузу.';
+
+  @override
+  String get fbSetInvalid =>
+      'Проверьте числа: «от» от 1 до 100, «до» не меньше «от» и не больше 200, пауза от 3 до 90 дней, вопросов от 1 до 20.';
 }

@@ -18,6 +18,8 @@ import '../../../videos/presentation/screens/videos_screen.dart';
 import '../providers/shell_provider.dart';
 import '../widgets/animated_nav_bar.dart';
 import '../../../emergency/presentation/screens/emergency_screen.dart';
+import '../../../feedback/presentation/feedback_asks.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 import '../../../feedback/presentation/startup_prompts.dart';
 import '../../../points/data/points_repository.dart';
 import '../../../points/presentation/providers/points_provider.dart';
@@ -132,9 +134,11 @@ class _MainShellState extends ConsumerState<MainShell>
   }
 
   // On Home, with nothing opened on top and the app on screen.
-  bool _isIdle() =>
+  bool _isIdle() => _index == 0 && _isFree();
+
+  // On any tab, with nothing opened on top and the app on screen.
+  bool _isFree() =>
       mounted &&
-      _index == 0 &&
       (ModalRoute.of(context)?.isCurrent ?? false) &&
       WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
 
@@ -158,6 +162,11 @@ class _MainShellState extends ConsumerState<MainShell>
   @override
   Widget build(BuildContext context) {
     ref.listen(shellTabProvider, (_, index) => _select(index));
+    ref.listen(pendingFeedbackAskProvider, (_, area) {
+      if (area == null) return;
+      ref.read(pendingFeedbackAskProvider.notifier).clear();
+      askFeedbackWhenIdle(context, ref, area, isIdle: _isFree);
+    });
     // Keeps the same tab selected when the Shop tab appears or disappears.
     ref.listen(shopEnabledProvider, (was, now) {
       if (was == now || _index < _shopIndex) return;

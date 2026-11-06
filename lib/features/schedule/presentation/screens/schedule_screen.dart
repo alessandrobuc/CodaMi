@@ -17,6 +17,8 @@ import '../../domain/schedule.dart';
 import '../providers/schedule_provider.dart';
 import '../widgets/schedule_widgets.dart';
 import 'schedule_form_screen.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 Future<void> setOccurrenceDone(
   BuildContext context,
@@ -356,6 +358,12 @@ class _ScheduleScreenState extends ConsumerState<ScheduleScreen> {
       builder: (_) => ScheduleFormScreen(day: day, petId: _pet),
     ),
   );
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.schedule);
+  }
 
   @override
   Widget build(BuildContext context) {

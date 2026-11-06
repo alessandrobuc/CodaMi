@@ -10,6 +10,8 @@ import '../../domain/heat.dart';
 import '../providers/heat_provider.dart';
 import '../widgets/heat_widgets.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../feedback/domain/feedback.dart';
+import '../../../feedback/presentation/providers/feedback_provider.dart';
 
 class HeatCalendarScreen extends ConsumerStatefulWidget {
   final Pet pet;
@@ -110,6 +112,12 @@ class _HeatCalendarScreenState extends ConsumerState<HeatCalendarScreen> {
             .catchError((_) {});
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(feedbackTrackerProvider).used(FeedbackArea.heat);
   }
 
   @override

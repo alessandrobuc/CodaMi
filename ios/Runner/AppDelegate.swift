@@ -25,6 +25,16 @@ import UIKit
       .setMethodCallHandler { [weak self] call, result in
         self?.onSoundCall(call, result: result)
       }
+    FlutterMethodChannel(name: "codami/device", binaryMessenger: registrar.messenger())
+      .setMethodCallHandler { call, result in
+        guard call.method == "describe" else { return result(FlutterMethodNotImplemented) }
+        var system = utsname()
+        uname(&system)
+        let model = withUnsafeBytes(of: &system.machine) { bytes in
+          String(decoding: bytes.prefix(while: { $0 != 0 }), as: UTF8.self)
+        }
+        result(["model": model, "system": "iOS \(UIDevice.current.systemVersion)"])
+      }
   }
 
   private var soundsFolder: URL? {
