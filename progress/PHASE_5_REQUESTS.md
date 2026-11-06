@@ -2,7 +2,7 @@
 
 New features from the client (received Tue 3 Nov 2026). The plan was sent the same day. Go-ahead given Wed 4 Nov (no fixed order). Built: the AI breed scanner (§6), the heat calendar (§5) and pet sitting (§8). Everything else below is still to do.
 
-_Last updated: Fri 6 Nov 2026 (feedback built, to deploy and test) (Wed 4 Nov: go-ahead given; AI breed scanner online, heat calendar and pet sitting built and to deploy; feedback, sharing, share reminders, schedule and titles not started)_
+_Last updated: Fri 6 Nov 2026 (feedback and titles built, to deploy and test) (Wed 4 Nov: go-ahead given; AI breed scanner online, heat calendar and pet sitting built and to deploy; feedback, sharing, share reminders, schedule and titles not started)_
 
 | Order | # | Request | Already in the app | Status | Size |
 |---|---|---|---|---|---|
@@ -12,7 +12,7 @@ _Last updated: Fri 6 Nov 2026 (feedback built, to deploy and test) (Wed 4 Nov: g
 | 4 | 4 | Personal schedule, notes and reminders | No | **Built Thu 5 Nov**, to deploy and test | Medium (2 to 3 days) |
 | 5 | 2 | Heat cycle calendar | No | **Built Wed 4 Nov**, to deploy and test | Medium (about 2 days) |
 | 6 | 1 | AI breed scanner | No (only photo moderation) | **Built Wed 4 Nov**, to deploy and test | Medium (2 to 3 days) |
-| 7 | 8 | Profile tags, titles and achievements | Partly (invite levels) | Not started | Medium (about 3 days) |
+| 7 | 8 | Profile tags, titles and achievements | Partly (invite levels) | **Built Fri 6 Nov**, to deploy and test | Medium (about 3 days) |
 | 8 | 3 | Pet sitting marketplace | No | **Built Wed 4 Nov** (all 3 parts), to deploy and test | Large (6 to 8 days) |
 | - | 9 | General principles | Followed already | - | - |
 
@@ -179,7 +179,7 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Daily scans per user and on/off in Admin; photos not kept after the scan.
 - "Save breed to my pet" button.
 
-## 7. Titles and achievements (request 8)
+## 7. Titles and achievements (request 8): built Fri 6 Nov
 
 **Already there**
 - Points and levels for invites: Supporter (1 friend), Ambassador (5), Super Ambassador (15), Champion (30), with bonus points (`config/points`).
@@ -194,6 +194,14 @@ Total: about 19 to 22 working days, one feature at a time, each tested and sent 
 - Donor titles (Supporter, Bronze, Silver, Gold, Platinum, Lifetime) from the total donated, automatic, once donation payments exist.
 - Admin: thresholds and on/off per title.
 - Notification when a title is unlocked.
+
+**Client answers (Fri 6 Nov):** numbers as suggested; donor totals €10 / €25 / €50 / €100 / €250 (any donation = Supporter, counted on what the user paid, kept unless a donation is deleted); first invite level renamed "Friend of CodaMi"; bonus points 10 / 25 / 50 per level, none for donor or invite titles.
+
+**Built (Fri 6 Nov)**
+- Server (`titles.ts`, `titlesFunctions.ts`): `refreshTitles(uid)` counts from the real records (reports minus hidden, found reports home + resolved emergencies owned or helped, "I'm helping", shares max 3 a day, feedback marked done, active days, pet sittings with 4★ average, invites, donations total) and is called on visits, reports created/resolved, emergency help/resolve, shares, feedback done, sitting confirmed/reviewed, admin changes. Activity levels are kept; Trusted Member (nothing removed in 90 days), Verified Pet Sitter and donor follow the current record. Bonus points once per level (`paid`), push for new titles (account notice), public `publicProfiles/{uid}` with the main title and 3 tags. Callables: `refreshMyTitles` (30 s wait), `setTitlePrefs` (main title, hide donor), `adminSetTitle` (give / take away / allow again; Team and Partner Shelter given by hand only), `adminRecordDonation`, `adminDeleteDonation`. Off by default (`config/titles`); while off it counts but gives no points or pushes.
+- App (`lib/features/titles/`): My achievements (main title card, next goal, all titles with stars, progress and how to unlock, levels sheet, choose main title, donor tiers with private total and show/hide), celebration window once per new title, push opens the page, title chips on Profile, reports, sitter profiles, offers and requests. Admin → More → Titles and achievements (on/off, numbers per level, per-title switch with holders count, bonus points, donor totals); Titles box on the admin user page (give / take away, record and delete donations).
+- 86 texts in 10 languages + server names and push texts in 10 languages; tests: `test/titles_test.dart`, `functions/src/titles.test.ts`, `emulator_tests/titles.cjs`; phone test `TEST_SCENARIO_TITLES_2026-11-06.md`.
+- In-app donations: once store payments exist, the payment check writes to `donations` (source `play` / `apple`) and calls `refreshTitles`.
 
 ## 8. Pet sitting (request 3): built Wed 4 Nov
 

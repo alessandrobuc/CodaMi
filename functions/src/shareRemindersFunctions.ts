@@ -12,6 +12,7 @@ import {
   NEVER, SHARE_EVENTS, decideReminder, firstReminderDay, reminderText, shareReminderConfigOf, type ShareReminderConfig,
 } from "./shareReminders";
 import {requireStaff} from "./supportFunctions";
+import {countShare} from "./titlesFunctions";
 import {pushToUsers} from "./userPush";
 
 const db = () => getFirestore();
@@ -42,6 +43,7 @@ export async function ensureShareReminder(uid: string): Promise<void> {
 // Any share (a report or the app) pauses the reminders for a while.
 export async function markShared(uid: string): Promise<void> {
   await reminders().doc(uid).set({lastSharedDay: dayKey(Date.now())}, {merge: true});
+  await countShare(uid);
 }
 
 async function send(uid: string, variant: number): Promise<boolean> {

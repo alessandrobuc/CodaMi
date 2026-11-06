@@ -5109,7 +5109,7 @@ abstract class AppLocalizations {
   /// No description provided for @levelSupporter.
   ///
   /// In en, this message translates to:
-  /// **'Supporter'**
+  /// **'Friend of CodaMi'**
   String get levelSupporter;
 
   /// No description provided for @myEmergencies.
@@ -11590,6 +11590,594 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check the numbers: \"from\" 1 to 100, \"to\" not below \"from\" and at most 200, pause 3 to 90 days, questions 1 to 20.'**
   String get fbSetInvalid;
+
+  /// No description provided for @ttlContributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Community Contributor'**
+  String get ttlContributor;
+
+  /// No description provided for @ttlRescuer.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal Rescuer'**
+  String get ttlRescuer;
+
+  /// No description provided for @ttlVolunteer.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Volunteer'**
+  String get ttlVolunteer;
+
+  /// No description provided for @ttlAdvocate.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal Advocate'**
+  String get ttlAdvocate;
+
+  /// No description provided for @ttlHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Community Helper'**
+  String get ttlHelper;
+
+  /// No description provided for @ttlTrusted.
+  ///
+  /// In en, this message translates to:
+  /// **'Trusted Member'**
+  String get ttlTrusted;
+
+  /// No description provided for @ttlSitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Pet Sitter'**
+  String get ttlSitter;
+
+  /// No description provided for @ttlAmbassador.
+  ///
+  /// In en, this message translates to:
+  /// **'Ambassador'**
+  String get ttlAmbassador;
+
+  /// No description provided for @ttlTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'CodaMi Team'**
+  String get ttlTeam;
+
+  /// No description provided for @ttlPartner.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner Shelter'**
+  String get ttlPartner;
+
+  /// No description provided for @ttlDonor1.
+  ///
+  /// In en, this message translates to:
+  /// **'Supporter'**
+  String get ttlDonor1;
+
+  /// No description provided for @ttlDonor2.
+  ///
+  /// In en, this message translates to:
+  /// **'Bronze Donor'**
+  String get ttlDonor2;
+
+  /// No description provided for @ttlDonor3.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver Donor'**
+  String get ttlDonor3;
+
+  /// No description provided for @ttlDonor4.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold Donor'**
+  String get ttlDonor4;
+
+  /// No description provided for @ttlDonor5.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum Donor'**
+  String get ttlDonor5;
+
+  /// No description provided for @ttlDonor6.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifetime Supporter'**
+  String get ttlDonor6;
+
+  /// No description provided for @ttlHowContributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish lost or found reports. Reports removed by moderators don\'t count.'**
+  String get ttlHowContributor;
+
+  /// No description provided for @ttlHowRescuer.
+  ///
+  /// In en, this message translates to:
+  /// **'Help pets get home: your found reports that end \"back home\", and emergencies you reported or helped with that were resolved.'**
+  String get ttlHowRescuer;
+
+  /// No description provided for @ttlHowVolunteer.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \"I\'m helping\" on an emergency near you.'**
+  String get ttlHowVolunteer;
+
+  /// No description provided for @ttlHowAdvocate.
+  ///
+  /// In en, this message translates to:
+  /// **'Share reports and CodaMi with your friends. Up to 3 shares count each day.'**
+  String get ttlHowAdvocate;
+
+  /// No description provided for @ttlHowHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Send suggestions or bug reports. Each one the team marks as done counts.'**
+  String get ttlHowHelper;
+
+  /// No description provided for @ttlHowTrusted.
+  ///
+  /// In en, this message translates to:
+  /// **'Open CodaMi on different days, with nothing removed by moderators in the last 90 days.'**
+  String get ttlHowTrusted;
+
+  /// No description provided for @ttlHowSitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete pet sittings confirmed by both sides, with an average rating of 4★ or more.'**
+  String get ttlHowSitter;
+
+  /// No description provided for @ttlHowAmbassador.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite friends who become active on CodaMi.'**
+  String get ttlHowAmbassador;
+
+  /// No description provided for @ttlHowManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Given by the CodaMi team.'**
+  String get ttlHowManual;
+
+  /// No description provided for @ttlAchievements.
+  ///
+  /// In en, this message translates to:
+  /// **'My achievements'**
+  String get ttlAchievements;
+
+  /// No description provided for @ttlProfileSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your titles and what to unlock next'**
+  String get ttlProfileSubtitle;
+
+  /// No description provided for @ttlMainTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Main title'**
+  String get ttlMainTitle;
+
+  /// No description provided for @ttlChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get ttlChange;
+
+  /// No description provided for @ttlChooseMain.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your main title'**
+  String get ttlChooseMain;
+
+  /// No description provided for @ttlChooseMainBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It shows under your name for other users.'**
+  String get ttlChooseMainBody;
+
+  /// No description provided for @ttlAutomatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (your best title)'**
+  String get ttlAutomatic;
+
+  /// No description provided for @ttlNoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No title yet'**
+  String get ttlNoTitle;
+
+  /// No description provided for @ttlNoTitleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish a report, help in an emergency or invite a friend to earn your first title.'**
+  String get ttlNoTitleBody;
+
+  /// No description provided for @ttlUnlockedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {total} titles unlocked'**
+  String ttlUnlockedCount(int count, int total);
+
+  /// No description provided for @ttlNextGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Next goal'**
+  String get ttlNextGoal;
+
+  /// No description provided for @ttlProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {goal}'**
+  String ttlProgress(int done, int goal);
+
+  /// No description provided for @ttlAllTitles.
+  ///
+  /// In en, this message translates to:
+  /// **'All titles'**
+  String get ttlAllTitles;
+
+  /// No description provided for @ttlAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'All levels unlocked 🎉'**
+  String get ttlAllDone;
+
+  /// No description provided for @ttlUnlockedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked on {date}'**
+  String ttlUnlockedOn(String date);
+
+  /// No description provided for @ttlNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs {count}'**
+  String ttlNeeded(int count);
+
+  /// No description provided for @ttlPausedTrusted.
+  ///
+  /// In en, this message translates to:
+  /// **'On hold: something was removed by moderators in the last 90 days.'**
+  String get ttlPausedTrusted;
+
+  /// No description provided for @ttlPausedSitter.
+  ///
+  /// In en, this message translates to:
+  /// **'On hold: the average rating is below 4★.'**
+  String get ttlPausedSitter;
+
+  /// No description provided for @ttlSetMain.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as main title'**
+  String get ttlSetMain;
+
+  /// No description provided for @ttlDonorSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Supporting CodaMi'**
+  String get ttlDonorSection;
+
+  /// No description provided for @ttlDonorIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank-you titles for people who help keep CodaMi running. Others only see the title, never the amount.'**
+  String get ttlDonorIntro;
+
+  /// No description provided for @ttlAnyDonation.
+  ///
+  /// In en, this message translates to:
+  /// **'Any donation'**
+  String get ttlAnyDonation;
+
+  /// No description provided for @ttlFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {amount}'**
+  String ttlFrom(String amount);
+
+  /// No description provided for @ttlYourTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Your total: {amount}'**
+  String ttlYourTotal(String amount);
+
+  /// No description provided for @ttlOnlyYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Only you see this'**
+  String get ttlOnlyYou;
+
+  /// No description provided for @ttlShowDonor.
+  ///
+  /// In en, this message translates to:
+  /// **'Show my donor title to others'**
+  String get ttlShowDonor;
+
+  /// No description provided for @ttlNewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New title!'**
+  String get ttlNewTitle;
+
+  /// No description provided for @ttlNewTitles.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} new titles!'**
+  String ttlNewTitles(int count);
+
+  /// No description provided for @ttlCelebrateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Well done! It now shows on your profile.'**
+  String get ttlCelebrateBody;
+
+  /// No description provided for @ttlSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See my achievements'**
+  String get ttlSeeAll;
+
+  /// No description provided for @ttlBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'+{points} points'**
+  String ttlBonus(int points);
+
+  /// No description provided for @pointsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New title'**
+  String get pointsTitle;
+
+  /// No description provided for @ttlAdminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Titles and achievements'**
+  String get ttlAdminTitle;
+
+  /// No description provided for @ttlAdminSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Titles, levels and donor titles'**
+  String get ttlAdminSubtitle;
+
+  /// No description provided for @ttlAdminIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Users earn titles from what they do in CodaMi, counted by the server. Choose the numbers for each level and which titles to show.'**
+  String get ttlAdminIntro;
+
+  /// No description provided for @ttlAdminOnHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'On: users see their titles, and others see them next to their name'**
+  String get ttlAdminOnHelp;
+
+  /// No description provided for @ttlAdminOffHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: titles are counted, but only admins see them'**
+  String get ttlAdminOffHelp;
+
+  /// No description provided for @ttlAdminShown.
+  ///
+  /// In en, this message translates to:
+  /// **'Show this title'**
+  String get ttlAdminShown;
+
+  /// No description provided for @ttlAdminHolders.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} users have it'**
+  String ttlAdminHolders(int count);
+
+  /// No description provided for @ttlAdminAmbassadorHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'The levels follow the invite levels in Points and rewards (Friend of CodaMi, Ambassador, Super Ambassador, Champion).'**
+  String get ttlAdminAmbassadorHelp;
+
+  /// No description provided for @ttlAdminBonus.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus points for each level'**
+  String get ttlAdminBonus;
+
+  /// No description provided for @ttlAdminBonusHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Given once per level. Never for donor or invite titles.'**
+  String get ttlAdminBonusHelp;
+
+  /// No description provided for @ttlAdminDonor.
+  ///
+  /// In en, this message translates to:
+  /// **'Donor titles (total in €)'**
+  String get ttlAdminDonor;
+
+  /// No description provided for @ttlAdminDonorHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Supporter: any donation. The other titles need this total in euros.'**
+  String get ttlAdminDonorHelp;
+
+  /// No description provided for @ttlAdminInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the numbers: each level higher than the one before (1 to 100,000), points 0 to 10,000, donor totals rising from €1.'**
+  String get ttlAdminInvalid;
+
+  /// No description provided for @ttlAdminUserBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Titles'**
+  String get ttlAdminUserBox;
+
+  /// No description provided for @ttlAdminGive.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a title'**
+  String get ttlAdminGive;
+
+  /// No description provided for @ttlAdminTakeAway.
+  ///
+  /// In en, this message translates to:
+  /// **'Take away'**
+  String get ttlAdminTakeAway;
+
+  /// No description provided for @ttlAdminAllowAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow again'**
+  String get ttlAdminAllowAgain;
+
+  /// No description provided for @ttlAdminGiven.
+  ///
+  /// In en, this message translates to:
+  /// **'Given by the team'**
+  String get ttlAdminGiven;
+
+  /// No description provided for @ttlAdminTakenAway.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken away by the team'**
+  String get ttlAdminTakenAway;
+
+  /// No description provided for @ttlAdminChooseLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get ttlAdminChooseLevel;
+
+  /// No description provided for @ttlAdminDonations.
+  ///
+  /// In en, this message translates to:
+  /// **'Donations'**
+  String get ttlAdminDonations;
+
+  /// No description provided for @ttlAdminRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Record a donation'**
+  String get ttlAdminRecord;
+
+  /// No description provided for @ttlAdminRecordHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'For donations made outside the app, for example a bank transfer. The donor title follows the total.'**
+  String get ttlAdminRecordHelp;
+
+  /// No description provided for @ttlAdminAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount (€)'**
+  String get ttlAdminAmount;
+
+  /// No description provided for @ttlAdminNoteField.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (for example: bank transfer)'**
+  String get ttlAdminNoteField;
+
+  /// No description provided for @ttlAdminNoDonations.
+  ///
+  /// In en, this message translates to:
+  /// **'No donations recorded.'**
+  String get ttlAdminNoDonations;
+
+  /// No description provided for @ttlAdminDeleteDonation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this donation?'**
+  String get ttlAdminDeleteDonation;
+
+  /// No description provided for @ttlAdminTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total: {amount}'**
+  String ttlAdminTotal(String amount);
+
+  /// No description provided for @adjPtsAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get adjPtsAdd;
+
+  /// No description provided for @adjPtsRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get adjPtsRemove;
+
+  /// No description provided for @adjPtsBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Current balance'**
+  String get adjPtsBalance;
+
+  /// No description provided for @adjPtsNewBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'New balance'**
+  String get adjPtsNewBalance;
+
+  /// No description provided for @adjPtsAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'How many points?'**
+  String get adjPtsAmount;
+
+  /// No description provided for @adjPtsTooMany.
+  ///
+  /// In en, this message translates to:
+  /// **'They only have {total}.'**
+  String adjPtsTooMany(String total);
+
+  /// No description provided for @adjPtsReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Why? The user sees this in their points history.'**
+  String get adjPtsReasonHint;
+
+  /// No description provided for @adjPtsReason1.
+  ///
+  /// In en, this message translates to:
+  /// **'Event prize'**
+  String get adjPtsReason1;
+
+  /// No description provided for @adjPtsReason2.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for helping'**
+  String get adjPtsReason2;
+
+  /// No description provided for @adjPtsReason3.
+  ///
+  /// In en, this message translates to:
+  /// **'Correction'**
+  String get adjPtsReason3;
+
+  /// No description provided for @adjPtsReason4.
+  ///
+  /// In en, this message translates to:
+  /// **'Contest winner'**
+  String get adjPtsReason4;
+
+  /// No description provided for @adjPtsSaveAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {amount}'**
+  String adjPtsSaveAdd(String amount);
+
+  /// No description provided for @adjPtsSaveRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {amount}'**
+  String adjPtsSaveRemove(String amount);
 }
 
 class _AppLocalizationsDelegate

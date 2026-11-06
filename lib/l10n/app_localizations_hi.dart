@@ -2830,7 +2830,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get levelSuperAmbassador => 'सुपर राजदूत';
 
   @override
-  String get levelSupporter => 'समर्थक';
+  String get levelSupporter => 'CodaMi का दोस्त';
 
   @override
   String get myEmergencies => 'मेरी';
@@ -6690,4 +6690,345 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get fbSetInvalid =>
       'संख्याएँ जाँचें: \"से\" 1 से 100, \"तक\" \"से\" से कम नहीं और ज़्यादा से ज़्यादा 200, रुकावट 3 से 90 दिन, सवाल 1 से 20।';
+
+  @override
+  String get ttlContributor => 'कम्युनिटी योगदानकर्ता';
+
+  @override
+  String get ttlRescuer => 'पशु बचावकर्ता';
+
+  @override
+  String get ttlVolunteer => 'सक्रिय स्वयंसेवक';
+
+  @override
+  String get ttlAdvocate => 'पशु हितैषी';
+
+  @override
+  String get ttlHelper => 'कम्युनिटी सहायक';
+
+  @override
+  String get ttlTrusted => 'भरोसेमंद सदस्य';
+
+  @override
+  String get ttlSitter => 'सत्यापित पेट सिटर';
+
+  @override
+  String get ttlAmbassador => 'एंबेसडर';
+
+  @override
+  String get ttlTeam => 'CodaMi टीम';
+
+  @override
+  String get ttlPartner => 'पार्टनर शेल्टर';
+
+  @override
+  String get ttlDonor1 => 'समर्थक';
+
+  @override
+  String get ttlDonor2 => 'कांस्य दाता';
+
+  @override
+  String get ttlDonor3 => 'रजत दाता';
+
+  @override
+  String get ttlDonor4 => 'स्वर्ण दाता';
+
+  @override
+  String get ttlDonor5 => 'प्लेटिनम दाता';
+
+  @override
+  String get ttlDonor6 => 'आजीवन समर्थक';
+
+  @override
+  String get ttlHowContributor =>
+      'खोए या मिले जानवरों की रिपोर्ट पोस्ट करें। मॉडरेटर द्वारा हटाई गई रिपोर्ट नहीं गिनी जातीं।';
+
+  @override
+  String get ttlHowRescuer =>
+      'जानवरों को घर पहुँचाने में मदद करें: आपकी मिले जानवरों की रिपोर्ट जो \"घर लौट आया\" पर खत्म हुईं, और आपकी बताई या मदद की गई इमरजेंसी जो सुलझ गईं।';
+
+  @override
+  String get ttlHowVolunteer =>
+      'अपने पास की किसी इमरजेंसी पर \"मैं मदद कर रहा हूँ\" दबाएँ।';
+
+  @override
+  String get ttlHowAdvocate =>
+      'रिपोर्ट और CodaMi अपने दोस्तों के साथ शेयर करें। रोज़ 3 शेयर तक गिने जाते हैं।';
+
+  @override
+  String get ttlHowHelper =>
+      'सुझाव या बग रिपोर्ट भेजें। टीम जिसे पूरा मार्क करती है, वह गिना जाता है।';
+
+  @override
+  String get ttlHowTrusted =>
+      'अलग-अलग दिनों में CodaMi खोलें, और पिछले 90 दिनों में मॉडरेटर ने कुछ न हटाया हो।';
+
+  @override
+  String get ttlHowSitter =>
+      'दोनों तरफ़ से पक्की की गई पेट सिटिंग पूरी करें, औसत रेटिंग 4★ या ज़्यादा के साथ।';
+
+  @override
+  String get ttlHowAmbassador =>
+      'ऐसे दोस्तों को बुलाएँ जो CodaMi पर सक्रिय हो जाएँ।';
+
+  @override
+  String get ttlHowManual => 'CodaMi टीम द्वारा दिया गया।';
+
+  @override
+  String get ttlAchievements => 'मेरी उपलब्धियाँ';
+
+  @override
+  String get ttlProfileSubtitle => 'आपके टाइटल और आगे क्या अनलॉक करना है';
+
+  @override
+  String get ttlMainTitle => 'मुख्य टाइटल';
+
+  @override
+  String get ttlChange => 'बदलें';
+
+  @override
+  String get ttlChooseMain => 'अपना मुख्य टाइटल चुनें';
+
+  @override
+  String get ttlChooseMainBody => 'दूसरे यूज़र इसे आपके नाम के नीचे देखते हैं।';
+
+  @override
+  String get ttlAutomatic => 'अपने-आप (आपका सबसे अच्छा टाइटल)';
+
+  @override
+  String get ttlNoTitle => 'अभी कोई टाइटल नहीं';
+
+  @override
+  String get ttlNoTitleBody =>
+      'पहला टाइटल पाने के लिए एक रिपोर्ट पोस्ट करें, इमरजेंसी में मदद करें या किसी दोस्त को बुलाएँ।';
+
+  @override
+  String ttlUnlockedCount(int count, int total) {
+    return '$total में से $count टाइटल अनलॉक';
+  }
+
+  @override
+  String get ttlNextGoal => 'अगला लक्ष्य';
+
+  @override
+  String ttlProgress(int done, int goal) {
+    return '$goal में से $done';
+  }
+
+  @override
+  String get ttlAllTitles => 'सभी टाइटल';
+
+  @override
+  String get ttlAllDone => 'सभी लेवल अनलॉक 🎉';
+
+  @override
+  String ttlUnlockedOn(String date) {
+    return '$date को अनलॉक';
+  }
+
+  @override
+  String ttlNeeded(int count) {
+    return '$count चाहिए';
+  }
+
+  @override
+  String get ttlPausedTrusted =>
+      'रुका हुआ: पिछले 90 दिनों में मॉडरेटर ने कुछ हटाया है।';
+
+  @override
+  String get ttlPausedSitter => 'रुका हुआ: औसत रेटिंग 4★ से कम है।';
+
+  @override
+  String get ttlSetMain => 'मुख्य टाइटल बनाएँ';
+
+  @override
+  String get ttlDonorSection => 'CodaMi का साथ दें';
+
+  @override
+  String get ttlDonorIntro =>
+      'CodaMi को चलाते रहने में मदद करने वालों के लिए धन्यवाद टाइटल। दूसरे सिर्फ़ टाइटल देखते हैं, रकम कभी नहीं।';
+
+  @override
+  String get ttlAnyDonation => 'कोई भी दान';
+
+  @override
+  String ttlFrom(String amount) {
+    return '$amount से';
+  }
+
+  @override
+  String ttlYourTotal(String amount) {
+    return 'आपका कुल: $amount';
+  }
+
+  @override
+  String get ttlOnlyYou => 'यह सिर्फ़ आप देखते हैं';
+
+  @override
+  String get ttlShowDonor => 'मेरा दाता टाइटल दूसरों को दिखाएँ';
+
+  @override
+  String get ttlNewTitle => 'नया टाइटल!';
+
+  @override
+  String ttlNewTitles(int count) {
+    return '$count नए टाइटल!';
+  }
+
+  @override
+  String get ttlCelebrateBody =>
+      'बहुत बढ़िया! यह अब आपकी प्रोफ़ाइल पर दिखता है।';
+
+  @override
+  String get ttlSeeAll => 'मेरी उपलब्धियाँ देखें';
+
+  @override
+  String ttlBonus(int points) {
+    return '+$points पॉइंट';
+  }
+
+  @override
+  String get pointsTitle => 'नया टाइटल';
+
+  @override
+  String get ttlAdminTitle => 'टाइटल और उपलब्धियाँ';
+
+  @override
+  String get ttlAdminSubtitle => 'टाइटल, लेवल और दाता टाइटल';
+
+  @override
+  String get ttlAdminIntro =>
+      'यूज़र CodaMi में जो करते हैं उससे टाइटल पाते हैं, जिसे सर्वर गिनता है। हर लेवल की संख्या और कौन से टाइटल दिखें, चुनें।';
+
+  @override
+  String get ttlAdminOnHelp =>
+      'चालू: यूज़र अपने टाइटल देखते हैं, और दूसरे उन्हें नाम के पास देखते हैं';
+
+  @override
+  String get ttlAdminOffHelp =>
+      'बंद: टाइटल गिने जाते हैं, पर सिर्फ़ एडमिन उन्हें देखते हैं';
+
+  @override
+  String get ttlAdminShown => 'यह टाइटल दिखाएँ';
+
+  @override
+  String ttlAdminHolders(int count) {
+    return '$count यूज़र के पास है';
+  }
+
+  @override
+  String get ttlAdminAmbassadorHelp =>
+      'लेवल पॉइंट और इनाम के इनवाइट लेवल के हिसाब से चलते हैं (CodaMi का दोस्त, एंबेसडर, सुपर एंबेसडर, चैंपियन)।';
+
+  @override
+  String get ttlAdminBonus => 'हर लेवल के बोनस पॉइंट';
+
+  @override
+  String get ttlAdminBonusHelp =>
+      'हर लेवल पर एक बार। दाता या इनवाइट टाइटल के लिए कभी नहीं।';
+
+  @override
+  String get ttlAdminDonor => 'दाता टाइटल (कुल € में)';
+
+  @override
+  String get ttlAdminDonorHelp =>
+      'समर्थक: कोई भी दान। बाकी टाइटल के लिए यूरो में यह कुल रकम चाहिए।';
+
+  @override
+  String get ttlAdminInvalid =>
+      'संख्याएँ जाँचें: हर लेवल पिछले से ज़्यादा (1 से 100,000), पॉइंट 0 से 10,000, दाता कुल 1 € से बढ़ते क्रम में।';
+
+  @override
+  String get ttlAdminUserBox => 'टाइटल';
+
+  @override
+  String get ttlAdminGive => 'टाइटल दें';
+
+  @override
+  String get ttlAdminTakeAway => 'वापस लें';
+
+  @override
+  String get ttlAdminAllowAgain => 'फिर से अनुमति दें';
+
+  @override
+  String get ttlAdminGiven => 'टीम द्वारा दिया गया';
+
+  @override
+  String get ttlAdminTakenAway => 'टीम द्वारा वापस लिया गया';
+
+  @override
+  String get ttlAdminChooseLevel => 'लेवल';
+
+  @override
+  String get ttlAdminDonations => 'दान';
+
+  @override
+  String get ttlAdminRecord => 'दान दर्ज करें';
+
+  @override
+  String get ttlAdminRecordHelp =>
+      'ऐप के बाहर किए गए दान के लिए, जैसे बैंक ट्रांसफ़र। दाता टाइटल कुल रकम के हिसाब से चलता है।';
+
+  @override
+  String get ttlAdminAmount => 'रकम (€)';
+
+  @override
+  String get ttlAdminNoteField => 'नोट (जैसे: बैंक ट्रांसफ़र)';
+
+  @override
+  String get ttlAdminNoDonations => 'कोई दान दर्ज नहीं।';
+
+  @override
+  String get ttlAdminDeleteDonation => 'यह दान हटाएँ?';
+
+  @override
+  String ttlAdminTotal(String amount) {
+    return 'कुल: $amount';
+  }
+
+  @override
+  String get adjPtsAdd => 'जोड़ें';
+
+  @override
+  String get adjPtsRemove => 'घटाएँ';
+
+  @override
+  String get adjPtsBalance => 'मौजूदा बैलेंस';
+
+  @override
+  String get adjPtsNewBalance => 'नया बैलेंस';
+
+  @override
+  String get adjPtsAmount => 'कितने पॉइंट?';
+
+  @override
+  String adjPtsTooMany(String total) {
+    return 'उनके पास सिर्फ़ $total हैं।';
+  }
+
+  @override
+  String get adjPtsReasonHint =>
+      'क्यों? यूज़र इसे अपनी पॉइंट हिस्ट्री में देखता है।';
+
+  @override
+  String get adjPtsReason1 => 'इवेंट इनाम';
+
+  @override
+  String get adjPtsReason2 => 'मदद के लिए धन्यवाद';
+
+  @override
+  String get adjPtsReason3 => 'सुधार';
+
+  @override
+  String get adjPtsReason4 => 'प्रतियोगिता विजेता';
+
+  @override
+  String adjPtsSaveAdd(String amount) {
+    return '$amount जोड़ें';
+  }
+
+  @override
+  String adjPtsSaveRemove(String amount) {
+    return '$amount घटाएँ';
+  }
 }

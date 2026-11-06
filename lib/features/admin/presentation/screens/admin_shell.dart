@@ -28,6 +28,7 @@ import 'admin_more_tab.dart';
 import 'admin_reported_tab.dart';
 import '../../../emergency/presentation/screens/emergency_screen.dart';
 import '../../../sharing/presentation/screens/share_app_screen.dart';
+import '../../../titles/presentation/screens/achievements_screen.dart';
 
 class _AdminTab {
   final NavItem item;
@@ -84,6 +85,9 @@ class _AdminShellState extends ConsumerState<AdminShell>
                 builder: (_) =>
                     const ShareAppScreen(fromReminder: true, preview: true),
               ),
+            ),
+            onOpenTitles: () => appNavigatorKey.currentState?.push(
+              MaterialPageRoute(builder: (_) => const AchievementsScreen()),
             ),
           );
       _startHeartbeat();

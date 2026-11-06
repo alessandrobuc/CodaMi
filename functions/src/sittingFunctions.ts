@@ -20,6 +20,7 @@ import {
   sittingText,
 } from "./sitting";
 import {requireStaff} from "./supportFunctions";
+import {refreshTitles} from "./titlesFunctions";
 
 const TRIGGER_REGION = "us-central1";
 const ID = /^[A-Za-z0-9_-]{1,128}$/;
@@ -112,9 +113,10 @@ export const confirmSitting = onCall(async (request) => {
       ...(step.done ? {status: "done", doneAt: FieldValue.serverTimestamp()} : {}),
     });
     if (step.done) tx.set(sitters().doc(req.get("sitterId")), {completedCount: FieldValue.increment(1)}, {merge: true});
-    return step.done;
+    return step.done ? String(req.get("sitterId")) : null;
   });
-  return {done};
+  if (done) await refreshTitles(done);
+  return {done: done !== null};
 });
 
 // Tells the other side when a request is booked or one side has confirmed.
@@ -147,6 +149,7 @@ export const onSittingRequestUpdated = onDocumentUpdated(
 async function refreshRating(sitterId: string): Promise<void> {
   const all = await reviews().where("sitterId", "==", sitterId).get();
   await sitters().doc(sitterId).set(ratingOf(all.docs.map((d) => d.data())), {merge: true});
+  await refreshTitles(sitterId);
 }
 
 // One verified review per completed service, written only here.

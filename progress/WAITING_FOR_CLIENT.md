@@ -68,7 +68,7 @@ Referral and emergency questions were answered on Thu 22 Oct (see **Answered** b
 - [ ] Pet sitting: a short terms text ("CodaMi connects people and isn't part of the service…"): draft by us, check by the client; photos in chat? sitters reviewing owners too?
 - [ ] AI breed scanner: OK with a small cost per scan (less than 1 cent) and a daily limit? (built with 10 scans per user per day, changeable in Admin)
 - [ ] Heat calendar: which animals besides dogs and cats? (built for all species: dogs and cats with typical cycles, other animals estimated from their own records; typical values changeable in Admin)
-- [ ] Donor titles: amounts for Bronze, Silver, Gold, Platinum, Lifetime
+- [x] Donor titles: answered Fri 6 Nov: €10 / €25 / €50 / €100 / €250 (any donation = Supporter); invite level 1 renamed "Friend of CodaMi"; 10 / 25 / 50 bonus points per level
 
 ---
 

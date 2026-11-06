@@ -16,6 +16,10 @@ import '../../../points/presentation/screens/admin_invites_screen.dart';
 import '../../../points/presentation/widgets/points_widgets.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../titles/presentation/widgets/admin_user_titles_card.dart';
+import '../../../points/presentation/widgets/adjust_points_sheet.dart';
+import '../../../points/presentation/providers/points_provider.dart';
+import '../../../points/domain/points.dart';
 
 class AdminUserScreen extends ConsumerStatefulWidget {
   final String uid;
@@ -131,62 +135,17 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     if (deleted) navigator.pop();
   }
 
-  Future<void> _adjustPoints(UserModel user) async {
+  Future<void> _adjustPoints(UserModel user, String name) async {
     final l10n = context.l10n;
-    final amount = TextEditingController();
-    final reason = TextEditingController();
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(l10n.adjustPoints),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: amount,
-              keyboardType: const TextInputType.numberWithOptions(signed: true),
-              decoration: InputDecoration(
-                labelText: l10n.adjustPointsAmount,
-                helperText: l10n.adjustPointsAmountHelp,
-              ),
-            ),
-            TextField(
-              controller: reason,
-              maxLength: 200,
-              decoration: InputDecoration(labelText: l10n.adjustPointsReason),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(l10n.cancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(l10n.save),
-          ),
-        ],
-      ),
+    final saved = await showAdjustPointsSheet(
+      context,
+      name: name,
+      balance: user.points,
+      onSave: (amount, reason) =>
+          ref.read(pointsRepositoryProvider).adjust(user.uid, amount, reason),
     );
-    final value = int.tryParse(amount.text.trim());
-    final text = reason.text.trim();
-    amount.dispose();
-    reason.dispose();
-    if (confirmed != true || !mounted) return;
-    if (value == null || value == 0 || text.isEmpty) {
-      SnackbarUtils.showError(context, l10n.adjustPointsInvalid);
-      return;
-    }
-    setState(() => _busy = true);
-    try {
-      await ref.read(pointsRepositoryProvider).adjust(user.uid, value, text);
-      if (mounted) SnackbarUtils.showSuccess(context, l10n.settingsSaved);
-    } catch (_) {
-      if (mounted) SnackbarUtils.showError(context, l10n.actionFailed);
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
+    if (saved && mounted)
+      SnackbarUtils.showSuccess(context, l10n.settingsSaved);
   }
 
   @override
@@ -219,149 +178,161 @@ class _AdminUserScreenState extends ConsumerState<AdminUserScreen> {
     final canManage = !isMe && user.role != UserRole.admin;
     final viewerIsAdmin = ref.watch(userRoleProvider) == UserRole.admin;
 
-    return ListView(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
-      children: [
-        Center(child: UserAvatar(user: user, radius: 40)),
-        const SizedBox(height: 12),
-        Text(
-          name,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w700,
-            color: AppColors.text,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 6,
-          children: [
-            UserChip(
-              label: roleLabel(l10n, user.role),
-              color: AppColors.primary,
+    return RefreshIndicator(
+      onRefresh: () async {
+        ref.invalidate(userReportCountProvider(user.uid));
+        ref.invalidate(adminInviteStatsProvider(user.uid));
+        await ref
+            .read(adminInviteStatsProvider(user.uid).future)
+            .catchError((Object _) => const InviteStats());
+      },
+      child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: EdgeInsets.fromLTRB(20, 0, 20, endSpace(context)),
+        children: [
+          Center(child: UserAvatar(user: user, radius: 40)),
+          const SizedBox(height: 12),
+          Text(
+            name,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w700,
+              color: AppColors.text,
             ),
-            if (user.disabled)
-              UserChip(label: l10n.userDisabled, color: AppColors.danger),
-          ],
-        ),
-        const SizedBox(height: 20),
-        Material(
-          color: AppColors.surface,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: const BorderSide(color: AppColors.border),
           ),
-          child: Column(
+          const SizedBox(height: 8),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 6,
             children: [
-              _InfoTile(
-                icon: Icons.email_outlined,
-                label: l10n.email,
-                value: user.email,
+              UserChip(
+                label: roleLabel(l10n, user.role),
+                color: AppColors.primary,
               ),
-              if (user.phone case final phone? when phone.isNotEmpty)
-                _InfoTile(
-                  icon: Icons.phone_outlined,
-                  label: l10n.phone,
-                  value: phone,
-                ),
-              _InfoTile(
-                icon: Icons.location_city_rounded,
-                label: l10n.homeCity,
-                value: user.city ?? l10n.notSet,
-              ),
-              _InfoTile(
-                icon: Icons.event_rounded,
-                label: l10n.memberSince,
-                value: shortDate(l10n, user.createdAt),
-              ),
-              _InfoTile(
-                icon: Icons.campaign_rounded,
-                label: l10n.adminListings,
-                value: reports == null ? '…' : '$reports',
-              ),
-              _InfoTile(
-                icon: Icons.stars_rounded,
-                label: l10n.myPoints,
-                value: [
-                  l10n.pointsTotal(user.points),
-                  ?user.ambassadorLevel?.label(l10n),
-                ].join(' · '),
-              ),
+              if (user.disabled)
+                UserChip(label: l10n.userDisabled, color: AppColors.danger),
             ],
           ),
-        ),
-        if (viewerIsAdmin) ...[
-          const SizedBox(height: 12),
-          AdminUserInvitesCard(uid: user.uid, name: name),
-        ],
-        if (!isMe) ...[
-          const SizedBox(height: 12),
-          OutlinedButton.icon(
-            onPressed: _busy ? null : () => _adjustPoints(user),
-            icon: const Icon(Icons.exposure_rounded),
-            label: Text(l10n.adjustPoints),
-          ),
-        ],
-        if (canManage) ...[
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
           Material(
             color: AppColors.surface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
               side: const BorderSide(color: AppColors.border),
             ),
-            child: SwitchListTile(
-              value: user.role == UserRole.support,
-              onChanged:
-                  _busy || (user.disabled && user.role != UserRole.support)
-                  ? null
-                  : (v) => _setStaff(user, name, v),
-              secondary: const Icon(
-                Icons.support_agent_rounded,
-                color: AppColors.primary,
-              ),
-              title: Text(
-                l10n.supportStaffSwitch,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              subtitle: Text(
-                l10n.supportStaffSwitchSubtitle,
-                style: const TextStyle(fontSize: 12.5),
-              ),
+            child: Column(
+              children: [
+                _InfoTile(
+                  icon: Icons.email_outlined,
+                  label: l10n.email,
+                  value: user.email,
+                ),
+                if (user.phone case final phone? when phone.isNotEmpty)
+                  _InfoTile(
+                    icon: Icons.phone_outlined,
+                    label: l10n.phone,
+                    value: phone,
+                  ),
+                _InfoTile(
+                  icon: Icons.location_city_rounded,
+                  label: l10n.homeCity,
+                  value: user.city ?? l10n.notSet,
+                ),
+                _InfoTile(
+                  icon: Icons.event_rounded,
+                  label: l10n.memberSince,
+                  value: shortDate(l10n, user.createdAt),
+                ),
+                _InfoTile(
+                  icon: Icons.campaign_rounded,
+                  label: l10n.adminListings,
+                  value: reports == null ? '…' : '$reports',
+                ),
+                _InfoTile(
+                  icon: Icons.stars_rounded,
+                  label: l10n.myPoints,
+                  value: [
+                    l10n.pointsTotal(user.points),
+                    ?user.ambassadorLevel?.label(l10n),
+                  ].join(' · '),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 20),
-          user.disabled
-              ? FilledButton.icon(
-                  onPressed: _busy ? null : () => _toggleDisabled(user, name),
-                  icon: const Icon(Icons.person_rounded),
-                  label: Text(l10n.enableAccount),
-                )
-              : OutlinedButton.icon(
-                  onPressed: _busy ? null : () => _toggleDisabled(user, name),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.danger,
-                    side: const BorderSide(color: AppColors.danger),
-                  ),
-                  icon: const Icon(Icons.person_off_rounded),
-                  label: Text(l10n.disableAccount),
+          if (viewerIsAdmin) ...[
+            const SizedBox(height: 12),
+            AdminUserInvitesCard(uid: user.uid, name: name),
+            const SizedBox(height: 12),
+            AdminUserTitlesCard(uid: user.uid),
+          ],
+          if (!isMe) ...[
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: _busy ? null : () => _adjustPoints(user, name),
+              icon: const Icon(Icons.exposure_rounded),
+              label: Text(l10n.adjustPoints),
+            ),
+          ],
+          if (canManage) ...[
+            const SizedBox(height: 12),
+            Material(
+              color: AppColors.surface,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: const BorderSide(color: AppColors.border),
+              ),
+              child: SwitchListTile(
+                value: user.role == UserRole.support,
+                onChanged:
+                    _busy || (user.disabled && user.role != UserRole.support)
+                    ? null
+                    : (v) => _setStaff(user, name, v),
+                secondary: const Icon(
+                  Icons.support_agent_rounded,
+                  color: AppColors.primary,
                 ),
-          const SizedBox(height: 8),
-          TextButton.icon(
-            onPressed: _busy ? null : () => _delete(user, name),
-            style: TextButton.styleFrom(foregroundColor: AppColors.danger),
-            icon: _busy
-                ? const SizedBox(
-                    width: 16,
-                    height: 16,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                title: Text(
+                  l10n.supportStaffSwitch,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(
+                  l10n.supportStaffSwitchSubtitle,
+                  style: const TextStyle(fontSize: 12.5),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            user.disabled
+                ? FilledButton.icon(
+                    onPressed: _busy ? null : () => _toggleDisabled(user, name),
+                    icon: const Icon(Icons.person_rounded),
+                    label: Text(l10n.enableAccount),
                   )
-                : const Icon(Icons.delete_forever_rounded),
-            label: Text(l10n.deleteAccount),
-          ),
+                : OutlinedButton.icon(
+                    onPressed: _busy ? null : () => _toggleDisabled(user, name),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.danger,
+                      side: const BorderSide(color: AppColors.danger),
+                    ),
+                    icon: const Icon(Icons.person_off_rounded),
+                    label: Text(l10n.disableAccount),
+                  ),
+            const SizedBox(height: 8),
+            TextButton.icon(
+              onPressed: _busy ? null : () => _delete(user, name),
+              style: TextButton.styleFrom(foregroundColor: AppColors.danger),
+              icon: _busy
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.delete_forever_rounded),
+              label: Text(l10n.deleteAccount),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

@@ -25,6 +25,7 @@ import '../../../moderation/presentation/widgets/held_photo_notice.dart';
 import '../../../../core/utils/screen_space.dart';
 import '../../../feedback/domain/feedback.dart';
 import '../../../feedback/presentation/providers/feedback_provider.dart';
+import '../../../titles/presentation/widgets/title_badge.dart';
 
 class ReportDetailScreen extends ConsumerStatefulWidget {
   final Report report;
@@ -323,6 +324,7 @@ class _ReportDetailScreenState extends ConsumerState<ReportDetailScreen> {
                   color: AppColors.primary,
                   label: context.l10n.postedBy,
                   value: isOwner ? context.l10n.you : report.ownerName,
+                  extra: UserTitle(report.ownerId),
                 ),
                 if (report.activeReward case final reward?) ...[
                   const SizedBox(height: 16),
@@ -525,12 +527,14 @@ class _InfoRow extends StatelessWidget {
   final Color color;
   final String label;
   final String value;
+  final Widget? extra;
 
   const _InfoRow({
     required this.icon,
     required this.color,
     required this.label,
     required this.value,
+    this.extra,
   });
 
   @override
@@ -565,6 +569,7 @@ class _InfoRow extends StatelessWidget {
                   color: AppColors.text,
                 ),
               ),
+              ?extra,
             ],
           ),
         ),

@@ -6,6 +6,7 @@ import * as logger from "firebase-functions/logger";
 
 import {feedbackUpdateOf, thanksKindOf, thanksText} from "./feedback";
 import {requireStaff} from "./supportFunctions";
+import {refreshTitles} from "./titlesFunctions";
 import {pushToUsers} from "./userPush";
 
 // The team changes the status or note; marking it done can thank the user once.
@@ -35,6 +36,7 @@ export const updateFeedback = onCall(async (request) => {
       body: (lang) => thanksText(lang, kind).body,
     }, {kind: "feedback_thanks"}, null) > 0;
   }
+  if (update.status && typeof doc.get("uid") === "string") await refreshTitles(doc.get("uid"));
   logger.info("Feedback updated", {id: update.id, status: update.status, by: staff.uid, notified});
   return {notified};
 });

@@ -45,6 +45,7 @@ import {deleteHeatData} from "./heatFunctions";
 import {deleteScheduleData} from "./scheduleFunctions";
 import {deleteReportShares} from "./sharingFunctions";
 import {deleteShareReminderData} from "./shareRemindersFunctions";
+import {deleteTitlesData, refreshTitles} from "./titlesFunctions";
 import {deleteScanUsage} from "./scannerFunctions";
 import {deleteSittingData} from "./sittingFunctions";
 import {searchFieldsOf} from "./users";
@@ -344,10 +345,13 @@ async function withCheckedPhoto(report: ReportSummary, waitMs: number): Promise<
 export const onReportCreated = onDocumentCreated(
   {document: "reports/{reportId}", region: TRIGGER_REGION},
   async (event) => {
-    const found = readReport(event.params.reportId, event.data?.data());
-    if (!found || found.status !== "open") return;
-    const report = await withCheckedPhoto(found, 15_000);
-    await notifyCity(report, (lang) => newReportContent(report, lang));
+    const data = event.data?.data();
+    const found = readReport(event.params.reportId, data);
+    if (found && found.status === "open") {
+      const report = await withCheckedPhoto(found, 15_000);
+      await notifyCity(report, (lang) => newReportContent(report, lang));
+    }
+    if (typeof data?.ownerId === "string") await refreshTitles(data.ownerId);
   },
 );
 
@@ -358,9 +362,11 @@ export const onReportResolved = onDocumentUpdated(
     const after = event.data?.after.data();
     if (!becameResolved(before, after)) return;
     const found = readReport(event.params.reportId, after);
-    if (!found) return;
-    const report = await withCheckedPhoto(found, 0);
-    await notifyCity(report, (lang) => resolvedContent(report, lang));
+    if (found) {
+      const report = await withCheckedPhoto(found, 0);
+      await notifyCity(report, (lang) => resolvedContent(report, lang));
+    }
+    if (typeof after?.ownerId === "string") await refreshTitles(after.ownerId);
   },
 );
 
@@ -433,6 +439,7 @@ async function deleteUserData(uid: string): Promise<void> {
   await deleteHeatData(uid);
   await deleteScheduleData(uid);
   await deleteShareReminderData(uid);
+  await deleteTitlesData(uid);
   await deleteSittingData(uid);
   await deleteEmergencyData(uid);
 
@@ -565,6 +572,13 @@ export {scheduleReminderSweep} from "./scheduleFunctions";
 export {logReportShare, reportPage} from "./sharingFunctions";
 export {shareReminderEvent, shareReminderSweep, testShareReminder} from "./shareRemindersFunctions";
 export {updateFeedback} from "./feedbackFunctions";
+export {
+  adminDeleteDonation,
+  adminRecordDonation,
+  adminSetTitle,
+  refreshMyTitles,
+  setTitlePrefs,
+} from "./titlesFunctions";
 export {
   acceptSittingOffer,
   adminSetReviewHidden,

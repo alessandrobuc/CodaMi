@@ -19,6 +19,7 @@ import '../widgets/sitting_widgets.dart';
 import 'chat_screens.dart';
 import 'sitter_screens.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../titles/presentation/widgets/title_badge.dart';
 
 String sittingError(AppLocalizations l10n, Object e) => switch (e) {
   SittingException(code: 'failed-precondition') => l10n.sitNotAvailableNow,
@@ -531,12 +532,18 @@ class RequestDetailScreen extends ConsumerWidget {
                       SittingAvatar(name: o.sitterName, radius: 18),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: Text(
-                          o.sitterName,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.text,
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              o.sitterName,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.text,
+                              ),
+                            ),
+                            UserTitle(o.sitterId),
+                          ],
                         ),
                       ),
                       SittingChip(o.status.label(l10n), color: o.status.color),
@@ -957,6 +964,10 @@ class _RequestSummary extends ConsumerWidget {
               ),
               line(Icons.place_outlined, r.city),
               line(Icons.person_outline_rounded, r.ownerName),
+              Padding(
+                padding: const EdgeInsetsDirectional.only(start: 40),
+                child: UserTitle(r.ownerId),
+              ),
               if (r.budget.isNotEmpty) line(Icons.payments_outlined, r.budget),
               if (r.notes.isNotEmpty) line(Icons.notes_rounded, r.notes),
             ],

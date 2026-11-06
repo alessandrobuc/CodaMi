@@ -2704,7 +2704,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get levelSuperAmbassador => '超级大使';
 
   @override
-  String get levelSupporter => '支持者';
+  String get levelSupporter => 'CodaMi 之友';
 
   @override
   String get myEmergencies => '我的';
@@ -6369,4 +6369,326 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get fbSetInvalid =>
       '请检查数字：“从”为 1 到 100，“到”不小于“从”且最多 200，暂停 3 到 90 天，提问 1 到 20 次。';
+
+  @override
+  String get ttlContributor => '社区贡献者';
+
+  @override
+  String get ttlRescuer => '动物救助者';
+
+  @override
+  String get ttlVolunteer => '积极志愿者';
+
+  @override
+  String get ttlAdvocate => '动物守护者';
+
+  @override
+  String get ttlHelper => '社区帮手';
+
+  @override
+  String get ttlTrusted => '可信成员';
+
+  @override
+  String get ttlSitter => '认证宠物看护';
+
+  @override
+  String get ttlAmbassador => '大使';
+
+  @override
+  String get ttlTeam => 'CodaMi 团队';
+
+  @override
+  String get ttlPartner => '合作救助站';
+
+  @override
+  String get ttlDonor1 => '支持者';
+
+  @override
+  String get ttlDonor2 => '铜牌捐助者';
+
+  @override
+  String get ttlDonor3 => '银牌捐助者';
+
+  @override
+  String get ttlDonor4 => '金牌捐助者';
+
+  @override
+  String get ttlDonor5 => '白金捐助者';
+
+  @override
+  String get ttlDonor6 => '终身支持者';
+
+  @override
+  String get ttlHowContributor => '发布走失或捡到宠物的启事。被管理员删除的启事不计入。';
+
+  @override
+  String get ttlHowRescuer => '帮助宠物回家：你发布的捡到启事以“已回家”结束，以及你上报或帮助过且已解决的紧急情况。';
+
+  @override
+  String get ttlHowVolunteer => '在你附近的紧急情况中点击“我在帮忙”。';
+
+  @override
+  String get ttlHowAdvocate => '把启事和 CodaMi 分享给朋友。每天最多计入 3 次。';
+
+  @override
+  String get ttlHowHelper => '发送建议或错误报告。团队标记为已完成的每一条都会计入。';
+
+  @override
+  String get ttlHowTrusted => '在不同的日子打开 CodaMi，且最近 90 天内没有内容被管理员删除。';
+
+  @override
+  String get ttlHowSitter => '完成双方都确认的宠物照看，平均评分 4★ 及以上。';
+
+  @override
+  String get ttlHowAmbassador => '邀请在 CodaMi 上变得活跃的朋友。';
+
+  @override
+  String get ttlHowManual => '由 CodaMi 团队授予。';
+
+  @override
+  String get ttlAchievements => '我的成就';
+
+  @override
+  String get ttlProfileSubtitle => '你的称号和下一个目标';
+
+  @override
+  String get ttlMainTitle => '主称号';
+
+  @override
+  String get ttlChange => '更换';
+
+  @override
+  String get ttlChooseMain => '选择你的主称号';
+
+  @override
+  String get ttlChooseMainBody => '其他用户会在你的名字下方看到它。';
+
+  @override
+  String get ttlAutomatic => '自动（你最好的称号）';
+
+  @override
+  String get ttlNoTitle => '还没有称号';
+
+  @override
+  String get ttlNoTitleBody => '发布一条启事、在紧急情况中帮忙或邀请一位朋友，就能获得第一个称号。';
+
+  @override
+  String ttlUnlockedCount(int count, int total) {
+    return '已解锁 $count/$total 个称号';
+  }
+
+  @override
+  String get ttlNextGoal => '下一个目标';
+
+  @override
+  String ttlProgress(int done, int goal) {
+    return '$done/$goal';
+  }
+
+  @override
+  String get ttlAllTitles => '全部称号';
+
+  @override
+  String get ttlAllDone => '所有等级已解锁 🎉';
+
+  @override
+  String ttlUnlockedOn(String date) {
+    return '解锁于 $date';
+  }
+
+  @override
+  String ttlNeeded(int count) {
+    return '需要 $count';
+  }
+
+  @override
+  String get ttlPausedTrusted => '暂停：最近 90 天内有内容被管理员删除。';
+
+  @override
+  String get ttlPausedSitter => '暂停：平均评分低于 4★。';
+
+  @override
+  String get ttlSetMain => '设为主称号';
+
+  @override
+  String get ttlDonorSection => '支持 CodaMi';
+
+  @override
+  String get ttlDonorIntro => '感谢帮助 CodaMi 持续运营的人的称号。其他人只能看到称号，看不到金额。';
+
+  @override
+  String get ttlAnyDonation => '任意捐助';
+
+  @override
+  String ttlFrom(String amount) {
+    return '$amount 起';
+  }
+
+  @override
+  String ttlYourTotal(String amount) {
+    return '你的总额：$amount';
+  }
+
+  @override
+  String get ttlOnlyYou => '只有你能看到';
+
+  @override
+  String get ttlShowDonor => '向他人显示我的捐助者称号';
+
+  @override
+  String get ttlNewTitle => '新称号！';
+
+  @override
+  String ttlNewTitles(int count) {
+    return '获得 $count 个新称号！';
+  }
+
+  @override
+  String get ttlCelebrateBody => '太棒了！它已显示在你的个人资料上。';
+
+  @override
+  String get ttlSeeAll => '查看我的成就';
+
+  @override
+  String ttlBonus(int points) {
+    return '+$points 积分';
+  }
+
+  @override
+  String get pointsTitle => '新称号';
+
+  @override
+  String get ttlAdminTitle => '称号与成就';
+
+  @override
+  String get ttlAdminSubtitle => '称号、等级和捐助者称号';
+
+  @override
+  String get ttlAdminIntro => '用户根据在 CodaMi 中的行为获得称号，由服务器统计。设置每个等级的数字以及要显示的称号。';
+
+  @override
+  String get ttlAdminOnHelp => '开启：用户能看到自己的称号，其他人也能在名字旁看到';
+
+  @override
+  String get ttlAdminOffHelp => '关闭：称号仍会统计，但只有管理员能看到';
+
+  @override
+  String get ttlAdminShown => '显示此称号';
+
+  @override
+  String ttlAdminHolders(int count) {
+    return '$count 位用户拥有';
+  }
+
+  @override
+  String get ttlAdminAmbassadorHelp =>
+      '等级沿用“积分与奖励”中的邀请等级（CodaMi 之友、大使、超级大使、冠军）。';
+
+  @override
+  String get ttlAdminBonus => '每个等级的奖励积分';
+
+  @override
+  String get ttlAdminBonusHelp => '每个等级只发一次。捐助者和邀请称号不发积分。';
+
+  @override
+  String get ttlAdminDonor => '捐助者称号（总额，欧元）';
+
+  @override
+  String get ttlAdminDonorHelp => '支持者：任意捐助。其他称号需要达到此欧元总额。';
+
+  @override
+  String get ttlAdminInvalid =>
+      '请检查数字：每个等级都要高于上一级（1 到 100,000），积分 0 到 10,000，捐助总额从 1 € 起递增。';
+
+  @override
+  String get ttlAdminUserBox => '称号';
+
+  @override
+  String get ttlAdminGive => '授予称号';
+
+  @override
+  String get ttlAdminTakeAway => '收回';
+
+  @override
+  String get ttlAdminAllowAgain => '重新允许';
+
+  @override
+  String get ttlAdminGiven => '团队授予';
+
+  @override
+  String get ttlAdminTakenAway => '已被团队收回';
+
+  @override
+  String get ttlAdminChooseLevel => '等级';
+
+  @override
+  String get ttlAdminDonations => '捐助';
+
+  @override
+  String get ttlAdminRecord => '记录一笔捐助';
+
+  @override
+  String get ttlAdminRecordHelp => '用于应用外的捐助，例如银行转账。捐助者称号随总额变化。';
+
+  @override
+  String get ttlAdminAmount => '金额（€）';
+
+  @override
+  String get ttlAdminNoteField => '备注（例如：银行转账）';
+
+  @override
+  String get ttlAdminNoDonations => '没有捐助记录。';
+
+  @override
+  String get ttlAdminDeleteDonation => '删除这笔捐助？';
+
+  @override
+  String ttlAdminTotal(String amount) {
+    return '总额：$amount';
+  }
+
+  @override
+  String get adjPtsAdd => '增加';
+
+  @override
+  String get adjPtsRemove => '扣除';
+
+  @override
+  String get adjPtsBalance => '当前余额';
+
+  @override
+  String get adjPtsNewBalance => '新余额';
+
+  @override
+  String get adjPtsAmount => '多少积分？';
+
+  @override
+  String adjPtsTooMany(String total) {
+    return '对方只有 $total。';
+  }
+
+  @override
+  String get adjPtsReasonHint => '原因？用户会在积分记录中看到。';
+
+  @override
+  String get adjPtsReason1 => '活动奖励';
+
+  @override
+  String get adjPtsReason2 => '感谢帮助';
+
+  @override
+  String get adjPtsReason3 => '更正';
+
+  @override
+  String get adjPtsReason4 => '比赛获胜';
+
+  @override
+  String adjPtsSaveAdd(String amount) {
+    return '增加 $amount';
+  }
+
+  @override
+  String adjPtsSaveRemove(String amount) {
+    return '扣除 $amount';
+  }
 }

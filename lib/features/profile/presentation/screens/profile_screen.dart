@@ -45,6 +45,9 @@ import '../../../app_update/data/app_update_repository.dart';
 import '../../../app_update/presentation/update_widgets.dart';
 import 'package:in_app_review/in_app_review.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../titles/presentation/providers/titles_provider.dart';
+import '../../../titles/presentation/screens/achievements_screen.dart';
+import '../../../titles/presentation/widgets/title_badge.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final VoidCallback onOpenPets;
@@ -115,6 +118,9 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final info = ref.watch(currentUserInfoProvider);
+    final myUid = ref.watch(
+      authStateProvider.select((a) => a.value?.uid ?? ''),
+    );
     final textTheme = Theme.of(context).textTheme;
     final l10n = context.l10n;
     final language = ref.watch(localeProvider);
@@ -199,6 +205,23 @@ class ProfileScreen extends ConsumerWidget {
                               color: Colors.white.withValues(alpha: 0.8),
                             ),
                           ),
+                        if (ref.watch(titlesAvailableProvider))
+                          if (ref
+                                  .watch(publicTitlesProvider(myUid))
+                                  .value
+                                  ?.title
+                              case final title?)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: GestureDetector(
+                                onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const AchievementsScreen(),
+                                  ),
+                                ),
+                                child: TitleChip(title, onDark: true),
+                              ),
+                            ),
                       ],
                     ),
                   ),
@@ -278,6 +301,18 @@ class ProfileScreen extends ConsumerWidget {
                     MaterialPageRoute(builder: (_) => const PointsScreen()),
                   ),
                 ),
+                if (ref.watch(titlesAvailableProvider))
+                  _ProfileTile(
+                    icon: Icons.workspace_premium_rounded,
+                    color: AppColors.accent,
+                    title: l10n.ttlAchievements,
+                    subtitle: l10n.ttlProfileSubtitle,
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const AchievementsScreen(),
+                      ),
+                    ),
+                  ),
                 _ProfileTile(
                   icon: Icons.group_add_rounded,
                   color: AppColors.primary,

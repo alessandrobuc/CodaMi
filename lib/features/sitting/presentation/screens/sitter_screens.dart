@@ -18,6 +18,7 @@ import '../widgets/sitting_widgets.dart';
 import 'chat_screens.dart';
 import 'request_screens.dart';
 import '../../../../core/utils/screen_space.dart';
+import '../../../titles/presentation/widgets/title_badge.dart';
 
 class SitterFormScreen extends ConsumerStatefulWidget {
   final SitterProfile? existing;
@@ -407,7 +408,8 @@ class SitterProfileScreen extends ConsumerWidget {
                                 ],
                               ],
                             ),
-                            const SizedBox(height: 2),
+                            UserTitleTags(s.uid),
+                            const SizedBox(height: 4),
                             Text(
                               l10n.sitCityArea(s.city, s.areaKm),
                               style: const TextStyle(

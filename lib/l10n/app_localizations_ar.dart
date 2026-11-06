@@ -2801,7 +2801,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get levelSuperAmbassador => 'سفير متميز';
 
   @override
-  String get levelSupporter => 'داعم';
+  String get levelSupporter => 'صديق CodaMi';
 
   @override
   String get myEmergencies => 'حالاتي';
@@ -6681,4 +6681,339 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get fbSetInvalid =>
       'تحقق من الأرقام: \"من\" بين 1 و100، و\"إلى\" ليست أقل من \"من\" وبحد أقصى 200، والتوقف بين 3 و90 يومًا، والأسئلة بين 1 و20.';
+
+  @override
+  String get ttlContributor => 'مساهم في المجتمع';
+
+  @override
+  String get ttlRescuer => 'منقذ الحيوانات';
+
+  @override
+  String get ttlVolunteer => 'متطوع نشط';
+
+  @override
+  String get ttlAdvocate => 'مدافع عن الحيوانات';
+
+  @override
+  String get ttlHelper => 'مساعد المجتمع';
+
+  @override
+  String get ttlTrusted => 'عضو موثوق';
+
+  @override
+  String get ttlSitter => 'مُرافق حيوانات موثّق';
+
+  @override
+  String get ttlAmbassador => 'سفير';
+
+  @override
+  String get ttlTeam => 'فريق CodaMi';
+
+  @override
+  String get ttlPartner => 'ملجأ شريك';
+
+  @override
+  String get ttlDonor1 => 'داعم';
+
+  @override
+  String get ttlDonor2 => 'متبرع برونزي';
+
+  @override
+  String get ttlDonor3 => 'متبرع فضي';
+
+  @override
+  String get ttlDonor4 => 'متبرع ذهبي';
+
+  @override
+  String get ttlDonor5 => 'متبرع بلاتيني';
+
+  @override
+  String get ttlDonor6 => 'داعم مدى الحياة';
+
+  @override
+  String get ttlHowContributor =>
+      'انشر بلاغات عن حيوانات مفقودة أو موجودة. البلاغات التي يحذفها المشرفون لا تُحتسب.';
+
+  @override
+  String get ttlHowRescuer =>
+      'ساعد الحيوانات على العودة إلى البيت: بلاغاتك عن حيوانات موجودة التي انتهت بـ\"عاد إلى البيت\"، والطوارئ التي أبلغت عنها أو ساعدت فيها وتم حلها.';
+
+  @override
+  String get ttlHowVolunteer => 'اضغط \"أنا أساعد\" على حالة طوارئ قريبة منك.';
+
+  @override
+  String get ttlHowAdvocate =>
+      'شارك البلاغات وCodaMi مع أصدقائك. تُحتسب حتى 3 مشاركات يوميًا.';
+
+  @override
+  String get ttlHowHelper =>
+      'أرسل اقتراحات أو بلاغات أخطاء. يُحتسب كل ما يضع عليه الفريق علامة تم.';
+
+  @override
+  String get ttlHowTrusted =>
+      'افتح CodaMi في أيام مختلفة، دون أن يحذف المشرفون شيئًا خلال آخر 90 يومًا.';
+
+  @override
+  String get ttlHowSitter =>
+      'أكمل رعايات أكدها الطرفان، بمتوسط تقييم 4★ أو أكثر.';
+
+  @override
+  String get ttlHowAmbassador => 'ادعُ أصدقاء يصبحون نشطين على CodaMi.';
+
+  @override
+  String get ttlHowManual => 'يمنحه فريق CodaMi.';
+
+  @override
+  String get ttlAchievements => 'إنجازاتي';
+
+  @override
+  String get ttlProfileSubtitle => 'ألقابك وما يمكنك فتحه بعد ذلك';
+
+  @override
+  String get ttlMainTitle => 'اللقب الرئيسي';
+
+  @override
+  String get ttlChange => 'تغيير';
+
+  @override
+  String get ttlChooseMain => 'اختر لقبك الرئيسي';
+
+  @override
+  String get ttlChooseMainBody => 'يظهر تحت اسمك للمستخدمين الآخرين.';
+
+  @override
+  String get ttlAutomatic => 'تلقائي (أفضل ألقابك)';
+
+  @override
+  String get ttlNoTitle => 'لا يوجد لقب بعد';
+
+  @override
+  String get ttlNoTitleBody =>
+      'انشر بلاغًا أو ساعد في حالة طوارئ أو ادعُ صديقًا لتحصل على لقبك الأول.';
+
+  @override
+  String ttlUnlockedCount(int count, int total) {
+    return 'تم فتح $count من $total ألقاب';
+  }
+
+  @override
+  String get ttlNextGoal => 'الهدف التالي';
+
+  @override
+  String ttlProgress(int done, int goal) {
+    return '$done من $goal';
+  }
+
+  @override
+  String get ttlAllTitles => 'كل الألقاب';
+
+  @override
+  String get ttlAllDone => 'تم فتح كل المستويات 🎉';
+
+  @override
+  String ttlUnlockedOn(String date) {
+    return 'فُتح في $date';
+  }
+
+  @override
+  String ttlNeeded(int count) {
+    return 'يتطلب $count';
+  }
+
+  @override
+  String get ttlPausedTrusted => 'متوقف: حذف المشرفون شيئًا خلال آخر 90 يومًا.';
+
+  @override
+  String get ttlPausedSitter => 'متوقف: متوسط التقييم أقل من 4★.';
+
+  @override
+  String get ttlSetMain => 'اجعله اللقب الرئيسي';
+
+  @override
+  String get ttlDonorSection => 'دعم CodaMi';
+
+  @override
+  String get ttlDonorIntro =>
+      'ألقاب شكر لمن يساعدون CodaMi على الاستمرار. يرى الآخرون اللقب فقط، وليس المبلغ أبدًا.';
+
+  @override
+  String get ttlAnyDonation => 'أي تبرع';
+
+  @override
+  String ttlFrom(String amount) {
+    return 'من $amount';
+  }
+
+  @override
+  String ttlYourTotal(String amount) {
+    return 'مجموعك: $amount';
+  }
+
+  @override
+  String get ttlOnlyYou => 'أنت فقط ترى هذا';
+
+  @override
+  String get ttlShowDonor => 'إظهار لقب المتبرع للآخرين';
+
+  @override
+  String get ttlNewTitle => 'لقب جديد!';
+
+  @override
+  String ttlNewTitles(int count) {
+    return '$count ألقاب جديدة!';
+  }
+
+  @override
+  String get ttlCelebrateBody => 'أحسنت! يظهر الآن في ملفك الشخصي.';
+
+  @override
+  String get ttlSeeAll => 'عرض إنجازاتي';
+
+  @override
+  String ttlBonus(int points) {
+    return '+$points نقطة';
+  }
+
+  @override
+  String get pointsTitle => 'لقب جديد';
+
+  @override
+  String get ttlAdminTitle => 'الألقاب والإنجازات';
+
+  @override
+  String get ttlAdminSubtitle => 'الألقاب والمستويات وألقاب المتبرعين';
+
+  @override
+  String get ttlAdminIntro =>
+      'يحصل المستخدمون على ألقاب مما يفعلونه في CodaMi، ويحسبها الخادم. اختر الأرقام لكل مستوى والألقاب التي تظهر.';
+
+  @override
+  String get ttlAdminOnHelp =>
+      'مفعّل: يرى المستخدمون ألقابهم، ويراها الآخرون بجانب أسمائهم';
+
+  @override
+  String get ttlAdminOffHelp => 'متوقف: تُحسب الألقاب، لكن يراها المشرفون فقط';
+
+  @override
+  String get ttlAdminShown => 'إظهار هذا اللقب';
+
+  @override
+  String ttlAdminHolders(int count) {
+    return 'يملكه $count مستخدم';
+  }
+
+  @override
+  String get ttlAdminAmbassadorHelp =>
+      'تتبع المستويات مستويات الدعوة في النقاط والمكافآت (صديق CodaMi، سفير، سفير مميز، بطل).';
+
+  @override
+  String get ttlAdminBonus => 'نقاط إضافية لكل مستوى';
+
+  @override
+  String get ttlAdminBonusHelp =>
+      'تُمنح مرة واحدة لكل مستوى. لا تُمنح أبدًا لألقاب المتبرعين أو الدعوات.';
+
+  @override
+  String get ttlAdminDonor => 'ألقاب المتبرعين (المجموع باليورو)';
+
+  @override
+  String get ttlAdminDonorHelp =>
+      'داعم: أي تبرع. تحتاج الألقاب الأخرى إلى هذا المجموع باليورو.';
+
+  @override
+  String get ttlAdminInvalid =>
+      'تحقق من الأرقام: كل مستوى أعلى من السابق (من 1 إلى 100,000)، والنقاط من 0 إلى 10,000، ومجاميع المتبرعين تصاعدية من 1 €.';
+
+  @override
+  String get ttlAdminUserBox => 'الألقاب';
+
+  @override
+  String get ttlAdminGive => 'منح لقب';
+
+  @override
+  String get ttlAdminTakeAway => 'سحب';
+
+  @override
+  String get ttlAdminAllowAgain => 'السماح مجددًا';
+
+  @override
+  String get ttlAdminGiven => 'منحه الفريق';
+
+  @override
+  String get ttlAdminTakenAway => 'سحبه الفريق';
+
+  @override
+  String get ttlAdminChooseLevel => 'المستوى';
+
+  @override
+  String get ttlAdminDonations => 'التبرعات';
+
+  @override
+  String get ttlAdminRecord => 'تسجيل تبرع';
+
+  @override
+  String get ttlAdminRecordHelp =>
+      'للتبرعات خارج التطبيق، مثل التحويل البنكي. يتبع لقب المتبرع المجموع.';
+
+  @override
+  String get ttlAdminAmount => 'المبلغ (€)';
+
+  @override
+  String get ttlAdminNoteField => 'ملاحظة (مثلًا: تحويل بنكي)';
+
+  @override
+  String get ttlAdminNoDonations => 'لا توجد تبرعات مسجلة.';
+
+  @override
+  String get ttlAdminDeleteDonation => 'حذف هذا التبرع؟';
+
+  @override
+  String ttlAdminTotal(String amount) {
+    return 'المجموع: $amount';
+  }
+
+  @override
+  String get adjPtsAdd => 'إضافة';
+
+  @override
+  String get adjPtsRemove => 'خصم';
+
+  @override
+  String get adjPtsBalance => 'الرصيد الحالي';
+
+  @override
+  String get adjPtsNewBalance => 'الرصيد الجديد';
+
+  @override
+  String get adjPtsAmount => 'كم نقطة؟';
+
+  @override
+  String adjPtsTooMany(String total) {
+    return 'لديه $total فقط.';
+  }
+
+  @override
+  String get adjPtsReasonHint => 'لماذا؟ يرى المستخدم ذلك في سجل نقاطه.';
+
+  @override
+  String get adjPtsReason1 => 'جائزة فعالية';
+
+  @override
+  String get adjPtsReason2 => 'شكرًا على المساعدة';
+
+  @override
+  String get adjPtsReason3 => 'تصحيح';
+
+  @override
+  String get adjPtsReason4 => 'الفائز في المسابقة';
+
+  @override
+  String adjPtsSaveAdd(String amount) {
+    return 'إضافة $amount';
+  }
+
+  @override
+  String adjPtsSaveRemove(String amount) {
+    return 'خصم $amount';
+  }
 }

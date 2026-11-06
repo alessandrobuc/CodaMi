@@ -2,7 +2,7 @@
 
 One list of everything still open, so work can pick up from here. Tick items off and move them to **Done recently** when finished. Details live in the linked files.
 
-_Last updated: Fri 6 Nov 2026 (feedback: Google Play rating and internal feedback built) (Thu 5 Nov: personal schedule, social sharing and share reminders built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
+_Last updated: Fri 6 Nov 2026 (feedback built; titles and achievements built) (Thu 5 Nov: personal schedule, social sharing and share reminders built) (phase 5: AI breed scanner online; heat calendar and pet sitting built, to deploy and test)_
 
 ---
 
@@ -14,6 +14,7 @@ _Last updated: Fri 6 Nov 2026 (feedback: Google Play rating and internal feedbac
 - [ ] **Social sharing (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules,hosting` (new `reportPage`, `logReportShare`, the `/r/**` page, rules for `config/sharing`, `reportShares`, `shareStats`); new build (installs the codami:// link); phone test with `TEST_SCENARIO_SHARING_2026-11-05.md`; then Admin → More → Social sharing → Share pop-up on
 - [ ] **Share reminders (Thu 5 Nov):** `firebase deploy --only functions,firestore:rules` (new `shareReminderSweep` at 18:00 Italian time, `shareReminderEvent`, `testShareReminder`; changed `registerVisit`, `logReportShare`; rules for `config/shareReminders`, `shareReminders`, `shareReminderStats` and the `share` notification switch); new build; phone test with `TEST_SCENARIO_SHARE_REMINDERS_2026-11-05.md`; then Admin → More → Share reminders → on
 - [ ] **Feedback (Fri 6 Nov):** `firebase deploy --only functions,firestore:rules,storage` (new `updateFeedback`, changed `submitFeedback`: types, part of the app, optional stars, screenshot, 5 a day; rules for `config/feedbackAsks`, the user's `feedbackAsk` and `feedbackDayCount`; storage rule for `feedback/<uid>/`); new build (native phone model channel); phone test with `TEST_SCENARIO_FEEDBACK_2026-11-06.md`
+- [ ] **Titles and achievements (Fri 6 Nov):** `firebase deploy --only functions,firestore:rules` (new `refreshMyTitles`, `setTitlePrefs`, `adminSetTitle`, `adminRecordDonation`, `adminDeleteDonation`; counting added to `registerVisit`, report triggers, `updateEmergency`, shares, `updateFeedback`, pet sitting; rules for `config/titles`, `achievements`, `publicProfiles`, `donations`; no new index: counted with plain lookups after the first deploy failed with "The query requires an index" on the donation total); new build; phone test with `TEST_SCENARIO_TITLES_2026-11-06.md`; then Admin → More → Titles and achievements → on
 - [ ] **Owner profiles and two-way reviews:** client asked Thu 5 Nov to see the reviews of whoever published a request; plan sent, waiting for the go-ahead
 
 - [ ] **Pet sitting fixes (Wed 4 Nov):** `firebase deploy --only functions` (changed `acceptSittingOffer`, `confirmSitting`; new trigger `onSittingRequestUpdated` sends the "accepted" and "please confirm" pushes); new build; check the spinner on Accept, the avatar letter in chat, and scrolling up in a long chat

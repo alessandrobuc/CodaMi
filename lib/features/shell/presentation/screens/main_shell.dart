@@ -29,6 +29,9 @@ import '../../../schedule/presentation/providers/schedule_provider.dart';
 import '../../../schedule/presentation/screens/schedule_screen.dart';
 import '../../../sharing/presentation/deep_links.dart';
 import '../../../sharing/presentation/screens/share_app_screen.dart';
+import '../../../titles/presentation/providers/titles_provider.dart';
+import '../../../titles/presentation/screens/achievements_screen.dart';
+import '../../../titles/presentation/title_celebration.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -121,6 +124,9 @@ class _MainShellState extends ConsumerState<MainShell>
               builder: (_) => const ShareAppScreen(fromReminder: true),
             ),
           ),
+          onOpenTitles: () => appNavigatorKey.currentState?.push(
+            MaterialPageRoute(builder: (_) => const AchievementsScreen()),
+          ),
         );
     syncScheduleReminders(
       ref.read(scheduleRepositoryProvider),
@@ -162,6 +168,12 @@ class _MainShellState extends ConsumerState<MainShell>
   @override
   Widget build(BuildContext context) {
     ref.listen(shellTabProvider, (_, index) => _select(index));
+    ref.listen(myAchievementsProvider, (_, next) {
+      final uid = ref.read(authStateProvider).value?.uid;
+      if (next.value case final a? when uid != null) {
+        celebrateNewTitles(context, ref, uid, a, isIdle: _isFree);
+      }
+    });
     ref.listen(pendingFeedbackAskProvider, (_, area) {
       if (area == null) return;
       ref.read(pendingFeedbackAskProvider.notifier).clear();

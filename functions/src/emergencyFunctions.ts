@@ -32,6 +32,7 @@ import {chunk, languageOf} from "./notifications";
 import {SAFE_ID_PATTERN, readString} from "./places";
 import {oneOf} from "./support";
 import {staffToAlert} from "./supportFunctions";
+import {refreshMany, refreshTitles} from "./titlesFunctions";
 import {pushToUsers} from "./userPush";
 
 const TRIGGER_REGION = "us-central1";
@@ -238,9 +239,13 @@ export const updateEmergency = onCall(async (request) => {
       to: next,
       at: FieldValue.serverTimestamp(),
     });
-    return {ownerId, status, next};
+    return {ownerId, status, next, helpers: action === "helping" ? [...helpers, uid] : helpers};
   });
 
+  if (action === "helping") await refreshTitles(uid);
+  if (result.next === "resolved" && result.status !== "resolved") {
+    await refreshMany([result.ownerId, ...(result.helpers ?? [])]);
+  }
   if (action === "helping" && result.ownerId !== uid) {
     await pushToUsers([result.ownerId], {
       title: (lang) => emergencyText(lang, "helpingTitle"),

@@ -33,6 +33,7 @@ extension PointsEntryLabel on PointsEntry {
     'referral_welcome' => l10n.pointsWelcome,
     'level_bonus' => l10n.pointsLevelBonus,
     'feedback' => l10n.pointsFeedback,
+    'title' => l10n.pointsTitle,
     'manual' => note ?? l10n.pointsAdjusted,
     _ => l10n.pointsOther,
   };

@@ -189,6 +189,11 @@ const points = async (uid) => (await db.collection("users").doc(uid).get()).get(
   ok((await call("adminAdjustPoints", support.token, {uid: friend.uid, amount: 5, reason: "x"})).status === 403, "only admins adjust points");
   const adj = await call("adminAdjustPoints", admin.token, {uid: friend.uid, amount: 7, reason: "Event prize"});
   ok(adj.status === 200 && await points(friend.uid) === 7, "admin adds points with a reason");
+  const tooMuch = await call("adminAdjustPoints", admin.token, {uid: friend.uid, amount: -8, reason: "Correction"});
+  ok(tooMuch.status === 400 && await points(friend.uid) === 7, "points can't be taken below zero");
+  ok((await call("adminAdjustPoints", admin.token, {uid: friend.uid, amount: -7, reason: "Correction"})).status === 200 &&
+    await points(friend.uid) === 0, "removing exactly the balance is fine");
+  await call("adminAdjustPoints", admin.token, {uid: friend.uid, amount: 7, reason: "Back"});
 
   // ---------- Emergencies ----------
   ok((await call("seedTestContacts", support.token, {})).status === 403, "only admins add test contacts");

@@ -4,7 +4,7 @@ import {ensureShareReminder} from "./shareRemindersFunctions";
 import {createHash} from "node:crypto";
 
 import {getAuth} from "firebase-admin/auth";
-import {FieldValue, Timestamp, getFirestore, type Transaction} from "firebase-admin/firestore";
+import {FieldValue, Timestamp, getFirestore} from "firebase-admin/firestore";
 import {HttpsError, onCall, type CallableRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
 import {onSchedule} from "firebase-functions/scheduler";
@@ -25,10 +25,11 @@ import {
   referralOutcome,
   taskPoints,
   type FraudFlag,
-  type PointAction,
   type PointsConfig,
 } from "./points";
 import {feedbackOf, nextDayCount} from "./feedback";
+import {awardInTx} from "./pointsLedger";
+import {refreshTitles} from "./titlesFunctions";
 import {deleteInviteOpens, sweepInviteOpenSeen} from "./invitesFunctions";
 import {pointsText} from "./pointsMessages";
 import {oneOf} from "./support";
@@ -59,33 +60,6 @@ function installHashOf(value: unknown): string | null {
     null;
 }
 
-interface Award {
-  uid: string;
-  action: PointAction;
-  key: string;
-  points: number;
-  note?: string;
-}
-
-// Each award has a fixed ledger ID, so the same award can never count twice.
-// Firestore wants every read before the first write, so callers finish their reads first.
-async function awardInTx(tx: Transaction, awards: Award[]): Promise<Award[]> {
-  const wanted = awards.filter((a) => a.points !== 0);
-  const refs = wanted.map((a) => usersRef().doc(a.uid).collection("pointsLedger").doc(`${a.action}_${a.key}`));
-  const snaps = await Promise.all(refs.map((ref) => tx.get(ref)));
-  const given = wanted.filter((_, i) => !snaps[i].exists);
-  given.forEach((award) => {
-    tx.set(refs[wanted.indexOf(award)], {
-      action: award.action,
-      points: award.points,
-      ...(award.note ? {note: award.note} : {}),
-      createdAt: FieldValue.serverTimestamp(),
-    });
-    tx.set(usersRef().doc(award.uid), {points: FieldValue.increment(award.points)}, {merge: true});
-  });
-  return given;
-}
-
 // Called by the app once a day. Counts active days and remembers recent install IDs.
 export const registerVisit = onCall(async (request) => {
   const uid = requireUid(request);
@@ -109,6 +83,7 @@ export const registerVisit = onCall(async (request) => {
 
   await evaluateReferral(uid);
   await ensureShareReminder(uid);
+  await refreshTitles(uid);
   return {day: today};
 });
 
@@ -291,6 +266,7 @@ async function qualifyReferral(inviteeId: string, reviewer: string | null): Prom
     return {inviterId: inviter.id, given};
   });
   if (!result) return;
+  await refreshTitles(result.inviterId);
 
   for (const award of result.given) {
     const points = String(award.points);
@@ -347,6 +323,9 @@ export const adminAdjustPoints = onCall(async (request) => {
   await db().runTransaction(async (tx) => {
     const user = await tx.get(usersRef().doc(uid));
     if (!user.exists) throw new HttpsError("not-found", "This user no longer exists.");
+    if (Number(user.get("points") ?? 0) + amount < 0) {
+      throw new HttpsError("failed-precondition", "That would take the balance below zero.");
+    }
     await awardInTx(tx, [{uid, action: "manual", key: `${Date.now()}_${admin.uid}`, points: amount, note: reason}]);
   });
   logger.info("Points adjusted", {uid, amount, by: admin.uid});

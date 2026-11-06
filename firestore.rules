@@ -849,6 +849,35 @@ service cloud.firestore {
         && shopStamped(request.resource.data);
     }
 
+    // Titles and achievements: written only by Cloud Functions.
+    match /config/titles {
+      allow read: if signedIn();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['enabled', 'off', 'levels', 'bonus', 'donorCents', 'updatedBy', 'updatedAt'])
+        && request.resource.data.enabled is bool
+        && request.resource.data.off is list && request.resource.data.off.size() <= 11
+        && request.resource.data.levels is map
+        && request.resource.data.levels.keys().hasOnly(['contributor', 'rescuer', 'volunteer', 'advocate', 'helper', 'trusted', 'sitter'])
+        && request.resource.data.bonus is list && request.resource.data.bonus.size() == 3
+        && request.resource.data.donorCents is list && request.resource.data.donorCents.size() == 5
+        && shopStamped(request.resource.data);
+    }
+
+    // Each user's counts and titles; the main title is set through `setTitlePrefs`.
+    match /achievements/{uid} {
+      allow read: if isUser(uid) || isStaff();
+    }
+
+    // The titles others can see next to a name.
+    match /publicProfiles/{uid} {
+      allow read: if signedIn();
+    }
+
+    // Donations, recorded by admins or (later) by the store payment check.
+    match /donations/{donationId} {
+      allow read: if isAdmin();
+    }
+
     // Feedback questions: how many uses before asking, the pause and the limit.
     match /config/feedbackAsks {
       allow read: if signedIn();

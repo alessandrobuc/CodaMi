@@ -11,6 +11,7 @@ export const POINT_ACTIONS = [
   "referral_welcome",
   "level_bonus",
   "feedback",
+  "title",
   "manual",
 ] as const;
 export type PointAction = (typeof POINT_ACTIONS)[number];
